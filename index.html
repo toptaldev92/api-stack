@@ -1,38 +1,123 @@
 ---
 layout: page
-title: API Design
+title: The API Stack
 ---
 
-<h1>API Design</h1>
-<p><img style="padding: 15px;" src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-design.png" alt="" width="290" align="right" /></p>
+<style>
 
-<p>In the early days APIs were just about deploying and consuming.  You were doing one or the other.  Then came API management from providers like Mashery, then others like 3Scale and Apigee. Now the API universe is expanding and API design is coming front and center with new approaches, tools and even companies stepping up to provider services.</p>
+    .stacklistingcontainer{
+        padding-left: 10px; 
+        padding-right: 10px; 
+        width:550px;
+    }
+    .stacklisting{
+        padding-left: 30px;
+    }  
+    .stacklisting li{
+        list-style: none; 
+        padding: 30px; 
+        border: 0px solid #000;
+    }       
+</style>
 
-<p>I define the world of API design as everything that goes into planning and designing your API, as well as the design of your API that lives on as your operational interface, and the truth in the contract you are entering into with API consumers.</p>
+<ul class="toolbar">
+    <li>{"<a href="https://raw.github.com/kinlane/api-stack/gh-pages/data/companies.json" title="JSON" target="_blank">JSON</a>"}</li>
+    <li>{"<a href="https://apievangelist.3scale.net/docs" title="API" target="_blank">API</a>"}</li>
+    <li>{"<a href="https://gist.github.com/kinlane/5992075" title="Script" target="_blank">SCRIPT</a>"}</li>
+</ul>
 
-<p>Depending on our needs, API design may begin with learning about HATEOAS as part of your design definition or API design might be just about generating a Swagger definition so you can generate interactive API documentation, or possible automate your API monitoring and testing.</p>
+<h1 class="title">The API Stack</h1>
 
-<p>Ultimately your API design will be the definition of each endpoint, its methods, fields and much more. In a technical sense it is a JSON or XML blueprint that describes your API, and in a creative sense, API design is an art and can possess a strange technical beauty and speak to the value it delivers to end-users.</p>
+{% raw  %}
+<script id="companyListingTemplate" type="text/template">       
+    <tr>
+        <td align="left" valign="top">
+            <a href="" id="home-logo-link-{{id}}"><img src="{{logo}}" width="{{logo_width}}" align="left" style="padding: 15px;" /></a>
+            <a href="" id="home-name-link-{{id}}" style="color: #000;"><strong>{{name}}</strong></a><br />{{summary}}
+        </td>
+    </tr>
+    <tr>
+        <td align="center" valign="middle">            
+            <a href="index.html" target="_blank" title="Website" id="home-icon-{{id}}"><img id="home-icon-img-{{id}}" src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-home-icon.jpeg" width="25" style="margin-bottom: 5px; padding:15px;" /></a>
+            <a href="index.html" target="_blank" title="Blog" id="blog-icon-{{id}}"><img id="blog-icon-img-{{id}}" src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-blog-icon.png" width="25" style="padding:15px;margin-bottom: 3px; " /></a>
+            <a href="index.html" target="_blank" title="Blog RSS" id="blogrss-icon-{{id}}"><img id="blogrss-icon-img-{{id}}" src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-rss-icon.png" width="30" style="padding:15px;" /></a>
+            <a href="index.html" target="_blank" title="Twitter" id="twitter-icon-{{id}}"><img id="twitter-icon-img-{{id}}" src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-twitter-icon.png" width="30" style="padding:15px;margin-bottom: 3px; " /></a>
+            <a href="index.html" target="_blank" title="Githube" id="github-icon-{{id}}"><img id="github-icon-img-{{id}}" src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-github-icon.png" width="35" style="padding:15px;" /></a>            
+       </td>
+    </tr> 
+    <tr>
+        <td colspan="3"><hr /></td>
+    </tr>                                                                                                   
+</script>
 
-<p>Thoughtful API design early on can save you a lot of mistakes down the road.  This site is not meant to endorse any particular approach or methodology, but provide a single resource where you can find the best information on API design, allowing you to have a conversation around an API definition throughout its lifecycle.</p>
+<script id="tagListingTemplate" type="text/template">       
+    <tr>
+        <td><h3>{{name}}</h3></td>
+    </tr>  
+    <tr>                                                                      
+        <td id="{{slug}}">
+        	
+        </td>
+    </tr>  
+</script>
+{% endraw %}
 
-<p>This site will be an open source informational and technical repository of the companies, building blocks of API design, tools for assisting you in your API design planning and execution and companies that provide services in the area of API design.</p>
+<div>
+     <p align="center"><hr /></p>
+     <table id="companyListing" style="padding-left: 35px;" width="90%" cellpadding="1" cellspacing="1"></table>
+</div>  
 
-<p>My goal is to provide the information you need to navigate the world of API design. I’m also working on a white paper which will be published here when ready.</p>
+<script type="text/javascript">
 
-<hr />                
-              
-{% for post in site.posts limit:2 %}
-<div class="post">
-    
-    <p><a href="{{ post.url }}" rel="bookmark" title="{{ post.title }}" style="color:#000;"><h4><strong>{{ post.title }}</strong></h4></a> (<i><strong><span class="small">Posted on</span> <span class="post-date">{{ post.date | date:"%m-%d-%Y" }}</span></strong></i>)
-    <p><a href="{{ post.url }}" rel="bookmark" title="{{ post.title }}"><img src="{{ post.image }}" width="175" align="left" style="padding: 15px;" /></a></p>
-    <p>{{ post.content | strip_html | truncatewords: 100 }}...<a href="{{ post.url }}" rel="bookmark" title="{{ post.title }}" style="color:#000; font-weight: bold;">read more</a>.</p>
-    <br />
-    <hr />     
-   
-</div> 
-{% endfor %}  
+function listCompanies()
+    {
+    $.getJSON('data/tags.json', function(data) {
+        toggle = 0;
+         $.each(data['tags'], function(key, val) {
+         	
+            var template = $('#tagListingTemplate').html();
+            var html = Mustache.to_html(template, val);
+            $('#companyListing').append(html);     
+                        
+            name = val['name'];
+            slug = val['slug'];
+      
+		    $.getJSON('data/companies.json', function(data2) {
+		        toggle = 0;
+		         $.each(data2['company'], function(key2, val2) {
+		         	
+		            var template = $('#companyListingTemplate').html();
+		            var html = Mustache.to_html(template, val);
+		            $('#' + slug).append(html);     
+		      
+		            id = val2['id'];
+		            website = val2['website'];
+		            
+		            if(website.length>0){ document.getElementById("home-logo-link-"+id).href=website; }               
+		            if(website.length>0){ document.getElementById("home-name-link-"+id).href=website; }              
+		            if(website.length>0){ document.getElementById("home-icon-"+id).href=website; } else { document.getElementById("home-icon-img-"+id).style.display='none'; }              
+		                                    
+		            blog = val2['blog'];
+		            if(blog.length>0){ document.getElementById("blog-icon-"+id).href=blog; } else { document.getElementById("blog-icon-img-"+id).style.display='none'; }
+		                            
+		            blogrss = val2['blogrss'];
+		            if(blog.length>0){ document.getElementById("blogrss-icon-"+id).href=blogrss; } else { document.getElementById("blogrss-icon-img-"+id).style.display='none'; }
+		            
+		            twitter = val2['twitter'];
+		            if(twitter.length>0){ document.getElementById("twitter-icon-"+id).href=twitter; } else { document.getElementById("twitter-icon-img-"+id).style.display='none'; }
+		            
+		            github = val2['github'];
+		            if(github.length>0){ document.getElementById("github-icon-"+id).href=github; } else { document.getElementById("github-icon-img-"+id).style.display='none'; }
+		               		            	                                 
+		            });
+		        });      
+                                 
+            });
+        });
+    } 
+listCompanies();
+</script>
+
 
 <br /><br />
 <!-- 3scale -->
