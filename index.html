@@ -69,8 +69,15 @@ title: The API Stack
 <div>
      <table id="companyListing" width="100%" cellpadding="1" cellspacing="1">
 	    <tr>
-	        <td align="center" id="summary-count" style="font-size: 14px; font-weight: bold;"></td>
-	    </tr>      	
+	        <td align="center" id="summary-count" style="font-size: 14px; font-weight: bold; padding-top: 10px; padding-bottom: 10px;"></td>
+	    </tr>  
+	    <tr>
+	        <td align="center" id="tag-dropdown" style="font-size: 14px; font-weight: bold; padding-top: 10px; padding-bottom: 10px;">
+	        	<select id="tag-select">
+	        		<option value="">Select Category</option>
+	        	</select>	
+	        </td>
+	    </tr>	        	
      </table>
 </div>  
 
@@ -87,6 +94,8 @@ function listCompanies()
 	    	 companycount = companies['company'].length;
 	    	 document.getElementById("summary-count").innerHTML = companycount + ' companies in ' + tagcount + ' categories';
 	    	 	
+  			var select = document.getElementById("tag-select");    	 	
+	    	selectCount = 1;
 	         $.each(data['tags'], function(key, val) {
 	         	
 	            var template = $('#tagListingTemplate').html();
@@ -96,7 +105,13 @@ function listCompanies()
 	            tag = val['tag'];             
 	            name = val['name'];
 	            slug = val['slug'];
-
+	            
+		        var option = document.createElement('option');
+		        option.text = name;
+		        option.value = slug;
+		        select.add(option, selectCount);	            
+				selectCount ++;
+				
 		         $.each(companies['company'], function(key2, val2) {
 			         	
 		            company = val2['name'];             
