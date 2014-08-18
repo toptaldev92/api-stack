@@ -111,11 +111,7 @@ function listCompanies()
 	    	 	
   			var select = document.getElementById("tag-select");    	 	
 	    	selectCount = 1;
-	         $.each(data['tags'], function(key, val) {
-	         	
-	            var template = $('#tagListingTemplate').html();
-	            var html = Mustache.to_html(template, val);
-	            $('#companyListing').append(html);     
+	         $.each(data['tags'], function(key, val) {         	   
 	           
 	            tag = val['tag'];             
 	            name = val['name'];
@@ -130,6 +126,10 @@ function listCompanies()
 				if(name==defaultTag)
 					{
 				
+		            var template = $('#tagListingTemplate').html();
+		            var html = Mustache.to_html(template, val);
+		            $('#companyListing').append(html);  				
+					
 			         $.each(companies['company'], function(key2, val2) {
 				         	
 			            company = val2['name'];             
