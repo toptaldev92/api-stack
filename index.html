@@ -67,7 +67,11 @@ title: The API Stack
 {% endraw %}
 
 <div>
-     <table id="companyListing" width="100%" cellpadding="1" cellspacing="1"></table>
+     <table id="companyListing" width="100%" cellpadding="1" cellspacing="1">
+	    <tr>
+	        <td align="center" id="summary-count" style="font-size: 14px; font-weight: bold;"></td>
+	    </tr>      	
+     </table>
 </div>  
 
 <script type="text/javascript">
@@ -79,6 +83,10 @@ function listCompanies()
 
 	    $.getJSON('data/tags.json', function(data) {
 	    	
+	    	 tagcount = count(data['tags']);
+	    	 companycount = count(companies['company']);
+	    	 document.getElementById("summary-count").innerHTML = companycount + ' companies in ' + tagcount + ' categories';
+	    	 	
 	         $.each(data['tags'], function(key, val) {
 	         	
 	            var template = $('#tagListingTemplate').html();
@@ -88,7 +96,7 @@ function listCompanies()
 	            tag = val['tag'];             
 	            name = val['name'];
 	            slug = val['slug'];
-	  
+
 		         $.each(companies['company'], function(key2, val2) {
 			         	
 		            company = val2['name'];             
@@ -120,7 +128,8 @@ function listCompanies()
 			            if(github.length>0){ document.getElementById("github-icon-"+id).href=github; } else { document.getElementById("github-icon-img-"+id).style.display='none'; }
 
 	            		}
-		         });	                  
+		         });
+		         	                  
 	            });
 	        });
         
