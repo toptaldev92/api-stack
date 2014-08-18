@@ -72,10 +72,8 @@ function listCompanies()
     companies	= "";
 	$.getJSON('data/companies.json', function(data2) { companies = data2; });  	
     
-    
-    
     $.getJSON('data/tags.json', function(data,companies) {
-        toggle = 0;
+    	
          $.each(data['tags'], function(key, val) {
          	
             var template = $('#tagListingTemplate').html();
@@ -94,7 +92,7 @@ function listCompanies()
 	            website = val2['website'];
 	            tags = val2['tags'];
 	           
-                                 
+               });                  
             });
         });
     } 
