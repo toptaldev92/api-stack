@@ -17,47 +17,42 @@ title: The API Stack - Home
 
 <script type="text/javascript">
 			
-function listCompanies()
-    {	
-    	
-    $.getJSON('data/companies.json', function(companies) { 
-    		
-	    $.getJSON('data/tags.json', function(data) {
-	    	
-	    	 tagcount = data['tags'].length;
-	    	 companycount = companies['company'].length;
-	    	 document.getElementById("summary-count").innerHTML = companycount + ' companies in ' + tagcount + ' categories';
-	    
-	         $.each(data['tags'], function(key, val) {         	   
-	           
-	            tag = val['tag'];             
-	            name = val['name'];
-	            slug = val['slug'];
-	            
-	            html = '<span data-weight="9">' + name + '</span>';
-	            $('#stack-cloud').append(html);             
-	                            
-	            });
-	        }); 	
-        }); 
-    } 
-
 	$(document).ready(function(){
 		
-		listCompanies();
-		
-		$("#stack-cloud").awesomeCloud({
-			"size" : {
-				"grid" : 9,
-				"factor" : 1
-			},
-			"options" : {
-				"color" : "random-dark",
-				"rotationRatio" : 0
-			},
-			"font" : "'Times New Roman', Times, serif",
-			"shape" : "circle"
-		});
+	    $.getJSON('data/companies.json', function(companies) { 
+	    		
+		    $.getJSON('data/tags.json', function(data) {
+		    	
+		    	 tagcount = data['tags'].length;
+		    	 companycount = companies['company'].length;
+		    	 document.getElementById("summary-count").innerHTML = companycount + ' companies in ' + tagcount + ' categories';
+		    
+		         $.each(data['tags'], function(key, val) {         	   
+		           
+		            tag = val['tag'];             
+		            name = val['name'];
+		            slug = val['slug'];
+		            
+		            html = '<span data-weight="9">' + name + '</span>';
+		            $('#stack-cloud').append(html);             
+		                            
+		            });
+		            
+					$("#stack-cloud").awesomeCloud({
+						"size" : {
+							"grid" : 9,
+							"factor" : 1
+						},
+						"options" : {
+							"color" : "random-dark",
+							"rotationRatio" : 0
+						},
+						"font" : "'Times New Roman', Times, serif",
+						"shape" : "circle"
+					});		            
+		            
+		        }); 	
+	        }); 
 	});
 	
 </script>
