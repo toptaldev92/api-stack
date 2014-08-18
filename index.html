@@ -69,10 +69,10 @@ title: The API Stack
 
 function listCompanies()
     {
-    $companies	
-	$.getJSON('data/companies.json', function(data2) { $companies = data2; });  	
+    companies	= "";
+	$.getJSON('data/companies.json', function(data2) { companies = data2; });  	
     	
-    $.getJSON('data/tags.json', function(data) {
+    $.getJSON('data/tags.json', function(data,companies) {
         toggle = 0;
          $.each(data['tags'], function(key, val) {
          	
