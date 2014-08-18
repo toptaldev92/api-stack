@@ -46,6 +46,9 @@ title: The API Stack
        </td>
     </tr> 
     <tr>
+        <td id="apis-{{id}}"></td>
+    </tr>     
+    <tr>
         <td><hr /></td>
     </tr>                                                                                                   
 </script>
@@ -64,6 +67,7 @@ title: The API Stack
         </td>
     </tr>      
 </script>
+
 {% endraw %}
 
 <script type="text/javascript">
@@ -147,8 +151,6 @@ function listCompanies()
 			            
 			            apis = val2['apis'];			            
 			            hasapis = apis.length;	
-			            
-			            if(company=='General Services Administration'){ alert(hasapis); }
 	
 		         	    if(tags.indexOf(tag) > -1)
 		            		{
@@ -174,6 +176,28 @@ function listCompanies()
 				            if(github.length>0){ document.getElementById("github-icon-"+id).href=github; } else { document.getElementById("github-icon-img-"+id).style.display='none'; }
 	
 		            		}
+		            		
+		            	if(hasapis>0)
+		            		{
+		            		$.each(apis, function(key3, val3) {
+		            			
+			            		apiname = val3['name'];
+			            		websiteurl = val3['website-url'];
+			            		swaggerurl = val3['swagger-url'];
+			            		documentationurl = val3['documentation-url'];
+			            			
+								apirow = '<tr>';
+								apirow = apirow + '<td>' + apiname + '</td>';
+								apirow = apirow + '<td>' + websiteurl + '</td>';
+								apirow = apirow + '<td>' + swaggerurl + '</td>';
+								apirow = apirow + '<td>' + documentationurl + '</td>';
+								apirow = apirow + '<tr>';
+								
+								$('#apis-' + id).append(apirow);   
+								 	
+			            		});		
+		            		}	
+		            		
 			         });
 			         
 		         	 }                 
