@@ -71,7 +71,9 @@ function listCompanies()
     {
     companies	= "";
 	$.getJSON('data/companies.json', function(data2) { companies = data2; });  	
-    	
+    
+    
+    
     $.getJSON('data/tags.json', function(data,companies) {
         toggle = 0;
          $.each(data['tags'], function(key, val) {
@@ -84,7 +86,7 @@ function listCompanies()
             name = val['name'];
             slug = val['slug'];
   
-	         $.each($companies['company'], function(key2, val2) {
+	         $.each(companies['company'], function(key2, val2) {
 	         	  	      
 	            id = val2['id'];
 	            website = val2['website'];
