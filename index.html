@@ -83,8 +83,8 @@ function listCompanies()
 
 	    $.getJSON('data/tags.json', function(data) {
 	    	
-	    	 tagcount = count(data['tags']);
-	    	 companycount = count(companies['company']);
+	    	 tagcount = data['tags'].length;
+	    	 companycount = companies['company'].length;
 	    	 document.getElementById("summary-count").innerHTML = companycount + ' companies in ' + tagcount + ' categories';
 	    	 	
 	         $.each(data['tags'], function(key, val) {
