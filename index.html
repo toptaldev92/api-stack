@@ -83,9 +83,25 @@ title: The API Stack
 
 <script type="text/javascript">
 
+function getUrlVar(key){
+    var result = new RegExp(key + "=([^&]*)", "i").exec(window.location.search); 
+    return result && unescape(result[1]) || ""; 
+}   
+
+
 function listCompanies()
     {
-
+    
+    if(getUrlVar('tag'))
+    	{
+    	defaultTag = getUrlVar('tag');
+    	}
+    else
+    	{
+    	defaultTag = '3D';
+    	}	
+	alert(defaultTag);
+	
 	$.getJSON('data/companies.json', function(companies) { 
 
 	    $.getJSON('data/tags.json', function(data) {
