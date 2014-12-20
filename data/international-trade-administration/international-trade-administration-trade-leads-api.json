@@ -18,6 +18,168 @@
 		"application/json"
 	],
 	"paths": {
+		"/market_research_library/search": {
+			"get": {
+				"summary": "Market Research Library Search",
+				"description": "This API provides metadata for country and industry reports that are produced by ITAs trade experts and are available in ITAs online market research library.",
+				"operationId": "research",
+				"parameters": [
+					{
+						"name": "countries",
+						"in": "query",
+						"description": "Returns office locations based on ISO alpha-2 country codes.",
+						"type": "string"
+					},
+					{
+						"name": "industry",
+						"in": "query",
+						"description": "Returns market research reports for a specific industry.",
+						"type": "string"
+					},
+					{
+						"name": "keyword",
+						"in": "query",
+						"description": "Returns market research reports for a match in the description or title fields.",
+						"type": "string"
+					},
+					{
+						"name": "offset",
+						"in": "query",
+						"description": "The offset parameter defines the offset from the first result you want to fetch.",
+						"type": "string"
+					},
+					{
+						"name": "size",
+						"in": "query",
+						"description": "The size parameter allows you to configure the maximum amount of hits to be returned.",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success Research"
+					}
+				},
+				"tags": [
+					"Trade",
+					" Commerce",
+					" Reports",
+					" Research"
+				]
+			}
+		},
+		"/ita_office_locations/search": {
+			"get": {
+				"summary": "ITA Offices and Centers Search",
+				"description": "This API provides contact and address information for all of ITAs domestic and international export assistance centers.",
+				"operationId": "office",
+				"parameters": [
+					{
+						"name": "city",
+						"in": "query",
+						"description": "Returns office locations based on city name",
+						"type": "string"
+					},
+					{
+						"name": "countries",
+						"in": "query",
+						"description": "Returns office locations based on ISO alpha-2 country codes.",
+						"type": "string"
+					},
+					{
+						"name": "keyword",
+						"in": "query",
+						"description": "Returns office locations for a match within the post or office name fields.",
+						"type": "string"
+					},
+					{
+						"name": "offset",
+						"in": "query",
+						"description": "The offset parameter defines the offset from the first result you want to fetch.",
+						"type": "string"
+					},
+					{
+						"name": "size",
+						"in": "query",
+						"description": "The size parameter allows you to configure the maximum amount of hits to be returned. ",
+						"type": "string"
+					},
+					{
+						"name": "state",
+						"in": "query",
+						"description": "Returns locations for export assistance centers located in a specific U.S. State or Dependent Area.",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful Offices Response"
+					}
+				},
+				"tags": [
+					"Trade",
+					" Commerce",
+					" Offices",
+					" Centers",
+					" Locations"
+				]
+			}
+		},
+		"/trade_events/search": {
+			"get": {
+				"summary": "Trade Events",
+				"description": "Provides information on industry conferences, webinars, lectures and trade missions organized by the U.S. Dept. of Commerce",
+				"operationId": "trade-events",
+				"parameters": [
+					{
+						"name": "countries",
+						"in": "query",
+						"description": "Returns office locations based on ISO alpha-2 country codes.",
+						"type": "string",
+						"format": "string"
+					},
+					{
+						"name": "industry",
+						"in": "query",
+						"description": "Searches for specific controlled industry names",
+						"type": "string",
+						"format": "string"
+					},
+					{
+						"name": "keyword",
+						"in": "query",
+						"description": "Searches for a match within the event_name and description fields.",
+						"type": "string",
+						"format": "string"
+					},
+					{
+						"name": "offset",
+						"in": "query",
+						"description": "The offset parameter defines the offset from the first result you want to fetch.",
+						"type": "string",
+						"format": "string"
+					},
+					{
+						"name": "size",
+						"in": "query",
+						"description": "The size parameter allows you to configure the maximum amount of hits to be returned. ",
+						"type": "string",
+						"format": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful Event Response"
+					}
+				},
+				"tags": [
+					"Trade",
+					" Events",
+					" Conferences",
+					" Webinars"
+				]
+			}
+		},
 		"/trade_leads/search": {
 			"get": {
 				"summary": "Overseas Contract Opportunities For US Businesses",
@@ -76,254 +238,6 @@
 			}
 		}
 	},
-	"definitions": {
-		"Lead": {
-			"properties": {
-				"id": {
-					"description": "ID of the trade lead",
-					"type": "string"
-				},
-				"hidden": {
-					"description": "",
-					"type": "string"
-				},
-				"community_profile": {
-					"description": "",
-					"type": "string"
-				},
-				"name": {
-					"description": "",
-					"type": "string"
-				},
-				"logo_url": {
-					"description": "",
-					"type": "string"
-				},
-				"thumb_url": {
-					"description": "",
-					"type": "string"
-				},
-				"quality": {
-					"description": "",
-					"type": "string"
-				},
-				"product_desc": {
-					"description": "",
-					"type": "string"
-				},
-				"high_concept": {
-					"description": "",
-					"type": "string"
-				},
-				"follower_count": {
-					"description": "",
-					"type": "string"
-				},
-				"company_url": {
-					"description": "",
-					"type": "string"
-				},
-				"created_at": {
-					"description": "",
-					"type": "string"
-				},
-				"updated_at": {
-					"description": "",
-					"type": "string"
-				},
-				"twitter_url": {
-					"description": "",
-					"type": "string"
-				},
-				"blog_url": {
-					"description": "",
-					"type": "string"
-				},
-				"video_url": {
-					"description": "",
-					"type": "string"
-				},
-				"aggregate_link": {
-					"description": "",
-					"type": "string"
-				},
-				"title": {
-					"description": "This is a default description.",
-					"type": "string"
-				},
-				"url": {
-					"description": "URL that pertain to the bid",
-					"type": "string"
-				},
-				"countries": {
-					"description": "This is a default description.",
-					"type": "string"
-				},
-				"description": {
-					"description": "Description of the opportunity",
-					"type": "string"
-				},
-				"expiration_date": {
-					"description": "This is a default description.",
-					"type": "string"
-				},
-				"industry": {
-					"description": "Industry category assigned to the opportunity",
-					"type": "string"
-				},
-				"report_type": {
-					"description": "This is a default description.",
-					"type": "string"
-				},
-				"post": {
-					"description": "contactu2019s organization",
-					"type": "string"
-				},
-				"office_name": {
-					"description": "This is a default description.",
-					"type": "string"
-				},
-				"state": {
-					"description": "state where event is held",
-					"type": "string"
-				},
-				"city": {
-					"description": "city where event is held",
-					"type": "string"
-				},
-				"address": {
-					"description": "This is a default description.",
-					"type": "string"
-				},
-				"email": {
-					"description": "contactu2019s email address",
-					"type": "string"
-				},
-				"fax": {
-					"description": "This is a default description.",
-					"type": "string"
-				},
-				"mail_instructions": {
-					"description": "This is a default description.",
-					"type": "string"
-				},
-				"phone": {
-					"description": "contactu2019s phone number",
-					"type": "string"
-				},
-				"post_type": {
-					"description": "This is a default description.",
-					"type": "string"
-				},
-				"event_name": {
-					"description": "name given for the event",
-					"type": "string"
-				},
-				"event_type": {
-					"description": "The type of the event (controlled value)",
-					"type": "string"
-				},
-				"start_date": {
-					"description": "start date of the event (default sort)",
-					"type": "string"
-				},
-				"end_date": {
-					"description": "Closing date for the lead",
-					"type": "string"
-				},
-				"cost": {
-					"description": "cost of the event",
-					"type": "string"
-				},
-				"registration_link": {
-					"description": "URL for registration page",
-					"type": "string"
-				},
-				"registration_title": {
-					"description": "title of the registration URL",
-					"type": "string"
-				},
-				"venue": {
-					"description": "place where event is held",
-					"type": "string"
-				},
-				"country": {
-					"description": "country where event is held",
-					"type": "string"
-				},
-				"first_name": {
-					"description": "first name of the contact",
-					"type": "string"
-				},
-				"last_name": {
-					"description": "last name of the contact",
-					"type": "string"
-				},
-				"person_title": {
-					"description": "contactu2019s job title",
-					"type": "string"
-				},
-				"type": {
-					"description": "Trade lead source",
-					"type": "string"
-				},
-				"source": {
-					"description": "Source of the trade lead, typically an organization",
-					"type": "string"
-				},
-				"specific_location": {
-					"description": "Location of the opportunity",
-					"type": "string"
-				},
-				"project_number": {
-					"description": "Number for the opportunity",
-					"type": "string"
-				},
-				"project_size": {
-					"description": "Industry category assigned to the opportunity",
-					"type": "string"
-				},
-				"tags": {
-					"description": "Keywords of the opportunity",
-					"type": "string"
-				},
-				"publish_date": {
-					"description": "Date lead was posted",
-					"type": "string"
-				},
-				"funding_source": {
-					"description": "Funding source of the project",
-					"type": "string"
-				},
-				"borrowing_entity": {
-					"description": "Bank funding the project",
-					"type": "string"
-				},
-				"procurement_organization": {
-					"description": "Agency responsible for the contract",
-					"type": "string"
-				},
-				"project_pocs": {
-					"description": "Point of contact",
-					"type": "string"
-				},
-				"comments": {
-					"description": "comments about the project",
-					"type": "string"
-				},
-				"submitting_officer": {
-					"description": "Contract officer name",
-					"type": "string"
-				},
-				"submitting_officer_contact": {
-					"description": "Contract officer email",
-					"type": "string"
-				},
-				"status": {
-					"description": "Status of the lead (note this API only shows open leads)",
-					"type": "string"
-				}
-			}
-		}
-	}
+	"definitions": [
+	]
 }
