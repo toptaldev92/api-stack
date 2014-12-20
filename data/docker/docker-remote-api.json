@@ -49,77 +49,56 @@
 						"name": "Content-type",
 						"in": "query",
 						"description": "should be set to application/tar.",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "forcerm",
 						"in": "query",
 						"description": "always remove intermediate containers (includes rm)Request Headers:",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "nocache",
 						"in": "query",
 						"description": "do not use the cache when building the image",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "pull",
 						"in": "query",
 						"description": "attempt to pull the image even if an older image exists locally",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "q",
 						"in": "query",
 						"description": "suppress verbose build output",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "rm",
 						"in": "query",
 						"description": "remove intermediate containers after a successful build (default behavior)",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "t",
 						"in": "query",
 						"description": "repository name (and optionally a tag) to be applied to        the resulting image in case of success",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "X-Registry-Config",
 						"in": "query",
 						"description": "base64-encoded ConfigFile objec",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
 					"200": {
+						"description": "no error"
+					},
+					"204": {
 						"description": "no error"
 					},
 					"500": {
@@ -141,57 +120,48 @@
 						"name": "author",
 						"in": "query",
 						"description": "author (e.g., John Hannibal Smith    &lt;hannibal@a-team.com&gt;)",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "comment",
 						"in": "query",
 						"description": "commit message",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "container",
 						"in": "query",
 						"description": "source container",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "repo",
 						"in": "query",
 						"description": "repository",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "tag",
 						"in": "query",
 						"description": "tag",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
+					"200": {
+						"description": "no error"
+					},
+					"204": {
+						"description": "no error"
+					},
+					"500": {
+						"description": "server error"
+					},
 					"201": {
 						"description": "no error"
 					},
 					"404": {
 						"description": "no such container"
-					},
-					"500": {
-						"description": "server error"
 					}
 				},
 				"tags": [
@@ -208,7 +178,10 @@
 					{
 						"name": "body",
 						"in": "body",
-						"description": "Assign the specified name to the container. Must    match /?[a-zA-Z0-9_-]+."
+						"description": "Assign the specified name to the container. Must    match /?[a-zA-Z0-9_-]+.",
+						"schema": {
+							"$ref": "server error"
+						}
 					}
 				],
 				"responses": {
@@ -218,11 +191,11 @@
 					"404": {
 						"description": "no such container"
 					},
-					"500": {
-						"description": "server error"
-					},
 					"406": {
 						"description": "impossible to attach (container not running)"
+					},
+					"500": {
+						"description": "server error"
 					}
 				},
 				"tags": [
@@ -240,84 +213,69 @@
 						"name": "all",
 						"in": "query",
 						"description": "1/True/true or 0/False/false, Show all containers.        Only running containers are shown by default (i.e., this defaults to false)",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "before",
 						"in": "query",
 						"description": "Show only containers created before Id, include        non-running ones.",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "exited",
 						"in": "query",
 						"description": "&lt;int&gt; -- containers with exit code of &lt;int&gt;",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "filters",
 						"in": "query",
 						"description": "a json encoded value of the filters (a map[string][]string) to process on the containers list. Available filters:",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "limit",
 						"in": "query",
 						"description": "Show limit last created        containers, include non-running ones.",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "since",
 						"in": "query",
 						"description": "Show only containers created since Id, include        non-running ones.",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "size",
 						"in": "query",
 						"description": "1/True/true or 0/False/false, Show the containers        sizes",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "status",
 						"in": "query",
 						"description": "(restarting|running|paused|exited)",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
+					"201": {
+						"description": "no error"
+					},
+					"404": {
+						"description": "no such container"
+					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
+					"500": {
+						"description": "server error"
+					},
 					"200": {
 						"description": "no error"
 					},
 					"400": {
 						"description": "bad parameter"
-					},
-					"500": {
-						"description": "server error"
 					}
 				},
 				"tags": [
@@ -335,42 +293,42 @@
 						"name": "force",
 						"in": "query",
 						"description": "1/True/true or 0/False/false, Kill then remove the container.        Default false",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "v",
 						"in": "query",
 						"description": "1/True/true or 0/False/false, Remove the volumes        associated to the container. Default false",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
-					"204": {
+					"201": {
+						"description": "no error"
+					},
+					"404": {
+						"description": "no such container"
+					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
+					"500": {
+						"description": "server error"
+					},
+					"200": {
 						"description": "no error"
 					},
 					"400": {
 						"description": "bad parameter"
 					},
-					"404": {
-						"description": "no such container"
-					},
-					"500": {
-						"description": "server error"
+					"204": {
+						"description": "no error"
 					}
 				},
 				"tags": [
@@ -388,69 +346,60 @@
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "logs",
 						"in": "query",
 						"description": "1/True/true or 0/False/false, return logs. Default false",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "stderr",
 						"in": "query",
 						"description": "1/True/true or 0/False/false, if logs=true, return        stderr log, if stream=true, attach to stderr. Default false",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "stdin",
 						"in": "query",
 						"description": "1/True/true or 0/False/false, if stream=true, attach        to stdin. Default false",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "stdout",
 						"in": "query",
 						"description": "1/True/true or 0/False/false, if logs=true, return        stdout log, if stream=true, attach to stdout. Default false",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "stream",
 						"in": "query",
 						"description": "1/True/true or 0/False/false, return stream.        Default false",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
+					"201": {
+						"description": "no error"
+					},
+					"404": {
+						"description": "no such container"
+					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
+					"500": {
+						"description": "server errornStream details:nWhen using the TTY setting is enabled innPOST /containers/createn,nthe stream is the raw data from the process PTY and client's stdin.nWhen the TTY is disabled, then the stream is multiplexed to separatenstdout and stderr.nThe format is a Header and a Payload (frame).nHEADERnThe header will contain the information on which stream write thenstream (stdout or stderr). It also contain the size of thenassociated frame encoded on the last 4 bytes (uint32).nIt is encoded on the first 8 bytes like this:nheader := [8]byte{STREAM_TYPE, 0, 0, 0, SIZE1, SIZE2, SIZE3, SIZE4}nnSTREAM_TYPE can be:"
+					},
 					"200": {
 						"description": "no error"
 					},
 					"400": {
 						"description": "bad parameter"
 					},
-					"404": {
-						"description": "no such container"
-					},
-					"500": {
-						"description": "server errornStream details:nWhen using the TTY setting is enabled innPOST /containers/createn,nthe stream is the raw data from the process PTY and client's stdin.nWhen the TTY is disabled, then the stream is multiplexed to separatenstdout and stderr.nThe format is a Header and a Payload (frame).nHEADERnThe header will contain the information on which stream write thenstream (stdout or stderr). It also contain the size of thenassociated frame encoded on the last 4 bytes (uint32).nIt is encoded on the first 8 bytes like this:nheader := [8]byte{STREAM_TYPE, 0, 0, 0, SIZE1, SIZE2, SIZE3, SIZE4}nnSTREAM_TYPE can be:"
+					"204": {
+						"description": "no error"
 					}
 				},
 				"tags": [
@@ -468,21 +417,30 @@
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server errornStream details:nWhen using the TTY setting is enabled innPOST /containers/createn,nthe stream is the raw data from the process PTY and client's stdin.nWhen the TTY is disabled, then the stream is multiplexed to separatenstdout and stderr.nThe format is a Header and a Payload (frame).nHEADERnThe header will contain the information on which stream write thenstream (stdout or stderr). It also contain the size of thenassociated frame encoded on the last 4 bytes (uint32).nIt is encoded on the first 8 bytes like this:nheader := [8]byte{STREAM_TYPE, 0, 0, 0, SIZE1, SIZE2, SIZE3, SIZE4}nnSTREAM_TYPE can be:"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
-					"200": {
+					"201": {
 						"description": "no error"
 					},
 					"404": {
 						"description": "no such container"
 					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
 					"500": {
 						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
 					}
 				},
 				"tags": [
@@ -500,21 +458,30 @@
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
-					"200": {
+					"201": {
 						"description": "no error"
 					},
 					"404": {
 						"description": "no such container"
 					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
 					"500": {
 						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
 					}
 				},
 				"tags": [
@@ -532,10 +499,7 @@
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
@@ -544,6 +508,21 @@
 					},
 					"404": {
 						"description": "no such container"
+					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
+					"500": {
+						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
 					}
 				},
 				"tags": [
@@ -561,21 +540,30 @@
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "no such container"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
-					"200": {
+					"201": {
 						"description": "no error"
 					},
 					"404": {
 						"description": "no such container"
 					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
 					"500": {
 						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
 					}
 				},
 				"tags": [
@@ -593,21 +581,30 @@
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
-					"200": {
+					"201": {
 						"description": "no error"
 					},
 					"404": {
 						"description": "no such container"
 					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
 					"500": {
 						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
 					}
 				},
 				"tags": [
@@ -625,21 +622,30 @@
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
-					"204": {
+					"201": {
 						"description": "no error"
 					},
 					"404": {
 						"description": "no such container"
 					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
 					"500": {
 						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
 					}
 				},
 				"tags": [
@@ -657,66 +663,60 @@
 						"name": "follow",
 						"in": "query",
 						"description": "1/True/true or 0/False/false, return stream. Default false",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "stderr",
 						"in": "query",
 						"description": "1/True/true or 0/False/false, show stderr log. Default false",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "stdout",
 						"in": "query",
 						"description": "1/True/true or 0/False/false, show stdout log. Default false",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "tail",
 						"in": "query",
 						"description": "Output specified number of lines at the end of logs: all or &lt;number&gt;. Default all",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "timestamps",
 						"in": "query",
 						"description": "1/True/true or 0/False/false, print timestamps for        every log line. Default false",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
-					"200": {
+					"201": {
 						"description": "no error"
 					},
 					"404": {
 						"description": "no such container"
 					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
 					"500": {
 						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
 					}
 				},
 				"tags": [
@@ -734,21 +734,30 @@
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
-					"204": {
+					"201": {
 						"description": "no error"
 					},
 					"404": {
 						"description": "no such container"
 					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
 					"500": {
 						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
 					}
 				},
 				"tags": [
@@ -766,21 +775,30 @@
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
-					"200": {
+					"201": {
 						"description": "no error"
 					},
 					"404": {
 						"description": "No such container"
 					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
 					"500": {
 						"description": "Cannot resize container"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
 					}
 				},
 				"tags": [
@@ -798,30 +816,36 @@
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "Cannot resize container"
-						}
+						"type": "string"
 					},
 					{
 						"name": "t",
 						"in": "query",
 						"description": "number of seconds to wait before killing the container",
-						"type": "string",
-						"schema": {
-							"$ref": "Cannot resize container"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
-					"204": {
+					"201": {
 						"description": "no error"
 					},
 					"404": {
 						"description": "no such container"
 					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
 					"500": {
 						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
 					}
 				},
 				"tags": [
@@ -839,24 +863,33 @@
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
+					"201": {
+						"description": "no error"
+					},
+					"404": {
+						"description": "no such container"
+					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
+					"500": {
+						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
 					"204": {
 						"description": "no error"
 					},
 					"304": {
 						"description": "container already started"
-					},
-					"404": {
-						"description": "no such container"
-					},
-					"500": {
-						"description": "server error"
 					}
 				},
 				"tags": [
@@ -874,33 +907,39 @@
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "t",
 						"in": "query",
 						"description": "number of seconds to wait before killing the container",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
+					"201": {
+						"description": "no error"
+					},
+					"404": {
+						"description": "no such container"
+					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
+					"500": {
+						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
 					"204": {
 						"description": "no error"
 					},
 					"304": {
 						"description": "container already stopped"
-					},
-					"404": {
-						"description": "no such container"
-					},
-					"500": {
-						"description": "server error"
 					}
 				},
 				"tags": [
@@ -918,30 +957,39 @@
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "ps_args",
 						"in": "query",
 						"description": "ps arguments to use (e.g., aux)",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
-					"200": {
+					"201": {
 						"description": "no error"
 					},
 					"404": {
 						"description": "no such container"
 					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
 					"500": {
 						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
+					},
+					"304": {
+						"description": "container already stopped"
 					}
 				},
 				"tags": [
@@ -959,21 +1007,33 @@
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
-					"204": {
+					"201": {
 						"description": "no error"
 					},
 					"404": {
 						"description": "no such container"
 					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
 					"500": {
 						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
+					},
+					"304": {
+						"description": "container already stopped"
 					}
 				},
 				"tags": [
@@ -991,21 +1051,33 @@
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
-					"200": {
+					"201": {
 						"description": "no error"
 					},
 					"404": {
 						"description": "no such container"
 					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
 					"500": {
 						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
+					},
+					"304": {
+						"description": "container already stopped"
 					}
 				},
 				"tags": [
@@ -1023,63 +1095,63 @@
 						"name": "container",
 						"in": "query",
 						"description": "&lt;string&gt; -- container to filter",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "event",
 						"in": "query",
 						"description": "&lt;string&gt; -- event to filter",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "filters",
 						"in": "query",
 						"description": "a json encoded value of the filters (a map[string][]string) to process on the event list. Available filters:",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "image",
 						"in": "query",
 						"description": "&lt;string&gt; -- image to filter",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "since",
 						"in": "query",
 						"description": "timestamp used for polling",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "until",
 						"in": "query",
 						"description": "timestamp used for polling",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
-					"200": {
+					"201": {
 						"description": "no error"
+					},
+					"404": {
+						"description": "no such container"
+					},
+					"406": {
+						"description": "impossible to attach (container not running)"
 					},
 					"500": {
 						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
+					},
+					"304": {
+						"description": "container already stopped"
 					}
 				},
 				"tags": [
@@ -1097,18 +1169,33 @@
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
-					"200": {
+					"201": {
 						"description": "no error"
 					},
 					"404": {
 						"description": "no such exec instance"
+					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
+					"500": {
+						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
+					},
+					"304": {
+						"description": "container already stopped"
 					}
 				},
 				"tags": [
@@ -1126,28 +1213,19 @@
 						"name": "h",
 						"in": "query",
 						"description": "height of tty session",
-						"type": "string",
-						"schema": {
-							"$ref": "no such exec instance"
-						}
+						"type": "string"
 					},
 					{
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "no such exec instance"
-						}
+						"type": "string"
 					},
 					{
 						"name": "w",
 						"in": "query",
 						"description": "width",
-						"type": "string",
-						"schema": {
-							"$ref": "no such exec instance"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
@@ -1156,6 +1234,24 @@
 					},
 					"404": {
 						"description": "no such exec instance"
+					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
+					"500": {
+						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
+					},
+					"304": {
+						"description": "container already stopped"
 					}
 				},
 				"tags": [
@@ -1173,10 +1269,7 @@
 						"name": "id",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "no such exec instance"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
@@ -1185,6 +1278,24 @@
 					},
 					"404": {
 						"description": "no such exec instancenStream details:nSimilar to the stream behavior of POST /container/(id)/attach API"
+					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
+					"500": {
+						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
+					},
+					"304": {
+						"description": "container already stopped"
 					}
 				},
 				"tags": [
@@ -1202,63 +1313,63 @@
 						"name": "fromImage",
 						"in": "query",
 						"description": "name of the image to pull",
-						"type": "string",
-						"schema": {
-							"$ref": "no such exec instancenStream details:nSimilar to the stream behavior of POST /container/(id)/attach API"
-						}
+						"type": "string"
 					},
 					{
 						"name": "fromSrc",
 						"in": "query",
 						"description": "source to import.  The value may be a URL from which the image        can be retrieved or - to read the image from the request body.",
-						"type": "string",
-						"schema": {
-							"$ref": "no such exec instancenStream details:nSimilar to the stream behavior of POST /container/(id)/attach API"
-						}
+						"type": "string"
 					},
 					{
 						"name": "registry",
 						"in": "query",
 						"description": "the registry to pull fromRequest Headers:",
-						"type": "string",
-						"schema": {
-							"$ref": "no such exec instancenStream details:nSimilar to the stream behavior of POST /container/(id)/attach API"
-						}
+						"type": "string"
 					},
 					{
 						"name": "repo",
 						"in": "query",
 						"description": "repository",
-						"type": "string",
-						"schema": {
-							"$ref": "no such exec instancenStream details:nSimilar to the stream behavior of POST /container/(id)/attach API"
-						}
+						"type": "string"
 					},
 					{
 						"name": "tag",
 						"in": "query",
 						"description": "tag",
-						"type": "string",
-						"schema": {
-							"$ref": "no such exec instancenStream details:nSimilar to the stream behavior of POST /container/(id)/attach API"
-						}
+						"type": "string"
 					},
 					{
 						"name": "X-Registry-Auth",
 						"in": "query",
 						"description": "base64-encoded AuthConfig object",
-						"type": "string",
-						"schema": {
-							"$ref": "no such exec instancenStream details:nSimilar to the stream behavior of POST /container/(id)/attach API"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
-					"200": {
+					"201": {
 						"description": "no error"
+					},
+					"404": {
+						"description": "no such exec instancenStream details:nSimilar to the stream behavior of POST /container/(id)/attach API"
+					},
+					"406": {
+						"description": "impossible to attach (container not running)"
 					},
 					"500": {
 						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
+					},
+					"304": {
+						"description": "container already stopped"
 					}
 				},
 				"tags": [
@@ -1272,11 +1383,29 @@
 				"description": "Get a tarball containing all images.",
 				"operationId": "get-a-tarball-containing-all-images",
 				"responses": {
-					"200": {
+					"201": {
 						"description": "no error"
+					},
+					"404": {
+						"description": "no such exec instancenStream details:nSimilar to the stream behavior of POST /container/(id)/attach API"
+					},
+					"406": {
+						"description": "impossible to attach (container not running)"
 					},
 					"500": {
 						"description": "server error"
+					},
+					"200": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
+					},
+					"304": {
+						"description": "container already stopped"
 					}
 				},
 				"tags": [
@@ -1294,33 +1423,45 @@
 						"name": "all",
 						"in": "query",
 						"description": "1/True/true or 0/False/false, default false",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "dangling",
 						"in": "query",
 						"description": "true",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "filters",
 						"in": "query",
 						"description": "a json encoded value of the filters (a map[string][]string) to process on the images list. Available filters:",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
+					"201": {
+						"description": "no error"
+					},
+					"404": {
+						"description": "no such exec instancenStream details:nSimilar to the stream behavior of POST /container/(id)/attach API"
+					},
+					"406": {
+						"description": "impossible to attach (container not running)"
+					},
+					"500": {
+						"description": "server error"
+					},
 					"200": {
 						"description": "OK"
+					},
+					"400": {
+						"description": "bad parameter"
+					},
+					"204": {
+						"description": "no error"
+					},
+					"304": {
+						"description": "container already stopped"
 					}
 				},
 				"tags": [
@@ -1356,10 +1497,7 @@
 						"name": "term",
 						"in": "query",
 						"description": "term to search",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
@@ -1385,42 +1523,33 @@
 						"name": "force",
 						"in": "query",
 						"description": "1/True/true or 0/False/false, default false",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "name",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "noprune",
 						"in": "query",
 						"description": "1/True/true or 0/False/false, default false",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
 					"200": {
 						"description": "no error"
 					},
+					"500": {
+						"description": "server error"
+					},
 					"404": {
 						"description": "no such image"
 					},
 					"409": {
 						"description": "conflict"
-					},
-					"500": {
-						"description": "server error"
 					}
 				},
 				"tags": [
@@ -1438,10 +1567,7 @@
 						"name": "name",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
@@ -1450,6 +1576,12 @@
 					},
 					"500": {
 						"description": "server error"
+					},
+					"404": {
+						"description": "no such image"
+					},
+					"409": {
+						"description": "conflict"
 					}
 				},
 				"tags": [
@@ -1467,21 +1599,21 @@
 						"name": "name",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
 					"200": {
 						"description": "no error"
 					},
+					"500": {
+						"description": "server error"
+					},
 					"404": {
 						"description": "no such image"
 					},
-					"500": {
-						"description": "server error"
+					"409": {
+						"description": "conflict"
 					}
 				},
 				"tags": [
@@ -1499,21 +1631,21 @@
 						"name": "name",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
 					"200": {
 						"description": "no error"
 					},
+					"500": {
+						"description": "server error"
+					},
 					"404": {
 						"description": "no such image"
 					},
-					"500": {
-						"description": "server error"
+					"409": {
+						"description": "conflict"
 					}
 				},
 				"tags": [
@@ -1531,30 +1663,27 @@
 						"name": "name",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "tag",
 						"in": "query",
 						"description": "the tag to associate with the image on the registry, optional",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
 					"200": {
 						"description": "no error"
 					},
+					"500": {
+						"description": "server error"
+					},
 					"404": {
 						"description": "no such image"
 					},
-					"500": {
-						"description": "server error"
+					"409": {
+						"description": "conflict"
 					}
 				},
 				"tags": [
@@ -1572,45 +1701,33 @@
 						"name": "force",
 						"in": "query",
 						"description": "1/True/true or 0/False/false, default false",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "name",
 						"in": "path",
 						"description": "",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "repo",
 						"in": "query",
 						"description": "The repository to tag in",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					},
 					{
 						"name": "tag",
 						"in": "query",
 						"description": "The new tag name",
-						"type": "string",
-						"schema": {
-							"$ref": "server error"
-						}
+						"type": "string"
 					}
 				],
 				"responses": {
-					"201": {
+					"200": {
 						"description": "no error"
 					},
-					"400": {
-						"description": "bad parameter"
+					"500": {
+						"description": "server error"
 					},
 					"404": {
 						"description": "no such image"
@@ -1618,8 +1735,11 @@
 					"409": {
 						"description": "conflict"
 					},
-					"500": {
-						"description": "server error"
+					"201": {
+						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
 					}
 				},
 				"tags": [
@@ -1633,11 +1753,11 @@
 				"description": "Display system-wide information",
 				"operationId": "display-systemwide-information",
 				"responses": {
-					"201": {
+					"200": {
 						"description": "no error"
 					},
-					"400": {
-						"description": "bad parameter"
+					"500": {
+						"description": "server error"
 					},
 					"404": {
 						"description": "no such image"
@@ -1645,11 +1765,11 @@
 					"409": {
 						"description": "conflict"
 					},
-					"500": {
-						"description": "server error"
-					},
-					"200": {
+					"201": {
 						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
 					}
 				},
 				"tags": [
@@ -1663,11 +1783,11 @@
 				"description": "Show the docker version information",
 				"operationId": "show-the-docker-version-information",
 				"responses": {
-					"201": {
+					"200": {
 						"description": "no error"
 					},
-					"400": {
-						"description": "bad parameter"
+					"500": {
+						"description": "server error"
 					},
 					"404": {
 						"description": "no such image"
@@ -1675,11 +1795,11 @@
 					"409": {
 						"description": "conflict"
 					},
-					"500": {
-						"description": "server error"
-					},
-					"200": {
+					"201": {
 						"description": "no error"
+					},
+					"400": {
+						"description": "bad parameter"
 					}
 				},
 				"tags": [
@@ -1693,11 +1813,11 @@
 				"description": "Ping the docker server",
 				"operationId": "ping-the-docker-server",
 				"responses": {
-					"201": {
-						"description": "no error"
+					"200": {
+						"description": "OK"
 					},
-					"400": {
-						"description": "bad parameter"
+					"500": {
+						"description": "server error"
 					},
 					"404": {
 						"description": "no such image"
@@ -1705,11 +1825,11 @@
 					"409": {
 						"description": "conflict"
 					},
-					"500": {
-						"description": "server error"
+					"201": {
+						"description": "no error"
 					},
-					"200": {
-						"description": "OK"
+					"400": {
+						"description": "bad parameter"
 					}
 				},
 				"tags": [
