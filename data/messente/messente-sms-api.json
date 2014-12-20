@@ -3,22 +3,22 @@
 	"info": {
 		"title": "Messente SMS API",
 		"description": " Sending SMS text messages",
-		"termsOfService": "https:\/\/messente.com\/pages\/terms",
+		"termsOfService": "https://messente.com/pages/terms",
 		"version": "v1"
 	},
 	"host": "api2.messente.com",
-	"basePath": "\/",
+	"basePath": "/",
 	"schemes": [
 		"http"
 	],
 	"produces": [
-		"application\/json"
+		"application/json"
 	],
 	"consumes": [
-		"application\/json"
+		"application/json"
 	],
 	"paths": {
-		"\/startups": {
+		"/startups": {
 			"get": {
 				"summary": "Startups On AngelList",
 				"description": "Returns the firehose of fundraising companies on AngelList. Results are paginated and ordered by the date on which the round was listed.",
@@ -44,7 +44,7 @@
 				]
 			}
 		},
-		"\/search": {
+		"/search": {
 			"get": {
 				"summary": "Link Search",
 				"description": "Search links receiving clicks across bitly by content, language, location, and more.",
@@ -120,10 +120,10 @@
 				]
 			}
 		},
-		"sendmsg\/": {
+		"sendmsg/": {
 			"get": {
 				"summary": "Send Message",
-				"description": "The Clickatell HTTP\/S API provides just about the simplest way of programming your connection to Clickatell, and if you need to overcome a firewall problem HTTP\/S is almost certainly your best solution.",
+				"description": "The Clickatell HTTP/S API provides just about the simplest way of programming your connection to Clickatell, and if you need to overcome a firewall problem HTTP/S is almost certainly your best solution.",
 				"operationId": "",
 				"parameters": [
 					{
@@ -203,7 +203,7 @@
 					{
 						"name": "Long",
 						"in": "query",
-						"description": "Set this to 1 and we\u2019ll stick together multiple messages giving you up to 459 characters, rather than the standard 160 (each recipient will cost up to 3 message credits)",
+						"description": "Set this to 1 and weu2019ll stick together multiple messages giving you up to 459 characters, rather than the standard 160 (each recipient will cost up to 3 message credits)",
 						"type": "string",
 						"format": "string"
 					},
@@ -258,7 +258,7 @@
 				]
 			}
 		},
-		"email_addresses\/email": {
+		"email_addresses/email": {
 			"post": {
 				"summary": "Modify Email",
 				"description": "Modifiying a given email address",
@@ -348,13 +348,13 @@
 					{
 						"name": "email",
 						"in": "query",
-						"description": "Email address of the contact for whom you want the latest files exchanged with. By \"exchanged with contact X\" we mean any email received from contact X, sent to contact X or sent by anyone to both contact X and the source owner.",
+						"description": "Email address of the contact for whom you want the latest files exchanged with. By "exchangedwithcontactX" we mean any email received from contact X, sent to contact X or sent by anyone to both contact X and the source owner.",
 						"type": "string"
 					},
 					{
 						"name": "file_name",
 						"in": "query",
-						"description": "Search for files based on their name. You can filter names using typical shell wildcards such as *, ? and [] or regular expressions by enclosing the search expression in a leading \/ and trailing \/. For example, *.pdf would give you all PDF files while \/\\.jpe?g$\/ would return all files whose name ends with .jpg or .jpeg",
+						"description": "Search for files based on their name. You can filter names using typical shell wildcards such as *, ? and [] or regular expressions by enclosing the search expression in a leading / and trailing /. For example, *.pdf would give you all PDF files while /\.jpe?g$/ would return all files whose name ends with .jpg or .jpeg",
 						"type": "string"
 					},
 					{
@@ -443,7 +443,7 @@
 				]
 			}
 		},
-		"files\/file_id": {
+		"files/file_id": {
 			"get": {
 				"summary": "Get File",
 				"description": "Details for a given file",
@@ -476,7 +476,7 @@
 				]
 			}
 		},
-		"messages\/": {
+		"messages/": {
 			"post": {
 				"summary": "Send Message",
 				"description": "Sends a message by assembling it from the components. Note that you can specify most parameters multiple times, HTTP supports this out of the box. This makes sense for parameters like cc, to or attachment.",
@@ -485,7 +485,7 @@
 					{
 						"name": "attachment",
 						"in": "query",
-						"description": "File attachment. You can post multiple attachment\nvalues. Important: You must use multipart\/form-data\nencoding when sending attachments.",
+						"description": "File attachment. You can post multiple attachmentnvalues. Important: You must use multipart/form-datanencoding when sending attachments.",
 						"type": "string"
 					},
 					{
@@ -509,7 +509,7 @@
 					{
 						"name": "h:X-My-Header",
 						"in": "query",
-						"description": "h: prefix followed by an arbitrary value allows to append\na custom MIME header to the message (X-My-Header\nin this case). For example, h:Reply-To to specify Reply-To\naddress.",
+						"description": "h: prefix followed by an arbitrary value allows to appendna custom MIME header to the message (X-My-Headernin this case). For example, h:Reply-To to specify Reply-Tonaddress.",
 						"type": "string"
 					},
 					{
@@ -521,25 +521,25 @@
 					{
 						"name": "inline",
 						"in": "query",
-						"description": "Attachment with inline disposition. Can be used to\nsend inline images (see example).\nYou can post multiple inline values.",
+						"description": "Attachment with inline disposition. Can be used tonsend inline images (see example).nYou can post multiple inline values.",
 						"type": "string"
 					},
 					{
 						"name": "o:campaign",
 						"in": "query",
-						"description": "Id of the campaign the message belongs to. See\nCampaign Analytics for details.",
+						"description": "Id of the campaign the message belongs to. SeenCampaign Analytics for details.",
 						"type": "string"
 					},
 					{
 						"name": "o:deliverytime",
 						"in": "query",
-						"description": "Desired time of delivery. See Date Format. Note:\nMessages can be scheduled for a maximum of 3 days in the\nfuture.",
+						"description": "Desired time of delivery. See Date Format. Note:nMessages can be scheduled for a maximum of 3 days in thenfuture.",
 						"type": "string"
 					},
 					{
 						"name": "o:dkim",
 						"in": "query",
-						"description": "Enables\/disables DKIM signatures on per-message basis.\nPass yes or no",
+						"description": "Enables/disables DKIM signatures on per-message basis.nPass yes or no",
 						"type": "string"
 					},
 					{
@@ -551,25 +551,25 @@
 					{
 						"name": "o:testmode",
 						"in": "query",
-						"description": "Enables sending in test mode. Pass yes if needed.\nSee Sending in Test Mode",
+						"description": "Enables sending in test mode. Pass yes if needed.nSee Sending in Test Mode",
 						"type": "string"
 					},
 					{
 						"name": "o:tracking",
 						"in": "query",
-						"description": "Toggles tracking on a per-message basis, see\nTracking Messages for details. Pass yes or no.",
+						"description": "Toggles tracking on a per-message basis, seenTracking Messages for details. Pass yes or no.",
 						"type": "string"
 					},
 					{
 						"name": "o:tracking-clicks",
 						"in": "query",
-						"description": "Toggles clicks tracking on a per-message basis. Has higher\npriority than domain-level setting. Pass yes, no\nor htmlonly.",
+						"description": "Toggles clicks tracking on a per-message basis. Has highernpriority than domain-level setting. Pass yes, nonor htmlonly.",
 						"type": "string"
 					},
 					{
 						"name": "o:tracking-opens",
 						"in": "query",
-						"description": "Toggles opens tracking on a per-message basis. Has higher\npriority than domain-level setting. Pass yes or no.",
+						"description": "Toggles opens tracking on a per-message basis. Has highernpriority than domain-level setting. Pass yes or no.",
 						"type": "string"
 					},
 					{
@@ -587,13 +587,13 @@
 					{
 						"name": "to",
 						"in": "query",
-						"description": "Email address of the recipient(s).\nExample: &quot;Bob &lt;bob&#64;host.com&gt;&quot;. You can use commas to\nseparate multiple recipients.",
+						"description": "Email address of the recipient(s).nExample: &quot;Bob &lt;bob&#64;host.com&gt;&quot;. You can use commas tonseparate multiple recipients.",
 						"type": "string"
 					},
 					{
 						"name": "v:my-var",
 						"in": "query",
-						"description": "v: prefix followed by an arbitrary name allows to\nattach a custom JSON data to the message.\nSee Attaching Data to Messages for more information.",
+						"description": "v: prefix followed by an arbitrary name allows tonattach a custom JSON data to the message.nSee Attaching Data to Messages for more information.",
 						"type": "string"
 					}
 				],
@@ -608,7 +608,7 @@
 				]
 			}
 		},
-		"messages\/{message_id}": {
+		"messages/{message_id}": {
 			"get": {
 				"summary": "Retrieving a Message",
 				"description": "Retrieving a Message",
@@ -624,7 +624,7 @@
 					{
 						"name": "namespace_id",
 						"in": "query",
-						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a user\u2019s data.",
+						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a useru2019s data.",
 						"type": "string",
 						"format": "string"
 					},
@@ -647,7 +647,7 @@
 				]
 			}
 		},
-		"sources\/": {
+		"sources/": {
 			"post": {
 				"summary": "Add Mailbox",
 				"description": "Add a mailbox to a given account",
@@ -765,7 +765,7 @@
 					{
 						"name": "use_ssl",
 						"in": "query",
-						"description": "Set to 1 if you want SSL encryption to be used when opening connections to the IMAP server. Any other value will be considered as \"do not use SSL\"",
+						"description": "Set to 1 if you want SSL encryption to be used when opening connections to the IMAP server. Any other value will be considered as "donotuseSSL"",
 						"type": "string"
 					}
 				],
@@ -780,7 +780,7 @@
 				]
 			}
 		},
-		"sources\/{label}": {
+		"sources/{label}": {
 			"post": {
 				"summary": "Modify Source",
 				"description": " Modify a data source on a given account",
@@ -845,7 +845,7 @@
 					{
 						"name": "status",
 						"in": "query",
-						"description": "If the status of the source is TEMP_DISABLED or DISABLED. You can do a POST\/PUT with status set to 1 to reset it.",
+						"description": "If the status of the source is TEMP_DISABLED or DISABLED. You can do a POST/PUT with status set to 1 to reset it.",
 						"type": "string"
 					},
 					{
@@ -866,7 +866,7 @@
 				]
 			}
 		},
-		"threads\/": {
+		"threads/": {
 			"get": {
 				"summary": "Getting Threads with a Tag",
 				"description": "Getting Threads with a Tag",
@@ -875,7 +875,7 @@
 					{
 						"name": "namespace_id",
 						"in": "query",
-						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a user\u2019s data.",
+						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a useru2019s data.",
 						"type": "string",
 						"format": "string"
 					},
@@ -898,7 +898,7 @@
 				]
 			}
 		},
-		"threads\/{thread_id}": {
+		"threads/{thread_id}": {
 			"put": {
 				"summary": "Updating Tags & Performing Actions",
 				"description": "Updating Tags & Performing Actions",
@@ -907,7 +907,7 @@
 					{
 						"name": "namespace_id",
 						"in": "query",
-						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a user\u2019s data.",
+						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a useru2019s data.",
 						"type": "string",
 						"format": "string"
 					},
@@ -930,7 +930,7 @@
 				]
 			}
 		},
-		"sms\/rest\/{environment}\/{senderAddress}\/requests\/": {
+		"sms/rest/{environment}/{senderAddress}/requests/": {
 			"get": {
 				"summary": "Send An SMS",
 				"description": "The Global SMS service allows sending SMS messages to mobile phones and receive text messages from a webservice for a specific number.",
@@ -946,7 +946,7 @@
 					{
 						"name": "address",
 						"in": "query",
-						"description": "Recipient phone numbers as JSON array, each number must have the format \"tel:+1630000001\" where \"+16\" is your country code.",
+						"description": "Recipient phone numbers as JSON array, each number must have the format "tel: +1630000001" where "+16" is your country code.",
 						"type": "string",
 						"format": "string"
 					},
@@ -967,7 +967,7 @@
 					{
 						"name": "outboundEncoding",
 						"in": "query",
-						"description": "Allowed values are \"7bitGSM\" and \"16bitUCS2\", if parameter is not supplied standard GSM 7bit is used.",
+						"description": "Allowed values are "7bitGSM" and "16bitUCS2", if parameter is not supplied standard GSM 7bit is used.",
 						"type": "string",
 						"format": "string"
 					},
@@ -1032,7 +1032,7 @@
 				]
 			}
 		},
-		"sendMMS\/": {
+		"sendMMS/": {
 			"get": {
 				"summary": "Send MMS",
 				"description": "The Send MMS service allows sending MMS messages to mobile phones.",
@@ -1062,7 +1062,7 @@
 					{
 						"name": "environment",
 						"in": "path",
-						"description": "is one of \"production\", \"sandbox\" or \"mock\"",
+						"description": "is one of "production", "sandbox" or "mock"",
 						"type": "string",
 						"format": "string"
 					},
@@ -1083,7 +1083,8 @@
 					{
 						"name": "number",
 						"in": "query",
-						"description": "Recipient phone numbers, separated by commas (\",\").",
+						"description": "Recipient phone numbers, separated by commas (",
+						").",
 						"type": "string",
 						"format": "string"
 					},
@@ -1114,7 +1115,7 @@
 				]
 			}
 		},
-		"\/auth": {
+		"/auth": {
 			"post": {
 				"summary": "Check auth configuration",
 				"description": "Check auth configuration",
@@ -1135,7 +1136,7 @@
 				]
 			}
 		},
-		"\/build": {
+		"/build": {
 			"post": {
 				"summary": "Build an image from Dockerfile via stdin",
 				"description": "Build an image from Dockerfile via stdin",
@@ -1144,7 +1145,7 @@
 					{
 						"name": "Content-type",
 						"in": "query",
-						"description": "should be set to application\/tar.",
+						"description": "should be set to application/tar.",
 						"type": "string"
 					},
 					{
@@ -1206,7 +1207,7 @@
 				]
 			}
 		},
-		"\/commit": {
+		"/commit": {
 			"post": {
 				"summary": "Create a new image from a container's changes",
 				"description": "Create a new image from a container's changes",
@@ -1265,7 +1266,7 @@
 				]
 			}
 		},
-		"\/containers\/create": {
+		"/containers/create": {
 			"post": {
 				"summary": "Create a container",
 				"description": "Create a container",
@@ -1274,7 +1275,7 @@
 					{
 						"name": "body",
 						"in": "body",
-						"description": "Assign the specified name to the container. Must    match \/?[a-zA-Z0-9_-]+.",
+						"description": "Assign the specified name to the container. Must    match /?[a-zA-Z0-9_-]+.",
 						"type": "string"
 					}
 				],
@@ -1303,7 +1304,7 @@
 				]
 			}
 		},
-		"\/containers\/json": {
+		"/containers/json": {
 			"get": {
 				"summary": "List containers",
 				"description": "List containers",
@@ -1312,7 +1313,7 @@
 					{
 						"name": "all",
 						"in": "query",
-						"description": "1\/True\/true or 0\/False\/false, Show all containers.        Only running containers are shown by default (i.e., this defaults to false)",
+						"description": "1/True/true or 0/False/false, Show all containers.        Only running containers are shown by default (i.e., this defaults to false)",
 						"type": "string"
 					},
 					{
@@ -1348,7 +1349,7 @@
 					{
 						"name": "size",
 						"in": "query",
-						"description": "1\/True\/true or 0\/False\/false, Show the containers        sizes",
+						"description": "1/True/true or 0/False/false, Show the containers        sizes",
 						"type": "string"
 					},
 					{
@@ -1386,7 +1387,7 @@
 				]
 			}
 		},
-		"\/containers\/{id}": {
+		"/containers/{id}": {
 			"delete": {
 				"summary": "Remove a container",
 				"description": "Remove a container",
@@ -1395,7 +1396,7 @@
 					{
 						"name": "force",
 						"in": "query",
-						"description": "1\/True\/true or 0\/False\/false, Kill then remove the container.        Default false",
+						"description": "1/True/true or 0/False/false, Kill then remove the container.        Default false",
 						"type": "string"
 					},
 					{
@@ -1407,7 +1408,7 @@
 					{
 						"name": "v",
 						"in": "query",
-						"description": "1\/True\/true or 0\/False\/false, Remove the volumes        associated to the container. Default false",
+						"description": "1/True/true or 0/False/false, Remove the volumes        associated to the container. Default false",
 						"type": "string"
 					}
 				],
@@ -1439,7 +1440,7 @@
 				]
 			}
 		},
-		"\/containers\/{id}\/attach": {
+		"/containers/{id}/attach": {
 			"post": {
 				"summary": "Attach to a container",
 				"description": "Attach to a container",
@@ -1454,31 +1455,31 @@
 					{
 						"name": "logs",
 						"in": "query",
-						"description": "1\/True\/true or 0\/False\/false, return logs. Default false",
+						"description": "1/True/true or 0/False/false, return logs. Default false",
 						"type": "string"
 					},
 					{
 						"name": "stderr",
 						"in": "query",
-						"description": "1\/True\/true or 0\/False\/false, if logs=true, return        stderr log, if stream=true, attach to stderr. Default false",
+						"description": "1/True/true or 0/False/false, if logs=true, return        stderr log, if stream=true, attach to stderr. Default false",
 						"type": "string"
 					},
 					{
 						"name": "stdin",
 						"in": "query",
-						"description": "1\/True\/true or 0\/False\/false, if stream=true, attach        to stdin. Default false",
+						"description": "1/True/true or 0/False/false, if stream=true, attach        to stdin. Default false",
 						"type": "string"
 					},
 					{
 						"name": "stdout",
 						"in": "query",
-						"description": "1\/True\/true or 0\/False\/false, if logs=true, return        stdout log, if stream=true, attach to stdout. Default false",
+						"description": "1/True/true or 0/False/false, if logs=true, return        stdout log, if stream=true, attach to stdout. Default false",
 						"type": "string"
 					},
 					{
 						"name": "stream",
 						"in": "query",
-						"description": "1\/True\/true or 0\/False\/false, return stream.        Default false",
+						"description": "1/True/true or 0/False/false, return stream.        Default false",
 						"type": "string"
 					}
 				],
@@ -1490,7 +1491,7 @@
 						"description": "no error"
 					},
 					"500": {
-						"description": "server error\nStream details:\nWhen using the TTY setting is enabled in\nPOST \/containers\/create\n,\nthe stream is the raw data from the process PTY and client's stdin.\nWhen the TTY is disabled, then the stream is multiplexed to separate\nstdout and stderr.\nThe format is a Header and a Payload (frame).\nHEADER\nThe header will contain the information on which stream write the\nstream (stdout or stderr). It also contain the size of the\nassociated frame encoded on the last 4 bytes (uint32).\nIt is encoded on the first 8 bytes like this:\nheader := [8]byte{STREAM_TYPE, 0, 0, 0, SIZE1, SIZE2, SIZE3, SIZE4}\n\nSTREAM_TYPE can be:"
+						"description": "server errornStream details:nWhen using the TTY setting is enabled innPOST /containers/createn,nthe stream is the raw data from the process PTY and client's stdin.nWhen the TTY is disabled, then the stream is multiplexed to separatenstdout and stderr.nThe format is a Header and a Payload (frame).nHEADERnThe header will contain the information on which stream write thenstream (stdout or stderr). It also contain the size of thenassociated frame encoded on the last 4 bytes (uint32).nIt is encoded on the first 8 bytes like this:nheader := [8]byte{STREAM_TYPE, 0, 0, 0, SIZE1, SIZE2, SIZE3, SIZE4}nnSTREAM_TYPE can be:"
 					},
 					"201": {
 						"description": "no error"
@@ -1510,7 +1511,7 @@
 				]
 			}
 		},
-		"\/containers\/{id}\/changes": {
+		"/containers/{id}/changes": {
 			"get": {
 				"summary": "Inspect changes on a container's filesystem",
 				"description": "Inspect changes on a container's filesystem",
@@ -1551,7 +1552,7 @@
 				]
 			}
 		},
-		"\/containers\/{id}\/copy": {
+		"/containers/{id}/copy": {
 			"post": {
 				"summary": "Copy files or folders from a container",
 				"description": "Copy files or folders from a container",
@@ -1592,7 +1593,7 @@
 				]
 			}
 		},
-		"\/containers\/{id}\/exec": {
+		"/containers/{id}/exec": {
 			"post": {
 				"summary": "Image tarball format",
 				"description": "Image tarball format",
@@ -1633,7 +1634,7 @@
 				]
 			}
 		},
-		"\/containers\/{id}\/export": {
+		"/containers/{id}/export": {
 			"get": {
 				"summary": "Export a container",
 				"description": "Export a container",
@@ -1674,7 +1675,7 @@
 				]
 			}
 		},
-		"\/containers\/{id}\/json": {
+		"/containers/{id}/json": {
 			"get": {
 				"summary": "Inspect a container",
 				"description": "Inspect a container",
@@ -1715,7 +1716,7 @@
 				]
 			}
 		},
-		"\/containers\/{id}\/kill": {
+		"/containers/{id}/kill": {
 			"post": {
 				"summary": "Kill a container",
 				"description": "Kill a container",
@@ -1756,7 +1757,7 @@
 				]
 			}
 		},
-		"\/containers\/{id}\/logs": {
+		"/containers/{id}/logs": {
 			"get": {
 				"summary": "Get container logs",
 				"description": "Get container logs",
@@ -1765,7 +1766,7 @@
 					{
 						"name": "follow",
 						"in": "query",
-						"description": "1\/True\/true or 0\/False\/false, return stream. Default false",
+						"description": "1/True/true or 0/False/false, return stream. Default false",
 						"type": "string"
 					},
 					{
@@ -1777,13 +1778,13 @@
 					{
 						"name": "stderr",
 						"in": "query",
-						"description": "1\/True\/true or 0\/False\/false, show stderr log. Default false",
+						"description": "1/True/true or 0/False/false, show stderr log. Default false",
 						"type": "string"
 					},
 					{
 						"name": "stdout",
 						"in": "query",
-						"description": "1\/True\/true or 0\/False\/false, show stdout log. Default false",
+						"description": "1/True/true or 0/False/false, show stdout log. Default false",
 						"type": "string"
 					},
 					{
@@ -1795,7 +1796,7 @@
 					{
 						"name": "timestamps",
 						"in": "query",
-						"description": "1\/True\/true or 0\/False\/false, print timestamps for        every log line. Default false",
+						"description": "1/True/true or 0/False/false, print timestamps for        every log line. Default false",
 						"type": "string"
 					}
 				],
@@ -1827,7 +1828,7 @@
 				]
 			}
 		},
-		"\/containers\/{id}\/pause": {
+		"/containers/{id}/pause": {
 			"post": {
 				"summary": "Pause a container",
 				"description": "Pause a container",
@@ -1868,7 +1869,7 @@
 				]
 			}
 		},
-		"\/containers\/{id}\/resize?h=&lt;height&gt;&amp;w=&lt;width&gt;": {
+		"/containers/{id}/resize?h=&lt;height&gt;&amp;w=&lt;width&gt;": {
 			"post": {
 				"summary": "Resize a container TTY",
 				"description": "Resize a container TTY",
@@ -1909,7 +1910,7 @@
 				]
 			}
 		},
-		"\/containers\/{id}\/restart": {
+		"/containers/{id}/restart": {
 			"post": {
 				"summary": "Restart a container",
 				"description": "Restart a container",
@@ -1956,7 +1957,7 @@
 				]
 			}
 		},
-		"\/containers\/{id}\/start": {
+		"/containers/{id}/start": {
 			"post": {
 				"summary": "Start a container",
 				"description": "Start a container",
@@ -2000,7 +2001,7 @@
 				]
 			}
 		},
-		"\/containers\/{id}\/stop": {
+		"/containers/{id}/stop": {
 			"post": {
 				"summary": "Stop a container",
 				"description": "Stop a container",
@@ -2050,7 +2051,7 @@
 				]
 			}
 		},
-		"\/containers\/{id}\/top": {
+		"/containers/{id}/top": {
 			"get": {
 				"summary": "List processes running inside a container",
 				"description": "List processes running inside a container",
@@ -2100,7 +2101,7 @@
 				]
 			}
 		},
-		"\/containers\/{id}\/unpause": {
+		"/containers/{id}/unpause": {
 			"post": {
 				"summary": "Unpause a container",
 				"description": "Unpause a container",
@@ -2144,7 +2145,7 @@
 				]
 			}
 		},
-		"\/containers\/{id}\/wait": {
+		"/containers/{id}/wait": {
 			"post": {
 				"summary": "Wait a container",
 				"description": "Wait a container",
@@ -2188,7 +2189,7 @@
 				]
 			}
 		},
-		"\/events": {
+		"/events": {
 			"get": {
 				"summary": "Monitor Docker's events",
 				"description": "Monitor Docker's events",
@@ -2262,7 +2263,7 @@
 				]
 			}
 		},
-		"\/exec\/{id}\/json": {
+		"/exec/{id}/json": {
 			"get": {
 				"summary": "Exec Inspect",
 				"description": "Exec Inspect",
@@ -2306,7 +2307,7 @@
 				]
 			}
 		},
-		"\/exec\/{id}\/resize": {
+		"/exec/{id}/resize": {
 			"post": {
 				"summary": "Exec Resize",
 				"description": "Exec Resize",
@@ -2362,7 +2363,7 @@
 				]
 			}
 		},
-		"\/exec\/{id}\/start": {
+		"/exec/{id}/start": {
 			"post": {
 				"summary": "Exec Start",
 				"description": "Exec Start",
@@ -2389,7 +2390,7 @@
 						"description": "no error"
 					},
 					"404": {
-						"description": "no such exec instance\nStream details:\nSimilar to the stream behavior of POST \/container\/(id)\/attach API"
+						"description": "no such exec instancenStream details:nSimilar to the stream behavior of POST /container/(id)/attach API"
 					},
 					"406": {
 						"description": "impossible to attach (container not running)"
@@ -2406,7 +2407,7 @@
 				]
 			}
 		},
-		"\/images\/create": {
+		"/images/create": {
 			"post": {
 				"summary": "Create an image",
 				"description": "Create an image",
@@ -2463,7 +2464,7 @@
 						"description": "no error"
 					},
 					"404": {
-						"description": "no such exec instance\nStream details:\nSimilar to the stream behavior of POST \/container\/(id)\/attach API"
+						"description": "no such exec instancenStream details:nSimilar to the stream behavior of POST /container/(id)/attach API"
 					},
 					"406": {
 						"description": "impossible to attach (container not running)"
@@ -2480,7 +2481,7 @@
 				]
 			}
 		},
-		"\/images\/get": {
+		"/images/get": {
 			"get": {
 				"summary": "Get a tarball containing all images.",
 				"description": "Get a tarball containing all images.",
@@ -2499,7 +2500,7 @@
 						"description": "no error"
 					},
 					"404": {
-						"description": "no such exec instance\nStream details:\nSimilar to the stream behavior of POST \/container\/(id)\/attach API"
+						"description": "no such exec instancenStream details:nSimilar to the stream behavior of POST /container/(id)/attach API"
 					},
 					"406": {
 						"description": "impossible to attach (container not running)"
@@ -2516,7 +2517,7 @@
 				]
 			}
 		},
-		"\/images\/json": {
+		"/images/json": {
 			"get": {
 				"summary": "List Images",
 				"description": "List Images",
@@ -2525,7 +2526,7 @@
 					{
 						"name": "all",
 						"in": "query",
-						"description": "1\/True\/true or 0\/False\/false, default false",
+						"description": "1/True/true or 0/False/false, default false",
 						"type": "string"
 					},
 					{
@@ -2555,7 +2556,7 @@
 						"description": "no error"
 					},
 					"404": {
-						"description": "no such exec instance\nStream details:\nSimilar to the stream behavior of POST \/container\/(id)\/attach API"
+						"description": "no such exec instancenStream details:nSimilar to the stream behavior of POST /container/(id)/attach API"
 					},
 					"406": {
 						"description": "impossible to attach (container not running)"
@@ -2572,7 +2573,7 @@
 				]
 			}
 		},
-		"\/images\/load": {
+		"/images/load": {
 			"post": {
 				"summary": "Load a tarball with a set of images and tags into docker",
 				"description": "Load a tarball with a set of images and tags into docker",
@@ -2590,7 +2591,7 @@
 				]
 			}
 		},
-		"\/images\/search": {
+		"/images/search": {
 			"get": {
 				"summary": "Search images",
 				"description": "Search images",
@@ -2616,7 +2617,7 @@
 				]
 			}
 		},
-		"\/images\/{name}": {
+		"/images/{name}": {
 			"delete": {
 				"summary": "Remove an image",
 				"description": "Remove an image",
@@ -2625,7 +2626,7 @@
 					{
 						"name": "force",
 						"in": "query",
-						"description": "1\/True\/true or 0\/False\/false, default false",
+						"description": "1/True/true or 0/False/false, default false",
 						"type": "string"
 					},
 					{
@@ -2637,7 +2638,7 @@
 					{
 						"name": "noprune",
 						"in": "query",
-						"description": "1\/True\/true or 0\/False\/false, default false",
+						"description": "1/True/true or 0/False/false, default false",
 						"type": "string"
 					}
 				],
@@ -2660,7 +2661,7 @@
 				]
 			}
 		},
-		"\/images\/{name}\/get": {
+		"/images/{name}/get": {
 			"get": {
 				"summary": "Get a tarball containing all images in a repository",
 				"description": "Get a tarball containing all images in a repository",
@@ -2692,7 +2693,7 @@
 				]
 			}
 		},
-		"\/images\/{name}\/history": {
+		"/images/{name}/history": {
 			"get": {
 				"summary": "Get the history of an image",
 				"description": "Get the history of an image",
@@ -2724,7 +2725,7 @@
 				]
 			}
 		},
-		"\/images\/{name}\/json": {
+		"/images/{name}/json": {
 			"get": {
 				"summary": "Inspect an image",
 				"description": "Inspect an image",
@@ -2756,7 +2757,7 @@
 				]
 			}
 		},
-		"\/images\/{name}\/push": {
+		"/images/{name}/push": {
 			"post": {
 				"summary": "Push an image on the registry",
 				"description": "Push an image on the registry",
@@ -2794,7 +2795,7 @@
 				]
 			}
 		},
-		"\/images\/{name}\/tag": {
+		"/images/{name}/tag": {
 			"post": {
 				"summary": "Tag an image into a repository",
 				"description": "Tag an image into a repository",
@@ -2803,7 +2804,7 @@
 					{
 						"name": "force",
 						"in": "query",
-						"description": "1\/True\/true or 0\/False\/false, default false",
+						"description": "1/True/true or 0/False/false, default false",
 						"type": "string"
 					},
 					{
@@ -2850,7 +2851,7 @@
 				]
 			}
 		},
-		"\/info": {
+		"/info": {
 			"get": {
 				"summary": "Display system-wide information",
 				"description": "Display system-wide information",
@@ -2880,7 +2881,7 @@
 				]
 			}
 		},
-		"\/version": {
+		"/version": {
 			"get": {
 				"summary": "Show the docker version information",
 				"description": "Show the docker version information",
@@ -2910,7 +2911,7 @@
 				]
 			}
 		},
-		"\/_ping": {
+		"/_ping": {
 			"get": {
 				"summary": "Ping the docker server",
 				"description": "Ping the docker server",
@@ -2991,7 +2992,7 @@
 					{
 						"name": "password",
 						"in": "query",
-						"description": "Required. Account password to be assigned. May be passed as clear text or MD5-encrypted with md5- as a prefix.\nValid values and Examples:\nClear text: Gat3keep3r!\nMD5-encrypted: md5-025656084871ac56716d3a9ae15c9e01",
+						"description": "Required. Account password to be assigned. May be passed as clear text or MD5-encrypted with md5- as a prefix.nValid values and Examples:nClear text: Gat3keep3r!nMD5-encrypted: md5-025656084871ac56716d3a9ae15c9e01",
 						"type": "string"
 					},
 					{
@@ -3015,7 +3016,7 @@
 					{
 						"name": "timezone",
 						"in": "query",
-						"description": "The timezone of the account, in [+\/-]h.mm format.\nValid values and Examples:\nEastern Time (USA\/Canada): -5.00\nChina\/Hong Kong\/Singapore: +8.00",
+						"description": "The timezone of the account, in [+/-]h.mm format.nValid values and Examples:nEastern Time (USA/Canada): -5.00nChina/Hong Kong/Singapore: +8.00",
 						"type": "string"
 					},
 					{
@@ -3066,7 +3067,7 @@
 				]
 			}
 		},
-		"accounts\/delete": {
+		"accounts/delete": {
 			"post": {
 				"summary": "Deleting an Email Sub-Account",
 				"description": "Deleting an Email Sub-Account",
@@ -3096,7 +3097,7 @@
 				]
 			}
 		},
-		"opens\/count": {
+		"opens/count": {
 			"get": {
 				"summary": "Email Open Count",
 				"description": "Returns total number of opens for the specified account for the specified date range. Including a date range is highly recommended.",
@@ -3117,19 +3118,19 @@
 					{
 						"name": "endtime",
 						"in": "query",
-						"description": "Required.\u00a0End date\/time in full,\u00a0ISO 8601 format.",
+						"description": "Required.u00a0End date/time in full,u00a0ISO 8601 format.",
 						"type": "string"
 					},
 					{
 						"name": "sender",
 						"in": "query",
-						"description": "\u00a0Email address of sender for filtering. Must be on the current Approved Sender list. \u00a0if using a GET request, it is best practice to encode special characters such as the &#8220;at symbol&#8221; (@).",
+						"description": "u00a0Email address of sender for filtering. Must be on the current Approved Sender list. u00a0if using a GET request, it is best practice to encode special characters such as the &#8220;at symbol&#8221; (@).",
 						"type": "string"
 					},
 					{
 						"name": "starttime",
 						"in": "query",
-						"description": "Required.\u00a0Start date\/time in full,\u00a0ISO 8601 format.",
+						"description": "Required.u00a0Start date/time in full,u00a0ISO 8601 format.",
 						"type": "string"
 					},
 					{
@@ -3150,10 +3151,10 @@
 				]
 			}
 		},
-		"recipients\/activate": {
+		"recipients/activate": {
 			"post": {
 				"summary": "Activate Recipient(s)",
-				"description": "Activating a specified Recipient\u2019s status",
+				"description": "Activating a specified Recipientu2019s status",
 				"operationId": "",
 				"parameters": [
 					{
@@ -3180,7 +3181,7 @@
 				]
 			}
 		},
-		"recipients\/status": {
+		"recipients/status": {
 			"get": {
 				"summary": "Retrieve Recipient(s) Status",
 				"description": "Retrieve Recipient(s) Status",
@@ -3210,7 +3211,7 @@
 				]
 			}
 		},
-		"reports\/bounces": {
+		"reports/bounces": {
 			"get": {
 				"summary": "Retrieve Email Bounces",
 				"description": "Retrieving the Email SPAM Complaints",
@@ -3243,11 +3244,11 @@
 					{
 						"name": "bounce_type",
 						"in": "query",
-						"description": "Type of bounce for filtering.\nValid Values:\nhard\nsoft",
+						"description": "Type of bounce for filtering.nValid Values:nhardnsoft",
 						"type": "string"
 					},
 					{
-						"name": "bounce_type_id - Indicates whether the bounce type is a hard or soft bounce.\nValid Values:\n1 - Hard Bounce\n2 - Soft Bounce",
+						"name": "bounce_type_id - Indicates whether the bounce type is a hard or soft bounce.nValid Values:n1 - Hard Bouncen2 - Soft Bounce",
 						"in": "query",
 						"description": "",
 						"type": "string"
@@ -3261,13 +3262,13 @@
 					{
 						"name": "endtime",
 						"in": "query",
-						"description": "Required. End date\/time range in full, ISO 8601 format",
+						"description": "Required. End date/time range in full, ISO 8601 format",
 						"type": "string"
 					},
 					{
 						"name": "noheaders",
 						"in": "query",
-						"description": "Determines whether or not headers are included in the response.\nValid values:\n1 = Exclude bounce header content from the response.\n0 = Default.  Include headers in response.",
+						"description": "Determines whether or not headers are included in the response.nValid values:n1 = Exclude bounce header content from the response.n0 = Default.  Include headers in response.",
 						"type": "string"
 					},
 					{
@@ -3291,7 +3292,7 @@
 					{
 						"name": "starttime",
 						"in": "query",
-						"description": "Required. Start date\/time range in full, ISO 8601 format",
+						"description": "Required. Start date/time range in full, ISO 8601 format",
 						"type": "string"
 					},
 					{
@@ -3312,7 +3313,7 @@
 				]
 			}
 		},
-		"reports\/bounces\/count": {
+		"reports/bounces/count": {
 			"get": {
 				"summary": "Retrieve Count of Email Bounces",
 				"description": "Retrieving a total count of Email bounces using the API requires specific syntax for the REST API.",
@@ -3327,7 +3328,7 @@
 					{
 						"name": "endtime",
 						"in": "query",
-						"description": "Required.\u00a0End\u00a0date\/time range in full,\u00a0ISO 8601 format.",
+						"description": "Required.u00a0Endu00a0date/time range in full,u00a0ISO 8601 format.",
 						"type": "string"
 					},
 					{
@@ -3339,7 +3340,7 @@
 					{
 						"name": "starttime",
 						"in": "query",
-						"description": "Required. Start date\/time range in full, ISO 8601 format.",
+						"description": "Required. Start date/time range in full, ISO 8601 format.",
 						"type": "string"
 					},
 					{
@@ -3360,7 +3361,7 @@
 				]
 			}
 		},
-		"reports\/clicks": {
+		"reports/clicks": {
 			"get": {
 				"summary": "Reports on Clicks",
 				"description": "Returns a list of links clicked for the specified account during the specified date range. Including a date range is highly recommended.",
@@ -3381,7 +3382,7 @@
 					{
 						"name": "endtime",
 						"in": "query",
-						"description": "Required. End date\/time range in full, ISO 8601 format",
+						"description": "Required. End date/time range in full, ISO 8601 format",
 						"type": "string"
 					},
 					{
@@ -3399,7 +3400,7 @@
 					{
 						"name": "starttime",
 						"in": "query",
-						"description": "Required. Start date\/time range in full, ISO 8601 format",
+						"description": "Required. Start date/time range in full, ISO 8601 format",
 						"type": "string"
 					},
 					{
@@ -3421,7 +3422,7 @@
 				]
 			}
 		},
-		"reports\/clicks\/count": {
+		"reports/clicks/count": {
 			"get": {
 				"summary": "Retrieve Count of Email Links Clicked",
 				"description": "Retrieving a total of Email links clicked",
@@ -3434,7 +3435,7 @@
 						"type": "string"
 					},
 					{
-						"name": "domain\u00a0",
+						"name": "domainu00a0",
 						"in": "query",
 						"description": "Domain of the recipient, such as &#8220;gmail.com&#8221; or &#8220;comcast.net&#8221;",
 						"type": "string"
@@ -3442,25 +3443,25 @@
 					{
 						"name": "emailaddress",
 						"in": "query",
-						"description": "Email address of recipient for filtering\u0010.",
+						"description": "Email address of recipient for filteringu0010.",
 						"type": "string"
 					},
 					{
 						"name": "endtime",
 						"in": "query",
-						"description": "Required. End date\/time range in full, ISO 8601 format.",
+						"description": "Required. End date/time range in full, ISO 8601 format.",
 						"type": "string"
 					},
 					{
 						"name": "sender",
 						"in": "query",
-						"description": "Email address of sender for filtering\u0010.",
+						"description": "Email address of sender for filteringu0010.",
 						"type": "string"
 					},
 					{
 						"name": "starttime",
 						"in": "query",
-						"description": "Required.\u00a0Start date\/time range in full, ISO 8601 format.",
+						"description": "Required.u00a0Start date/time range in full, ISO 8601 format.",
 						"type": "string"
 					},
 					{
@@ -3481,7 +3482,7 @@
 				]
 			}
 		},
-		"reports\/clicks\/count\/unique": {
+		"reports/clicks/count/unique": {
 			"get": {
 				"summary": "Retrieve Count of Email Links Clicked",
 				"description": "Retrieving a total of Email links clicked",
@@ -3494,7 +3495,7 @@
 						"type": "string"
 					},
 					{
-						"name": "domain\u00a0",
+						"name": "domainu00a0",
 						"in": "query",
 						"description": "Domain of the recipient, such as &#8220;gmail.com&#8221; or &#8220;comcast.net&#8221;",
 						"type": "string"
@@ -3502,25 +3503,25 @@
 					{
 						"name": "emailaddress",
 						"in": "query",
-						"description": "Email address of recipient for filtering\u0010.",
+						"description": "Email address of recipient for filteringu0010.",
 						"type": "string"
 					},
 					{
 						"name": "endtime",
 						"in": "query",
-						"description": "Required. End date\/time range in full, ISO 8601 format.",
+						"description": "Required. End date/time range in full, ISO 8601 format.",
 						"type": "string"
 					},
 					{
 						"name": "sender",
 						"in": "query",
-						"description": "Email address of sender for filtering\u0010.",
+						"description": "Email address of sender for filteringu0010.",
 						"type": "string"
 					},
 					{
 						"name": "starttime",
 						"in": "query",
-						"description": "Required.\u00a0Start date\/time range in full, ISO 8601 format.",
+						"description": "Required.u00a0Start date/time range in full, ISO 8601 format.",
 						"type": "string"
 					},
 					{
@@ -3541,7 +3542,7 @@
 				]
 			}
 		},
-		"reports\/clicks\/unique": {
+		"reports/clicks/unique": {
 			"get": {
 				"summary": "Unique Click Report",
 				"description": "Returns a list of unique links clicked for the specified account during the specified date range. Including a date range is highly recommended.",
@@ -3562,7 +3563,7 @@
 					{
 						"name": "endtime",
 						"in": "query",
-						"description": "Required. End date\/time range in full, ISO 8601 format",
+						"description": "Required. End date/time range in full, ISO 8601 format",
 						"type": "string"
 					},
 					{
@@ -3580,7 +3581,7 @@
 					{
 						"name": "starttime",
 						"in": "query",
-						"description": "Required. Start date\/time range in full, ISO 8601 format",
+						"description": "Required. Start date/time range in full, ISO 8601 format",
 						"type": "string"
 					},
 					{
@@ -3601,7 +3602,7 @@
 				]
 			}
 		},
-		"reports\/complaints": {
+		"reports/complaints": {
 			"get": {
 				"summary": "Retrieve Email SPAM Complaints",
 				"description": "Retrieve Email SPAM Complaints",
@@ -3616,7 +3617,7 @@
 					{
 						"name": "endtime",
 						"in": "query",
-						"description": "Required. End date\/time range in full, ISO 8601 format",
+						"description": "Required. End date/time range in full, ISO 8601 format",
 						"type": "string"
 					},
 					{
@@ -3634,7 +3635,7 @@
 					{
 						"name": "starttime",
 						"in": "query",
-						"description": "Required. Start date\/time range in full, ISO 8601 format",
+						"description": "Required. Start date/time range in full, ISO 8601 format",
 						"type": "string"
 					},
 					{
@@ -3655,7 +3656,7 @@
 				]
 			}
 		},
-		"reports\/complaints\/count": {
+		"reports/complaints/count": {
 			"get": {
 				"summary": "Retrieve Count of Email SPAM Complaints",
 				"description": "Retrieving a total count of Email complaints ",
@@ -3670,13 +3671,13 @@
 					{
 						"name": "endtime",
 						"in": "query",
-						"description": "Required.\u00a0Start date\/time range in full,\u00a0ISO 8601 format.",
+						"description": "Required.u00a0Start date/time range in full,u00a0ISO 8601 format.",
 						"type": "string"
 					},
 					{
 						"name": "starttime",
 						"in": "query",
-						"description": "Required. Start date\/time range in full, ISO 8601 format.",
+						"description": "Required. Start date/time range in full, ISO 8601 format.",
 						"type": "string"
 					}
 				],
@@ -3691,7 +3692,7 @@
 				]
 			}
 		},
-		"reports\/delivered": {
+		"reports/delivered": {
 			"get": {
 				"summary": "Retrieve Emails Delivered",
 				"description": "Retrieve Emails Delivered",
@@ -3706,7 +3707,7 @@
 					{
 						"name": "endtime",
 						"in": "query",
-						"description": "Required. End date\/time range in full, ISO 8601 format",
+						"description": "Required. End date/time range in full, ISO 8601 format",
 						"type": "string"
 					},
 					{
@@ -3724,7 +3725,7 @@
 					{
 						"name": "starttime",
 						"in": "query",
-						"description": "Required. Start date\/time range in full, ISO 8601 format",
+						"description": "Required. Start date/time range in full, ISO 8601 format",
 						"type": "string"
 					},
 					{
@@ -3745,7 +3746,7 @@
 				]
 			}
 		},
-		"reports\/delivered\/count": {
+		"reports/delivered/count": {
 			"get": {
 				"summary": "Retrieve Count of Emails Delivered",
 				"description": "Retrieve Count of Emails Delivered",
@@ -3772,7 +3773,7 @@
 					{
 						"name": "starttime",
 						"in": "query",
-						"description": "Required. Start date\/time range in full, ISO 8601 format.",
+						"description": "Required. Start date/time range in full, ISO 8601 format.",
 						"type": "string"
 					},
 					{
@@ -3793,7 +3794,7 @@
 				]
 			}
 		},
-		"reports\/issues": {
+		"reports/issues": {
 			"get": {
 				"summary": "Retrieve Email Issues",
 				"description": "Retrieve Email Issues",
@@ -3814,7 +3815,7 @@
 					{
 						"name": "endtime",
 						"in": "query",
-						"description": "Required. End date\/time range in full, ISO 8601 format",
+						"description": "Required. End date/time range in full, ISO 8601 format",
 						"type": "string"
 					},
 					{
@@ -3838,7 +3839,7 @@
 					{
 						"name": "starttime",
 						"in": "query",
-						"description": "Required. Start date\/time range in full, ISO 8601 format",
+						"description": "Required. Start date/time range in full, ISO 8601 format",
 						"type": "string"
 					},
 					{
@@ -3859,7 +3860,7 @@
 				]
 			}
 		},
-		"reports\/issues\/count": {
+		"reports/issues/count": {
 			"get": {
 				"summary": "Retrieve Count of Email Issues",
 				"description": "Retrieving a total count of Email issues",
@@ -3895,7 +3896,7 @@
 				]
 			}
 		},
-		"reports\/opens\/count\/unique": {
+		"reports/opens/count/unique": {
 			"get": {
 				"summary": "Retrieve Count of Email Opens",
 				"description": "Returns total number of unique opens for the specified account for the specified date range. Including a date range is highly recommended.",
@@ -3916,19 +3917,19 @@
 					{
 						"name": "endtime",
 						"in": "query",
-						"description": "Required.\u00a0End date\/time in full,\u00a0ISO 8601 format.",
+						"description": "Required.u00a0End date/time in full,u00a0ISO 8601 format.",
 						"type": "string"
 					},
 					{
 						"name": "sender",
 						"in": "query",
-						"description": "\u00a0Email address of sender for filtering. Must be on the current Approved Sender list. \u00a0if using a GET request, it is best practice to encode special characters such as the &#8220;at symbol&#8221; (@).",
+						"description": "u00a0Email address of sender for filtering. Must be on the current Approved Sender list. u00a0if using a GET request, it is best practice to encode special characters such as the &#8220;at symbol&#8221; (@).",
 						"type": "string"
 					},
 					{
 						"name": "starttime",
 						"in": "query",
-						"description": "Required.\u00a0Start date\/time in full,\u00a0ISO 8601 format.",
+						"description": "Required.u00a0Start date/time in full,u00a0ISO 8601 format.",
 						"type": "string"
 					},
 					{
@@ -3949,7 +3950,7 @@
 				]
 			}
 		},
-		"reports\/sent": {
+		"reports/sent": {
 			"get": {
 				"summary": "Retrieve Emails Sent",
 				"description": "Retrieve Emails Sent",
@@ -3964,7 +3965,7 @@
 					{
 						"name": "endtime",
 						"in": "query",
-						"description": "Required. End date\/time range in full, ISO 8601 format",
+						"description": "Required. End date/time range in full, ISO 8601 format",
 						"type": "string"
 					},
 					{
@@ -3982,7 +3983,7 @@
 					{
 						"name": "starttime",
 						"in": "query",
-						"description": "Required. Start date\/time range in full, ISO 8601 format",
+						"description": "Required. Start date/time range in full, ISO 8601 format",
 						"type": "string"
 					},
 					{
@@ -4003,7 +4004,7 @@
 				]
 			}
 		},
-		"reports\/sent\/count": {
+		"reports/sent/count": {
 			"get": {
 				"summary": "Retrieve Count of Emails Sent",
 				"description": "Retrieve Count of Emails Sent",
@@ -4018,7 +4019,7 @@
 					{
 						"name": "endtime",
 						"in": "query",
-						"description": "Required. End date\/time range in full, ISO 8601 format",
+						"description": "Required. End date/time range in full, ISO 8601 format",
 						"type": "string"
 					},
 					{
@@ -4030,7 +4031,7 @@
 					{
 						"name": "starttime",
 						"in": "query",
-						"description": "Required. Start date\/time range in full, ISO 8601 format",
+						"description": "Required. Start date/time range in full, ISO 8601 format",
 						"type": "string"
 					},
 					{
@@ -4072,13 +4073,13 @@
 					{
 						"name": "bodyhtml",
 						"in": "query",
-						"description": "The text\/html version of the email; this field may be encoded in 7-bit, 8-bit, quoted-printable, or base64.\nNotes:\n&#8211; Even though bodytext and bodyhtml are both optional, at least one of them must be provided for the email to be valid.\n&#8211; If sending non-ASCII characters within your content, we recommend using Base64 encoding, as this has proven the most reliable way to preserve special characters across email providers.",
+						"description": "The text/html version of the email; this field may be encoded in 7-bit, 8-bit, quoted-printable, or base64.nNotes:n&#8211; Even though bodytext and bodyhtml are both optional, at least one of them must be provided for the email to be valid.n&#8211; If sending non-ASCII characters within your content, we recommend using Base64 encoding, as this has proven the most reliable way to preserve special characters across email providers.",
 						"type": "string"
 					},
 					{
 						"name": "bodytext",
 						"in": "query",
-						"description": "The plain\/text version of the email; this field may be encoded in Base64 (recommended), quoted-printable, 8-bit, or 7-bit.\nNotes:\n&#8211; Even though bodytext and bodyhtml are both optional, at least one of them must be provided for the email to be valid.\n&#8211; If sending non-ASCII characters within your content\u00a0you must Base64-encode it first, as this has proven the most reliable way to preserve special characters across email providers.",
+						"description": "The plain/text version of the email; this field may be encoded in Base64 (recommended), quoted-printable, 8-bit, or 7-bit.nNotes:n&#8211; Even though bodytext and bodyhtml are both optional, at least one of them must be provided for the email to be valid.n&#8211; If sending non-ASCII characters within your contentu00a0you must Base64-encode it first, as this has proven the most reliable way to preserve special characters across email providers.",
 						"type": "string"
 					},
 					{
@@ -4249,7 +4250,7 @@
 				]
 			}
 		},
-		"suppressions\/count": {
+		"suppressions/count": {
 			"get": {
 				"summary": "Retrieve Suppression Count",
 				"description": "Retrieving the count of Email addresses on the suppression list",
@@ -4264,13 +4265,13 @@
 					{
 						"name": "enddate",
 						"in": "query",
-						"description": "End date\/time range in full, ISO 8601 format.",
+						"description": "End date/time range in full, ISO 8601 format.",
 						"type": "string"
 					},
 					{
 						"name": "startdate",
 						"in": "query",
-						"description": "Start date\/time range in full, ISO 8601 format.",
+						"description": "Start date/time range in full, ISO 8601 format.",
 						"type": "string"
 					}
 				],
@@ -4309,7 +4310,7 @@
 				]
 			}
 		},
-		"attachments\/upload\/": {
+		"attachments/upload/": {
 			"get": {
 				"summary": "Upload Attachment",
 				"description": "The upload attachment command is used to upload an attachment for sending.  ",
@@ -4348,7 +4349,7 @@
 				]
 			}
 		},
-		"lists\/add-contact": {
+		"lists/add-contact": {
 			"get": {
 				"summary": "Add Existing Subscriber To List",
 				"description": "Add Existing Subscriber To List",
@@ -4387,7 +4388,7 @@
 				]
 			}
 		},
-		"lists\/create-contact": {
+		"lists/create-contact": {
 			"get": {
 				"summary": "Create New Subscriber",
 				"description": "Create New Subscriber",
@@ -4424,7 +4425,7 @@
 					{
 						"name": "email",
 						"in": "query",
-						"description": "email address of subscriber\/recipient",
+						"description": "email address of subscriber/recipient",
 						"type": "string",
 						"format": "string"
 					},
@@ -4510,7 +4511,7 @@
 				]
 			}
 		},
-		"lists\/create-lists": {
+		"lists/create-lists": {
 			"get": {
 				"summary": "Create New List",
 				"description": "Create New List",
@@ -4549,7 +4550,7 @@
 				]
 			}
 		},
-		"lists\/delete": {
+		"lists/delete": {
 			"get": {
 				"summary": "Delete Existing List",
 				"description": "Delete Existing List",
@@ -4588,7 +4589,7 @@
 				]
 			}
 		},
-		"lists\/delete-contact": {
+		"lists/delete-contact": {
 			"get": {
 				"summary": "Delete Existing Subscriber",
 				"description": "Delete Existing Subscriber",
@@ -4604,7 +4605,7 @@
 					{
 						"name": "email",
 						"in": "query",
-						"description": "email address of subscriber\/recipient (separate by semi-colon to remove multiple)",
+						"description": "email address of subscriber/recipient (separate by semi-colon to remove multiple)",
 						"type": "string",
 						"format": "string"
 					},
@@ -4627,7 +4628,7 @@
 				]
 			}
 		},
-		"lists\/remove-contact": {
+		"lists/remove-contact": {
 			"get": {
 				"summary": "Remove Existing Subscriber From List",
 				"description": "Remove Existing Subscriber From List",
@@ -4666,7 +4667,7 @@
 				]
 			}
 		},
-		"lists\/upload-contacts": {
+		"lists/upload-contacts": {
 			"get": {
 				"summary": "Create Multiple Subscriber From CSV File",
 				"description": "Create Multiple Subscriber From CSV File",
@@ -4703,7 +4704,7 @@
 					{
 						"name": "email",
 						"in": "query",
-						"description": "email address of subscriber\/recipient",
+						"description": "email address of subscriber/recipient",
 						"type": "string",
 						"format": "string"
 					},
@@ -4789,7 +4790,7 @@
 				]
 			}
 		},
-		"mailer\/account-details": {
+		"mailer/account-details": {
 			"get": {
 				"summary": "Account Details",
 				"description": "The Account Details command is used to determine how much credit you have left.  ",
@@ -4821,7 +4822,7 @@
 				]
 			}
 		},
-		"mailer\/channel\/delete": {
+		"mailer/channel/delete": {
 			"get": {
 				"summary": "Deleting Channel",
 				"description": "Deleting Channel",
@@ -4867,7 +4868,7 @@
 				]
 			}
 		},
-		"mailer\/channel\/list": {
+		"mailer/channel/list": {
 			"get": {
 				"summary": "Listing of Active Channels",
 				"description": "Listing of Active Channels",
@@ -4906,7 +4907,7 @@
 				]
 			}
 		},
-		"mailer\/list\/bounced": {
+		"mailer/list/bounced": {
 			"get": {
 				"summary": "Bounced",
 				"description": "This api will return you the list of email addresses which are currently in your block list. ",
@@ -4938,7 +4939,7 @@
 				]
 			}
 		},
-		"mailer\/list\/complaint": {
+		"mailer/list/complaint": {
 			"get": {
 				"summary": "Complaint",
 				"description": "This api will return you the list of email addresses which are currently in your block list. ",
@@ -4970,7 +4971,7 @@
 				]
 			}
 		},
-		"mailer\/lists\/unsubscribed": {
+		"mailer/lists/unsubscribed": {
 			"get": {
 				"summary": "Unsubscribed",
 				"description": "This api will return you the list of email addresses which are currently in your block list. ",
@@ -5002,7 +5003,7 @@
 				]
 			}
 		},
-		"mailer\/send\/": {
+		"mailer/send/": {
 			"get": {
 				"summary": "Send Email",
 				"description": "api.elasticemail.com",
@@ -5046,7 +5047,7 @@
 					{
 						"name": "encodingtype",
 						"in": "query",
-						"description": "0 for None, 1 for Raw7Bit, 2 for Raw8Bit, 3 for QuotedPrintable, 4 for Base64 (Default), 5 for Uue  note that you can also provide the text version such as \"Raw7Bit\" for value 1. ",
+						"description": "0 for None, 1 for Raw7Bit, 2 for Raw8Bit, 3 for QuotedPrintable, 4 for Base64 (Default), 5 for Uue  note that you can also provide the text version such as "Raw7Bit" for value 1. ",
 						"type": "string",
 						"format": "string"
 					},
@@ -5160,7 +5161,7 @@
 				]
 			}
 		},
-		"mailer\/status\/log": {
+		"mailer/status/log": {
 			"get": {
 				"summary": "Log Activity",
 				"description": "The detailed activity log api allows you to get detailed information from your activity log on the emails that you have sent. Information can be narrowed by email status, channel and datetime.",
@@ -5176,7 +5177,7 @@
 					{
 						"name": "channel",
 						"in": "query",
-						"description": "If you included a channel name when submitting your requests you can filter here. If you did not submit a specific channel it is defaulted to the \"from\" email address.",
+						"description": "If you included a channel name when submitting your requests you can filter here. If you did not submit a specific channel it is defaulted to the "from" email address.",
 						"type": "string",
 						"format": "string"
 					},
@@ -5197,7 +5198,7 @@
 					{
 						"name": "from",
 						"in": "query",
-						"description": "Server time in the format: 5\/19\/2011 10:54:20 PM",
+						"description": "Server time in the format: 5/19/2011 10:54:20 PM",
 						"type": "string",
 						"format": "string"
 					},
@@ -5211,7 +5212,7 @@
 					{
 						"name": "to",
 						"in": "query",
-						"description": "Server time in the format: 5\/19\/2011 10:54:20 PM",
+						"description": "Server time in the format: 5/19/2011 10:54:20 PM",
 						"type": "string",
 						"format": "string"
 					},
@@ -5234,7 +5235,7 @@
 				]
 			}
 		},
-		"mailer\/status\/{message_id}": {
+		"mailer/status/{message_id}": {
 			"get": {
 				"summary": "Get Status",
 				"description": "Get the status of an email message",
@@ -5315,7 +5316,7 @@
 				]
 			}
 		},
-		"Article\/search": {
+		"Article/search": {
 			"get": {
 				"summary": "Article Search",
 				"description": " read-only service for the retrieval of magazine and website content from the Hearst Magazines Content Management System. Contains a list of parameters and sample responses.",
@@ -5466,7 +5467,7 @@
 				]
 			}
 		},
-		"AdCategory\/search": {
+		"AdCategory/search": {
 			"get": {
 				"summary": "Search Ad Categories",
 				"description": "A read-only service for the retrieval of Ad Category content from the Hearst Magazines Content Management System.",
@@ -5575,7 +5576,7 @@
 				]
 			}
 		},
-		"ArticleSection\/search": {
+		"ArticleSection/search": {
 			"get": {
 				"summary": "Article Section Search",
 				"description": "A read-only service for the retrieval of Article Section content from the Hearst Magazines Content Management System. Contains a list of parameters and sample responses.",
@@ -5699,7 +5700,7 @@
 				]
 			}
 		},
-		"ArticleImage\/search": {
+		"ArticleImage/search": {
 			"get": {
 				"summary": "Article Image Search",
 				"description": "A read-only service for the retrieval of Article Image content from the Hearst Magazines Content Management System. Contains a list of parameters and sample responses.",
@@ -5809,7 +5810,7 @@
 				]
 			}
 		},
-		"ArticleType\/search": {
+		"ArticleType/search": {
 			"get": {
 				"summary": "Article Type Search",
 				"description": "A read-only service for the retrieval of Article Type content from the Hearst Magazines Content Management System. Contains a list of parameters and sample responses.",
@@ -5904,7 +5905,7 @@
 				]
 			}
 		},
-		"Author\/search": {
+		"Author/search": {
 			"get": {
 				"summary": "Author Search",
 				"description": "A read-only service for the retrieval of Author content from the Hearst Magazines Content Management System. Contains a list of parameters and sample responses.",
@@ -6020,7 +6021,7 @@
 				]
 			}
 		},
-		"Source\/search": {
+		"Source/search": {
 			"get": {
 				"summary": "Source Search",
 				"description": "A read-only service for the retrieval of Source content from the Hearst Magazines Content Management System. Contains a list of parameters and sample responses.",
@@ -6108,7 +6109,7 @@
 				]
 			}
 		},
-		"Template\/search": {
+		"Template/search": {
 			"get": {
 				"summary": "Template Search",
 				"description": "A read-only Service for retrieval of Template content from the Hearst Magazines Content Management System. Contains a list of parameters and sample responses.",
@@ -6204,7 +6205,7 @@
 				]
 			}
 		},
-		"drafts\/": {
+		"drafts/": {
 			"post": {
 				"summary": "Creating a Draft",
 				"description": "Creating a Draft",
@@ -6241,7 +6242,7 @@
 					{
 						"name": "namespace_id",
 						"in": "query",
-						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a user\u2019s data.",
+						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a useru2019s data.",
 						"type": "string",
 						"format": "string"
 					},
@@ -6278,7 +6279,7 @@
 				]
 			}
 		},
-		"drafts\/{draft_id}": {
+		"drafts/{draft_id}": {
 			"put": {
 				"summary": "Updating a draft",
 				"description": "Updating a draft",
@@ -6287,7 +6288,7 @@
 					{
 						"name": "namespace_id",
 						"in": "query",
-						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a user\u2019s data.",
+						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a useru2019s data.",
 						"type": "string",
 						"format": "string"
 					}
@@ -6303,7 +6304,7 @@
 				]
 			}
 		},
-		"files\/": {
+		"files/": {
 			"post": {
 				"summary": "Uploading a new file",
 				"description": "Uploading a new file",
@@ -6312,7 +6313,7 @@
 					{
 						"name": "namespace_id",
 						"in": "query",
-						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a user\u2019s data.",
+						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a useru2019s data.",
 						"type": "string",
 						"format": "string"
 					}
@@ -6328,7 +6329,7 @@
 				]
 			}
 		},
-		"files\/{file_id}": {
+		"files/{file_id}": {
 			"get": {
 				"summary": "Retrieving a specific files metadata",
 				"description": "Retrieving a specific files metadata",
@@ -6337,7 +6338,7 @@
 					{
 						"name": "namespace_id",
 						"in": "query",
-						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a user\u2019s data.",
+						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a useru2019s data.",
 						"type": "string",
 						"format": "string"
 					},
@@ -6360,7 +6361,7 @@
 				]
 			}
 		},
-		"files\/{file_id}\/download": {
+		"files/{file_id}/download": {
 			"get": {
 				"summary": "Downloading files",
 				"description": "Downloading files",
@@ -6376,7 +6377,7 @@
 					{
 						"name": "namespace_id",
 						"in": "query",
-						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a user\u2019s data.",
+						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a useru2019s data.",
 						"type": "string",
 						"format": "string"
 					}
@@ -6392,7 +6393,7 @@
 				]
 			}
 		},
-		"send\/": {
+		"send/": {
 			"get": {
 				"summary": "Sending",
 				"description": "Sending",
@@ -6408,7 +6409,7 @@
 				]
 			}
 		},
-		"tags\/": {
+		"tags/": {
 			"post": {
 				"summary": "Creating Custom Tags",
 				"description": "Creating Custom Tags",
@@ -6424,7 +6425,7 @@
 					{
 						"name": "namespace_id",
 						"in": "query",
-						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a user\u2019s data.",
+						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a useru2019s data.",
 						"type": "string",
 						"format": "string"
 					}
@@ -6440,7 +6441,7 @@
 				]
 			}
 		},
-		"tags\/{tag_id}": {
+		"tags/{tag_id}": {
 			"put": {
 				"summary": "Changing custom tag names",
 				"description": "Changing custom tag names",
@@ -6456,7 +6457,7 @@
 					{
 						"name": "namespace_id",
 						"in": "query",
-						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a user\u2019s data.",
+						"description": "Namespaces are essentially references to linked accounts. They are the top-level unit of a useru2019s data.",
 						"type": "string",
 						"format": "string"
 					}
@@ -6472,7 +6473,7 @@
 				]
 			}
 		},
-		"\/market_research_library\/search": {
+		"/market_research_library/search": {
 			"get": {
 				"summary": "Market Research Library Search",
 				"description": "This API provides metadata for country and industry reports that are produced by ITAs trade experts and are available in ITAs online market research library.",
@@ -6522,7 +6523,7 @@
 				]
 			}
 		},
-		"\/ita_office_locations\/search": {
+		"/ita_office_locations/search": {
 			"get": {
 				"summary": "ITA Offices and Centers Search",
 				"description": "This API provides contact and address information for all of ITAs domestic and international export assistance centers.",
@@ -6579,7 +6580,7 @@
 				]
 			}
 		},
-		"\/trade_events\/search": {
+		"/trade_events/search": {
 			"get": {
 				"summary": "Trade Events",
 				"description": "Provides information on industry conferences, webinars, lectures and trade missions organized by the U.S. Dept. of Commerce",
@@ -6634,7 +6635,7 @@
 				]
 			}
 		},
-		"\/trade_leads\/search": {
+		"/trade_leads/search": {
 			"get": {
 				"summary": "Overseas Contract Opportunities For US Businesses",
 				"description": "The Trade Leads API provides contract opportunities for U.S. businesses selling their products and services overseas. These leads come from a variety of sources and we continue to expand the number of leads available.",
@@ -6691,7 +6692,7 @@
 				]
 			}
 		},
-		"\/trade_articles\/search": {
+		"/trade_articles/search": {
 			"get": {
 				"summary": "Trade News And Articles",
 				"description": "The Trade News & Articles API provides in-depth news and articles written by Trade Specialists working in the Federal government. The news and articles are categorized by industry, country, and topic area. Developers can use this API to provide exporters with the latest insights into their industry and into the countries with which they would like to do business.",
@@ -6761,7 +6762,7 @@
 				]
 			}
 		},
-		"bounces\/": {
+		"bounces/": {
 			"post": {
 				"summary": "Add Bounce",
 				"description": "Adds a permanent bounce to the bounces table. Updates the existing record if already here.",
@@ -6800,7 +6801,7 @@
 				]
 			}
 		},
-		"bounces\/{address}": {
+		"bounces/{address}": {
 			"get": {
 				"summary": "Bounce",
 				"description": "Fetches a single bounce event by a given email address. This is useful to check if a given email address has bounced before.",
@@ -6825,7 +6826,7 @@
 				]
 			}
 		},
-		"complaints\/": {
+		"complaints/": {
 			"post": {
 				"summary": "Add Complaint",
 				"description": "Adds an address to the complaints table.",
@@ -6850,7 +6851,7 @@
 				]
 			}
 		},
-		"complaints\/{address}": {
+		"complaints/{address}": {
 			"get": {
 				"summary": "Complaint",
 				"description": "Fetches a single spam complaint by a given email address. This is useful to check if a particular user has complained.",
@@ -6921,7 +6922,7 @@
 				]
 			}
 		},
-		"lists\/": {
+		"lists/": {
 			"get": {
 				"summary": "Lists",
 				"description": "Returns a list of mailing lists under your account.",
@@ -6937,7 +6938,7 @@
 					{
 						"name": "address",
 						"in": "query",
-						"description": "Find a mailing list by it\u2019s address (optional)",
+						"description": "Find a mailing list by itu2019s address (optional)",
 						"type": "string",
 						"format": "string"
 					},
@@ -6981,7 +6982,7 @@
 				]
 			}
 		},
-		"lists\/{address}": {
+		"lists/{address}": {
 			"put": {
 				"summary": "Update List",
 				"description": "Update mailing list properties, such as address, description or name",
@@ -6997,7 +6998,7 @@
 				]
 			}
 		},
-		"lists\/{address}\/members": {
+		"lists/{address}/members": {
 			"get": {
 				"summary": "Add To List",
 				"description": "Adds a member to the mailing list.",
@@ -7034,7 +7035,7 @@
 					{
 						"name": "vars",
 						"in": "query",
-						"description": "JSON-encoded dictionary string with arbitrary parameters, e.g. {\"gender\":\"female\",\"age\":27}",
+						"description": "JSON-encoded dictionary string with arbitrary parameters, e.g. {"gender":"female","age":27}",
 						"type": "string",
 						"format": "string"
 					}
@@ -7050,7 +7051,7 @@
 				]
 			}
 		},
-		"lists\/{address}\/members\/": {
+		"lists/{address}/members/": {
 			"get": {
 				"summary": "List Members",
 				"description": "Fetches the list of mailing list members.",
@@ -7089,7 +7090,7 @@
 				]
 			}
 		},
-		"lists\/{address}\/members\/{member_address}": {
+		"lists/{address}/members/{member_address}": {
 			"get": {
 				"summary": "List Member",
 				"description": "Retrieves a mailing list member.",
@@ -7130,31 +7131,31 @@
 					{
 						"name": "h:X-My-Header",
 						"in": "query",
-						"description": "h: prefix followed by an arbitrary value allows to append\na custom MIME header to the message (X-My-Header\nin this case). For example, h:Reply-To to specify Reply-To\naddress.",
+						"description": "h: prefix followed by an arbitrary value allows to appendna custom MIME header to the message (X-My-Headernin this case). For example, h:Reply-To to specify Reply-Tonaddress.",
 						"type": "string"
 					},
 					{
 						"name": "message",
 						"in": "query",
-						"description": "MIME string of the message. Make sure to use\nmultipart\/form-data to send this as a file upload.",
+						"description": "MIME string of the message. Make sure to usenmultipart/form-data to send this as a file upload.",
 						"type": "string"
 					},
 					{
 						"name": "o:campaign",
 						"in": "query",
-						"description": "Id of the campaign the message belongs to. See\nCampaign Analytics for details.",
+						"description": "Id of the campaign the message belongs to. SeenCampaign Analytics for details.",
 						"type": "string"
 					},
 					{
 						"name": "o:deliverytime",
 						"in": "query",
-						"description": "Desired time of delivery. See Date Format. Note:\nMessages can be scheduled for a maximum of 3 days in the\nfuture.",
+						"description": "Desired time of delivery. See Date Format. Note:nMessages can be scheduled for a maximum of 3 days in thenfuture.",
 						"type": "string"
 					},
 					{
 						"name": "o:dkim",
 						"in": "query",
-						"description": "Enables\/disabled DKIM signatures on per-message basis.\nPass yes or no",
+						"description": "Enables/disabled DKIM signatures on per-message basis.nPass yes or no",
 						"type": "string"
 					},
 					{
@@ -7166,37 +7167,37 @@
 					{
 						"name": "o:testmode",
 						"in": "query",
-						"description": "Enables sending in test mode. Pass yes if needed.\nSee Sending in Test Mode",
+						"description": "Enables sending in test mode. Pass yes if needed.nSee Sending in Test Mode",
 						"type": "string"
 					},
 					{
 						"name": "o:tracking",
 						"in": "query",
-						"description": "Toggles tracking on a per-message basis, see\nTracking Messages for details. Pass yes or no.",
+						"description": "Toggles tracking on a per-message basis, seenTracking Messages for details. Pass yes or no.",
 						"type": "string"
 					},
 					{
 						"name": "o:tracking-clicks",
 						"in": "query",
-						"description": "Toggles clicks tracking on a per-message basis. Has higher\npriority than domain-level setting. Pass yes, no\nor htmlonly.",
+						"description": "Toggles clicks tracking on a per-message basis. Has highernpriority than domain-level setting. Pass yes, nonor htmlonly.",
 						"type": "string"
 					},
 					{
 						"name": "o:tracking-opens",
 						"in": "query",
-						"description": "Toggles opens tracking on a per-message basis. Has higher\npriority than domain-level setting. Pass yes or no.",
+						"description": "Toggles opens tracking on a per-message basis. Has highernpriority than domain-level setting. Pass yes or no.",
 						"type": "string"
 					},
 					{
 						"name": "to",
 						"in": "query",
-						"description": "Email address of the recipient(s).\nExample: &quot;Bob &lt;bob&#64;host.com&gt;&quot;. You can use commas to\nseparate multiple recipients.\nMake sure to include all To, Cc and Bcc\nrecipients of the message.",
+						"description": "Email address of the recipient(s).nExample: &quot;Bob &lt;bob&#64;host.com&gt;&quot;. You can use commas tonseparate multiple recipients.nMake sure to include all To, Cc and Bccnrecipients of the message.",
 						"type": "string"
 					},
 					{
 						"name": "v:my-var",
 						"in": "query",
-						"description": "v: prefix followed by an arbitrary name allows to\nattach a custom JSON data to the message.\nSee Attaching Data to Messages for more information.",
+						"description": "v: prefix followed by an arbitrary name allows tonattach a custom JSON data to the message.nSee Attaching Data to Messages for more information.",
 						"type": "string"
 					}
 				],
@@ -7211,7 +7212,7 @@
 				]
 			}
 		},
-		"messages\/{id}": {
+		"messages/{id}": {
 			"get": {
 				"summary": "Message",
 				"description": "Gets a message.",
@@ -7236,7 +7237,7 @@
 				]
 			}
 		},
-		"routes\/": {
+		"routes/": {
 			"post": {
 				"summary": "Add Route",
 				"description": "Creates a new route.",
@@ -7245,7 +7246,7 @@
 					{
 						"name": "action",
 						"in": "query",
-						"description": "Route action. This action is executed when the expression evaluates to True. Example: forward(\"alice@example.com\") You can pass multiple action parameters.",
+						"description": "Route action. This action is executed when the expression evaluates to True. Example: forward("alice@example.com") You can pass multiple action parameters.",
 						"type": "string",
 						"format": "string"
 					},
@@ -7282,7 +7283,7 @@
 				]
 			}
 		},
-		"routes\/{id}": {
+		"routes/{id}": {
 			"put": {
 				"summary": "Updates Route",
 				"description": "Updates a given route by ID. ",
@@ -7291,7 +7292,7 @@
 					{
 						"name": "action",
 						"in": "query",
-						"description": "Route action. This action is executed when the expression evaluates to True. Example: forward(\"alice@example.com\") You can pass multiple action parameters.",
+						"description": "Route action. This action is executed when the expression evaluates to True. Example: forward("alice@example.com") You can pass multiple action parameters.",
 						"type": "string",
 						"format": "string"
 					},
@@ -7335,7 +7336,7 @@
 				]
 			}
 		},
-		"stats\/": {
+		"stats/": {
 			"get": {
 				"summary": "Stats",
 				"description": "Returns a list of event stat items. Each record represents counts for one event per one day.",
@@ -7381,7 +7382,7 @@
 				]
 			}
 		},
-		"tags\/{tag}": {
+		"tags/{tag}": {
 			"delete": {
 				"summary": "Delete Tag",
 				"description": "Deletes all counters for particular tag and the tag itself.",
@@ -7397,7 +7398,7 @@
 				]
 			}
 		},
-		"unsubscribes\/": {
+		"unsubscribes/": {
 			"post": {
 				"summary": "Add to unsubscribe list.",
 				"description": "Adds address to unsubscribed table.",
@@ -7429,7 +7430,7 @@
 				]
 			}
 		},
-		"unsubscribes\/{address}": {
+		"unsubscribes/{address}": {
 			"get": {
 				"summary": "Unsubscribe",
 				"description": "Retreives a single unsubscribe record. Can be used to check if a given address is present in the list of unsubscribed users.",
@@ -7454,7 +7455,7 @@
 				]
 			}
 		},
-		"message\/": {
+		"message/": {
 			"get": {
 				"summary": "Message List",
 				"description": "Allows you to list messages.",
@@ -7463,31 +7464,31 @@
 					{
 						"name": "Campaign",
 						"in": "query",
-						"description": "Only retrieve message resources for which Campaign ID equals the specified value.\n\n                            \n                                [ Type Int64 ]",
+						"description": "Only retrieve message resources for which Campaign ID equals the specified value.nn                            n                                [ Type Int64 ]",
 						"type": "string"
 					},
 					{
 						"name": "Contact",
 						"in": "query",
-						"description": "Only retrieve message resources for which Contact ID equals the specified value.\n\n                            \n                                [ Type Int64 ]",
+						"description": "Only retrieve message resources for which Contact ID equals the specified value.nn                            n                                [ Type Int64 ]",
 						"type": "string"
 					},
 					{
 						"name": "MessageState",
 						"in": "query",
-						"description": "Only show messages with this state.\n\n                            \n                                [ Type Int64 ]",
+						"description": "Only show messages with this state.nn                            n                                [ Type Int64 ]",
 						"type": "string"
 					},
 					{
 						"name": "PlanSubscription",
 						"in": "query",
-						"description": "Only retrieve message resources for which PlanSubscription ID equals the specified value.\n\n                            \n                                [ Type Int64 ]",
+						"description": "Only retrieve message resources for which PlanSubscription ID equals the specified value.nn                            n                                [ Type Int64 ]",
 						"type": "string"
 					},
 					{
 						"name": "Sender",
 						"in": "query",
-						"description": "Only show messages from this sender.\n\n                            \n                                [ Type Int64 ]",
+						"description": "Only show messages from this sender.nn                            n                                [ Type Int64 ]",
 						"type": "string"
 					}
 				],
@@ -7502,7 +7503,7 @@
 				]
 			}
 		},
-		"messagehistory\/": {
+		"messagehistory/": {
 			"get": {
 				"summary": "Message History",
 				"description": "List message history resources ",
@@ -7527,7 +7528,7 @@
 				]
 			}
 		},
-		"messagehistory\/{id}": {
+		"messagehistory/{id}": {
 			"get": {
 				"summary": "Message History",
 				"description": "Get the history of a message.",
@@ -7552,7 +7553,7 @@
 				]
 			}
 		},
-		"messageinformation\/": {
+		"messageinformation/": {
 			"get": {
 				"summary": "Message Information",
 				"description": "Lists the information about a message.",
@@ -7561,91 +7562,91 @@
 					{
 						"name": "CampaignID",
 						"in": "query",
-						"description": "Unique numerical ID for this object.\n\n                            \n                                [ Type Int64 ]",
+						"description": "Unique numerical ID for this object.nn                            n                                [ Type Int64 ]",
 						"type": "string"
 					},
 					{
 						"name": "CampaignStatus",
 						"in": "query",
-						"description": "Only retrieve campaigns with status equal to specified value.\n\n                            \n                                [ Type SmallInt ]",
+						"description": "Only retrieve campaigns with status equal to specified value.nn                            n                                [ Type SmallInt ]",
 						"type": "string"
 					},
 					{
 						"name": "ContactsList",
 						"in": "query",
-						"description": "Only retrieve campaigns sent to specified Contacts list.\n\n                            \n                                [ Type Int64 ]",
+						"description": "Only retrieve campaigns sent to specified Contacts list.nn                            n                                [ Type Int64 ]",
 						"type": "string"
 					},
 					{
 						"name": "CustomCampaign",
 						"in": "query",
-						"description": "Only retrieve campaigns with given Custom Value.\n\n                            \n                                [ Type AnsiString ]",
+						"description": "Only retrieve campaigns with given Custom Value.nn                            n                                [ Type AnsiString ]",
 						"type": "string"
 					},
 					{
 						"name": "From",
 						"in": "query",
-						"description": "Only retrieve campaigns with given From header.\n\n                            \n                                [ Type AnsiString ]",
+						"description": "Only retrieve campaigns with given From header.nn                            n                                [ Type AnsiString ]",
 						"type": "string"
 					},
 					{
 						"name": "FromDomain",
 						"in": "query",
-						"description": "Only retrieve campaigns with given domain in From header.\n\n                            \n                                [ Type AnsiString ]",
+						"description": "Only retrieve campaigns with given domain in From header.nn                            n                                [ Type AnsiString ]",
 						"type": "string"
 					},
 					{
 						"name": "FromID",
 						"in": "query",
-						"description": "Only retrieve campaigns with this sender ID.\n\n                            \n                                [ Type Int64 ]",
+						"description": "Only retrieve campaigns with this sender ID.nn                            n                                [ Type Int64 ]",
 						"type": "string"
 					},
 					{
 						"name": "FromTS",
 						"in": "query",
-						"description": "Only retrieve campaigns with SendStartAt after this timestamp.\n\n                            \n                                [ Type TRFC3339DateTime ]",
+						"description": "Only retrieve campaigns with SendStartAt after this timestamp.nn                            n                                [ Type TRFC3339DateTime ]",
 						"type": "string"
 					},
 					{
 						"name": "FromType",
 						"in": "query",
-						"description": "Only retrieve campaigns with FromType equal to specified value.\n\n                            \n                                [ Type LongInt ]",
+						"description": "Only retrieve campaigns with FromType equal to specified value.nn                            n                                [ Type LongInt ]",
 						"type": "string"
 					},
 					{
 						"name": "IsDeleted",
 						"in": "query",
-						"description": "Only retrieve campaigns where isDeleted matches the specified value.\n\n                            \n                                [ Type TBooleanFilter ]",
+						"description": "Only retrieve campaigns where isDeleted matches the specified value.nn                            n                                [ Type TBooleanFilter ]",
 						"type": "string"
 					},
 					{
 						"name": "IsNewsletterTool",
 						"in": "query",
-						"description": "Only retrieve campaigns which were started by the newsletter tool.\n\n                            \n                                [ Type TBooleanFilter ]",
+						"description": "Only retrieve campaigns which were started by the newsletter tool.nn                            n                                [ Type TBooleanFilter ]",
 						"type": "string"
 					},
 					{
 						"name": "IsStarred",
 						"in": "query",
-						"description": "Only retrieve campaigns which were marked as starred.\n\n                            \n                                [ Type TBooleanFilter ]",
+						"description": "Only retrieve campaigns which were marked as starred.nn                            n                                [ Type TBooleanFilter ]",
 						"type": "string"
 					},
 					{
 						"name": "MessageStatus",
 						"in": "query",
-						"description": "Only retrieve messages with status equal to specified value.\n\n                            \n                                [ Type TMessageStatus ]",
+						"description": "Only retrieve messages with status equal to specified value.nn                            n                                [ Type TMessageStatus ]",
 						"type": "string"
 					},
 					{
 						"name": "Period",
 						"in": "query",
-						"description": "Set FromTS and ToTS timestamps to beginning of indicated period and current timestamp, respectively.\n\n                            \n                                [ Type AnsiString ]",
+						"description": "Set FromTS and ToTS timestamps to beginning of indicated period and current timestamp, respectively.nn                            n                                [ Type AnsiString ]",
 						"type": "string"
 					},
 					{
 						"name": "ToTS",
 						"in": "query",
-						"description": "Only retrieve campaigns with SendStartAt timestamp less than the specified value.\n\n                            \n                                [ Type TRFC3339DateTime ]",
+						"description": "Only retrieve campaigns with SendStartAt timestamp less than the specified value.nn                            n                                [ Type TRFC3339DateTime ]",
 						"type": "string"
 					}
 				],
@@ -7660,7 +7661,7 @@
 				]
 			}
 		},
-		"messageinformation\/{id}": {
+		"messageinformation/{id}": {
 			"get": {
 				"summary": "Message Information",
 				"description": "Lists a message informaiton.",
@@ -7685,7 +7686,7 @@
 				]
 			}
 		},
-		"messagesentstatistics\/": {
+		"messagesentstatistics/": {
 			"get": {
 				"summary": "Message Statistics",
 				"description": "Lists the message statistics.",
@@ -7694,97 +7695,97 @@
 					{
 						"name": "AllMessages",
 						"in": "query",
-						"description": "Retrieve all messages. Normally, only the first message of each campaign is retrieved.\n\n                            \n                                [ Type TBooleanFilter ]",
+						"description": "Retrieve all messages. Normally, only the first message of each campaign is retrieved.nn                            n                                [ Type TBooleanFilter ]",
 						"type": "string"
 					},
 					{
 						"name": "CampaignID",
 						"in": "query",
-						"description": "Unique numerical ID for this object.\n\n                            \n                                [ Type Int64 ]",
+						"description": "Unique numerical ID for this object.nn                            n                                [ Type Int64 ]",
 						"type": "string"
 					},
 					{
 						"name": "CampaignStatus",
 						"in": "query",
-						"description": "Only retrieve campaigns with Status equal to specified value.\n\n                            \n                                [ Type SmallInt ]",
+						"description": "Only retrieve campaigns with Status equal to specified value.nn                            n                                [ Type SmallInt ]",
 						"type": "string"
 					},
 					{
 						"name": "Contact",
 						"in": "query",
-						"description": "Only retrieve messagesentstatistics resources for which Contact equals the specified value.\n\n                            \n                                [ Type Int64 ]",
+						"description": "Only retrieve messagesentstatistics resources for which Contact equals the specified value.nn                            n                                [ Type Int64 ]",
 						"type": "string"
 					},
 					{
 						"name": "ContactsList",
 						"in": "query",
-						"description": "Only retrieve campaigns sent to specified Contacts list.\n\n                            \n                                [ Type Int64 ]",
+						"description": "Only retrieve campaigns sent to specified Contacts list.nn                            n                                [ Type Int64 ]",
 						"type": "string"
 					},
 					{
 						"name": "CustomCampaign",
 						"in": "query",
-						"description": "Only retrieve campaigns with given Custom Value.\n\n                            \n                                [ Type AnsiString ]",
+						"description": "Only retrieve campaigns with given Custom Value.nn                            n                                [ Type AnsiString ]",
 						"type": "string"
 					},
 					{
 						"name": "From",
 						"in": "query",
-						"description": "Only retrieve campaigns with given From header.\n\n                            \n                                [ Type AnsiString ]",
+						"description": "Only retrieve campaigns with given From header.nn                            n                                [ Type AnsiString ]",
 						"type": "string"
 					},
 					{
 						"name": "FromDomain",
 						"in": "query",
-						"description": "Only retrieve campaigns with given domain in From header.\n\n                            \n                                [ Type AnsiString ]",
+						"description": "Only retrieve campaigns with given domain in From header.nn                            n                                [ Type AnsiString ]",
 						"type": "string"
 					},
 					{
 						"name": "FromID",
 						"in": "query",
-						"description": "Only retrieve campaigns with this sender ID.\n\n                            \n                                [ Type Int64 ]",
+						"description": "Only retrieve campaigns with this sender ID.nn                            n                                [ Type Int64 ]",
 						"type": "string"
 					},
 					{
 						"name": "FromTS",
 						"in": "query",
-						"description": "Only retrieve campaigns with SendStartAt after this timestamp.\n\n                            \n                                [ Type TRFC3339DateTime ]",
+						"description": "Only retrieve campaigns with SendStartAt after this timestamp.nn                            n                                [ Type TRFC3339DateTime ]",
 						"type": "string"
 					},
 					{
 						"name": "FromType",
 						"in": "query",
-						"description": "Only retrieve campaigns with FromType equal to specified value.\n\n                            \n                                [ Type LongInt ]",
+						"description": "Only retrieve campaigns with FromType equal to specified value.nn                            n                                [ Type LongInt ]",
 						"type": "string"
 					},
 					{
 						"name": "IsDeleted",
 						"in": "query",
-						"description": "Only retrieve campaigns where isDeleted matches the specified value.\n\n                            \n                                [ Type TBooleanFilter ]",
+						"description": "Only retrieve campaigns where isDeleted matches the specified value.nn                            n                                [ Type TBooleanFilter ]",
 						"type": "string"
 					},
 					{
 						"name": "IsNewsletterTool",
 						"in": "query",
-						"description": "Only retrieve campaigns which were started by the newsletter tool.\n\n                            \n                                [ Type TBooleanFilter ]",
+						"description": "Only retrieve campaigns which were started by the newsletter tool.nn                            n                                [ Type TBooleanFilter ]",
 						"type": "string"
 					},
 					{
 						"name": "IsStarred",
 						"in": "query",
-						"description": "Only retrieve campaigns which were marked as starred.\n\n                            \n                                [ Type TBooleanFilter ]",
+						"description": "Only retrieve campaigns which were marked as starred.nn                            n                                [ Type TBooleanFilter ]",
 						"type": "string"
 					},
 					{
 						"name": "MessageStatus",
 						"in": "query",
-						"description": "Only retrieve messages with Status equal to specified value.\n\n                            \n                                [ Type TMessageStatus ]",
+						"description": "Only retrieve messages with Status equal to specified value.nn                            n                                [ Type TMessageStatus ]",
 						"type": "string"
 					},
 					{
 						"name": "Period",
 						"in": "query",
-						"description": "Set FromTS and ToTS timestamps to beginning of indicated period and current timestamp, respectively.\n\n                            \n                                [ Type AnsiString ]",
+						"description": "Set FromTS and ToTS timestamps to beginning of indicated period and current timestamp, respectively.nn                            n                                [ Type AnsiString ]",
 						"type": "string"
 					},
 					{
@@ -7796,7 +7797,7 @@
 					{
 						"name": "ToTS",
 						"in": "query",
-						"description": "Only retrieve campaigns with SendStartAt timestamp less than the specified value.\n\n                            \n                                [ Type TRFC3339DateTime ]",
+						"description": "Only retrieve campaigns with SendStartAt timestamp less than the specified value.nn                            n                                [ Type TRFC3339DateTime ]",
 						"type": "string"
 					}
 				],
@@ -7811,7 +7812,7 @@
 				]
 			}
 		},
-		"messagesentstatistics\/{id}": {
+		"messagesentstatistics/{id}": {
 			"get": {
 				"summary": "Message Statistics",
 				"description": "List message statistics.",
@@ -7827,7 +7828,7 @@
 				]
 			}
 		},
-		"messagestate\/{id}": {
+		"messagestate/{id}": {
 			"get": {
 				"summary": "Message State",
 				"description": "Returns message state.",
@@ -7852,7 +7853,7 @@
 				]
 			}
 		},
-		"messagestatistics\/": {
+		"messagestatistics/": {
 			"get": {
 				"summary": "Message Statistics",
 				"description": "Message Statistics",
@@ -7861,25 +7862,25 @@
 					{
 						"name": "CampaignID",
 						"in": "query",
-						"description": "Unique numerical ID for this object.\n\n                            \n                                [ Type Int64 ]",
+						"description": "Unique numerical ID for this object.nn                            n                                [ Type Int64 ]",
 						"type": "string"
 					},
 					{
 						"name": "CampaignStatus",
 						"in": "query",
-						"description": "Only retrieve campaigns with status equal to specified value.\n\n                            \n                                [ Type SmallInt ]",
+						"description": "Only retrieve campaigns with status equal to specified value.nn                            n                                [ Type SmallInt ]",
 						"type": "string"
 					},
 					{
 						"name": "ContactEmail",
 						"in": "query",
-						"description": "Only retrieve message statistics for this contact email address.\n\n                            \n                                [ Type AnsiString ]",
+						"description": "Only retrieve message statistics for this contact email address.nn                            n                                [ Type AnsiString ]",
 						"type": "string"
 					},
 					{
 						"name": "ContactID",
 						"in": "query",
-						"description": "Unique numerical ID for this object.\n\n                            \n                                [ Type Int64 ]",
+						"description": "Unique numerical ID for this object.nn                            n                                [ Type Int64 ]",
 						"type": "string"
 					},
 					{
@@ -7891,73 +7892,73 @@
 					{
 						"name": "CustomCampaign",
 						"in": "query",
-						"description": "Only retrieve campaigns with given Custom Value.\n\n                            \n                                [ Type AnsiString ]",
+						"description": "Only retrieve campaigns with given Custom Value.nn                            n                                [ Type AnsiString ]",
 						"type": "string"
 					},
 					{
 						"name": "From",
 						"in": "query",
-						"description": "Only retrieve campaigns with given From header.\n\n                            \n                                [ Type AnsiString ]",
+						"description": "Only retrieve campaigns with given From header.nn                            n                                [ Type AnsiString ]",
 						"type": "string"
 					},
 					{
 						"name": "FromDomain",
 						"in": "query",
-						"description": "Only retrieve campaigns with given domain in From header.\n\n                            \n                                [ Type AnsiString ]",
+						"description": "Only retrieve campaigns with given domain in From header.nn                            n                                [ Type AnsiString ]",
 						"type": "string"
 					},
 					{
 						"name": "FromID",
 						"in": "query",
-						"description": "Only retrieve campaigns with this sender ID.\n\n                            \n                                [ Type Int64 ]",
+						"description": "Only retrieve campaigns with this sender ID.nn                            n                                [ Type Int64 ]",
 						"type": "string"
 					},
 					{
 						"name": "FromTS",
 						"in": "query",
-						"description": "Only retrieve campaigns with SendStartAt after this timestamp.\n\n                            \n                                [ Type TRFC3339DateTime ]",
+						"description": "Only retrieve campaigns with SendStartAt after this timestamp.nn                            n                                [ Type TRFC3339DateTime ]",
 						"type": "string"
 					},
 					{
 						"name": "FromType",
 						"in": "query",
-						"description": "Only retrieve campaigns with FromType equal to specified value.\n\n                            \n                                [ Type LongInt ]",
+						"description": "Only retrieve campaigns with FromType equal to specified value.nn                            n                                [ Type LongInt ]",
 						"type": "string"
 					},
 					{
 						"name": "IsDeleted",
 						"in": "query",
-						"description": "Only retrieve campaigns where isDeleted matches the specified value.\n\n                            \n                                [ Type TBooleanFilter ]",
+						"description": "Only retrieve campaigns where isDeleted matches the specified value.nn                            n                                [ Type TBooleanFilter ]",
 						"type": "string"
 					},
 					{
 						"name": "IsNewsletterTool",
 						"in": "query",
-						"description": "Only retrieve campaigns which were started by the newsletter tool.\n\n                            \n                                [ Type TBooleanFilter ]",
+						"description": "Only retrieve campaigns which were started by the newsletter tool.nn                            n                                [ Type TBooleanFilter ]",
 						"type": "string"
 					},
 					{
 						"name": "IsStarred",
 						"in": "query",
-						"description": "Only retrieve campaigns which were marked as starred.\n\n                            \n                                [ Type TBooleanFilter ]",
+						"description": "Only retrieve campaigns which were marked as starred.nn                            n                                [ Type TBooleanFilter ]",
 						"type": "string"
 					},
 					{
 						"name": "MessageStatus",
 						"in": "query",
-						"description": "Only retrieve messages with status equal to specified value.\n\n                            \n                                [ Type TMessageStatus ]",
+						"description": "Only retrieve messages with status equal to specified value.nn                            n                                [ Type TMessageStatus ]",
 						"type": "string"
 					},
 					{
 						"name": "Period",
 						"in": "query",
-						"description": "Set FromTS and ToTS timestamps to beginning of indicated period and current timestamp, respectively.\n\n                            \n                                [ Type AnsiString ]",
+						"description": "Set FromTS and ToTS timestamps to beginning of indicated period and current timestamp, respectively.nn                            n                                [ Type AnsiString ]",
 						"type": "string"
 					},
 					{
 						"name": "ToTS",
 						"in": "query",
-						"description": "Only retrieve campaigns with SendStartAt timestamp less than the specified value.\n\n                            \n                                [ Type TRFC3339DateTime ]",
+						"description": "Only retrieve campaigns with SendStartAt timestamp less than the specified value.nn                            n                                [ Type TRFC3339DateTime ]",
 						"type": "string"
 					}
 				],
@@ -7972,7 +7973,7 @@
 				]
 			}
 		},
-		"messagestatistics\/{id}": {
+		"messagestatistics/{id}": {
 			"get": {
 				"summary": "Message Statistics",
 				"description": "Message Statistics",
@@ -8013,7 +8014,7 @@
 				]
 			}
 		},
-		"send_sms\/": {
+		"send_sms/": {
 			"get": {
 				"summary": "Send SMS",
 				"description": " Sending SMS text messages",
@@ -8022,14 +8023,14 @@
 					{
 						"name": "autoconvert",
 						"in": "query",
-						"description": "on\tuse replacement settings from account's API Auto Replace settings page full\tall non GSM 03.38 characters will be replaced with suitable alternatives. off\tmessage content is not modified in any way.",
+						"description": "ontuse replacement settings from account's API Auto Replace settings page fulltall non GSM 03.38 characters will be replaced with suitable alternatives. offtmessage content is not modified in any way.",
 						"type": "string",
 						"format": "string"
 					},
 					{
 						"name": "charset",
 						"in": "query",
-						"description": "Encoding of the \"text\" and \"from\" parameter value. Defaults to UTF-8",
+						"description": "Encoding of the "text" and "from" parameter value. Defaults to UTF-8",
 						"type": "string",
 						"format": "string"
 					},
