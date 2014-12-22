@@ -1,0 +1,1232 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Getty Images Search API",
+		"description": null,
+		"termsOfService": "http://api.gettyimages.com/terms_use",
+		"version": "v3"
+	},
+	"host": "/Search",
+	"basePath": "/v3/",
+	"schemes": [
+		"http"
+	],
+	"produces": [
+		"application/json"
+	],
+	"consumes": [
+		"application/json"
+	],
+	"paths": {
+		"/v3/search/images": {
+			"get": {
+				"summary": "Search for both creative and editorial images",
+				"description": "",
+				"operationId": "Search_GetImagesByPhrase",
+				"parameters": [
+					{
+						"name": "Accept-Language",
+						"in": "header",
+						"description": "Accept-Language parameter optional. Used to restrict the set of natural languages that are preferred as a response to the request."
+					},
+					{
+						"name": "Api-Key",
+						"in": "header",
+						"description": "Api-Key"
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Authorization token optional. Used for applying content access restrictions. Use one of the OAuth2 grants to auto-populate this value."
+					},
+					{
+						"name": "collections_filter_type",
+						"in": "query",
+						"description": "Allows searching based on included or excluded collections."
+					},
+					{
+						"name": "collection_codes",
+						"in": "query",
+						"description": "Allows filtering by collection code."
+					},
+					{
+						"name": "embed_content_only",
+						"in": "query",
+						"description": "Include only images that are embeddable. The default is false."
+					},
+					{
+						"name": "end_date",
+						"in": "query",
+						"description": "If specified, include only images created on or before this date."
+					},
+					{
+						"name": "exclude_nudity",
+						"in": "query",
+						"description": "Exclude images tagged as containing nudity. The default is false."
+					},
+					{
+						"name": "fields",
+						"in": "query",
+						"description": "Comma separated list of fields. Allows restricting which fields are returned. If no fields are selected, the summary_set of fields are returned."
+					},
+					{
+						"name": "file_types",
+						"in": "query",
+						"description": "Identifies a file type for the image."
+					},
+					{
+						"name": "graphical_styles",
+						"in": "query",
+						"description": "Identifies a graphical style for the image."
+					},
+					{
+						"name": "keyword_ids",
+						"in": "query",
+						"description": "Comma separated-list of keyword IDs.  If specified, returns images containing the requested keyword(s).  If keyword IDs and phrase are both specified, returns only those images matching the query phrase which also contain the requested keyword(s)."
+					},
+					{
+						"name": "license_models",
+						"in": "query",
+						"description": "Identifies a licensing model for the image."
+					},
+					{
+						"name": "orientations",
+						"in": "query",
+						"description": "Choose images based on their aspect ratios."
+					},
+					{
+						"name": "page",
+						"in": "query",
+						"description": "Page number."
+					},
+					{
+						"name": "page_size",
+						"in": "query",
+						"description": "Size of page."
+					},
+					{
+						"name": "phrase",
+						"in": "query",
+						"description": "Free-text search query."
+					},
+					{
+						"name": "product_offerings",
+						"in": "query",
+						"description": "Allows filtering by product offering."
+					},
+					{
+						"name": "sort_order",
+						"in": "query",
+						"description": "Allows sorting of results."
+					},
+					{
+						"name": "start_date",
+						"in": "query",
+						"description": "If specified, include only images created on or after this date."
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"001": {
+						"description": "Service currently unavailable"
+					},
+					"002": {
+						"description": "Failed to parse request"
+					},
+					"010": {
+						"description": "Missing API Key"
+					},
+					"011": {
+						"description": "Invalid API Key"
+					},
+					"031": {
+						"description": "Invalid Method"
+					},
+					"032": {
+						"description": "Method not Available"
+					},
+					"100": {
+						"description": "Missing Media ID"
+					},
+					"101": {
+						"description": "Invalid Media ID"
+					},
+					"2001": {
+						"description": "Invalid Language ID"
+					},
+					"2101": {
+						"description": "Invalid Thumbnail Size"
+					},
+					"020": {
+						"description": "Missing Session Token"
+					},
+					"021": {
+						"description": "Invalid Session Token"
+					},
+					"2200": {
+						"description": "Missing License Name"
+					},
+					"2201": {
+						"description": "Invalid License Name"
+					},
+					"3000": {
+						"description": "Insufficent Credit Value"
+					},
+					"3099": {
+						"description": "Not enough download slots left"
+					},
+					"3101": {
+						"description": "Comp image not available"
+					},
+					"3103": {
+						"description": "No file uploaded"
+					},
+					"3104": {
+						"description": "Upload failure"
+					},
+					"3105": {
+						"description": "Upload unknown failure"
+					},
+					"3106": {
+						"description": "Upload not allowed"
+					},
+					"301": {
+						"description": "Invalid Category ID"
+					},
+					"5001": {
+						"description": "Invalid Tag Type"
+					},
+					"2401": {
+						"description": "Invalid Gallery ID"
+					},
+					"2301": {
+						"description": "Invalid Gallery Name"
+					},
+					"6011": {
+						"description": "Invalid email address"
+					},
+					"6007": {
+						"description": "invalid data"
+					},
+					"6012": {
+						"description": "Invalid field"
+					},
+					"6003": {
+						"description": "Invalid date format, must be like YYYY-MM-DD"
+					},
+					"60": {
+						"description": "Invalid pagination parameter"
+					},
+					"10000": {
+						"description": "Unknown Gallery ID"
+					},
+					"6001": {
+						"description": "Invalid time range"
+					},
+					"6002": {
+						"description": "Invalid type of statistics"
+					},
+					"6004": {
+						"description": "Invalid easy date period"
+					},
+					"6005": {
+						"description": "Statistics need to be generated, please try again later"
+					},
+					"4000": {
+						"description": "Login Failed"
+					},
+					"4001": {
+						"description": "Invalid User"
+					},
+					"4002": {
+						"description": "Bad Login or Password"
+					},
+					"2402": {
+						"description": "Unknown media ID"
+					},
+					"6008": {
+						"description": "Login already exists"
+					},
+					"7001": {
+						"description": "Missing field"
+					},
+					"7002": {
+						"description": "Unknown Subbaccount ID"
+					}
+				},
+				"tags": [
+					""
+				]
+			}
+		},
+		"/v3/search/images/creative": {
+			"get": {
+				"summary": "Search for creative images only",
+				"description": "",
+				"operationId": "Search_GetCreativeImagesByPhrase",
+				"parameters": [
+					{
+						"name": "Accept-Language",
+						"in": "header",
+						"description": "Accept-Language parameter optional. Used to restrict the set of natural languages that are preferred as a response to the request."
+					},
+					{
+						"name": "Api-Key",
+						"in": "header",
+						"description": "Api-Key"
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Authorization token optional. Used for applying content access restrictions. Use one of the OAuth2 grants to auto-populate this value."
+					},
+					{
+						"name": "collections_filter_type",
+						"in": "query",
+						"description": "Allows searching based on included or excluded collections."
+					},
+					{
+						"name": "collection_codes",
+						"in": "query",
+						"description": "Allows filtering by collection code."
+					},
+					{
+						"name": "embed_content_only",
+						"in": "query",
+						"description": "Include only images that are are embeddable. The default is false."
+					},
+					{
+						"name": "exclude_nudity",
+						"in": "query",
+						"description": "Exclude images tagged as containing nudity. The default is false."
+					},
+					{
+						"name": "fields",
+						"in": "query",
+						"description": "Comma separated list of fields. Allows restricting which fields are returned. If no fields are selected, the summary_set of fields are returned."
+					},
+					{
+						"name": "file_types",
+						"in": "query",
+						"description": "Identifies a file type for the image."
+					},
+					{
+						"name": "graphical_styles",
+						"in": "query",
+						"description": "Identifies a graphical style for the image."
+					},
+					{
+						"name": "keyword_ids",
+						"in": "query",
+						"description": "Comma separated-list of keyword IDs.  If specified, returns images containing the requested keyword(s).  If keyword IDs and phrase are both specified, returns only those images matching the query phrase which also contain the requested keyword(s)."
+					},
+					{
+						"name": "license_models",
+						"in": "query",
+						"description": "Identifies a licensing model for the image. Possible values are: RoyaltyFree, RightsManaged"
+					},
+					{
+						"name": "orientations",
+						"in": "query",
+						"description": "Choose images based on their aspect ratios."
+					},
+					{
+						"name": "page",
+						"in": "query",
+						"description": "Page number."
+					},
+					{
+						"name": "page_size",
+						"in": "query",
+						"description": "Size of page."
+					},
+					{
+						"name": "phrase",
+						"in": "query",
+						"description": "Free-text search query."
+					},
+					{
+						"name": "product_offerings",
+						"in": "query",
+						"description": "Allows filtering by product offering."
+					},
+					{
+						"name": "sort_order",
+						"in": "query",
+						"description": "Allows sorting of results."
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [
+					""
+				]
+			}
+		},
+		"/v3/search/images/editorial": {
+			"get": {
+				"summary": "Search for editorial images only",
+				"description": "",
+				"operationId": "Search_GetEditorialImagesByPhrase",
+				"parameters": [
+					{
+						"name": "Accept-Language",
+						"in": "header",
+						"description": "Accept-Language parameter optional. Used to restrict the set of natural languages that are preferred as a response to the request."
+					},
+					{
+						"name": "Api-Key",
+						"in": "header",
+						"description": "Api-Key"
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Authorization token optional. Used for applying content access restrictions. Use one of the OAuth2 grants to auto-populate this value."
+					},
+					{
+						"name": "collections_filter_type",
+						"in": "query",
+						"description": "Allows searching based on included or excluded collections."
+					},
+					{
+						"name": "collection_codes",
+						"in": "query",
+						"description": "Allows filtering by collection code."
+					},
+					{
+						"name": "editorial_segments",
+						"in": "query",
+						"description": "Identifies a editorial segment for the image."
+					},
+					{
+						"name": "embed_content_only",
+						"in": "query",
+						"description": "Include only images that embeddable. The default is false."
+					},
+					{
+						"name": "end_date",
+						"in": "query",
+						"description": "If specified, include only images created on or before this date."
+					},
+					{
+						"name": "entity_uris",
+						"in": "query",
+						"description": "specify linked data entity uri."
+					},
+					{
+						"name": "exclude_nudity",
+						"in": "query",
+						"description": "Exclude images tagged as containing nudity. The default is false."
+					},
+					{
+						"name": "fields",
+						"in": "query",
+						"description": "Comma separated list of fields. Allows restricting which fields are returned. If no fields are selected, the summary_set of fields are returned."
+					},
+					{
+						"name": "file_types",
+						"in": "query",
+						"description": "Identifies a file type for the image."
+					},
+					{
+						"name": "graphical_styles",
+						"in": "query",
+						"description": "Identifies a graphical style for the image."
+					},
+					{
+						"name": "keyword_ids",
+						"in": "query",
+						"description": "Comma separated-list of keyword IDs.  If specified, returns images containing the requested keyword(s).  If keyword IDs and phrase are both specified, returns only those images matching the query phrase which also contain the requested keyword(s)."
+					},
+					{
+						"name": "orientations",
+						"in": "query",
+						"description": "Choose images based on their aspect ratios."
+					},
+					{
+						"name": "page",
+						"in": "query",
+						"description": "Page number."
+					},
+					{
+						"name": "page_size",
+						"in": "query",
+						"description": "Size of page."
+					},
+					{
+						"name": "phrase",
+						"in": "query",
+						"description": "Free-text search query."
+					},
+					{
+						"name": "product_offerings",
+						"in": "query",
+						"description": "Allows filtering by product offering."
+					},
+					{
+						"name": "sort_order",
+						"in": "query",
+						"description": "Allows sorting of results."
+					},
+					{
+						"name": "start_date",
+						"in": "query",
+						"description": "If specified, include only images created on or after this date."
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [
+					""
+				]
+			}
+		},
+		"/v3/search/videos": {
+			"get": {
+				"summary": "<b>*** BETA ***</b> Search for both creative and editorial videos",
+				"description": "",
+				"operationId": "Search_GetVideosByPhrase",
+				"parameters": [
+					{
+						"name": "Accept-Language",
+						"in": "header",
+						"description": "Accept-Language parameter optional. Used to restrict the set of natural languages that are preferred as a response to the request."
+					},
+					{
+						"name": "Api-Key",
+						"in": "header",
+						"description": "Api-Key"
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Authorization token optional. Used for applying content access restrictions. Use one of the OAuth2 grants to auto-populate this value."
+					},
+					{
+						"name": "collections_filter_type",
+						"in": "query",
+						"description": "Allows searching based on included or excluded collections."
+					},
+					{
+						"name": "collection_codes",
+						"in": "query",
+						"description": "Allows filtering by collection code."
+					},
+					{
+						"name": "exclude_nudity",
+						"in": "query",
+						"description": "Exclude images tagged as containing nudity. The default is false."
+					},
+					{
+						"name": "fields",
+						"in": "query",
+						"description": "Comma separated list of fields. Allows restricting which fields are returned. If no fields are selected, the summary_set of fields are returned."
+					},
+					{
+						"name": "license_models",
+						"in": "query",
+						"description": "Identifies a licensing model for the image."
+					},
+					{
+						"name": "page",
+						"in": "query",
+						"description": "Page number."
+					},
+					{
+						"name": "page_size",
+						"in": "query",
+						"description": "Size of page."
+					},
+					{
+						"name": "phrase",
+						"in": "query",
+						"description": "Free-text search query."
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [
+					""
+				]
+			}
+		},
+		"/v3/search/videos/creative": {
+			"get": {
+				"summary": "<b>*** BETA ***</b> Search for creative videos",
+				"description": "",
+				"operationId": "Search_GetCreativeVideosByPhrase",
+				"parameters": [
+					{
+						"name": "Accept-Language",
+						"in": "header",
+						"description": "Accept-Language parameter optional. Used to restrict the set of natural languages that are preferred as a response to the request."
+					},
+					{
+						"name": "Api-Key",
+						"in": "header",
+						"description": "Api-Key"
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Authorization token optional. Used for applying content access restrictions. Use one of the OAuth2 grants to auto-populate this value."
+					},
+					{
+						"name": "collections_filter_type",
+						"in": "query",
+						"description": "Allows searching based on included or excluded collections."
+					},
+					{
+						"name": "collection_codes",
+						"in": "query",
+						"description": "Allows filtering by collection code."
+					},
+					{
+						"name": "exclude_nudity",
+						"in": "query",
+						"description": "Exclude images tagged as containing nudity. The default is false."
+					},
+					{
+						"name": "fields",
+						"in": "query",
+						"description": "Comma separated list of fields. Allows restricting which fields are returned. If no fields are selected, the summary_set of fields are returned."
+					},
+					{
+						"name": "license_models",
+						"in": "query",
+						"description": "Identifies a licensing model for the image."
+					},
+					{
+						"name": "page",
+						"in": "query",
+						"description": "Page number."
+					},
+					{
+						"name": "page_size",
+						"in": "query",
+						"description": "Size of page."
+					},
+					{
+						"name": "phrase",
+						"in": "query",
+						"description": "Free-text search query."
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [
+					""
+				]
+			}
+		},
+		"/v3/search/videos/editorial": {
+			"get": {
+				"summary": "<b>*** BETA ***</b> Search for editorial videos",
+				"description": "",
+				"operationId": "Search_GetEditorialVideosByPhrase",
+				"parameters": [
+					{
+						"name": "Accept-Language",
+						"in": "header",
+						"description": "Accept-Language parameter optional. Used to restrict the set of natural languages that are preferred as a response to the request."
+					},
+					{
+						"name": "Api-Key",
+						"in": "header",
+						"description": "Api-Key"
+					},
+					{
+						"name": "Authorization",
+						"in": "header",
+						"description": "Authorization token optional. Used for applying content access restrictions. Use one of the OAuth2 grants to auto-populate this value."
+					},
+					{
+						"name": "collections_filter_type",
+						"in": "query",
+						"description": "Allows searching based on included or excluded collections."
+					},
+					{
+						"name": "collection_codes",
+						"in": "query",
+						"description": "Allows filtering by collection code."
+					},
+					{
+						"name": "entity_uris",
+						"in": "query",
+						"description": "specify link data entity uri."
+					},
+					{
+						"name": "exclude_nudity",
+						"in": "query",
+						"description": "Exclude images tagged as containing nudity. The default is false."
+					},
+					{
+						"name": "fields",
+						"in": "query",
+						"description": "Comma separated list of fields. Allows restricting which fields are returned. If no fields are selected, the summary_set of fields are returned."
+					},
+					{
+						"name": "page",
+						"in": "query",
+						"description": "Page number."
+					},
+					{
+						"name": "page_size",
+						"in": "query",
+						"description": "Size of page."
+					},
+					{
+						"name": "phrase",
+						"in": "query",
+						"description": "Free-text search query."
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [
+					""
+				]
+			}
+		}
+	},
+	"definitions": {
+		"image_search_results": {
+			"properties": {
+				"result_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"images": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"image_search_item": {
+			"properties": {
+				"allowed_use": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"artist": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"asset_family": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"call_for_image": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"caption": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"collection_code": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"collection_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"collection_name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"copyright": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"date_created": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"display_sizes": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"editorial_segments": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"event_ids": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"graphical_style": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"largest_downloads": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"license_model": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"max_dimensions": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"orientation": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"people": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"quality_rank": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"referral_destinations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uri_oembed": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"allowed_use": {
+			"properties": {
+				"how_can_i_use_it": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"release_info": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"usage_restrictions": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"display_size": {
+			"properties": {
+				"is_watermarked": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uri": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"download": {
+			"properties": {
+				"product_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"product_type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uri": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"max_dimensions": {
+			"properties": {
+				"height": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"width": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"referral_destination": {
+			"properties": {
+				"site_name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uri": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"creative_image_search_results": {
+			"properties": {
+				"result_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"images": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"creative_image_search_item": {
+			"properties": {
+				"allowed_use": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"artist": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"asset_family": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"call_for_image": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"caption": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"collection_code": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"collection_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"collection_name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"copyright": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"date_created": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"display_sizes": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"graphical_style": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"largest_downloads": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"license_model": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"max_dimensions": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"orientation": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"quality_rank": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"referral_destinations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uri_oembed": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"editorial_image_search_results": {
+			"properties": {
+				"result_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"images": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"editorial_image_search_item": {
+			"properties": {
+				"allowed_use": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"artist": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"asset_family": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"call_for_image": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"caption": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"collection_code": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"collection_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"collection_name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"copyright": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"date_created": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"display_sizes": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"editorial_segments": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"event_ids": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"graphical_style": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"largest_downloads": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"license_model": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"max_dimensions": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"orientation": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"people": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"quality_rank": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"referral_destinations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uri_oembed": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"video_search_results": {
+			"properties": {
+				"result_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"videos": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"video_search_item": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"allowed_use": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"asset_family": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"caption": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"clip_length": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"collection_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"collection_code": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"collection_name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"color_type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"copyright": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"date_created": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"display_sizes": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"era": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"filmmaker": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"largest_downloads": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"license_model": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"mastered_to": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"originally_shot_on": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"shot_speed": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"source": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"creative_video_search_results": {
+			"properties": {
+				"result_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"videos": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"editorial_video_search_results": {
+			"properties": {
+				"result_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"videos": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}
