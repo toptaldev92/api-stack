@@ -23,46 +23,49 @@ title: The API Stack
 <ul class="toolbar">
     <li>{"<a href="https://raw.github.com/kinlane/api-stack/gh-pages/data/companies.json" title="JSON" target="_blank">JSON</a>"}</li>
     <li>{"<a href="https://apievangelist.3scale.net/docs" title="API" target="_blank">API</a>"}</li>
-    <li>{"<a href="https://gist.github.com/kinlane/5992075" title="Script" target="_blank">SCRIPT</a>"}</li>
 </ul>
-
-<h1 class="title">The API Stack</h1>
-
+<p>These are the companies that I keep a close eye on, and the APIs they are designing, deploying, and managing. When a company and its APIs show up in my research, I deeply profile their operations, something that includes creating Swagger 2.0 definitions for any relevant endpoints. After I profile a couple of companies, I usually publish any updated information here to API Stack, so come back often, an monitor the central JSON files in the /data folder for the latest updates.</p>
 {% raw  %}
 <script id="companyListingTemplate" type="text/template">       
     <tr>
-        <td align="left" valign="top">
+        <td align="left" valign="top" colspan="2">
             <a href="" id="home-logo-link-{{id}}"><img src="{{logo}}" width="{{logo_width}}" align="left" style="padding: 15px;" /></a>
             <a href="" id="home-name-link-{{id}}" style="color: #000;"><strong>{{name}}</strong></a><br />{{summary}}
         </td>
     </tr>
     <tr>
-        <td align="center" valign="middle">            
-            <a href="index.html" target="_blank" title="Website" id="home-icon-{{id}}"><img id="home-icon-img-{{id}}" src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-home-icon.jpeg" width="25" style="margin-bottom: 5px; padding:15px;" /></a>
-            <a href="index.html" target="_blank" title="Blog" id="blog-icon-{{id}}"><img id="blog-icon-img-{{id}}" src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-blog-icon.png" width="25" style="padding:15px;margin-bottom: 3px; " /></a>
-            <a href="index.html" target="_blank" title="Blog RSS" id="blogrss-icon-{{id}}"><img id="blogrss-icon-img-{{id}}" src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-rss-icon.png" width="30" style="padding:15px;" /></a>
-            <a href="index.html" target="_blank" title="Twitter" id="twitter-icon-{{id}}"><img id="twitter-icon-img-{{id}}" src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-twitter-icon.png" width="30" style="padding:15px;margin-bottom: 3px; " /></a>
-            <a href="index.html" target="_blank" title="Githube" id="github-icon-{{id}}"><img id="github-icon-img-{{id}}" src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-github-icon.png" width="35" style="padding:15px;" /></a>            
+        <td align="center" valign="middle" colspan="2">            
+
+	        <a href="index.html" target="_blank" title="Website" id="home-icon-{{id}}"><img id="home-icon-img-{{id}}" src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-home-icon.jpeg" width="35" style="display: inline; margin: 10px; width: 35px;" /></a>
+	
+	        <a href="index.html" target="_blank" title="Blog" id="blog-icon-{{id}}"><img id="blog-icon-img-{{id}}" src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-blog-icon.png" width="35" style="display: inline; margin: 10px; width: 35px;" /></a>
+	   
+	        <a href="index.html" target="_blank" title="Blog RSS" id="blogrss-icon-{{id}}"><img id="blogrss-icon-img-{{id}}" src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-rss-icon.png" width="36" style="display: inline; margin: 10px; width: 36px;" /></a>
+	   
+	        <a href="index.html" target="_blank" title="Twitter" id="twitter-icon-{{id}}"><img id="twitter-icon-img-{{id}}" src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-twitter-icon.png" width="45" style="display: inline; margin: 10px; width: 45px;" /></a>
+	
+	        <a href="index.html" target="_blank" title="Githube" id="github-icon-{{id}}"><img id="github-icon-img-{{id}}" src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-github-icon.png" width="50" style="display: inline; margin: 10px; width: 50px;" /></a>
+           
        </td>
     </tr> 
     <tr>
-        <td align="center" id="apis-cell-{{id}}">
-        	<p align="center" style="font-size: 16px; font-weight: bold; text-decoration: underline;">APIs</p>
+        <td align="center" id="apis-cell-{{id}}" colspan="2">
+        	<!--<p align="center" style="font-size: 16px; font-weight: bold; text-decoration: underline;">APIs</p>-->
         	<table width="80%" align="center" cellpadding="3" id="apis-{{id}}" style="padding-left: 50px;">
         	</table>
         </td>
     </tr>     
     <tr>
-        <td><hr /></td>
+        <td colspan="2"><hr /></td>
     </tr>                                                                                                   
 </script>
 
 <script id="tagListingTemplate" type="text/template">       
     <tr>
-        <td style="background-color:#E6E6E6;"><h2>{{name}}</h2></td>
+        <td style="background-color:#E6E6E6;" colspan="2"><h2>{{name}}</h2></td>
     </tr>  
     <tr>                                                                      
-        <td>
+        <td colspan="2">
         	<table cellpadding="4" cellspacing="5" width="100%" id="{{slug}}">
 			    <tr>
 			        <td><hr /></td>
@@ -82,20 +85,16 @@ title: The API Stack
  	}
 </script>
 
-<div>
-     <table id="companyListing" width="100%" cellpadding="1" cellspacing="1">
-	    <tr>
-	        <td align="center" id="summary-count" style="font-size: 14px; font-weight: bold; padding-top: 10px; padding-bottom: 10px;"></td>
-	    </tr>  
-	    <tr>
-	        <td align="center" id="tag-dropdown" style="font-size: 14px; font-weight: bold; padding-top: 10px; padding-bottom: 10px;">
-	        	<select id="tag-select" onchange="changeTag(this);">
-	        		<option value="">Select Category</option>
-	        	</select>	
-	        </td>
-	    </tr>	        	
-     </table>
-</div>  
+ <table id="companyListing" width="100%" cellpadding="2" cellspacing="2">
+    <tr>
+        <td width="45%" align="right" id="summary-count" style="font-size: 14px; font-weight: bold; padding-bottom: 10px;"></td>
+        <td align="left" id="tag-dropdown" style="padding-bottom: 10px;">
+        	<select id="tag-select" onchange="changeTag(this);">
+        		<option value="">Select Category</option>
+        	</select>	
+        </td>
+    </tr>	        	
+ </table> 
 
 <script type="text/javascript">
 
@@ -127,7 +126,7 @@ function listCompanies()
 	    	//alert('2');
 	    	 tagcount = data['tags'].length;
 	    	 companycount = companies['company'].length;
-	    	 document.getElementById("summary-count").innerHTML = companycount + ' companies in ' + tagcount + ' categories';
+	    	 document.getElementById("summary-count").innerHTML = companycount + ' companies in ' + tagcount + ' categories: ';
 	    	 	
   			var select = document.getElementById("tag-select");    	 	
 	    	selectCount = 1;
@@ -198,7 +197,7 @@ function listCompanies()
 									if(websiteurl!='') { apirow = apirow + '<td><a href="' + websiteurl + '" target="_blank" title="Website"><img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-home-icon.jpeg" width="25" /></a></td>'; }
 	
 									if(documentationurl!='') { apirow = apirow + '<td><a href="' + documentationurl + '" target="_blank" title="Documentation"><img src="http://kinlane-productions.s3.amazonaws.com/api-evangelist-site/building-blocks/bw-list.png" width="25" /></a></td>'; }
-	
+
 									if(swaggerurl!='') { apirow = apirow + '<td><a href="' + swaggerurl + '" target="_blank" title="Swagger"><img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-swagger-round.png" width="25" /></a></td>'; }
 																	
 									apirow = apirow + '<tr>';
@@ -225,13 +224,3 @@ function listCompanies()
     
 listCompanies();
 </script>
-
-
-<br /><br />
-<!-- 3scale -->
-<p align="center">
-<a href="http://3scale.net" target="_blank" title="APIs From 3Scale">
-    <img src="https://s3.amazonaws.com/kinlane-productions/api-service-providers/3Scale/empowered-by-3scale.png" width="300" style="padding-bottom: 15px;" />
-</a>        
-</p>
-<!-- 3scale -->  

@@ -1,0 +1,142 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "The Noun Project API",
+		"description": "With our API you can bring a growing collection of high quality symbols to anything you create.",
+		"termsOfService": "https://thenounproject.com/legal#terms",
+		"version": "v1"
+	},
+	"host": "http://api.thenounproject.com",
+	"basePath": "/collection",
+	"schemes": [
+		"http"
+	],
+	"produces": [
+		"application/json"
+	],
+	"consumes": [
+		"application/json"
+	],
+	"paths": {
+		"/collection/{id}": {
+			"get": {
+				"summary": "Get collection by id",
+				"description": "Returns a single collection",
+				"operationId": "getCollectionById",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "Collection id"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [
+					""
+				]
+			}
+		},
+		"/collection/{id}/icons": {
+			"get": {
+				"summary": "Get collection icons by id",
+				"description": "Returns a list of icons associated with a collection",
+				"operationId": "getCollectionIconsById",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "Collection id"
+					},
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "Maximum number of results"
+					},
+					{
+						"name": "offset",
+						"in": "query",
+						"description": "Number of results to displace or skip over"
+					},
+					{
+						"name": "page",
+						"in": "query",
+						"description": "Number of results of limit length to displace or skip over"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [
+					""
+				]
+			}
+		},
+		"/collection/{slug}": {
+			"get": {
+				"summary": "Get collection by slug",
+				"description": "Returns a single collection",
+				"operationId": "getCollectionBySlug",
+				"parameters": [
+					{
+						"name": "slug",
+						"in": "path",
+						"description": "Collection slug"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [
+					""
+				]
+			}
+		},
+		"/collection/{slug}/icons": {
+			"get": {
+				"summary": "Get collection icons by slug",
+				"description": "Returns a list of icons associated with a collection",
+				"operationId": "getCollectionIconsBySlug",
+				"parameters": [
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "Maximum number of results"
+					},
+					{
+						"name": "offset",
+						"in": "query",
+						"description": "Number of results to displace or skip over"
+					},
+					{
+						"name": "page",
+						"in": "query",
+						"description": "Number of results of limit length to displace or skip over"
+					},
+					{
+						"name": "slug",
+						"in": "path",
+						"description": "Collection slug"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [
+					""
+				]
+			}
+		}
+	},
+	"definitions": {
+	}
+}
