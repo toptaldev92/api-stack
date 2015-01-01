@@ -156,8 +156,8 @@ function listCompanies()
 			            id = val2['id'];
 			            website = val2['website'];	
 			            
-			            apis = val2['apis'];			            
-			            hasapis = apis.length;	
+			            //apis = val2['apis'];			            
+			           // hasapis = apis.length;	
 	
 		         	    if(tags.indexOf(tag) > -1)
 		            		{
@@ -181,35 +181,7 @@ function listCompanies()
 				            
 				            github = val2['github'];
 				            if(github.length>0){ document.getElementById("github-icon-"+id).href=github; } else { document.getElementById("github-icon-img-"+id).style.display='none'; }
-		            		
-			            	if(hasapis>0)
-			            		{
-			            		$.each(apis, function(key3, val3) {
-			            			
-				            		apiname = val3['name'];
-				            		websiteurl = val3['website-url'];
-				            		swaggerurl = val3['swagger-url'];
-				            		documentationurl = val3['documentation-url'];
-				            			
-									apirow = '<tr>';
-									apirow = apirow + '<td>' + apiname + '</td>';
-									
-									if(websiteurl!='') { apirow = apirow + '<td><a href="' + websiteurl + '" target="_blank" title="Website"><img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-home-icon.jpeg" width="25" /></a></td>'; }
-	
-									if(documentationurl!='') { apirow = apirow + '<td><a href="' + documentationurl + '" target="_blank" title="Documentation"><img src="http://kinlane-productions.s3.amazonaws.com/api-evangelist-site/building-blocks/bw-list.png" width="25" /></a></td>'; }
-
-									if(swaggerurl!='') { apirow = apirow + '<td><a href="' + swaggerurl + '" target="_blank" title="Swagger"><img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-swagger-round.png" width="25" /></a></td>'; }
-																	
-									apirow = apirow + '<tr>';
-									
-									$('#apis-' + id).append(apirow);   
-									 	
-				            		});		
-			            		}
-			            	else
-			            		{
-			            		document.getElementById("apis-cell-"+id).style.display = 'none';
-			            		}	
+		            			
 		            		
 		            		}
 		            		
