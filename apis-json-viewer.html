@@ -59,7 +59,7 @@ title: The API Stack
 
 	    html = '<tr>';
 	    html = html + '<td align="center" colspan="4">';
-	    html = html + '<table border="1" style="" width="75%">'
+	    html = html + '<table border="1">'
 	    
     	return html; 			
 		}		
@@ -168,11 +168,7 @@ title: The API Stack
 				 			} 
 				 		}				 	
 				 	
-				 	}); 
-				 	            
-				 // Close Table
-			 	 html = getClose();
-	             $('#apisjsonView').append(html);                                 
+				 	}); 				 	                                           
 	            				 					 	
 	             html = getAPIListing($apiName,$apiHumanURL,$apiMachineURL)
 	             $('#apisjsonView').append(html); 				 	 				 					 								
@@ -182,6 +178,10 @@ title: The API Stack
 				 $companyMaintainers = company['maintainers'];								
 			});
 			
+			 // Close Table
+		 	 html = getClose();
+             $('#apisjsonView').append(html);  			
+		
 			 // Divider Row
 		 	 html = getRow();
              $('#apisjsonView').append(html);   			
