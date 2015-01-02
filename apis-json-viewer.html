@@ -15,9 +15,22 @@ title: The API Stack
 
 	// Localize Templating, making as editable as possible	
 	
+	function getHeader(name,description,url,image,apijsonurl)
+		{		
+	    html = '<tr>';
+	    html = html + '<td align="left" valign="top" colspan="4">';
+	    html = html + '<a href="' + apijsonurl + '" id="apisjsonicon" title="APIs.json"><img src="https://s3.amazonaws.com/kinlane-productions/api-commons/api-commons-icon.png" width="150" align="right" style="padding: 5px;" /></a>';
+	    html = html + '<a href="' + url + '" title="' + name + '"><img src="' + image + '" width="150" align="left" style="padding: 15px;" /></a>';
+	    html = html + '<a href="' + url + '" style="color: #000; font-size: 22px; text-decoration: none;" title="' + name + '"><strong>' + name + '</strong></a><br />' + description;
+	    html = html + '</td>';
+	    html = html + '</tr>';   	
+    	
+    	return html; 			
+		}		
+	
 	function getRow()
 		{
-    	html = '<tr><td colspan="4" style="padding-left: 200px; padding-top: 5px; padding-bottom: 5px;"><hr /></td></tr>';
+    	html = '<tr><td colspan="4" style="padding-top: 5px; padding-bottom: 5px;"><hr /></td></tr>';
     	return html; 			
 		}	
 	
@@ -61,20 +74,7 @@ title: The API Stack
 	    html = html + '</tr>';
         	
     	return html; 			
-		}	
-		
-	function getHeader(name,description,url,image,apijsonurl)
-		{		
-	    html = '<tr>';
-	    html = html + '<td align="left" valign="top" colspan="4">';
-	    html = html + '<a href="' + apijsonurl + '" id="apisjsonicon" title="APIs.json"><img src="https://s3.amazonaws.com/kinlane-productions/api-commons/api-commons-icon.png" width="75" align="right" style="padding: 5px;" /></a>';
-	    html = html + '<a href="' + url + '" title="' + name + '"><img src="' + image + '" width="150" align="left" style="padding: 15px;" /></a>';
-	    html = html + '<a href="' + url + '" style="color: #000; font-size: 22px; text-decoration: none;" title="' + name + '"><strong>' + name + '</strong></a><br />' + description;
-	    html = html + '</td>';
-	    html = html + '</tr>';   	
-    	
-    	return html; 			
-		}			
+		}					
 
 	function viewAPIsJSON()
 	    {
@@ -102,11 +102,7 @@ title: The API Stack
             
 			 // Set the title
 		 	 html = getTitle('APIs');
-             $('#apisjsonView').append(html);             
-            
-			 // Divider Row
-		 	 html = getRow();
-             $('#apisjsonView').append(html);             
+             $('#apisjsonView').append(html);                                   
             
              $.each(companyAPIs, function(key, val) { 
              	
@@ -165,6 +161,10 @@ title: The API Stack
 				 
 				 $companyMaintainers = company['maintainers'];								
 			});
+			
+			 // Divider Row
+		 	 html = getRow();
+             $('#apisjsonView').append(html);   			
 			
 		});	
 
