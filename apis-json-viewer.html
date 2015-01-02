@@ -8,12 +8,19 @@ title: The API Stack
 
 <script type="text/javascript">
 
-	// Purposely keeping this verbose, and expanded, until I figure out best patterns.
+	// Purposely keeping this verbose, and expanded, until I figure out best patterns for config and extensability
 
   	$PropertyArray = {};
   	$PropertyArray['buildingblocks'] = new Array();
 
-	// Localize Templating, making as editable as possible
+	// Localize Templating, making as editable as possible	
+	
+	function getRow()
+		{
+    	html = '<tr><td colspan="4" style="padding-left: 200px; padding-top: 5px; padding-bottom: 5px;"><hr /></td></tr>';
+    	return html; 			
+		}	
+	
 	function getTitle(title)
 		{
     	html = '<tr><td colspan="4" style="padding-left: 200px; padding-top: 5px; padding-bottom: 5px;"><span style="font-size:20px;"><strong>' + title + '</strong></span></td></tr>';
@@ -89,8 +96,16 @@ title: The API Stack
             companyTags = company['tags'];            
             companyAPIs = company['apis'];
             
+			 // Divider Row
+		 	 html = getRow();
+             $('#apisjsonView').append(html);             
+            
 			 // Set the title
 		 	 html = getTitle('APIs');
+             $('#apisjsonView').append(html);             
+            
+			 // Divider Row
+		 	 html = getRow();
              $('#apisjsonView').append(html);             
             
              $.each(companyAPIs, function(key, val) { 
@@ -932,6 +947,9 @@ title: The API Stack
 	             $('#apisjsonView').append($RateLimits);  	  					 		
 			 	}
             
+			 // Divider Row
+		 	 html = getRow();
+             $('#apisjsonView').append(html);            
             
 	        });		  
              	  	
