@@ -3,24 +3,939 @@ layout: page
 title: The API Stack
 ---
 
-
-<p>This is the detail</p>
-
+<table cellpadding="3" cellspacing="2" border="0" width="50%" style="margin-left: 350px;" id="apisjsonView">
+	<tr>
+		<td align="center" colspan="4"><span style="font-size: 24px;"><strong>APIs.json</strong></span></td>
+	</tr>
+</table>
 
 <script type="text/javascript">
 
+	// Purposely keeping this verbose, and expanded, until I figure out best patterns.
+
+  	$PropertyArray = {};
+  	$PropertyArray['buildingblocks'] = new Array();
+
+	// Localize Templating, making as editable as possible
+	function getTitle(title)
+		{
+    	html = '<tr><td colspan="4" style="padding-left: 200px; padding-top: 5px; padding-bottom: 5px;"><span style="font-size:20px;"><strong>' + title + '</strong></span></td></tr>';
+    	return html; 			
+		}
+		
+	function getBuildingBlockListing(name,url,type)
+		{		
+			
+	    html = '<tr>';
+	    html = html + '<td width="225"></td>';
+	    html = html + '<td width="125" align="center"><a href="' + url + '" title="' + name + '"><img style="padding: 5px;" src="https://s3.amazonaws.com/kinlane-productions/building-blocks/' + type + '.png" width="50"" /></a></td>';
+	    html = html + '<td align="left"">';
+	    html = html + '<a href="' + url + '" style="color: #000; font-size: 16px; text-decoration: none;" title="' + name + '"><strong>' + name + '</strong></a>';
+	    html = html + '</td>';
+	    html = html + '</tr>';
+        	
+    	return html; 			
+		}		
+		
+		
+		
+	function getAPIListing(name,url,machineurl)
+		{		
+
+	    html = '<tr>';
+	    html = html + '<td width="225"></td>';
+	    html = html + '<td width="125" align="center">'
+	    html = html + '<a href="' + url + '" title="Documentation"><img style="padding: 5px;" src="http://kinlane-productions.s3.amazonaws.com/api-evangelist-site/building-blocks/bw-documentation.png" width="50" style="display: inline" /></a>';
+	    if(machineurl!='')
+	    	{
+	    	html = html + '<a href="' + machineurl + '" title="Swagger""><img style="padding: 5px;" src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-swagger-round.png" width="50" style="display: inline" /></a>';
+	    	}
+	    html = html + '</td>';
+	    html = html + '<td align="left">';
+	    html = html + '<a href="' + url + '" style="color: #000; font-size: 16px; text-decoration: none;" title="' + name + '"><strong>' + name + '</strong></a>';
+	    html = html + '</td>';
+	    html = html + '</tr>';
+        	
+    	return html; 			
+		}	
+		
+	function getHeader(name,description,url,image,apijsonurl)
+		{		
+	    html = '<tr>';
+	    html = html + '<td align="left" valign="top" colspan="4">';
+	    html = html + '<a href="' + apijsonurl + '" id="apisjsonicon" title="APIs.json"><img src="https://s3.amazonaws.com/kinlane-productions/api-commons/api-commons-icon.png" width="75" align="right" style="padding: 5px;" /></a>';
+	    html = html + '<a href="' + url + '" title="' + name + '"><img src="' + image + '" width="150" align="left" style="padding: 15px;" /></a>';
+	    html = html + '<a href="' + url + '" style="color: #000; font-size: 22px; text-decoration: none;" title="' + name + '"><strong>' + name + '</strong></a><br />' + description;
+	    html = html + '</td>';
+	    html = html + '</tr>';   	
+    	
+    	return html; 			
+		}			
+
 	function viewAPIsJSON()
 	    {
-	    alert("Viewing APIs.json");
+
+	    //$apisjsonURL = 'sample1.json';
 	    $apisjsonURL = getUrlVar('apisjson');	
+	    
+		var jqxhr = $.getJSON($apisjsonURL, function(company) { 													
 	
-		$.getJSON($apisjsonURL, function(company) { 
-							
-		 	companName = company['name'];
+		 	companyName = company['name'];
+		 	companyDesc = company['description'];
+		 	companyLogo = company['image'];
+		 	companyURL = company['url'];
 		 	
-		 	alert(companName);
-	        
-	        });  	
+		 	// Build a Header
+            html = getHeader(companyName,companyDesc,companyURL,companyLogo,$apisjsonURL);
+            $('#apisjsonView').append(html); 
+            
+            companyTags = company['tags'];            
+            companyAPIs = company['apis'];
+            
+			 // Set the title
+		 	 html = getTitle('APIs');
+             $('#apisjsonView').append(html);             
+            
+             $.each(companyAPIs, function(key, val) { 
+             	
+             	 $apiName = val['name']; 
+             	 $apiDesc = val['description'];
+             	 $apiImage = val['image']; 
+             	 $apiHumanURL = val['humanURL']; 
+             	 $apiBaseURL = val['baseURL'];               	
+	                         	 
+				 $apiTags = val['tags'];
+				
+				 // I want to build an array of all properties = building blocks
+				 $apiProperties = val['properties'];
+				 $.each($apiProperties, function(key2, val2) { 
+				 	
+				 	$propertyType = val2['type'];
+				 	$propertyURL = val2['url'];				 		
+					 		 	
+				 	$URLAlreadyExist = 0;
+					$.each($PropertyArray['buildingblocks'], function(key3, val3) { 
+						
+						$thisType = val3['type'];
+						$thisURL = val3['url'];														 	
+						if($propertyURL==$thisURL)
+							{
+							$URLAlreadyExist = 1;	
+							}
+							
+						});
+
+					if($URLAlreadyExist==0)
+						{	 	
+					 	$A = {};
+					 	$A['type'] = $propertyType;
+					 	$A['url'] = $propertyURL;
+					 	
+					 	$PropertyArray['buildingblocks'].push($A);
+				 		}
+
+				 	if($propertyType=='Swagger')
+					 	{
+					 	if($propertyURL!='')
+					 		{
+				 			$apiMachineURL = $propertyURL;
+				 			} 
+				 		}				 	
+				 	
+				 	}); 
+				 	
+	             html = getAPIListing($apiName,$apiHumanURL,$apiMachineURL)
+	             $('#apisjsonView').append(html); 				 	 				 					 								
+				
+				 $apiContact = val['contact'];
+				 
+				 $companyMaintainers = company['maintainers'];								
+			});
+			
+		});	
+
+		// Set another completion function for the request above
+		jqxhr.complete(function() {
+		  console.log( "second complete" );
+		  
+			$AnyOnboarding = 0;
+			$Onboarding = "";	
+			
+			$AnyDocumentation = 0;
+			$Documentation = "";	
+			
+			$AnyAuth = 0;
+			$Auth = "";		
+			
+			$AnyCodeManage = 0;
+			$CodeManage = "";	
+			
+			$AnyCodeLibrary = 0;
+			$CodeLibrary = "";	
+			
+			$AnyCodeSDK = 0;
+			$CodeSDK = "";	
+			
+			$AnyMobile = 0;
+			$Mobile = "";														  
+  
+			$AnyPDK = 0;
+			$PDK = "";	
+			
+			$AnySelfServiceSupport = 0;
+			$SelfServiceSupport = "";	
+			
+			$AnyDirectSupport = 0;
+			$DirectSupport = "";	
+			
+			$AnyComm = 0;
+			$Comm = "";	
+			
+			$AnyUpdates = 0;
+			$Updates = "";	
+			
+			$AnyServiceLevels = 0;
+			$ServiceLevels = "";
+			
+			$AnyResources = 0;
+			$Resources = "";	
+			
+			$AnyLegal = 0;
+			$Legal = "";			
+			
+			$AnyEmbeddables = 0;
+			$Embeddables = "";	
+			
+			$AnyEnvironment = 0;
+			$Environment = "";	
+			
+			$AnyRateLimits = 0;
+			$RateLimits = "";														
+	  
+			$.each($PropertyArray['buildingblocks'], function(key3, val3) { 
+				
+				thisType = val3['type'];
+				thisURL = val3['url'];
+						
+				// Onboarding - I'm looking for specific onboarding building blocks					
+				if(thisType=='X-portal')
+					{							
+					thisName = 'Developer Portal';
+					$Onboarding = $Onboarding + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyOnboarding=1;
+					}
+				if(thisType=='X-getting-started')
+					{							
+					thisName = 'Getting Started';
+					$Onboarding = $Onboarding + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyOnboarding=1;
+					}
+				if(thisType=='X-selfservice-registration')
+					{							
+					thisName = 'Self-Service Registration';
+					$Onboarding = $Onboarding + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyOnboarding=1;
+					}
+				if(thisType=='X-best-practices')
+					{							
+					thisName = 'Best Practices';
+					$Onboarding = $Onboarding + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyOnboarding=1;
+					}															
+				if(thisType=='X-faq')
+					{							
+					thisName = 'Frequently Asked Questions';
+					$Onboarding = $Onboarding + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyOnboarding=1;
+					}					
+
+				// Documentation - I'm looking for specific documentation building blocks					
+				if(thisType=='X-documentation')
+					{							
+					thisName = 'Documentation';
+					$Documentation = $Documentation + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyDocumentation=1;
+					}
+				if(thisType=='X-interactive-documentation')
+					{							
+					thisName = 'Interactive Documentation';
+					$Documentation = $Documentation + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyDocumentation=1;
+					}
+				if(thisType=='X-api-explorer')
+					{							
+					thisName = 'API Explorer / Console';
+					$Documentation = $Documentation + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyDocumentation=1;
+					}
+				if(thisType=='X-error-response-codes')
+					{							
+					thisName = 'Error Codes';
+					$Documentation = $Documentation + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyDocumentation=1;
+					}																			
+
+				// Authentication - I'm looking for specific authentication building blocks					
+				if(thisType=='X-authentication-overview')
+					{							
+					thisName = 'Documentation';
+					$Auth = $Auth + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyAuth++;
+					}
+				if(thisType=='X-authentication-tester')
+					{							
+					thisName = 'Interactive Documentation';
+					$Auth = $Auth + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyAuth++;
+					}																				
+
+				// Code Management - I'm looking for specific code management building blocks					
+				if(thisType=='X-github')
+					{							
+					thisName = 'Github';
+					$CodeManage = $CodeManage + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyCodeManage++;
+					}
+				if(thisType=='X-application-gallery')
+					{							
+					thisName = 'Application Gallery';
+					$CodeManage = $CodeManage + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyCodeManage++;
+					}		
+				if(thisType=='X-starter-projects')
+					{							
+					thisName = 'Starter Projects';
+					$CodeManage = $CodeManage + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyCodeManage++;
+					}																							
+		 	
+				// Code Libraries - I'm looking for specific code library building blocks					
+				if(thisType=='X-javascript-library')
+					{							
+					thisName = 'JavaScript Library';
+					$CodeLibrary = $CodeLibrary + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyCodeLibrary++;
+					}
+				if(thisType=='X-php-library')
+					{							
+					thisName = 'PHP Library';
+					$CodeLibrary = $CodeLibrary + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyCodeLibrary++;
+					}		
+				if(thisType=='X-python-library')
+					{							
+					thisName = 'Python Library';
+					$CodeLibrary = $CodeLibrary + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyCodeLibrary++;
+					}
+				if(thisType=='X-ruby-library')
+					{							
+					thisName = 'Ruby Library';
+					$CodeLibrary = $CodeLibrary + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyCodeLibrary++;
+					}
+				if(thisType=='X-nodejs-library')
+					{							
+					thisName = 'Node.js Library';
+					$CodeLibrary = $CodeLibrary + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyCodeLibrary++;
+					}	
+				if(thisType=='X-java-library')
+					{							
+					thisName = 'Java Library';
+					$CodeLibrary = $CodeLibrary + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyCodeLibrary++;
+					}
+				if(thisType=='X-net-library')
+					{							
+					thisName = '.Net Library';
+					$CodeLibrary = $CodeLibrary + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyCodeLibrary++;
+					}																																									
+				 	
+				// Code SDK - I'm looking for specific code sdk building blocks					
+				if(thisType=='X-javascript-sdk')
+					{							
+					thisName = 'JavaScript SDK';
+					$CodeSDK = $CodeSDK + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyCodeSDK++;
+					}
+				if(thisType=='X-php-sdk')
+					{							
+					thisName = 'PHP SDK';
+					$CodeSDK = $CodeSDK + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyCodeSDK++;
+					}		
+				if(thisType=='X-python-sdk')
+					{							
+					thisName = 'Python SDK';
+					$CodeSDK = $CodeSDK + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyCodeSDK++;
+					}
+				if(thisType=='X-ruby-sdk')
+					{							
+					thisName = 'Ruby SDK';
+					$CodeSDK = $CodeSDK + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyCodeSDK++;
+					}
+				if(thisType=='X-nodejs-sdk')
+					{							
+					thisName = 'Node.js SDK';
+					$CodeSDK = $CodeSDK + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyCodeSDK++;
+					}	
+				if(thisType=='X-java-sdk')
+					{							
+					thisName = 'Java SDK';
+					$CodeSDK = $CodeSDK + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyCodeSDK++;
+					}
+				if(thisType=='X-net-sdk')
+					{							
+					thisName = '.Net SDK';
+					$CodeSDK = $CodeSDK + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyCodeSDK++;
+					}																																													 	
+
+				// Mobile SDK - I'm looking for specific code management building blocks					
+				if(thisType=='X-ios-sdk')
+					{							
+					thisName = 'iOS SDK';
+					$Mobile = $Mobile + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyMobile++;
+					}
+				if(thisType=='X-android-sdk')
+					{							
+					thisName = 'Android SDK';
+					$Mobile = $Mobile + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyMobile++;
+					}		
+				if(thisType=='X-apperyio')
+					{							
+					thisName = 'Appery.io';
+					$Mobile = $Mobile + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyMobile++;
+					}																												 	
+				 			 				 					 					 				 					 					
+				 // Mobile SDK - I'm looking for specific code management building blocks					
+				if(thisType=='X-salesforce')
+					{							
+					thisName = 'SalesForce';
+					$PDK = $PDK + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyPDK++;
+					}
+				if(thisType=='X-wordpress')
+					{							
+					thisName = 'WordPress';
+					$PDK = $PDK + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyPDK++;
+					}		
+				if(thisType=='X-heroku')
+					{							
+					thisName = 'Heroku';
+					$PDK = $PDK + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyPDK++;
+					}	
+				if(thisType=='X-drupal')
+					{							
+					thisName = 'Drupal';
+					$PDK = $PDK + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyPDK++;
+					}
+				if(thisType=='X-joomla')
+					{							
+					thisName = 'Joomla';
+					$PDK = $PDK + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyPDK++;
+					}	
+				if(thisType=='X-google-app-engine')
+					{							
+					thisName = 'Google App Engine';
+					$PDK = $PDK + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyPDK++;
+					}	
+				if(thisType=='X-firefox-addon')
+					{							
+					thisName = 'Firefox Add-on';
+					$PDK = $PDK + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyPDK++;
+					}
+				if(thisType=='X-chrome-extension')
+					{							
+					thisName = 'Chrome Extension';
+					$PDK = $PDK + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyPDK++;
+					}																																												
+
+				// Self-Service Support - I'm looking for specific self-service support building blocks					
+				if(thisType=='X-forum')
+					{							
+					thisName = 'Forum';
+					$SelfServiceSupport = $SelfServiceSupport + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnySelfServiceSupport++;
+					}
+				if(thisType=='X-forum-rss')
+					{							
+					thisName = 'Forum RSS';
+					$SelfServiceSupport = $SelfServiceSupport + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnySelfServiceSupport++;
+					}		
+				if(thisType=='X-stack-overflow')
+					{							
+					thisName = 'Stack Overflow';
+					$SelfServiceSupport = $SelfServiceSupport + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnySelfServiceSupport++;
+					}	
+				if(thisType=='X-knowledgebase')
+					{							
+					thisName = 'Knowledgebase';
+					$SelfServiceSupport = $SelfServiceSupport + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnySelfServiceSupport++;
+					}																											
+				 	
+				// Direct Support - I'm looking for specific self-service support building blocks					
+				if(thisType=='X-email')
+					{							
+					thisName = 'Email';
+					$DirectSupport = $DirectSupport + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyDirectSupport++;
+					}
+				if(thisType=='X-phone')
+					{							
+					thisName = 'Phone';
+					$DirectSupport = $DirectSupport + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyDirectSupport++;
+					}		
+				if(thisType=='X-contact-form')
+					{							
+					thisName = 'Contact Form';
+					$DirectSupport = $DirectSupport + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyDirectSupport++;
+					}	
+				if(thisType=='X-ticket-system')
+					{							
+					thisName = 'Ticket System';
+					$DirectSupport = $DirectSupport + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyDirectSupport++;
+					}		
+				if(thisType=='X-office-hours')
+					{							
+					thisName = 'Office Hours';
+					$DirectSupport = $DirectSupport + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyDirectSupport++;
+					}
+				if(thisType=='X-calendar')
+					{							
+					thisName = 'Calendar';
+					$DirectSupport = $DirectSupport + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyDirectSupport++;
+					}	
+				if(thisType=='X-paid-support-plans')
+					{							
+					thisName = 'Paid Support Plans';
+					$DirectSupport = $DirectSupport + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyDirectSupport++;
+					}																																												
+			
+				// Communication - I'm looking for specific communication building blocks					
+				if(thisType=='X-blog')
+					{							
+					thisName = 'Blog';
+					$Comm = $Comm + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyComm++;
+					}
+				if(thisType=='X-blog-rss-feed')
+					{							
+					thisName = 'Blog RSS';
+					$Comm = $Comm + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyComm++;
+					}		
+				if(thisType=='X-twitter')
+					{							
+					thisName = 'Twitter';
+					$Comm = $Comm + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyComm++;
+					}			
+				if(thisType=='X-facebook')
+					{							
+					thisName = 'Facebook';
+					$Comm = $Comm + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyComm++;
+					}
+				if(thisType=='X-google')
+					{							
+					thisName = 'Google Plus';
+					$Comm = $Comm + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyComm++;
+					}	
+				if(thisType=='X-email')
+					{							
+					thisName = 'Email';
+					$Comm = $Comm + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyComm++;
+					}					
+				if(thisType=='X-email-newsletter')
+					{							
+					thisName = 'Email Newsletter';
+					$Comm = $Comm + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyComm++;
+					}
+					
+				// Updates - I'm looking for specific updates building blocks					
+				if(thisType=='X-status-dashboard')
+					{							
+					thisName = 'Status Dashboard';
+					$Updates = $Updates + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyUpdates++;
+					}
+				if(thisType=='X-status-rss')
+					{							
+					thisName = 'Status RSS';
+					$Updates = $Updates + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyUpdates++;
+					}		
+				if(thisType=='X-roadmap')
+					{							
+					thisName = 'Roadmap';
+					$Updates = $Updates + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyUpdates++;
+					}			
+				if(thisType=='X-change-log')
+					{							
+					thisName = 'Change Log';
+					$Updates = $Updates + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyUpdates++;
+					}
+					
+				// Service Levels - I'm looking for specific service level building blocks					
+				if(thisType=='X-pricing')
+					{							
+					thisName = 'Pricing';
+					$ServiceLevels = $ServiceLevels + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyServiceLevels++;
+					}
+				if(thisType=='X-partner-program')
+					{							
+					thisName = 'Partner Program';
+					$ServiceLevels = $ServiceLevels + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyServiceLevels++;
+					}
+				if(thisType=='X-certification-program')
+					{							
+					thisName = 'Certification Program';
+					$ServiceLevels = $ServiceLevels + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyServiceLevels++;
+					}										
+					
+				// Resources - I'm looking for specific service level building blocks					
+				if(thisType=='X-case-studies')
+					{							
+					thisName = 'Case Studies';
+					$Resources = $Resources + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyResources++;
+					}
+				if(thisType=='X-howto-guides')
+					{							
+					thisName = 'Guides';
+					$Resources = $Resources + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyResources++;
+					}					
+				if(thisType=='X-white-papers')
+					{							
+					thisName = 'White Papers';
+					$Resources = $Resources + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyResources++;
+					}
+				if(thisType=='X-webinars')
+					{							
+					thisName = 'Webinars';
+					$Resources = $Resources + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyResources++;
+					}
+				if(thisType=='X-events')
+					{							
+					thisName = 'Events';
+					$Resources = $Resources + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyResources++;
+					}	
+				if(thisType=='X-slideshare')
+					{							
+					thisName = 'Events';
+					$Resources = $Resources + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyResources++;
+					}
+				if(thisType=='X-codecademy')
+					{							
+					thisName = 'Events';
+					$Resources = $Resources + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyResources++;
+					}														
+
+				// Legal - I'm looking for specific legal building blocks					
+				if(thisType=='X-terms-of-services')
+					{							
+					thisName = 'Terms of Service';
+					$Legal = $Legal + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyLegal++;
+					}
+				if(thisType=='X-privacy-policy')
+					{							
+					thisName = 'Privacy';
+					$Legal = $Legal + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyLegal++;
+					}
+				if(thisType=='X-branding')
+					{							
+					thisName = 'Branding';
+					$Legal = $Legal + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyLegal++;
+					}	
+				if(thisType=='X-service-level-agreement')
+					{							
+					thisName = 'Service Level Agreement';
+					$Legal = $Legal + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyLegal++;
+					}														
+			
+				// Emeddable - I'm looking for specific embeddable building blocks					
+				if(thisType=='X-widgets')
+					{							
+					thisName = 'Widgets';
+					$Embeddable = $Embeddable + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$Any$Embeddable++;
+					}
+				if(thisType=='X-buttons')
+					{							
+					thisName = 'Widgets';
+					$Embeddable = $Embeddable + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$Any$Embeddable++;
+					}	
+				if(thisType=='X-badges')
+					{							
+					thisName = 'Badges';
+					$Embeddable = $Embeddable + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$Any$Embeddable++;
+					}									
+				if(thisType=='X-javascript-api')
+					{							
+					thisName = 'Badges';
+					$Embeddable = $Embeddable + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$Any$Embeddable++;
+					}	
+				if(thisType=='X-widget-builder')
+					{							
+					thisName = 'Badges';
+					$Embeddable = $Embeddable + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$Any$Embeddable++;
+					}					
+
+				// Environment - I'm looking for specific environment building blocks					
+				if(thisType=='X-sandbox')
+					{							
+					thisName = 'Sandbox';
+					$Environment = $Environment + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyEnvironment++;
+					}
+				if(thisType=='X-simulator')
+					{							
+					thisName = 'Simulator';
+					$Environment = $Environment + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyEnvironment++;
+					}
+				if(thisType=='X-production')
+					{							
+					thisName = 'Production';
+					$Environment = $Environment + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyEnvironment++;
+					}										
+
+				// Rate Limits - I'm looking for specific rate limit building blocks					
+				if(thisType=='X-rate-limits-page')
+					{							
+					thisName = 'Rate Limits Page';
+					$RateLimits = $RateLimits + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyRateLimits++;
+					}	
+				if(thisType=='X-rate-limit-information-inline-in-docs')
+					{							
+					thisName = 'Rate Limits Inline In Docs';
+					$RateLimits = $RateLimits + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyRateLimits++;
+					}
+				if(thisType=='X-account-rate-limit-api')
+					{							
+					thisName = 'Rate Limit API';
+					$RateLimits = $RateLimits + getBuildingBlockListing(thisName,thisURL,thisType); 						 
+					$AnyRateLimits++;
+					}								
+
+				});   
+				
+			 if($AnyOnboarding==1)
+			 	{
+				 // Set the title
+			 	 html = getTitle('Onboarding');
+	             $('#apisjsonView').append(html);  		             
+				 // add the support building blocks we've just build
+	             $('#apisjsonView').append($Onboarding);  	  					 		
+			 	}				
+	
+			 if($AnyDocumentation==1)
+			 	{
+				 // Set the title
+			 	 html = getTitle('Documentation');
+	             $('#apisjsonView').append(html);  		             
+				 // add the support building blocks we've just build
+	             $('#apisjsonView').append($Documentation);  	  					 		
+			 	}			
+			
+			 if($AnyAuth>0)
+			 	{
+				 // Set the title
+			 	 html = getTitle('Authentication');
+	             $('#apisjsonView').append(html);  		             
+				 // add the support building blocks we've just build
+	             $('#apisjsonView').append($Auth);  	  					 		
+			 	}				
+			
+			 if($AnyCodeManage>0)
+			 	{
+				 // Set the title
+			 	 html = getTitle('Code Management');
+	             $('#apisjsonView').append(html);  		             
+				 // add the support building blocks we've just build
+	             $('#apisjsonView').append($CodeManage);  	  					 		
+			 	}				
+				
+			 if($AnyCodeLibrary>0)
+			 	{
+				 // Set the title
+			 	 html = getTitle('Code Libraries');
+	             $('#apisjsonView').append(html);  		             
+				 // add the support building blocks we've just build
+	             $('#apisjsonView').append($CodeLibrary);  	  					 		
+			 	}				
+				
+			 if($AnyCodeSDK>0)
+			 	{
+				 // Set the title
+			 	 html = getTitle('Code Libraries');
+	             $('#apisjsonView').append(html);  		             
+				 // add the support building blocks we've just build
+	             $('#apisjsonView').append($CodeSDK);  	  					 		
+			 	}					
+				
+			 if($AnyMobile>0)
+			 	{
+				 // Set the title
+			 	 html = getTitle('Mobile SDKs');
+	             $('#apisjsonView').append(html);  		             
+				 // add the support building blocks we've just build
+	             $('#apisjsonView').append($Mobile);  	  					 		
+			 	}				
+				
+			 if($AnyPDK>0)
+			 	{
+				 // Set the title
+			 	 html = getTitle('Platform Development Kits (PDK)');
+	             $('#apisjsonView').append(html);  		             
+				 // add the support building blocks we've just build
+	             $('#apisjsonView').append($PDK);  	  					 		
+			 	}				
+			
+			 if($AnySelfServiceSupport>0)
+			 	{
+				 // Set the title
+			 	 html = getTitle('Self-Service Support');
+	             $('#apisjsonView').append(html);  		             
+				 // add the support building blocks we've just build
+	             $('#apisjsonView').append($SelfServiceSupport);  	  					 		
+			 	}				
+			
+			 if($AnyDirectSupport>0)
+			 	{
+				 // Set the title
+			 	 html = getTitle('Direct Support');
+	             $('#apisjsonView').append(html);  		             
+				 // add the support building blocks we've just build
+	             $('#apisjsonView').append($DirectSupport);  	  					 		
+			 	}				
+				
+			 if($AnyComm>0)
+			 	{
+				 // Set the title
+			 	 html = getTitle('Communication');
+	             $('#apisjsonView').append(html);  		             
+				 // add the comm building blocks
+	             $('#apisjsonView').append($Comm);  	  					 		
+			 	}				           	
+            
+			 if($AnyUpdates>0)
+			 	{
+				 // Set the title
+			 	 html = getTitle('Communication');
+	             $('#apisjsonView').append(html);  		             
+				 // add the comm building blocks
+	             $('#apisjsonView').append($Updates);  	  					 		
+			 	}			
+
+			 if($AnyServiceLevels>0)
+			 	{
+				 // Set the title
+			 	 html = getTitle('Communication');
+	             $('#apisjsonView').append(html);  		             
+				 // add the comm building blocks
+	             $('#apisjsonView').append($ServiceLevels);  	  					 		
+			 	}			
+
+			 if($AnyResources>0)
+			 	{
+				 // Set the title
+			 	 html = getTitle('Resources');
+	             $('#apisjsonView').append(html);  		             
+				 // add the comm building blocks
+	             $('#apisjsonView').append($Resources);  	  					 		
+			 	}			 	
+
+			 if($AnyLegal>0)
+			 	{
+				 // Set the title
+			 	 html = getTitle('Legal');
+	             $('#apisjsonView').append(html);  		             
+				 // add the comm building blocks
+	             $('#apisjsonView').append($Legal);  	  					 		
+			 	}			 				
+
+			 if($AnyEmbeddables>0)
+			 	{
+				 // Set the title
+			 	 html = getTitle('Embeddable');
+	             $('#apisjsonView').append(html);  		             
+				 // add the comm building blocks
+	             $('#apisjsonView').append($Embeddables);  	  					 		
+			 	}			
+
+			 if($AnyEnvironment>0)
+			 	{
+				 // Set the title
+			 	 html = getTitle('Environment');
+	             $('#apisjsonView').append(html);  		             
+				 // add the comm building blocks
+	             $('#apisjsonView').append($Environment);  	  					 		
+			 	}			
+
+			if($AnyRateLimits>0)
+			 	{
+				 // Set the title
+			 	 html = getTitle('Rate Limits');
+	             $('#apisjsonView').append(html);  		             
+				 // add the comm building blocks
+	             $('#apisjsonView').append($RateLimits);  	  					 		
+			 	}
+            
+            
+	        });		  
+             	  	
 	    } 
     
 viewAPIsJSON();
