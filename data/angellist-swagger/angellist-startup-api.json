@@ -1,0 +1,118 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "AngelList Startup API",
+		"description": "Get a company's information given an id. quality is an integer between 0 and 10, calculated every 48 hours, and reflects the company's rank on AngelList. Higher numbers mean better quality. community_profile is true if the company's profile was automatically generated and has not been 'claimed' by anyone at the company.",
+		"termsOfService": "https://angel.co/terms",
+		"version": "1.0"
+	},
+	"host": "api.angel.co",
+	"basePath": "/1",
+	"schemes": [
+		"http"
+	],
+	"produces": [
+		"application/json"
+	],
+	"consumes": [
+		"application/json"
+	],
+	"paths": {
+		"/startups": {
+			"get": {
+				"summary": "Startups On AngelList",
+				"description": "Returns the firehose of fundraising companies on AngelList. Results are paginated and ordered by the date on which the round was listed.",
+				"operationId": "getStartups",
+				"parameters": [
+					{
+						"name": "filter",
+						"in": "query",
+						"description": "Keyword to filter search by",
+						"type": "string",
+						"format": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful Start Response"
+					}
+				},
+				"tags": [
+					"Startups",
+					" Businesses",
+					" Companies"
+				]
+			}
+		}
+	},
+	"definitions": {
+		"Startup": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"hidden": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"community_profile": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"logo_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"thumb_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"quality": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"product_desc": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"high_concept": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"follower_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"company_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"created_at": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"updated_at": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"twitter_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"blog_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"video_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}
