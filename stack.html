@@ -118,21 +118,28 @@ function listCompanies()
     	}	
     
    // alert("companies!");
-    	
 	$.getJSON('data/companies.json', function(companies) { 
 
 	    $.getJSON('data/tags.json', function(data) {
 
 	    	 tagcount = data['tags'].length;
 	    	 companycount = companies['company'].length;
-	    	 document.getElementById("summary-count").innerHTML = companycount + ' federal agencies represented so far... ';
+	    	 document.getElementById("summary-count").innerHTML = companycount + ' federal agencies represented so far... ';	    	 	
 	    	 	
+  			var select = document.getElementById("tag-select");    	 	
+	    	selectCount = 1;
 	         $.each(data['tags'], function(key, val) {         	   
 	           
 	            tag = val['tag'];             
 	            name = val['name'];
 	            slug = val['slug'];
-	            console.log(slug + " == " + defaultTag);
+	            
+		        var option = document.createElement('option');
+		        option.text = name;
+		        option.value = slug;
+		        select.add(option, selectCount);	            
+				selectCount ++;
+				
 				if(slug==defaultTag)
 					{
 				
@@ -222,7 +229,7 @@ function listCompanies()
 	        });
         
         }); 	
-    } 
+    }     
     
 listCompanies();
 </script>
