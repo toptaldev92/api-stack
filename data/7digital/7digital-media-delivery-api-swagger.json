@@ -3,7 +3,7 @@
 	"info": {
 		"title": "7digital Media Delivery API",
 		"description": "The Media Delivery API allows end users to download or stream full-length tracks and previews.",
-		"termsOfService": null,
+		"termsOfService": "",
 		"version": "1.2"
 	},
 	"host": "stream.svc.7digital.net",
@@ -886,62 +886,52 @@
 					{
 						"name": "country",
 						"in": "query",
-						"description": "The 2 letter ISO country code, as with our other endpoints. Should be the country where the user originated the stream from (e.g. set to US if the stream was played by a US user). Please note it can only be placed as a query string parameter, not in the POST body, or authorisation headers if those are used.",
-						"type": "string"
+						"description": "The 2 letter ISO country code, as with our other endpoints. Should be the country where the user originated the stream from (e.g. set to US if the stream was played by a US user). Please note it can only be placed as a query string parameter, not in the POST body, or authorisation headers if those are used."
 					},
 					{
 						"name": "dateTimePlayed",
 						"in": "query",
-						"description": "The date and time when the track was played. Should be in the ISO 8601 format.",
-						"type": "string"
+						"description": "The date and time when the track was played. Should be in the ISO 8601 format."
 					},
 					{
 						"name": "errorUrl",
 						"in": "query",
-						"description": "URL encoded callback URL in the event of an error.",
-						"type": "url"
+						"description": "URL encoded callback URL in the event of an error."
 					},
 					{
 						"name": "formatId",
 						"in": "query",
-						"description": "The 7digital ID of the format streamed.",
-						"type": "integer"
+						"description": "The 7digital ID of the format streamed."
 					},
 					{
 						"name": "oauth_token",
 						"in": "query",
-						"description": "Users OAuth access token.",
-						"type": "string"
+						"description": "Users OAuth access token."
 					},
 					{
 						"name": "releaseId",
 						"in": "query",
-						"description": "The 7digital ID of the release that was streamed.",
-						"type": "integer"
+						"description": "The 7digital ID of the release that was streamed."
 					},
 					{
 						"name": "totalTimePlayed",
 						"in": "query",
-						"description": "The total time the track was streamed in seconds (or 0 if it was only pre-fetched and never played).",
-						"type": "string"
+						"description": "The total time the track was streamed in seconds (or 0 if it was only pre-fetched and never played)."
 					},
 					{
 						"name": "trackId",
 						"in": "query",
-						"description": "The 7digital ID of the track that was streamed.",
-						"type": "integer"
+						"description": "The 7digital ID of the track that was streamed."
 					},
 					{
 						"name": "userAgent",
 						"in": "query",
-						"description": "Details of the device model and application version used to play the track.",
-						"type": "string"
+						"description": "Details of the device model and application version used to play the track."
 					},
 					{
 						"name": "userId",
 						"in": "query",
-						"description": "The identifier of the user that played that track. Please note this must be in the body and is not a user id for authorisation purposes (as this endpoint is 2-leg OAuth signed). Its just for reporting purposes.",
-						"type": "string"
+						"description": "The identifier of the user that played that track. Please note this must be in the body and is not a user id for authorisation purposes (as this endpoint is 2-leg OAuth signed). Its just for reporting purposes."
 					}
 				],
 				"responses": {
@@ -968,14 +958,12 @@
 					{
 						"name": "country",
 						"in": "query",
-						"description": "2 letter ISO country code where the play originates. Used for store access and label reporting.",
-						"type": "string"
+						"description": "2 letter ISO country code where the play originates. Used for store access and label reporting."
 					},
 					{
 						"name": "trackId",
 						"in": "query",
-						"description": "The 7digital ID of the track.",
-						"type": "integer"
+						"description": "The 7digital ID of the track."
 					}
 				],
 				"responses": {
@@ -1002,32 +990,27 @@
 					{
 						"name": "clientId",
 						"in": "query",
-						"description": "A unique identifier for the current device streaming the track. This should be the same clientId used to register the device for offline play with the user/unlimitedStreaming/offline endpoint.",
-						"type": "string"
+						"description": "A unique identifier for the current device streaming the track. This should be the same clientId used to register the device for offline play with the user/unlimitedStreaming/offline endpoint."
 					},
 					{
 						"name": "country",
 						"in": "query",
-						"description": "Two character country code. If not supplied, this request will default to GB.",
-						"type": "string"
+						"description": "Two character country code. If not supplied, this request will default to GB."
 					},
 					{
 						"name": "formatId",
 						"in": "query",
-						"description": "The 7digital ID of the format requested. Please contact us for available formats.",
-						"type": "integer"
+						"description": "The 7digital ID of the format requested. Please contact us for available formats."
 					},
 					{
 						"name": "oauth_token",
 						"in": "query",
-						"description": "Users OAuth access token.",
-						"type": "string"
+						"description": "Users OAuth access token."
 					},
 					{
 						"name": "trackId",
 						"in": "query",
-						"description": "The 7digital ID of the track to be streamed.",
-						"type": "integer"
+						"description": "The 7digital ID of the track to be streamed."
 					}
 				],
 				"responses": {
@@ -1054,26 +1037,22 @@
 					{
 						"name": "country",
 						"in": "query",
-						"description": "Two character country code. If not supplied, this request will default to GB.",
-						"type": "string"
+						"description": "Two character country code. If not supplied, this request will default to GB."
 					},
 					{
 						"name": "formatId",
 						"in": "query",
-						"description": "The 7digital ID of the format requested. Please contact us for available formats.",
-						"type": "integer"
+						"description": "The 7digital ID of the format requested. Please contact us for available formats."
 					},
 					{
 						"name": "oauth_token / userId",
 						"in": "query",
-						"description": "If you hold a 7digital oauth access token for the user streaming the track this needs to be provided. If not, you can pass your own identifier of the user (ID, GUID, username, etc). For streaming services that dont require users to sign, please contact us for alternative options of providing user identification (e.g. device IDs, autogenerated IDs stored in a cookie).",
-						"type": "string"
+						"description": "If you hold a 7digital oauth access token for the user streaming the track this needs to be provided. If not, you can pass your own identifier of the user (ID, GUID, username, etc). For streaming services that dont require users to sign, please contact us for alternative options of providing user identification (e.g. device IDs, autogenerated IDs stored in a cookie)."
 					},
 					{
 						"name": "trackId",
 						"in": "query",
-						"description": "The 7digital ID of the track to be streamed.",
-						"type": "integer"
+						"description": "The 7digital ID of the track to be streamed."
 					}
 				],
 				"responses": {
@@ -1100,26 +1079,22 @@
 					{
 						"name": "country",
 						"in": "query",
-						"description": "Two character country code. If not supplied, this request will default to GB.",
-						"type": "string"
+						"description": "Two character country code. If not supplied, this request will default to GB."
 					},
 					{
 						"name": "formatId",
 						"in": "query",
-						"description": "The 7digital ID of the format requested. Please contact us for available formats.",
-						"type": "integer"
+						"description": "The 7digital ID of the format requested. Please contact us for available formats."
 					},
 					{
 						"name": "oauth_token",
 						"in": "query",
-						"description": "Users OAuth access token.",
-						"type": "string"
+						"description": "Users OAuth access token."
 					},
 					{
 						"name": "trackId",
 						"in": "query",
-						"description": "The 7digital ID of the track to be streamed.",
-						"type": "integer"
+						"description": "The 7digital ID of the track to be streamed."
 					}
 				],
 				"responses": {
@@ -1146,32 +1121,27 @@
 					{
 						"name": "clientId",
 						"in": "query",
-						"description": "A unique identifier for the current device streaming the track. Generally a music label requirement, this will allow us to block multiple devices from streaming on the same user account (see above for more information).",
-						"type": "string"
+						"description": "A unique identifier for the current device streaming the track. Generally a music label requirement, this will allow us to block multiple devices from streaming on the same user account (see above for more information)."
 					},
 					{
 						"name": "country",
 						"in": "query",
-						"description": "Two character country code. If not supplied, this request will default to GB.",
-						"type": "string"
+						"description": "Two character country code. If not supplied, this request will default to GB."
 					},
 					{
 						"name": "formatId",
 						"in": "query",
-						"description": "The 7digital ID of the format requested. Please contact us for available formats.",
-						"type": "integer"
+						"description": "The 7digital ID of the format requested. Please contact us for available formats."
 					},
 					{
 						"name": "oauth_token",
 						"in": "query",
-						"description": "Users OAuth access token.",
-						"type": "string"
+						"description": "Users OAuth access token."
 					},
 					{
 						"name": "trackId",
 						"in": "query",
-						"description": "The 7digital ID of the track to be streamed.",
-						"type": "integer"
+						"description": "The 7digital ID of the track to be streamed."
 					}
 				],
 				"responses": {
@@ -1198,14 +1168,12 @@
 					{
 						"name": "oauth_token",
 						"in": "query",
-						"description": "Users OAuth access token.",
-						"type": "string"
+						"description": "Users OAuth access token."
 					},
 					{
 						"name": "purchaseId",
 						"in": "query",
-						"description": "This is the 7digital ID of the purchase as returned by the user/purchase/* or user/deliveritem methods.",
-						"type": "integer"
+						"description": "This is the 7digital ID of the purchase as returned by the user/purchase/* or user/deliveritem methods."
 					}
 				],
 				"responses": {
@@ -1232,20 +1200,17 @@
 					{
 						"name": "formatId",
 						"in": "query",
-						"description": "The 7digital ID of the format requested (from the list provided for each track by the purchasing API or locker response).",
-						"type": "integer"
+						"description": "The 7digital ID of the format requested (from the list provided for each track by the purchasing API or locker response)."
 					},
 					{
 						"name": "oauth_token",
 						"in": "query",
-						"description": "Users OAuth access token.",
-						"type": "string"
+						"description": "Users OAuth access token."
 					},
 					{
 						"name": "releaseId",
 						"in": "query",
-						"description": "The 7digital ID of the previously purchased release by the user to be downloaded.",
-						"type": "integer"
+						"description": "The 7digital ID of the previously purchased release by the user to be downloaded."
 					}
 				],
 				"responses": {
@@ -1272,62 +1237,52 @@
 					{
 						"name": "country",
 						"in": "query",
-						"description": "The 2 letter ISO country code, as with our other endpoints. Should be the country where the user originated the stream from (e.g. set to US if the stream was played by a US user). Please note: this parameter can only be placed in the query string, not in the POST body or authorisation headers.",
-						"type": "string"
+						"description": "The 2 letter ISO country code, as with our other endpoints. Should be the country where the user originated the stream from (e.g. set to US if the stream was played by a US user). Please note: this parameter can only be placed in the query string, not in the POST body or authorisation headers."
 					},
 					{
 						"name": "dateTimePlayed",
 						"in": "query",
-						"description": "The date and time when the track was played. Should be in the ISO 8601 format.",
-						"type": "string"
+						"description": "The date and time when the track was played. Should be in the ISO 8601 format."
 					},
 					{
 						"name": "formatId",
 						"in": "query",
-						"description": "The 7digital ID of the format streamed.",
-						"type": "integer"
+						"description": "The 7digital ID of the format streamed."
 					},
 					{
 						"name": "oauth_token",
 						"in": "query",
-						"description": "Users OAuth access token.",
-						"type": "string"
+						"description": "Users OAuth access token."
 					},
 					{
 						"name": "oauth_token / userid",
 						"in": "query",
-						"description": "Users OAuth access token or user id, depending how your API key is setup.",
-						"type": "string"
+						"description": "Users OAuth access token or user id, depending how your API key is setup."
 					},
 					{
 						"name": "playMode",
 						"in": "query",
-						"description": "Either online, offline, or online-cached. Indicates if the play was with an active or inactive network connection and, if the network connection is active, whether or not it was read from the device cache.",
-						"type": "string"
+						"description": "Either online, offline, or online-cached. Indicates if the play was with an active or inactive network connection and, if the network connection is active, whether or not it was read from the device cache."
 					},
 					{
 						"name": "releaseId",
 						"in": "query",
-						"description": "The 7digital ID of the release that was streamed.",
-						"type": "integer"
+						"description": "The 7digital ID of the release that was streamed."
 					},
 					{
 						"name": "totalTimePlayed",
 						"in": "query",
-						"description": "The total time the track was streamed in seconds (or 0 if it was only pre-fetched and never played).",
-						"type": "string"
+						"description": "The total time the track was streamed in seconds (or 0 if it was only pre-fetched and never played)."
 					},
 					{
 						"name": "trackId",
 						"in": "query",
-						"description": "The 7digital ID of the track that was streamed.",
-						"type": "integer"
+						"description": "The 7digital ID of the track that was streamed."
 					},
 					{
 						"name": "userAgent",
 						"in": "query",
-						"description": "Details of the device model and application version used to play the track.",
-						"type": "string"
+						"description": "Details of the device model and application version used to play the track."
 					}
 				],
 				"responses": {
@@ -1354,26 +1309,22 @@
 					{
 						"name": "clientId",
 						"in": "query",
-						"description": "A unique identifier for the current device wanting to go offline.",
-						"type": "integer"
+						"description": "A unique identifier for the current device wanting to go offline."
 					},
 					{
 						"name": "country",
 						"in": "query",
-						"description": "The code of the country the end user resides in.",
-						"type": "string"
+						"description": "The code of the country the end user resides in."
 					},
 					{
 						"name": "oauth_token",
 						"in": "query",
-						"description": "Users OAuth access token.",
-						"type": "string"
+						"description": "Users OAuth access token."
 					},
 					{
 						"name": "offlineEnabled",
 						"in": "query",
-						"description": "true if the device is being enabled for offline streaming, false if its being disabled.",
-						"type": "boolean"
+						"description": "true if the device is being enabled for offline streaming, false if its being disabled."
 					}
 				],
 				"responses": {
