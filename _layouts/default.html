@@ -209,10 +209,13 @@ function companyGithubIssueCheck()
 	        $Github_Issue_URL = '<a href="https://github.com/' + $org + '/' + $repo + '/issues/new?title=' + $issue_title + '&body=' + $issue_body + '&labels=working">Add Github Issue</a>';
 	        $.each($IssuesArray, function(issueKey, issueValue) {
 	        
-	   			console.log(issueValue);
-	        
-	        	
-					 
+	   			$working_issue_id = issueValue['number'];
+	        	$working_issue_title = $.trimissueValue['title']);	        
+
+        		if($working_issue_title == $issue_title)
+        			{
+        			$Github_Issue_URL = '<a href="https://github.com/' + $org + '/' + $repo + '/issues/' + $issue_id + '">Github Issue</a>';
+        			}
      			 });
 
      	   	if(document.getElementById("github-issue-" + $id))
