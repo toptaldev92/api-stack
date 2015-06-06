@@ -14,7 +14,7 @@ I encourage you to fork this work, and contribute back. I am currently working w
 * APIMATIC
 * SDKs.io
 * Blockspring
-* 
+
 We want to make sure the best APIs out there are represented, and have complete APIs.json files for each company, along with complete Swagger and API Blueprint specifications for the best public APIs out there.  
 
 One important question out there is: What is a complete APIs.json, Swagger or API Blueprint? We are working on a potential definition for this, which you can follow the evolution, here on the API Stack research site--currently we have (thanks to APIMATIC):
@@ -25,7 +25,7 @@ One important question out there is: What is a complete APIs.json, Swagger or AP
 * Endpoint OperationIds/NickNames
 * Schemas/Models
 * Error Codes/Messages
-* 
+
 We will be working to evolve this definition, and establish services and tooling to help validate and certify APIs.json, Swagger, and API Blueprint files. All work is conducted via this Github repository, with the conversation around work conducted for each company, possessing its own Github Issue. All other support for this project will be done through the project's Github issues, and regular Github workflow.
 
 If you want to get involved as a partner, let me know. We need as many people contributing to, and working from a common set of complete API definitions, that represent the entire API ecosystem--then we'll start seeing some benefits emerge that help strengthen the entire API economy.
