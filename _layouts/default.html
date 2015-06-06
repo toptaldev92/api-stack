@@ -104,36 +104,7 @@
 	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-	  
-	  function checkLinkRot()
-	    {
-	    var linkArray = [];
-	    var links = document.getElementsByTagName("a");
-	    for(var i=0; i<links.length; i++) {
-	        linkArray.push(links[i].href);
-	    }
-	    url = "http://linkrot.api.laneworks.net/v1/links/";
-	    var myJsonString = JSON.stringify(linkArray);                
-	    $.ajax({
-	        type: "POST",
-	        url: url,
-	        data: myJsonString,
-	        success: function (data) {            
-	             $.each(data, function($Key,$Value) {                 
-	                $URL = $Value['URL'];
-	                $returnURL = $Value['returnURL'];  
-	                var links = document.getElementsByTagName("a");
-	                for(var i=0; i<links.length; i++) {
-	                    if(links[i].href==$URL)
-	                        {
-	                        document.getElementsByTagName("a")[i].href=$returnURL;    
-	                        }
-	                     }                
-	             });                 
-	        }
-	    });                
-	    }   
+	  })();	  
 	
 	</script>
 	
@@ -153,6 +124,29 @@
 	<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/964245031/?value=1.000000&amp;label=U2foCJGT0wkQp-zkywM&amp;guid=ON&amp;script=0"/>
 	</div>
 	</noscript>	
+	
+<script type="text/javascript">
+
+function companyGithubIssueCheck()
+    {
+	$.getJSON('data/companies.json', function(companies) { 
+	
+		$.each(companies['company'], function(key2, val2) {
+
+	        company = val2['name'];             
+	        tags = val2['tags'];	
+	        id = val2['id'];
+	        website = val2['website'];			            
+     	   	
+     	   	document.getElementById("github-issue-"+id).innerHTML = "Github Issues for " + company;
+	
+         });
+        
+        }); 	
+    }     
+    
+companyGithubIssueCheck();
+</script>	
 	
   </body>
 </html>
