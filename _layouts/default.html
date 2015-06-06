@@ -4,6 +4,16 @@
   {% include head.html %}
 
   <body>
+  	
+      <script type="text/javascript">
+      	// Do we have a token?
+    	var $oAuth_Token = getUrlVar('oAuth_Token');
+
+		var $org = '{{ site.org }}';
+		var $repo = '{{ site.repo }}';
+		var $oauthio = '{{ site.oauthio }}';
+
+      </script>	    	
 
     <header class="masthead">
       <div class="masthead-inner" align="center">  	      	
@@ -127,24 +137,74 @@
 	
 <script type="text/javascript">
 
+$IssuesArray = {};
+
+function is_defined(variable){
+  return typeof(variable) == "undefined"
+}
+
+function is_string(input){
+  return typeof(input)=='string';
+}
+
+function alert_key_value_pairs(map){
+  for (var key in map) {
+    alert([key, map[key]].join("\n\n"));
+  }
+}
+
+function error(msg){
+  alert("!!! ERROR - " + msg);
+}
+
+function getIssues()
+	{
+	
+  	$.getJSON(this.url, function (data) {
+
+    	$.each(data.data, function (issueIndex, issue) {
+
+    		var $issueTitle = issue.title;
+      		var $issueURL = 'https://github.com/' + GITHUB_ISSUES_USER + '/' + GITHUB_ISSUES_REPO + '/issues/' + issue.number;      		
+      		var $issueDate = thisdate;
+      		var $issueBody = issue.body;
+      		
+			$Issue = {};
+			  
+			$Issue['title'] = $issueTitle;
+			$Issue['url'] = $issueURL;
+			$Issue['date'] = $issueDate;
+			$Issue['body'] = $issueBody;
+		
+			$IssuesArray.push($Issue);      		
+      
+    		});
+    
+  		});
+  		
+	$issuesString = JSON.stringify($IssuesArray, null, 4);  		
+  	console.log($issuesString);
+	}
+
 function companyGithubIssueCheck()
     {
 	$.getJSON('data/companies.json', function(companies) { 
 	
 		$.each(companies['company'], function(key2, val2) {
 
-	        company = val2['name'];             
-	        tags = val2['tags'];	
-	        id = val2['id'];
-	        website = val2['website'];			            
+	        $company = val2['name']; 
+	        $issue_title = encodeURIComponent('Working ' + $company);            	
+	        $id = val2['id'];
+	        
+	        $Github_Issue_URL = '<a href="https://github.com/' + $org + '/' + $repo + '/issues/new?title="' + $issue_title + '>Add Github Issue</a>';		                 	     		
      	
-     	   	if(document.getElementById("github-issue-"+id))
+     	   	if(document.getElementById("github-issue-" + $id))
      	   		{
-     	   		document.getElementById("github-issue-"+id).innerHTML = "Github Issues for " + company;
+     	   		document.getElementById("github-issue-" + $id).innerHTML = $Github_Issue_URL;
      	   		}
      	   	else
      	   		{
-     	   		console.log("github-issue-"+id);	
+     	   		console.log("github-issue-" + $id);	
      	   		}
      	   	
 	
@@ -152,7 +212,8 @@ function companyGithubIssueCheck()
         
         }); 	
     }     
-    
+
+getIssues();    
 companyGithubIssueCheck();
 </script>	
 	
