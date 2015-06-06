@@ -210,12 +210,13 @@ function companyGithubIssueCheck()
 	        $.each($IssuesArray, function(issueKey, issueValue) {
 	        
 	   			$working_issue_id = issueValue['number'];
-	        	$working_issue_title = $.trimissueValue['title']);	        
+	        	$working_issue_title = $.trim(issueValue['title']);	        
 
         		if($working_issue_title == $issue_title)
         			{
         			$Github_Issue_URL = '<a href="https://github.com/' + $org + '/' + $repo + '/issues/' + $issue_id + '">Github Issue</a>';
         			}
+        			
      			 });
 
      	   	if(document.getElementById("github-issue-" + $id))
@@ -228,7 +229,7 @@ function companyGithubIssueCheck()
      	   		}
      	   	
 	
-         });
+         	});
         
         }); 	
     }     
