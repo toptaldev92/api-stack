@@ -160,12 +160,14 @@ function error(msg){
 function getIssues()
 	{
 	
-  	$.getJSON(this.url, function (data) {
+	$issueURL = 'https://api.github.com/repos/' + $org + "/" + $repo + '/issues?callback=?';
+	
+  	$.getJSON($issueURL, function (data) {
 
     	$.each(data.data, function (issueIndex, issue) {
 
     		var $issueTitle = issue.title;
-      		var $issueURL = 'https://github.com/' + GITHUB_ISSUES_USER + '/' + GITHUB_ISSUES_REPO + '/issues/' + issue.number;      		
+      		var $issueURL = 'https://github.com/' + $org + '/' + $repo + '/issues/' + issue.number;      		
       		var $issueDate = thisdate;
       		var $issueBody = issue.body;
       		
