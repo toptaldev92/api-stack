@@ -168,7 +168,7 @@ function getIssues()
 
 			//var thisdate = $.datepicker.formatDate("M d, yy", new Date(issue.created_at));
     		var $issueTitle = issue.title;
-    		console.log($issueTitle);
+    		//console.log($issueTitle);
       		var $issueURL = 'https://github.com/' + $org + '/' + $repo + '/issues/' + issue.number;      		
       		//var $issueDate = thisdate;
       		var $issueBody = issue.body;
@@ -187,7 +187,7 @@ function getIssues()
   		});
   		
 	//$issuesString = JSON.stringify($IssuesArray, null, 4);  		
-  	console.log($IssuesArray);
+  	//console.log($IssuesArray);
 	}
 
 function companyGithubIssueCheck()
@@ -201,7 +201,15 @@ function companyGithubIssueCheck()
 	        $issue_title = 'Working ' + $company;            	
 	        $id = val2['id'];
 	        
-	        $Github_Issue_URL = '<a href="https://github.com/' + $org + '/' + $repo + '/issues/new?title=' + $issue_title + '&labels=working">Add Github Issue</a>';		                 	     		
+	        $.each($IssuesArray, function(issueKey, issueValue) {
+	        
+	        	console.log(issueKey + ' - ' + issueValue);
+
+     			 });
+
+	        	
+	        	$Github_Issue_URL = '<a href="https://github.com/' + $org + '/' + $repo + '/issues/new?title=' + $issue_title + '&labels=working">Add Github Issue</a>';		                 	     		
+     	
      	
      	   	if(document.getElementById("github-issue-" + $id))
      	   		{
