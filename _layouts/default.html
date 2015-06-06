@@ -200,10 +200,18 @@ function companyGithubIssueCheck()
 	        $company = $company.trim();
 	        $issue_title = 'Working ' + $company;            	
 	        $id = val2['id'];
+	        $hasIssue = 0;
 	        
 	        $.each($IssuesArray[0], function(issueKey, issueValue) {
 	        
-	        	console.log(issueKey + ' - ' + issueValue);
+	        	if(issueKey=='title')
+	        		{
+	        		console.log(issueValue);
+	        		if(issueValue==$issue_title)
+	        			{
+	        			console.log(issueKey + ' - ' + issueValue);
+	        			}
+	        		}
 
      			 });
 
