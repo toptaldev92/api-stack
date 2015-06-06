@@ -200,7 +200,7 @@ function companyGithubIssueCheck()
 		$.each(companies['company'], function(key2, val2) {
 
 	        $company = val2['name']; 
-	        $company = $company.trim();
+	        $company = $.trim($company);
 	        $issue_title = 'Working ' + $company;
 	        $issue_body = 'This is the working issue for conversation around ' + $company + ' APIs.';              	
 	        $id = val2['id'];
@@ -215,8 +215,10 @@ function companyGithubIssueCheck()
 	        		}	        
 	        
 	        	if(issueKey=='title')
-	        		{	        		
-	        		if(issueValue==$issue_title)
+	        		{	        	
+	        		issueValue = $.trim(issueValue);		
+	        		$issue_title = $.trim($issue_title);
+	        		if(issueValue == $issue_title)
 	        			{
 	        			$Github_Issue_URL = '<a href="https://github.com/' + $org + '/' + $repo + '/issues/' + $issue_id + '">Github Issue</a>';
 	        			}
