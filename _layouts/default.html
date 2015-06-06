@@ -166,6 +166,7 @@ function getIssues()
 
     	$.each(data.data, function (issueIndex, issue) {
 
+			var thisdate = $.datepicker.formatDate("M d, yy", new Date(issue.created_at));
     		var $issueTitle = issue.title;
       		var $issueURL = 'https://github.com/' + $org + '/' + $repo + '/issues/' + issue.number;      		
       		var $issueDate = thisdate;
