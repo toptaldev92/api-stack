@@ -207,24 +207,12 @@ function companyGithubIssueCheck()
 	        $hasIssue = 0;
 	        
 	        $Github_Issue_URL = '<a href="https://github.com/' + $org + '/' + $repo + '/issues/new?title=' + $issue_title + '&body=' + $issue_body + '&labels=working">Add Github Issue</a>';
-	        $.each($IssuesArray[0], function(issueKey, issueValue) {
+	        $.each($IssuesArray, function(issueKey, issueValue) {
 	        
-	        	if(issueKey=='number')
-	        		{
-	        		$issue_id = issueValue;	
-	        		}	        
+	   			console.log(issueValue);
 	        
-	        	if(issueKey=='title')
-	        		{	        	
-	        		issueValue = $.trim(issueValue);		
-	        		$issue_title = $.trim($issue_title);
-	        		console.log("(" + issueValue + " = " + $issue_title + ")");
-	        		if(issueValue == $issue_title)
-	        			{
-	        			$Github_Issue_URL = '<a href="https://github.com/' + $org + '/' + $repo + '/issues/' + $issue_id + '">Github Issue</a>';
-	        			}
-	        		}
-
+	        	
+					 
      			 });
 
      	   	if(document.getElementById("github-issue-" + $id))
