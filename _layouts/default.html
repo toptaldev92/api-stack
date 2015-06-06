@@ -173,8 +173,11 @@ function getIssues()
       		//var $issueDate = thisdate;
       		var $issueBody = issue.body;
       		
+      		var $issueNumber = issue.number;
+      		
 			$Issue = {};
 			  
+			$Issue['number'] = $issueNumber;  
 			$Issue['title'] = $issueTitle;
 			$Issue['url'] = $issueURL;
 			//$Issue['date'] = $issueDate;
@@ -198,27 +201,31 @@ function companyGithubIssueCheck()
 
 	        $company = val2['name']; 
 	        $company = $company.trim();
-	        $issue_title = 'Working ' + $company;            	
+	        $issue_title = 'Working ' + $company;
+	        $issue_body = 'This is the working issue for conversation around ' + $company + ' APIs.';              	
 	        $id = val2['id'];
 	        $hasIssue = 0;
 	        
+	        $Github_Issue_URL = '<a href="https://github.com/' + $org + '/' + $repo + '/issues/new?title=' + $issue_title + '&body=' + $issue_body + '&labels=working">Add Github Issue</a>';
 	        $.each($IssuesArray[0], function(issueKey, issueValue) {
+	        
+	        	if(issueKey=='number')
+	        		{
+	        		$issue_id = issueValue;	
+	        		}	        
 	        
 	        	if(issueKey=='title')
 	        		{
-	        		console.log(issueValue);
+	        		//console.log(issueValue);
 	        		if(issueValue==$issue_title)
 	        			{
-	        			console.log(issueKey + ' - ' + issueValue);
+	        			https://github.com/api-stack/api-stack/issues/4	
+	        			$Github_Issue_URL = '<a href="https://github.com/' + $org + '/' + $repo + '/issues/' + $issue_id + '">Github Issue</a>';
 	        			}
 	        		}
 
      			 });
 
-	        	
-	        	$Github_Issue_URL = '<a href="https://github.com/' + $org + '/' + $repo + '/issues/new?title=' + $issue_title + '&labels=working">Add Github Issue</a>';		                 	     		
-     	
-     	
      	   	if(document.getElementById("github-issue-" + $id))
      	   		{
      	   		document.getElementById("github-issue-" + $id).innerHTML = $Github_Issue_URL;
