@@ -21,7 +21,7 @@
 	"produces": ["application/json"],
 	"consumes": ["application/json"],
 	"paths": {
-		"group/": {
+		"/group/": {
 			"post": {
 				"summary": "Create a new group.",
 				"description": "Create a new group.",
@@ -78,7 +78,7 @@
 				"tags": ["Group"]
 			}
 		},
-		"group/{group token}/members/remove/": {
+		"/group/{group token}/members/remove/": {
 			"post": {
 				"summary": "Remove members from a group.",
 				"description": "Remove members from a group.",
@@ -107,7 +107,7 @@
 				"tags": ["Group"]
 			}
 		},
-		"group/{group_token}": {
+		"/group/{group_token}/": {
 			"delete": {
 				"summary": "Delete a group. If the group has already been deleted, no error is reported.",
 				"description": "Delete a group. If the group has already been deleted, no error is reported.",
@@ -129,7 +129,7 @@
 				"tags": ["Group"]
 			}
 		},
-		"group/{group_token}/members/": {
+		"/group/{group_token}/members/": {
 			"post": {
 				"summary": "Add members to a group.",
 				"description": "Add members to a group.",
@@ -159,5 +159,18 @@
 			}
 		}
 	},
-	"definitions": []
+	"definitions": {
+		"group": {
+			"properties": {
+				"name": {
+					"description": "This is the group name.",
+					"type": "string"
+				},
+				"avatar": {
+					"description": "this is the group avatar.",
+					"type": "string"
+				}
+			}
+		}
+	}
 }
