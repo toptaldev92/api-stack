@@ -12,24 +12,39 @@
 		"version": "v2"
 	},
 	"host": "developer.tigertext.me",
-	"basePath": "v2/",
+	"basePath": "/v2/",
 	"schemes": ["http"],
 	"produces": ["application/json"],
 	"consumes": ["application/json"],
 	"paths": {
-		"events/": {
+		"/events/": {
 			"get": {
 				"summary": "Opens a SSE event stream.",
 				"description": "Opens a SSE event stream. The various Event Types are listed below.",
 				"operationId": "createEvents",
 				"responses": {
 					"200": {
-						"description": "The event connection is opened"
+						"description": "The event connection is opened",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/event"
+							}
+						}
 					}
 				},
 				"tags": ["Event"]
 			}
 		}
 	},
-	"definitions": []
+	"definitions": {
+		"event": {
+			"properties": {
+				"Name": {
+					"description": "Name of the event.",
+					"type": "string"
+				}
+			}
+		}
+	}
 }
