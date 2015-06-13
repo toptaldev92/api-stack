@@ -76,13 +76,13 @@
 					"format": "string"
 				}],
 				"responses": {
-					"204 No Content": {
+					"204": {
 						"description": "The message was sent. In that case a header will be included in the response: TT-X-Message-Id: The generated message token"
 					},
-					"400 Bad Request": {
+					"400": {
 						"description": "The provided parameters are somehow incorrect. A proper description of the error will be provided"
 					},
-					"404 Not Found": {
+					"404": {
 						"description": "The recipient was not found. A proper description of the error will be provided"
 					}
 				},
@@ -109,13 +109,13 @@
 					"format": "string"
 				}],
 				"responses": {
-					"204 No Content": {
+					"204": {
 						"description": "The message status was updated"
 					},
-					"400 Bad Request": {
+					"400": {
 						"description": "If the provided parameters are somehow incorrect. A proper description of the error will be provided"
 					},
-					"404 Not Found": {
+					"404": {
 						"description": "The recipient was not found. A proper description of the error will be provided"
 					}
 				},
@@ -135,17 +135,14 @@
 					"format": "string"
 				}],
 				"responses": {
-					"204 No Content": {
-						"description": "The message status was updated"
+					"204": {
+						"description": "The typing indicator was updated"
 					},
-					"400 Bad Request": {
+					"400": {
 						"description": "If the provided parameters are somehow incorrect. A proper description of the error will be provided"
 					},
-					"404 Not Found": {
+					"404": {
 						"description": "The recipient was not found. A proper description of the error will be provided"
-					},
-					"204 No Content:": {
-						"description": "The typing indicator was updated"
 					}
 				},
 				"tags": ["Message"]
@@ -157,17 +154,14 @@
 				"description": "Notify a recipient that the User is no longer typing in a conversation. The recipient is either another User or Group using address encoding.",
 				"operationId": "deleteMessageTyping",
 				"responses": {
-					"204 No Content": {
+					"204": {
 						"description": "The typing indicator was updated"
 					},
-					"400 Bad Request": {
+					"400": {
 						"description": "If the provided parameters are somehow incorrect. A proper description of the error will be provided"
 					},
-					"404 Not Found": {
+					"404": {
 						"description": "The recipient was not found. A proper description of the error will be provided"
-					},
-					"204 No Content:": {
-						"description": "The typing indicator was updated"
 					}
 				},
 				"tags": ["Message"]
@@ -179,19 +173,16 @@
 				"description": "Retrieves the attachment from the message. Currently we only support one attachment per message. if found. It returns the attached file.",
 				"operationId": "getMessageAttachment",
 				"responses": {
-					"204 No Content": {
+					"204": {
 						"description": "The typing indicator was updated"
 					},
-					"400 Bad Request": {
+					"400": {
 						"description": "If the provided parameters are somehow incorrect. A proper description of the error will be provided"
 					},
-					"404 Not Found": {
+					"404": {
 						"description": "Message is not found or it has no attachment"
 					},
-					"204 No Content:": {
-						"description": "The typing indicator was updated"
-					},
-					"200 OK": {
+					"200": {
 						"description": "Returns if the attachment is found"
 					}
 				},
@@ -204,7 +195,7 @@
 				"description": "Get information about a message",
 				"operationId": "getMessage",
 				"responses": {
-					"200 OK": {
+					"200": {
 						"description": "Message information with the following fields"
 					}
 				},
@@ -245,16 +236,16 @@
 					"format": "string"
 				}],
 				"responses": {
-					"200 OK": {
+					"200": {
 						"description": "Message information with the following fields"
 					},
-					"204 No Content": {
+					"204": {
 						"description": "The message was correctly sent. In that case a header will be included in the response: TT-X-Message-Id: The generated message token"
 					},
-					"400 Bad Request": {
+					"400": {
 						"description": "The provided parameters are somehow incorrect. A proper description of the error will be provided"
 					},
-					"404 Not Found": {
+					"404": {
 						"description": "The recipient was not found. A proper description of the error will be provided"
 					}
 				},
