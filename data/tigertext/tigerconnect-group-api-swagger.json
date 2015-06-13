@@ -74,15 +74,44 @@
 				"tags": ["Group"]
 			}
 		},
-		"/group/{group token}/members/remove/": {
+		"/group/{group_token}/": {
+			"delete": {
+				"summary": "Delete a group. If the group has already been deleted, no error is reported.",
+				"description": "Delete a group. If the group has already been deleted, no error is reported.",
+				"operationId": "deleteGroup",
+				"responses": {
+					"204": {
+						"description": "The group is deleted if it existed"
+					},
+					"400": {
+						"description": "If the provided parameters are somehow incorrect. A proper description of the error will be provided"
+					},
+					"403": {
+						"description": "If the user is not a member of the provided organization"
+					},
+					"404": {
+						"description": "If the provided organization does not exist"
+					}
+				},
+				"tags": ["Group"]
+			}
+		},
+		"/group/{group_token}/members/": {
 			"post": {
-				"summary": "Remove members from a group.",
-				"description": "Remove members from a group.",
-				"operationId": "removeMemberFromGroup",
+				"summary": "Add members to a group.",
+				"description": "Add members to a group.",
+				"operationId": "addGroupMember",
 				"parameters": [{
+					"in": "path",
+					"name": "group_token",
+					"description": "The group token.",
+					"type": "string",
+					"format": "string"
+				},
+				{
 					"in": "formData",
 					"name": "members",
-					"description": "A list of members to remove from a group using address encoding. Users not in the group are ignored",
+					"description": "A list of members to add to a group using user address encoding. Users already in the group are ignored",
 					"type": "string",
 					"format": "string"
 				}],
@@ -103,37 +132,22 @@
 				"tags": ["Group"]
 			}
 		},
-		"/group/{group_token}/": {
-			"delete": {
-				"summary": "Delete a group. If the group has already been deleted, no error is reported.",
-				"description": "Delete a group. If the group has already been deleted, no error is reported.",
-				"operationId": "deleteGroup",
-				"responses": {
-					"204": {
-						"description": "The group is deleted if it existed"
-					},
-					"400": {
-						"description": "If the provided parameters are somehow incorrect. A proper description of the error will be provided"
-					},
-					"403": {
-						"description": "If the user is not a member of the provided organization"
-					},
-					"404": {
-						"description": "If the provided group does not exist"
-					}
-				},
-				"tags": ["Group"]
-			}
-		},
-		"/group/{group_token}/members/": {
+		"/group/{group_token}/members/remove/": {
 			"post": {
-				"summary": "Add members to a group.",
-				"description": "Add members to a group.",
-				"operationId": "addGroupMember",
+				"summary": "Remove members from a group.",
+				"description": "Remove members from a group.",
+				"operationId": "removeMemberFromGroup",
 				"parameters": [{
+					"in": "path",
+					"name": "group_token",
+					"description": "The group token.",
+					"type": "string",
+					"format": "string"
+				},
+				{
 					"in": "formData",
 					"name": "members",
-					"description": "A list of members to add to a group using user address encoding. Users already in the group are ignored",
+					"description": "A list of members to remove from a group using address encoding. Users not in the group are ignored",
 					"type": "string",
 					"format": "string"
 				}],
