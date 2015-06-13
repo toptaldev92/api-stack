@@ -9,44 +9,39 @@
 			"url": "http://www.tigertext.com/supportform/",
 			"email": "info@tigertext.com"
 		},
-		"license": {
-			"name": null,
-			"url": null
-		},
 		"version": "v2"
 	},
 	"host": "developer.tigertext.me",
-	"basePath": "v2/",
+	"basePath": "/v2/",
 	"schemes": ["http"],
 	"produces": ["application/json"],
 	"consumes": ["application/json"],
 	"paths": {
-		"roster/": {
+		"/roster/": {
 			"get": {
 				"summary": "Get the recent conversation list for a user. As new messages are sent and received, the roster is updated with those conversations.",
 				"description": "Get the recent conversation list for a user. As new messages are sent and received, the roster is updated with those conversations.",
 				"operationId": "getRoster",
 				"responses": {
 					"200": {
-						"description": "With a JSON body as shown"
+						"description": "With a JSON body as shown",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/roster"
+							}
+						}
 					}
 				},
 				"tags": ["Roster"]
 			}
 		},
-		"roster/{user_address_or_group_token}/": {
+		"roster/{user_address}/": {
 			"delete": {
 				"summary": "Remove a conversation from the recent conversation list.",
 				"description": "Remove a conversation from the recent conversation list. For conversations that are with another User, all messages are deleted. For conversations with a group, the User leaves the group and is no longer receives subsequent group messages.",
 				"operationId": "removeRoster",
 				"parameters": [{
-					"in": "path",
-					"name": "Remove a conversation from the recent conversation list. For conversations that are with another User, all messages are deleted. For conversations with a group, the User leaves the group and is no longer receives subsequent group messages.",
-					"description": "User address or group token",
-					"type": "string",
-					"format": "string"
-				},
-				{
 					"in": "query",
 					"name": "TT-X-Organization-Key",
 					"description": "The organization with which the entity is associated in the roster. Defaults to the TigerText Consumer organization",
@@ -59,10 +54,23 @@
 					"description": "The entity type. The possible values for it are: "tigertext:entity:account" (default): For users "tigertext:entity:group":",
 					"type": "string",
 					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "user_address",
+					"description": "User address or group token",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
-						"description": "With a JSON body as shown"
+						"description": "With a JSON body as shown",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/roster"
+							}
+						}
 					},
 					"204": {
 						"description": "The user or group was correctly removed from the roster."
@@ -83,7 +91,12 @@
 	},
 	"definitions": {
 		"roster": {
-			"properties": []
+			"properties": {
+				"Name": {
+					"description": "Name of the roster.",
+					"type": "string"
+				}
+			}
 		}
 	}
 }
