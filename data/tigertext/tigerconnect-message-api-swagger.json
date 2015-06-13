@@ -144,11 +144,18 @@
 				"tags": ["Message"]
 			}
 		},
-		"/message/typing/{recipient address}/": {
+		"/message/typing/{recipient_address}/": {
 			"delete": {
 				"summary": "Notify a recipient that the User is no longer typing in a conversation.",
 				"description": "Notify a recipient that the User is no longer typing in a conversation. The recipient is either another User or Group using address encoding.",
 				"operationId": "deleteMessageTyping",
+				"parameters": [{
+					"in": "path",
+					"name": "recipient_address",
+					"description": "The recipient address.",
+					"type": "string",
+					"format": "string"
+				}],
 				"responses": {
 					"204": {
 						"description": "The typing indicator was updated"
@@ -163,11 +170,18 @@
 				"tags": ["Message"]
 			}
 		},
-		"/message/[message token]/attachment/1/": {
+		"/message/[message_token]/attachment/1/": {
 			"get": {
 				"summary": "Retrieves the attachment from the message.",
 				"description": "Retrieves the attachment from the message. Currently we only support one attachment per message. if found. It returns the attached file.",
 				"operationId": "getMessageAttachment",
+				"parameters": [{
+					"in": "path",
+					"name": "message_token",
+					"description": "The message token.",
+					"type": "string",
+					"format": "string"
+				}],
 				"responses": {
 					"204": {
 						"description": "The typing indicator was updated"
@@ -191,8 +205,46 @@
 				"description": "Get information about a message",
 				"operationId": "getMessage",
 				"responses": {
+					"204": {
+						"description": "The typing indicator was updated"
+					},
+					"400": {
+						"description": "If the provided parameters are somehow incorrect. A proper description of the error will be provided"
+					},
+					"404": {
+						"description": "Message is not found or it has no attachment"
+					},
 					"200": {
 						"description": "Message information with the following fields"
+					}
+				},
+				"tags": ["Message"]
+			}
+		},
+		"/message/{message_token}/": {
+			"delete": {
+				"summary": "Recalls the message with the following message token.",
+				"description": "Recalls the message with the following message token. If the message was already recalled, no error is reported.",
+				"operationId": "deleteMessage",
+				"parameters": [{
+					"in": "path",
+					"name": "message_token",
+					"description": "The message token.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"204": {
+						"description": "The typing indicator was updated"
+					},
+					"400": {
+						"description": "If the provided parameters are somehow incorrect. A proper description of the error will be provided"
+					},
+					"404": {
+						"description": "Message is not found or it has no attachment"
+					},
+					"200": {
+						"description": "OK"
 					}
 				},
 				"tags": ["Message"]
@@ -232,9 +284,6 @@
 					"format": "string"
 				}],
 				"responses": {
-					"200": {
-						"description": "Message information with the following fields"
-					},
 					"204": {
 						"description": "The message was correctly sent. In that case a header will be included in the response: TT-X-Message-Id: The generated message token"
 					},
