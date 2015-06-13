@@ -171,6 +171,33 @@
 			}
 		},
 		"/message/{message_token}/": {
+			"delete": {
+				"summary": "Recalls the message with the following message token.",
+				"description": "Recalls the message with the following message token. If the message was already recalled, no error is reported.",
+				"operationId": "deleteMessage",
+				"parameters": [{
+					"in": "path",
+					"name": "message_token",
+					"description": "The message token.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"204": {
+						"description": "The typing indicator was updated"
+					},
+					"400": {
+						"description": "If the provided parameters are somehow incorrect. A proper description of the error will be provided"
+					},
+					"404": {
+						"description": "The recipient was not found. A proper description of the error will be provided"
+					},
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Message"]
+			},
 			"get": {
 				"summary": "Get information about a message",
 				"description": "Get information about a message",
