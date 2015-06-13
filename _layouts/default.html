@@ -206,7 +206,7 @@ function companyGithubIssueCheck()
 	        $id = val2['id'];
 	        $hasIssue = 0;
 	        
-	        $Github_Issue_URL = '<a href="https://github.com/' + $org + '/' + $repo + '/issues/new?title=' + $issue_title + '&body=' + $issue_body + '&labels=working">Start Conversation</a>';
+	        $Github_Issue_URL = '<a href="https://github.com/' + $org + '/' + $repo + '/issues/new?title=' + $issue_title + '&body=' + $issue_body + '&labels=working" target="_blank">Start Conversation</a>';
 	        $.each($IssuesArray, function(issueKey, issueValue) {
 	        
 	   			$working_issue_id = issueValue['number'];
@@ -214,7 +214,7 @@ function companyGithubIssueCheck()
 				//console.log($working_issue_title + ' == ' + $issue_title);
         		if($working_issue_title == $issue_title)
         			{
-        			$Github_Issue_URL = '<a href="https://github.com/' + $org + '/' + $repo + '/issues/' + $working_issue_id + '">Join Conversation</a>';
+        			$Github_Issue_URL = '<a href="https://github.com/' + $org + '/' + $repo + '/issues/' + $working_issue_id + '" target="_blank">Join Conversation</a>';
         			}
         			
      			 });
