@@ -170,36 +170,7 @@
 				"tags": ["Message"]
 			}
 		},
-		"/message/[message_token]/attachment/1/": {
-			"get": {
-				"summary": "Retrieves the attachment from the message.",
-				"description": "Retrieves the attachment from the message. Currently we only support one attachment per message. if found. It returns the attached file.",
-				"operationId": "getMessageAttachment",
-				"parameters": [{
-					"in": "path",
-					"name": "message_token",
-					"description": "The message token.",
-					"type": "string",
-					"format": "string"
-				}],
-				"responses": {
-					"204": {
-						"description": "The typing indicator was updated"
-					},
-					"400": {
-						"description": "If the provided parameters are somehow incorrect. A proper description of the error will be provided"
-					},
-					"404": {
-						"description": "Message is not found or it has no attachment"
-					},
-					"200": {
-						"description": "Returns if the attachment is found"
-					}
-				},
-				"tags": ["Message"]
-			}
-		},
-		"/message/{message token}/": {
+		"/message/{message_token}/": {
 			"get": {
 				"summary": "Get information about a message",
 				"description": "Get information about a message",
@@ -212,15 +183,6 @@
 					"format": "string"
 				}],
 				"responses": {
-					"204": {
-						"description": "The typing indicator was updated"
-					},
-					"400": {
-						"description": "If the provided parameters are somehow incorrect. A proper description of the error will be provided"
-					},
-					"404": {
-						"description": "Message is not found or it has no attachment"
-					},
 					"200": {
 						"description": "Message information with the following fields"
 					}
@@ -228,11 +190,11 @@
 				"tags": ["Message"]
 			}
 		},
-		"/message/{message_token}/": {
-			"delete": {
-				"summary": "Recalls the message with the following message token.",
-				"description": "Recalls the message with the following message token. If the message was already recalled, no error is reported.",
-				"operationId": "deleteMessage",
+		"/message/{message_token}/attachment/1/": {
+			"get": {
+				"summary": "Retrieves the attachment from the message.",
+				"description": "Retrieves the attachment from the message. Currently we only support one attachment per message. if found. It returns the attached file.",
+				"operationId": "getMessageAttachment",
 				"parameters": [{
 					"in": "path",
 					"name": "message_token",
@@ -241,17 +203,11 @@
 					"format": "string"
 				}],
 				"responses": {
-					"204": {
-						"description": "The typing indicator was updated"
-					},
-					"400": {
-						"description": "If the provided parameters are somehow incorrect. A proper description of the error will be provided"
+					"200": {
+						"description": "Returns if the attachment is found"
 					},
 					"404": {
 						"description": "Message is not found or it has no attachment"
-					},
-					"200": {
-						"description": "OK"
 					}
 				},
 				"tags": ["Message"]
@@ -291,14 +247,17 @@
 					"format": "string"
 				}],
 				"responses": {
+					"200": {
+						"description": "Returns if the attachment is found"
+					},
+					"404": {
+						"description": "The recipient was not found. A proper description of the error will be provided"
+					},
 					"204": {
 						"description": "The message was correctly sent. In that case a header will be included in the response: TT-X-Message-Id: The generated message token"
 					},
 					"400": {
 						"description": "The provided parameters are somehow incorrect. A proper description of the error will be provided"
-					},
-					"404": {
-						"description": "The recipient was not found. A proper description of the error will be provided"
 					}
 				},
 				"tags": ["Message"]
