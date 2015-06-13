@@ -12,12 +12,12 @@
 		"version": "v2"
 	},
 	"host": "developer.tigertext.me",
-	"basePath": "v2/",
+	"basePath": "/v2/",
 	"schemes": ["http"],
 	"produces": ["application/json"],
 	"consumes": ["application/json"],
 	"paths": {
-		"message/": {
+		"/message/": {
 			"post": {
 				"summary": "Send a message to a User or Group.",
 				"description": "Send a message to a User or Group. The parameters to be included either on the JSON object or the POST body itself. If no recipient is found, a new account is created and the message is sent to the associated email or phone number if available.",
@@ -85,7 +85,7 @@
 				"tags": ["Message"]
 			}
 		},
-		"message/status/": {
+		"/message/status/": {
 			"put": {
 				"summary": "Update the status of a message or several messages.",
 				"description": "Update the status of a message or several messages.",
@@ -118,7 +118,7 @@
 				"tags": ["Message"]
 			}
 		},
-		"message/typing/": {
+		"/message/typing/": {
 			"get": {
 				"summary": "Notify a recipient that a particular User is typing in a conversation.",
 				"description": "Notify a recipient that a particular User is typing in a conversation.",
@@ -144,7 +144,7 @@
 				"tags": ["Message"]
 			}
 		},
-		"message/typing/{recipient address}/": {
+		"/message/typing/{recipient address}/": {
 			"delete": {
 				"summary": "Notify a recipient that the User is no longer typing in a conversation.",
 				"description": "Notify a recipient that the User is no longer typing in a conversation. The recipient is either another User or Group using address encoding.",
@@ -163,7 +163,7 @@
 				"tags": ["Message"]
 			}
 		},
-		"message/[message token]/attachment/1/": {
+		"/message/[message token]/attachment/1/": {
 			"get": {
 				"summary": "Retrieves the attachment from the message.",
 				"description": "Retrieves the attachment from the message. Currently we only support one attachment per message. if found. It returns the attached file.",
@@ -185,7 +185,7 @@
 				"tags": ["Message"]
 			}
 		},
-		"message/{message token}/": {
+		"/message/{message token}/": {
 			"get": {
 				"summary": "Get information about a message",
 				"description": "Get information about a message",
@@ -198,7 +198,7 @@
 				"tags": ["Message"]
 			}
 		},
-		"message/{message_token}/forward/": {
+		"/message/{message_token}/forward/": {
 			"post": {
 				"summary": "Forward the message to the following User or Group.",
 				"description": "Forward the message to the following User or Group.",
