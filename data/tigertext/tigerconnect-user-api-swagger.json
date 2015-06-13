@@ -12,7 +12,7 @@
 		"version": "v2"
 	},
 	"host": "developer.tigertext.me",
-	"basePath": "v2/",
+	"basePath": "/v2/",
 	"schemes": ["http"],
 	"produces": ["application/json"],
 	"consumes": ["application/json"],
@@ -38,7 +38,13 @@
 				}],
 				"responses": {
 					"200": {
-						"description": "200 OK with a JSON response as described in response formats"
+						"description": "200 OK with a JSON response as described in response formats",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/User"
+							}
+						}
 					}
 				},
 				"tags": ["User"]
