@@ -1,0 +1,248 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Drive API",
+		"description": "The API to interact with Drive.",
+		"termsOfService": "",
+		"contact": {
+			"name": "Google",
+			"url": "https://google.com",
+			"email": ""
+		},
+		"version": "v1"
+	},
+	"host": "www.googleapis.com",
+	"basePath": "/drive/v1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/files": {
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""]
+			},
+			"post": {
+				"summary": "",
+				"description": "Inserts a file, and any settable metadata or blob content sent with the request.",
+				"operationId": "drive.files.insert",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""]
+			}
+		},
+		"/files/{id}": {
+			"get": {
+				"summary": "",
+				"description": "Gets a files metadata by id.",
+				"operationId": "drive.files.get",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The id for the file in question."
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "This parameter is deprecated and has no function."
+				},
+				{
+					"in": "query",
+					"name": "updateViewedDate",
+					"description": "Whether to update the view date after successfully retrieving the file."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""]
+			},
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""]
+			},
+			"patch": {
+				"summary": "",
+				"description": "Updates file metadata and/or content. This method supports patch semantics.",
+				"operationId": "drive.files.patch",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The id for the file in question."
+				},
+				{
+					"in": "query",
+					"name": "newRevision",
+					"description": "Whether a blob upload should create a new revision. If false, the blob data in the current head revision is replaced. If true or not set, a new blob is created as head revision, and previous revisions are preserved (causing increased use of the users data storage quota)."
+				},
+				{
+					"in": "query",
+					"name": "updateModifiedDate",
+					"description": "Controls updating the modified date of the file. If true, the modified date will be updated to the current time, regardless of whether other changes are being made. If false, the modified date will only be updated to the current time if other changes are also being made (changing the title, for example)."
+				},
+				{
+					"in": "query",
+					"name": "updateViewedDate",
+					"description": "Whether to update the view date after successfully updating the file."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""]
+			},
+			"put": {
+				"summary": "",
+				"description": "Updates file metadata and/or content",
+				"operationId": "drive.files.update",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The id for the file in question."
+				},
+				{
+					"in": "query",
+					"name": "newRevision",
+					"description": "Whether a blob upload should create a new revision. If false, the blob data in the current head revision is replaced. If true or not set, a new blob is created as head revision, and previous revisions are preserved (causing increased use of the users data storage quota)."
+				},
+				{
+					"in": "query",
+					"name": "updateModifiedDate",
+					"description": "Controls updating the modified date of the file. If true, the modified date will be updated to the current time, regardless of whether other changes are being made. If false, the modified date will only be updated to the current time if other changes are also being made (changing the title, for example)."
+				},
+				{
+					"in": "query",
+					"name": "updateViewedDate",
+					"description": "Whether to update the view date after successfully updating the file."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""]
+			}
+		}
+	},
+	"definitions": {
+		"File": {
+			"properties": {
+				"createdDate": {
+					"description": "",
+					"type": "parameters"
+				},
+				"description": {
+					"description": "",
+					"type": "parameters"
+				},
+				"downloadUrl": {
+					"description": "",
+					"type": "parameters"
+				},
+				"etag": {
+					"description": "",
+					"type": "parameters"
+				},
+				"fileExtension": {
+					"description": "",
+					"type": "parameters"
+				},
+				"fileSize": {
+					"description": "",
+					"type": "parameters"
+				},
+				"id": {
+					"description": "",
+					"type": "parameters"
+				},
+				"indexableText": {
+					"description": "",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "",
+					"type": "parameters"
+				},
+				"labels": {
+					"description": "",
+					"type": "parameters"
+				},
+				"lastViewedDate": {
+					"description": "",
+					"type": "parameters"
+				},
+				"md5Checksum": {
+					"description": "",
+					"type": "parameters"
+				},
+				"mimeType": {
+					"description": "",
+					"type": "parameters"
+				},
+				"modifiedByMeDate": {
+					"description": "",
+					"type": "parameters"
+				},
+				"modifiedDate": {
+					"description": "",
+					"type": "parameters"
+				},
+				"parentsCollection": {
+					"description": "",
+					"type": "parameters"
+				},
+				"selfLink": {
+					"description": "",
+					"type": "parameters"
+				},
+				"title": {
+					"description": "",
+					"type": "parameters"
+				}
+			}
+		},
+		"Permission": {
+			"properties": {
+				"additionalRoles": {
+					"description": "",
+					"type": "parameters"
+				},
+				"etag": {
+					"description": "",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "",
+					"type": "parameters"
+				},
+				"role": {
+					"description": "",
+					"type": "parameters"
+				},
+				"type": {
+					"description": "",
+					"type": "parameters"
+				}
+			}
+		}
+	}
+}
