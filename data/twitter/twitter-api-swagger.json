@@ -1047,7 +1047,13 @@
 				"operationId": "helpTos",
 				"responses": {
 					"200": {
-						"description": "OK"
+						"description": "The tos.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/termsofservice"
+							}
+						}
 					}
 				},
 				"tags": [""]
@@ -2866,5 +2872,14 @@
 			}
 		}
 	},
-	"definitions": []
+	"definitions": {
+		"termsofservice": {
+			"properties": {
+				"tos": {
+					"description": "the full body of tos",
+					"type": "string"
+				}
+			}
+		}
+	}
 }
