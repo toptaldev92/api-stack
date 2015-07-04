@@ -3,7 +3,12 @@
 	"info": {
 		"title": "Alchemy Keyword and Term Extraction ",
 		"description": "AlchemyAPI provides easy-to-use facilities for extracting topic keywords from your publicly-accessible web-based content. These URL processing calls automatically fetch the desired Internet webpage, normalize / clean it (removing ads, navigation links, and other unimportant content), and extract topic keywords.",
-		"termsOfService": null,
+		"termsOfService": "http://www.alchemyapi.com/company/terms.html",
+		"contact": {
+			"name": "AlchemyAPI",
+			"url": "http://www.alchemyapi.com/company/contact",
+			"email": "questions@alchemyapi.com"
+		},
 		"version": "v1"
 	},
 	"host": "access.alchemyapi.com",
@@ -107,7 +112,7 @@
 						"schema": {
 							"type": "array",
 							"items": {
-								"$ref": "#/definitions/Keywords"
+								"$ref": "#/definitions/results"
 							}
 						}
 					}
@@ -117,8 +122,15 @@
 			}
 		}
 	},
+	"securityDefinitions": {
+		"apikey": {
+			"type": "apiKey",
+			"name": "apikey",
+			"in": ""
+		}
+	},
 	"definitions": {
-		"Keywords": {
+		"results": {
 			"properties": {
 				"status": {
 					"description": "success / failure status indicating whether the request was processed.",
