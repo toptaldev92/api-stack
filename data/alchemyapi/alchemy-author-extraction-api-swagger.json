@@ -1,15 +1,10 @@
 {
 	"swagger": "2.0",
 	"info": {
-		"title": "Alchemy Author Extraction API",
-		"description": "AlchemyAPI provides easy-to-use facilities for extracting author information embedded within news articles and blog posts. These URL processing calls automatically fetch the desired Internet webpage, extracting any author information embedded within.",
-		"termsOfService": "http://www.alchemyapi.com/company/terms.html",
-		"contact": {
-			"name": "AlchemyAPI",
-			"url": "http://www.alchemyapi.com/company/contact",
-			"email": "questions@alchemyapi.com"
-		},
-		"version": "1.0"
+		"title": "Alchemy Author Extraction API.",
+		"description": "AlchemyAPI is capable of extracting author information from web pages.",
+		"termsOfService": "",
+		"version": "v1"
 	},
 	"host": "access.alchemyapi.com",
 	"basePath": "/calls/",
@@ -17,42 +12,22 @@
 	"produces": ["application/json"],
 	"consumes": ["application/json"],
 	"paths": {
-		"/url/URLGetAuthor": {
+		"/url/URLGetAuthors": {
 			"get": {
-				"summary": "Extracts Author Information",
-				"description": "AlchemyAPI provides easy-to-use facilities for extracting author information embedded within news articles and blog posts",
-				"operationId": "getAuthor",
+				"summary": "Get Authors",
+				"description": "AlchemyAPI is capable of extracting author information from web pages.",
+				"operationId": "callsUrlURLGetAuthors",
 				"parameters": [{
-					"in": "query",
-					"name": "apikey",
-					"description": "your private api key",
-					"type": "string",
-					"format": "string"
+					"in": "",
+					"name": "apikey"
 				},
 				{
-					"in": "query",
-					"name": "jsonp",
-					"description": "desired JSONP callback",
-					"type": "string",
-					"format": "string"
-				},
-				{
-					"in": "query",
-					"name": "outputMode",
-					"description": "desired API output format",
-					"type": "string",
-					"format": "string"
-				},
-				{
-					"in": "query",
-					"name": "url",
-					"description": "http url (must be uri-argument encoded) ",
-					"type": "string",
-					"format": "string"
+					"in": "",
+					"name": "url"
 				}],
 				"responses": {
 					"200": {
-						"description": "Successful Author Reponse",
+						"description": "Successful response",
 						"schema": {
 							"type": "array",
 							"items": {
@@ -61,37 +36,28 @@
 						}
 					}
 				},
-				"tags": ["Content"],
-				"security": [{
-					"apikey": []
-				}]
+				"tags": ["Author"],
+				"security": []
 			}
-		}
-	},
-	"securityDefinitions": {
-		"apikey": {
-			"type": "apiKey",
-			"name": "apikey",
-			"in": "query"
 		}
 	},
 	"definitions": {
 		"results": {
 			"properties": {
 				"status": {
-					"description": "success / failure status indicating whether the request was processed.",
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"usage": {
+					"description": "",
 					"type": "string"
 				},
 				"url": {
-					"description": "http url information was requested for.",
+					"description": "",
 					"type": "string"
 				},
-				"author": {
-					"description": "the extracted author name.",
-					"type": "string"
-				},
-				"statusInfo": {
-					"description": "failure status information (sent only if status == ERROR).",
+				"authors": {
+					"description": "",
 					"type": "string"
 				}
 			}
