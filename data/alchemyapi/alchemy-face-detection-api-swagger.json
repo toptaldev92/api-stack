@@ -9,7 +9,7 @@
 			"url": "http://www.alchemyapi.com/company/contact",
 			"email": "questions@alchemyapi.com"
 		},
-		"version": ""
+		"version": "v1"
 	},
 	"host": "access.alchemyapi.com",
 	"basePath": "/calls/",
@@ -32,7 +32,13 @@
 				}],
 				"responses": {
 					"200": {
-						"description": "OK"
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/results"
+							}
+						}
 					}
 				},
 				"tags": ["Image"],
@@ -50,10 +56,53 @@
 		}
 	},
 	"definitions": {
-		"_calls_url_urlgetrankedimagefacetags": {
+		"results": {
 			"properties": {
-				"": {
+				"status": {
 					"description": "This is a default description.",
+					"type": "string"
+				},
+				"usage": {
+					"description": "",
+					"type": "string"
+				},
+				"url": {
+					"description": "",
+					"type": "string"
+				},
+				"totalTransactions": {
+					"description": "",
+					"type": "integer"
+				},
+				"imageFaces": {
+					"description": "",
+					"type": "string"
+				}
+			}
+		},
+		"face": {
+			"properties": []
+		},
+		"age": {
+			"properties": {
+				"ageRange": {
+					"description": "",
+					"type": "string"
+				},
+				"score": {
+					"description": "",
+					"type": "string"
+				}
+			}
+		},
+		"gender": {
+			"properties": {
+				"gender": {
+					"description": "",
+					"type": "string"
+				},
+				"score": {
+					"description": "",
 					"type": "string"
 				}
 			}
