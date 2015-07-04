@@ -29,6 +29,7 @@ function askQuestions($apisjson_url)
     				$( "#answerlist" ).append('<tr><td><strong>' + endpointIndex + '</strong></td><tr>');
     				}
 
+					$Answered_All = 1;
     			$.each(endpointSwagger, function (questionIndex, item) {
 
     				var question = item.question;
@@ -37,10 +38,17 @@ function askQuestions($apisjson_url)
     				//console.log(question + ' ' + answer);
     				if(answer=='no')
     					{
+							$Answered_All = 0;
     					$( "#answerlist" ).append('<tr><td style="padding-left: 25px;">' + question + ' ' + answer + '</td><tr>');
     					}
 
     				});
+
+					if($Answered_All==1)
+  					{
+  					$( "#answerlist" ).append('<tr><td style="padding-left: 25px;">All Questions Satisfied!</td><tr>');
+  					}
+
     			}
 
     		});
