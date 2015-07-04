@@ -1,0 +1,54 @@
+---
+layout: page
+title: Ask Swagger Questions
+---
+
+<table cellpadding="1" cellspacing="1" id="answerlist"></table>
+
+<script type="text/javascript">
+
+function askQuestions($apisjson_url)
+	{
+
+	$issueURL = 'http://question.api.kinlane.com/questions/ask/organization/?apisjson_url=' + $apisjson_url + '&questions=46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,66,67,68,69,70,71,72,73';
+
+	$tr = "";
+
+  	$.getJSON($issueURL, function (data) {
+
+    	$.each(data, function (endpointIndex, endpoint) {
+
+    		var endpointSwagger = endpoint.Swagger;
+
+    		if(endpointSwagger)
+    			{
+    			//console.log(endpointIndex);
+    			//console.log(endpointSwagger);
+    			if(endpointSwagger.length > 0)
+    				{
+    				$( "#answerlist" ).append('<tr><td><strong>' + endpointIndex + '</strong></td><tr>');
+    				}
+
+    			$.each(endpointSwagger, function (questionIndex, item) {
+
+    				var question = item.question;
+    				var answer = item.answer;
+
+    				//console.log(question + ' ' + answer);
+    				if(answer=='no')
+    					{
+    					$( "#answerlist" ).append('<tr><td style="padding-left: 25px;">' + question + ' ' + answer + '</td><tr>');
+    					}
+
+    				});
+    			}
+
+    		});
+
+  		});
+  	console.log($tr);
+  	document.getElementById("answerlist").innherHTML = $tr;
+	}
+$apisjson_url = getUrlVar('apisjson_url');
+askQuestions($apisjson_url);
+</script>
