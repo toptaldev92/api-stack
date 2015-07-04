@@ -24,12 +24,14 @@ function askQuestions($apisjson_url)
     			{
     			//console.log(endpointIndex);
     			//console.log(endpointSwagger);
+					$Answered_All = 1;
+
     			if(endpointSwagger.length > 0)
     				{
     				$( "#answerlist" ).append('<tr><td><strong>' + endpointIndex + '</strong></td><tr>');
+						$Answered_All = 0;
     				}
 
-					$Answered_All = 1;
     			$.each(endpointSwagger, function (questionIndex, item) {
 
     				var question = item.question;
