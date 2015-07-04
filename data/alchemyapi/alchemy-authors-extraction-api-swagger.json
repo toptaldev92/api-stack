@@ -3,7 +3,12 @@
 	"info": {
 		"title": "Alchemy Authors Extraction API.",
 		"description": "AlchemyAPI is capable of extracting author information from web pages.",
-		"termsOfService": "",
+		"termsOfService": "http://www.alchemyapi.com/company/terms.html",
+		"contact": {
+			"name": "AlchemyAPI",
+			"url": "http://www.alchemyapi.com/company/contact",
+			"email": "questions@alchemyapi.com"
+		},
 		"version": "v1"
 	},
 	"host": "access.alchemyapi.com",
@@ -37,8 +42,17 @@
 					}
 				},
 				"tags": ["Author"],
-				"security": []
+				"security": [{
+					"apikey": []
+				}]
 			}
+		}
+	},
+	"securityDefinitions": {
+		"apikey": {
+			"type": "apiKey",
+			"name": "apikey",
+			"in": "query"
 		}
 	},
 	"definitions": {
