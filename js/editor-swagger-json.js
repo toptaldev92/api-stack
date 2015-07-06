@@ -1345,10 +1345,10 @@ function SwaggerSavePath($pathcount)
 	}		
 	
 
-function loadSwaggerditor()
+function loadSwaggerditor($apisjsonURL)
     {
 	console.log("loading swagger editor!");
-    $apisjsonURL = '/' + $repo + '/swagger.json';
+    //$apisjsonURL = '/' + $repo + '/swagger.json';
 
 	var jqxhr = $.getJSON($apisjsonURL, function(Swagger) { 													
 
