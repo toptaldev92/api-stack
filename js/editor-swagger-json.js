@@ -1350,7 +1350,11 @@ function loadSwaggerditor($apisjsonURL)
 	console.log("loading swagger editor!");
     //$apisjsonURL = '/' + $repo + '/swagger.json';
 
-	var jqxhr = $.getJSON($apisjsonURL, function(Swagger) { 													
+	console.log($apisjsonURL);
+	$loadURL = $apisjsonURL.replace("http://theapistack.com", "");
+	console.log($loadURL);
+	
+	var jqxhr = $.getJSON($loadURL, function(Swagger) { 													
 
 		// Set our Master Store
 		$MasterSwagger = Swagger;
