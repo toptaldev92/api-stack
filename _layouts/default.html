@@ -135,6 +135,8 @@
 	</div>
 	</noscript>
 
+<script src="/js/editor-swagger-json.js" type="text/javascript"></script>
+
 <script type="text/javascript">
 
 $IssuesArray = [];
@@ -233,13 +235,18 @@ function companyGithubIssueCheck()
 
         });
     }
-    
-  getIssues();
-  companyGithubIssueCheck();
+  
+	  {% if page.title == 'Companies + APIs - Working' %}
+	  	getIssues();
+	  	companyGithubIssueCheck();
+	  {% endif %}  
+
+	if(document.getElementById("swaggerEditor"))
+		{			
+		loadSwaggerditor();
+		}	
 
 </script>
-
-<script src="/js/editor-swagger-json.js" type="text/javascript"></script>
 
   </body>
 </html>
