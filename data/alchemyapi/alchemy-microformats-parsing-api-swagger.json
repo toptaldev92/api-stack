@@ -3,8 +3,17 @@
 	"info": {
 		"title": "Alchemy Microformats Parsing API",
 		"description": "AlchemyAPI understands Microformats data standards and is capable of extracting hCard, adr, geo, and rel-* formatted content from any web page. Leverage this structured data to enhance web page categorization and indexing, and perform content discovery tasks.",
-		"termsOfService": "",
-		"version": ""
+		"termsOfService": "http://www.alchemyapi.com/company/terms.html",
+		"contact": {
+			"name": "AlchemyAPI",
+			"url": "http://www.alchemyapi.com/company/contact",
+			"email": "questions@alchemyapi.com"
+		},
+		"license": {
+			"name": "v",
+			"url": null
+		},
+		"version": "v1"
 	},
 	"host": "access.alchemyapi.com",
 	"basePath": "/calls/",
@@ -27,12 +36,27 @@
 				}],
 				"responses": {
 					"200": {
-						"description": "OK"
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/results"
+							}
+						}
 					}
 				},
 				"tags": ["Microformats"],
-				"security": []
+				"security": [{
+					"apikey": []
+				}]
 			}
+		}
+	},
+	"securityDefinitions": {
+		"apikey": {
+			"type": "apiKey",
+			"name": "apikey",
+			"in": ""
 		}
 	},
 	"definitions": {
