@@ -3,8 +3,13 @@
 	"info": {
 		"title": "Alchemy Relation Extraction API",
 		"description": "AlchemyAPI is capable of identifying Subject-Action-Object relations within your HTML, text, or web-based content. We employ sophisticated statistical algorithms and natural language processing technology to analyze your information, extracting the semantic richness embedded within.",
-		"termsOfService": "",
-		"version": ""
+		"termsOfService": "http://www.alchemyapi.com/company/terms.html",
+		"contact": {
+			"name": "AlchemyAPI",
+			"url": "http://www.alchemyapi.com/company/contact",
+			"email": "questions@alchemyapi.com"
+		},
+		"version": "v1"
 	},
 	"host": "access.alchemyapi.com",
 	"basePath": "/calls/",
@@ -27,12 +32,27 @@
 				}],
 				"responses": {
 					"200": {
-						"description": "OK"
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/results"
+							}
+						}
 					}
 				},
 				"tags": ["Relations"],
-				"security": []
+				"security": [{
+					"apikey": []
+				}]
 			}
+		}
+	},
+	"securityDefinitions": {
+		"apikey": {
+			"type": "apiKey",
+			"name": "apikey",
+			"in": ""
 		}
 	},
 	"definitions": {
