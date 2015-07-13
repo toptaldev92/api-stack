@@ -22,12 +22,6 @@
 				"summary": "Get Jobs",
 				"description": "Get jobs.",
 				"operationId": "jobs",
-				"parameters": [{
-					"in": "query",
-					"name": "access_token",
-					"type": "string",
-					"format": "string"
-				}],
 				"responses": {
 					"200": {
 						"description": "Successful response",
@@ -40,19 +34,22 @@
 					}
 				},
 				"tags": ["Jobs"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
 		},
-		"/jobs/:id": {
+		"/jobs/{job_id]": {
 			"get": {
 				"summary": "Get Job",
 				"description": "Get job.",
 				"operationId": "job",
 				"parameters": [{
-					"in": "query",
-					"name": "access_token",
-					"type": "string",
-					"format": "string"
+					"in": "path",
+					"name": "job_id",
+					"description": "The id for the job.",
+					"type": "integer",
+					"format": "integer"
 				}],
 				"responses": {
 					"200": {
@@ -66,8 +63,18 @@
 					}
 				},
 				"tags": ["Jobs"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
 		}
 	},
 	"definitions": {
