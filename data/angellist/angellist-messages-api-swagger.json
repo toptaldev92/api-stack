@@ -23,12 +23,10 @@
 				"description": "Get Messages",
 				"operationId": "messages",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				},
-				{
-					"in": "",
-					"name": "likable_type"
+					"in": "query",
+					"name": "likable_type",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
@@ -42,27 +40,31 @@
 					}
 				},
 				"tags": ["Messages"],
-				"security": []
+				"security": [{
+					"oauth": []
+				}]
 			},
 			"post": {
 				"summary": "Add Message",
 				"description": "Add Message",
 				"operationId": "messages",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
+					"in": "query",
+					"name": "body",
+					"type": "string",
+					"format": "string"
 				},
 				{
-					"in": "",
-					"name": "body"
+					"in": "query",
+					"name": "recipient_id",
+					"type": "string",
+					"format": "string"
 				},
 				{
-					"in": "",
-					"name": "recipient_id"
-				},
-				{
-					"in": "",
-					"name": "thread_id"
+					"in": "query",
+					"name": "thread_id",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
@@ -76,7 +78,9 @@
 					}
 				},
 				"tags": ["Messages"],
-				"security": []
+				"security": [{
+					"oauth": []
+				}]
 			}
 		},
 		"/messages/:message_id": {
@@ -85,12 +89,10 @@
 				"description": "Get Message",
 				"operationId": "message",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				},
-				{
-					"in": "",
-					"name": "likable_type"
+					"in": "query",
+					"name": "likable_type",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
@@ -104,7 +106,9 @@
 					}
 				},
 				"tags": ["Messages"],
-				"security": []
+				"security": [{
+					"oauth": []
+				}]
 			}
 		},
 		"/messages/mark": {
@@ -114,39 +118,51 @@
 				"operationId": "messages",
 				"parameters": [{
 					"in": "query",
-					"name": "access_token",
-					"type": "string",
-					"format": "string"
-				},
-				{
-					"in": "query",
 					"name": "thread_ids",
 					"type": "string",
 					"format": "string"
 				}],
 				"responses": {
 					"200": {
-						"description": "OK"
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/messages"
+							}
+						}
+					},
+					"500": {
+						"description": "Error",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/error"
+							}
+						}
 					}
 				},
 				"tags": ["Messages"],
-				"security": []
+				"security": [{
+					"oauth": []
+				}]
 			}
 		}
 	},
 	"securityDefinitions": {
 		"oauth": {
 			"type": "oauth2",
-			"name": "oauth",
-			"in": ""
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
 		}
 	},
 	"definitions": {
 		"error": {
 			"properties": {
 				"error": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				},
 				"message": {
 					"description": "This is a default description.",
@@ -170,19 +186,19 @@
 				},
 				"id": {
 					"description": "This is a default description.",
-					"type": "string"
+					"type": "integer"
 				},
 				"last_message": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				},
 				"recipient_id": {
 					"description": "This is a default description.",
-					"type": "string"
+					"type": "integer"
 				},
 				"sender_id": {
 					"description": "This is a default description.",
-					"type": "string"
+					"type": "integer"
 				},
 				"viewed": {
 					"description": "This is a default description.",
@@ -197,8 +213,8 @@
 					"type": "string"
 				},
 				"cards": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				},
 				"created_at": {
 					"description": "This is a default description.",
@@ -206,19 +222,19 @@
 				},
 				"id": {
 					"description": "This is a default description.",
-					"type": "string"
+					"type": "integer"
 				},
 				"messages": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				},
 				"recipient_id": {
 					"description": "This is a default description.",
-					"type": "string"
+					"type": "integer"
 				},
 				"sender_id": {
 					"description": "This is a default description.",
-					"type": "string"
+					"type": "integer"
 				},
 				"viewed": {
 					"description": "This is a default description.",
