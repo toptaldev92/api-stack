@@ -18,85 +18,21 @@
 	"consumes": ["application/json"],
 	"paths": {
 		"/status_updates": {
-			"post": {
-				"summary": "Add Status Update",
-				"description": "Add Status Update",
-				"operationId": "statusUpdate",
-				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				},
-				{
-					"in": "",
-					"name": "message"
-				},
-				{
-					"in": "",
-					"name": "startup_id"
-				}],
-				"responses": {
-					"200": {
-						"description": "Successful response",
-						"schema": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/status_updates"
-							}
-						}
-					}
-				},
-				"tags": ["Status Updates"],
-				"security": []
-			}
-		},
-		"/status_updates/:status_update_id": {
-			"delete": {
-				"summary": "Delete Status Update",
-				"description": "Delete Status Update",
-				"operationId": "statusUpdate",
-				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				},
-				{
-					"in": "",
-					"name": "message"
-				},
-				{
-					"in": "",
-					"name": "startup_id"
-				}],
-				"responses": {
-					"200": {
-						"description": "Successful response",
-						"schema": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/status_updates"
-							}
-						}
-					}
-				},
-				"tags": ["Status Updates"],
-				"security": []
-			}
-		},
-		"https": {
 			"get": {
 				"summary": "Get Status Updates",
 				"description": "Get Status Updates",
 				"operationId": "1Status_updates",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
+					"in": "query",
+					"name": "startup_id",
+					"type": "string",
+					"format": "string"
 				},
 				{
-					"in": "",
-					"name": "startup_id"
-				},
-				{
-					"in": "",
-					"name": "user_id"
+					"in": "query",
+					"name": "user_id",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
@@ -104,8 +40,99 @@
 					}
 				},
 				"tags": ["Status Updates"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
+			},
+			"post": {
+				"summary": "Add Status Update",
+				"description": "Add Status Update",
+				"operationId": "statusUpdate",
+				"parameters": [{
+					"in": "query",
+					"name": "message",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "startup_id",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/status_updates"
+							}
+						}
+					}
+				},
+				"tags": ["Status Updates"],
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
+		},
+		"/status_updates/{status_update_id}": {
+			"delete": {
+				"summary": "Delete Status Update",
+				"description": "Delete Status Update",
+				"operationId": "statusUpdate",
+				"parameters": [{
+					"in": "query",
+					"name": "message",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "startup_id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "status_update_id",
+					"type": "integer",
+					"format": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/status_updates"
+							}
+						}
+					},
+					"500": {
+						"description": "Error",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/error"
+							}
+						}
+					}
+				},
+				"tags": ["Status Updates"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
 		}
 	},
 	"definitions": {
@@ -124,24 +151,16 @@
 					"type": "string"
 				},
 				"status_updates": {
-					"description": "",
-					"type": "array"
-				}
-			}
-		},
-		"_1_status_updates": {
-			"properties": {
-				"user": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				}
 			}
 		},
 		"error": {
 			"properties": {
 				"error": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				},
 				"message": {
 					"description": "This is a default description.",
