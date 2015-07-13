@@ -1,0 +1,157 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "AngelList Status Updates API",
+		"description": "Manage status updates for users and startups.",
+		"termsOfService": "https://angel.co/terms",
+		"contact": {
+			"name": "AngelList",
+			"url": "https://angel.co/api",
+			"email": "api@angel.co"
+		},
+		"version": "v1"
+	},
+	"host": "api.angel.co",
+	"basePath": "/1/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/status_updates": {
+			"post": {
+				"summary": "Add Status Update",
+				"description": "Add Status Update",
+				"operationId": "statusUpdate",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				},
+				{
+					"in": "",
+					"name": "message"
+				},
+				{
+					"in": "",
+					"name": "startup_id"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/status_updates"
+							}
+						}
+					}
+				},
+				"tags": ["Status Updates"],
+				"security": []
+			}
+		},
+		"/status_updates/:status_update_id": {
+			"delete": {
+				"summary": "Delete Status Update",
+				"description": "Delete Status Update",
+				"operationId": "statusUpdate",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				},
+				{
+					"in": "",
+					"name": "message"
+				},
+				{
+					"in": "",
+					"name": "startup_id"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/status_updates"
+							}
+						}
+					}
+				},
+				"tags": ["Status Updates"],
+				"security": []
+			}
+		},
+		"https": {
+			"get": {
+				"summary": "Get Status Updates",
+				"description": "Get Status Updates",
+				"operationId": "1Status_updates",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				},
+				{
+					"in": "",
+					"name": "startup_id"
+				},
+				{
+					"in": "",
+					"name": "user_id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Status Updates"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"status_updates": {
+			"properties": {
+				"created_at": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"message": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"status_updates": {
+					"description": "",
+					"type": "array"
+				}
+			}
+		},
+		"_1_status_updates": {
+			"properties": {
+				"user": {
+					"description": "",
+					"type": "array"
+				}
+			}
+		},
+		"error": {
+			"properties": {
+				"error": {
+					"description": "",
+					"type": "array"
+				},
+				"message": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}
