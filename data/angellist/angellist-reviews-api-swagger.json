@@ -17,18 +17,16 @@
 	"produces": ["application/json"],
 	"consumes": ["application/json"],
 	"paths": {
-		"/reviews/:review_id": {
+		"/reviews": {
 			"get": {
-				"summary": "Get Review",
-				"description": "Get Review",
+				"summary": "Get Reviews",
+				"description": "Get Reviews",
 				"operationId": "reviews",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				},
-				{
-					"in": "",
-					"name": "startup_id"
+					"in": "query",
+					"name": "user_id",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
@@ -45,18 +43,22 @@
 				"security": []
 			}
 		},
-		"https": {
+		"/reviews/{review_id}": {
 			"get": {
-				"summary": "Get Reviews",
-				"description": "Get Reviews",
-				"operationId": "1Reviews",
+				"summary": "Get Review",
+				"description": "Get Review",
+				"operationId": "reviews",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
+					"in": "path",
+					"name": "review_id",
+					"type": "integer",
+					"format": "integer"
 				},
 				{
-					"in": "",
-					"name": "user_id"
+					"in": "query",
+					"name": "startup_id",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
@@ -70,8 +72,18 @@
 					}
 				},
 				"tags": ["Reviews"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
 		}
 	},
 	"definitions": {
@@ -98,16 +110,16 @@
 					"type": "string"
 				},
 				"relationship_to_reviewer": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				},
 				"reviewer": {
 					"description": "This is a default description.",
 					"type": "string"
 				},
 				"permissions": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				}
 			}
 		}
