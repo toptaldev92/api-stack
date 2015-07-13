@@ -83,34 +83,6 @@
 				}]
 			}
 		},
-		"/messages/:message_id": {
-			"get": {
-				"summary": "Get Message",
-				"description": "Get Message",
-				"operationId": "message",
-				"parameters": [{
-					"in": "query",
-					"name": "likable_type",
-					"type": "string",
-					"format": "string"
-				},
-				{
-					"in": "path",
-					"name": "message_id",
-					"type": "integer",
-					"format": "integer"
-				}],
-				"responses": {
-					"200": {
-						"description": "OK"
-					}
-				},
-				"tags": ["Messages"],
-				"security": [{
-					"oauth": []
-				}]
-			}
-		},
 		"/messages/mark": {
 			"post": {
 				"summary": "Mark As Read",
@@ -131,6 +103,43 @@
 								"$ref": "#/definitions/messages"
 							}
 						}
+					},
+					"500": {
+						"description": "Error",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/error"
+							}
+						}
+					}
+				},
+				"tags": ["Messages"],
+				"security": [{
+					"oauth": []
+				}]
+			}
+		},
+		"/messages/{message_id}": {
+			"get": {
+				"summary": "Get Message",
+				"description": "Get Message",
+				"operationId": "message",
+				"parameters": [{
+					"in": "query",
+					"name": "likable_type",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "message_id",
+					"type": "integer",
+					"format": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
 					},
 					"500": {
 						"description": "Error",
