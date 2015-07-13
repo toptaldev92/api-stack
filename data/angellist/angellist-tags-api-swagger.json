@@ -17,62 +17,16 @@
 	"produces": ["application/json"],
 	"consumes": ["application/json"],
 	"paths": {
-		"/1/tags/302/parents": {
-			"get": {
-				"summary": "",
-				"description": "",
-				"operationId": "1Tags302Parents",
-				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				}],
-				"responses": {
-					"200": {
-						"description": "Successful response",
-						"schema": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/all"
-							}
-						}
-					}
-				},
-				"tags": [""],
-				"security": []
-			}
-		},
-		"/1/tags/302/startups": {
-			"get": {
-				"summary": "",
-				"description": "",
-				"operationId": "1Tags302Startups",
-				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				}],
-				"responses": {
-					"200": {
-						"description": "Successful response",
-						"schema": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/startups"
-							}
-						}
-					}
-				},
-				"tags": [""],
-				"security": []
-			}
-		},
-		"/1/tags/:tag_id": {
+		"/tags/{tag_id}": {
 			"get": {
 				"summary": "Get Tag",
 				"description": "Get Tag",
 				"operationId": "tags",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
+					"in": "path",
+					"name": "tag_id",
+					"type": "integer",
+					"format": "integer"
 				}],
 				"responses": {
 					"200": {
@@ -86,19 +40,17 @@
 					}
 				},
 				"tags": ["Tags"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
 		},
-		"/1/tags/tag_id/children": {
+		"/tags/{tag_id}/children": {
 			"get": {
 				"summary": "Get Tags Children",
 				"description": "Get Tags Children",
 				"operationId": "tagsChildren",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				},
-				{
 					"in": "path",
 					"name": "tag_id",
 					"type": "integer",
@@ -116,19 +68,17 @@
 					}
 				},
 				"tags": ["Tags"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
 		},
-		"/tags/:tag_id/jobs": {
+		"/tags/{tag_id}/jobs": {
 			"get": {
 				"summary": "Get Jobs by Tag",
 				"description": "Get Jobs by Tag",
 				"operationId": "jobs",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				},
-				{
 					"in": "path",
 					"name": "tag_id",
 					"type": "integer",
@@ -146,53 +96,17 @@
 					}
 				},
 				"tags": ["Tags"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
 		},
-		"/tags/:tag_id/startups": {
+		"/tags/{tag_id}/parents": {
 			"get": {
-				"summary": "Get Startups by Tag",
-				"description": "Get Startups by Tag",
-				"operationId": "startups",
+				"summary": "Get Tag Parents",
+				"description": "Get Tag Parents",
+				"operationId": "tagParents",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				},
-				{
-					"in": "",
-					"name": "filter"
-				},
-				{
-					"in": "path",
-					"name": "tag_id",
-					"type": "integer",
-					"format": "integer"
-				}],
-				"responses": {
-					"200": {
-						"description": "Successful response",
-						"schema": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/startups"
-							}
-						}
-					}
-				},
-				"tags": ["Tags"],
-				"security": []
-			}
-		},
-		"/tags/:tag_id/users": {
-			"get": {
-				"summary": "Get Users by Tag",
-				"description": "Get Users by Tag",
-				"operationId": "tagUsers",
-				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				},
-				{
 					"in": "path",
 					"name": "tag_id",
 					"type": "integer",
@@ -212,13 +126,77 @@
 				"tags": ["Tags"],
 				"security": []
 			}
+		},
+		"/tags/{tag_id}/startups": {
+			"get": {
+				"summary": "Get Startups by Tag",
+				"description": "Get Startups by Tag",
+				"operationId": "tagStartups",
+				"parameters": [{
+					"in": "path",
+					"name": "tag_id",
+					"type": "integer",
+					"format": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/startups"
+							}
+						}
+					}
+				},
+				"tags": ["Tags"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		},
+		"/tags/{tag_id}/users": {
+			"get": {
+				"summary": "Get Users by Tag",
+				"description": "Get Users by Tag",
+				"operationId": "tagUsers",
+				"parameters": [{
+					"in": "path",
+					"name": "tag_id",
+					"type": "integer",
+					"format": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/all"
+							}
+						}
+					}
+				},
+				"tags": ["Tags"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
 		}
 	},
 	"definitions": {
 		"jobs": {
 			"properties": {
 				"job_id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "integer"
 				}
 			}
@@ -226,8 +204,8 @@
 		"abilities": {
 			"properties": {
 				"intro": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				}
 			}
 		},
@@ -246,8 +224,8 @@
 					"type": "string"
 				},
 				"locations": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				},
 				"name": {
 					"description": "This is a default description.",
@@ -262,8 +240,8 @@
 		"all": {
 			"properties": {
 				"all": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				},
 				"followers": {
 					"description": "This is a default description.",
@@ -282,15 +260,15 @@
 		"children": {
 			"properties": {
 				"children": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				}
 			}
 		},
 		"startups": {
 			"properties": {
 				"startup_id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "integer"
 				}
 			}
