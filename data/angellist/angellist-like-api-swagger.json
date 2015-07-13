@@ -24,12 +24,6 @@
 				"operationId": "like",
 				"parameters": [{
 					"in": "query",
-					"name": "access_token",
-					"type": "string",
-					"format": "string"
-				},
-				{
-					"in": "query",
 					"name": "likable_id",
 					"type": "string",
 					"format": "string"
@@ -52,7 +46,9 @@
 					}
 				},
 				"tags": ["Likes"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
 		},
 		"/likes": {
@@ -62,12 +58,6 @@
 				"operationId": "likes",
 				"parameters": [{
 					"in": "query",
-					"name": "access_token",
-					"type": "string",
-					"format": "string"
-				},
-				{
-					"in": "query",
 					"name": "likable_id",
 					"type": "string",
 					"format": "string"
@@ -90,7 +80,9 @@
 					}
 				},
 				"tags": ["Likes"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			},
 			"post": {
 				"summary": "Add Like",
@@ -98,12 +90,6 @@
 				"operationId": "likes",
 				"parameters": [{
 					"in": "query",
-					"name": "access_token",
-					"type": "string",
-					"format": "string"
-				},
-				{
-					"in": "query",
 					"name": "likable_id",
 					"type": "string",
 					"format": "string"
@@ -126,42 +112,69 @@
 					}
 				},
 				"tags": ["Likes"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
 		},
-		"/likes/:like_id": {
+		"/likes/{like_id}": {
 			"delete": {
 				"summary": "Delete Like",
 				"description": "Delete Like",
 				"operationId": "likes",
 				"parameters": [{
 					"in": "query",
-					"name": "access_token",
+					"name": "likable_type",
 					"type": "string",
 					"format": "string"
 				},
 				{
-					"in": "query",
-					"name": "likable_type",
-					"type": "string",
-					"format": "string"
+					"in": "path",
+					"name": "like_id",
+					"type": "integer",
+					"format": "integer"
 				}],
 				"responses": {
 					"200": {
-						"description": "OK"
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/user"
+							}
+						}
+					},
+					"500": {
+						"description": "Error",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/error"
+							}
+						}
 					}
 				},
 				"tags": ["Likes"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
 		}
 	},
 	"definitions": {
 		"error": {
 			"properties": {
 				"error": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				},
 				"message": {
 					"description": "This is a default description.",
@@ -172,8 +185,8 @@
 					"type": "string"
 				},
 				"gadget": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				}
 			}
 		},
@@ -204,7 +217,7 @@
 					"type": "string"
 				},
 				"user": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "array"
 				}
 			}
