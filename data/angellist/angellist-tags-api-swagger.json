@@ -1,0 +1,299 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "AngelList Tags API",
+		"description": "Access and manage tags for startups and users on AngelList.",
+		"termsOfService": "https://angel.co/terms",
+		"contact": {
+			"name": "AngelList",
+			"url": "https://angel.co/api",
+			"email": "api@angel.co"
+		},
+		"version": "v1"
+	},
+	"host": "api.angel.co",
+	"basePath": "/1/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/1/tags/302/parents": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "1Tags302Parents",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/all"
+							}
+						}
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/1/tags/302/startups": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "1Tags302Startups",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/startups"
+							}
+						}
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/1/tags/:tag_id": {
+			"get": {
+				"summary": "Get Tag",
+				"description": "Get Tag",
+				"operationId": "tags",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/all"
+							}
+						}
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			}
+		},
+		"/1/tags/tag_id/children": {
+			"get": {
+				"summary": "Get Tags Children",
+				"description": "Get Tags Children",
+				"operationId": "tagsChildren",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				},
+				{
+					"in": "path",
+					"name": "tag_id",
+					"type": "integer",
+					"format": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/children"
+							}
+						}
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			}
+		},
+		"/tags/:tag_id/jobs": {
+			"get": {
+				"summary": "Get Jobs by Tag",
+				"description": "Get Jobs by Tag",
+				"operationId": "jobs",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				},
+				{
+					"in": "path",
+					"name": "tag_id",
+					"type": "integer",
+					"format": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/jobs"
+							}
+						}
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			}
+		},
+		"/tags/:tag_id/startups": {
+			"get": {
+				"summary": "Get Startups by Tag",
+				"description": "Get Startups by Tag",
+				"operationId": "startups",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				},
+				{
+					"in": "",
+					"name": "filter"
+				},
+				{
+					"in": "path",
+					"name": "tag_id",
+					"type": "integer",
+					"format": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/startups"
+							}
+						}
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			}
+		},
+		"/tags/:tag_id/users": {
+			"get": {
+				"summary": "Get Users by Tag",
+				"description": "Get Users by Tag",
+				"operationId": "tagUsers",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				},
+				{
+					"in": "path",
+					"name": "tag_id",
+					"type": "integer",
+					"format": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/all"
+							}
+						}
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"jobs": {
+			"properties": {
+				"job_id": {
+					"description": "",
+					"type": "integer"
+				}
+			}
+		},
+		"abilities": {
+			"properties": {
+				"intro": {
+					"description": "",
+					"type": "array"
+				}
+			}
+		},
+		"locations": {
+			"properties": {
+				"angellist_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"display_name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"locations": {
+					"description": "",
+					"type": "array"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"tag_type": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"all": {
+			"properties": {
+				"all": {
+					"description": "",
+					"type": "array"
+				},
+				"followers": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"investor_followers": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"startups": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"children": {
+			"properties": {
+				"children": {
+					"description": "",
+					"type": "array"
+				}
+			}
+		},
+		"startups": {
+			"properties": {
+				"startup_id": {
+					"description": "",
+					"type": "integer"
+				}
+			}
+		}
+	}
+}
