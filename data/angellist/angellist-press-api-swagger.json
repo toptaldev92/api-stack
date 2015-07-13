@@ -1,0 +1,140 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "AngelList Press API",
+		"description": "Press that is published via startups on AngelList.",
+		"termsOfService": "https://angel.co/terms",
+		"contact": {
+			"name": "AngelList",
+			"url": "https://angel.co/api",
+			"email": "api@angel.co"
+		},
+		"version": "v1"
+	},
+	"host": "api.angel.co",
+	"basePath": "/1/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/press": {
+			"get": {
+				"summary": "Get Press",
+				"description": "Get Press",
+				"operationId": "press",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				},
+				{
+					"in": "",
+					"name": "startup_id"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/press"
+							}
+						}
+					}
+				},
+				"tags": ["Press"],
+				"security": []
+			}
+		},
+		"/press/:press_id": {
+			"get": {
+				"summary": "Get Press",
+				"description": "Get Press",
+				"operationId": "press",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				},
+				{
+					"in": "path",
+					"name": "press_id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "",
+					"name": "startup_id"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/press"
+							}
+						}
+					}
+				},
+				"tags": ["Press"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"press": {
+			"properties": {
+				"created_at": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"flags": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"image_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"owner_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"owner_type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"posted_at": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"press": {
+					"description": "",
+					"type": "array"
+				},
+				"snippet": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"updated_at": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"_1_press_209809": {
+			"properties": []
+		}
+	}
+}
