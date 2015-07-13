@@ -1,0 +1,72 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "AngelList Accreditation API",
+		"description": "Access startup and user accreditation for AngelList.",
+		"termsOfService": "https://angel.co/terms",
+		"contact": {
+			"name": "AngelList",
+			"url": "https://angel.co/api",
+			"email": "api@angel.co"
+		},
+		"version": "v1"
+	},
+	"host": "api.angel.co",
+	"basePath": "/1/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/accreditation": {
+			"get": {
+				"summary": "Get Accreditation",
+				"description": "Pulls the accreditation for a startup and users.",
+				"operationId": "accreditation",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				}],
+				"responses": {
+					"Error": {
+						"description": "No results",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/error"
+							}
+						}
+					}
+				},
+				"tags": ["Accreditation"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"name": "AngelListAuth",
+			"in": ""
+		}
+	},
+	"definitions": {
+		"error": {
+			"properties": {
+				"error": {
+					"description": "",
+					"type": "array"
+				},
+				"message": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}
