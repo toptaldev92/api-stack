@@ -1,0 +1,230 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "AngelList Messages API",
+		"description": "Manages messages on AngelList platform.",
+		"termsOfService": "https://angel.co/terms",
+		"contact": {
+			"name": "AngelList",
+			"url": "https://angel.co/api",
+			"email": "api@angel.co"
+		},
+		"version": "v1"
+	},
+	"host": "api.angel.co",
+	"basePath": "/1/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/messages": {
+			"get": {
+				"summary": "Get Messages",
+				"description": "Get Messages",
+				"operationId": "messages",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				},
+				{
+					"in": "",
+					"name": "likable_type"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/messages"
+							}
+						}
+					}
+				},
+				"tags": ["Messages"],
+				"security": []
+			},
+			"post": {
+				"summary": "Add Message",
+				"description": "Add Message",
+				"operationId": "messages",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				},
+				{
+					"in": "",
+					"name": "body"
+				},
+				{
+					"in": "",
+					"name": "recipient_id"
+				},
+				{
+					"in": "",
+					"name": "thread_id"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/messages"
+							}
+						}
+					}
+				},
+				"tags": ["Messages"],
+				"security": []
+			}
+		},
+		"/messages/:message_id": {
+			"get": {
+				"summary": "Get Message",
+				"description": "Get Message",
+				"operationId": "message",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				},
+				{
+					"in": "",
+					"name": "likable_type"
+				},
+				{
+					"in": "path",
+					"name": "message_id",
+					"type": "integer",
+					"format": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messages"],
+				"security": []
+			}
+		},
+		"/messages/mark": {
+			"post": {
+				"summary": "Mark As Read",
+				"description": "Marks message as read.",
+				"operationId": "messages",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "thread_ids",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messages"],
+				"security": []
+			}
+		}
+	},
+	"securityDefinitions": {
+		"oauth": {
+			"type": "oauth2",
+			"name": "oauth",
+			"in": ""
+		}
+	},
+	"definitions": {
+		"error": {
+			"properties": {
+				"error": {
+					"description": "",
+					"type": "array"
+				},
+				"message": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"last_message": {
+			"properties": {
+				"body": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"created_at": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"last_message": {
+					"description": "",
+					"type": "array"
+				},
+				"recipient_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sender_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"viewed": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"messages": {
+			"properties": {
+				"body": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"cards": {
+					"description": "",
+					"type": "array"
+				},
+				"created_at": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"messages": {
+					"description": "",
+					"type": "array"
+				},
+				"recipient_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sender_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"viewed": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}
