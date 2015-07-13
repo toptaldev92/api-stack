@@ -52,7 +52,9 @@
 					}
 				},
 				"tags": ["Follows"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			},
 			"post": {
 				"summary": "Add Follow",
@@ -88,7 +90,9 @@
 					}
 				},
 				"tags": ["Follows"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
 		},
 		"/follows/batch": {
@@ -110,11 +114,28 @@
 				}],
 				"responses": {
 					"200": {
-						"description": "OK"
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/followed"
+							}
+						}
+					},
+					"500": {
+						"description": "Error",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/error"
+							}
+						}
 					}
 				},
 				"tags": ["Follows"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
 		},
 		"/follows/relationship": {
@@ -155,11 +176,31 @@
 								"$ref": "#/definitions/follows_relationship"
 							}
 						}
+					},
+					"500": {
+						"description": "Error",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/error"
+							}
+						}
 					}
 				},
 				"tags": ["Follows"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"name": "AngelListAuth",
+			"flow": "implicit",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
 		}
 	},
 	"definitions": {
