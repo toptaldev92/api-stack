@@ -1,0 +1,362 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "AngelList Startups API",
+		"description": "Explore and manage the startups on AngelList.",
+		"termsOfService": "https://angel.co/terms",
+		"contact": {
+			"name": "AngelList",
+			"url": "https://angel.co/api",
+			"email": "api@angel.co"
+		},
+		"version": "v1"
+	},
+	"host": "api.angel.co",
+	"basePath": "/1/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/1/startups/430327": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "1Startups430327",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/startup"
+							}
+						}
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/1/startup_roles": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "1Startup_roles",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				},
+				{
+					"in": "",
+					"name": "startup_id"
+				},
+				{
+					"in": "",
+					"name": "v"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/startup"
+							}
+						}
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/startups/:startup_id": {
+			"get": {
+				"summary": "Get Startup",
+				"description": "Get Startup",
+				"operationId": "startups",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/startup"
+							}
+						}
+					}
+				},
+				"tags": ["Startups"],
+				"security": []
+			}
+		},
+		"/startups/:startup_id/comments": {
+			"get": {
+				"summary": "Get Startup Comments",
+				"description": "Get Startup Comments",
+				"operationId": "startupComments",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/startups_comments"
+							}
+						}
+					}
+				},
+				"tags": ["Startups"],
+				"security": []
+			}
+		},
+		"/startups/:startup_id/followers": {
+			"get": {
+				"summary": "Get Startup Followers",
+				"description": "Get Startup Followers",
+				"operationId": "startupFollowers",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/startup"
+							}
+						}
+					}
+				},
+				"tags": ["Startups"],
+				"security": []
+			}
+		},
+		"/startups/:startup_id/followers/ids": {
+			"get": {
+				"summary": "Get Startup Followers IDs",
+				"description": "Get Startup Followers IDs",
+				"operationId": "startupFollowersIDs",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/startup"
+							}
+						}
+					}
+				},
+				"tags": ["Startups"],
+				"security": []
+			}
+		},
+		"/startups/:startup_id/roles": {
+			"get": {
+				"summary": "Get Startup Roles",
+				"description": "Get Startup Roles",
+				"operationId": "startupRoles",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/startup"
+							}
+						}
+					}
+				},
+				"tags": ["Startups"],
+				"security": []
+			}
+		},
+		"https": {
+			"get": {
+				"summary": "Get Startups",
+				"description": "Get Startups",
+				"operationId": "startups",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				},
+				{
+					"in": "",
+					"name": "filter"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/startup"
+							}
+						}
+					}
+				},
+				"tags": ["Startups"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"abilities": {
+			"properties": {
+				"intro": {
+					"description": "",
+					"type": "array"
+				}
+			}
+		},
+		"startups_comments": {
+			"properties": []
+		},
+		"users": {
+			"properties": {
+				"angellist_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"bio": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"follower_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"image": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"users": {
+					"description": "",
+					"type": "array"
+				}
+			}
+		},
+		"ids": {
+			"properties": {
+				"ids": {
+					"description": "",
+					"type": "array"
+				}
+			}
+		},
+		"startup": {
+			"properties": {
+				"angellist_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"community_profile": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"company_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"confirmed": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"created_at": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ended_at": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"follower_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"hidden": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"high_concept": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"logo_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"product_desc": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"quality": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"role": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"started_at": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"startup": {
+					"description": "",
+					"type": "array"
+				},
+				"thumb_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"updated_at": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}
