@@ -23,16 +23,16 @@
 				"description": "Search AngelList.",
 				"operationId": "search",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
+					"in": "query",
+					"name": "query",
+					"type": "string",
+					"format": "string"
 				},
 				{
-					"in": "",
-					"name": "query"
-				},
-				{
-					"in": "",
-					"name": "type"
+					"in": "query",
+					"name": "type",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
@@ -46,7 +46,9 @@
 					}
 				},
 				"tags": ["Search"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
 		},
 		"/search/slugs": {
@@ -55,12 +57,10 @@
 				"description": "Search by slug",
 				"operationId": "search",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				},
-				{
-					"in": "",
-					"name": "query"
+					"in": "query",
+					"name": "query",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
@@ -74,7 +74,9 @@
 					}
 				},
 				"tags": ["Search"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
 		},
 		"/startups": {
@@ -83,12 +85,10 @@
 				"description": "Search Startups",
 				"operationId": "startups",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				},
-				{
-					"in": "",
-					"name": "filter"
+					"in": "query",
+					"name": "filter",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
@@ -102,8 +102,18 @@
 					}
 				},
 				"tags": ["Search"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
 		}
 	},
 	"definitions": {
@@ -137,8 +147,8 @@
 		"abilities": {
 			"properties": {
 				"intro": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				}
 			}
 		}
