@@ -17,26 +17,68 @@
 	"produces": ["application/json"],
 	"consumes": ["application/json"],
 	"paths": {
+		"/path": {
+			"post": {
+				"summary": "Add Path",
+				"description": "Add Path",
+				"operationId": "paths",
+				"parameters": [{
+					"in": "query",
+					"name": "direction",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "startup_ids",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_ids",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/connection"
+							}
+						}
+					}
+				},
+				"tags": ["Paths"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		},
 		"/paths": {
 			"get": {
 				"summary": "Get Paths",
 				"description": "Get Paths",
 				"operationId": "paths",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
+					"in": "query",
+					"name": "direction",
+					"type": "string",
+					"format": "string"
 				},
 				{
-					"in": "",
-					"name": "direction"
+					"in": "query",
+					"name": "startup_ids",
+					"type": "string",
+					"format": "string"
 				},
 				{
-					"in": "",
-					"name": "startup_ids"
-				},
-				{
-					"in": "",
-					"name": "user_ids"
+					"in": "query",
+					"name": "user_ids",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
@@ -47,54 +89,37 @@
 								"$ref": "#/definitions/connection"
 							}
 						}
-					}
-				},
-				"tags": ["Paths"],
-				"security": []
-			}
-		},
-		"https": {
-			"post": {
-				"summary": "Add Path",
-				"description": "Add Path",
-				"operationId": "paths",
-				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				},
-				{
-					"in": "",
-					"name": "direction"
-				},
-				{
-					"in": "",
-					"name": "startup_ids"
-				},
-				{
-					"in": "",
-					"name": "user_ids"
-				}],
-				"responses": {
-					"200": {
-						"description": "Successful response",
+					},
+					"500": {
+						"description": "Error",
 						"schema": {
 							"type": "array",
 							"items": {
-								"$ref": "#/definitions/connection"
+								"$ref": "#/definitions/error"
 							}
 						}
 					}
 				},
 				"tags": ["Paths"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
 		}
 	},
 	"definitions": {
 		"error": {
 			"properties": {
 				"error": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "array"
 				},
 				"message": {
@@ -110,8 +135,8 @@
 		"connection": {
 			"properties": {
 				"connection": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				},
 				"in": {
 					"description": "This is a default description.",
