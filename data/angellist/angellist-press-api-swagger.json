@@ -23,12 +23,10 @@
 				"description": "Get Press",
 				"operationId": "press",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				},
-				{
-					"in": "",
-					"name": "startup_id"
+					"in": "query",
+					"name": "startup_id",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
@@ -42,27 +40,27 @@
 					}
 				},
 				"tags": ["Press"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
 		},
-		"/press/:press_id": {
+		"/press/{press_id}": {
 			"get": {
 				"summary": "Get Press",
 				"description": "Get Press",
 				"operationId": "press",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				},
-				{
 					"in": "path",
 					"name": "press_id",
 					"type": "string",
 					"format": "string"
 				},
 				{
-					"in": "",
-					"name": "startup_id"
+					"in": "query",
+					"name": "startup_id",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
@@ -76,8 +74,18 @@
 					}
 				},
 				"tags": ["Press"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
 		}
 	},
 	"definitions": {
@@ -112,7 +120,7 @@
 					"type": "string"
 				},
 				"press": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "array"
 				},
 				"snippet": {
