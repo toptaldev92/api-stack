@@ -29,12 +29,21 @@
 					"format": "string"
 				}],
 				"responses": {
-					"Error": {
+					"500": {
 						"description": "No results",
 						"schema": {
 							"type": "array",
 							"items": {
 								"$ref": "#/definitions/error"
+							}
+						}
+					},
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/accreditation"
 							}
 						}
 					}
@@ -69,6 +78,14 @@
 				"type": {
 					"description": "This is a default description.",
 					"type": "string"
+				}
+			}
+		},
+		"accreditation": {
+			"properties": {
+				"id": {
+					"description": "",
+					"type": "integer"
 				}
 			}
 		}
