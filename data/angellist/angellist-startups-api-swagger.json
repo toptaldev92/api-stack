@@ -17,40 +17,6 @@
 	"produces": ["application/json"],
 	"consumes": ["application/json"],
 	"paths": {
-		"/1/startup_roles": {
-			"get": {
-				"summary": "",
-				"description": "",
-				"operationId": "1Startup_roles",
-				"parameters": [{
-					"in": "query",
-					"name": "startup_id",
-					"type": "string",
-					"format": "string"
-				},
-				{
-					"in": "query",
-					"name": "v",
-					"type": "string",
-					"format": "string"
-				}],
-				"responses": {
-					"200": {
-						"description": "Successful response",
-						"schema": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/startup"
-							}
-						}
-					}
-				},
-				"tags": [""],
-				"security": [{
-					"AngelListAuth": []
-				}]
-			}
-		},
 		"/startups": {
 			"get": {
 				"summary": "Get Startups",
@@ -201,6 +167,40 @@
 					"name": "startup_id",
 					"type": "integer",
 					"format": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/startup"
+							}
+						}
+					}
+				},
+				"tags": ["Startups"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		},
+		"/startup_roles": {
+			"get": {
+				"summary": "Get Startup Roles",
+				"description": "Get Startup Roles",
+				"operationId": "1Startup_roles",
+				"parameters": [{
+					"in": "query",
+					"name": "startup_id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "v",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
