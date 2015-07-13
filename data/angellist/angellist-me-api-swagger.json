@@ -17,15 +17,11 @@
 	"produces": ["application/json"],
 	"consumes": ["application/json"],
 	"paths": {
-		"https": {
+		"/me": {
 			"get": {
 				"summary": "Get Me",
 				"description": "Get Me",
 				"operationId": "me",
-				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				}],
 				"responses": {
 					"200": {
 						"description": "Successful response",
@@ -38,111 +34,121 @@
 					}
 				},
 				"tags": ["Me"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
 		}
 	},
 	"definitions": {
 		"me": {
 			"properties": {
 				"name": {
-					"description": "",
-					"type": "array"
-				},
-				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "integer"
+				},
 				"bio": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"follower_count": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"angellist_url": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"image": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"email": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"blog_url": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"online_bio_url": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"twitter_url": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"facebook_url": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"linkedin_url": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"aboutme_url": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"github_url": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"dribbble_url": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"behance_url": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"resume_url": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"what_ive_built": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"what_i_do": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"criteria": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"locations": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"roles": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"skills": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"investor": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"scopes": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				}
 			}
@@ -150,27 +156,27 @@
 		"skills": {
 			"properties": {
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "integer"
 				},
 				"tag_type": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"display_name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"angellist_url": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				},
 				"level": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "string"
 				}
 			}
