@@ -23,8 +23,10 @@
 				"description": "Pulls the accreditation for a startup and users.",
 				"operationId": "accreditation",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"Error": {
@@ -48,7 +50,7 @@
 		"AngelListAuth": {
 			"type": "oauth2",
 			"name": "AngelListAuth",
-			"flow": "Implicit",
+			"flow": "accessCode",
 			"authorizationUrl": "https://angel.co/api/oauth/authorize",
 			"tokenUrl": "https://angel.co/api/oauth/token"
 		}
