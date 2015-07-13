@@ -17,46 +17,22 @@
 	"produces": ["application/json"],
 	"consumes": ["application/json"],
 	"paths": {
-		"/1/startups/430327": {
-			"get": {
-				"summary": "",
-				"description": "",
-				"operationId": "1Startups430327",
-				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				}],
-				"responses": {
-					"200": {
-						"description": "Successful response",
-						"schema": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/startup"
-							}
-						}
-					}
-				},
-				"tags": [""],
-				"security": []
-			}
-		},
 		"/1/startup_roles": {
 			"get": {
 				"summary": "",
 				"description": "",
 				"operationId": "1Startup_roles",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
+					"in": "query",
+					"name": "startup_id",
+					"type": "string",
+					"format": "string"
 				},
 				{
-					"in": "",
-					"name": "startup_id"
-				},
-				{
-					"in": "",
-					"name": "v"
+					"in": "query",
+					"name": "v",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
@@ -70,17 +46,21 @@
 					}
 				},
 				"tags": [""],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
 		},
-		"/startups/:startup_id": {
+		"/startups": {
 			"get": {
-				"summary": "Get Startup",
-				"description": "Get Startup",
+				"summary": "Get Startups",
+				"description": "Get Startups",
 				"operationId": "startups",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
+					"in": "query",
+					"name": "filter",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
@@ -94,17 +74,49 @@
 					}
 				},
 				"tags": ["Startups"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
 		},
-		"/startups/:startup_id/comments": {
+		"/startups/{startup_id}": {
+			"get": {
+				"summary": "Get Startup",
+				"description": "Get Startup",
+				"operationId": "startups",
+				"parameters": [{
+					"in": "path",
+					"name": "startup_id",
+					"type": "integer",
+					"format": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/startup"
+							}
+						}
+					}
+				},
+				"tags": ["Startups"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		},
+		"/startups/{startup_id}/comments": {
 			"get": {
 				"summary": "Get Startup Comments",
 				"description": "Get Startup Comments",
 				"operationId": "startupComments",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
+					"in": "path",
+					"name": "startup_id",
+					"type": "integer",
+					"format": "integer"
 				}],
 				"responses": {
 					"200": {
@@ -118,17 +130,21 @@
 					}
 				},
 				"tags": ["Startups"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
 		},
-		"/startups/:startup_id/followers": {
+		"/startups/{startup_id}/followers": {
 			"get": {
 				"summary": "Get Startup Followers",
 				"description": "Get Startup Followers",
 				"operationId": "startupFollowers",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
+					"in": "path",
+					"name": "startup_id",
+					"type": "integer",
+					"format": "integer"
 				}],
 				"responses": {
 					"200": {
@@ -142,17 +158,21 @@
 					}
 				},
 				"tags": ["Startups"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
 		},
-		"/startups/:startup_id/followers/ids": {
+		"/startups/{startup_id}/followers/ids": {
 			"get": {
 				"summary": "Get Startup Followers IDs",
 				"description": "Get Startup Followers IDs",
 				"operationId": "startupFollowersIDs",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
+					"in": "path",
+					"name": "startup_id",
+					"type": "integer",
+					"format": "integer"
 				}],
 				"responses": {
 					"200": {
@@ -166,17 +186,21 @@
 					}
 				},
 				"tags": ["Startups"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
 		},
-		"/startups/:startup_id/roles": {
+		"/startups/{startup_id}/roles": {
 			"get": {
 				"summary": "Get Startup Roles",
 				"description": "Get Startup Roles",
 				"operationId": "startupRoles",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
+					"in": "path",
+					"name": "startup_id",
+					"type": "integer",
+					"format": "integer"
 				}],
 				"responses": {
 					"200": {
@@ -190,44 +214,26 @@
 					}
 				},
 				"tags": ["Startups"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
-		},
-		"https": {
-			"get": {
-				"summary": "Get Startups",
-				"description": "Get Startups",
-				"operationId": "startups",
-				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				},
-				{
-					"in": "",
-					"name": "filter"
-				}],
-				"responses": {
-					"200": {
-						"description": "Successful response",
-						"schema": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/startup"
-							}
-						}
-					}
-				},
-				"tags": ["Startups"],
-				"security": []
-			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
 		}
 	},
 	"definitions": {
 		"abilities": {
 			"properties": {
 				"intro": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				}
 			}
 		},
@@ -261,16 +267,16 @@
 					"type": "string"
 				},
 				"users": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				}
 			}
 		},
 		"ids": {
 			"properties": {
 				"ids": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				}
 			}
 		},
@@ -341,8 +347,8 @@
 					"type": "string"
 				},
 				"startup": {
-					"description": "",
-					"type": "array"
+					"description": "This is a default description.",
+					"type": "string"
 				},
 				"thumb_url": {
 					"description": "This is a default description.",
