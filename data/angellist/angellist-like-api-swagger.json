@@ -1,0 +1,191 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "AngelList Like API",
+		"description": "Managing likes for AngelList users and startups.",
+		"termsOfService": "https://angel.co/terms",
+		"contact": {
+			"name": "AngelList",
+			"url": "https://angel.co/api",
+			"email": "api@angel.co"
+		},
+		"version": "v1"
+	},
+	"host": "api.angel.co",
+	"basePath": "/1/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/like": {
+			"post": {
+				"summary": "Add Like",
+				"description": "Add like.",
+				"operationId": "like",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				},
+				{
+					"in": "",
+					"name": "likable_id"
+				},
+				{
+					"in": "",
+					"name": "likable_type"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/user"
+							}
+						}
+					}
+				},
+				"tags": ["Likes"],
+				"security": []
+			}
+		},
+		"/likes": {
+			"get": {
+				"summary": "Get Likes",
+				"description": "Get likes",
+				"operationId": "likes",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				},
+				{
+					"in": "",
+					"name": "likable_id"
+				},
+				{
+					"in": "",
+					"name": "likable_type"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/user"
+							}
+						}
+					}
+				},
+				"tags": ["Likes"],
+				"security": []
+			},
+			"post": {
+				"summary": "Add Like",
+				"description": "Add Like",
+				"operationId": "likes",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				},
+				{
+					"in": "",
+					"name": "likable_id"
+				},
+				{
+					"in": "",
+					"name": "likable_type"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/user"
+							}
+						}
+					}
+				},
+				"tags": ["Likes"],
+				"security": []
+			}
+		},
+		"/likes/:like_id": {
+			"delete": {
+				"summary": "Delete Like",
+				"description": "Delete Like",
+				"operationId": "likes",
+				"parameters": [{
+					"in": "",
+					"name": "access_token"
+				},
+				{
+					"in": "",
+					"name": "likable_type"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Likes"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"error": {
+			"properties": {
+				"error": {
+					"description": "",
+					"type": "array"
+				},
+				"message": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"gadget": {
+					"description": "",
+					"type": "array"
+				}
+			}
+		},
+		"user": {
+			"properties": {
+				"angellist_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"bio": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"follower_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"image": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"user": {
+					"description": "",
+					"type": "array"
+				}
+			}
+		}
+	}
+}
