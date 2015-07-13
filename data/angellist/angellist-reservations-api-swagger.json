@@ -23,12 +23,10 @@
 				"description": "Get Reservations",
 				"operationId": "reservations",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				},
-				{
-					"in": "",
-					"name": "startup_id"
+					"in": "query",
+					"name": "startup_id",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
@@ -42,23 +40,25 @@
 					}
 				},
 				"tags": ["Reservations"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			},
 			"post": {
 				"summary": "Add Reservation",
 				"description": "Add Reservation",
 				"operationId": "reservations",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
+					"in": "query",
+					"name": "amount",
+					"type": "string",
+					"format": "string"
 				},
 				{
-					"in": "",
-					"name": "amount"
-				},
-				{
-					"in": "",
-					"name": "startup_id"
+					"in": "query",
+					"name": "startup_id",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
@@ -72,21 +72,27 @@
 					}
 				},
 				"tags": ["Reservations"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
 		},
-		"/reservations/:reservation_id": {
+		"/reservations/{reservation_id}": {
 			"get": {
 				"summary": "Get Reservation",
 				"description": "Get Reservation",
 				"operationId": "reservation",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
+					"in": "path",
+					"name": "reservation_id",
+					"type": "integer",
+					"format": "integer"
 				},
 				{
-					"in": "",
-					"name": "startup_id"
+					"in": "query",
+					"name": "startup_id",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
@@ -100,19 +106,19 @@
 					}
 				},
 				"tags": ["Reservations"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			},
 			"put": {
 				"summary": "Update Reservation",
 				"description": "Update Reservation",
 				"operationId": "reservation",
 				"parameters": [{
-					"in": "",
-					"name": "access_token"
-				},
-				{
-					"in": "",
-					"name": "reservation_id"
+					"in": "query",
+					"name": "reservation_id",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
@@ -123,18 +129,37 @@
 								"$ref": "#/definitions/reservations"
 							}
 						}
+					},
+					"500": {
+						"description": "Error",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/error"
+							}
+						}
 					}
 				},
 				"tags": ["Reservations"],
-				"security": []
+				"security": [{
+					"AngelListAuth": []
+				}]
 			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
 		}
 	},
 	"definitions": {
 		"reservations": {
 			"properties": {
 				"reservation_id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "integer"
 				}
 			}
@@ -142,7 +167,7 @@
 		"error": {
 			"properties": {
 				"error": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "array"
 				},
 				"message": {
