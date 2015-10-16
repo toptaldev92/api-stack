@@ -123,7 +123,7 @@ function listCompanies()
 	    $.getJSON('data/tags.json', function(data) {
 
 	    	 tagcount = data['tags'].length;
-	    	 companycount = companies['company'].length;
+	    	 companycount = companies.length;
 	    	 document.getElementById("summary-count").innerHTML = companycount + ' companies represented so far... ';	    	 	
 	    	 	
   			var select = document.getElementById("tag-select");    	 	
@@ -147,7 +147,7 @@ function listCompanies()
 		            var html = Mustache.to_html(template, val);
 		            $('#companyListing').append(html);  				
 					
-			         $.each(companies['company'], function(key2, val2) {
+			         $.each(companies, function(key2, val2) {
 				         	
 			            company = val2['name'];             
 			            tags = val2['tags'];	
