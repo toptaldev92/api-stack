@@ -1,0 +1,121 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Twitter Direct Messages API",
+		"description": "This is the endpoint for direct messages.",
+		"termsOfService": "http://dev.twitter.com/overview/terms",
+		"contact": {
+			"name": "Twitter",
+			"email": "https://dev.twitter.com/discussions"
+		},
+		"version": "1.1"
+	},
+	"host": "api.twitter.com",
+	"basePath": "/1.1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/direct_messages/destroy/": {
+			"post": {
+				"summary": "direct_messages/destroy",
+				"description": "Destroys the direct message specified in the required ID parameter. The authenticating user must be the recipient of the specified direct message.Important: This method requires an access token with RWD (read, write &amp; direct message) permissions. Consult The Application Permission Model for more information.",
+				"operationId": "directMessagesDestroy",
+				"parameters": [{
+					"in": "query",
+					"name": ""
+				},
+				{
+					"in": "query",
+					"name": "include_entities"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/direct_messages/new/": {
+			"post": {
+				"summary": "direct_messages/new",
+				"description": "Sends a new direct message to the specified user from the authenticating user. Requires both the user and text parameters and must be a POST. Returns the sent message in the requested format if successful.",
+				"operationId": "directMessagesNew",
+				"parameters": [{
+					"in": "query",
+					"name": ""
+				},
+				{
+					"in": "query",
+					"name": "screen_name"
+				},
+				{
+					"in": "query",
+					"name": "user_id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/direct_messages/sent/": {
+			"get": {
+				"summary": "direct_messages/sent",
+				"description": "Returns the 20 most recent direct messages sent by the authenticating user. Includes detailed information about the sender and recipient user. You can request up to 200 direct messages per call, up to a maximum of 800 outgoing DMs.Important: This method requires an access token with RWD (read, write &amp; direct message) permissions. Consult The Application Permission Model for more information.",
+				"operationId": "directMessagesSent",
+				"parameters": [{
+					"in": "query",
+					"name": "count"
+				},
+				{
+					"in": "query",
+					"name": "include_entities"
+				},
+				{
+					"in": "query",
+					"name": "max_id"
+				},
+				{
+					"in": "query",
+					"name": "page"
+				},
+				{
+					"in": "query",
+					"name": "since_id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/direct_messages/show/": {
+			"get": {
+				"summary": "direct_messages/show",
+				"description": "Returns a single direct message, specified by an id parameter. Like the /1.1/direct_messages.format request, this method will include the user objects of the sender and recipient. Important: This method requires an access token with RWD (read, write &amp; direct message) permissions. Consult The Application Permission Model for more information.",
+				"operationId": "directMessagesShow",
+				"parameters": [{
+					"in": "query",
+					"name": ""
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
