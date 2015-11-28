@@ -1,0 +1,99 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Twitter Blocks API",
+		"description": "This is the endpoint for Twitter block list management.",
+		"termsOfService": "http://dev.twitter.com/overview/terms",
+		"contact": {
+			"name": "Twitter",
+			"url": "https://dev.twitter.com/discussions"
+		},
+		"version": "1.1"
+	},
+	"host": "api.twitter.com",
+	"basePath": "/1.1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/blocks/destroy/": {
+			"post": {
+				"summary": "blocks/destroy",
+				"description": "Un-blocks the user specified in the ID parameter for the authenticating user. Returns the un-blocked user in the requested format when successful.  If relationships existed before the block was instated, they will not be restored.",
+				"operationId": "blocksDestroy",
+				"parameters": [{
+					"in": "query",
+					"name": "include_entities"
+				},
+				{
+					"in": "query",
+					"name": "screen_name"
+				},
+				{
+					"in": "query",
+					"name": "skip_status"
+				},
+				{
+					"in": "query",
+					"name": "user_id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/blocks/ids/": {
+			"get": {
+				"summary": "blocks/ids",
+				"description": "Returns an array of numeric user ids the authenticating user is blocking.Important On October 15, 2012 this method will become cursored by default, altering the default response format. See Using cursors to navigate collections for more details on how cursoring works.",
+				"operationId": "blocksIds",
+				"parameters": [{
+					"in": "query",
+					"name": "cursor"
+				},
+				{
+					"in": "query",
+					"name": "stringify_ids"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/blocks/list/": {
+			"get": {
+				"summary": "blocks/list",
+				"description": "Returns a collection of user objects that the authenticating user is blocking.Important On October 15, 2012 this method will become cursored by default, altering the default response format. See Using cursors to navigate collections for more details on how cursoring works.",
+				"operationId": "blocksList",
+				"parameters": [{
+					"in": "query",
+					"name": "cursor"
+				},
+				{
+					"in": "query",
+					"name": "include_entities"
+				},
+				{
+					"in": "query",
+					"name": "skip_status"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
