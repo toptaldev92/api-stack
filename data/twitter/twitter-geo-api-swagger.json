@@ -1,0 +1,135 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Twitter Geo API",
+		"description": "The geo API.",
+		"termsOfService": "http://dev.twitter.com/overview/terms",
+		"contact": {
+			"name": "Twitter",
+			"url": "https://dev.twitter.com/discussions"
+		},
+		"version": "1.1"
+	},
+	"host": "api.twitter.com",
+	"basePath": "/1.1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/geo/place/": {
+			"post": {
+				"summary": "geo/place",
+				"description": "As of December 2nd, 2013, this endpoint is deprecated and retired and no longer functions. Place creation was used infrequently by third party applications and is generally no longer supported on Twitter. Requests will return with status 410 (Gone) with error code 251.Created a new place object at the given latitude and longitude.Before creating a place you needed to query GET geo/similar_places with the latitude, longitude and name of the place you wished to create. The query will return an array of places which are similar to the one you wish to create, and a token. If the place you wished to create wasn&#8217;t in the returned array you could use the token with this method to create a new one.Learn more about Finding Tweets about Places.",
+				"operationId": "geoPlace",
+				"parameters": [{
+					"in": "query",
+					"name": ""
+				},
+				{
+					"in": "query",
+					"name": "attribute:street_address"
+				},
+				{
+					"in": "query",
+					"name": "callback"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/geo/reverse_geocode/": {
+			"get": {
+				"summary": "geo/reverse_geocode",
+				"description": "Given a latitude and a longitude, searches for up to 20 places that can be used as a place_id when updating a status.This request is an informative call and will deliver generalized results about geography.",
+				"operationId": "geoReverseGeocode",
+				"parameters": [{
+					"in": "query",
+					"name": ""
+				},
+				{
+					"in": "query",
+					"name": "accuracy"
+				},
+				{
+					"in": "query",
+					"name": "callback"
+				},
+				{
+					"in": "query",
+					"name": "granularity"
+				},
+				{
+					"in": "query",
+					"name": "max_results"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/geo/search/": {
+			"get": {
+				"summary": "geo/search",
+				"description": "Search for places that can be attached to a statuses/update. Given a latitude and a longitude pair, an IP address, or a name, this request will return a list of all the valid places that can be used as the place_id when updating a status.Conceptually, a query can be made from the user&#8217;s location, retrieve a list of places, have the user validate the location he or she is at, and then send the ID of this location with a call to POST statuses/update.This is the recommended method to use find places that can be attached to statuses/update.  Unlike GET geo/reverse_geocode which provides raw data access, this endpoint can potentially re-order places with regards to the user who is authenticated. This approach is also preferred for interactive place matching with the user.Some parameters in this method are only required based on the existence of other parameters. For instance, &#8220;lat&#8221; is required if &#8220;long&#8221; is provided, and vice-versa. Authentication is recommended, but not required with this method.",
+				"operationId": "geoSearch",
+				"parameters": [{
+					"in": "query",
+					"name": "accuracy"
+				},
+				{
+					"in": "query",
+					"name": "attribute:street_address"
+				},
+				{
+					"in": "query",
+					"name": "callback"
+				},
+				{
+					"in": "query",
+					"name": "contained_within"
+				},
+				{
+					"in": "query",
+					"name": "granularity"
+				},
+				{
+					"in": "query",
+					"name": "ip"
+				},
+				{
+					"in": "query",
+					"name": "lat"
+				},
+				{
+					"in": "query",
+					"name": "long"
+				},
+				{
+					"in": "query",
+					"name": "max_results"
+				},
+				{
+					"in": "query",
+					"name": "query"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
