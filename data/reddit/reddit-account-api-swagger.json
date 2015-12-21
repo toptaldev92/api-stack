@@ -1,0 +1,147 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Reddit Account API",
+		"description": "API for manageming Reddit accounts.",
+		"termsOfService": "https://github.com/reddit/reddit/wiki/API",
+		"version": null
+	},
+	"host": "www.reddit.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/api/v1/me": {
+			"get": {
+				"summary": "Returns the identity of the user currently authenticated via OAuth.",
+				"description": "Returns the identity of the user currently authenticated via OAuth.",
+				"operationId": "account",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1/me/karma": {
+			"get": {
+				"summary": "Return a breakdown of subreddit karma.",
+				"description": "Return a breakdown of subreddit karma.",
+				"operationId": "account",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1/me/prefs": {
+			"get": {
+				"summary": "Return the preference settings of the logged in user",
+				"description": "Return the preference settings of the logged in user",
+				"operationId": "account",
+				"parameters": [{
+					"in": "query",
+					"name": "fields",
+					"description": "A comma-separated list of items from this set:threaded_messageshide_downsemail_messagesshow_link_flaircreddit_autorenewshow_trendingprivate_feedsmonitor_mentionsresearchignore_suggested_sortmediaclickgadgetuse_global_defaultslabel_nsfwdomain_detailsshow_stylesheetshighlight_controversialno_profanitydefault_theme_srlanghide_upshide_from_robotscompressstore_visitsthreaded_modmailbetaother_themeshow_gold_expirationover_18enable_default_themesshow_promotemin_comment_scorepublic_votesorganiccollapse_read_messagesshow_flairmark_messages_readhide_adsmin_link_scorenewwindownumsiteslegacy_searchnum_commentshighlight_new_commentsdefault_comment_sorthide_locationbar",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"patch": {
+				"summary": "",
+				"description": "",
+				"operationId": "account",
+				"parameters": [{
+					"in": "query",
+					"name": "This endpoint expects JSON data of this format",
+					"description": "{  &quot;beta&quot;: boolean value,  &quot;clickgadget&quot;: boolean value,  &quot;collapse_read_messages&quot;: boolean value,  &quot;compress&quot;: boolean value,  &quot;creddit_autorenew&quot;: boolean value,  &quot;default_comment_sort&quot;: one of (`confidence`, `old`, `top`, `qa`, `controversial`, `new`),  &quot;domain_details&quot;: boolean value,  &quot;email_messages&quot;: boolean value,  &quot;enable_default_themes&quot;: boolean value,  &quot;hide_ads&quot;: boolean value,  &quot;hide_downs&quot;: boolean value,  &quot;hide_from_robots&quot;: boolean value,  &quot;hide_locationbar&quot;: boolean value,  &quot;hide_ups&quot;: boolean value,  &quot;highlight_controversial&quot;: boolean value,  &quot;highlight_new_comments&quot;: boolean value,  &quot;ignore_suggested_sort&quot;: boolean value,  &quot;label_nsfw&quot;: boolean value,  &quot;lang&quot;: a valid IETF language tag (underscore separated),  &quot;legacy_search&quot;: boolean value,  &quot;mark_messages_read&quot;: boolean value,  &quot;media&quot;: one of (`on`, `off`, `subreddit`),  &quot;min_comment_score&quot;: an integer between -100 and 100,  &quot;min_link_score&quot;: an integer between -100 and 100,  &quot;monitor_mentions&quot;: boolean value,  &quot;newwindow&quot;: boolean value,  &quot;no_profanity&quot;: boolean value,  &quot;num_comments&quot;: an integer between 1 and 500,  &quot;numsites&quot;: an integer between 1 and 100,  &quot;organic&quot;: boolean value,  &quot;other_theme&quot;: subreddit name,  &quot;over_18&quot;: boolean value,  &quot;private_feeds&quot;: boolean value,  &quot;public_votes&quot;: boolean value,  &quot;research&quot;: boolean value,  &quot;show_flair&quot;: boolean value,  &quot;show_gold_expiration&quot;: boolean value,  &quot;show_link_flair&quot;: boolean value,  &quot;show_promote&quot;: boolean value,  &quot;show_stylesheets&quot;: boolean value,  &quot;show_trending&quot;: boolean value,  &quot;store_visits&quot;: boolean value,  &quot;theme_selector&quot;: subreddit name,  &quot;threaded_messages&quot;: boolean value,  &quot;threaded_modmail&quot;: boolean value,  &quot;use_global_defaults&quot;: boolean value,}",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1/me/trophies": {
+			"get": {
+				"summary": "Return a list of trophies for the current user.",
+				"description": "Return a list of trophies for the current user.",
+				"operationId": "account",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/prefs/where": {
+			"get": {
+				"summary": "This endpoint is a listing.",
+				"description": "This endpoint is a listing.",
+				"operationId": "account",
+				"parameters": [{
+					"in": "query",
+					"name": "after",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "before",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "count",
+					"description": "a positive integer (default: 0)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "the maximum number of items desired (default: 25, maximum: 100)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "show",
+					"description": "(optional) the string all",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sr_detail",
+					"description": "(optional) expand subreddits",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
