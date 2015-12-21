@@ -1,0 +1,63 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Meetup Notifications API",
+		"description": "The API for managing Meetup notifications.",
+		"termsOfService": "http://www.meetup.com/terms/",
+		"version": null
+	},
+	"host": "api.meetup.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/notifications": {
+			"get": {
+				"summary": "Notifications",
+				"description": "Returns all recent Meetup notifications for the authorized member. To mark notifications read use [/notifications/read](/meetup_api/docs/notifications/read/) endpoint. To get the authenticated Members current unread count, request it in an [HTTP header](/meetup_api/docs/#meta-headers).",
+				"operationId": "notifications",
+				"parameters": [{
+					"in": "query",
+					"name": "fields",
+					"description": "Request that additional fields (separated by commas) be included in the output.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/notifications/read": {
+			"post": {
+				"summary": "Read Notifications",
+				"description": "Marks groups of [notifications](/meetup_api/docs/notifications/) as read.",
+				"operationId": "notifications",
+				"parameters": [{
+					"in": "query",
+					"name": "fields",
+					"description": "Request that additional fields (separated by commas) be included in the output.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "since_id",
+					"description": "The id of the newest notification item, typically the first in the list returned by the notifications endpoint",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
