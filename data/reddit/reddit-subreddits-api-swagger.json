@@ -1,0 +1,867 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Reddit Subreddits API",
+		"description": "API for manageming Reddit subreddits.",
+		"termsOfService": "https://github.com/reddit/reddit/wiki/API",
+		"version": null
+	},
+	"host": "www.reddit.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/api/recommend/sr/srnames": {
+			"get": {
+				"summary": "Return subreddits recommended for the given subreddit(s).",
+				"description": "Return subreddits recommended for the given subreddit(s).",
+				"operationId": "subreddits",
+				"parameters": [{
+					"in": "query",
+					"name": "omit",
+					"description": "comma-delimited list of subreddit names",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "srnames",
+					"description": "comma-delimited list of subreddit names",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/search_reddit_names": {
+			"post": {
+				"summary": "List subreddit names that begin with a query string.",
+				"description": "List subreddit names that begin with a query string.",
+				"operationId": "subreddits",
+				"parameters": [{
+					"in": "query",
+					"name": "exact",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "include_over_18",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "query",
+					"description": "a string up to 50 characters long, consisting of printable characters.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/site_admin": {
+			"post": {
+				"summary": "Create or configure a subreddit.",
+				"description": "Create or configure a subreddit.",
+				"operationId": "subreddits",
+				"parameters": [{
+					"in": "query",
+					"name": "allow_top",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "captcha",
+					"description": "the user&#39;s response to the CAPTCHA challenge",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "collapse_deleted_comments",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "comment_score_hide_mins",
+					"description": "an integer between 0 and 1440 (default: 0)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "raw markdown text",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "exclude_banned_modqueue",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "header-title",
+					"description": "a string no longer than 500 characters",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "hide_ads",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "iden",
+					"description": "the identifier of the CAPTCHA challenge",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "lang",
+					"description": "a valid IETF language tag (underscore separated)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "link_type",
+					"description": "one of (any, link, self)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "modmail_email_address",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "modmail_email_enabled",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "subreddit name",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "over_18",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "public_description",
+					"description": "raw markdown text",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "public_traffic",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "show_media",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "spam_comments",
+					"description": "one of (low, high, all)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "spam_links",
+					"description": "one of (low, high, all)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "spam_selfposts",
+					"description": "one of (low, high, all)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sr",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "submit_link_label",
+					"description": "a string no longer than 60 characters",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "submit_text",
+					"description": "raw markdown text",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "submit_text_label",
+					"description": "a string no longer than 60 characters",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "suggested_comment_sort",
+					"description": "one of (confidence, top, new, hot, controversial, old, random, qa)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "a string no longer than 100 characters",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "one of (gold_restricted, archived, restricted, gold_only, employees_only, private, public)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "wikimode",
+					"description": "one of (disabled, modonly, anyone)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "wiki_edit_age",
+					"description": "an integer greater than 0 (default: 0)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "wiki_edit_karma",
+					"description": "an integer greater than 0 (default: 0)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/subreddits_by_topic": {
+			"get": {
+				"summary": "Return a list of subreddits that are relevant to a search query.",
+				"description": "Return a list of subreddits that are relevant to a search query.",
+				"operationId": "subreddits",
+				"parameters": [{
+					"in": "query",
+					"name": "query",
+					"description": "a string no longer than 50 characters",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/subscribe": {
+			"post": {
+				"summary": "Subscribe to or unsubscribe from a subreddit.",
+				"description": "Subscribe to or unsubscribe from a subreddit.",
+				"operationId": "subreddits",
+				"parameters": [{
+					"in": "query",
+					"name": "action",
+					"description": "one of (sub, unsub)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sr",
+					"description": "the name of a subreddit",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/r/subreddit/about": {
+			"get": {
+				"summary": "Return information about the subreddit.",
+				"description": "Return information about the subreddit.",
+				"operationId": "subreddits",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/r/subreddit/about/edit": {
+			"get": {
+				"summary": "Get the current settings of a subreddit.",
+				"description": "Get the current settings of a subreddit.",
+				"operationId": "subreddits",
+				"parameters": [{
+					"in": "query",
+					"name": "created",
+					"description": "one of (true, false)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "location",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/subreddits/mine/where": {
+			"get": {
+				"summary": "Get subreddits the user has a relationship with.",
+				"description": "Get subreddits the user has a relationship with.",
+				"operationId": "subreddits",
+				"parameters": [{
+					"in": "query",
+					"name": "after",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "before",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "count",
+					"description": "a positive integer (default: 0)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "the maximum number of items desired (default: 25, maximum: 100)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "show",
+					"description": "(optional) the string all",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sr_detail",
+					"description": "(optional) expand subreddits",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/subreddits/search": {
+			"get": {
+				"summary": "Search subreddits by title and description.",
+				"description": "Search subreddits by title and description.",
+				"operationId": "subreddits",
+				"parameters": [{
+					"in": "query",
+					"name": "after",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "before",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "count",
+					"description": "a positive integer (default: 0)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "the maximum number of items desired (default: 25, maximum: 100)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "a search query",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "show",
+					"description": "(optional) the string all",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "one of (relevance, activity)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sr_detail",
+					"description": "(optional) expand subreddits",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/subreddits/where": {
+			"get": {
+				"summary": "Get all subreddits.",
+				"description": "Get all subreddits.",
+				"operationId": "subreddits",
+				"parameters": [{
+					"in": "query",
+					"name": "after",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "before",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "count",
+					"description": "a positive integer (default: 0)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "the maximum number of items desired (default: 25, maximum: 100)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "show",
+					"description": "(optional) the string all",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sr_detail",
+					"description": "(optional) expand subreddits",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/about/where": {
+			"get": {
+				"summary": "This endpoint is a listing.",
+				"description": "This endpoint is a listing.",
+				"operationId": "subreddits",
+				"parameters": [{
+					"in": "query",
+					"name": "after",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "before",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "count",
+					"description": "a positive integer (default: 0)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "the maximum number of items desired (default: 25, maximum: 100)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "show",
+					"description": "(optional) the string all",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sr_detail",
+					"description": "(optional) expand subreddits",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "A valid, existing reddit username",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/api/delete_sr_banner": {
+			"post": {
+				"summary": "Remove the subreddit&#39;s custom mobile banner.",
+				"description": "Remove the subreddit&#39;s custom mobile banner.",
+				"operationId": "subreddits",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/api/delete_sr_header": {
+			"post": {
+				"summary": "Remove the subreddit&#39;s custom header image.",
+				"description": "Remove the subreddit&#39;s custom header image.",
+				"operationId": "subreddits",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/api/delete_sr_icon": {
+			"post": {
+				"summary": "Remove the subreddit&#39;s custom mobile icon.",
+				"description": "Remove the subreddit&#39;s custom mobile icon.",
+				"operationId": "subreddits",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/api/delete_sr_img": {
+			"post": {
+				"summary": "Remove an image from the subreddit&#39;s custom image set.",
+				"description": "Remove an image from the subreddit&#39;s custom image set.",
+				"operationId": "subreddits",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "img_name",
+					"description": "a valid subreddit image name",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/api/submit_text": {
+			"get": {
+				"summary": "Get the submission text for the subreddit.",
+				"description": "Get the submission text for the subreddit.",
+				"operationId": "subreddits",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/api/subreddit_stylesheet": {
+			"post": {
+				"summary": "Update a subreddit&#39;s stylesheet.",
+				"description": "Update a subreddit&#39;s stylesheet.",
+				"operationId": "subreddits",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "op",
+					"description": "one of (save, preview)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "reason",
+					"description": "a string up to 256 characters long, consisting of printable characters.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "stylesheet_contents",
+					"description": "the new stylesheet content",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/api/upload_sr_img": {
+			"post": {
+				"summary": "Add or replace a subreddit image, custom header logo, custom mobilenicon, or custom mobile banner.",
+				"description": "Add or replace a subreddit image, custom header logo, custom mobilenicon, or custom mobile banner.",
+				"operationId": "subreddits",
+				"parameters": [{
+					"in": "query",
+					"name": "file",
+					"description": "file upload with maximum size of 500 KiB",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "formid",
+					"description": "(optional) can be ignored",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "header",
+					"description": "an integer between 0 and 1",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "img_type",
+					"description": "one of png or jpg (default: png)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "a valid subreddit image name",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "upload_type",
+					"description": "one of (img, header, icon, banner)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/rules": {
+			"get": {
+				"summary": "Get the rules for the current subreddit",
+				"description": "Get the rules for the current subreddit",
+				"operationId": "subreddits",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/sidebar": {
+			"get": {
+				"summary": "Get the sidebar for the current subreddit",
+				"description": "Get the sidebar for the current subreddit",
+				"operationId": "subreddits",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/sticky": {
+			"get": {
+				"summary": "Redirect to one of the posts stickied in the current subreddit",
+				"description": "Redirect to one of the posts stickied in the current subreddit",
+				"operationId": "subreddits",
+				"parameters": [{
+					"in": "query",
+					"name": "num",
+					"description": "an integer between 1 and 2 (default: 1)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
