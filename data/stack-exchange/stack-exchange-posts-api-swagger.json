@@ -1,0 +1,371 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Stack Exchange Posts API",
+		"description": "The API for managing Stack Exchange posts.",
+		"termsOfService": "http://stackexchange.com/legal/api-terms-of-use",
+		"version": "2.2"
+	},
+	"host": "api.stackexchange.com",
+	"basePath": "/2.2",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/posts": {
+			"get": {
+				"summary": "Get all posts (questions and answers) in the system.",
+				"description": "Get all posts (questions and answers) in the system.",
+				"operationId": "getAllPostInTheSystem",
+				"parameters": [{
+					"in": "query",
+					"name": "fromdate",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "max",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "min",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Posts"],
+				"security": []
+			}
+		},
+		"/posts/{ids}": {
+			"get": {
+				"summary": "Get all posts identified by a set of ids.",
+				"description": "Get all posts identified by a set of ids.",
+				"operationId": "getAllPostsIdentifiedByASetOfIds",
+				"parameters": [{
+					"in": "query",
+					"name": "fromdate",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "ids",
+					"description": "{ids} can contain up to 100 semicolon delimited ids, to find ids programatically look for post_id, answer_id, or question_id on post, answer, and question objects respectively.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "max",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "min",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Posts"],
+				"security": []
+			}
+		},
+		"/posts/{ids}/comments": {
+			"get": {
+				"summary": "Get comments on the posts (question or answer) identified by a set of ids.",
+				"description": "Get comments on the posts (question or answer) identified by a set of ids.",
+				"operationId": "getCommentsOnThePostsIdentifiedByASetOfIds",
+				"parameters": [{
+					"in": "query",
+					"name": "fromdate",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "ids",
+					"description": "{ids} can contain up to 100 semicolon delimited ids, to find ids programatically look for post_id, answer_id, or question_id on post, answer, and question objects respectively.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "max",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "min",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Posts"],
+				"security": []
+			}
+		},
+		"/posts/{ids}/revisions": {
+			"get": {
+				"summary": "Get revisions on the set of posts in ids.",
+				"description": "Get revisions on the set of posts in ids.",
+				"operationId": "getRevisionsOnTheSetOfPostsInIds",
+				"parameters": [{
+					"in": "query",
+					"name": "fromdate",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "ids",
+					"description": "{ids} can contain up to 100 semicolon delimited ids, to find ids programatically look for post_id, answer_id, or question_id on post, answer, and question objects respectively.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Posts"],
+				"security": []
+			}
+		},
+		"/posts/{ids}/suggested-edits": {
+			"get": {
+				"summary": "Get suggested edits on the set of posts in ids.",
+				"description": "Get suggested edits on the set of posts in ids.",
+				"operationId": "getSuggestedEditsOnTheSetOfPostsInIds",
+				"parameters": [{
+					"in": "query",
+					"name": "fromdate",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "ids",
+					"description": "{ids} can contain up to 100 semicolon delimited ids, to find ids programatically look for post_id, answer_id, or question_id on post, answer, and question objects respectively.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "max",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "min",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Posts"],
+				"security": []
+			}
+		},
+		"/posts/{id}/comments/add": {
+			"get": {
+				"summary": "Create a new comment on the post identified by id.",
+				"description": "Create a new comment on the post identified by id.",
+				"operationId": "createANewCommentOnThePostIdentifiedById",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Posts"],
+				"security": []
+			}
+		},
+		"/posts/{id}/comments/render": {
+			"get": {
+				"summary": "Renders a hypothetical comment on the given post.",
+				"description": "Renders a hypothetical comment on the given post.",
+				"operationId": "rendersAHypotheticalCommentOnTheGivenPost",
+				"parameters": [{
+					"in": "query",
+					"name": "body",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Posts"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
