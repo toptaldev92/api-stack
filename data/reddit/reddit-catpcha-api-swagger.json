@@ -1,0 +1,65 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Reddit Catpcha API",
+		"description": "API for manageming Reddit captcha.",
+		"termsOfService": "https://github.com/reddit/reddit/wiki/API",
+		"version": null
+	},
+	"host": "www.reddit.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/api/needs_captcha": {
+			"get": {
+				"summary": "Check whether CAPTCHAs are needed for API methods that define then&quot;captcha&quot; and &quot;iden&quot; parameters.",
+				"description": "Check whether CAPTCHAs are needed for API methods that define then&quot;captcha&quot; and &quot;iden&quot; parameters.",
+				"operationId": "captcha",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/new_captcha": {
+			"post": {
+				"summary": "Responds with an iden of a new CAPTCHA.",
+				"description": "Responds with an iden of a new CAPTCHA.",
+				"operationId": "captcha",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/captcha/iden": {
+			"get": {
+				"summary": "Request a CAPTCHA image given an iden.",
+				"description": "Request a CAPTCHA image given an iden.",
+				"operationId": "captcha",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
