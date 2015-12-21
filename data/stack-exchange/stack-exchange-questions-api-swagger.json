@@ -1,0 +1,1377 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Stack Exchange Questions API",
+		"description": "The API for managing Stack Exchange questions",
+		"termsOfService": "http://stackexchange.com/legal/api-terms-of-use",
+		"version": "2.2"
+	},
+	"host": "api.stackexchange.com",
+	"basePath": "/2.2",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/questions": {
+			"get": {
+				"summary": "Get Privileges",
+				"description": "Get Privileges",
+				"operationId": "get-privileges",
+				"parameters": [{
+					"in": "query",
+					"name": "answers",
+					"description": "When true, the answers to a question will be returned. boolean"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"description": "When true, a posts body will be included in the response. boolean"
+				},
+				{
+					"in": "query",
+					"name": "comments",
+					"description": "When true, any comments on a post will be included in the response. boolean"
+				},
+				{
+					"in": "query",
+					"name": "fromdate",
+					"description": "Unix timestamp of the minimum creation date on a returned item. unix epoch date, range [0, 253,402,300,799]"
+				},
+				{
+					"in": "query",
+					"name": "max",
+					"description": "Maximum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "min",
+					"description": "Minimum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "How the current sort should be ordered. one of desc (default), or asc"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The pagination offset for the current collection. Affected by the specified pagesize. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"description": "The number of collection results to display during pagination. Should be between 0 and 100 inclusive. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "How a collection should be sorted. one of activity (default), creation, or votes"
+				},
+				{
+					"in": "query",
+					"name": "tagged",
+					"description": "Semicolon delimited list of tags questions must have. string"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"description": "Unix timestamp of the maximum creation date on a returned item. Unix epoch date, range [0, 253,402,300,799]"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/questions/add": {
+			"get": {
+				"summary": "Creates a new question.",
+				"description": "Creates a new question.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "preview",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "tags",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Questions"],
+				"security": []
+			}
+		},
+		"/questions/featured": {
+			"get": {
+				"summary": "Get all questions on the site with active bounties.",
+				"description": "Get all questions on the site with active bounties.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "answers",
+					"description": "When true, the answers to a question will be returned. boolean"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"description": "When true, a posts body will be included in the response. boolean"
+				},
+				{
+					"in": "query",
+					"name": "comments",
+					"description": "When true, any comments on a post will be included in the response. boolean"
+				},
+				{
+					"in": "query",
+					"name": "fromdate",
+					"description": "Unix timestamp of the minimum creation date on a returned item. unix epoch date, range [0, 253,402,300,799]"
+				},
+				{
+					"in": "query",
+					"name": "max",
+					"description": "Maximum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "min",
+					"description": "Minimum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "How the current sort should be ordered. one of desc (default), or asc"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The pagination offset for the current collection. Affected by the specified pagesize. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"description": "The number of collection results to display during pagination. Should be between 0 and 100 inclusive. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "How a collection should be sorted. one of activity (default), creation, or votes"
+				},
+				{
+					"in": "query",
+					"name": "tagged",
+					"description": "Semicolon delimited list of tags questions must have. string"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"description": "Unix timestamp of the maximum creation date on a returned item. Unix epoch date, range [0, 253,402,300,799]"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Questions"],
+				"security": []
+			}
+		},
+		"/questions/no-answers": {
+			"get": {
+				"summary": "Get Unanswered Questions",
+				"description": "Get Unanswered Questions",
+				"operationId": "get-unanswered-questions",
+				"parameters": [{
+					"in": "query",
+					"name": "answers",
+					"description": "When true, the answers to a question will be returned. boolean"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"description": "When true, a posts body will be included in the response. boolean"
+				},
+				{
+					"in": "query",
+					"name": "comments",
+					"description": "When true, any comments on a post will be included in the response. boolean"
+				},
+				{
+					"in": "query",
+					"name": "fromdate",
+					"description": "Unix timestamp of the minimum creation date on a returned item. unix epoch date, range [0, 253,402,300,799]"
+				},
+				{
+					"in": "query",
+					"name": "max",
+					"description": "Maximum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "min",
+					"description": "Minimum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "How the current sort should be ordered. one of desc (default), or asc"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The pagination offset for the current collection. Affected by the specified pagesize. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"description": "The number of collection results to display during pagination. Should be between 0 and 100 inclusive. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "How a collection should be sorted. one of activity (default), creation, or votes"
+				},
+				{
+					"in": "query",
+					"name": "tagged",
+					"description": "Semicolon delimited list of tags questions must have. string"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"description": "Unix timestamp of the maximum creation date on a returned item. Unix epoch date, range [0, 253,402,300,799]"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/questions/render": {
+			"get": {
+				"summary": "Renders a hypothetical question.",
+				"description": "Renders a hypothetical question.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "body",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "tags",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Questions"],
+				"security": []
+			}
+		},
+		"/questions/unanswered": {
+			"get": {
+				"summary": "Get Questions' Timelines By Ids",
+				"description": "Get Questions Timelines By Ids",
+				"operationId": "get-questions-timelines-by-ids",
+				"parameters": [{
+					"in": "query",
+					"name": "answers",
+					"description": "When true, the answers to a question will be returned. boolean"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"description": "When true, a posts body will be included in the response. boolean"
+				},
+				{
+					"in": "query",
+					"name": "comments",
+					"description": "When true, any comments on a post will be included in the response. boolean"
+				},
+				{
+					"in": "query",
+					"name": "fromdate",
+					"description": "Unix timestamp of the minimum creation date on a returned item. unix epoch date, range [0, 253,402,300,799]"
+				},
+				{
+					"in": "query",
+					"name": "max",
+					"description": "Maximum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "min",
+					"description": "Minimum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "How the current sort should be ordered. one of desc (default), or asc"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The pagination offset for the current collection. Affected by the specified pagesize. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"description": "The number of collection results to display during pagination. Should be between 0 and 100 inclusive. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "How a collection should be sorted. one of activity (default), creation, or votes"
+				},
+				{
+					"in": "query",
+					"name": "tagged",
+					"description": "Semicolon delimited list of tags questions must have. string"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"description": "Unix timestamp of the maximum creation date on a returned item. Unix epoch date, range [0, 253,402,300,799]"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/questions/unanswered/my-tags": {
+			"get": {
+				"summary": "Get questions the site considers unanswered within a user's favorite or interesting tags.",
+				"description": "Get questions the site considers unanswered within a users favorite or interesting tags.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "answers",
+					"description": "When true, the answers to a question will be returned. boolean"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"description": "When true, a posts body will be included in the response. boolean"
+				},
+				{
+					"in": "query",
+					"name": "comments",
+					"description": "When true, any comments on a post will be included in the response. boolean"
+				},
+				{
+					"in": "query",
+					"name": "fromdate",
+					"description": "Unix timestamp of the minimum creation date on a returned item. unix epoch date, range [0, 253,402,300,799]"
+				},
+				{
+					"in": "query",
+					"name": "max",
+					"description": "Maximum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "min",
+					"description": "Minimum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "How the current sort should be ordered. one of desc (default), or asc"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The pagination offset for the current collection. Affected by the specified pagesize. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"description": "The number of collection results to display during pagination. Should be between 0 and 100 inclusive. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "How a collection should be sorted. one of activity (default), creation, or votes"
+				},
+				{
+					"in": "query",
+					"name": "tagged",
+					"description": "Semicolon delimited list of tags questions must have. string"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"description": "Unix timestamp of the maximum creation date on a returned item. Unix epoch date, range [0, 253,402,300,799]"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Questions"],
+				"security": []
+			}
+		},
+		"/questions/{ids}": {
+			"get": {
+				"summary": "Get Questions",
+				"description": "Get Questions",
+				"operationId": "get-questions",
+				"parameters": [{
+					"in": "query",
+					"name": "answers",
+					"description": "When true, the answers to a question will be returned. boolean"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"description": "When true, a posts body will be included in the response. boolean"
+				},
+				{
+					"in": "query",
+					"name": "comments",
+					"description": "When true, any comments on a post will be included in the response. boolean"
+				},
+				{
+					"in": "query",
+					"name": "fromdate",
+					"description": "Unix timestamp of the minimum creation date on a returned item. unix epoch date, range [0, 253,402,300,799]"
+				},
+				{
+					"in": "query",
+					"name": "ids",
+					"description": "A single primary key identifier or a vectorized, semicolon-delimited list of identifiers. This is a vectorized parameter, multiple ids can be sent a single request if delimited with a semi-colon. string"
+				},
+				{
+					"in": "path",
+					"name": "ids"
+				},
+				{
+					"in": "query",
+					"name": "max",
+					"description": "Maximum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "min",
+					"description": "Minimum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "How the current sort should be ordered. one of desc (default), or asc"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The pagination offset for the current collection. Affected by the specified pagesize. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"description": "The number of collection results to display during pagination. Should be between 0 and 100 inclusive. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "How a collection should be sorted. one of activity (default), creation, or votes"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"description": "Unix timestamp of the maximum creation date on a returned item. Unix epoch date, range [0, 253,402,300,799]"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/questions/{ids}/answers": {
+			"get": {
+				"summary": "Get Questions By Ids",
+				"description": "Get Questions By Ids",
+				"operationId": "get-questions-by-ids",
+				"parameters": [{
+					"in": "query",
+					"name": "body",
+					"description": "When true, a posts body will be included in the response. boolean"
+				},
+				{
+					"in": "query",
+					"name": "comments",
+					"description": "When true, any comments on a post will be included in the response. boolean"
+				},
+				{
+					"in": "query",
+					"name": "fromdate",
+					"description": "Unix timestamp of the minimum creation date on a returned item. unix epoch date, range [0, 253,402,300,799]"
+				},
+				{
+					"in": "query",
+					"name": "ids",
+					"description": "A single primary key identifier or a vectorized, semicolon-delimited list of identifiers. This is a vectorized parameter, multiple ids can be sent a single request if delimited with a semi-colon. string"
+				},
+				{
+					"in": "path",
+					"name": "ids"
+				},
+				{
+					"in": "query",
+					"name": "max",
+					"description": "Maximum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "min",
+					"description": "Minimum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "How the current sort should be ordered. one of desc (default), or asc"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The pagination offset for the current collection. Affected by the specified pagesize. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"description": "The number of collection results to display during pagination. Should be between 0 and 100 inclusive. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "How a collection should be sorted. one of activity (default), creation, or votes"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"description": "Unix timestamp of the maximum creation date on a returned item. Unix epoch date, range [0, 253,402,300,799]"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/questions/{ids}/comments": {
+			"get": {
+				"summary": "Get Questions' Answers By Ids",
+				"description": "Get Questions Answers By Ids",
+				"operationId": "get-questions-answers-by-ids",
+				"parameters": [{
+					"in": "query",
+					"name": "fromdate",
+					"description": "Unix timestamp of the minimum creation date on a returned item. unix epoch date, range [0, 253,402,300,799]"
+				},
+				{
+					"in": "query",
+					"name": "ids",
+					"description": "A single primary key identifier or a vectorized, semicolon-delimited list of identifiers. This is a vectorized parameter, multiple ids can be sent a single request if delimited with a semi-colon. string"
+				},
+				{
+					"in": "path",
+					"name": "ids"
+				},
+				{
+					"in": "query",
+					"name": "max",
+					"description": "Maximum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "min",
+					"description": "Minimum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "How the current sort should be ordered. one of desc (default), or asc"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The pagination offset for the current collection. Affected by the specified pagesize. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"description": "The number of collection results to display during pagination. Should be between 0 and 100 inclusive. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "How a collection should be sorted. one of activity (default), creation, or votes"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"description": "Unix timestamp of the maximum creation date on a returned item. Unix epoch date, range [0, 253,402,300,799]"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/questions/{ids}/linked": {
+			"get": {
+				"summary": "Get Questions' Comments By Ids",
+				"description": "Get Questions Comments By Ids",
+				"operationId": "get-questions-comments-by-ids",
+				"parameters": [{
+					"in": "query",
+					"name": "answers",
+					"description": "When true, the answers to a question will be returned. boolean"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"description": "When true, a posts body will be included in the response. boolean"
+				},
+				{
+					"in": "query",
+					"name": "comments",
+					"description": "When true, any comments on a post will be included in the response. boolean"
+				},
+				{
+					"in": "query",
+					"name": "fromdate",
+					"description": "Unix timestamp of the minimum creation date on a returned item. unix epoch date, range [0, 253,402,300,799]"
+				},
+				{
+					"in": "query",
+					"name": "ids",
+					"description": "A single primary key identifier or a vectorized, semicolon-delimited list of identifiers. This is a vectorized parameter, multiple ids can be sent a single request if delimited with a semi-colon. string"
+				},
+				{
+					"in": "path",
+					"name": "ids"
+				},
+				{
+					"in": "query",
+					"name": "max",
+					"description": "Maximum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "min",
+					"description": "Minimum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "How the current sort should be ordered. one of desc (default), or asc"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The pagination offset for the current collection. Affected by the specified pagesize. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"description": "The number of collection results to display during pagination. Should be between 0 and 100 inclusive. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "How a collection should be sorted. one of activity (default), creation, or votes"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"description": "Unix timestamp of the maximum creation date on a returned item. Unix epoch date, range [0, 253,402,300,799]"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/questions/{ids}/related": {
+			"get": {
+				"summary": "Get Linked Questions By Ids",
+				"description": "Get Linked Questions By Ids",
+				"operationId": "get-linked-questions-by-ids",
+				"parameters": [{
+					"in": "query",
+					"name": "answers",
+					"description": "When true, the answers to a question will be returned. boolean"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"description": "When true, a posts body will be included in the response. boolean"
+				},
+				{
+					"in": "query",
+					"name": "comments",
+					"description": "When true, any comments on a post will be included in the response. boolean"
+				},
+				{
+					"in": "query",
+					"name": "fromdate",
+					"description": "Unix timestamp of the minimum creation date on a returned item. unix epoch date, range [0, 253,402,300,799]"
+				},
+				{
+					"in": "query",
+					"name": "ids",
+					"description": "A single primary key identifier or a vectorized, semicolon-delimited list of identifiers. This is a vectorized parameter, multiple ids can be sent a single request if delimited with a semi-colon. string"
+				},
+				{
+					"in": "path",
+					"name": "ids"
+				},
+				{
+					"in": "query",
+					"name": "max",
+					"description": "Maximum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "min",
+					"description": "Minimum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "How the current sort should be ordered. one of desc (default), or asc"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The pagination offset for the current collection. Affected by the specified pagesize. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"description": "The number of collection results to display during pagination. Should be between 0 and 100 inclusive. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "How a collection should be sorted. one of activity (default), creation, or votes"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"description": "Unix timestamp of the maximum creation date on a returned item. Unix epoch date, range [0, 253,402,300,799]"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/questions/{ids}/timeline": {
+			"get": {
+				"summary": "Get Related Questions By Ids",
+				"description": "Get Related Questions By Ids",
+				"operationId": "get-related-questions-by-ids",
+				"parameters": [{
+					"in": "query",
+					"name": "fromdate",
+					"description": "Unix timestamp of the minimum creation date on a returned item. unix epoch date, range [0, 253,402,300,799]"
+				},
+				{
+					"in": "path",
+					"name": "ids"
+				},
+				{
+					"in": "query",
+					"name": "ids",
+					"description": "A single primary key identifier or a vectorized, semicolon-delimited list of identifiers. This is a vectorized parameter, multiple ids can be sent a single request if delimited with a semi-colon. string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The pagination offset for the current collection. Affected by the specified pagesize. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"description": "The number of collection results to display during pagination. Should be between 0 and 100 inclusive. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"description": "Unix timestamp of the maximum creation date on a returned item. Unix epoch date, range [0, 253,402,300,799]"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/questions/{id}/answers/add": {
+			"get": {
+				"summary": "Creates an answer on the given question.",
+				"description": "Creates an answer on the given question.",
+				"operationId": "createsAnAnswerOnTheGivenQuestion",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "preview",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Questions"],
+				"security": []
+			}
+		},
+		"/questions/{id}/answers/render": {
+			"get": {
+				"summary": "Renders a hypothetical answer to a question.",
+				"description": "Renders a hypothetical answer to a question.",
+				"operationId": "rendersAHypotheticalAnswerToAQuestion",
+				"parameters": [{
+					"in": "query",
+					"name": "body",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Questions"],
+				"security": []
+			}
+		},
+		"/questions/{id}/close/options": {
+			"get": {
+				"summary": "Returns valid flag options which are also close reasons for the given question",
+				"description": "Returns valid flag options which are also close reasons for the given question",
+				"operationId": "ReturnsValidFlagOptions",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Questions"],
+				"security": []
+			}
+		},
+		"/questions/{id}/delete": {
+			"get": {
+				"summary": "Deletes the given question.",
+				"description": "Deletes the given question.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "preview",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Questions"],
+				"security": []
+			}
+		},
+		"/questions/{id}/downvote": {
+			"get": {
+				"summary": "Casts a downvote on the given question.",
+				"description": "Casts a downvote on the given question.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "preview",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Questions"],
+				"security": []
+			}
+		},
+		"/questions/{id}/downvote/undo": {
+			"get": {
+				"summary": "Undoes a downvote on the given question.",
+				"description": "Undoes a downvote on the given question.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Questions"],
+				"security": []
+			}
+		},
+		"/questions/{id}/edit": {
+			"get": {
+				"summary": "Edits the given question.",
+				"description": "Edits the given question.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "comment",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "tags",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Questions"],
+				"security": []
+			}
+		},
+		"/questions/{id}/favorite": {
+			"get": {
+				"summary": "Favorites the given question.",
+				"description": "Favorites the given question.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "preview",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Questions"],
+				"security": []
+			}
+		},
+		"/questions/{id}/favorite/undo": {
+			"get": {
+				"summary": "Undoes favoriting the given question.",
+				"description": "Undoes favoriting the given question.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "preview",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Questions"],
+				"security": []
+			}
+		},
+		"/questions/{id}/flags/add": {
+			"get": {
+				"summary": "Casts a flag on the given question.",
+				"description": "Casts a flag on the given question.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "comment",
+					"description": "f",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "option_id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "preview",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "question_id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "target_site",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Questions"],
+				"security": []
+			}
+		},
+		"/questions/{id}/flags/options": {
+			"get": {
+				"summary": "Returns valid flag options for the given question.",
+				"description": "Returns valid flag options for the given question.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Questions"],
+				"security": []
+			}
+		},
+		"/questions/{id}/upvote": {
+			"get": {
+				"summary": "Casts an upvote on the given question.",
+				"description": "Casts an upvote on the given question.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "preview",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Questions"],
+				"security": []
+			}
+		},
+		"/questions/{id}/upvote/undo": {
+			"get": {
+				"summary": "Undoes an upvote on the given question.",
+				"description": "Undoes an upvote on the given question.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "preview",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Questions"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
