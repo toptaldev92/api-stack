@@ -1,0 +1,287 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Pop Up Archive Search API",
+		"description": "This is the Pop Up Archive Search API.",
+		"termsOfService": "https://www.popuparchive.com/terms_of_use",
+		"version": null
+	},
+	"host": "www.popuparchive.com",
+	"basePath": "/api/search",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"api/search": {
+			"get": {
+				"summary": "search Pop Up Archive text fields",
+				"description": "Facets: Narrow the dataset that is queried.<br/>Usage in the sandbox: enter the facet in the query field. For example, news&duration:[500 TO 1000] (query all assets between 500 and 1000 seconds long for the string news<br/><table><th colspan=4>Available Facets</th><tr><td>Facet</td><td>Description</td><td>Example</td></tr><tr><td>id:</td><td>Query a faceted subset based on UID associated with an individual object</td><td>id:5789</td></tr><tr><td>collection_id:</td><td>Query a faceted subset based on UID associated with a collection</td><td>collection_id:504</td></tr><tr><td>title:</td><td>Query a faceted subset based on the title field</td><td>title:Snap Judgement</td></tr><tr><td>collection_title:</td><td>Query a faceted subset based on the collection title field</td><td>collection_title:WBUR*</td></tr><tr><td>episode_title:</td><td>Query a faceted subset based on the episode title field</td><td>episode_title:star*</td></tr><tr><td>series_title:</td><td>Query a faceted subset based on the series title field</td><td>series_title:Hidden Kitchens</td></tr><tr><td>rights:</td><td>Query a faceted subset based on the rights field</td><td>rights:green</td></tr><tr><td>tags:</td><td>Query a faceted subset based on the tags field</td><td>tags:Community</td></tr><tr><td>notes:</td><td>Query a faceted subset based on the notes field</td><td>notes:interview</td></tr><tr><td>description:</td><td>Query a faceted subset based on the description field</td><td>description:paris</td></tr><tr><td>duration:</td><td>Query a faceted subset based on the duration (in seconds) of the objects</td><td>duration:[300 TO 500]</td></tr><tr><td>date_added:</td><td>Query a faceted subset based on the date the object was added</td><td>date_added:[2013-07-09 TO *]</td></tr><tr><td>date_created:</td><td>Query a faceted subset based on the date the object was created</td><td>date_created:[2013-12-09 TO 2014-01-31]</td></tr><tr><td>date_broadcast:</td><td>Query a faceted subset based on the date the object was broadcast</td><td>date_broadcast:[2013-12-09 TO *]</td></tr><tr><td>host:</td><td>Query a faceted subset based on the host field</td><td>host:Christopher Lydon</td></tr><tr><td>producer:</td><td>Query a faceted subset based on the producer field</td><td>producer:The Kitchen Sisters</td></tr><tr><td>interviewer:</td><td>Query a faceted subset based on the interviewer field</td><td>interviewer:Studs Terkel</td></tr><tr><td>interviewee:</td><td>Query a faceted subset based on the interviewee field</td><td>interviewee:Simon Winchester</td></tr><tr><td>creator:</td><td>Query a faceted subset based on the creator field</td><td>creator:WILL Radio</td></tr><tr><td>guest:</td><td>Query a faceted subset based on the creator field</td><td>guest:*</td></tr><tr><td>contributor:</td><td>Query a faceted subset based on the contributors<br/>(includes interviewee, interviewer, host, producer fields)</td><td>contributor:Studs Terkel</td></tr></table>",
+				"operationId": "api_search",
+				"parameters": [{
+					"in": "query",
+					"name": "filters[collection_id]",
+					"description": "Collection ID"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Page Number"
+				},
+				{
+					"in": "query",
+					"name": "query",
+					"description": "Query Term"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"Search": {
+			"properties": {
+				"facets": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"total_hits": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"max_score": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"page": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"query": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"results": {
+					"description": "This is a default description.",
+					"type": "GET"
+				}
+			}
+		},
+		"Facets": {
+			"properties": {
+				"date_created": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"date_broadcast": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"date_added": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"duration": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"interviewer": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"interviewee": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"tag": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"collection_id": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"creator": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"host": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"producer": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"guest": {
+					"description": "This is a default description.",
+					"type": "GET"
+				}
+			}
+		},
+		"Results": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"description": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"date_created": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"collection_id": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"collection_title": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"series_title": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"date_broadcast": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"tags": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"audio_files": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"entities": {
+					"description": "This is a default description.",
+					"type": "GET"
+				}
+			}
+		},
+		"Date Histogram": {
+			"properties": {
+				"_type": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"entries": {
+					"description": "This is a default description.",
+					"type": "GET"
+				}
+			}
+		},
+		"Date Histogram Entries": {
+			"properties": {
+				"time": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"count": {
+					"description": "This is a default description.",
+					"type": "GET"
+				}
+			}
+		},
+		"Histogram": {
+			"properties": {
+				"_type": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"entries": {
+					"description": "This is a default description.",
+					"type": "GET"
+				}
+			}
+		},
+		"Histogram Entries": {
+			"properties": {
+				"key": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"count": {
+					"description": "This is a default description.",
+					"type": "GET"
+				}
+			}
+		},
+		"Terms": {
+			"properties": {
+				"_type": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"missing": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"total": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"other": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"terms": {
+					"description": "This is a default description.",
+					"type": "GET"
+				}
+			}
+		},
+		"Terms Items": {
+			"properties": {
+				"term": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"count": {
+					"description": "This is a default description.",
+					"type": "GET"
+				}
+			}
+		},
+		"Audio Files": {
+			"properties": {
+				"url": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"filename": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "GET"
+				}
+			}
+		},
+		"Entities": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "GET"
+				},
+				"category": {
+					"description": "This is a default description.",
+					"type": "GET"
+				}
+			}
+		}
+	}
+}
