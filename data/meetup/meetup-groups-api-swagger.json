@@ -1,0 +1,575 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Meetup Groups API",
+		"description": "The API for managing Meetup groups.",
+		"termsOfService": "http://www.meetup.com/terms/",
+		"version": null
+	},
+	"host": "api.meetup.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/2/groups": {
+			"get": {
+				"summary": "Groups",
+				"description": "Fetch information about Meetup Groups.",
+				"operationId": "groups",
+				"parameters": [{
+					"in": "query",
+					"name": "*category_id",
+					"description": "Only return groups in the specified category. [one category allowed]",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "*country, city, state",
+					"description": "A valid country code, city and for the US, State. limits the returned groups to those within radius miles",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "*domain",
+					"description": "one or more custom group domains, separated by commas",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "*group_id",
+					"description": "one or more separated by commas",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "*group_urlname",
+					"description": "one or more separated by commas, includes no slashes",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "*lat,lon",
+					"description": "A valid latitude and longitude, limits the returned groups to those within radius miles",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "*member_id",
+					"description": "one or more separated by commas, for groups this member belongs to",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "*organizer_id",
+					"description": "one or more organizer IDs, separated by commas",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "*topic",
+					"description": "Only return groups in the specified topic [one topic allowed]",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "*topic, groupnum",
+					"description": "Return the group with this topic and number",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "*zip",
+					"description": "A valid US zip code, limits the returned groups to those within radius miles.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "fields",
+					"description": "optional result fields, separated by commas.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "radius",
+					"description": "Radius, in miles for geographic requests, default 25 -- maximum 100",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/2/group_photo": {
+			"post": {
+				"summary": "Group Photo Upload",
+				"description": "Uploads a new Meetup Group photo. To change other Group settings use the [Group Edit](/meetup_api/docs/:urlname/#edit) endpoint",
+				"operationId": "groups",
+				"parameters": [{
+					"in": "query",
+					"name": "*group_id",
+					"description": "Group ID for the target group. This may be used as an alternative to group_urlname",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "*group_urlname",
+					"description": "Group urlname. This may be used as an alternative to group_id",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "*photo",
+					"description": "The photo, encoded as multipart/form-data. The maximum file size allowed is 10MB",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "await",
+					"description": "If true, this ensures a response will not be returned until the upload is accessible",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "main",
+					"description": "Set to true to have this photo become the groups main photo. Set it to false otherwise. Defaults to true",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/:urlname": {
+			"get": {
+				"summary": "Get Group",
+				"description": "Fetches a Meetup Group by urlname",
+				"operationId": "groups",
+				"parameters": [{
+					"in": "query",
+					"name": "fields",
+					"description": "A comma-delimited list of optional fields to append to the response",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Group Edit",
+				"description": "Allows organizers to edit their Meetup group information. To change group topics, see the [add](/meetup_api/docs/:urlname/topics/#add) and [remove](/meetup_api/docs/:urlname/topics/#remove) topics endpoints. To change group photo use the [Group photo upload](/meetup_api/docs/2/group_photo/#create) endpoint. OAuth authenticated requests require an additional [group_edit](/meetup_api/auth/#oauth2-scopes) permission.",
+				"operationId": "groups",
+				"parameters": [{
+					"in": "query",
+					"name": "add_topics",
+					"description": "Comma-delimited list of topic ids to associate with group",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "The ISO_3166-1 country code for the country which contains the city",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "Summary of what the Meetup group is about in simple HTML format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "dryrun",
+					"description": "Boolean parameter that will cause this endpoint to apply all validation rules without actually saving changes in which case the response will only reflect the groups current attributes",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "ga_code",
+					"description": "Google Analytics code for group",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "join_mode",
+					"description": "Controls how members are let into the group. May be one of open meaning any Meetup member my join, closed meaning group is not currently accepting new members, or approval meaning members must be approved by an organizer. Note, the closed options is only available to groups that already have a closed join_mode",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "list_addr",
+					"description": "Mailing list prefix. By default this is the Groups urlname.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "list_mode",
+					"description": "Defines policy for who can post to the group mailing list. May be one of open meaning any Member can post, off meaning no one can post, moderated meaning messages must be approved, or orgs_only meaning only organizers may post to the list",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "Display name of the group. Can be at most 60 characters",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "photo_req",
+					"description": "Indicates that a member must provide a photo before joining. Expects true or false values",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "questions_req",
+					"description": "Indicates that provide questions are required before joining. Expects true or false values",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "question_edit_{id}",
+					"description": "Edits a current profile question identified by an id in the parameter name. The index updated index should also be encoded in the parameter name. To delete a question, set this to an empty string. Groups that require profile questions must have at least one question",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "question_{index}",
+					"description": "A new profile question defined in the order of index provided in the request parameter name",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "remove_topics",
+					"description": "Comma-delimited list of topic ids to disassociate with group",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "urlname",
+					"description": "Name used for the groups web address on meetup.com. Must be between 6 and 60 characters",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "visibility",
+					"description": "Restricts group visibility for non-members. May be one of public, public_limited or members. Note, the members option is only available to groups that already have members visibility",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "welcome_message",
+					"description": "Message sent to members after they join. Can be at most 2000 characters",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "who",
+					"description": "What members of the group will be called. Can be at most 32 characters",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "zip",
+					"description": "The ZIP code of the city",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "{service}_uri",
+					"description": "A URI for a social network service. Service must be one of facebook, flickr, linkedin, other, tumblr, twitter",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/:urlname/similar_groups": {
+			"get": {
+				"summary": "Similar groups",
+				"description": "Renders a list of similar groups",
+				"operationId": "groups",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/:urlname/topics": {
+			"delete": {
+				"summary": "Group Topics Remove",
+				"description": "Disassociates topics with a given Meetup Group. Limited to organizers of the group. OAuth authenticated requests require an additional [group_edit](/meetup_api/auth/#oauth2-scopes) permission.",
+				"operationId": "groups",
+				"parameters": [{
+					"in": "query",
+					"name": "*topic_id",
+					"description": "Comma-delimited list of topic ids to disassociate with group",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Group Topics Add",
+				"description": "Associates topics with a given Meetup Group. Limited to organizers of the group. OAuth authenticated requests require an additional [group_edit](/meetup_api/auth/#oauth2-scopes) permission.",
+				"operationId": "groups",
+				"parameters": [{
+					"in": "query",
+					"name": "*topic_id",
+					"description": "Comma-delimited list of topic ids to associate with group",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/comments": {
+			"get": {
+				"summary": "Comments",
+				"description": "API method for accessing meetup group comments",
+				"operationId": "groups",
+				"parameters": [{
+					"in": "query",
+					"name": "*group_id",
+					"description": "Return comments in groups with these ID numbers [separated by commas]",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "*group_urlname",
+					"description": "Return comments for the group with this custom URL path",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "*topic, groupnum",
+					"description": "Return comments for the group with given topic and number",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/find/groups": {
+			"get": {
+				"summary": "Find Groups",
+				"description": "Text, location, category and friend-based group searches",
+				"operationId": "groups",
+				"parameters": [{
+					"in": "query",
+					"name": "category",
+					"description": "Comma-delimited list of numeric category ids",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "A valid two character country code, defaults to US",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "fallback_suggestions",
+					"description": "boolean indicator of whether or not to return a list of curated suggestions for groups if we cant find groups matching your criteria",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "fields",
+					"description": "Request that additional fields (separated by commas) be included in the output.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "filter",
+					"description": "Determines which groups are returned. If all (default), the text and category parameters are applied. If friends, groups your friends are in are returned. The value of this parameter may be one of all, friends",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "lat",
+					"description": "Approximate latitude",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "location",
+					"description": "Raw text location query",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "lon",
+					"description": "Approximate longitude",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "radius",
+					"description": "Radius in miles. May be 0.0-100.0, global or smart, a dynamic radius based on the number of active groups in the area. Defaults to members preferred radius",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "self_groups",
+					"description": "set to include or exclude Meetups the authorized member belongs to; default is include",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "text",
+					"description": "Raw full text search query",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "topic_id",
+					"description": "Comma-delimited list of numeric topic ids",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "upcoming_events",
+					"description": "If true, filters text and category based searches on groups that have upcoming events. Defaults to false",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "zip",
+					"description": "Zipcode of location to limit search to",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/recommended/groups": {
+			"get": {
+				"summary": "Recommended Groups",
+				"description": "Returns groups Meetup finds relevant to you",
+				"operationId": "groups",
+				"parameters": [{
+					"in": "query",
+					"name": "category",
+					"description": "A valid category id which limits recommended groups to a particular category",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "A valid two character country code, defaults to US",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "fields",
+					"description": "Request that additional fields (separated by commas) be included in the output.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "instant_join_only",
+					"description": "Recommend only groups without join requirements and that can be joined instantly",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "lat",
+					"description": "Approximate latitude",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "location",
+					"description": "Raw text location query",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "lon",
+					"description": "Approximate longitude",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "radius",
+					"description": "Radius in miles. May be 0.0-100.0, global or smart, a dynamic radius based on the number of active groups in the area. Defaults to members preferred radius",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "topic_id",
+					"description": "Comma delimited list of up to 100 topic ids to help inform recommendations",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "zip",
+					"description": "Zip code you are searching for recommendations in",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/recommended/groups/ignores/:urlname": {
+			"post": {
+				"summary": "Recommended Groups Ignore",
+				"description": "Provides a form of feed back by requesting to remove a group from future recommendations",
+				"operationId": "groups",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
