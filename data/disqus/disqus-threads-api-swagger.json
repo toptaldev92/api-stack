@@ -1,0 +1,646 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Disqus Threads API",
+		"version": ""
+	},
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/threads/close.json": {
+			"n    post": {
+				"summary": "Threads Close",
+				"description": "n     Threads Close ",
+				"operationId": "threads-close",
+				"parameters": [{
+					"in": "query",
+					"name": "forum",
+					"description": "Defaults to null                         Looks up a forum by ID (aka short name)"
+				},
+				{
+					"in": "query",
+					"name": "thread",
+					"description": "Looks up a thread by ID You must be a moderator on the selected thread&#39;s forum. You may pass us the &#39;ident&#39; query type instead of an ID by including &#39;forum&#39;. You may pass us the &#39;link&#39; query type to filter by URL. You must pass the &#39;forum&#39; if you do not have the Pro API Access addon."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/threads/create.json": {
+			"n    post": {
+				"summary": "Threads Create",
+				"description": "n     Threads Create ",
+				"operationId": "threads-create",
+				"parameters": [{
+					"in": "query",
+					"name": "category",
+					"description": "Defaults to null                         Looks up a category by ID"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"description": "Defaults to null                         Unix timestamp (or ISO datetime standard)"
+				},
+				{
+					"in": "query",
+					"name": "forum",
+					"description": "Looks up a forum by ID (aka short name)"
+				},
+				{
+					"in": "query",
+					"name": "identifier",
+					"description": "Defaults to null                         Maximum length of 300"
+				},
+				{
+					"in": "query",
+					"name": "message",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "slug",
+					"description": "Defaults to null                         Alpha-numeric slug Maximum length of 200"
+				},
+				{
+					"in": "query",
+					"name": "title"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "Defaults to null                         URL (defined by RFC 3986) Maximum length of 500"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/threads/details.json": {
+			"n    get": {
+				"summary": "Threads Details",
+				"description": "n     Threads Details ",
+				"operationId": "threads-details",
+				"parameters": [{
+					"in": "query",
+					"name": "attach",
+					"description": "Defaults to []                         Choices: topics"
+				},
+				{
+					"in": "query",
+					"name": "forum",
+					"description": "Defaults to null                         Looks up a forum by ID (aka short name)"
+				},
+				{
+					"in": "query",
+					"name": "related",
+					"description": "Defaults to []                         You may specify relations to include with your response. Choices: forum, author, category"
+				},
+				{
+					"in": "query",
+					"name": "thread",
+					"description": "Looks up a thread by ID You may pass us the &#39;ident&#39; or &#39;link&#39; query types instead of an ID by including &#39;forum&#39;."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/threads/list.json": {
+			"n    get": {
+				"summary": "Threads List",
+				"description": "n     Threads List ",
+				"operationId": "threads-list",
+				"parameters": [{
+					"in": "query",
+					"name": "attach",
+					"description": "Defaults to []                         Choices: topics"
+				},
+				{
+					"in": "query",
+					"name": "author",
+					"description": "Defaults to null                         Looks up a user by ID You may look up a user by username using the &#39;username&#39; query type."
+				},
+				{
+					"in": "query",
+					"name": "category",
+					"description": "Defaults to null                         Looks up a category by ID"
+				},
+				{
+					"in": "query",
+					"name": "cursor",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "forum",
+					"description": "Defaults to null                         Looks up a forum by ID (aka short name)"
+				},
+				{
+					"in": "query",
+					"name": "include",
+					"description": "Defaults to [  open,  closed]                         Choices: open, closed, killed"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "Defaults to 25                         Maximum value of 100"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "Defaults to desc                         Choices: asc, desc"
+				},
+				{
+					"in": "query",
+					"name": "related",
+					"description": "Defaults to []                         You may specify relations to include with your response. Choices: forum, author, category"
+				},
+				{
+					"in": "query",
+					"name": "since",
+					"description": "Defaults to null                         Unix timestamp (or ISO datetime standard)"
+				},
+				{
+					"in": "query",
+					"name": "thread",
+					"description": "Defaults to null                         Looks up a thread by ID You may pass us the &#39;ident&#39; query type instead of an ID by including &#39;forum&#39;. You may pass us the &#39;link&#39; query type to filter by URL. You must pass the &#39;forum&#39; if you do not have the Pro API Access addon."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/threads/listHot.json": {
+			"n    get": {
+				"summary": "Threads ListHot",
+				"description": "n     Threads ListHot ",
+				"operationId": "threads-listhot",
+				"parameters": [{
+					"in": "query",
+					"name": "author",
+					"description": "Defaults to null                         Looks up a user by ID You may look up a user by username using the &#39;username&#39; query type."
+				},
+				{
+					"in": "query",
+					"name": "category",
+					"description": "Defaults to null                         Looks up a category by ID"
+				},
+				{
+					"in": "query",
+					"name": "forum",
+					"description": "Defaults to null                         Looks up a forum by ID (aka short name)"
+				},
+				{
+					"in": "query",
+					"name": "include",
+					"description": "Defaults to [  open,  closed]                         Choices: open, closed, killed"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "Defaults to 25                         Maximum value of 100"
+				},
+				{
+					"in": "query",
+					"name": "related",
+					"description": "Defaults to []                         You may specify relations to include with your response. Choices: forum, author, category"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/threads/listPopular.json": {
+			"n    get": {
+				"summary": "Threads ListPopular",
+				"description": "n     Threads ListPopular ",
+				"operationId": "threads-listpopular",
+				"parameters": [{
+					"in": "query",
+					"name": "category",
+					"description": "Defaults to null                         Looks up a category by ID"
+				},
+				{
+					"in": "query",
+					"name": "forum",
+					"description": "Defaults to null                         Looks up a forum by ID (aka short name)"
+				},
+				{
+					"in": "query",
+					"name": "interval",
+					"description": "Defaults to 7d                         Choices: 1h, 6h, 12h, 1d, 3d, 7d, 30d, 90d"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "Defaults to 25                         Maximum value of 100"
+				},
+				{
+					"in": "query",
+					"name": "related",
+					"description": "Defaults to []                         You may specify relations to include with your response. Choices: forum, author, category"
+				},
+				{
+					"in": "query",
+					"name": "with_top_post",
+					"description": "Defaults to false"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/threads/listPosts.json": {
+			"n    get": {
+				"summary": "Threads ListPosts",
+				"description": "n     Threads ListPosts ",
+				"operationId": "threads-listposts",
+				"parameters": [{
+					"in": "query",
+					"name": "cursor",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "forum",
+					"description": "Defaults to null                         Looks up a forum by ID (aka short name)"
+				},
+				{
+					"in": "query",
+					"name": "include",
+					"description": "Defaults to [  approved]                         Choices: unapproved, approved, spam, deleted, flagged, highlighted"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "Defaults to 25                         Maximum value of 100"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "Defaults to desc                         Choices: asc, desc"
+				},
+				{
+					"in": "query",
+					"name": "query",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "related",
+					"description": "Defaults to []                         You may specify relations to include with your response. Choices: forum, thread"
+				},
+				{
+					"in": "query",
+					"name": "since",
+					"description": "Defaults to null                         Unix timestamp (or ISO datetime standard)"
+				},
+				{
+					"in": "query",
+					"name": "thread",
+					"description": "Looks up a thread by ID You may pass us the &#39;ident&#39; or &#39;link&#39; query types instead of an ID by including &#39;forum&#39;."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/threads/listUsersVotedThread.json": {
+			"n    get": {
+				"summary": "Threads ListUsersVotedThread",
+				"description": "n     Threads ListUsersVotedThread ",
+				"operationId": "threads-listusersvotedthread",
+				"parameters": [{
+					"in": "query",
+					"name": "limit",
+					"description": "Defaults to 10                         Maximum value of 100"
+				},
+				{
+					"in": "query",
+					"name": "prioritize_followed",
+					"description": "Defaults to true                         Prioritize followed users who voted on this thread (must be authenticated)"
+				},
+				{
+					"in": "query",
+					"name": "thread",
+					"description": "Looks up a thread by ID"
+				},
+				{
+					"in": "query",
+					"name": "vote",
+					"description": "Defaults to 1                         Choices: -1, 0, 1"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/threads/open.json": {
+			"n    post": {
+				"summary": "Threads Open",
+				"description": "n     Threads Open ",
+				"operationId": "threads-open",
+				"parameters": [{
+					"in": "query",
+					"name": "forum",
+					"description": "Defaults to null                         Looks up a forum by ID (aka short name)"
+				},
+				{
+					"in": "query",
+					"name": "thread",
+					"description": "Looks up a thread by ID You must be a moderator on the selected thread&#39;s forum. You may pass us the &#39;ident&#39; query type instead of an ID by including &#39;forum&#39;. You may pass us the &#39;link&#39; query type to filter by URL. You must pass the &#39;forum&#39; if you do not have the Pro API Access addon."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/threads/remove.json": {
+			"n    post": {
+				"summary": "Threads Remove",
+				"description": "n     Threads Remove ",
+				"operationId": "threads-remove",
+				"parameters": [{
+					"in": "query",
+					"name": "forum",
+					"description": "Defaults to null                         Looks up a forum by ID (aka short name)"
+				},
+				{
+					"in": "query",
+					"name": "thread",
+					"description": "Looks up a thread by ID You must be a moderator on the selected thread&#39;s forum. You may pass us the &#39;ident&#39; query type instead of an ID by including &#39;forum&#39;. You may pass us the &#39;link&#39; query type to filter by URL. You must pass the &#39;forum&#39; if you do not have the Pro API Access addon."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/threads/restore.json": {
+			"n    post": {
+				"summary": "Threads Restore",
+				"description": "n     Threads Restore ",
+				"operationId": "threads-restore",
+				"parameters": [{
+					"in": "query",
+					"name": "forum",
+					"description": "Defaults to null                         Looks up a forum by ID (aka short name)"
+				},
+				{
+					"in": "query",
+					"name": "thread",
+					"description": "Looks up a thread by ID You must be a moderator on the selected thread&#39;s forum. You may pass us the &#39;ident&#39; query type instead of an ID by including &#39;forum&#39;. You may pass us the &#39;link&#39; query type to filter by URL. You must pass the &#39;forum&#39; if you do not have the Pro API Access addon."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/threads/set.json": {
+			"n    get": {
+				"summary": "Threads Set",
+				"description": "n     Threads Set ",
+				"operationId": "threads-set",
+				"parameters": [{
+					"in": "query",
+					"name": "attach",
+					"description": "Defaults to []                         Choices: topics"
+				},
+				{
+					"in": "query",
+					"name": "forum",
+					"description": "Defaults to null                         Looks up a forum by ID (aka short name)"
+				},
+				{
+					"in": "query",
+					"name": "related",
+					"description": "Defaults to []                         You may specify relations to include with your response. Choices: forum, author, category"
+				},
+				{
+					"in": "query",
+					"name": "thread",
+					"description": "Looks up a thread by ID You may pass us the &#39;ident&#39; query type instead of an ID by including &#39;forum&#39;. You may pass us the &#39;link&#39; query type to filter by URL. You must pass the &#39;forum&#39; if you do not have the Pro API Access addon."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/threads/spam.json": {
+			"n    post": {
+				"summary": "Threads Spam",
+				"description": "n     Threads Spam ",
+				"operationId": "threads-spam",
+				"parameters": [{
+					"in": "query",
+					"name": "forum",
+					"description": "Defaults to null                         Looks up a forum by ID (aka short name)"
+				},
+				{
+					"in": "query",
+					"name": "thread",
+					"description": "Looks up a thread by ID You must be a moderator on the selected thread&#39;s forum. You may pass us the &#39;ident&#39; or &#39;link&#39; query types instead of an ID by including &#39;forum&#39;."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/threads/subscribe.json": {
+			"n    post": {
+				"summary": "Threads Subscribe",
+				"description": "n     Threads Subscribe ",
+				"operationId": "threads-subscribe",
+				"parameters": [{
+					"in": "query",
+					"name": "email",
+					"description": "Defaults to null                         Email address (defined by RFC 5322)"
+				},
+				{
+					"in": "query",
+					"name": "thread",
+					"description": "Looks up a thread by ID"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/threads/unsubscribe.json": {
+			"n    post": {
+				"summary": "Threads Unsubscribe",
+				"description": "n     Threads Unsubscribe ",
+				"operationId": "threads-unsubscribe",
+				"parameters": [{
+					"in": "query",
+					"name": "email",
+					"description": "Defaults to null                         Email address (defined by RFC 5322)"
+				},
+				{
+					"in": "query",
+					"name": "thread",
+					"description": "Looks up a thread by ID"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/threads/update.json": {
+			"n    post": {
+				"summary": "Threads Update",
+				"description": "n     Threads Update ",
+				"operationId": "threads-update",
+				"parameters": [{
+					"in": "query",
+					"name": "author",
+					"description": "Defaults to null                         You must be a moderator on the applicable forum to change a thread author. You may look up a user by username using the &#39;username&#39; query type."
+				},
+				{
+					"in": "query",
+					"name": "category",
+					"description": "Defaults to null                         Looks up a category by ID"
+				},
+				{
+					"in": "query",
+					"name": "forum",
+					"description": "Defaults to null                         Looks up a forum by ID (aka short name)"
+				},
+				{
+					"in": "query",
+					"name": "identifier",
+					"description": "Defaults to null                         To update a specific identifier, provide &#39;old_identifier&#39;.  If no identifier exists, a new one is created. Maximum length of 300"
+				},
+				{
+					"in": "query",
+					"name": "message",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "old_identifier",
+					"description": "Defaults to null                         Only valid if &#39;identifier&#39; is provided.  See &#39;identifier&#39; for more information. Maximum length of 300"
+				},
+				{
+					"in": "query",
+					"name": "slug",
+					"description": "Defaults to null                         Alpha-numeric slug Maximum length of 200"
+				},
+				{
+					"in": "query",
+					"name": "thread",
+					"description": "You must be the author of the post or a moderator on the applicable forum."
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "Defaults to null                         Maximum length of 200"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "Defaults to null                         URL (defined by RFC 3986) Maximum length of 500"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/threads/vote.json": {
+			"n    post": {
+				"summary": "Threads Vote",
+				"description": "n     Threads Vote ",
+				"operationId": "threads-vote",
+				"parameters": [{
+					"in": "query",
+					"name": "forum",
+					"description": "Defaults to null                         Looks up a forum by ID (aka short name)"
+				},
+				{
+					"in": "query",
+					"name": "thread",
+					"description": "Looks up a thread by ID You may pass us the &#39;ident&#39; or &#39;link&#39; query types instead of an ID by including &#39;forum&#39;."
+				},
+				{
+					"in": "query",
+					"name": "vote",
+					"description": "Choices: -1, 0, 1"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
