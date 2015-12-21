@@ -8,37 +8,44 @@
 	},
 	"host": "api.linkedin.com",
 	"basePath": "/v1",
-	"schemes": [
-		"http"
-	],
-	"produces": [
-		"application/json"
-	],
-	"consumes": [
-		"application/json"
-	],
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
 	"paths": {
 		"/comments/{comment-id}": {
-			"get": {
-				"summary": "Get Comment",
-				"description": "Get Comment",
-				"operationId": "get-comment",
-				"parameters": [
-					{
-						"name": "comment-id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+			"delete": {
+				"summary": "Delete Comment Or Flag As Inappropriate",
+				"description": "Delete Comment Or Flag As Inappropriate",
+				"operationId": "delete-comment-or-flag-as-inappropriate",
+				"parameters": [{
+					"in": "path",
+					"name": "comment-id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Get Comment",
+				"description": "Get Comment",
+				"operationId": "get-comment",
+				"parameters": [{
+					"in": "path",
+					"name": "comment-id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/companies": {
@@ -51,9 +58,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/companies/id={id}": {
@@ -61,22 +67,18 @@
 				"summary": "Get Company By ID",
 				"description": "Get Company By ID",
 				"operationId": "get-company-by-id",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/companies/universal-name={universal-name}": {
@@ -84,22 +86,18 @@
 				"summary": "Get Company By Universal Name",
 				"description": "Get Company By Universal Name",
 				"operationId": "get-company-by-universal-name",
-				"parameters": [
-					{
-						"name": "universal-name",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "universal-name",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/companies/{id}/products": {
@@ -107,22 +105,18 @@
 				"summary": "Get Company Products",
 				"description": "Get Company Products",
 				"operationId": "get-company-products",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/companies/{id}/updates": {
@@ -130,22 +124,18 @@
 				"summary": "Get Company Updates (Beta)",
 				"description": "Get Company Updates (Beta)",
 				"operationId": "get-company-updates-beta",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/companies::({id},universal-name={universal-name})": {
@@ -153,28 +143,23 @@
 				"summary": "Get Companies By ID And Universal Name",
 				"description": "Get Companies By ID And Universal Name",
 				"operationId": "get-companies-by-id-and-universal-name",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					},
-					{
-						"name": "universal-name",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "universal-name",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/company-search": {
@@ -187,9 +172,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/groups/{group-id}": {
@@ -197,45 +181,54 @@
 				"summary": "Get Group",
 				"description": "Get Group",
 				"operationId": "get-group",
-				"parameters": [
-					{
-						"name": "group-id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "group-id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/groups/{group-id}/posts": {
+			"get": {
+				"summary": "Get Group Posts",
+				"description": "Get Group Posts",
+				"operationId": "get-group-posts",
+				"parameters": [{
+					"in": "path",
+					"name": "group-id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
 			"post": {
 				"summary": "Create Group Post",
 				"description": "Create Group Post",
 				"operationId": "create-group-post",
-				"parameters": [
-					{
-						"name": "group-id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "group-id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/job-search": {
@@ -248,9 +241,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/jobs/{id}": {
@@ -258,22 +250,18 @@
 				"summary": "Get Job",
 				"description": "Get Job",
 				"operationId": "get-job",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people-search": {
@@ -286,9 +274,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/id={id}": {
@@ -296,22 +283,18 @@
 				"summary": "Get Member Profile",
 				"description": "Get Member Profile",
 				"operationId": "get-member-profile",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/url={public-profile-url}/network": {
@@ -319,22 +302,18 @@
 				"summary": "Get Member Shares Stream By URL",
 				"description": "Get Member Shares Stream By URL",
 				"operationId": "get-member-shares-stream-by-url",
-				"parameters": [
-					{
-						"name": "public-profile-url",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "public-profile-url",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/{id}": {
@@ -342,22 +321,18 @@
 				"summary": "Get Out Of Network Profile",
 				"description": "Get Out Of Network Profile",
 				"operationId": "get-out-of-network-profile",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/{id}/connections": {
@@ -365,22 +340,18 @@
 				"summary": "Get Member Connections By ID",
 				"description": "Get Member Connections By ID",
 				"operationId": "get-member-connections-by-id",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/{id}/network": {
@@ -388,22 +359,18 @@
 				"summary": "Get Member Shares Stream By ID",
 				"description": "Get Member Shares Stream By ID",
 				"operationId": "get-member-shares-stream-by-id",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/{id}/network/updates": {
@@ -411,22 +378,18 @@
 				"summary": "Get Member Network Updates",
 				"description": "Get Member Network Updates",
 				"operationId": "get-member-network-updates",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~": {
@@ -439,9 +402,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/connections": {
@@ -454,12 +416,23 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/following/companies": {
+			"get": {
+				"summary": "Get Followed Companies",
+				"description": "Get Followed Companies",
+				"operationId": "get-followed-companies",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
 			"post": {
 				"summary": "Start Following Company",
 				"description": "Start Following Company",
@@ -469,9 +442,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/following/companies/id={id}": {
@@ -479,25 +451,33 @@
 				"summary": "Stop Following Company",
 				"description": "Stop Following Company",
 				"operationId": "stop-following-company",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/group-memberships": {
+			"get": {
+				"summary": "Get Groups",
+				"description": "Get Groups",
+				"operationId": "get-groups",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
 			"post": {
 				"summary": "Join Group",
 				"description": "Join Group",
@@ -507,32 +487,61 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/group-memberships/{group-id}": {
-			"put": {
-				"summary": "Update Group Settings",
-				"description": "Update Group Settings",
-				"operationId": "update-group-settings",
-				"parameters": [
-					{
-						"name": "group-id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+			"delete": {
+				"summary": "Leave Group",
+				"description": "Leave Group",
+				"operationId": "leave-group",
+				"parameters": [{
+					"in": "path",
+					"name": "group-id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Get Group Settings",
+				"description": "Get Group Settings",
+				"operationId": "get-group-settings",
+				"parameters": [{
+					"in": "path",
+					"name": "group-id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Update Group Settings",
+				"description": "Update Group Settings",
+				"operationId": "update-group-settings",
+				"parameters": [{
+					"in": "path",
+					"name": "group-id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/group-memberships/{group-id}/posts": {
@@ -540,25 +549,33 @@
 				"summary": "Get Group Member Posts",
 				"description": "Get Group Member Posts",
 				"operationId": "get-group-member-posts",
-				"parameters": [
-					{
-						"name": "group-id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "group-id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/job-bookmarks": {
+			"get": {
+				"summary": "Get Job Bookmarks",
+				"description": "Get Job Bookmarks",
+				"operationId": "get-job-bookmarks",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
 			"post": {
 				"summary": "Add Job Bookmark",
 				"description": "Add Job Bookmark",
@@ -568,9 +585,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/job-bookmarks/{job-id}": {
@@ -578,22 +594,18 @@
 				"summary": "Remove Job Bookmark",
 				"description": "Remove Job Bookmark",
 				"operationId": "remove-job-bookmark",
-				"parameters": [
-					{
-						"name": "job-id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "job-id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/mailbox": {
@@ -606,9 +618,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/network": {
@@ -621,9 +632,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/network/network-stats": {
@@ -636,9 +646,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/network/updates": {
@@ -651,9 +660,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/network/updates/key={network_update_key}/is-liked": {
@@ -661,22 +669,18 @@
 				"summary": "Like Comment",
 				"description": "Like Comment",
 				"operationId": "like-comment",
-				"parameters": [
-					{
-						"name": "network_update_key",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "network_update_key",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/network/updates/key={network_update_key}/likes": {
@@ -684,45 +688,54 @@
 				"summary": "Get Likes",
 				"description": "Get Likes",
 				"operationId": "get-likes",
-				"parameters": [
-					{
-						"name": "network_update_key",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "network_update_key",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/network/updates/key={network_update_key}/update-comments": {
+			"get": {
+				"summary": "Get Comments",
+				"description": "Get Comments",
+				"operationId": "get-comments",
+				"parameters": [{
+					"in": "path",
+					"name": "network_update_key",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
 			"post": {
 				"summary": "Post Comment",
 				"description": "Post Comment",
 				"operationId": "post-comment",
-				"parameters": [
-					{
-						"name": "network_update_key",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "network_update_key",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/person-activities": {
@@ -735,9 +748,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/shares": {
@@ -750,9 +762,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/suggestions/groups": {
@@ -765,9 +776,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/suggestions/groups/{id}": {
@@ -775,22 +785,18 @@
 				"summary": "Delete User Suggested Group",
 				"description": "Delete User Suggested Group",
 				"operationId": "delete-user-suggested-group",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/suggestions/job-suggestions:(jobs)": {
@@ -803,9 +809,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~/suggestions/to-follow/companies": {
@@ -818,9 +823,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/people/~:(current-share)": {
@@ -833,32 +837,44 @@
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/posts/{post-id}": {
-			"get": {
-				"summary": "Get Post",
-				"description": "Get Post",
-				"operationId": "get-post",
-				"parameters": [
-					{
-						"name": "post-id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+			"delete": {
+				"summary": "Delete Post Or Flag As Inappropriate",
+				"description": "Delete Post Or Flag As Inappropriate",
+				"operationId": "delete-post-or-flag-as-inappropriate",
+				"parameters": [{
+					"in": "path",
+					"name": "post-id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Get Post",
+				"description": "Get Post",
+				"operationId": "get-post",
+				"parameters": [{
+					"in": "path",
+					"name": "post-id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/posts/{post-id}/category/code": {
@@ -866,45 +882,54 @@
 				"summary": "Flag Post As Promotion",
 				"description": "Flag Post As Promotion",
 				"operationId": "flag-post-as-promotion",
-				"parameters": [
-					{
-						"name": "post-id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "post-id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/posts/{post-id}/comments": {
+			"get": {
+				"summary": "Get Post Comments",
+				"description": "Get Post Comments",
+				"operationId": "get-post-comments",
+				"parameters": [{
+					"in": "path",
+					"name": "post-id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
 			"post": {
 				"summary": "Add Post Comment",
 				"description": "Add Post Comment",
 				"operationId": "add-post-comment",
-				"parameters": [
-					{
-						"name": "post-id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "post-id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/posts/{post-id}/relation-to-viewer/is-following": {
@@ -912,22 +937,18 @@
 				"summary": "Follow Post",
 				"description": "Follow Post",
 				"operationId": "follow-post",
-				"parameters": [
-					{
-						"name": "post-id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "post-id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/posts/{post-id}/relation-to-viewer/is-liked": {
@@ -935,23 +956,20 @@
 				"summary": "Like Post",
 				"description": "Like Post",
 				"operationId": "like-post",
-				"parameters": [
-					{
-						"name": "post-id",
-						"in": "path",
-						"description": "",
-						"type": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "post-id",
+					"type": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					""
-				]
+				"tags": [""],
+				"security": []
 			}
 		}
-	}
+	},
+	"definitions": []
 }
