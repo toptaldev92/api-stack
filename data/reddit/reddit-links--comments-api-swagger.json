@@ -1,0 +1,760 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Reddit Links & Comments API",
+		"description": "API for manageming Reddit links and comments.",
+		"termsOfService": "https://github.com/reddit/reddit/wiki/API",
+		"version": null
+	},
+	"host": "www.reddit.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/api/comment": {
+			"post": {
+				"summary": "Submit a new comment or reply to a message.",
+				"description": "Submit a new comment or reply to a message.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "text",
+					"description": "raw markdown text",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "thing_id",
+					"description": "fullname of parent thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/del": {
+			"post": {
+				"summary": "Delete a Link or Comment.",
+				"description": "Delete a Link or Comment.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "fullname of a thing created by the user",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/editusertext": {
+			"post": {
+				"summary": "Edit the body text of a comment or self-post.",
+				"description": "Edit the body text of a comment or self-post.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "text",
+					"description": "raw markdown text",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "thing_id",
+					"description": "fullname of a thing created by the user",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/hide": {
+			"post": {
+				"summary": "Hide a link.",
+				"description": "Hide a link.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "A comma-separated list of link fullnames",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/lock": {
+			"post": {
+				"summary": "Lock a link.",
+				"description": "Lock a link.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "fullname of a link",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/marknsfw": {
+			"post": {
+				"summary": "Mark a link NSFW.",
+				"description": "Mark a link NSFW.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/morechildren": {
+			"get": {
+				"summary": "Retrieve additional comments omitted from a base comment tree.",
+				"description": "Retrieve additional comments omitted from a base comment tree.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "children",
+					"description": "a comma-delimited list of comment ID36s",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "(optional) id of the associated MoreChildren object",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "link_id",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "one of (confidence, top, new, hot, controversial, old, random, qa)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/report": {
+			"post": {
+				"summary": "Report a link, comment or message.",
+				"description": "Report a link, comment or message.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "other_reason",
+					"description": "a string no longer than 100 characters",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "reason",
+					"description": "a string no longer than 100 characters",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "site_reason",
+					"description": "a string no longer than 100 characters",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "thing_id",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/save": {
+			"post": {
+				"summary": "Save a link or comment.",
+				"description": "Save a link or comment.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "category",
+					"description": "a category name",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/saved_categories": {
+			"get": {
+				"summary": "Get a list of categories in which things are currently saved.",
+				"description": "Get a list of categories in which things are currently saved.",
+				"operationId": "links-amp-comments",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/sendreplies": {
+			"post": {
+				"summary": "Enable or disable inbox replies for a link or comment.",
+				"description": "Enable or disable inbox replies for a link or comment.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "fullname of a thing created by the user",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "state",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/set_contest_mode": {
+			"post": {
+				"summary": "Set or unset &quot;contest mode&quot; for a link&#39;s comments.",
+				"description": "Set or unset &quot;contest mode&quot; for a link&#39;s comments.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "state",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/set_subreddit_sticky": {
+			"post": {
+				"summary": "Set or unset a Link as the sticky in its subreddit.",
+				"description": "Set or unset a Link as the sticky in its subreddit.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "num",
+					"description": "an integer between 1 and 2",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "state",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/set_suggested_sort": {
+			"post": {
+				"summary": "Set a suggested sort for a link.",
+				"description": "Set a suggested sort for a link.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "one of (confidence, top, new, hot, controversial, old, random, qa, blank)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/store_visits": {
+			"post": {
+				"summary": "Requires a subscription to reddit gold",
+				"description": "Requires a subscription to reddit gold",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "links",
+					"description": "A comma-separated list of link fullnames",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/submit": {
+			"post": {
+				"summary": "Submit a link to a subreddit.",
+				"description": "Submit a link to a subreddit.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "captcha",
+					"description": "the user&#39;s response to the CAPTCHA challenge",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "extension",
+					"description": "extension used for redirects",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "iden",
+					"description": "the identifier of the CAPTCHA challenge",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "kind",
+					"description": "one of (link, self)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "resubmit",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sendreplies",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sr",
+					"description": "name of a subreddit",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "text",
+					"description": "raw markdown text",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "title of the submission. up to 300 characters long",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "a valid URL",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/unhide": {
+			"post": {
+				"summary": "Unhide a link.",
+				"description": "Unhide a link.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "A comma-separated list of link fullnames",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/unlock": {
+			"post": {
+				"summary": "Unlock a link.",
+				"description": "Unlock a link.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "fullname of a link",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/unmarknsfw": {
+			"post": {
+				"summary": "Remove the NSFW marking from a link.",
+				"description": "Remove the NSFW marking from a link.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/unsave": {
+			"post": {
+				"summary": "Unsave a link or comment.",
+				"description": "Unsave a link or comment.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/vote": {
+			"post": {
+				"summary": "Cast a vote on a thing.",
+				"description": "Cast a vote on a thing.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "dir",
+					"description": "vote direction. one of (1, 0, -1)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/api/info": {
+			"get": {
+				"summary": "Return a listing of things specified by their fullnames.",
+				"description": "Return a listing of things specified by their fullnames.",
+				"operationId": "links-amp-comments",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "A comma-separated list of thing fullnames",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "a valid URL",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
