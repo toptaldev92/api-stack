@@ -1,0 +1,394 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Stack Exchange Comments API",
+		"description": "The API for Stack Exchange comments.",
+		"termsOfService": "http://stackexchange.com/legal/api-terms-of-use",
+		"version": "2.2"
+	},
+	"host": "api.stackexchange.com",
+	"basePath": "/2.2",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/comments": {
+			"get": {
+				"summary": "Get all comments on the site.",
+				"description": "Get all comments on the site.",
+				"operationId": "getAllCommentsOnTheSite",
+				"parameters": [{
+					"in": "query",
+					"name": "fromdate",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "max",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "min",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Comments"],
+				"security": []
+			}
+		},
+		"/comments/{ids}": {
+			"get": {
+				"summary": "Get comments identified by a set of ids.",
+				"description": "Get comments identified by a set of ids.",
+				"operationId": "getCommentsIdentifiedbyASetOfIds",
+				"parameters": [{
+					"in": "query",
+					"name": "fromdate",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "ids",
+					"description": "{ids} can contain up to 100 semicolon delimited ids, to find ids programatically look for comment_id on comment objects.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "inname",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "max",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "min",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Comments"],
+				"security": []
+			}
+		},
+		"/comments/{id}/delete": {
+			"get": {
+				"summary": "Delete a comment identified by its id.",
+				"description": "Delete a comment identified by its id.",
+				"operationId": "deleteAcommentIdentifiedbyItsId",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "preview",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Comments"],
+				"security": []
+			}
+		},
+		"/comments/{id}/edit": {
+			"get": {
+				"summary": "Edit a comment identified by its id.",
+				"description": "Edit a comment identified by its id.",
+				"operationId": "editACommentIdentifiedByItsId",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "preview",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Comments"],
+				"security": []
+			}
+		},
+		"/comments/{id}/flags/add": {
+			"get": {
+				"summary": "Casts a flag on the given comment.",
+				"description": "Casts a flag on the given comment.",
+				"operationId": "castsAflagOnTheGivenComment",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "comment",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "option_id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "preview",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Comments"],
+				"security": []
+			}
+		},
+		"/comments/{id}/flags/options": {
+			"get": {
+				"summary": "Returns valid flag options for the given comment.",
+				"description": "Returns valid flag options for the given comment.",
+				"operationId": "returnsValidFlagOptionsForTheGivencomment",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Comments"],
+				"security": []
+			}
+		},
+		"/comments/{id}/upvote": {
+			"get": {
+				"summary": "Casts an upvote on the given comment.",
+				"description": "Casts an upvote on the given comment.",
+				"operationId": "castsAnUpvoteOnTheGivenComment",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "preview",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Comments"],
+				"security": []
+			}
+		},
+		"/comments/{id}/upvote/undo": {
+			"get": {
+				"summary": "Undoes an upvote on the given comment.",
+				"description": "Undoes an upvote on the given comment.",
+				"operationId": "undoesAnUpvoteOnTheGivenComment",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "preview",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Comments"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
