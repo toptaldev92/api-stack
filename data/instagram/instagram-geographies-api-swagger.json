@@ -1,0 +1,38 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Instagram Geographies API",
+		"version": ""
+	},
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/geographies/geo-id/media/recent": {
+			"get": {
+				"summary": "Geographies",
+				"description": "Get recent media from a geography subscription that you created. Note: You can only access Geographies that were explicitly created by your OAuth client. Check the Geography Subscriptions section of the real-time updates page. When you create a subscription to some geography that you define, you will be returned a unique geo-id that can be used in this query. To backfill photos from the location covered by this geography, use the media search endpoint.n                n            nn            n            n                Parametersn                n                    n                    n                        countn                        Max number of media to return.n                    n                    n                    n                        min_idn                        Return media before this min_id.",
+				"operationId": "geographies",
+				"parameters": [{
+					"in": "query",
+					"name": "count",
+					"description": "Max number of media to return."
+				},
+				{
+					"in": "query",
+					"name": "min_id",
+					"description": "Return media before this min_id."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
