@@ -1,0 +1,45 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "FullContact Email API",
+		"description": "The API for managing FullContact Emails",
+		"termsOfService": "https://www.fullcontact.com/terms/",
+		"version": "v2"
+	},
+	"host": "api.fullcontact.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/email/disposable.json": {
+			"get": {
+				"summary": "Lookup Email",
+				"description": "Lookup Email",
+				"operationId": "lookupEmail",
+				"parameters": [{
+					"in": "query",
+					"name": "apiKey",
+					"description": "This API key is assigned to you by FullContact. It is used to identify and authorize your request. Your API key should be kept private, and should never be displayed publicly.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "email",
+					"description": "The email address that should be queried for being a disposable email address.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Email"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
