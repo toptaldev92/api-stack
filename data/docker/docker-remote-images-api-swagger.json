@@ -1,0 +1,275 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Docker Remote Images API",
+		"description": "The API for managing Docker Remote Images",
+		"termsOfService": "https://www.docker.com/docker-terms-service",
+		"version": ""
+	},
+	"host": "api.example.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/images/create": {
+			"post": {
+				"summary": "Create an image",
+				"description": "Create an image",
+				"operationId": "create-an-image",
+				"parameters": [{
+					"in": "query",
+					"name": "fromImage",
+					"description": "name of the image to pull"
+				},
+				{
+					"in": "query",
+					"name": "fromSrc",
+					"description": "source to import.  The value may be a URL from which the image        can be retrieved or - to read the image from the request body."
+				},
+				{
+					"in": "query",
+					"name": "registry",
+					"description": "the registry to pull fromRequest Headers:"
+				},
+				{
+					"in": "query",
+					"name": "repo",
+					"description": "repository"
+				},
+				{
+					"in": "query",
+					"name": "tag",
+					"description": "tag"
+				},
+				{
+					"in": "query",
+					"name": "X-Registry-Auth",
+					"description": "base64-encoded AuthConfig object"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/images/get": {
+			"get": {
+				"summary": "Get a tarball containing all images.",
+				"description": "Get a tarball containing all images.",
+				"operationId": "get-a-tarball-containing-all-images",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/images/json": {
+			"get": {
+				"summary": "List Images",
+				"description": "List Images",
+				"operationId": "list-images",
+				"parameters": [{
+					"in": "query",
+					"name": "all",
+					"description": "1/True/true or 0/False/false, default false"
+				},
+				{
+					"in": "query",
+					"name": "dangling",
+					"description": "true"
+				},
+				{
+					"in": "query",
+					"name": "filters",
+					"description": "a json encoded value of the filters (a map[string][]string) to process on the images list. Available filters:"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/images/load": {
+			"post": {
+				"summary": "Load a tarball with a set of images and tags into docker",
+				"description": "Load a tarball with a set of images and tags into docker",
+				"operationId": "load-a-tarball-with-a-set-of-images-and-tags-into-docker",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/images/search": {
+			"get": {
+				"summary": "Search images",
+				"description": "Search images",
+				"operationId": "search-images",
+				"parameters": [{
+					"in": "query",
+					"name": "term",
+					"description": "term to search"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/images/{name}": {
+			"delete": {
+				"summary": "Remove an image",
+				"description": "Remove an image",
+				"operationId": "remove-an-image",
+				"parameters": [{
+					"in": "query",
+					"name": "force",
+					"description": "1/True/true or 0/False/false, default false"
+				},
+				{
+					"in": "path",
+					"name": "name"
+				},
+				{
+					"in": "query",
+					"name": "noprune",
+					"description": "1/True/true or 0/False/false, default false"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/images/{name}/get": {
+			"get": {
+				"summary": "Get a tarball containing all images in a repository",
+				"description": "Get a tarball containing all images in a repository",
+				"operationId": "get-a-tarball-containing-all-images-in-a-repository",
+				"parameters": [{
+					"in": "path",
+					"name": "name"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/images/{name}/history": {
+			"get": {
+				"summary": "Get the history of an image",
+				"description": "Get the history of an image",
+				"operationId": "get-the-history-of-an-image",
+				"parameters": [{
+					"in": "path",
+					"name": "name"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/images/{name}/json": {
+			"get": {
+				"summary": "Inspect an image",
+				"description": "Inspect an image",
+				"operationId": "inspect-an-image",
+				"parameters": [{
+					"in": "path",
+					"name": "name"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/images/{name}/push": {
+			"post": {
+				"summary": "Push an image on the registry",
+				"description": "Push an image on the registry",
+				"operationId": "push-an-image-on-the-registry",
+				"parameters": [{
+					"in": "path",
+					"name": "name"
+				},
+				{
+					"in": "query",
+					"name": "tag",
+					"description": "the tag to associate with the image on the registry, optional"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/images/{name}/tag": {
+			"post": {
+				"summary": "Tag an image into a repository",
+				"description": "Tag an image into a repository",
+				"operationId": "tag-an-image-into-a-repository",
+				"parameters": [{
+					"in": "query",
+					"name": "force",
+					"description": "1/True/true or 0/False/false, default false"
+				},
+				{
+					"in": "path",
+					"name": "name"
+				},
+				{
+					"in": "query",
+					"name": "repo",
+					"description": "The repository to tag in"
+				},
+				{
+					"in": "query",
+					"name": "tag",
+					"description": "The new tag name"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
