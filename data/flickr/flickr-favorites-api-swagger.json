@@ -1,0 +1,453 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Flickr Favorites API",
+		"description": "The API for managing Flickr Favorites",
+		"termsOfService": "https://www.flickr.com/services/api/tos/",
+		"version": null
+	},
+	"host": "www.flickr.com",
+	"basePath": "/services/rest/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/?method=flickr.favorites.add": {
+			"get": {
+				"summary": "flickr.favorites.add",
+				"description": "<div class=MethodDescription>Adds a photo to a users favorites list.</div>",
+				"operationId": "methodflickrfavoritesadd",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "photo_id",
+					"description": "The id of the photo to add to the users favorites.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "Photo not found - The photo id passed was not a valid photo id."
+					},
+					"2": {
+						"description": "Photo is owned by you - The photo belongs to the user and so cannot be added to their favorites."
+					},
+					"3": {
+						"description": "Photo is already in favorites - The photo is already in the users list of favorites."
+					},
+					"4": {
+						"description": "User cannot see photo - The user does not have permission to add the photo to their favorites."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.favorites.getContext": {
+			"get": {
+				"summary": "flickr.favorites.getContext",
+				"description": "<div class=MethodDescription>Returns next and previous favorites for a photo in a users favorites.</div>",
+				"operationId": "methodflickrfavoritesgetcontext",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "photo_id",
+					"description": "The id of the photo to fetch the context for.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "The user who counts the photo as a favorite.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "Photo not found - The photo id passed was not a valid photo id, or was the id of a photo that the calling user does not have permission to view."
+					},
+					"2": {
+						"description": "User not found - The specified user was not found."
+					},
+					"3": {
+						"description": "Photo not a favorite - The specified photo is not a favorite of the specified user."
+					},
+					"4": {
+						"description": "User cannot see photo - The user does not have permission to add the photo to their favorites."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.favorites.getList": {
+			"get": {
+				"summary": "flickr.favorites.getList",
+				"description": "<div class=MethodDescription>Returns a list of the users favorite photos. Only photos which the calling user has permission to see are returned.</div>",
+				"operationId": "methodflickrfavoritesgetlist",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "extras",
+					"description": "A comma-delimited list of extra information to fetch for each returned record. Currently supported fields are: description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "max_fave_date",
+					"description": "Maximum date that a photo was favorited on. The date should be in the form of a unix timestamp.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "min_fave_date",
+					"description": "Minimum date that a photo was favorited on. The date should be in the form of a unix timestamp.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of results to return. If this argument is omitted, it defaults to 1.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "The NSID of the user to fetch the favorites list for. If this argument is omitted, the favorites list for the calling user is returned.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User not found - The specified user NSID was not a valid flickr user."
+					},
+					"2": {
+						"description": "User not found - The specified user was not found."
+					},
+					"3": {
+						"description": "Photo not a favorite - The specified photo is not a favorite of the specified user."
+					},
+					"4": {
+						"description": "User cannot see photo - The user does not have permission to add the photo to their favorites."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.favorites.getPublicList": {
+			"get": {
+				"summary": "flickr.favorites.getPublicList",
+				"description": "<div class=MethodDescription>Returns a list of favorite public photos for the given user.</div>",
+				"operationId": "methodflickrfavoritesgetpubliclist",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "extras",
+					"description": "A comma-delimited list of extra information to fetch for each returned record. Currently supported fields are: description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "max_fave_date",
+					"description": "Maximum date that a photo was favorited on. The date should be in the form of a unix timestamp.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "min_fave_date",
+					"description": "Minimum date that a photo was favorited on. The date should be in the form of a unix timestamp.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of results to return. If this argument is omitted, it defaults to 1.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "The user to fetch the favorites list for.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User not found - The specified user NSID was not a valid flickr user."
+					},
+					"2": {
+						"description": "User not found - The specified user was not found."
+					},
+					"3": {
+						"description": "Photo not a favorite - The specified photo is not a favorite of the specified user."
+					},
+					"4": {
+						"description": "User cannot see photo - The user does not have permission to add the photo to their favorites."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.favorites.remove": {
+			"get": {
+				"summary": "flickr.favorites.remove",
+				"description": "<div class=MethodDescription>Removes a photo from a users favorites list.</div>",
+				"operationId": "methodflickrfavoritesremove",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "photo_id",
+					"description": "The id of the photo to remove from the users favorites.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "Photo not in favorites - The photo id passed was not in the users favorites."
+					},
+					"2": {
+						"description": "User not found - The specified user was not found."
+					},
+					"3": {
+						"description": "Photo not a favorite - The specified photo is not a favorite of the specified user."
+					},
+					"4": {
+						"description": "User cannot see photo - The user does not have permission to add the photo to their favorites."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
