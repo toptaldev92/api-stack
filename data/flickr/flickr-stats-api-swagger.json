@@ -1,0 +1,1355 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Flickr Stats API",
+		"description": "The API for managing Flickr Stats",
+		"termsOfService": "https://www.flickr.com/services/api/tos/",
+		"version": null
+	},
+	"host": "www.flickr.com",
+	"basePath": "/services/rest/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/?method=flickr.stats.getCollectionDomains": {
+			"get": {
+				"summary": "flickr.stats.getCollectionDomains",
+				"description": "<div class=MethodDescription>Get a list of referring domains for a collection</div>",
+				"operationId": "methodflickrstatsgetcollectiondomains",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "collection_id",
+					"description": "The id of the collection to get stats for. If not provided, stats for all collections will be returned.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"description": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format.A day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of results to return. If this argument is omitted, it defaults to 1.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of domains to return per page. If this argument is omitted, it defaults to 25. The maximum allowed value is 100.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User does not have stats - The user you have requested stats has not enabled stats on their account."
+					},
+					"2": {
+						"description": "No stats for that date - No stats are available for the date requested. Flickr only keeps stats data for the last 28 days."
+					},
+					"3": {
+						"description": "Invalid date - The date provided could not be parsed"
+					},
+					"4": {
+						"description": "Collection not found - The collection id was either invalid or was for a collection not owned by the calling user."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.stats.getCollectionReferrers": {
+			"get": {
+				"summary": "flickr.stats.getCollectionReferrers",
+				"description": "<div class=MethodDescription>Get a list of referrers from a given domain to a collection</div>",
+				"operationId": "methodflickrstatsgetcollectionreferrers",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "collection_id",
+					"description": "The id of the collection to get stats for. If not provided, stats for all collections will be returned.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"description": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format. A day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "domain",
+					"description": "The domain to return referrers for. This should be a hostname (eg: flickr.com) with no protocol or pathname.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of results to return. If this argument is omitted, it defaults to 1.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of referrers to return per page. If this argument is omitted, it defaults to 25. The maximum allowed value is 100.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User does not have stats - The user you have requested stats has not enabled stats on their account."
+					},
+					"2": {
+						"description": "No stats for that date - No stats are available for the date requested. Flickr only keeps stats data for the last 28 days."
+					},
+					"3": {
+						"description": "Invalid date - The date provided could not be parsed"
+					},
+					"4": {
+						"description": "Collection not found - The collection id was either invalid or was for a collection not owned by the calling user."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"5": {
+						"description": "Invalid domain - The domain provided is not in the expected format."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.stats.getCollectionStats": {
+			"get": {
+				"summary": "flickr.stats.getCollectionStats",
+				"description": "<div class=MethodDescription>Get the number of views on a collection for a given date.</div>",
+				"operationId": "methodflickrstatsgetcollectionstats",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "collection_id",
+					"description": "The id of the collection to get stats for.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"description": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format.A day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User does not have stats - The user you have requested stats has not enabled stats on their account."
+					},
+					"2": {
+						"description": "No stats for that date - No stats are available for the date requested. Flickr only keeps stats data for the last 28 days."
+					},
+					"3": {
+						"description": "Invalid date - The date provided could not be parsed"
+					},
+					"4": {
+						"description": "Collection not found - The collection id was either invalid or was for a collection not owned by the calling user."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"5": {
+						"description": "Invalid domain - The domain provided is not in the expected format."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.stats.getCSVFiles": {
+			"get": {
+				"summary": "flickr.stats.getCSVFiles",
+				"description": "<div class=MethodDescription>Returns a list of URLs for text files containing <i>all</i> your stats data (from November 26th 2007 onwards) for the currently authd user.rnrn<b>Please note, these files will only be available until June 1, 2010 Noon PDT.</b> rnFor more information <a href=/help/stats/#1369409>please check out this FAQ</a>, or just <a href=/photos/me/stats/downloads/>go download your files</a>.</div>",
+				"operationId": "methodflickrstatsgetcsvfiles",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User does not have stats - The user you have requested stats has not enabled stats on their account."
+					},
+					"2": {
+						"description": "No stats for that date - No stats are available for the date requested. Flickr only keeps stats data for the last 28 days."
+					},
+					"3": {
+						"description": "Invalid date - The date provided could not be parsed"
+					},
+					"4": {
+						"description": "Collection not found - The collection id was either invalid or was for a collection not owned by the calling user."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"5": {
+						"description": "Invalid domain - The domain provided is not in the expected format."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.stats.getPhotoDomains": {
+			"get": {
+				"summary": "flickr.stats.getPhotoDomains",
+				"description": "<div class=MethodDescription>Get a list of referring domains for a photo</div>",
+				"operationId": "methodflickrstatsgetphotodomains",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"description": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format.A day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of results to return. If this argument is omitted, it defaults to 1.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of domains to return per page. If this argument is omitted, it defaults to 25. The maximum allowed value is 100.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "photo_id",
+					"description": "The id of the photo to get stats for. If not provided, stats for all photos will be returned.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User does not have stats - The user you have requested stats has not enabled stats on their account."
+					},
+					"2": {
+						"description": "No stats for that date - No stats are available for the date requested. Flickr only keeps stats data for the last 28 days."
+					},
+					"3": {
+						"description": "Invalid date - The date provided could not be parsed"
+					},
+					"4": {
+						"description": "Photo not found - The photo id was either invalid or was for a photo not owned by the calling user."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"5": {
+						"description": "Invalid domain - The domain provided is not in the expected format."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.stats.getPhotoReferrers": {
+			"get": {
+				"summary": "flickr.stats.getPhotoReferrers",
+				"description": "<div class=MethodDescription>Get a list of referrers from a given domain to a photo</div>",
+				"operationId": "methodflickrstatsgetphotoreferrers",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"description": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format.A day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "domain",
+					"description": "The domain to return referrers for. This should be a hostname (eg: flickr.com) with no protocol or pathname.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of results to return. If this argument is omitted, it defaults to 1.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of referrers to return per page. If this argument is omitted, it defaults to 25. The maximum allowed value is 100.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "photo_id",
+					"description": "The id of the photo to get stats for. If not provided, stats for all photos will be returned.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User does not have stats - The user you have requested stats has not enabled stats on their account."
+					},
+					"2": {
+						"description": "No stats for that date - No stats are available for the date requested. Flickr only keeps stats data for the last 28 days."
+					},
+					"3": {
+						"description": "Invalid date - The date provided could not be parsed"
+					},
+					"4": {
+						"description": "Photo not found - The photo id was either invalid or was for a photo not owned by the calling user."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"5": {
+						"description": "Invalid domain - The domain provided is not in the expected format."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.stats.getPhotosetDomains": {
+			"get": {
+				"summary": "flickr.stats.getPhotosetDomains",
+				"description": "<div class=MethodDescription>Get a list of referring domains for a photoset</div>",
+				"operationId": "methodflickrstatsgetphotosetdomains",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"description": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format.A day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of results to return. If this argument is omitted, it defaults to 1.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of domains to return per page. If this argument is omitted, it defaults to 25. The maximum allowed value is 100.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "photoset_id",
+					"description": "The id of the photoset to get stats for. If not provided, stats for all sets will be returned.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User does not have stats - The user you have requested stats has not enabled stats on their account."
+					},
+					"2": {
+						"description": "No stats for that date - No stats are available for the date requested. Flickr only keeps stats data for the last 28 days."
+					},
+					"3": {
+						"description": "Invalid date - The date provided could not be parsed"
+					},
+					"4": {
+						"description": "Photoset not found - The photoset id was either invalid or was for a set not owned by the calling user."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"5": {
+						"description": "Invalid domain - The domain provided is not in the expected format."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.stats.getPhotosetReferrers": {
+			"get": {
+				"summary": "flickr.stats.getPhotosetReferrers",
+				"description": "<div class=MethodDescription>Get a list of referrers from a given domain to a photoset</div>",
+				"operationId": "methodflickrstatsgetphotosetreferrers",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"description": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format. A day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "domain",
+					"description": "The domain to return referrers for. This should be a hostname (eg: flickr.com) with no protocol or pathname.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of results to return. If this argument is omitted, it defaults to 1.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of referrers to return per page. If this argument is omitted, it defaults to 25. The maximum allowed value is 100.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "photoset_id",
+					"description": "The id of the photoset to get stats for. If not provided, stats for all sets will be returned.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User does not have stats - The user you have requested stats has not enabled stats on their account."
+					},
+					"2": {
+						"description": "No stats for that date - No stats are available for the date requested. Flickr only keeps stats data for the last 28 days."
+					},
+					"3": {
+						"description": "Invalid date - The date provided could not be parsed"
+					},
+					"4": {
+						"description": "Photoset not found - The photoset id was either invalid or was for a set not owned by the calling user."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"5": {
+						"description": "Invalid domain - The domain provided is not in the expected format."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.stats.getPhotosetStats": {
+			"get": {
+				"summary": "flickr.stats.getPhotosetStats",
+				"description": "<div class=MethodDescription>Get the number of views on a photoset for a given date.</div>",
+				"operationId": "methodflickrstatsgetphotosetstats",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"description": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format.A day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "photoset_id",
+					"description": "The id of the photoset to get stats for.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User does not have stats - The user you have requested stats has not enabled stats on their account."
+					},
+					"2": {
+						"description": "No stats for that date - No stats are available for the date requested. Flickr only keeps stats data for the last 28 days."
+					},
+					"3": {
+						"description": "Invalid date - The date provided could not be parsed"
+					},
+					"4": {
+						"description": "Photoset not found - The photoset id was either invalid or was for a set not owned by the calling user."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"5": {
+						"description": "Invalid domain - The domain provided is not in the expected format."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.stats.getPhotoStats": {
+			"get": {
+				"summary": "flickr.stats.getPhotoStats",
+				"description": "<div class=MethodDescription>Get the number of views, comments and favorites on a photo for a given date.</div>",
+				"operationId": "methodflickrstatsgetphotostats",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"description": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format.A day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "photo_id",
+					"description": "The id of the photo to get stats for.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User does not have stats - The user you have requested stats has not enabled stats on their account."
+					},
+					"2": {
+						"description": "No stats for that date - No stats are available for the date requested. Flickr only keeps stats data for the last 28 days."
+					},
+					"3": {
+						"description": "Invalid date - The date provided could not be parsed"
+					},
+					"4": {
+						"description": "Photo not found - The photo id was either invalid or was for a photo not owned by the calling user."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"5": {
+						"description": "Invalid domain - The domain provided is not in the expected format."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.stats.getPhotostreamDomains": {
+			"get": {
+				"summary": "flickr.stats.getPhotostreamDomains",
+				"description": "<div class=MethodDescription>Get a list of referring domains for a photostream</div>",
+				"operationId": "methodflickrstatsgetphotostreamdomains",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"description": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format.A day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of results to return. If this argument is omitted, it defaults to 1.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of domains to return per page. If this argument is omitted, it defaults to 25. The maximum allowed value is 100",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User does not have stats - The user you have requested stats has not enabled stats on their account."
+					},
+					"2": {
+						"description": "No stats for that date - No stats are available for the date requested. Flickr only keeps stats data for the last 28 days."
+					},
+					"3": {
+						"description": "Invalid date - The date provided could not be parsed"
+					},
+					"4": {
+						"description": "Photo not found - The photo id was either invalid or was for a photo not owned by the calling user."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"5": {
+						"description": "Invalid domain - The domain provided is not in the expected format."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.stats.getPhotostreamReferrers": {
+			"get": {
+				"summary": "flickr.stats.getPhotostreamReferrers",
+				"description": "<div class=MethodDescription>Get a list of referrers from a given domain to a users photostream</div>",
+				"operationId": "methodflickrstatsgetphotostreamreferrers",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"description": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format. A day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "domain",
+					"description": "The domain to return referrers for. This should be a hostname (eg: flickr.com) with no protocol or pathname.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of results to return. If this argument is omitted, it defaults to 1.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of referrers to return per page. If this argument is omitted, it defaults to 25. The maximum allowed value is 100.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User does not have stats - The user you have requested stats has not enabled stats on their account."
+					},
+					"2": {
+						"description": "No stats for that date - No stats are available for the date requested. Flickr only keeps stats data for the last 28 days."
+					},
+					"3": {
+						"description": "Invalid date - The date provided could not be parsed"
+					},
+					"4": {
+						"description": "Photo not found - The photo id was either invalid or was for a photo not owned by the calling user."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"5": {
+						"description": "Invalid domain - The domain provided is not in the expected format."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.stats.getPhotostreamStats": {
+			"get": {
+				"summary": "flickr.stats.getPhotostreamStats",
+				"description": "<div class=MethodDescription>Get the number of views on a users photostream for a given date.</div>",
+				"operationId": "methodflickrstatsgetphotostreamstats",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"description": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format.A day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User does not have stats - The user you have requested stats has not enabled stats on their account."
+					},
+					"2": {
+						"description": "No stats for that date - No stats are available for the date requested. Flickr only keeps stats data for the last 28 days."
+					},
+					"3": {
+						"description": "Invalid date - The date provided could not be parsed"
+					},
+					"4": {
+						"description": "Photo not found - The photo id was either invalid or was for a photo not owned by the calling user."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"5": {
+						"description": "Invalid domain - The domain provided is not in the expected format."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.stats.getPopularPhotos": {
+			"get": {
+				"summary": "flickr.stats.getPopularPhotos",
+				"description": "<div class=MethodDescription>List the photos with the most views, comments or favorites</div>",
+				"operationId": "methodflickrstatsgetpopularphotos",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"description": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format. A day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.If no date is provided, all time view counts will be returned.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of results to return. If this argument is omitted, it defaults to 1.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of referrers to return per page. If this argument is omitted, it defaults to 25. The maximum allowed value is 100.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "The order in which to sort returned photos. Defaults to views. The possible values are views, comments and favorites. Other sort options are available through flickr.photos.search.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User does not have stats - The user you have requested stats has not enabled stats on their account."
+					},
+					"2": {
+						"description": "No stats for that date - No stats are available for the date requested. Flickr only keeps stats data for the last 28 days."
+					},
+					"3": {
+						"description": "Invalid date - The date provided could not be parsed"
+					},
+					"4": {
+						"description": "Photo not found - The photo id was either invalid or was for a photo not owned by the calling user."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"5": {
+						"description": "Invalid sort - The sort provided is not valid"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.stats.getTotalViews": {
+			"get": {
+				"summary": "flickr.stats.getTotalViews",
+				"description": "<div class=MethodDescription>Get the overall view counts for an account</div>",
+				"operationId": "methodflickrstatsgettotalviews",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"description": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format.A day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.If no date is provided, all time view counts will be returned.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User does not have stats - The user you have requested stats has not enabled stats on their account."
+					},
+					"2": {
+						"description": "No stats for that date - No stats are available for the date requested. Flickr only keeps stats data for the last 28 days."
+					},
+					"3": {
+						"description": "Invalid date - The date provided could not be parsed"
+					},
+					"4": {
+						"description": "Photo not found - The photo id was either invalid or was for a photo not owned by the calling user."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"5": {
+						"description": "Invalid sort - The sort provided is not valid"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
