@@ -12,7 +12,7 @@
 	"produces": ["application/json"],
 	"consumes": ["application/json"],
 	"paths": {
-		"/?Action=nttttAttachVolumenttt&k=1": {
+		"/?Action=AttachVolume&k=1": {
 			"get": {
 				"summary": "Attaches an EBS volume to a running or stopped instance and exposes it to the instance withn      the specified device name.",
 				"description": "Attaches an EBS volume to a running or stopped instance and exposes it to the instance withn      the specified device name.",
@@ -50,7 +50,7 @@
 				"security": []
 			}
 		},
-		"/?Action=nttttCopySnapshotnttt&k=1": {
+		"/?Action=CopySnapshot&k=1": {
 			"get": {
 				"summary": "Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3.",
 				"description": "Copies a point-in-time snapshot of an EBS volume and stores it in Amazon S3.",
@@ -112,7 +112,7 @@
 				"security": []
 			}
 		},
-		"/?Action=nttttCreateSnapshotnttt&k=1": {
+		"/?Action=CreateSnapshot&k=1": {
 			"get": {
 				"summary": "Creates a snapshot of an EBS volume and stores it in Amazon S3.",
 				"description": "Creates a snapshot of an EBS volume and stores it in Amazon S3.",
@@ -144,7 +144,7 @@
 				"security": []
 			}
 		},
-		"/?Action=nttttCreateVolumenttt&k=1": {
+		"/?Action=CreateVolume&k=1": {
 			"get": {
 				"summary": "Creates an EBS volume that can be attached to an instance in the same Availability Zone.",
 				"description": "Creates an EBS volume that can be attached to an instance in the same Availability Zone.",
@@ -206,7 +206,7 @@
 				"security": []
 			}
 		},
-		"/?Action=nttttDeleteSnapshotnttt&k=1": {
+		"/?Action=DeleteSnapshot&k=1": {
 			"get": {
 				"summary": "Deletes the specified snapshot.",
 				"description": "Deletes the specified snapshot.",
@@ -232,7 +232,7 @@
 				"security": []
 			}
 		},
-		"/?Action=nttttDeleteVolumenttt&k=1": {
+		"/?Action=DeleteVolume&k=1": {
 			"get": {
 				"summary": "Deletes the specified EBS volume.",
 				"description": "Deletes the specified EBS volume.",
@@ -258,7 +258,7 @@
 				"security": []
 			}
 		},
-		"/?Action=nttttDescribeSnapshotAttributenttt&k=1": {
+		"/?Action=DescribeSnapshotAttribute&k=1": {
 			"get": {
 				"summary": "Describes the specified attribute of the specified snapshot.",
 				"description": "Describes the specified attribute of the specified snapshot.",
@@ -290,7 +290,7 @@
 				"security": []
 			}
 		},
-		"/?Action=nttttDescribeSnapshotsnttt&k=1": {
+		"/?Action=DescribeSnapshots&k=1": {
 			"get": {
 				"summary": "Describes one or more of the EBS snapshots available to you.",
 				"description": "Describes one or more of the EBS snapshots available to you.",
@@ -346,7 +346,7 @@
 				"security": []
 			}
 		},
-		"/?Action=nttttDescribeVolumeAttributenttt&k=1": {
+		"/?Action=DescribeVolumeAttribute&k=1": {
 			"get": {
 				"summary": "Describes the specified attribute of the specified volume.",
 				"description": "Describes the specified attribute of the specified volume.",
@@ -378,7 +378,7 @@
 				"security": []
 			}
 		},
-		"/?Action=nttttDescribeVolumesnttt&k=1": {
+		"/?Action=DescribeVolumes&k=1": {
 			"get": {
 				"summary": "Describes the specified EBS volumes.",
 				"description": "Describes the specified EBS volumes.",
@@ -422,7 +422,51 @@
 				"security": []
 			}
 		},
-		"/?Action=nttttDetachVolumenttt&k=1": {
+		"/?Action=DescribeVolumeStatus&k=1": {
+			"get": {
+				"summary": "Describes the status of the specified volumes.",
+				"description": "Describes the status of the specified volumes.",
+				"operationId": "describevolumestatus",
+				"parameters": [{
+					"in": "query",
+					"name": "DryRun",
+					"description": "Checks whether you have the required permissions for the action, without actually making the request,       and provides an error response. If you have the required permissions, the error response is DryRunOperation.       Otherwise, it is UnauthorizedOperation.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "Filter.N",
+					"description": "One or more filters.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "MaxResults",
+					"description": "The maximum number of volume results returned by DescribeVolumeStatus intttpaginated output. When this parameter is used, the request only returnsttttMaxResults results in a single page along with a NextTokentttresponse element. The remaining results of the initial request can be seen by sending anothertttrequest with the returned NextToken value. This value can be between 5 and 1000;tttif MaxResults is given a value larger than 1000, only 1000 results are returned.tttIf this parameter is not used, then DescribeVolumeStatus returns all results. Youtttcannot specify this parameter and the volume IDs parameter in the same request.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "NextToken",
+					"description": "The NextToken value to include in a future DescribeVolumeStatustttrequest. When the results of the request exceed MaxResults, this value can betttused to retrieve the next page of results. This value is null when there are notttmore results to return.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "VolumeId.N",
+					"description": "One or more volume IDs.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?Action=DetachVolume&k=1": {
 			"get": {
 				"summary": "Detaches an EBS volume from an instance.",
 				"description": "Detaches an EBS volume from an instance.",
@@ -466,7 +510,7 @@
 				"security": []
 			}
 		},
-		"/?Action=nttttEnableVolumeIOnttt&k=1": {
+		"/?Action=EnableVolumeIO&k=1": {
 			"get": {
 				"summary": "Enables I/O operations for a volume that had I/O operations disabled because the data on then      volume was potentially inconsistent.",
 				"description": "Enables I/O operations for a volume that had I/O operations disabled because the data on then      volume was potentially inconsistent.",
@@ -492,7 +536,7 @@
 				"security": []
 			}
 		},
-		"/?Action=nttttModifySnapshotAttributenttt&k=1": {
+		"/?Action=ModifySnapshotAttribute&k=1": {
 			"get": {
 				"summary": "Adds or removes permission settings for the specified snapshot.",
 				"description": "Adds or removes permission settings for the specified snapshot.",
@@ -548,7 +592,7 @@
 				"security": []
 			}
 		},
-		"/?Action=nttttModifyVolumeAttributenttt&k=1": {
+		"/?Action=ModifyVolumeAttribute&k=1": {
 			"get": {
 				"summary": "Modifies a volume attribute.",
 				"description": "Modifies a volume attribute.",
@@ -580,7 +624,7 @@
 				"security": []
 			}
 		},
-		"/?Action=nttttResetSnapshotAttributenttt&k=1": {
+		"/?Action=ResetSnapshotAttribute&k=1": {
 			"get": {
 				"summary": "Resets permission settings for the specified snapshot.",
 				"description": "Resets permission settings for the specified snapshot.",
@@ -601,50 +645,6 @@
 					"in": "query",
 					"name": "SnapshotId",
 					"description": "The ID of the snapshot.",
-					"type": "string"
-				}],
-				"responses": {
-					"200": {
-						"description": "OK"
-					}
-				},
-				"tags": [""],
-				"security": []
-			}
-		},
-		"/?Action=ntt  tDescribeVolumeStatusntt  &k=1": {
-			"get": {
-				"summary": "Describes the status of the specified volumes.",
-				"description": "Describes the status of the specified volumes.",
-				"operationId": "--describevolumestatus--",
-				"parameters": [{
-					"in": "query",
-					"name": "DryRun",
-					"description": "Checks whether you have the required permissions for the action, without actually making the request,       and provides an error response. If you have the required permissions, the error response is DryRunOperation.       Otherwise, it is UnauthorizedOperation.",
-					"type": "string"
-				},
-				{
-					"in": "query",
-					"name": "Filter.N",
-					"description": "One or more filters.",
-					"type": "string"
-				},
-				{
-					"in": "query",
-					"name": "MaxResults",
-					"description": "The maximum number of volume results returned by DescribeVolumeStatus intttpaginated output. When this parameter is used, the request only returnsttttMaxResults results in a single page along with a NextTokentttresponse element. The remaining results of the initial request can be seen by sending anothertttrequest with the returned NextToken value. This value can be between 5 and 1000;tttif MaxResults is given a value larger than 1000, only 1000 results are returned.tttIf this parameter is not used, then DescribeVolumeStatus returns all results. Youtttcannot specify this parameter and the volume IDs parameter in the same request.",
-					"type": "string"
-				},
-				{
-					"in": "query",
-					"name": "NextToken",
-					"description": "The NextToken value to include in a future DescribeVolumeStatustttrequest. When the results of the request exceed MaxResults, this value can betttused to retrieve the next page of results. This value is null when there are notttmore results to return.",
-					"type": "string"
-				},
-				{
-					"in": "query",
-					"name": "VolumeId.N",
-					"description": "One or more volume IDs.",
 					"type": "string"
 				}],
 				"responses": {
