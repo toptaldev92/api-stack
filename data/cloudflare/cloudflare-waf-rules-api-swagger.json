@@ -1,0 +1,141 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "CloudFlare WAF Rules API",
+		"description": "The API for managing CloudFlare WAF Rules",
+		"termsOfService": "https://www.cloudflare.com/terms/",
+		"version": null
+	},
+	"host": "api.cloudflare.com",
+	"basePath": "/client/v4",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/zones/:zone_id/firewall/waf/packages/:package_id/rules": {
+			"get": {
+				"summary": "Search, sort, and filter rules within a package",
+				"description": "Search, sort, and filter rules within a package",
+				"operationId": "cloudflare-waf-rules-api",
+				"parameters": [{
+					"in": "query",
+					"name": "description",
+					"description": "Public description of the rulettttttttttttttSQL injection prevention for SELECT statements",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "direction",
+					"description": "Direction to order rulesttttttttttttttdesc",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "group_id",
+					"description": "WAF group identifier tagttttttttttttttde677e5818985db1285d0e80225f06e5",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "match",
+					"description": "Whether to match all search requirements or at least one (any)ttttttttttttttall",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "mode",
+					"description": "The rule modetttttttttttttttttttttOne of the following:ttttttttttttttttttttttWhether or not the anomaly-based rule will be used when evaluating the request.tttttttShow definition &raquo;tttttttThe mode that the traditional firewall rule uses when triggered.tttttttShow definition &raquo;tttttttDefines whether or not the white-list rule should be allowed when matching the request.tttttttShow definition &raquo;",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "Field to order rules byttttttttttttttstatus",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Page number of paginated resultstttttttttttttt1",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of rules per pagetttttttttttttt50",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "priority",
+					"description": "The order in which the individual rule is executed within the related grouptttttttttttttt5",
+					"type": "string"
+				},
+				{
+					"in": "header",
+					"name": "X-AUTH-EMAIL",
+					"description": "Email address associated with your account",
+					"type": "string"
+				},
+				{
+					"in": "header",
+					"name": "X-AUTH-KEY",
+					"description": "API key generated on the My Account page",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/zones/:zone_id/firewall/waf/packages/:package_id/rules/:identifier": {
+			"get": {
+				"summary": "Individual information about a rule",
+				"description": "Individual information about a rule",
+				"operationId": "cloudflare-waf-rules-api",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"patch": {
+				"summary": "Update the action the rule will perform if triggered on the zone",
+				"description": "Update the action the rule will perform if triggered on the zone",
+				"operationId": "cloudflare-waf-rules-api",
+				"parameters": [{
+					"in": "query",
+					"name": "mode",
+					"description": "The mode to use when the rule is triggered. Value is restricted based on the allowed_modes of the ruletttttttttttttton",
+					"type": "string"
+				},
+				{
+					"in": "header",
+					"name": "X-AUTH-EMAIL",
+					"description": "Email address associated with your account",
+					"type": "string"
+				},
+				{
+					"in": "header",
+					"name": "X-AUTH-KEY",
+					"description": "API key generated on the My Account page",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
