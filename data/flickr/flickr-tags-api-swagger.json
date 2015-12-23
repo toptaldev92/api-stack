@@ -1,0 +1,506 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Flickr Tags API",
+		"description": "The API for managing Flickr Tags",
+		"termsOfService": "https://www.flickr.com/services/api/tos/",
+		"version": null
+	},
+	"host": "www.flickr.com",
+	"basePath": "/services/rest/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/?method=flickr.tags.getClusterPhotos": {
+			"get": {
+				"summary": "flickr.tags.getClusterPhotos",
+				"description": "<div class=MethodDescription>Returns the first 24 photos for a given tag cluster</div>",
+				"operationId": "methodflickrtagsgetclusterphotos",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "cluster_id",
+					"description": "The top three tags for the cluster, separated by dashes (just like the url).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "tag",
+					"description": "The tag that this cluster belongs to.",
+					"type": "string"
+				}],
+				"responses": {
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.tags.getClusters": {
+			"get": {
+				"summary": "flickr.tags.getClusters",
+				"description": "<div class=MethodDescription>Gives you a list of tag clusters for the given tag.</div>",
+				"operationId": "methodflickrtagsgetclusters",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "tag",
+					"description": "The tag to fetch clusters for.",
+					"type": "string"
+				}],
+				"responses": {
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"1": {
+						"description": "Tag cluster not found - The tag was invalid or no cluster exists for that tag."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.tags.getHotList": {
+			"get": {
+				"summary": "flickr.tags.getHotList",
+				"description": "<div class=MethodDescription>Returns a list of hot tags for the given period.</div>",
+				"operationId": "methodflickrtagsgethotlist",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "count",
+					"description": "The number of tags to return. Defaults to 20. Maximum allowed value is 200.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "period",
+					"description": "The period for which to fetch hot tags. Valid values are day and week (defaults to day).",
+					"type": "string"
+				}],
+				"responses": {
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"1": {
+						"description": "Invalid period - The specified period was not understood."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.tags.getListPhoto": {
+			"get": {
+				"summary": "flickr.tags.getListPhoto",
+				"description": "<div class=MethodDescription>Get the tag list for a given photo.</div>",
+				"operationId": "methodflickrtagsgetlistphoto",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "photo_id",
+					"description": "The id of the photo to return tags for.",
+					"type": "string"
+				}],
+				"responses": {
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"1": {
+						"description": "Photo not found - The photo id passed was not a valid photo id."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.tags.getListUser": {
+			"get": {
+				"summary": "flickr.tags.getListUser",
+				"description": "<div class=MethodDescription>Get the tag list for a given user (or the currently logged in user).</div>",
+				"operationId": "methodflickrtagsgetlistuser",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "The NSID of the user to fetch the tag list for. If this argument is not specified, the currently logged in user (if any) is assumed.",
+					"type": "string"
+				}],
+				"responses": {
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"1": {
+						"description": "User not found - The user NSID passed was not a valid user NSID and the calling user was not logged in.rn"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.tags.getListUserPopular": {
+			"get": {
+				"summary": "flickr.tags.getListUserPopular",
+				"description": "<div class=MethodDescription>Get the popular tags for a given user (or the currently logged in user).</div>",
+				"operationId": "methodflickrtagsgetlistuserpopular",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "count",
+					"description": "Number of popular tags to return. defaults to 10 when this argument is not present.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "The NSID of the user to fetch the tag list for. If this argument is not specified, the currently logged in user (if any) is assumed.",
+					"type": "string"
+				}],
+				"responses": {
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"1": {
+						"description": "User not found - The user NSID passed was not a valid user NSID and the calling user was not logged in.rn"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.tags.getListUserRaw": {
+			"get": {
+				"summary": "flickr.tags.getListUserRaw",
+				"description": "<div class=MethodDescription>Get the raw versions of a given tag (or all tags) for the currently logged-in user.</div>",
+				"operationId": "methodflickrtagsgetlistuserraw",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "tag",
+					"description": "The tag you want to retrieve all raw versions for.",
+					"type": "string"
+				}],
+				"responses": {
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"1": {
+						"description": "User not found - The calling user was not logged in."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.tags.getMostFrequentlyUsed": {
+			"get": {
+				"summary": "flickr.tags.getMostFrequentlyUsed",
+				"description": "<div class=MethodDescription>Returns a list of most frequently used tags for a user.</div>",
+				"operationId": "methodflickrtagsgetmostfrequentlyused",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				}],
+				"responses": {
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"1": {
+						"description": "User not found - The calling user was not logged in."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.tags.getRelated": {
+			"get": {
+				"summary": "flickr.tags.getRelated",
+				"description": "<div class=MethodDescription>Returns a list of tags related to the given tag, based on clustered usage analysis.</div>",
+				"operationId": "methodflickrtagsgetrelated",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "tag",
+					"description": "The tag to fetch related tags for.",
+					"type": "string"
+				}],
+				"responses": {
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"1": {
+						"description": "Tag not found - The tag argument was missing."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
