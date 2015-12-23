@@ -1,0 +1,56 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Docker Remote Commit API",
+		"description": "The API for managing Docker Remote Commit",
+		"termsOfService": "https://www.docker.com/docker-terms-service",
+		"version": ""
+	},
+	"host": "api.example.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/commit": {
+			"post": {
+				"summary": "Create a new image from a container's changes",
+				"description": "Create a new image from a containers changes",
+				"operationId": "create-a-new-image-from-a-containers-changes",
+				"parameters": [{
+					"in": "query",
+					"name": "author",
+					"description": "author (e.g., John Hannibal Smith    &lt;hannibal@a-team.com&gt;)"
+				},
+				{
+					"in": "query",
+					"name": "comment",
+					"description": "commit message"
+				},
+				{
+					"in": "query",
+					"name": "container",
+					"description": "source container"
+				},
+				{
+					"in": "query",
+					"name": "repo",
+					"description": "repository"
+				},
+				{
+					"in": "query",
+					"name": "tag",
+					"description": "tag"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
