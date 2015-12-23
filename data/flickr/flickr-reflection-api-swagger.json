@@ -1,0 +1,111 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Flickr Reflection API",
+		"description": "The API for managing Flickr Reflection",
+		"termsOfService": "https://www.flickr.com/services/api/tos/",
+		"version": null
+	},
+	"host": "www.flickr.com",
+	"basePath": "/services/rest/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/?method=flickr.reflection.getMethodInfo": {
+			"get": {
+				"summary": "flickr.reflection.getMethodInfo",
+				"description": "<div class=MethodDescription>Returns information for a given flickr API method.</div>",
+				"operationId": "methodflickrreflectiongetmethodinfo",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "method_name",
+					"description": "The name of the method to fetch information for.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "Method not found - The requested method was not found."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.reflection.getMethods": {
+			"get": {
+				"summary": "flickr.reflection.getMethods",
+				"description": "<div class=MethodDescription>Returns a list of available flickr API methods.</div>",
+				"operationId": "methodflickrreflectiongetmethods",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "Method not found - The requested method was not found."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
