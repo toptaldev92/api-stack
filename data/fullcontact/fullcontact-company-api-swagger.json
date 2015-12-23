@@ -1,0 +1,66 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "FullContact Company API",
+		"description": "The API for managing FullContact Companys",
+		"termsOfService": "https://www.fullcontact.com/terms/",
+		"version": "v2"
+	},
+	"host": "api.fullcontact.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/company/lookup.json": {
+			"get": {
+				"summary": "Get Company",
+				"description": "Get Company",
+				"operationId": "getCompany",
+				"parameters": [{
+					"in": "query",
+					"name": "apiKey",
+					"description": "This API key is assigned to you by FullContact. It is used to identify and authorize your request. Your API key should be kept private, and should never be displayed publicly.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "callback",
+					"description": "If specified, the response will be wrapped as JSONP in a function call.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "domain",
+					"description": "The domain of the company being looked up. For example, fullcontact.com.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "keyPeople",
+					"description": " If true, a list of Executive and VP level employees at this company will be returned under the keyPeople field.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "prettyPrint",
+					"description": "The prettyPrint parameter can be used to disable prettyprint formatting on the API response.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Companies"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
