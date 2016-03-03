@@ -100,6 +100,63 @@
 				"tags": [""],
 				"security": []
 			}
+		},
+		"/locations/{location-id}": {
+			"get": {
+				"summary": "Get Location",
+				"description": "Get information about a location.",
+				"operationId": "get-information-about-a-location",
+				"parameters": [{
+					"in": "path",
+					"name": "location-id",
+					"description": "The location ID."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/locations/{location-id}/media/recent": {
+			"get": {
+				"summary": "Get Recent Media by Location",
+				"description": "Get a list of recent media objects from a given location. May return a mix of both image and video types.n                n            nn            n            n                Parametersn                n                    n                    n                        min_timestampn                        Return media after this UNIX timestampn                    n                    n                    n                        min_idn                        Return media before this min_id.n                    n                    n                    n                        max_idn                        Return media after this max_id.n                    n                    n                    n                        max_timestampn                        Return media before this UNIX timestamp",
+				"operationId": "locations",
+				"parameters": [{
+					"in": "query",
+					"name": "max_id",
+					"description": "Return media after this max_id.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "max_timestamp",
+					"description": "Return media before this UNIX timestamp",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "min_id",
+					"description": "Return media before this min_id.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "min_timestamp",
+					"description": "Return media after this UNIX timestamp",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
 		}
 	},
 	"definitions": []
