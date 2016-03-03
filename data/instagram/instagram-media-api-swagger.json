@@ -192,6 +192,152 @@
 				"tags": [""],
 				"security": []
 			}
+		},
+		"/media/shortcode/{shortcode}": {
+			"get": {
+				"summary": "Get Media Short Code",
+				"description": "This endpoint returns the same response as `GET /media/{media-id}`.nnA media objects shortcode can be found in its shortlink URL. An example shortlink isn`http://instagram.com/p/D/`, its corresponding shortcode is `D`.n",
+				"operationId": "this-endpoint-returns-the-same-response-as-get-mediamediaida-media-objects-shortcode-can-be-found-in",
+				"parameters": [{
+					"in": "path",
+					"name": "shortcode",
+					"description": "The short code of the media resource."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/media/{media-id/}likes": {
+			"get": {
+				"summary": "Get Likes for Media",
+				"description": "Get a list of users who have liked this media.n                n                Required scope: likes",
+				"operationId": "likes",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/media/{media-id}": {
+			"get": {
+				"summary": "Get Media",
+				"description": "Get information about a media object. The returned type key will allow you to differentiate between image and video media.   Note: if you authenticate with an OAuth Token, you will receive the user_has_liked key which quickly tells you whether the current user has liked this media item.",
+				"operationId": "media",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/media/{media-id}/comments": {
+			"get": {
+				"summary": "Get Comments for Media",
+				"description": "Get a full list of comments on a media object.n                n                Required scope: comments",
+				"operationId": "comments",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Add Comment for Media",
+				"description": "Create a comment on a media object. This endpoint is restricted to the following use cases:A business requesting rights to media objects from the Instagram Community in order for the media to be used for display outside of Instagram.A business providing customer service to members of the Instagram Community by interacting through comments.A business responding to members of the Instagram Community that participate in a specific reward or coupon campaign.Use of this endpoint is subject to the following guidelines:Comments must be written in the voice of the user account from which it is being generated.Comments must not be automated.The total length of the comment cannot exceeed 300 characters.The comment cannot contain more than 4 hashtags.The comment cannot contain more than 1 URL.The comment cannot consist of all capital letters.To request access to this endpoint, please complete this form.n                n                Required scope: commentsn                n            nn            n            n                Parametersn                n                    n                    n                        access_tokenn                        A valid access token.n                    n                    n                    n                        textn                        Text to post as a comment on the media object as specified in media-id.",
+				"operationId": "comments",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"description": "A valid access token.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "text",
+					"description": "Text to post as a comment on the media object as specified in media-id.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/media/{media-id}/comments/{comment-id}": {
+			"delete": {
+				"summary": "Delete Comment for Media",
+				"description": "Remove a comment either on the authenticated users media object or authored by the authenticated user.n",
+				"operationId": "remove-a-comment-either-on-the-authenticated-users-media-object-or-authored-by-the-authenticated-use",
+				"parameters": [{
+					"in": "path",
+					"name": "comment-id",
+					"description": "The ID of the comment entry."
+				},
+				{
+					"in": "path",
+					"name": "media-id",
+					"description": "The ID of the media resource."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/media/{media-id}/likes": {
+			"delete": {
+				"summary": "Delete Likes for Media",
+				"description": "Remove a like on this media by the currently authenticated user.",
+				"operationId": "remove-a-like-on-this-media-by-the-currently-authenticated-user",
+				"parameters": [{
+					"in": "path",
+					"name": "media-id",
+					"description": "The ID of the media resource."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Add Like for Media",
+				"description": "Set a like on this media by the currently authenticated user.n                n                Required scope: likesn                n            nn            n            n                Parametersn                n                    n                    n                        access_tokenn                        A valid access token.",
+				"operationId": "likes",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"description": "A valid access token.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
 		}
 	},
 	"definitions": []
