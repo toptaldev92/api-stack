@@ -32,6 +32,35 @@
 				"tags": [""],
 				"security": []
 			}
+		},
+		"/geographies/{geo-id}/media/recent": {
+			"get": {
+				"summary": "Get Recent Media by Geo",
+				"description": "Get recent media from a geography subscription that you created.nn**Note:** You can only access Geographies that were explicitly created by your OAuth client. Check thenGeography Subscriptions section of the [real-time updates page](https://instagram.com/developer/realtime/).nWhen you create a subscription to some geography that you define, you will be returned a unique `geo-id` thatncan be used in this query. To backfill photos from the location covered by this geography, use then[media search endpoint](https://instagram.com/developer/endpoints/media/).nn**Warning:** [Deprecated](http://instagram.com/developer/changelog/) for Apps created **on or after** Nov 17, 2015n",
+				"operationId": "get-recent-media-from-a-geography-subscription-that-you-creatednote-you-can-only-access-geographies-",
+				"parameters": [{
+					"in": "query",
+					"name": "count",
+					"description": "Max number of media to return."
+				},
+				{
+					"in": "path",
+					"name": "geo-id",
+					"description": "The geography ID."
+				},
+				{
+					"in": "query",
+					"name": "min_id",
+					"description": "Return media before this `min_id`."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
 		}
 	},
 	"definitions": []
