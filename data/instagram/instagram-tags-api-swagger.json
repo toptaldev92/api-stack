@@ -70,6 +70,59 @@
 				"tags": [""],
 				"security": []
 			}
+		},
+		"/tags/{tag-name}": {
+			"get": {
+				"summary": "Get Tag",
+				"description": "Get information about a tag object.",
+				"operationId": "get-information-about-a-tag-object",
+				"parameters": [{
+					"in": "path",
+					"name": "tag-name",
+					"description": "The tag name."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/tags/{tag-name}/media/recent": {
+			"get": {
+				"summary": "Get Recent By Using Tag",
+				"description": "Get a list of recently tagged media. Use the `max_tag_id` and `min_tag_id` parameters in the paginationnresponse to paginate through these objects.n",
+				"operationId": "get-a-list-of-recently-tagged-media-use-the-max_tag_id-and-min_tag_id-parameters-in-the-paginationre",
+				"parameters": [{
+					"in": "query",
+					"name": "count",
+					"description": "Count of tagged media to return."
+				},
+				{
+					"in": "query",
+					"name": "max_tag_id",
+					"description": "Return media after this `max_tag_id`."
+				},
+				{
+					"in": "query",
+					"name": "min_tag_id",
+					"description": "Return media before this `min_tag_id`."
+				},
+				{
+					"in": "path",
+					"name": "tag-name",
+					"description": "The tag name."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
 		}
 	},
 	"definitions": []
