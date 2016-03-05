@@ -8,75 +8,67 @@
 	},
 	"host": "api.telapi.com",
 	"basePath": "v2/",
-	"schemes": [
-		"http"
-	],
-	"produces": [
-		"application/json"
-	],
-	"consumes": [
-		"application/json"
-	],
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
 	"paths": {
 		"Accounts/{AccountSid}/SMS/Messages": {
 			"get": {
 				"summary": "Send Message",
 				"description": "Outbound SMS messages can easily be sent via our REST API.",
 				"operationId": "",
-				"parameters": [
-					{
-						"name": "AccountSid",
-						"in": "path",
-						"description": "Account ID",
-						"type": "string",
-						"format": "string"
-					},
-					{
-						"name": "Body",
-						"in": "query",
-						"description": "Text of the SMS message to be sent. If greater than 160 characters, the SMS will be rejected by TelAPI.",
-						"type": "string",
-						"format": "string"
-					},
-					{
-						"name": "From",
-						"in": "query",
-						"description": "The number you want to send the SMS from. This should be one of your SMS enabled TelAPI numbers.",
-						"type": "string",
-						"format": "string"
-					},
-					{
-						"name": "StatusCallback",
-						"in": "query",
-						"description": "URL that the status of the SMS and a set of default parameters will be forwarded to.",
-						"type": "string",
-						"format": "string"
-					},
-					{
-						"name": "StatusCallbackMethod",
-						"in": "query",
-						"description": "Specifies the HTTP method used to request the StatucCallback URL.",
-						"type": "string",
-						"format": "string"
-					},
-					{
-						"name": "To",
-						"in": "query",
-						"description": "SMS capable phone number",
-						"type": "string",
-						"format": "string"
-					}
-				],
+				"parameters": [{
+					"in": "path",
+					"name": "AccountSid",
+					"description": "Account ID",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "Body",
+					"description": "Text of the SMS message to be sent. If greater than 160 characters, the SMS will be rejected by TelAPI.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "From",
+					"description": "The number you want to send the SMS from. This should be one of your SMS enabled TelAPI numbers.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "StatusCallback",
+					"description": "URL that the status of the SMS and a set of default parameters will be forwarded to.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "StatusCallbackMethod",
+					"description": "Specifies the HTTP method used to request the StatucCallback URL.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "To",
+					"description": "SMS capable phone number",
+					"type": "string",
+					"format": "string"
+				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [
-					"Messaging",
-					" SMS"
-				]
+				"tags": ["Messaging",
+				" SMS"],
+				"security": []
 			}
 		}
-	}
+	},
+	"definitions": []
 }
