@@ -12,6 +12,28 @@
 	"produces": ["application/json"],
 	"consumes": ["application/json"],
 	"paths": {
+		"/balance": {
+			"get": {
+				"summary": "Check Balance",
+				"description": "Check how much credit you have left on your account.",
+				"operationId": "checkBalance",
+				"parameters": [{
+					"in": "query",
+					"name": "Key",
+					"description": "Your API key, available from your API account.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" SMS"],
+				"security": []
+			}
+		},
 		"send.aspx": {
 			"get": {
 				"summary": "Send SMS Via HTTP",
