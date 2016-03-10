@@ -3,11 +3,9 @@
 	"info": {
 		"title": "Google Analytics API",
 		"description": "View and manage your Google Analytics data",
-		"termsOfService": "",
 		"contact": {
 			"name": "Google",
-			"url": "https://google.com",
-			"email": ""
+			"url": "https://google.com"
 		},
 		"version": "v3"
 	},
@@ -25,69 +23,94 @@
 				"parameters": [{
 					"in": "query",
 					"name": "dimensions",
-					"description": "A comma-separated list of Analytics dimensions. E.g., ga:browser,ga:city."
+					"description": "A comma-separated list of Analytics dimensions. E.g., ga:browser,ga:city.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "end-date",
-					"description": "End date for fetching Analytics data. Request can should specify an end date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is yesterday."
+					"description": "End date for fetching Analytics data. Request can should specify an end date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is yesterday.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "filters",
-					"description": "A comma-separated list of dimension or metric filters to be applied to Analytics data."
+					"description": "A comma-separated list of dimension or metric filters to be applied to Analytics data.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "ids",
-					"description": "Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID."
+					"description": "Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of entries to include in this feed."
+					"description": "The maximum number of entries to include in this feed.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "metrics",
-					"description": "A comma-separated list of Analytics metrics. E.g., ga:sessions,ga:pageviews. At least one metric must be specified."
+					"description": "A comma-separated list of Analytics metrics. E.g., ga:sessions,ga:pageviews. At least one metric must be specified.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "output",
-					"description": "The selected format for the response. Default format is JSON."
+					"description": "The selected format for the response. Default format is JSON.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "samplingLevel",
-					"description": "The desired sampling level."
+					"description": "The desired sampling level.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "segment",
-					"description": "An Analytics segment to be applied to data."
+					"description": "An Analytics segment to be applied to data.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "sort",
-					"description": "A comma-separated list of dimensions or metrics that determine the sort order for Analytics data."
+					"description": "A comma-separated list of dimensions or metrics that determine the sort order for Analytics data.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-date",
-					"description": "Start date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo."
+					"description": "Start date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -98,7 +121,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/data/mcf": {
@@ -109,59 +133,80 @@
 				"parameters": [{
 					"in": "query",
 					"name": "dimensions",
-					"description": "A comma-separated list of Multi-Channel Funnels dimensions. E.g., mcf:source,mcf:medium."
+					"description": "A comma-separated list of Multi-Channel Funnels dimensions. E.g., mcf:source,mcf:medium.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "end-date",
-					"description": "End date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo."
+					"description": "End date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "filters",
-					"description": "A comma-separated list of dimension or metric filters to be applied to the Analytics data."
+					"description": "A comma-separated list of dimension or metric filters to be applied to the Analytics data.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "ids",
-					"description": "Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID."
+					"description": "Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of entries to include in this feed."
+					"description": "The maximum number of entries to include in this feed.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "metrics",
-					"description": "A comma-separated list of Multi-Channel Funnels metrics. E.g., mcf:totalConversions,mcf:totalConversionValue. At least one metric must be specified."
+					"description": "A comma-separated list of Multi-Channel Funnels metrics. E.g., mcf:totalConversions,mcf:totalConversionValue. At least one metric must be specified.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "samplingLevel",
-					"description": "The desired sampling level."
+					"description": "The desired sampling level.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "sort",
-					"description": "A comma-separated list of dimensions or metrics that determine the sort order for the Analytics data."
+					"description": "A comma-separated list of dimensions or metrics that determine the sort order for the Analytics data.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-date",
-					"description": "Start date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo."
+					"description": "Start date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -172,7 +217,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/data/realtime": {
@@ -183,39 +229,52 @@
 				"parameters": [{
 					"in": "query",
 					"name": "dimensions",
-					"description": "A comma-separated list of real time dimensions. E.g., rt:medium,rt:city."
+					"description": "A comma-separated list of real time dimensions. E.g., rt:medium,rt:city.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "filters",
-					"description": "A comma-separated list of dimension or metric filters to be applied to real time data."
+					"description": "A comma-separated list of dimension or metric filters to be applied to real time data.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "ids",
-					"description": "Unique table ID for retrieving real time data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID."
+					"description": "Unique table ID for retrieving real time data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of entries to include in this feed."
+					"description": "The maximum number of entries to include in this feed.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "metrics",
-					"description": "A comma-separated list of real time metrics. E.g., rt:activeUsers. At least one metric must be specified."
+					"description": "A comma-separated list of real time metrics. E.g., rt:activeUsers. At least one metric must be specified.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "sort",
-					"description": "A comma-separated list of dimensions or metrics that determine the sort order for real time data."
+					"description": "A comma-separated list of dimensions or metrics that determine the sort order for real time data.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -226,7 +285,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts": {
@@ -237,19 +297,24 @@
 				"parameters": [{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of accounts to include in this response."
+					"description": "The maximum number of accounts to include in this response.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "An index of the first account to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "An index of the first account to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -260,7 +325,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/entityUserLinks": {
@@ -271,24 +337,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to retrieve the user links for."
+					"description": "Account ID to retrieve the user links for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of account-user links to include in this response."
+					"description": "The maximum number of account-user links to include in this response.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "An index of the first account-user link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "An index of the first account-user link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -299,7 +372,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"post": {
 				"summary": "",
@@ -308,14 +382,17 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to create the user link for."
+					"description": "Account ID to create the user link for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/entityUserLinks/{linkId}": {
@@ -326,19 +403,24 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to delete the user link for."
+					"description": "Account ID to delete the user link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "linkId",
-					"description": "Link ID to delete the user link for."
+					"description": "Link ID to delete the user link for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -349,7 +431,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"put": {
 				"summary": "",
@@ -358,19 +441,24 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to update the account-user link for."
+					"description": "Account ID to update the account-user link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "linkId",
-					"description": "Link ID to update the account-user link for."
+					"description": "Link ID to update the account-user link for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/filters": {
@@ -381,24 +469,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to retrieve filters for."
+					"description": "Account ID to retrieve filters for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of filters to include in this response."
+					"description": "The maximum number of filters to include in this response.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -409,7 +504,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"post": {
 				"summary": "",
@@ -418,14 +514,17 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to create filter for."
+					"description": "Account ID to create filter for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/filters/{filterId}": {
@@ -436,19 +535,24 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to delete the filter for."
+					"description": "Account ID to delete the filter for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "filterId",
-					"description": "ID of the filter to be deleted."
+					"description": "ID of the filter to be deleted.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"get": {
 				"summary": "",
@@ -457,19 +561,24 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to retrieve filters for."
+					"description": "Account ID to retrieve filters for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "filterId",
-					"description": "Filter ID to retrieve filters for."
+					"description": "Filter ID to retrieve filters for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -480,7 +589,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"patch": {
 				"summary": "",
@@ -489,19 +599,24 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to which the filter belongs."
+					"description": "Account ID to which the filter belongs.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "filterId",
-					"description": "ID of the filter to be updated."
+					"description": "ID of the filter to be updated.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"put": {
 				"summary": "",
@@ -510,19 +625,24 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to which the filter belongs."
+					"description": "Account ID to which the filter belongs.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "filterId",
-					"description": "ID of the filter to be updated."
+					"description": "ID of the filter to be updated.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties": {
@@ -533,24 +653,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to retrieve web properties for. Can either be a specific account ID or ~all, which refers to all the accounts that user has access to."
+					"description": "Account ID to retrieve web properties for. Can either be a specific account ID or ~all, which refers to all the accounts that user has access to.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of web properties to include in this response."
+					"description": "The maximum number of web properties to include in this response.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -561,7 +688,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"post": {
 				"summary": "",
@@ -570,14 +698,17 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to create the web property for."
+					"description": "Account ID to create the web property for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}": {
@@ -588,19 +719,24 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to retrieve the web property for."
+					"description": "Account ID to retrieve the web property for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "ID to retrieve the web property for."
+					"description": "ID to retrieve the web property for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -611,7 +747,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"patch": {
 				"summary": "",
@@ -620,19 +757,24 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to which the web property belongs"
+					"description": "Account ID to which the web property belongs",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID"
+					"description": "Web property ID",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"put": {
 				"summary": "",
@@ -641,19 +783,24 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to which the web property belongs"
+					"description": "Account ID to which the web property belongs",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID"
+					"description": "Web property ID",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources": {
@@ -664,29 +811,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account Id for the custom data sources to retrieve."
+					"description": "Account Id for the custom data sources to retrieve.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of custom data sources to include in this response."
+					"description": "The maximum number of custom data sources to include in this response.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "A 1-based index of the first custom data source to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "A 1-based index of the first custom data source to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property Id for the custom data sources to retrieve."
+					"description": "Web property Id for the custom data sources to retrieve.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -697,7 +853,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/deleteUploadData": {
@@ -710,7 +867,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"post": {
 				"summary": "",
@@ -719,24 +877,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account Id for the uploads to be deleted."
+					"description": "Account Id for the uploads to be deleted.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "customDataSourceId",
-					"description": "Custom data source Id for the uploads to be deleted."
+					"description": "Custom data source Id for the uploads to be deleted.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property Id for the uploads to be deleted."
+					"description": "Web property Id for the uploads to be deleted.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads": {
@@ -747,34 +912,45 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account Id for the uploads to retrieve."
+					"description": "Account Id for the uploads to retrieve.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "customDataSourceId",
-					"description": "Custom data source Id for uploads to retrieve."
+					"description": "Custom data source Id for uploads to retrieve.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of uploads to include in this response."
+					"description": "The maximum number of uploads to include in this response.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "A 1-based index of the first upload to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "A 1-based index of the first upload to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property Id for the uploads to retrieve."
+					"description": "Web property Id for the uploads to retrieve.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -785,7 +961,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"post": {
 				"summary": "",
@@ -794,24 +971,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account Id associated with the upload."
+					"description": "Account Id associated with the upload.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "customDataSourceId",
-					"description": "Custom data source Id to which the data being uploaded belongs."
+					"description": "Custom data source Id to which the data being uploaded belongs.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property UA-string associated with the upload."
+					"description": "Web property UA-string associated with the upload.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/customDataSources/{customDataSourceId}/uploads/{uploadId}": {
@@ -822,29 +1006,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account Id for the upload to retrieve."
+					"description": "Account Id for the upload to retrieve.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "customDataSourceId",
-					"description": "Custom data source Id for upload to retrieve."
+					"description": "Custom data source Id for upload to retrieve.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "uploadId",
-					"description": "Upload Id to retrieve."
+					"description": "Upload Id to retrieve.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property Id for the upload to retrieve."
+					"description": "Web property Id for the upload to retrieve.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -855,7 +1048,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions": {
@@ -866,29 +1060,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID for the custom dimensions to retrieve."
+					"description": "Account ID for the custom dimensions to retrieve.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of custom dimensions to include in this response."
+					"description": "The maximum number of custom dimensions to include in this response.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID for the custom dimensions to retrieve."
+					"description": "Web property ID for the custom dimensions to retrieve.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -899,7 +1102,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"post": {
 				"summary": "",
@@ -908,19 +1112,24 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID for the custom dimension to create."
+					"description": "Account ID for the custom dimension to create.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID for the custom dimension to create."
+					"description": "Web property ID for the custom dimension to create.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/customDimensions/{customDimensionId}": {
@@ -931,24 +1140,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID for the custom dimension to retrieve."
+					"description": "Account ID for the custom dimension to retrieve.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "customDimensionId",
-					"description": "The ID of the custom dimension to retrieve."
+					"description": "The ID of the custom dimension to retrieve.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID for the custom dimension to retrieve."
+					"description": "Web property ID for the custom dimension to retrieve.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -959,7 +1175,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"patch": {
 				"summary": "",
@@ -968,29 +1185,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID for the custom dimension to update."
+					"description": "Account ID for the custom dimension to update.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "customDimensionId",
-					"description": "Custom dimension ID for the custom dimension to update."
+					"description": "Custom dimension ID for the custom dimension to update.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "ignoreCustomDataSourceLinks",
-					"description": "Force the update and ignore any warnings related to the custom dimension being linked to a custom data source / data set."
+					"description": "Force the update and ignore any warnings related to the custom dimension being linked to a custom data source / data set.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID for the custom dimension to update."
+					"description": "Web property ID for the custom dimension to update.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"put": {
 				"summary": "",
@@ -999,29 +1225,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID for the custom dimension to update."
+					"description": "Account ID for the custom dimension to update.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "customDimensionId",
-					"description": "Custom dimension ID for the custom dimension to update."
+					"description": "Custom dimension ID for the custom dimension to update.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "ignoreCustomDataSourceLinks",
-					"description": "Force the update and ignore any warnings related to the custom dimension being linked to a custom data source / data set."
+					"description": "Force the update and ignore any warnings related to the custom dimension being linked to a custom data source / data set.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID for the custom dimension to update."
+					"description": "Web property ID for the custom dimension to update.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics": {
@@ -1032,29 +1267,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID for the custom metrics to retrieve."
+					"description": "Account ID for the custom metrics to retrieve.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of custom metrics to include in this response."
+					"description": "The maximum number of custom metrics to include in this response.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID for the custom metrics to retrieve."
+					"description": "Web property ID for the custom metrics to retrieve.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -1065,7 +1309,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"post": {
 				"summary": "",
@@ -1074,19 +1319,24 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID for the custom metric to create."
+					"description": "Account ID for the custom metric to create.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID for the custom dimension to create."
+					"description": "Web property ID for the custom dimension to create.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/customMetrics/{customMetricId}": {
@@ -1097,24 +1347,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID for the custom metric to retrieve."
+					"description": "Account ID for the custom metric to retrieve.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "customMetricId",
-					"description": "The ID of the custom metric to retrieve."
+					"description": "The ID of the custom metric to retrieve.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID for the custom metric to retrieve."
+					"description": "Web property ID for the custom metric to retrieve.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -1125,7 +1382,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"patch": {
 				"summary": "",
@@ -1134,29 +1392,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID for the custom metric to update."
+					"description": "Account ID for the custom metric to update.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "customMetricId",
-					"description": "Custom metric ID for the custom metric to update."
+					"description": "Custom metric ID for the custom metric to update.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "ignoreCustomDataSourceLinks",
-					"description": "Force the update and ignore any warnings related to the custom metric being linked to a custom data source / data set."
+					"description": "Force the update and ignore any warnings related to the custom metric being linked to a custom data source / data set.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID for the custom metric to update."
+					"description": "Web property ID for the custom metric to update.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"put": {
 				"summary": "",
@@ -1165,29 +1432,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID for the custom metric to update."
+					"description": "Account ID for the custom metric to update.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "customMetricId",
-					"description": "Custom metric ID for the custom metric to update."
+					"description": "Custom metric ID for the custom metric to update.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "ignoreCustomDataSourceLinks",
-					"description": "Force the update and ignore any warnings related to the custom metric being linked to a custom data source / data set."
+					"description": "Force the update and ignore any warnings related to the custom metric being linked to a custom data source / data set.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID for the custom metric to update."
+					"description": "Web property ID for the custom metric to update.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks": {
@@ -1198,29 +1474,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "ID of the account which the given web property belongs to."
+					"description": "ID of the account which the given web property belongs to.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of webProperty-AdWords links to include in this response."
+					"description": "The maximum number of webProperty-AdWords links to include in this response.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "An index of the first webProperty-AdWords link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "An index of the first webProperty-AdWords link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to retrieve the AdWords links for."
+					"description": "Web property ID to retrieve the AdWords links for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -1231,7 +1516,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"post": {
 				"summary": "",
@@ -1240,19 +1526,24 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "ID of the Google Analytics account to create the link for."
+					"description": "ID of the Google Analytics account to create the link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to create the link for."
+					"description": "Web property ID to create the link for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/entityAdWordsLinks/{webPropertyAdWordsLinkId}": {
@@ -1263,24 +1554,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "ID of the account which the given web property belongs to."
+					"description": "ID of the account which the given web property belongs to.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyAdWordsLinkId",
-					"description": "Web property AdWords link ID."
+					"description": "Web property AdWords link ID.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to delete the AdWords link for."
+					"description": "Web property ID to delete the AdWords link for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"get": {
 				"summary": "",
@@ -1289,24 +1587,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "ID of the account which the given web property belongs to."
+					"description": "ID of the account which the given web property belongs to.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyAdWordsLinkId",
-					"description": "Web property-AdWords link ID."
+					"description": "Web property-AdWords link ID.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to retrieve the AdWords link for."
+					"description": "Web property ID to retrieve the AdWords link for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -1317,7 +1622,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"patch": {
 				"summary": "",
@@ -1326,24 +1632,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "ID of the account which the given web property belongs to."
+					"description": "ID of the account which the given web property belongs to.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyAdWordsLinkId",
-					"description": "Web property-AdWords link ID."
+					"description": "Web property-AdWords link ID.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to retrieve the AdWords link for."
+					"description": "Web property ID to retrieve the AdWords link for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"put": {
 				"summary": "",
@@ -1352,24 +1665,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "ID of the account which the given web property belongs to."
+					"description": "ID of the account which the given web property belongs to.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyAdWordsLinkId",
-					"description": "Web property-AdWords link ID."
+					"description": "Web property-AdWords link ID.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to retrieve the AdWords link for."
+					"description": "Web property ID to retrieve the AdWords link for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks": {
@@ -1380,29 +1700,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID which the given web property belongs to."
+					"description": "Account ID which the given web property belongs to.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of webProperty-user Links to include in this response."
+					"description": "The maximum number of webProperty-user Links to include in this response.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "An index of the first webProperty-user link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "An index of the first webProperty-user link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web Property ID for the webProperty-user links to retrieve. Can either be a specific web property ID or ~all, which refers to all the web properties that user has access to."
+					"description": "Web Property ID for the webProperty-user links to retrieve. Can either be a specific web property ID or ~all, which refers to all the web properties that user has access to.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -1413,7 +1742,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"post": {
 				"summary": "",
@@ -1422,19 +1752,24 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to create the user link for."
+					"description": "Account ID to create the user link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web Property ID to create the user link for."
+					"description": "Web Property ID to create the user link for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/entityUserLinks/{linkId}": {
@@ -1445,24 +1780,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to delete the user link for."
+					"description": "Account ID to delete the user link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "linkId",
-					"description": "Link ID to delete the user link for."
+					"description": "Link ID to delete the user link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web Property ID to delete the user link for."
+					"description": "Web Property ID to delete the user link for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -1473,7 +1815,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"put": {
 				"summary": "",
@@ -1482,24 +1825,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to update the account-user link for."
+					"description": "Account ID to update the account-user link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "linkId",
-					"description": "Link ID to update the account-user link for."
+					"description": "Link ID to update the account-user link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to update the account-user link for."
+					"description": "Web property ID to update the account-user link for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles": {
@@ -1510,29 +1860,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID for the view (profiles) to retrieve. Can either be a specific account ID or ~all, which refers to all the accounts to which the user has access."
+					"description": "Account ID for the view (profiles) to retrieve. Can either be a specific account ID or ~all, which refers to all the accounts to which the user has access.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of views (profiles) to include in this response."
+					"description": "The maximum number of views (profiles) to include in this response.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID for the views (profiles) to retrieve. Can either be a specific web property ID or ~all, which refers to all the web properties to which the user has access."
+					"description": "Web property ID for the views (profiles) to retrieve. Can either be a specific web property ID or ~all, which refers to all the web properties to which the user has access.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -1543,7 +1902,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"post": {
 				"summary": "",
@@ -1552,19 +1912,24 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to create the view (profile) for."
+					"description": "Account ID to create the view (profile) for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to create the view (profile) for."
+					"description": "Web property ID to create the view (profile) for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}": {
@@ -1575,24 +1940,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to delete the view (profile) for."
+					"description": "Account ID to delete the view (profile) for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "ID of the view (profile) to be deleted."
+					"description": "ID of the view (profile) to be deleted.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to delete the view (profile) for."
+					"description": "Web property ID to delete the view (profile) for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"get": {
 				"summary": "",
@@ -1601,24 +1973,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to retrieve the goal for."
+					"description": "Account ID to retrieve the goal for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile) ID to retrieve the goal for."
+					"description": "View (Profile) ID to retrieve the goal for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to retrieve the goal for."
+					"description": "Web property ID to retrieve the goal for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -1629,7 +2008,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"patch": {
 				"summary": "",
@@ -1638,24 +2018,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to which the view (profile) belongs"
+					"description": "Account ID to which the view (profile) belongs",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "ID of the view (profile) to be updated."
+					"description": "ID of the view (profile) to be updated.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to which the view (profile) belongs"
+					"description": "Web property ID to which the view (profile) belongs",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"put": {
 				"summary": "",
@@ -1664,24 +2051,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to which the view (profile) belongs"
+					"description": "Account ID to which the view (profile) belongs",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "ID of the view (profile) to be updated."
+					"description": "ID of the view (profile) to be updated.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to which the view (profile) belongs"
+					"description": "Web property ID to which the view (profile) belongs",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks": {
@@ -1692,34 +2086,45 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID which the given view (profile) belongs to."
+					"description": "Account ID which the given view (profile) belongs to.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of profile-user links to include in this response."
+					"description": "The maximum number of profile-user links to include in this response.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile) ID to retrieve the profile-user links for. Can either be a specific profile ID or ~all, which refers to all the profiles that user has access to."
+					"description": "View (Profile) ID to retrieve the profile-user links for. Can either be a specific profile ID or ~all, which refers to all the profiles that user has access to.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "An index of the first profile-user link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "An index of the first profile-user link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web Property ID which the given view (profile) belongs to. Can either be a specific web property ID or ~all, which refers to all the web properties that user has access to."
+					"description": "Web Property ID which the given view (profile) belongs to. Can either be a specific web property ID or ~all, which refers to all the web properties that user has access to.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -1730,7 +2135,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"post": {
 				"summary": "",
@@ -1739,24 +2145,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to create the user link for."
+					"description": "Account ID to create the user link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile) ID to create the user link for."
+					"description": "View (Profile) ID to create the user link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web Property ID to create the user link for."
+					"description": "Web Property ID to create the user link for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/entityUserLinks/{linkId}": {
@@ -1767,29 +2180,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to delete the user link for."
+					"description": "Account ID to delete the user link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "linkId",
-					"description": "Link ID to delete the user link for."
+					"description": "Link ID to delete the user link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile) ID to delete the user link for."
+					"description": "View (Profile) ID to delete the user link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web Property ID to delete the user link for."
+					"description": "Web Property ID to delete the user link for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -1800,7 +2222,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"put": {
 				"summary": "",
@@ -1809,29 +2232,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to update the user link for."
+					"description": "Account ID to update the user link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "linkId",
-					"description": "Link ID to update the user link for."
+					"description": "Link ID to update the user link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile ID) to update the user link for."
+					"description": "View (Profile ID) to update the user link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web Property ID to update the user link for."
+					"description": "Web Property ID to update the user link for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments": {
@@ -1842,34 +2274,45 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to retrieve experiments for."
+					"description": "Account ID to retrieve experiments for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of experiments to include in this response."
+					"description": "The maximum number of experiments to include in this response.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile) ID to retrieve experiments for."
+					"description": "View (Profile) ID to retrieve experiments for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "An index of the first experiment to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "An index of the first experiment to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to retrieve experiments for."
+					"description": "Web property ID to retrieve experiments for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -1880,7 +2323,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"post": {
 				"summary": "",
@@ -1889,24 +2333,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to create the experiment for."
+					"description": "Account ID to create the experiment for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile) ID to create the experiment for."
+					"description": "View (Profile) ID to create the experiment for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to create the experiment for."
+					"description": "Web property ID to create the experiment for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/experiments/{experimentId}": {
@@ -1917,29 +2368,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to which the experiment belongs"
+					"description": "Account ID to which the experiment belongs",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "experimentId",
-					"description": "ID of the experiment to delete"
+					"description": "ID of the experiment to delete",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile) ID to which the experiment belongs"
+					"description": "View (Profile) ID to which the experiment belongs",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to which the experiment belongs"
+					"description": "Web property ID to which the experiment belongs",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"get": {
 				"summary": "",
@@ -1948,29 +2408,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to retrieve the experiment for."
+					"description": "Account ID to retrieve the experiment for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "experimentId",
-					"description": "Experiment ID to retrieve the experiment for."
+					"description": "Experiment ID to retrieve the experiment for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile) ID to retrieve the experiment for."
+					"description": "View (Profile) ID to retrieve the experiment for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to retrieve the experiment for."
+					"description": "Web property ID to retrieve the experiment for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -1981,7 +2450,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"patch": {
 				"summary": "",
@@ -1990,29 +2460,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID of the experiment to update."
+					"description": "Account ID of the experiment to update.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "experimentId",
-					"description": "Experiment ID of the experiment to update."
+					"description": "Experiment ID of the experiment to update.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile) ID of the experiment to update."
+					"description": "View (Profile) ID of the experiment to update.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID of the experiment to update."
+					"description": "Web property ID of the experiment to update.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"put": {
 				"summary": "",
@@ -2021,29 +2500,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID of the experiment to update."
+					"description": "Account ID of the experiment to update.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "experimentId",
-					"description": "Experiment ID of the experiment to update."
+					"description": "Experiment ID of the experiment to update.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile) ID of the experiment to update."
+					"description": "View (Profile) ID of the experiment to update.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID of the experiment to update."
+					"description": "Web property ID of the experiment to update.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals": {
@@ -2054,34 +2542,45 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to retrieve goals for. Can either be a specific account ID or ~all, which refers to all the accounts that user has access to."
+					"description": "Account ID to retrieve goals for. Can either be a specific account ID or ~all, which refers to all the accounts that user has access to.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of goals to include in this response."
+					"description": "The maximum number of goals to include in this response.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile) ID to retrieve goals for. Can either be a specific view (profile) ID or ~all, which refers to all the views (profiles) that user has access to."
+					"description": "View (Profile) ID to retrieve goals for. Can either be a specific view (profile) ID or ~all, which refers to all the views (profiles) that user has access to.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "An index of the first goal to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "An index of the first goal to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to retrieve goals for. Can either be a specific web property ID or ~all, which refers to all the web properties that user has access to."
+					"description": "Web property ID to retrieve goals for. Can either be a specific web property ID or ~all, which refers to all the web properties that user has access to.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -2092,7 +2591,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"post": {
 				"summary": "",
@@ -2101,24 +2601,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to create the goal for."
+					"description": "Account ID to create the goal for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile) ID to create the goal for."
+					"description": "View (Profile) ID to create the goal for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to create the goal for."
+					"description": "Web property ID to create the goal for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/goals/{goalId}": {
@@ -2129,29 +2636,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to retrieve the goal for."
+					"description": "Account ID to retrieve the goal for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "goalId",
-					"description": "Goal ID to retrieve the goal for."
+					"description": "Goal ID to retrieve the goal for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile) ID to retrieve the goal for."
+					"description": "View (Profile) ID to retrieve the goal for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to retrieve the goal for."
+					"description": "Web property ID to retrieve the goal for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -2162,7 +2678,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"patch": {
 				"summary": "",
@@ -2171,29 +2688,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to update the goal."
+					"description": "Account ID to update the goal.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "goalId",
-					"description": "Index of the goal to be updated."
+					"description": "Index of the goal to be updated.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile) ID to update the goal."
+					"description": "View (Profile) ID to update the goal.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to update the goal."
+					"description": "Web property ID to update the goal.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"put": {
 				"summary": "",
@@ -2202,29 +2728,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to update the goal."
+					"description": "Account ID to update the goal.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "goalId",
-					"description": "Index of the goal to be updated."
+					"description": "Index of the goal to be updated.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile) ID to update the goal."
+					"description": "View (Profile) ID to update the goal.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to update the goal."
+					"description": "Web property ID to update the goal.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks": {
@@ -2235,34 +2770,45 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to retrieve profile filter links for."
+					"description": "Account ID to retrieve profile filter links for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of profile filter links to include in this response."
+					"description": "The maximum number of profile filter links to include in this response.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "Profile ID to retrieve filter links for. Can either be a specific profile ID or ~all, which refers to all the profiles that user has access to."
+					"description": "Profile ID to retrieve filter links for. Can either be a specific profile ID or ~all, which refers to all the profiles that user has access to.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property Id for profile filter links for. Can either be a specific web property ID or ~all, which refers to all the web properties that user has access to."
+					"description": "Web property Id for profile filter links for. Can either be a specific web property ID or ~all, which refers to all the web properties that user has access to.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -2273,7 +2819,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"post": {
 				"summary": "",
@@ -2282,24 +2829,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to create profile filter link for."
+					"description": "Account ID to create profile filter link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "Profile ID to create filter link for."
+					"description": "Profile ID to create filter link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property Id to create profile filter link for."
+					"description": "Web property Id to create profile filter link for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/profileFilterLinks/{linkId}": {
@@ -2310,29 +2864,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to which the profile filter link belongs."
+					"description": "Account ID to which the profile filter link belongs.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "linkId",
-					"description": "ID of the profile filter link to delete."
+					"description": "ID of the profile filter link to delete.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "Profile ID to which the filter link belongs."
+					"description": "Profile ID to which the filter link belongs.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property Id to which the profile filter link belongs."
+					"description": "Web property Id to which the profile filter link belongs.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"get": {
 				"summary": "",
@@ -2341,29 +2904,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to retrieve profile filter link for."
+					"description": "Account ID to retrieve profile filter link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "linkId",
-					"description": "ID of the profile filter link."
+					"description": "ID of the profile filter link.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "Profile ID to retrieve filter link for."
+					"description": "Profile ID to retrieve filter link for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property Id to retrieve profile filter link for."
+					"description": "Web property Id to retrieve profile filter link for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -2374,7 +2946,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"patch": {
 				"summary": "",
@@ -2383,29 +2956,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to which profile filter link belongs."
+					"description": "Account ID to which profile filter link belongs.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "linkId",
-					"description": "ID of the profile filter link to be updated."
+					"description": "ID of the profile filter link to be updated.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "Profile ID to which filter link belongs"
+					"description": "Profile ID to which filter link belongs",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property Id to which profile filter link belongs"
+					"description": "Web property Id to which profile filter link belongs",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"put": {
 				"summary": "",
@@ -2414,29 +2996,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to which profile filter link belongs."
+					"description": "Account ID to which profile filter link belongs.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "linkId",
-					"description": "ID of the profile filter link to be updated."
+					"description": "ID of the profile filter link to be updated.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "Profile ID to which filter link belongs"
+					"description": "Profile ID to which filter link belongs",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property Id to which profile filter link belongs"
+					"description": "Web property Id to which profile filter link belongs",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports": {
@@ -2447,34 +3038,45 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to retrieve unsampled reports for. Must be a specific account ID, ~all is not supported."
+					"description": "Account ID to retrieve unsampled reports for. Must be a specific account ID, ~all is not supported.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of unsampled reports to include in this response."
+					"description": "The maximum number of unsampled reports to include in this response.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile) ID to retrieve unsampled reports for. Must be a specific view (profile) ID, ~all is not supported."
+					"description": "View (Profile) ID to retrieve unsampled reports for. Must be a specific view (profile) ID, ~all is not supported.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "An index of the first unsampled report to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "An index of the first unsampled report to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to retrieve unsampled reports for. Must be a specific web property ID, ~all is not supported."
+					"description": "Web property ID to retrieve unsampled reports for. Must be a specific web property ID, ~all is not supported.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -2485,7 +3087,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"post": {
 				"summary": "",
@@ -2494,24 +3097,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to create the unsampled report for."
+					"description": "Account ID to create the unsampled report for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile) ID to create the unsampled report for."
+					"description": "View (Profile) ID to create the unsampled report for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to create the unsampled report for."
+					"description": "Web property ID to create the unsampled report for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accounts/{accountId}/webproperties/{webPropertyId}/profiles/{profileId}/unsampledReports/{unsampledReportId}": {
@@ -2522,29 +3132,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "accountId",
-					"description": "Account ID to retrieve unsampled report for."
+					"description": "Account ID to retrieve unsampled report for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "profileId",
-					"description": "View (Profile) ID to retrieve unsampled report for."
+					"description": "View (Profile) ID to retrieve unsampled report for.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "unsampledReportId",
-					"description": "ID of the unsampled report to retrieve."
+					"description": "ID of the unsampled report to retrieve.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "path",
 					"name": "webPropertyId",
-					"description": "Web property ID to retrieve unsampled reports for."
+					"description": "Web property ID to retrieve unsampled reports for.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -2555,7 +3174,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/accountSummaries": {
@@ -2566,19 +3186,24 @@
 				"parameters": [{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of account summaries to include in this response, where the largest acceptable value is 1000."
+					"description": "The maximum number of account summaries to include in this response, where the largest acceptable value is 1000.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -2589,7 +3214,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/management/segments": {
@@ -2600,19 +3226,24 @@
 				"parameters": [{
 					"in": "query",
 					"name": "max-results",
-					"description": "The maximum number of segments to include in this response."
+					"description": "The maximum number of segments to include in this response.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "start-index",
-					"description": "An index of the first segment to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter."
+					"description": "An index of the first segment to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -2623,7 +3254,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/metadata/{reportType}/columns": {
@@ -2634,14 +3266,17 @@
 				"parameters": [{
 					"in": "path",
 					"name": "reportType",
-					"description": "Report type. Allowed Values: ga. Where ga corresponds to the Core Reporting API"
+					"description": "Report type. Allowed Values: ga. Where ga corresponds to the Core Reporting API",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -2652,7 +3287,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/provisioning/createAccountTicket": {
@@ -2665,7 +3301,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"post": {
 				"summary": "",
@@ -2676,7 +3313,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		}
 	},
@@ -2684,35 +3322,35 @@
 		"Account": {
 			"properties": {
 				"childLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"created": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"permissions": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"selfLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"updated": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -2720,19 +3358,19 @@
 		"AccountRef": {
 			"properties": {
 				"href": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -2740,35 +3378,35 @@
 		"AccountSummaries": {
 			"properties": {
 				"items": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"itemsPerPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"nextLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"previousLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"startIndex": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"username": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -2776,19 +3414,19 @@
 		"AccountSummary": {
 			"properties": {
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"webProperties": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -2796,15 +3434,15 @@
 		"AccountTicket": {
 			"properties": {
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"redirectUri": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -2812,35 +3450,35 @@
 		"Accounts": {
 			"properties": {
 				"items": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"itemsPerPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"nextLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"previousLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"startIndex": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"username": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -2848,15 +3486,15 @@
 		"AdWordsAccount": {
 			"properties": {
 				"autoTaggingEnabled": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"customerId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -2864,7 +3502,7 @@
 		"AnalyticsDataimportDeleteUploadDataRequest": {
 			"properties": {
 				"customDataImportUids": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -2872,15 +3510,15 @@
 		"Column": {
 			"properties": {
 				"attributes": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -2888,23 +3526,23 @@
 		"Columns": {
 			"properties": {
 				"attributeNames": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"etag": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"items": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -2912,63 +3550,63 @@
 		"CustomDataSource": {
 			"properties": {
 				"accountId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"childLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"created": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"description": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"importBehavior": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"parentLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"profilesLinked": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"selfLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"type": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"updated": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"uploadType": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"webPropertyId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -2976,35 +3614,35 @@
 		"CustomDataSources": {
 			"properties": {
 				"items": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"itemsPerPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"nextLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"previousLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"startIndex": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"username": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3012,51 +3650,51 @@
 		"CustomDimension": {
 			"properties": {
 				"accountId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"active": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"created": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"index": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"parentLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"scope": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"selfLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"updated": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"webPropertyId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3064,35 +3702,35 @@
 		"CustomDimensions": {
 			"properties": {
 				"items": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"itemsPerPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"nextLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"previousLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"startIndex": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"username": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3100,63 +3738,63 @@
 		"CustomMetric": {
 			"properties": {
 				"accountId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"active": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"created": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"index": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"max_value": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"min_value": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"parentLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"scope": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"selfLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"type": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"updated": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"webPropertyId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3164,35 +3802,35 @@
 		"CustomMetrics": {
 			"properties": {
 				"items": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"itemsPerPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"nextLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"previousLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"startIndex": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"username": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3200,31 +3838,31 @@
 		"EntityAdWordsLink": {
 			"properties": {
 				"adWordsAccounts": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"entity": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"profileIds": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"selfLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3232,31 +3870,31 @@
 		"EntityAdWordsLinks": {
 			"properties": {
 				"items": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"itemsPerPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"nextLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"previousLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"startIndex": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3264,23 +3902,23 @@
 		"EntityUserLink": {
 			"properties": {
 				"entity": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"permissions": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"selfLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3288,31 +3926,31 @@
 		"EntityUserLinks": {
 			"properties": {
 				"items": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"itemsPerPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"nextLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"previousLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"startIndex": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3320,115 +3958,115 @@
 		"Experiment": {
 			"properties": {
 				"accountId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"created": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"description": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"editableInGaUi": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"endTime": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"equalWeighting": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"internalWebPropertyId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"minimumExperimentLengthInDays": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"objectiveMetric": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"optimizationType": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"parentLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"profileId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"reasonExperimentEnded": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"rewriteVariationUrlsAsOriginal": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"selfLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"servingFramework": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"snippet": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"startTime": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"status": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"trafficCoverage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"updated": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"variations": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"webPropertyId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"winnerConfidenceLevel": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"winnerFound": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3436,35 +4074,35 @@
 		"Experiments": {
 			"properties": {
 				"items": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"itemsPerPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"nextLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"previousLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"startIndex": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"username": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3472,55 +4110,55 @@
 		"Filter": {
 			"properties": {
 				"accountId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"advancedDetails": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"created": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"lowercaseDetails": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"parentLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"searchAndReplaceDetails": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"selfLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"type": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"updated": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"uppercaseDetails": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3528,27 +4166,27 @@
 		"FilterExpression": {
 			"properties": {
 				"caseSensitive": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"expressionValue": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"field": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"fieldIndex": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"matchType": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3556,23 +4194,23 @@
 		"FilterRef": {
 			"properties": {
 				"accountId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"href": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3580,35 +4218,35 @@
 		"Filters": {
 			"properties": {
 				"items": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"itemsPerPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"nextLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"previousLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"startIndex": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"username": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3616,67 +4254,67 @@
 		"GaData": {
 			"properties": {
 				"columnHeaders": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"containsSampledData": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"dataTable": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"itemsPerPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"nextLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"previousLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"profileInfo": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"query": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"rows": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"sampleSize": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"sampleSpace": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"selfLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalsForAllResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3684,75 +4322,75 @@
 		"Goal": {
 			"properties": {
 				"accountId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"active": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"created": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"eventDetails": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"internalWebPropertyId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"parentLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"profileId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"selfLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"type": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"updated": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"urlDestinationDetails": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"value": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"visitNumPagesDetails": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"visitTimeOnSiteDetails": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"webPropertyId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3760,35 +4398,35 @@
 		"Goals": {
 			"properties": {
 				"items": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"itemsPerPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"nextLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"previousLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"startIndex": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"username": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3796,63 +4434,63 @@
 		"McfData": {
 			"properties": {
 				"columnHeaders": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"containsSampledData": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"itemsPerPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"nextLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"previousLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"profileInfo": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"query": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"rows": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"sampleSize": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"sampleSpace": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"selfLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalsForAllResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3860,99 +4498,99 @@
 		"Profile": {
 			"properties": {
 				"accountId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"childLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"created": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"currency": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"defaultPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"eCommerceTracking": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"enhancedECommerceTracking": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"excludeQueryParameters": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"internalWebPropertyId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"parentLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"permissions": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"selfLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"siteSearchCategoryParameters": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"siteSearchQueryParameters": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"stripSiteSearchCategoryParameters": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"stripSiteSearchQueryParameters": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"timezone": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"type": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"updated": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"webPropertyId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"websiteUrl": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3960,19 +4598,19 @@
 		"ProfileFilterLink": {
 			"properties": {
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"rank": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"selfLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -3980,35 +4618,35 @@
 		"ProfileFilterLinks": {
 			"properties": {
 				"items": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"itemsPerPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"nextLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"previousLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"startIndex": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"username": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -4016,31 +4654,31 @@
 		"ProfileRef": {
 			"properties": {
 				"accountId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"href": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"internalWebPropertyId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"webPropertyId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -4048,19 +4686,19 @@
 		"ProfileSummary": {
 			"properties": {
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"type": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -4068,35 +4706,35 @@
 		"Profiles": {
 			"properties": {
 				"items": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"itemsPerPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"nextLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"previousLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"startIndex": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"username": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -4104,39 +4742,39 @@
 		"RealtimeData": {
 			"properties": {
 				"columnHeaders": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"profileInfo": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"query": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"rows": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"selfLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalsForAllResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -4144,39 +4782,39 @@
 		"Segment": {
 			"properties": {
 				"created": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"definition": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"segmentId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"selfLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"type": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"updated": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -4184,35 +4822,35 @@
 		"Segments": {
 			"properties": {
 				"items": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"itemsPerPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"nextLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"previousLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"startIndex": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"username": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -4220,79 +4858,79 @@
 		"UnsampledReport": {
 			"properties": {
 				"accountId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"cloudStorageDownloadDetails": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"created": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"dimensions": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"downloadType": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"driveDownloadDetails": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"end-date": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"filters": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"metrics": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"profileId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"segment": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"selfLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"start-date": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"status": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"title": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"updated": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"webPropertyId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -4300,35 +4938,35 @@
 		"UnsampledReports": {
 			"properties": {
 				"items": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"itemsPerPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"nextLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"previousLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"startIndex": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"username": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -4336,27 +4974,27 @@
 		"Upload": {
 			"properties": {
 				"accountId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"customDataSourceId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"errors": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"status": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -4364,31 +5002,31 @@
 		"Uploads": {
 			"properties": {
 				"items": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"itemsPerPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"nextLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"previousLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"startIndex": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -4396,15 +5034,15 @@
 		"UserRef": {
 			"properties": {
 				"email": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -4412,27 +5050,27 @@
 		"WebPropertyRef": {
 			"properties": {
 				"accountId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"href": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"internalWebPropertyId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -4440,31 +5078,31 @@
 		"WebPropertySummary": {
 			"properties": {
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"internalWebPropertyId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"level": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"profiles": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"websiteUrl": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -4472,35 +5110,35 @@
 		"Webproperties": {
 			"properties": {
 				"items": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"itemsPerPage": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"nextLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"previousLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"startIndex": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"totalResults": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"username": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -4508,67 +5146,67 @@
 		"Webproperty": {
 			"properties": {
 				"accountId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"childLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"created": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"defaultProfileId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"industryVertical": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"internalWebPropertyId": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"level": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"name": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"parentLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"permissions": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"profileCount": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"selfLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"updated": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"websiteUrl": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
