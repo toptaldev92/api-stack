@@ -1,0 +1,1511 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Gmail API",
+		"description": "The Gmail REST API.",
+		"contact": {
+			"name": "Google",
+			"url": "https://google.com"
+		},
+		"version": "v1"
+	},
+	"host": "www.googleapis.com",
+	"basePath": "/gmail/v1/users",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/{userId}/drafts": {
+			"get": {
+				"summary": "",
+				"description": "Lists the drafts in the users mailbox.",
+				"operationId": "gmail.users.drafts.list",
+				"parameters": [{
+					"in": "query",
+					"name": "maxResults",
+					"description": "Maximum number of drafts to return.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageToken",
+					"description": "Page token to retrieve a specific page of results in the list.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "",
+				"description": "Creates a new draft with the DRAFT label.",
+				"operationId": "gmail.users.drafts.create",
+				"parameters": [{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/drafts/send": {
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "",
+				"description": "Sends the specified, existing draft to the recipients in the To, Cc, and Bcc headers.",
+				"operationId": "gmail.users.drafts.send",
+				"parameters": [{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/drafts/{id}": {
+			"delete": {
+				"summary": "",
+				"description": "Immediately and permanently deletes the specified draft. Does not simply trash it.",
+				"operationId": "gmail.users.drafts.delete",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the draft to delete.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "",
+				"description": "Gets the specified draft.",
+				"operationId": "gmail.users.drafts.get",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"description": "The format to return the draft in.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the draft to retrieve.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "",
+				"description": "Replaces a drafts content.",
+				"operationId": "gmail.users.drafts.update",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the draft to update.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/history": {
+			"get": {
+				"summary": "",
+				"description": "Lists the history of all changes to the given mailbox. History results are returned in chronological order (increasing historyId).",
+				"operationId": "gmail.users.history.list",
+				"parameters": [{
+					"in": "query",
+					"name": "labelId",
+					"description": "Only return messages with a label matching the ID.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "The maximum number of history records to return.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageToken",
+					"description": "Page token to retrieve a specific page of results in the list.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "startHistoryId",
+					"description": "Required. Returns history records after the specified startHistoryId. The supplied startHistoryId should be obtained from the historyId of a message, thread, or previous list response. History IDs increase chronologically but are not contiguous with random gaps in between valid IDs. Supplying an invalid or out of date startHistoryId typically returns an HTTP 404 error code. A historyId is typically valid for at least a week, but in some circumstances may be valid for only a few hours. If you rec",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/labels": {
+			"get": {
+				"summary": "",
+				"description": "Lists all labels in the users mailbox.",
+				"operationId": "gmail.users.labels.list",
+				"parameters": [{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "",
+				"description": "Creates a new label.",
+				"operationId": "gmail.users.labels.create",
+				"parameters": [{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/labels/{id}": {
+			"delete": {
+				"summary": "",
+				"description": "Immediately and permanently deletes the specified label and removes it from any messages and threads that it is applied to.",
+				"operationId": "gmail.users.labels.delete",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the label to delete.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "",
+				"description": "Gets the specified label.",
+				"operationId": "gmail.users.labels.get",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the label to retrieve.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"patch": {
+				"summary": "",
+				"description": "Updates the specified label. This method supports patch semantics.",
+				"operationId": "gmail.users.labels.patch",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the label to update.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "",
+				"description": "Updates the specified label.",
+				"operationId": "gmail.users.labels.update",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the label to update.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/messages": {
+			"get": {
+				"summary": "",
+				"description": "Lists the messages in the users mailbox.",
+				"operationId": "gmail.users.messages.list",
+				"parameters": [{
+					"in": "query",
+					"name": "includeSpamTrash",
+					"description": "Include messages from SPAM and TRASH in the results.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "labelIds",
+					"description": "Only return messages with labels that match all of the specified label IDs.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "Maximum number of messages to return.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageToken",
+					"description": "Page token to retrieve a specific page of results in the list.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "Only return messages matching the specified query. Supports the same query format as the Gmail search box. For example, from:someuser@example.com rfc822msgid: is:unread.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "",
+				"description": "Directly inserts a message into only this users mailbox similar to IMAP APPEND, bypassing most scanning and classification. Does not send a message.",
+				"operationId": "gmail.users.messages.insert",
+				"parameters": [{
+					"in": "query",
+					"name": "deleted",
+					"description": "Mark the email as permanently deleted (not TRASH) and only visible in Google Apps Vault to a Vault administrator. Only used for Google Apps for Work accounts.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "internalDateSource",
+					"description": "Source for Gmails internal date of the message.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/messages/import": {
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "",
+				"description": "Imports a message into only this users mailbox, with standard email delivery scanning and classification similar to receiving via SMTP. Does not send a message.",
+				"operationId": "gmail.users.messages.import",
+				"parameters": [{
+					"in": "query",
+					"name": "deleted",
+					"description": "Mark the email as permanently deleted (not TRASH) and only visible in Google Apps Vault to a Vault administrator. Only used for Google Apps for Work accounts.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "internalDateSource",
+					"description": "Source for Gmails internal date of the message.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "neverMarkSpam",
+					"description": "Ignore the Gmail spam classifier decision and never mark this email as SPAM in the mailbox.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "processForCalendar",
+					"description": "Process calendar invites in the email and add any extracted meetings to the Google Calendar for this user.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/messages/send": {
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "",
+				"description": "Sends the specified message to the recipients in the To, Cc, and Bcc headers.",
+				"operationId": "gmail.users.messages.send",
+				"parameters": [{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/messages/{id}": {
+			"delete": {
+				"summary": "",
+				"description": "Immediately and permanently deletes the specified message. This operation cannot be undone. Prefer messages.trash instead.",
+				"operationId": "gmail.users.messages.delete",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the message to delete.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "",
+				"description": "Gets the specified message.",
+				"operationId": "gmail.users.messages.get",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"description": "The format to return the message in.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the message to retrieve.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "metadataHeaders",
+					"description": "When given and format is METADATA, only include headers specified.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/messages/{id}/modify": {
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "",
+				"description": "Modifies the labels on the specified message.",
+				"operationId": "gmail.users.messages.modify",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the message to modify.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/messages/{id}/trash": {
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "",
+				"description": "Moves the specified message to the trash.",
+				"operationId": "gmail.users.messages.trash",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the message to Trash.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/messages/{id}/untrash": {
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "",
+				"description": "Removes the specified message from the trash.",
+				"operationId": "gmail.users.messages.untrash",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the message to remove from Trash.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/messages/{messageId}/attachments/{id}": {
+			"get": {
+				"summary": "",
+				"description": "Gets the specified message attachment.",
+				"operationId": "gmail.users.messages.attachments.get",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the attachment.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "messageId",
+					"description": "The ID of the message containing the attachment.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/profile": {
+			"get": {
+				"summary": "",
+				"description": "Gets the current users Gmail profile.",
+				"operationId": "gmail.users.getProfile",
+				"parameters": [{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/threads": {
+			"get": {
+				"summary": "",
+				"description": "Lists the threads in the users mailbox.",
+				"operationId": "gmail.users.threads.list",
+				"parameters": [{
+					"in": "query",
+					"name": "includeSpamTrash",
+					"description": "Include threads from SPAM and TRASH in the results.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "labelIds",
+					"description": "Only return threads with labels that match all of the specified label IDs.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "Maximum number of threads to return.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageToken",
+					"description": "Page token to retrieve a specific page of results in the list.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "Only return threads matching the specified query. Supports the same query format as the Gmail search box. For example, from:someuser@example.com rfc822msgid: is:unread.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/threads/{id}": {
+			"delete": {
+				"summary": "",
+				"description": "Immediately and permanently deletes the specified thread. This operation cannot be undone. Prefer threads.trash instead.",
+				"operationId": "gmail.users.threads.delete",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "ID of the Thread to delete.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "",
+				"description": "Gets the specified thread.",
+				"operationId": "gmail.users.threads.get",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"description": "The format to return the messages in.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the thread to retrieve.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "metadataHeaders",
+					"description": "When given and format is METADATA, only include headers specified.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/threads/{id}/modify": {
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "",
+				"description": "Modifies the labels applied to the thread. This applies to all messages in the thread.",
+				"operationId": "gmail.users.threads.modify",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the thread to modify.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/threads/{id}/trash": {
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "",
+				"description": "Moves the specified thread to the trash.",
+				"operationId": "gmail.users.threads.trash",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the thread to Trash.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{userId}/threads/{id}/untrash": {
+			"parameters": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "",
+				"description": "Removes the specified thread from the trash.",
+				"operationId": "gmail.users.threads.untrash",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the thread to remove from Trash.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "The users email address. The special value me can be used to indicate the authenticated user.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"Draft": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"History": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"labelsAdded": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"labelsRemoved": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"messages": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"messagesAdded": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"messagesDeleted": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"HistoryLabelAdded": {
+			"properties": {
+				"labelIds": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"HistoryLabelRemoved": {
+			"properties": {
+				"labelIds": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"HistoryMessageAdded": {
+			"properties": []
+		},
+		"HistoryMessageDeleted": {
+			"properties": []
+		},
+		"Label": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"labelListVisibility": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"messageListVisibility": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"messagesTotal": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"messagesUnread": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"threadsTotal": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"threadsUnread": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"ListDraftsResponse": {
+			"properties": {
+				"drafts": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"nextPageToken": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"resultSizeEstimate": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"ListHistoryResponse": {
+			"properties": {
+				"history": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"historyId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"nextPageToken": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"ListLabelsResponse": {
+			"properties": {
+				"labels": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"ListMessagesResponse": {
+			"properties": {
+				"messages": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"nextPageToken": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"resultSizeEstimate": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"ListThreadsResponse": {
+			"properties": {
+				"nextPageToken": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"resultSizeEstimate": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"threads": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Message": {
+			"properties": {
+				"historyId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"labelIds": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"raw": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"sizeEstimate": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"snippet": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"threadId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"MessagePart": {
+			"properties": {
+				"filename": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"headers": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"mimeType": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"partId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"parts": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"MessagePartBody": {
+			"properties": {
+				"attachmentId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"data": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"size": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"MessagePartHeader": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"value": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"ModifyMessageRequest": {
+			"properties": {
+				"addLabelIds": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"removeLabelIds": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"ModifyThreadRequest": {
+			"properties": {
+				"addLabelIds": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"removeLabelIds": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Profile": {
+			"properties": {
+				"emailAddress": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"historyId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"messagesTotal": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"threadsTotal": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Thread": {
+			"properties": {
+				"historyId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"messages": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"snippet": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		}
+	}
+}
