@@ -3,11 +3,9 @@
 	"info": {
 		"title": "Drive API",
 		"description": "The API to interact with Drive.",
-		"termsOfService": "",
 		"contact": {
 			"name": "Google",
-			"url": "https://google.com",
-			"email": ""
+			"url": "https://google.com"
 		},
 		"version": "v1"
 	},
@@ -27,7 +25,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"post": {
 				"summary": "",
@@ -38,7 +37,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		},
 		"/files/{id}": {
@@ -49,24 +49,31 @@
 				"parameters": [{
 					"in": "path",
 					"name": "id",
-					"description": "The id for the file in question."
+					"description": "The id for the file in question.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "projection",
-					"description": "This parameter is deprecated and has no function."
+					"description": "This parameter is deprecated and has no function.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "updateViewedDate",
-					"description": "Whether to update the view date after successfully retrieving the file."
+					"description": "Whether to update the view date after successfully retrieving the file.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"parameters": {
 				"summary": "",
@@ -77,7 +84,8 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"patch": {
 				"summary": "",
@@ -86,29 +94,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "id",
-					"description": "The id for the file in question."
+					"description": "The id for the file in question.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "newRevision",
-					"description": "Whether a blob upload should create a new revision. If false, the blob data in the current head revision is replaced. If true or not set, a new blob is created as head revision, and previous revisions are preserved (causing increased use of the users data storage quota)."
+					"description": "Whether a blob upload should create a new revision. If false, the blob data in the current head revision is replaced. If true or not set, a new blob is created as head revision, and previous revisions are preserved (causing increased use of the users data storage quota).",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "updateModifiedDate",
-					"description": "Controls updating the modified date of the file. If true, the modified date will be updated to the current time, regardless of whether other changes are being made. If false, the modified date will only be updated to the current time if other changes are also being made (changing the title, for example)."
+					"description": "Controls updating the modified date of the file. If true, the modified date will be updated to the current time, regardless of whether other changes are being made. If false, the modified date will only be updated to the current time if other changes are also being made (changing the title, for example).",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "updateViewedDate",
-					"description": "Whether to update the view date after successfully updating the file."
+					"description": "Whether to update the view date after successfully updating the file.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			},
 			"put": {
 				"summary": "",
@@ -117,29 +134,38 @@
 				"parameters": [{
 					"in": "path",
 					"name": "id",
-					"description": "The id for the file in question."
+					"description": "The id for the file in question.",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "newRevision",
-					"description": "Whether a blob upload should create a new revision. If false, the blob data in the current head revision is replaced. If true or not set, a new blob is created as head revision, and previous revisions are preserved (causing increased use of the users data storage quota)."
+					"description": "Whether a blob upload should create a new revision. If false, the blob data in the current head revision is replaced. If true or not set, a new blob is created as head revision, and previous revisions are preserved (causing increased use of the users data storage quota).",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "updateModifiedDate",
-					"description": "Controls updating the modified date of the file. If true, the modified date will be updated to the current time, regardless of whether other changes are being made. If false, the modified date will only be updated to the current time if other changes are also being made (changing the title, for example)."
+					"description": "Controls updating the modified date of the file. If true, the modified date will be updated to the current time, regardless of whether other changes are being made. If false, the modified date will only be updated to the current time if other changes are also being made (changing the title, for example).",
+					"type": "string",
+					"format": "string"
 				},
 				{
 					"in": "query",
 					"name": "updateViewedDate",
-					"description": "Whether to update the view date after successfully updating the file."
+					"description": "Whether to update the view date after successfully updating the file.",
+					"type": "string",
+					"format": "string"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK"
 					}
 				},
-				"tags": [""]
+				"tags": [""],
+				"security": []
 			}
 		}
 	},
@@ -147,75 +173,75 @@
 		"File": {
 			"properties": {
 				"createdDate": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"description": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"downloadUrl": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"etag": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"fileExtension": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"fileSize": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"id": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"indexableText": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"labels": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"lastViewedDate": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"md5Checksum": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"mimeType": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"modifiedByMeDate": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"modifiedDate": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"parentsCollection": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"selfLink": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"title": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
@@ -223,23 +249,23 @@
 		"Permission": {
 			"properties": {
 				"additionalRoles": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"etag": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"kind": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"role": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				},
 				"type": {
-					"description": "",
+					"description": "This is a default description.",
 					"type": "parameters"
 				}
 			}
