@@ -8,78 +8,107 @@
 	},
 	"host": "api.pinboard.in",
 	"basePath": "/v1",
-	"schemes": [
-		"http"
-	],
-	"produces": [
-		"application/json"
-	],
-	"consumes": [
-		"application/json"
-	],
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
 	"paths": {
 		"/posts/all": {
 			"get": {
 				"summary": "All Bookmarks",
 				"description": "Returns all bookmarks in the users account.",
 				"operationId": "returnAllBookmarks",
-				"parameters": [
-					{
-						"name": "fromdt",
-						"in": "query",
-						"description": "return only bookmarks created after this time",
-						"type": "string",
-						"format": "dateTime"
-					},
-					{
-						"name": "meta",
-						"in": "query",
-						"description": "include a change detection signature for each bookmark",
-						"type": "integer",
-						"format": "integer"
-					},
-					{
-						"name": "results",
-						"in": "query",
-						"description": "number of results to return. Default is all",
-						"type": "integer",
-						"format": "integer"
-					},
-					{
-						"name": "start",
-						"in": "query",
-						"description": "offset value (default is 0)",
-						"type": "integer",
-						"format": "integer"
-					},
-					{
-						"name": "tag",
-						"in": "query",
-						"description": "filter by up to three tags",
-						"type": "string",
-						"format": "string"
-					},
-					{
-						"name": "todt",
-						"in": "query",
-						"description": "return only bookmarks created before this time",
-						"type": "string",
-						"format": "dateTime"
-					}
-				],
+				"parameters": [{
+					"in": "query",
+					"name": "fromdt",
+					"description": "return only bookmarks created after this time",
+					"type": "string",
+					"format": "dateTime"
+				},
+				{
+					"in": "query",
+					"name": "meta",
+					"description": "include a change detection signature for each bookmark",
+					"type": "integer",
+					"format": "integer"
+				},
+				{
+					"in": "query",
+					"name": "results",
+					"description": "number of results to return. Default is all",
+					"type": "integer",
+					"format": "integer"
+				},
+				{
+					"in": "query",
+					"name": "start",
+					"description": "offset value (default is 0)",
+					"type": "integer",
+					"format": "integer"
+				},
+				{
+					"in": "query",
+					"name": "tag",
+					"description": "filter by up to three tags",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "todt",
+					"description": "return only bookmarks created before this time",
+					"type": "string",
+					"format": "dateTime"
+				}],
 				"responses": {
 					"200": {
-						"description": ""
+						"description": "",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/Post"
+							}
+						}
 					}
 				},
-				"tags": [
-					"Links",
-					" URL",
-					" Bookmarks"
-				]
+				"tags": ["Links",
+				" URL",
+				" Bookmarks"],
+				"security": []
 			}
 		}
 	},
 	"definitions": {
+		"Post": {
+			"properties": {
+				"href": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"time": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"description": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"extended": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"tags": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"hash": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"meta": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
 	}
 }
