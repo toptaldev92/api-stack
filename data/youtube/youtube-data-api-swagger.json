@@ -1,0 +1,1313 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "YouTube Data API",
+		"description": "The YouTube Data API (v3) lets you incorporate YouTube functionality into your own application. You can use the API to fetch search results and to retrieve, insert, update, and delete resources like videos or playlists.",
+		"termsOfService": "https://developers.google.com/youtube/terms",
+		"version": "V3"
+	},
+	"host": "www.googleapis.com",
+	"basePath": "/youtube/v3",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/activities": {
+			"get": {
+				"summary": "List Activities",
+				"description": "Returns a list of channel activity events that match the request criteria. For example, you can retrieve events associated with a particular channel, events associated with the users subscriptions and Google+ friends, or the YouTube home page feed, which is customized for each user.",
+				"operationId": "list-activities",
+				"parameters": [{
+					"in": "query",
+					"name": "channelId",
+					"description": "The channelId parameter specifies a unique YouTube channel ID. The API will then return a list of that channels activities.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "home",
+					"description": "This parameter can only be used in a properly authorized request. Set this parameters value to true to retrieve the activity feed that displays on the YouTube home page for the currently authenticated user.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "The maxResults parameter specifies the maximum number of items that should be returned in the result set. Acceptable values are 0 to 50, inclusive. The default value is 5.",
+					"type": "unsigned integer"
+				},
+				{
+					"in": "query",
+					"name": "mine",
+					"description": "This parameter can only be used in a properly authorized request. Set this parameters value to true to retrieve a feed of the authenticated users activities.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "pageToken",
+					"description": "The pageToken parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter specifies a comma-separated list of one or more activity resource properties that the API response will include.If the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in an activity resource, the snippet property contains other properties that identify the type of activity, a display title for the activity, and so forth. If you set part=snippet, the API response will also contain all of those n",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "publishedAfter",
+					"description": "The publishedAfter parameter specifies the earliest date and time that an activity could have occurred for that activity to be included in the API response. If the parameter value specifies a day, but not a time, then any activities that occurred that day will be included in the result set. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "publishedBefore",
+					"description": "The publishedBefore parameter specifies the date and time before which an activity must have occurred for that activity to be included in the API response. If the parameter value specifies a day, but not a time, then any activities that occurred that day will be excluded from the result set. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "regionCode",
+					"description": "The regionCode parameter instructs the API to return results for the specified country. The parameter value is an ISO 3166-1 alpha-2 country code. YouTube uses this value when the authorized users previous activity on YouTube does not provide enough information to generate the activity feed.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Insert Activities",
+				"description": "Posts a bulletin for a specific channel. (The user submitting the request must be authorized to act on the channels behalf.)Note: Even though an activity resource can contain information about actions like a user rating a video or marking a video as a favorite, you need to use other API methods to generate those activity resources. For example, you would use the APIs videos.rate() method to rate a video and the playlistItems.insert() method to mark a video as a favorite.",
+				"operationId": "insert-activities",
+				"parameters": [{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include.The list below contains the part names that you can include in the parameter value and the quota cost for each part:contentDetails: 2id: 0snippet: 2",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/channelBanners/insert": {
+			"post": {
+				"summary": "Insert ChannelBanners",
+				"description": "Uploads a channel banner image to YouTube. This method represents the first two steps in a three-step process to update the banner image for a channel:Call the channelBanners.insert method to upload the binary image data to YouTube. The image must have a 16:9 aspect ratio and be at least 2048x1152 pixels.Extract the url propertys value from the response that the API returns for step 1.Call the channels.update method to update the channels branding settings. Set the brandingSettings.image.bannerExternalUrl propertys value to the URL obtained in step 2.",
+				"operationId": "insert-channelbanners",
+				"parameters": [{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and ge",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/channels": {
+			"get": {
+				"summary": "List Channels",
+				"description": "Returns a collection of zero or more channel resources that match the request criteria.",
+				"operationId": "list-channels",
+				"parameters": [{
+					"in": "query",
+					"name": "categoryId",
+					"description": "The categoryId parameter specifies a YouTube guide category, thereby requesting YouTube channels associated with that category.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "forUsername",
+					"description": "The forUsername parameter specifies a YouTube username, thereby requesting the channel associated with that username.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The id parameter specifies a comma-separated list of the YouTube channel ID(s) for the resource(s) that are being retrieved. In a channel resource, the id property specifies the channels YouTube channel ID.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "managedByMe",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.Set this parameters value to true to instruct the API to only return channels managed by the content owner that the onBehalfOfContentOwner parameter specifies. The user must be authenticated as a CMS account linked to the specified content owner and onBehalfOfContentOwner must be provided.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "The maxResults parameter specifies the maximum number of items that should be returned in the result set. Acceptable values are 0 to 50, inclusive. The default value is 5.",
+					"type": "unsigned integer"
+				},
+				{
+					"in": "query",
+					"name": "mine",
+					"description": "This parameter can only be used in a properly authorized request. Set this parameters value to true to instruct the API to only return channels owned by the authenticated user.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "mySubscribers",
+					"description": "This parameter has been deprecated. This parameter can only be used in a properly authorized request. Use the subscriptions.list method and its mySubscribers parameter to retrieve a list of subscribers to the authenticated users channel.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and ge",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageToken",
+					"description": "The pageToken parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter specifies a comma-separated list of one or more channel resource properties that the API response will include.If the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a channel resource, the contentDetails property contains other properties, such as the uploads properties. As such, if you set part=contentDetails, the API response will also contain all of those nested properties.The list below",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Update Channels",
+				"description": "Updates a channels metadata. Note that this method currently only supports updates to the channel resources brandingSettings and invideoPromotion objects and their child properties.",
+				"operationId": "update-channels",
+				"parameters": [{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "This parameter can only be used in a properly authorized request. The onBehalfOfContentOwner parameter indicates that the authenticated user is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual chan",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include.The API currently only allows the parameter value to be set to either brandingSettings or invideoPromotion. (You cannot update both of those parts with a single request.)Note that this method overrides the existing values for all of the mutable properties that are contained in any parts that the parameter value speci",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/channelSections": {
+			"delete": {
+				"summary": "Delete ChannelSections",
+				"description": "Deletes a channel section.",
+				"operationId": "delete-channelsections",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "The id parameter specifies the ID that uniquely identifies the channel section that is being deleted. In a channelSection resource, the id property specifies the sections ID.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "List ChannelSections",
+				"description": "Returns a list of channelSection resources that match the API request criteria.",
+				"operationId": "list-channelsections",
+				"parameters": [{
+					"in": "query",
+					"name": "channelId",
+					"description": "The channelId parameter specifies a YouTube channel ID. If a request specifies a value for this parameter, the API will only return the specified channels sections.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The id parameter specifies a comma-separated list of IDs that uniquely identify the channelSection resources that are being retrieved. In a channelSection resource, the id property specifies the sections ID.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "mine",
+					"description": "This parameter can only be used in a properly authorized request. Set this parameters value to true to retrieve a feed of the channel sections associated with the authenticated users YouTube channel.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and ge",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter specifies a comma-separated list of one or more channelSection resource properties that the API response will include.If the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a channelSection resource, the snippet property contains other properties, such as a display title for the section. If you set part=snippet, the API response will also contain all of those nested properties.The list below",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Insert ChannelSections",
+				"description": "Adds a channel section to the authenticated users channel.",
+				"operationId": "insert-channelsections",
+				"parameters": [{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and ge",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwnerChannel",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is l",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include.The list below contains the part names that you can include in the parameter value and the quota cost for each part:contentDetails: 2id: 0snippet: 2",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Update ChannelSections",
+				"description": "Updates a channel section.",
+				"operationId": "update-channelsections",
+				"parameters": [{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include.The list below contains the part names that you can include in the parameter value and the quota cost for each part:contentDetails: 2id: 0snippet: 2",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/guideCategories": {
+			"get": {
+				"summary": "List GuideCategories",
+				"description": "Returns a list of categories that can be associated with YouTube channels.",
+				"operationId": "list-guidecategories",
+				"parameters": [{
+					"in": "query",
+					"name": "hl",
+					"description": "The hl parameter specifies the language that will be used for text values in the API response. The default value is en-US.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The id parameter specifies a comma-separated list of the YouTube channel category ID(s) for the resource(s) that are being retrieved. In a guideCategory resource, the id property specifies the YouTube channel category ID.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter specifies the guideCategory resource properties that the API response will include. Set the parameter value to snippet. The snippet part has a quota cost of 2 units.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "regionCode",
+					"description": "The regionCode parameter instructs the API to return the list of guide categories available in the specified country. The parameter value is an ISO 3166-1 alpha-2 country code.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/i18nLanguages": {
+			"get": {
+				"summary": "List I18nLanguages",
+				"description": "Returns a list of application languages that the YouTube website supports.",
+				"operationId": "list-i18nlanguages",
+				"parameters": [{
+					"in": "query",
+					"name": "hl",
+					"description": "The hl parameter specifies the language that should be used for text values in the API response. The default value is en_US.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter specifies the i18nLanguage resource properties that the API response will include. Set the parameter value to snippet. The snippet part has a quota cost of 1 unit.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/i18nRegions": {
+			"get": {
+				"summary": "List I18nRegions",
+				"description": "Returns a list of content regions that the YouTube website supports.",
+				"operationId": "list-i18nregions",
+				"parameters": [{
+					"in": "query",
+					"name": "hl",
+					"description": "The hl parameter specifies the language that should be used for text values in the API response. The default value is en_US.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter specifies the i18nRegion resource properties that the API response will include. Set the parameter value to snippet. The snippet part has a quota cost of 1 unit.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/playlistItems": {
+			"delete": {
+				"summary": "Delete PlaylistItems",
+				"description": "Deletes a playlist item.",
+				"operationId": "delete-playlistitems",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "The id parameter specifies the YouTube playlist item ID for the playlist item that is being deleted. In a playlistItem resource, the id property specifies the playlist items ID.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "List PlaylistItems",
+				"description": "Returns a collection of playlist items that match the API request parameters. You can retrieve all of the playlist items in a specified playlist or retrieve one or more playlist items by their unique IDs.",
+				"operationId": "list-playlistitems",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "The id parameter specifies a comma-separated list of one or more unique playlist item IDs.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "The maxResults parameter specifies the maximum number of items that should be returned in the result set. Acceptable values are 0 to 50, inclusive. The default value is 5.",
+					"type": "unsigned integer"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and ge",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageToken",
+					"description": "The pageToken parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter specifies a comma-separated list of one or more playlistItem resource properties that the API response will include.If the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a playlistItem resource, the snippet property contains numerous fields, including the title, description, position, and resourceId properties. As such, if you set part=snippet, the API response will contain all of those pro",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "playlistId",
+					"description": "The playlistId parameter specifies the unique ID of the playlist for which you want to retrieve playlist items. Note that even though this is an optional parameter, every request to retrieve playlist items must specify a value for either the id parameter or the playlistId parameter.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "videoId",
+					"description": "The videoId parameter specifies that the request should return only the playlist items that contain the specified video.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Insert PlaylistItems",
+				"description": "Adds a resource to a playlist.",
+				"operationId": "insert-playlistitems",
+				"parameters": [{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and ge",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include.The list below contains the part names that you can include in the parameter value and the quota cost for each part:contentDetails: 2id: 0snippet: 2status: 2",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Update PlaylistItems",
+				"description": "Modifies a playlist item. For example, you could update the items position in the playlist.",
+				"operationId": "update-playlistitems",
+				"parameters": [{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include.Note that this method will override the existing values for all of the mutable properties that are contained in any parts that the parameter value specifies. For example, a playlist item can specify a start time and end time, which identify the times portion of the video that should play when users watch the video in",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/playlists": {
+			"delete": {
+				"summary": "Delete Playlists",
+				"description": "Deletes a playlist.",
+				"operationId": "delete-playlists",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "The id parameter specifies the YouTube playlist ID for the playlist that is being deleted. In a playlist resource, the id property specifies the playlists ID.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and ge",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "List Playlists",
+				"description": "Returns a collection of playlists that match the API request parameters. For example, you can retrieve all playlists that the authenticated user owns, or you can retrieve one or more playlists by their unique IDs.",
+				"operationId": "list-playlists",
+				"parameters": [{
+					"in": "query",
+					"name": "channelId",
+					"description": "This value indicates that the API should only return the specified channels playlists.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The id parameter specifies a comma-separated list of the YouTube playlist ID(s) for the resource(s) that are being retrieved. In a playlist resource, the id property specifies the playlists YouTube playlist ID.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "The maxResults parameter specifies the maximum number of items that should be returned in the result set. Acceptable values are 0 to 50, inclusive. The default value is 5.",
+					"type": "unsigned integer"
+				},
+				{
+					"in": "query",
+					"name": "mine",
+					"description": "This parameter can only be used in a properly authorized request. Set this parameters value to true to instruct the API to only return playlists owned by the authenticated user.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and ge",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwnerChannel",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is l",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageToken",
+					"description": "The pageToken parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter specifies a comma-separated list of one or more playlist resource properties that the API response will include.If the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a playlist resource, the snippet property contains properties like author, title, description, tags, and timeCreated. As such, if you set part=snippet, the API response will contain all of those properties.The list below contai",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Insert Playlists",
+				"description": "Creates a playlist.",
+				"operationId": "insert-playlists",
+				"parameters": [{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and ge",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwnerChannel",
+					"description": "This parameter can only be used in a properly authorized request. This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addi",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include.The list below contains the part names that you can include in the parameter value and the quota cost for each part:contentDetails: 2id: 0player: 0snippet: 2status: 2",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Update Playlists",
+				"description": "Modifies a playlist. For example, you could change a playlists title, description, or privacy status.",
+				"operationId": "update-playlists",
+				"parameters": [{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and ge",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include.Note that this method will override the existing values for mutable properties that are contained in any parts that the request body specifies. For example, a playlists description is contained in the snippet part, which must be included in the request body. If the request does not specify a value for the snippet.de",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/search": {
+			"get": {
+				"summary": "List Search",
+				"description": "Returns a collection of search results that match the query parameters specified in the API request. By default, a search result set identifies matching video, channel, and playlist resources, but you can also configure queries to only retrieve a specific type of resource.",
+				"operationId": "list-search",
+				"parameters": [{
+					"in": "query",
+					"name": "channelId",
+					"description": "The channelId parameter indicates that the API response should only contain resources created by the channel",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "channelType",
+					"description": "The channelType parameter lets you restrict a search to a particular type of channel.Acceptable values are:any &ndash; Return all channels.show &ndash; Only retrieve shows.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "eventType",
+					"description": "The eventType parameter restricts a search to broadcast events. If you specify a value for this parameter, you must also set the type parameters value to video.Acceptable values are:completed &ndash; Only include completed broadcasts.live &ndash; Only include active broadcasts.upcoming &ndash; Only include upcoming broadcasts.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "forContentOwner",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The forContentOwner parameter restricts the search to only retrieve resources owned by the content owner specified by the onBehalfOfContentOwner parameter. The user must be authenticated using a CMS account linked to the specified content owner and onBehalfOfContentOwner must be provided.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "forMine",
+					"description": "This parameter can only be used in a properly authorized request. The forMine parameter restricts the search to only retrieve videos owned by the authenticated user. If you set this parameter to true, then the type parameters value must also be set to video.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "location",
+					"description": "The location parameter, in conjunction with the locationRadius parameter, defines a circular geographic area and also restricts a search to videos that specify, in their metadata, a geographic location that falls within that area. The parameter value is a string that specifies latitude/longitude coordinates e.g. (37.42307,-122.08427).The location parameter value identifies the point at the center of the area.The locationRadius parameter specifies the maximum distance that the location associated",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "locationRadius",
+					"description": "The locationRadius parameter, in conjunction with the location parameter, defines a circular geographic area.The parameter value must be a floating point number followed by a measurement unit. Valid measurement units are m, km, ft, and mi. For example, valid parameter values include 1500m, 5km, 10000ft, and 0.75mi. The API does not support locationRadius parameter values larger than 1000 kilometers.Note: See the definition of the location parameter for more information.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "The maxResults parameter specifies the maximum number of items that should be returned in the result set. Acceptable values are 0 to 50, inclusive. The default value is 5.",
+					"type": "unsigned integer"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and ge",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "The order parameter specifies the method that will be used to order resources in the API response. The default value is relevance.Acceptable values are:date &ndash; Resources are sorted in reverse chronological order based on the date they were created.rating &ndash; Resources are sorted from highest to lowest rating.relevance &ndash; Resources are sorted based on their relevance to the search query. This is the default value for this parameter.title &ndash; Resources are sorted alphabetically b",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageToken",
+					"description": "The pageToken parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter specifies a comma-separated list of one or more search resource properties that the API response will include. Set the parameter value to snippet.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "publishedAfter",
+					"description": "The publishedAfter parameter indicates that the API response should only contain resources created after the specified time. The value is an RFC 3339 formatted date-time value (1970-01-01T00:00:00Z).",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "publishedBefore",
+					"description": "The publishedBefore parameter indicates that the API response should only contain resources created before the specified time. The value is an RFC 3339 formatted date-time value (1970-01-01T00:00:00Z).",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "The q parameter specifies the query term to search for.Your request can also use the Boolean NOT (-) and OR (|) operators to exclude videos or to find videos that are associated with one of several search terms. For example, to search for videos matching either boating or sailing, set the q parameter value to boating|sailing. Similarly, to search for videos matching either boating or sailing but not fishing, set the q parameter value to boating|sailing -fishing. Note that the pipe character must",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "regionCode",
+					"description": "The regionCode parameter instructs the API to return search results for the specified country. The parameter value is an ISO 3166-1 alpha-2 country code.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "relatedToVideoId",
+					"description": "The relatedToVideoId parameter retrieves a list of videos that are related to the video that the parameter value identifies. The parameter value must be set to a YouTube video ID and, if you are using this parameter, the type parameter must be set to video.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "safeSearch",
+					"description": "The safeSearch parameter indicates whether the search results should include restricted content as well as standard content.Acceptable values are:moderate &ndash; YouTube will filter some content from search results and, at the least, will filter content that is restricted in your locale. Based on their content, search results could be removed from search results or demoted in search results. This is the default parameter value.none &ndash; YouTube will not filter the search result set.strict &n",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "topicId",
+					"description": "The topicId parameter indicates that the API response should only contain resources associated with the specified topic. The value identifies a Freebase topic ID.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "The type parameter restricts a search query to only retrieve a particular type of resource. The value is a comma-separated list of resource types. The default value is video,channel,playlist.Acceptable values are:channelplaylistvideo",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "videoCaption",
+					"description": "The videoCaption parameter indicates whether the API should filter video search results based on whether they have captions. If you specify a value for this parameter, you must also set the type parameters value to video.Acceptable values are:any &ndash; Do not filter results based on caption availability.closedCaption &ndash; Only include videos that have captions.none &ndash; Only include videos that do not have captions.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "videoCategoryId",
+					"description": "The videoCategoryId parameter filters video search results based on their category. If you specify a value for this parameter, you must also set the type parameters value to video.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "videoDefinition",
+					"description": "The videoDefinition parameter lets you restrict a search to only include either high definition (HD) or standard definition (SD) videos. HD videos are available for playback in at least 720p, though higher resolutions, like 1080p, might also be available. If you specify a value for this parameter, you must also set the type parameters value to video.Acceptable values are:any &ndash; Return all videos, regardless of their resolution.high &ndash; Only retrieve HD videos.standard &ndash; Only retr",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "videoDimension",
+					"description": "The videoDimension parameter lets you restrict a search to only retrieve 2D or 3D videos. If you specify a value for this parameter, you must also set the type parameters value to video.Acceptable values are:2d &ndash; Restrict search results to exclude 3D videos.3d &ndash; Restrict search results to only include 3D videos.any &ndash; Include both 3D and non-3D videos in returned results. This is the default value.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "videoDuration",
+					"description": "The videoDuration parameter filters video search results based on their duration. If you specify a value for this parameter, you must also set the type parameters value to video.Acceptable values are:any &ndash; Do not filter video search results based on their duration. This is the default value.long &ndash; Only include videos longer than 20 minutes.medium &ndash; Only include videos that are between four and 20 minutes long (inclusive).short &ndash; Only include videos that are less than fou",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "videoEmbeddable",
+					"description": "The videoEmbeddable parameter lets you to restrict a search to only videos that can be embedded into a webpage. If you specify a value for this parameter, you must also set the type parameters value to video.Acceptable values are:any &ndash; Return all videos, embeddable or not.true &ndash; Only retrieve embeddable videos.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "videoLicense",
+					"description": "The videoLicense parameter filters search results to only include videos with a particular license. YouTube lets video uploaders choose to attach either the Creative Commons license or the standard YouTube license to each of their videos. If you specify a value for this parameter, you must also set the type parameters value to video.Acceptable values are:any &ndash; Return all videos, regardless of which license they have, that match the query parameters.creativeCommon &ndash; Only return video",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "videoSyndicated",
+					"description": "The videoSyndicated parameter lets you to restrict a search to only videos that can be played outside youtube.com. If you specify a value for this parameter, you must also set the type parameters value to video.Acceptable values are:any &ndash; Return all videos, syndicated or not.true &ndash; Only retrieve syndicated videos.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "videoType",
+					"description": "The videoType parameter lets you restrict a search to a particular type of videos. If you specify a value for this parameter, you must also set the type parameters value to video.Acceptable values are:any &ndash; Return all videos.episode &ndash; Only retrieve episodes of shows.movie &ndash; Only retrieve movies.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/subscriptions": {
+			"delete": {
+				"summary": "Delete Subscriptions",
+				"description": "Deletes a subscription.",
+				"operationId": "delete-subscriptions",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "The id parameter specifies the YouTube subscription ID for the resource that is being deleted. In a subscription resource, the id property specifies the YouTube subscription ID.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "List Subscriptions",
+				"description": "Returns subscription resources that match the API request criteria.",
+				"operationId": "list-subscriptions",
+				"parameters": [{
+					"in": "query",
+					"name": "channelId",
+					"description": "The channelId parameter specifies a YouTube channel ID. The API will only return that channels subscriptions.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "forChannelId",
+					"description": "The forChannelId parameter specifies a comma-separated list of channel IDs. The API response will then only contain subscriptions matching those channels.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The id parameter specifies a comma-separated list of the YouTube subscription ID(s) for the resource(s) that are being retrieved. In a subscription resource, the id property specifies the YouTube subscription ID.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "The maxResults parameter specifies the maximum number of items that should be returned in the result set. Acceptable values are 0 to 50, inclusive. The default value is 5.",
+					"type": "unsigned integer"
+				},
+				{
+					"in": "query",
+					"name": "mine",
+					"description": "This parameter can only be used in a properly authorized request. Set this parameters value to true to retrieve a feed of the authenticated users subscriptions.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "mySubscribers",
+					"description": "This parameter can only be used in a properly authorized request. Set this parameters value to true to retrieve a feed of the subscribers of the authenticated user.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to pr",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwnerChannel",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is l",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "The order parameter specifies the method that will be used to sort resources in the API response. The default value is SUBSCRIPTION_ORDER_RELEVANCE.Acceptable values are:alphabetical &ndash; Sort alphabetically.relevance &ndash; Sort by relevance.unread &ndash; Sort by order of activity.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageToken",
+					"description": "The pageToken parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter specifies a comma-separated list of one or more subscription resource properties that the API response will include.If the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a subscription resource, the snippet property contains other properties, such as a display title for the subscription. If you set part=snippet, the API response will also contain all of those nested properties.The list belo",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Insert Subscriptions",
+				"description": "Adds a subscription for the authenticated users channel.",
+				"operationId": "insert-subscriptions",
+				"parameters": [{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include.The list below contains the part names that you can include in the parameter value and the quota cost for each part:contentDetails: 2id: 0snippet: 2subscriberSnippet: 2",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/thumbnails/set": {
+			"post": {
+				"summary": "Set Thumbnails",
+				"description": "Uploads a custom video thumbnail to YouTube and sets it for a video.",
+				"operationId": "set-thumbnails",
+				"parameters": [{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to pr",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "videoId",
+					"description": "The videoId parameter specifies a YouTube video ID for which the custom video thumbnail is being provided.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/videoCategories": {
+			"get": {
+				"summary": "List VideoCategories",
+				"description": "Returns a list of categories that can be associated with YouTube videos.",
+				"operationId": "list-videocategories",
+				"parameters": [{
+					"in": "query",
+					"name": "hl",
+					"description": "The hl parameter specifies the language that should be used for text values in the API response. The default value is en_US.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The id parameter specifies a comma-separated list of video category IDs for the resources that you are retrieving.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter specifies the videoCategory resource properties that the API response will include. Set the parameter value to snippet. The snippet part has a quota cost of 2 units.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "regionCode",
+					"description": "The regionCode parameter instructs the API to return the list of video categories available in the specified country. The parameter value is an ISO 3166-1 alpha-2 country code.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/videos": {
+			"delete": {
+				"summary": "Delete Videos",
+				"description": "Deletes a YouTube video.",
+				"operationId": "delete-videos",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "The id parameter specifies the YouTube video ID for the resource that is being deleted. In a video resource, the id property specifies the videos ID.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and ge",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "List Videos",
+				"description": "Returns a list of videos that match the API request parameters.",
+				"operationId": "list-videos",
+				"parameters": [{
+					"in": "query",
+					"name": "chart",
+					"description": "The chart parameter identifies the chart that you want to retrieve.Acceptable values are:mostPopular &ndash; Return the most popular videos for the specified content region and video category.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The id parameter specifies a comma-separated list of the YouTube video ID(s) for the resource(s) that are being retrieved. In a video resource, the id property specifies the videos ID.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "The maxResults parameter specifies the maximum number of items that should be returned in the result set.Note: This parameter is supported for use in conjunction with the myRating parameter, but it is not supported for use in conjunction with the id parameter. Acceptable values are 1 to 50, inclusive. The default value is 5.",
+					"type": "unsigned integer"
+				},
+				{
+					"in": "query",
+					"name": "myRating",
+					"description": "This parameter can only be used in a properly authorized request. Set this parameters value to like or dislike to instruct the API to only return videos liked or disliked by the authenticated user.Acceptable values are:dislike &ndash; Returns only videos disliked by the authenticated user.like &ndash; Returns only video liked by the authenticated user.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and ge",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageToken",
+					"description": "The pageToken parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved.Note: This parameter is supported for use in conjunction with the myRating parameter, but it is not supported for use in conjunction with the id parameter.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter specifies a comma-separated list of one or more video resource properties that the API response will include.If the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a video resource, the snippet property contains the channelId, title, description, tags, and categoryId properties. As such, if you set part=snippet, the API response will contain all of those properties.The list below contains th",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "regionCode",
+					"description": "The regionCode parameter instructs the API to select a video chart available in the specified region. This parameter can only be used in conjunction with the chart parameter. The parameter value is an ISO 3166-1 alpha-2 country code.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "videoCategoryId",
+					"description": "The videoCategoryId parameter identifies the video category for which the chart should be retrieved. This parameter can only be used in conjunction with the chart parameter. By default, charts are not restricted to a particular category. The default value is 0.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Insert Videos",
+				"description": "Uploads a video to YouTube and optionally sets the videos metadata.",
+				"operationId": "insert-videos",
+				"parameters": [{
+					"in": "query",
+					"name": "autoLevels",
+					"description": "The autoLevels parameter indicates whether YouTube should automatically enhance the videos lighting and color.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "notifySubscribers",
+					"description": "The notifySubscribers parameter indicates whether YouTube should send a notification about the new video to users who subscribe to the videos channel. A parameter value of True indicates that subscribers will be notified of newly uploaded videos. However, a channel owner who is uploading many videos might prefer to set the value to False to avoid sending a notification about each new video to the channels subscribers. The default value is True.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and ge",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwnerChannel",
+					"description": "This parameter can only be used in a properly authorized request. This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addi",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include.Note that not all parts contain properties that can be set when inserting or updating a video. For example, the statistics object encapsulates statistics that YouTube calculates for a video and does not contain values that you can set or modify. If the parameter value specifies a part that does not contain mutable va",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "stabilize",
+					"description": "The stabilize parameter indicates whether YouTube should adjust the video to remove shaky camera motions.",
+					"type": "boolean"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Update Videos",
+				"description": "Updates a videos metadata.",
+				"operationId": "update-videos",
+				"parameters": [{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and ge",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include.Note that this method will override the existing values for all of the mutable properties that are contained in any parts that the parameter value specifies. For example, a videos privacy setting is contained in the status part. As such, if your request is updating a private video, and the requests part parameter v",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/videos/getRating": {
+			"get": {
+				"summary": "GetRating Videos",
+				"description": "Retrieves the ratings that the authorized user gave to a list of specified videos.",
+				"operationId": "getrating-videos",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "The id parameter specifies a comma-separated list of the YouTube video ID(s) for the resource(s) for which you are retrieving rating data. In a video resource, the id property specifies the videos ID.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and ge",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/videos/rate": {
+			"post": {
+				"summary": "Rate Videos",
+				"description": "Add a like or dislike rating to a video or remove a rating from a video.",
+				"operationId": "rate-videos",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "The id parameter specifies the YouTube video ID of the video that is being rated or having its rating removed.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "rating",
+					"description": "Specifies the rating to record.Acceptable values are:dislike &ndash; Records that the authenticated user disliked the video.like &ndash; Records that the authenticated user liked the video.none &ndash; Removes any rating that the authenticated user had previously set for the video.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/watermarks/set": {
+			"post": {
+				"summary": "Set Watermarks",
+				"description": "Uploads a watermark image to YouTube and sets it for a channel.",
+				"operationId": "set-watermarks",
+				"parameters": [{
+					"in": "query",
+					"name": "channelId",
+					"description": "The channelId parameter specifies the YouTube channel ID for which the watermark is being provided.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to pr",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/watermarks/unset": {
+			"post": {
+				"summary": "Unset Watermarks",
+				"description": "Deletes a channels watermark image.",
+				"operationId": "unset-watermarks",
+				"parameters": [{
+					"in": "query",
+					"name": "channelId",
+					"description": "The channelId parameter specifies the YouTube channel ID for which the watermark is being unset.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to pr",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
