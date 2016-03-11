@@ -14,7 +14,7 @@
 	"paths": {
 		"/Accounts/{AccountSid}/Messages/{MessageSid}/Media/{MediaSid}{mediaTypeExtension}": {
 			"get": {
-				"summary": "",
+				"summary": "Get Message Media",
 				"description": "Without an extension, the media is returned using the mime-type provided when the media was generated.",
 				"operationId": "without-an-extension-the-media-is-returned-using-the-mimetype-provided-when-the-media-was-generated",
 				"parameters": [{
@@ -39,13 +39,14 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""],
+				"tags": ["Messaging",
+				" SMS"],
 				"security": []
 			}
 		},
 		"/Accounts/{AccountSid}/Messages/{MessageSid}/Media{mediaTypeExtension}": {
 			"get": {
-				"summary": "",
+				"summary": "Get Message Media",
 				"description": "Returns a list of media associated with your message.",
 				"operationId": "returns-a-list-of-media-associated-with-your-message",
 				"parameters": [{
@@ -66,13 +67,14 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""],
+				"tags": ["Messaging",
+				" SMS"],
 				"security": []
 			}
 		},
 		"/Accounts/{AccountSid}/Messages/{MessageSid}{mediaTypeExtension}": {
 			"get": {
-				"summary": "",
+				"summary": "Get Message Media",
 				"description": "Returns a single message specified by the provided {MessageSid}.n",
 				"operationId": "returns-a-single-message-specified-by-the-provided-messagesid",
 				"parameters": [{
@@ -93,13 +95,14 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""],
+				"tags": ["Messaging",
+				" SMS"],
 				"security": []
 			}
 		},
 		"/Accounts/{AccountSid}/Messages{mediaTypeExtension}": {
 			"get": {
-				"summary": "",
+				"summary": "Get Message Media",
 				"description": "Returns a list of messages associated with your account. The list includes paging information.",
 				"operationId": "returns-a-list-of-messages-associated-with-your-account-the-list-includes-paging-information",
 				"parameters": [{
@@ -116,11 +119,12 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""],
+				"tags": ["Messaging",
+				" SMS"],
 				"security": []
 			},
 			"post": {
-				"summary": "",
+				"summary": "Add Message Media",
 				"description": "To send a new outgoing message, make an HTTP POST to your Messages list resource URI",
 				"operationId": "to-send-a-new-outgoing-message-make-an-http-post-to-your-messages-list-resource-uri",
 				"parameters": [{
@@ -137,13 +141,14 @@
 						"description": "OK"
 					}
 				},
-				"tags": [""],
+				"tags": ["Messaging",
+				" SMS"],
 				"security": []
 			}
 		},
 		"Messages/": {
 			"post": {
-				"summary": "Messages",
+				"summary": "Add Message",
 				"description": "A Message instance resource represents an inbound or outbound message. When you send an SMS or MMS message via the REST API, use the <Message> verb in TwiML, or someone sends a message to one of your Twilio numbers Twilio creates a Message instance resource.",
 				"operationId": "",
 				"parameters": [{
@@ -207,7 +212,7 @@
 		},
 		"Messages/{MessageSid}/": {
 			"get": {
-				"summary": "Message",
+				"summary": "Get Message",
 				"description": "This resource represents an individual SMS or MMS message.",
 				"operationId": "",
 				"parameters": [{
