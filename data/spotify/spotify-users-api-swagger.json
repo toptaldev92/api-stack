@@ -1,0 +1,404 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Spotify Users API",
+		"version": null
+	},
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/users/{user_id}": {
+			"get": {
+				"summary": "",
+				"description": "[Get a Users Profile](https://developer.spotify.com/web-api/get-users-profile/)n",
+				"operationId": "get-a-users-profilehttpsdeveloperspotifycomwebapigetusersprofile",
+				"parameters": [{
+					"in": "path",
+					"name": "user_id",
+					"description": "The users Spotify user ID."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{user_id}/playlists": {
+			"get": {
+				"summary": "",
+				"description": "[Get a List of a Users Playlists](https://developer.spotify.com/web-api/get-list-users-playlists/)n",
+				"operationId": "get-a-list-of-a-users-playlistshttpsdeveloperspotifycomwebapigetlistusersplaylists",
+				"parameters": [{
+					"in": "header",
+					"name": "Accept",
+					"description": "It is used to set specified media type."
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "The maximum number of items to return"
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "The index of the first item to return"
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The users Spotify user ID."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "",
+				"description": "[Create a Playlist](https://developer.spotify.com/web-api/create-playlist/)n",
+				"operationId": "create-a-playlisthttpsdeveloperspotifycomwebapicreateplaylist",
+				"parameters": [{
+					"in": "header",
+					"name": "Accept",
+					"description": "It is used to set specified media type."
+				},
+				{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The users Spotify user ID."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{user_id}/playlists/{playlist_id}": {
+			"get": {
+				"summary": "",
+				"description": "[Get a Playlist](https://developer.spotify.com/web-api/get-playlist/)n",
+				"operationId": "get-a-playlisthttpsdeveloperspotifycomwebapigetplaylist",
+				"parameters": [{
+					"in": "header",
+					"name": "Accept",
+					"description": "It is used to set specified media type."
+				},
+				{
+					"in": "query",
+					"name": "fields",
+					"description": "A comma-separated list of fields to filter query"
+				},
+				{
+					"in": "query",
+					"name": "market",
+					"description": "The market (an ISO 3166-1 alpha-2 country code)"
+				},
+				{
+					"in": "path",
+					"name": "playlist_id",
+					"description": "The Spotify playlist ID."
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The users Spotify user ID."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "",
+				"description": "[Change a Playlists Details](https://developer.spotify.com/web-api/change-playlist-details/)n",
+				"operationId": "change-a-playlists-detailshttpsdeveloperspotifycomwebapichangeplaylistdetails",
+				"parameters": [{
+					"in": "header",
+					"name": "Accept",
+					"description": "It is used to set specified media type."
+				},
+				{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "playlist_id",
+					"description": "The Spotify playlist ID."
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The users Spotify user ID."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{user_id}/playlists/{playlist_id}/followers": {
+			"delete": {
+				"summary": "",
+				"description": "[Unfollow a Playlist](https://developer.spotify.com/web-api/unfollow-playlist/)n",
+				"operationId": "unfollow-a-playlisthttpsdeveloperspotifycomwebapiunfollowplaylist",
+				"parameters": [{
+					"in": "path",
+					"name": "playlist_id",
+					"description": "The Spotify playlist ID."
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The users Spotify user ID."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "",
+				"description": "[Follow a Playlist](https://developer.spotify.com/web-api/follow-playlist/)n",
+				"operationId": "follow-a-playlisthttpsdeveloperspotifycomwebapifollowplaylist",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "playlist_id",
+					"description": "The Spotify playlist ID."
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The users Spotify user ID."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{user_id}/playlists/{playlist_id}/followers/contains": {
+			"get": {
+				"summary": "",
+				"description": "[Check if Users Follow a Playlist](https://developer.spotify.com/web-api/check-user-following-playlist/)n",
+				"operationId": "check-if-users-follow-a-playlisthttpsdeveloperspotifycomwebapicheckuserfollowingplaylist",
+				"parameters": [{
+					"in": "query",
+					"name": "ids",
+					"description": "A comma-separated list of users ids"
+				},
+				{
+					"in": "path",
+					"name": "playlist_id",
+					"description": "The Spotify playlist ID."
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The users Spotify user ID."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{user_id}/playlists/{playlist_id}/tracks": {
+			"delete": {
+				"summary": "",
+				"description": "[Remove Tracks from a Playlist](https://developer.spotify.com/web-api/remove-tracks-playlist/)n",
+				"operationId": "remove-tracks-from-a-playlisthttpsdeveloperspotifycomwebapiremovetracksplaylist",
+				"parameters": [{
+					"in": "header",
+					"name": "Accept",
+					"description": "It is used to set specified media type."
+				},
+				{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "playlist_id",
+					"description": "The Spotify playlist ID."
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The users Spotify user ID."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "",
+				"description": "[Get a Playlists Tracks](https://developer.spotify.com/web-api/get-playlists-tracks/)n",
+				"operationId": "get-a-playlists-trackshttpsdeveloperspotifycomwebapigetplayliststracks",
+				"parameters": [{
+					"in": "header",
+					"name": "Accept",
+					"description": "It is used to set specified media type."
+				},
+				{
+					"in": "query",
+					"name": "fields",
+					"description": "A comma-separated list of fields to filter query"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "The maximum number of items to return"
+				},
+				{
+					"in": "query",
+					"name": "market",
+					"description": "The market (an ISO 3166-1 alpha-2 country code)"
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "The index of the first item to return"
+				},
+				{
+					"in": "path",
+					"name": "playlist_id",
+					"description": "The Spotify playlist ID."
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The users Spotify user ID."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "",
+				"description": "[Add Tracks to a Playlist](https://developer.spotify.com/web-api/add-tracks-to-playlist/)n",
+				"operationId": "add-tracks-to-a-playlisthttpsdeveloperspotifycomwebapiaddtrackstoplaylist",
+				"parameters": [{
+					"in": "header",
+					"name": "Accept",
+					"description": "It is used to set specified media type."
+				},
+				{
+					"in": "path",
+					"name": "playlist_id",
+					"description": "The Spotify playlist ID."
+				},
+				{
+					"in": "query",
+					"name": "position",
+					"description": "The position to insert the tracks, a zero-based index"
+				},
+				{
+					"in": "query",
+					"name": "uris",
+					"description": "A comma-separated list of Spotify track URIs to add. A maximum of 100 tracks can be added in one request."
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The users Spotify user ID."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "",
+				"description": "[Reorder or replace a Playlists Tracks](https://developer.spotify.com/web-api/reorder-playlists-tracks/)n",
+				"operationId": "reorder-or-replace-a-playlists-trackshttpsdeveloperspotifycomwebapireorderplayliststracks",
+				"parameters": [{
+					"in": "header",
+					"name": "Accept",
+					"description": "It is used to set specified media type."
+				},
+				{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "playlist_id",
+					"description": "The Spotify playlist ID."
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The users Spotify user ID."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
