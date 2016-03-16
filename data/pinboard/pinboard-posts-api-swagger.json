@@ -1,0 +1,287 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Pinboard Posts API",
+		"version": null
+	},
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/posts/add": {
+			"get": {
+				"summary": "Posts Add",
+				"description": "Add a bookmark.  Arguments with shaded background are required.",
+				"operationId": "posts-add",
+				"parameters": [{
+					"in": "query",
+					"name": "description",
+					"description": "Title of the item.  This field is unfortunately named description for backwards compatibility with the delicious API",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "dt",
+					"description": "creation time for this bookmark.  Defaults to current time. Datestamps more than 10 minutes ahead of server time will be reset to current server time",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "extended",
+					"description": "Description of the item.  Called extended for backwards compatibility with delicious API",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "replace",
+					"description": "Replace any existing bookmark with this URL.  Default is yes.  If set to no, will throw an error if bookmark exists",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "shared",
+					"description": "Make bookmark public.  Default is yes unless user has enabled the save all bookmarks as private user setting, in which case default is no",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "tags",
+					"description": "List of up to 100 tags",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "toread",
+					"description": "Marks the bookmark as unread.  Default is no",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "the URL of the item",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["links"],
+				"security": []
+			}
+		},
+		"/posts/all": {
+			"get": {
+				"summary": "All Bookmarks",
+				"description": "Returns all bookmarks in the users account.",
+				"operationId": "returnAllBookmarks",
+				"parameters": [{
+					"in": "query",
+					"name": "fromdt",
+					"description": "return only bookmarks created after this time",
+					"type": "string",
+					"format": "dateTime"
+				},
+				{
+					"in": "query",
+					"name": "meta",
+					"description": "include a change detection signature for each bookmark",
+					"type": "integer",
+					"format": "integer"
+				},
+				{
+					"in": "query",
+					"name": "results",
+					"description": "number of results to return. Default is all",
+					"type": "integer",
+					"format": "integer"
+				},
+				{
+					"in": "query",
+					"name": "start",
+					"description": "offset value (default is 0)",
+					"type": "integer",
+					"format": "integer"
+				},
+				{
+					"in": "query",
+					"name": "tag",
+					"description": "filter by up to three tags",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "todt",
+					"description": "return only bookmarks created before this time",
+					"type": "string",
+					"format": "dateTime"
+				}],
+				"responses": {
+					"200": {
+						"description": "",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/Post"
+							}
+						}
+					}
+				},
+				"tags": ["links"],
+				"security": []
+			}
+		},
+		"/posts/all?hashes": {
+			"get": {
+				"summary": "Posts All Hashes",
+				"description": "Returns a change manifest of all posts. Call the update function to see if you need to fetch this at all.",
+				"operationId": "posts-all-hashes",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["links"],
+				"security": []
+			}
+		},
+		"/posts/dates": {
+			"get": {
+				"summary": "Posts Dates",
+				"description": "Returns a list of dates with the number of posts at each date.",
+				"operationId": "posts-dates",
+				"parameters": [{
+					"in": "query",
+					"name": "tag",
+					"description": "filter by up to three tags",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["links"],
+				"security": []
+			}
+		},
+		"/posts/delete": {
+			"get": {
+				"summary": "Posts Delete",
+				"description": "Delete a bookmark. Arguments with shaded background are required.",
+				"operationId": "posts-delete",
+				"parameters": [{
+					"in": "query",
+					"name": "url",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["links"],
+				"security": []
+			}
+		},
+		"/posts/get": {
+			"get": {
+				"summary": "Posts Get",
+				"description": "Returns one or more posts on a single day matching the arguments. If no date or url is given, date of most recent bookmark will be used.",
+				"operationId": "posts-get",
+				"parameters": [{
+					"in": "query",
+					"name": "dt",
+					"description": "return results bookmarked on this day",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "meta",
+					"description": "include a change detection signature in a meta attribute",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "tag",
+					"description": "filter by up to three tags",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "return bookmark for this URL",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["links"],
+				"security": []
+			}
+		},
+		"/posts/recent": {
+			"get": {
+				"summary": "Posts Recent",
+				"description": "Returns a list of the users most recent posts, filtered by tag.",
+				"operationId": "posts-recent",
+				"parameters": [{
+					"in": "query",
+					"name": "count",
+					"description": "number of results to return. Default is 15, max is 100",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "tag",
+					"description": "filter by up to three tags",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["links"],
+				"security": []
+			}
+		},
+		"/posts/suggest": {
+			"get": {
+				"summary": "Posts Suggest",
+				"description": "Returns a list of popular tags and recommended tags for a given URL.  Popular tags are tags used site-wide for the url;nrecommended tags are drawn from the users own tags.",
+				"operationId": "posts-suggest",
+				"parameters": [{
+					"in": "query",
+					"name": "url",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["links"],
+				"security": []
+			}
+		},
+		"/posts/update": {
+			"get": {
+				"summary": "Posts Update",
+				"description": "Returns the most recent time a bookmark was added, updated or deleted.",
+				"operationId": "posts-update",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["links"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
