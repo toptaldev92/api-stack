@@ -1,0 +1,203 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Spotify Browse Music API",
+		"version": null
+	},
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/browse/categories": {
+			"get": {
+				"summary": "",
+				"description": "[Get a List of Browse Categories](https://developer.spotify.com/web-api/get-list-categories/)n",
+				"operationId": "get-a-list-of-browse-categorieshttpsdeveloperspotifycomwebapigetlistcategories",
+				"parameters": [{
+					"in": "header",
+					"name": "Accept",
+					"description": "It is used to set specified media type."
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "The country (an ISO 3166-1 alpha-2 country code)"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "The maximum number of items to return"
+				},
+				{
+					"in": "query",
+					"name": "locale",
+					"description": "The desired language, consisting of an ISO 639 language code and an ISO 3166-1 alpha-2 country code, joined by an underscore. For example: es_MX, meaning Spanish (Mexico).n"
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "The index of the first item to return"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/browse/categories/{category_id}": {
+			"get": {
+				"summary": "",
+				"description": "[Get a Single Browse Category](https://developer.spotify.com/web-api/get-category/)n",
+				"operationId": "get-a-single-browse-categoryhttpsdeveloperspotifycomwebapigetcategory",
+				"parameters": [{
+					"in": "header",
+					"name": "Accept",
+					"description": "It is used to set specified media type."
+				},
+				{
+					"in": "path",
+					"name": "category_id",
+					"description": "The Spotify ID of the category you wish to fetch."
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "The country (an ISO 3166-1 alpha-2 country code)"
+				},
+				{
+					"in": "query",
+					"name": "locale",
+					"description": "The desired language, consisting of an ISO 639 language code and an ISO 3166-1 alpha-2 country code, joined by an underscore. For example: es_MX, meaning Spanish (Mexico).n"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/browse/categories/{category_id}/playlists": {
+			"get": {
+				"summary": "",
+				"description": "[Get a Categorys playlists](https://developer.spotify.com/web-api/get-categorys-playlists/)n",
+				"operationId": "get-a-categorys-playlistshttpsdeveloperspotifycomwebapigetcategorysplaylists",
+				"parameters": [{
+					"in": "header",
+					"name": "Accept",
+					"description": "It is used to set specified media type."
+				},
+				{
+					"in": "path",
+					"name": "category_id",
+					"description": "The Spotify ID of the category you wish to fetch."
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "The country (an ISO 3166-1 alpha-2 country code)"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "The maximum number of items to return"
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "The index of the first item to return"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/browse/featured-playlists": {
+			"get": {
+				"summary": "",
+				"description": "[Get a List of Featured Playlists](https://developer.spotify.com/web-api/get-list-featured-playlists/)n",
+				"operationId": "get-a-list-of-featured-playlistshttpsdeveloperspotifycomwebapigetlistfeaturedplaylists",
+				"parameters": [{
+					"in": "header",
+					"name": "Accept",
+					"description": "It is used to set specified media type."
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "The country (an ISO 3166-1 alpha-2 country code)"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "The maximum number of items to return"
+				},
+				{
+					"in": "query",
+					"name": "locale",
+					"description": "The desired language, consisting of an ISO 639 language code and an ISO 3166-1 alpha-2 country code, joined by an underscore. For example: es_MX, meaning Spanish (Mexico).n"
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "The index of the first item to return"
+				},
+				{
+					"in": "query",
+					"name": "timestamp",
+					"description": "A timestamp in ISO 8601 format (yyyy-MM-ddTHH:mm:ss) with the users local time to get results tailored to a specific date and time in the day. If not provided, it defaults to the current UTC time. Example: 2014-10-23T09:00:00 for a user whose local time is 9AM.n"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/browse/new-releases": {
+			"get": {
+				"summary": "",
+				"description": "[Get a List of New Releases](https://developer.spotify.com/web-api/get-list-new-releases/)n",
+				"operationId": "get-a-list-of-new-releaseshttpsdeveloperspotifycomwebapigetlistnewreleases",
+				"parameters": [{
+					"in": "header",
+					"name": "Accept",
+					"description": "It is used to set specified media type."
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "The country (an ISO 3166-1 alpha-2 country code)"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "The maximum number of items to return"
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "The index of the first item to return"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
