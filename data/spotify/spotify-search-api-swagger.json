@@ -1,0 +1,148 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Spotify Search API",
+		"version": null
+	},
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/search": {
+			"get": {
+				"summary": "",
+				"description": "[Search for an Item](https://developer.spotify.com/web-api/search-item/)n",
+				"operationId": "search-for-an-itemhttpsdeveloperspotifycomwebapisearchitem",
+				"parameters": [{
+					"in": "query",
+					"name": "limit",
+					"description": "The maximum number of items to return"
+				},
+				{
+					"in": "query",
+					"name": "market",
+					"description": "The market (an ISO 3166-1 alpha-2 country code).  If given, only items with content playable in that market will be returned."
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "The index of the first item to return"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "The search querys keywords (and optional field filters). The search is not case-sensitive: roadhouse will match Roadhouse, roadHouse, etc. Keywords will be matched in any order unless surrounded by quotes, thus q=roadhouse&20blues will match both Blues Roadhouse and Roadhouse of the Blues. Quotation marks can be used to limit the match to a phrase: q=roadhouse&20blues will match My Roadhouse Blues but not Roadhouse of the Blues. By default, results are returned when a match is found in any field of the target object type. Searches can be made more specific by specifying an album, artist or track field filter. For example q=album:gold%20artist:abba&type=album will search for albums with the text gold in the album name and the text abba in an artist name. Other possible field filters, depending on object types being searched, include year, genre, upc, and isrc. For example, q=damian%20genre:reggae-pop&type=artist. The asterisk (*) character can, with some limitations, be used as a wildcard (maximum: 2 per query). It will match a variable number of non-white-space characters. It cannot be used in a quoted phrase, in a field filter, or as the first character of the keyword string. Searching for playlists will return results matching the playlists name and/or description."
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "A comma-separated list of item types to search across. Search results will include hits from all the specified item types; for example q=name:abacab&type=album,track will return both albums and tracks with abacab in their name."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/search/1/album": {
+			"get": {
+				"summary": "Lookup",
+				"description": "Lookup",
+				"operationId": "lookup",
+				"parameters": [{
+					"in": "query",
+					"name": "Accept",
+					"description": "The format to be returned in the response. (e.g. JSON, or XML)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of the result set to return.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "Search string encoded in UTF-8.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/search/1/artist": {
+			"get": {
+				"summary": "Search",
+				"description": "Search",
+				"operationId": "search",
+				"parameters": [{
+					"in": "query",
+					"name": "Accept",
+					"description": "The format to be returned in the response. (e.g. JSON, or XML)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of the result set to return.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "Search string encoded in UTF-8.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/search/1/track": {
+			"get": {
+				"summary": "Search",
+				"description": "Search",
+				"operationId": "search",
+				"parameters": [{
+					"in": "query",
+					"name": "Accept",
+					"description": "The format to be returned in the response. (e.g. JSON, or XML)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of the result set to return.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "Search string encoded in UTF-8.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
