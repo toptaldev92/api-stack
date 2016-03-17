@@ -1,0 +1,123 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Fitbit Heart Rate API",
+		"description": "The Fitbit API allows developers to interact with Fitbit data in their own applications, products and services.",
+		"version": "1"
+	},
+	"host": "api.fitbit.com",
+	"basePath": "/1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/user/-/bp.{format}": {
+			"post": {
+				"summary": "Log Heart Rate",
+				"description": "Log Heart Rate",
+				"operationId": "log-heart-rate",
+				"parameters": [{
+					"in": "query",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "diastolic",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "systolic",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["heart rate"],
+				"security": []
+			}
+		},
+		"/user/-/bp/date/{date}.{format}": {
+			"get": {
+				"summary": "Get Heart Rate",
+				"description": "Get Heart Rate",
+				"operationId": "get-heart-rate",
+				"parameters": [{
+					"in": "query",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["heart rate"],
+				"security": []
+			}
+		},
+		"/user/-/bp/{bp-log-id}.{format}": {
+			"delete": {
+				"summary": "Delete Heart Rate Log",
+				"description": "Delete Heart Rate Log",
+				"operationId": "delete-heart-rate-log",
+				"parameters": [{
+					"in": "query",
+					"name": "bp-log-id",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "bp-log-id",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["heart rate"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
