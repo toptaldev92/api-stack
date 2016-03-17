@@ -1,0 +1,99 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Fitbit Profile API",
+		"description": "The Fitbit API allows developers to interact with Fitbit data in their own applications, products and services.",
+		"version": "1"
+	},
+	"host": "api.fitbit.com",
+	"basePath": "/1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/user/-/profile.{format}": {
+			"post": {
+				"summary": "Get User Info",
+				"description": "Get User Info",
+				"operationId": "get-user-info",
+				"parameters": [{
+					"in": "query",
+					"name": "birthday",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "fullname",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "gender",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "height",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "nickname",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["profile"],
+				"security": []
+			}
+		},
+		"/user/{user-id}/profile.{format}": {
+			"get": {
+				"summary": "Get Profile",
+				"description": "",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user-id",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "user-id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["profile"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
