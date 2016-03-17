@@ -1,0 +1,123 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Fitbit Heart API",
+		"description": "The Fitbit API allows developers to interact with Fitbit data in their own applications, products and services.",
+		"version": "1"
+	},
+	"host": "api.fitbit.com",
+	"basePath": "/1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/user/-/heart.{format}": {
+			"post": {
+				"summary": "Log Sleep",
+				"description": "Log Sleep",
+				"operationId": "log-sleep",
+				"parameters": [{
+					"in": "query",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "heartRate",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "tracker",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["heart"],
+				"security": []
+			}
+		},
+		"/user/-/heart/date/{date}.{format}": {
+			"get": {
+				"summary": "Get Sleep",
+				"description": "Get Sleep",
+				"operationId": "get-sleep",
+				"parameters": [{
+					"in": "query",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["heart"],
+				"security": []
+			}
+		},
+		"/user/-/heart/{heart-log-id}.{format}": {
+			"delete": {
+				"summary": "Delete Sleep Log",
+				"description": "Delete Sleep Log",
+				"operationId": "delete-sleep-log",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "heart-log-id",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "heart-log-id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["heart"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}
