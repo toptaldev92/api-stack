@@ -155,10 +155,10 @@ title: The API Stack
                             {% assign thisname = thisname | append:'/' %}
                             {% assign thisname = thisname | replace: ' ','-' %}
 
-                            {% if property.type == 'x-openapi-spec' %}
+                            {% if property.type == 'x-openapi-spec-json' %}
 
-                              {% assign openapi_spec_url = property.url %}
-                              {% assign pathname = openapi_spec_url | replace: site.url,'' %}
+                              {% assign openapi_json_spec_url = property.url %}
+                              {% assign pathname = openapi_json_spec_url | replace: site.url,'' %}
                               {% assign pathname = pathname | replace: '/data/','' %}
                               {% assign pathname = pathname | replace: thisname,'' %}
                               {% assign pathname = pathname | replace: '/','' %}
@@ -167,7 +167,11 @@ title: The API Stack
 
                             {% endif %}
 
-                            {% if property.type == 'x-postman %}
+                            {% if property.type == 'x-openapi-spec-yaml' %}
+                              {% assign openapi_yaml_spec_url = property.url %}
+                            {% endif %}
+
+                            {% if property.type == 'x-postman' %}
                               {% assign postman_url = property.url %}
                             {% endif %}
 
@@ -186,9 +190,14 @@ title: The API Stack
                               {{ api.name }}
                             </td>
                             <td align="right">
-                              {% if openapi_spec_url != null and openapi_spec_url != empty %}
-                                <a href="{{ openapi_spec_url }}" target="_blank" title="OpenAPI Spec">
+                              {% if openapi_json_spec_url != null and openapi_json_spec_url != empty %}
+                                <a href="{{ openapi_json_spec_url }}" target="_blank" title="OpenAPI Spec">
                                   <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-swagger-round.png" width="25" align="right" />
+                                </a>
+                              {% endif %}
+                              {% if openapi_yaml_spec_url != null and openapi_yaml_spec_url != empty %}
+                                <a href="{{ openapi_yaml_spec_url }}" target="_blank" title="API Blueprint">
+                                  <img style="padding: 15px;" src="https://s3.amazonaws.com/kinlane-productions/building-blocks/x-postman.png" width="25" align="right" />
                                 </a>
                               {% endif %}
                               {% if api_blueprint_url != null and api_blueprint_url != empty %}
@@ -201,9 +210,6 @@ title: The API Stack
                                   <img style="padding: 15px;" src="https://s3.amazonaws.com/kinlane-productions/building-blocks/x-postman.png" width="25" align="right" />
                                 </a>
                               {% endif %}
-                              <a href="#" onclick="showme('methods-for-{{ pathname }}'); return false;" target="_blank" title="View Endpoint List">
-                                <img style="padding-top: 4px; padding-right: 3px; padding-left: 3px;" src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-endpoints.png" width="25" align="right" />
-                              </a>
                             </td>
                           </tr>
                           <tr style="display: none;" id="methods-for-{{ pathname }}">
