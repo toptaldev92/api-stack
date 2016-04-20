@@ -28,13 +28,11 @@ title: The API Stack
   {% for item in folder %}
     {% assign file = item %}
     {% if file.apis != null %}
-      {% assign masterapijson = file.apis %}
+      {% assign masterapisjson = file.apis %}
 
       {% assign common_api_action_url = '' %}
 
-      {% for apisjson in masterapijson %}
-
-        {{ apisjson }} <br />
+      {% for apisjson in masterapisjson %}
 
         {% if apisjson.specificationVersion != null %}
 
@@ -74,14 +72,13 @@ title: The API Stack
 
             <tr>
               <td colspan="2">
-                --{{ apijson.image }}--
-                {% if apijson.image != null %}
+                {% if apisjson.image != null %}
                   <a href="{{ website_url }}">
-                    <img src="{{ apijson.image }}" align="left" style="padding: 5px;" width="150" />
+                    <img src="{{ apisjson.image }}" align="left" style="padding: 5px;" width="150" />
                   </a>
                 {% endif %}
-                <a href="{{ website_url }}" style="font-size: 22px;"><strong>{{ apijson.name }}</strong></a><br />
-                {{ apijson.description }}
+                <a href="{{ website_url }}" style="font-size: 22px;"><strong>{{ apisjson.name }}</strong></a><br />
+                {{ apisjson.description }}
               </td>
             </tr>
             <tr>
@@ -126,9 +123,9 @@ title: The API Stack
                     </li>
                   {% endif %}
 
-                  {% if apijson.url != null %}
+                  {% if apisjson.url != null %}
                     <li style="display: inline; padding-left: 15px; padding-right: 15px;">
-                      <a href="{{ apijson.url }}" target="_blank" title="APIs.json">
+                      <a href="{{ apisjson.url }}" target="_blank" title="APIs.json">
                         <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-api-a.png" width="61" align="center" />
                       </a>
                     </li>
@@ -139,14 +136,14 @@ title: The API Stack
             <tr>
               <td align="center" colspan="3" style="margin-left: 90px; margin-right: 90px;">
                   {% assign api_action_url = '' %}
-                  {% assign numberofapis = apijson.apis | size %}
+                  {% assign numberofapis = apisjson.apis | size %}
                   {% if numberofapis == 0 %}
 
                   {% else %}
 
                     <p style="font-size: 18px; text-align: left; margin-left: 117px;"><strong>APIs:</strong></p>
                       {% assign api_action_url = '' %}
-                      {% for api in apijson.apis %}
+                      {% for api in apisjson.apis %}
 
                       <table cellpadding="3" cellspacing="2" width="70%" border="0">
 
@@ -154,7 +151,7 @@ title: The API Stack
                           {% assign api_action_url = '' %}
                           {% for property in api.properties %}
 
-                            {% assign thisname = apijson.name | downcase %}
+                            {% assign thisname = apisjson.name | downcase %}
                             {% assign thisname = thisname | append:'/' %}
                             {% assign thisname = thisname | replace: ' ','-' %}
 
