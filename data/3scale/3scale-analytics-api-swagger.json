@@ -1,0 +1,228 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "3Scale Analytics API",
+		"description": "The API for managing 3Scale analytics",
+		"termsOfService": "http://www.3scale.net/terms-and-conditions/",
+		"contact": {
+			"name": "3Scale",
+			"url": "https://support.3scale.net/"
+		},
+		"version": "1"
+	},
+	"host": "su1.3scale.net",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/stats/applications/{application_id}/usage.{format}": {
+			"get": {
+				"summary": "Application Usage by Metric",
+				"description": "",
+				"operationId": "application_ops",
+				"parameters": [{
+					"in": "path",
+					"name": "application_id",
+					"description": "id of the application.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"description": "Response format.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "granularity",
+					"description": "Granularity of the results. Each period has an associated granularity.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "metric_name",
+					"description": "System name of metric for which to get data.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "period",
+					"description": "Period, combined with since give the stats for the time range [since .. since + period]. It is required if until is not passed.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "since",
+					"description": "Time range start. Format YYYY-MM-DD HH:MM:SS, examples: 2012-02-22, 2012-02-22 23:49:00",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "skip_change",
+					"description": "Skip period over period calculations (setting this to true will increase the performance of the call)",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "timezone",
+					"description": "Timezone to do the calculations in.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "until",
+					"description": "Time range end. Format YYYY-MM-DD HH:MM:SS",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/stats/services/{service_id}/top_applications.{format}": {
+			"get": {
+				"summary": "Service Top Applications",
+				"description": "",
+				"operationId": "service_ops",
+				"parameters": [{
+					"in": "path",
+					"name": "format",
+					"description": "Response format.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "metric_name",
+					"description": "System name of metric for which to get data.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "period",
+					"description": "Period, combined with since give the stats for the time range [since .. since + period]. It is required if until is not passed.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "since",
+					"description": "Time range start. Format YYYY-MM-DD HH:MM:SS, examples: 2012-02-22, 2012-02-22 23:49:00",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/stats/services/{service_id}/usage.{format}": {
+			"get": {
+				"summary": "Service Usage by Metric",
+				"description": "",
+				"operationId": "service_ops",
+				"parameters": [{
+					"in": "path",
+					"name": "format",
+					"description": "Response format.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "granularity",
+					"description": "Granularity of the results. Each period has an associated granularity.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "metric_name",
+					"description": "System name of metric for which to get data.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "period",
+					"description": "Period, combined with since give the stats for the time range [since .. since + period]. It is required if until is not passed.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "since",
+					"description": "Time range start. Format YYYY-MM-DD HH:MM:SS, examples: 2012-02-22, 2012-02-22 23:49:00",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "skip_change",
+					"description": "Skip period over period calculations (setting this to true will increase the performance of the call)",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "timezone",
+					"description": "Timezone to do the calculations in.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "until",
+					"description": "Time range end. Format YYYY-MM-DD HH:MM:SS",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"Errors": {
+			"properties": {
+				"Name": {
+					"description": "The description of the error.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}
