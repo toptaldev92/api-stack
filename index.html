@@ -152,7 +152,10 @@ title: The API Stack
 
                           {% assign api_action_spec = '' %}
                           {% assign api_action_url = '' %}
+                          {% assign openapi_json_spec_url = '' %}
+                          {% assign openapi_yaml_spec_url = '' %}
                           {% for property in api.properties %}
+
 
                             {% assign thisname = apisjson.name | downcase %}
                             {% assign thisname = thisname | append:'/' %}
@@ -170,7 +173,7 @@ title: The API Stack
                               {% assign openapi_spec_json = file | map: pathname %}
 
                             {% endif %}
-                            {{ property.type }}
+                            
                             {% if property.type == 'x-openapi-spec-yaml' %}
                               {% assign openapi_yaml_spec_url = property.url %}
                             {% endif %}
