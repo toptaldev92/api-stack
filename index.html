@@ -31,7 +31,7 @@ title: The API Stack
       {% assign masterapijson = file.apis %}
       {{ masterapijson }}
       {% assign common_api_action_url = '' %}
-      {% if apijson.specificationVersion != null %}
+      {% if masterapijson.specificationVersion != null %}
 
         {% assign blog_url = '' %}
         {% assign blogrss_url = '' %}
@@ -40,7 +40,7 @@ title: The API Stack
         {% assign twitter_url = '' %}
         {% assign website_url = '' %}
 
-        {% for common in apijson.x-common %}
+        {% for common in masterapijson.x-common %}
           {% if common.type == 'x-blog' %}
             {% assign blog_url = common.url %}
           {% endif %}
@@ -61,10 +61,10 @@ title: The API Stack
           {% endif %}
         {% endfor %}
 
-        {% if apisjson.humanURL == null %}
+        {% if masterapijson.humanURL == null %}
           {% assign website_url = portal_url %}
         {% else %}
-          {% assign website_url = apisjson.humanURL %}
+          {% assign website_url = masterapijson.humanURL %}
         {% endif %}
 
           <tr>
