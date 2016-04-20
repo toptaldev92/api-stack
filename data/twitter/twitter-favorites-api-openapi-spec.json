@@ -1,0 +1,77 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Twitter Favorites API",
+		"description": "This is the favorites API.",
+		"termsOfService": "http://dev.twitter.com/overview/terms",
+		"contact": {
+			"name": "Twitter",
+			"url": "https://dev.twitter.com/discussions"
+		},
+		"version": "1.1"
+	},
+	"host": "api.twitter.com",
+	"basePath": "/1.1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/favorites/destroy/": {
+			"post": {
+				"summary": "favorites/destroy",
+				"description": "Un-favorites the status specified in the ID parameter as the authenticating user. Returns the un-favorited status in the requested format when successful.This process invoked by this method is asynchronous. The immediately returned status may not indicate the resultant favorited status of the tweet. A 200 OK response from this method will indicate whether the intended action was successful or not.",
+				"operationId": "favoritesDestroy",
+				"parameters": [{
+					"in": "query",
+					"name": ""
+				},
+				{
+					"in": "query",
+					"name": "include_entities"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/favorites/list/": {
+			"get": {
+				"summary": "favorites/list",
+				"description": "Returns the 20 most recent Tweets favorited by the authenticating or specified user.",
+				"operationId": "favoritesList",
+				"parameters": [{
+					"in": "query",
+					"name": ""
+				},
+				{
+					"in": "query",
+					"name": "count"
+				},
+				{
+					"in": "query",
+					"name": "include_entities"
+				},
+				{
+					"in": "query",
+					"name": "max_id"
+				},
+				{
+					"in": "query",
+					"name": "since_id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

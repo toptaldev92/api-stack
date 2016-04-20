@@ -1,0 +1,529 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "XigniteGlobalNews",
+		"description": "Financial news APIs.",
+		"version": "v1"
+	},
+	"host": "globalnews.xignite.com",
+	"basePath": "xGlobalNews.xml/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"GetHistoricalMarketHeadlines/": {
+			"get": {
+				"summary": "Historical Market Headlines",
+				"description": "Returns all market headlines that were published in a specified time frame.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "EndDate",
+					"description": "The end date range.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "startDate",
+					"description": "The start date range.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_Token",
+					"description": "The API Key",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["news",
+				" market",
+				" historical"],
+				"security": []
+			}
+		},
+		"GetHistoricalMarketHeadlinesBySector/": {
+			"get": {
+				"summary": "Historical Market Headlines By Sector",
+				"description": "Returns all market headlines that were published in a specified time frame for a specified sector.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "EndDate",
+					"description": "The end date range.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "Sector",
+					"description": "The business sector to search within.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "StartDate",
+					"description": "The start date range.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_Token",
+					"description": "The API Key.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["news",
+				" markets",
+				" sectors"],
+				"security": []
+			}
+		},
+		"GetHistoricalReleasesBySecurity/": {
+			"get": {
+				"summary": "Historical Releases By Security",
+				"description": "Returns all press releases that were published in a specified time frame for a given security.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "EndDate",
+					"description": "The end date range.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "Identifier",
+					"description": "The ticker symbol for company",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "IdentifierType",
+					"description": "The identifier to use.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "StartDate",
+					"description": "The start date range.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_Token",
+					"description": "The API Key.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["news",
+				" press releases",
+				" securities"],
+				"security": []
+			}
+		},
+		"GetHistoricalSecurityHeadlines/": {
+			"get": {
+				"summary": "Historical Security Headlines",
+				"description": "Returns all headlines that were published in a specified time frame for a given security.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "EndDate",
+					"description": "The end date range.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "Identifier",
+					"description": "The ticker symbol for company",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "IdentifierType",
+					"description": "The symbol to use.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "StartDate",
+					"description": "The start date range.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_Token",
+					"description": "The API Key.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["news",
+				" historical",
+				" securities"],
+				"security": []
+			}
+		},
+		"GetMarketNewsDetails/": {
+			"get": {
+				"summary": "Market News Details",
+				"description": "Returns the summary content for a specified headline.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "Reference",
+					"description": "The URL of the news article.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_Token",
+					"description": "The API Key.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["news",
+				" markets"],
+				"security": []
+			}
+		},
+		"GetTodaysMarketHeadlines/": {
+			"get": {
+				"summary": "Todays Market Headlines",
+				"description": "Returns all market headlines that were published today.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "_Token",
+					"description": "The API Key.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["financial",
+				" news"],
+				"security": []
+			}
+		},
+		"GetTodaysMarketHeadlinesBySector/": {
+			"get": {
+				"summary": "Todays Market Headlines By Sector",
+				"description": "Returns all market headlines that were published today for a specified sector.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "Sector",
+					"description": "The business sector to search within.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_Token",
+					"description": "The API Key.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["news",
+				" markets"],
+				"security": []
+			}
+		},
+		"GetTodaysReleasesBySecurity/": {
+			"get": {
+				"summary": "Todays Releases By Security",
+				"description": "Returns all press releases that were published today for a given security.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "Identifier",
+					"description": "The ticker symbol for company",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "IdentifierType",
+					"description": "The symbol to use.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_Token",
+					"description": "The API Key.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["news",
+				" press releases",
+				" securities"],
+				"security": []
+			}
+		},
+		"GetTodaysSecurityHeadlines/": {
+			"get": {
+				"summary": "Todays Security Headlines",
+				"description": "Returns all headlines that were published today for a given security.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "Identifier",
+					"description": "The ticker symbol for company",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "IdentifierType",
+					"description": "The ticker symbol for company",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_Token",
+					"description": "The API Key",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["news",
+				" financial",
+				" securities"],
+				"security": []
+			}
+		},
+		"GetTopMarketHeadlines/": {
+			"get": {
+				"summary": "Get Top Market Headlines",
+				"description": "Returns the most recent specified number of market headlines.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "Count",
+					"description": "Number of headlines to return",
+					"type": "number",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_Token",
+					"description": "API Key",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["financial",
+				" news"],
+				"security": []
+			}
+		},
+		"GetTopMarketHeadlinesBySector/": {
+			"get": {
+				"summary": "Top Market Headlines By Sector",
+				"description": "Returns the most recent specified number of market headlines associated with a specified sector.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "Count",
+					"description": "The number of news items to return.",
+					"type": "number",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "Sector",
+					"description": "The business sector to search within.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_Token",
+					"description": "The API Key.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["news",
+				" markets"],
+				"security": []
+			}
+		},
+		"GetTopReleasesBySecurity": {
+			"get": {
+				"summary": "Top Releases By Security",
+				"description": "Returns the most recent specified number of press releases for a given security.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "country",
+					"description": "Number of items to return.",
+					"type": "number",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "Identifier",
+					"description": "The ticker symbol for company",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "IdentifierType",
+					"description": "The identifier to use.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_Token",
+					"description": "The API Key.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["news",
+				" press releases",
+				" securities"],
+				"security": []
+			}
+		},
+		"GetTopSecurityHeadlines/": {
+			"get": {
+				"summary": "Get Top Security Headlines",
+				"description": "Returns the most recent specified number of headlines for a given security.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "Count",
+					"description": "The number of news items to return.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "Identifier",
+					"description": "The ticker symbol for company",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "IdentifierType",
+					"description": "The ticker symbol for company",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_Token",
+					"description": "API Key",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["news",
+				" security",
+				" financial"],
+				"security": []
+			}
+		},
+		"ListSectors/": {
+			"get": {
+				"summary": "List Sectors",
+				"description": "Provides a list of all available values for a given sector.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "_Token",
+					"description": "API Key",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["financial",
+				" news",
+				" sectors"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

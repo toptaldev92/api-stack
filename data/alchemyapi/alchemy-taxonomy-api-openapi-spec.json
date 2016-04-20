@@ -1,0 +1,111 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Alchemy Taxonomy API",
+		"description": "AlchemyAPI is capable of categorizing your HTML, or web-based content. We employ sophisticated statistical algorithms and natural language processing technology to analyze your information, assigning the most likely topic category (baseball, mobile phones, etc.).",
+		"termsOfService": "http://www.alchemyapi.com/company/terms.html",
+		"contact": {
+			"name": "AlchemyAPI",
+			"url": "http://www.alchemyapi.com/company/contact",
+			"email": "questions@alchemyapi.com"
+		},
+		"version": "v1"
+	},
+	"host": "access.alchemyapi.com",
+	"basePath": "/calls/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/url/URLGetRankedTaxonomy": {
+			"get": {
+				"summary": "/calls/url/URLGetRankedTaxonomy",
+				"description": "AlchemyAPI is capable of categorizing your HTML, or web-based content. We employ sophisticated statistical algorithms and natural language processing technology to analyze your information, assigning the most likely topic category (baseball, mobile phones, etc.).",
+				"operationId": "callsUrlURLGetRankedTaxonomy",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/results"
+							}
+						}
+					}
+				},
+				"tags": ["Taxonomy"],
+				"security": [{
+					"apikey": []
+				}]
+			}
+		}
+	},
+	"securityDefinitions": {
+		"apikey": {
+			"type": "apiKey",
+			"name": "apikey"
+		}
+	},
+	"definitions": {
+		"results": {
+			"properties": {
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"usage": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"totalTransactions": {
+					"description": "This is a default description.",
+					"type": "integer"
+				},
+				"language": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"taxonomy": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"taxonomy": {
+			"properties": {
+				"element": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"element": {
+			"properties": {
+				"label": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"score": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

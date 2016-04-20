@@ -1,0 +1,78 @@
+- swagger: "2.0"
+  info:
+    title: Alchemy Combined Call API
+    description: AlchemyAPI's combined call makes it faster for users to analyze a single
+      piece of content with multiple text and image analysis features.
+    termsOfService: http://www.alchemyapi.com/company/terms.html
+    contact:
+      name: AlchemyAPI
+      url: http://www.alchemyapi.com/company/contact
+      email: questions@alchemyapi.com
+    version: v1
+  host: access.alchemyapi.com
+  basePath: /calls/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /url/URLGetCombinedData:
+      get:
+        summary: Get Combined Data
+        description: AlchemyAPIs combined call makes it faster for users to analyze
+          a single piece of content with multiple text and image analysis features.
+        operationId: callsUrlURLGetCombinedData
+        parameters:
+        - in: query
+          name: apikey
+          type: string
+          format: string
+        - in: query
+          name: url
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/results'
+        tags:
+        - Combined
+        security: []
+  securityDefinitions:
+    apikey:
+      type: apiKey
+      name: apikey
+  definitions:
+    results:
+      properties:
+        status:
+          description: This is a default description.
+          type: string
+        usage:
+          description: This is a default description.
+          type: string
+        url:
+          description: This is a default description.
+          type: string
+        totalTransactions:
+          description: This is a default description.
+          type: string
+        language:
+          description: This is a default description.
+          type: string
+        keywords:
+          description: This is a default description.
+          type: string
+    keyword:
+      properties:
+        text:
+          description: This is a default description.
+          type: string
+        relevance:
+          description: This is a default description.
+          type: string

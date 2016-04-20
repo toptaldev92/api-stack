@@ -1,0 +1,126 @@
+- swagger: "2.0"
+  info:
+    title: Page
+    description: This is a page api
+    termsOfService: http://stack.network/terms-of-service.html
+    version: ~
+  host: page.api.kinlane.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /page/:
+      get:
+        summary: retrieves all pages
+        description: pulls all pages, with filter by keyword
+        operationId: getPages
+        parameters:
+        - in: query
+          name: query
+          description: a text query to search across page
+        responses:
+          200:
+            description: OK
+        tags:
+        - Page
+        security: []
+      post:
+        summary: add page
+        description: add a new page
+        operationId: addPage
+        parameters:
+        - in: query
+          name: description
+          description: description of the page
+        - in: query
+          name: name
+          description: name of the page
+        - in: query
+          name: tags
+          description: tags for the page
+        - in: query
+          name: url
+          description: url for the page
+        responses:
+          200:
+            description: OK
+        tags:
+        - Page
+        security: []
+    /page/{page_id}:
+      delete:
+        summary: delete page
+        description: deletes an page
+        operationId: deletePage
+        parameters:
+        - in: path
+          name: page_id
+          description: unique id for the page
+        responses:
+          200:
+            description: OK
+        tags:
+        - Page
+        security: []
+      get:
+        summary: Retrieve a page using its id
+        description: Returns the page detail
+        operationId: getPage
+        parameters:
+        - in: path
+          name: page_id
+          description: id for the page, notice this is in the path, not a query variable
+        responses:
+          200:
+            description: OK
+        tags:
+        - Page
+        security: []
+      put:
+        summary: update page
+        description: update page
+        operationId: updatePage
+        parameters:
+        - in: query
+          name: description
+          description: description of the page
+        - in: query
+          name: name
+          description: name of the page
+        - in: path
+          name: page_id
+          description: unique id for the page
+        - in: query
+          name: tags
+          description: tags for the page
+        - in: query
+          name: url
+          description: url for the page
+        responses:
+          200:
+            description: OK
+        tags:
+        - Page
+        security: []
+  definitions:
+    page:
+      properties:
+        name:
+          description: This is a default description.
+          type: delete
+        description:
+          description: This is a default description.
+          type: delete
+        url:
+          description: This is a default description.
+          type: delete
+        tags:
+          description: This is a default description.
+          type: delete
+        id:
+          description: This is a default description.
+          type: delete

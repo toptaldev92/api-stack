@@ -1,0 +1,925 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "DreamFactory Rackspace Files API",
+		"description": "Working with files, whether local to the DSP or remote breaks down to basic CRUD operations, just like working with your database services.",
+		"version": null
+	},
+	"host": "dsp-sandman1.cloud.dreamfactory.com",
+	"basePath": "/rest/RackspaceCloudFiles",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/RackspaceCloudFiles": {
+			"delete": {
+				"summary": "deleteContainers() - Delete one or more containers.",
+				"description": "Pass a comma-delimited list of container names to delete. Set force to true to delete all containers. Alternatively, to delete by container records or a large list of names, use the POST request with X-HTTP-METHOD = DELETE header and post containers.",
+				"operationId": "deleteContainers",
+				"parameters": [{
+					"in": "query",
+					"name": "force",
+					"description": "Set force to true to delete all containers, otherwise names parameter is required.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "names",
+					"description": "List of containers to delete.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "getResources() - List all resources.",
+				"description": "List the names of the available containers in this storage. ",
+				"operationId": "getResources",
+				"parameters": [{
+					"in": "query",
+					"name": "as_access_components",
+					"description": "Return the names of all the accessible components.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "include_properties",
+					"description": "Return any properties of the container in the response.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "createContainers() - Create one or more containers.",
+				"description": "Post data should be a single container definition or an array of container definitions. Alternatively, override the HTTP Method to pass containers to other actions.",
+				"operationId": "createContainers",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "Array of containers to create.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "query",
+					"name": "check_exist",
+					"description": "If true, the request fails when the container to create already exists.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "header",
+					"name": "X-HTTP-METHOD",
+					"description": "Override request using POST to tunnel other http request, such as DELETE.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/RackspaceCloudFiles/{container}/": {
+			"delete": {
+				"summary": "deleteContainer() - Delete one container and/or its contents.",
+				"description": "Set content_only to true to delete the folders and files contained, but not the container. Set force to true to delete a non-empty container. Alternatively, to delete by a listing of folders and files, use the POST request with X-HTTP-METHOD = DELETE header and post listing.",
+				"operationId": "deleteContainer",
+				"parameters": [{
+					"in": "path",
+					"name": "container",
+					"description": "The name of the container you want to delete from.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "content_only",
+					"description": "Set to true to only delete the content of the container.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "force",
+					"description": "Set to true to force delete on a non-empty container.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "getContainer() - List the container's content, including properties.",
+				"description": "Use include_properties to get properties of the container. Use the include_folders and/or include_files to modify the listing.",
+				"operationId": "getContainer",
+				"parameters": [{
+					"in": "path",
+					"name": "container",
+					"description": "The name of the container from which you want to retrieve contents.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "full_tree",
+					"description": "List the contents of all sub-folders as well.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "include_files",
+					"description": "Include files in the returned listing.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "include_folders",
+					"description": "Include folders in the returned listing.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "include_properties",
+					"description": "Include any properties of the container in the response.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "zip",
+					"description": "Return the content of the folder as a zip file.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"patch": {
+				"summary": "updateContainerProperties() - Update properties of the container.",
+				"description": "Post data as an array of container properties.",
+				"operationId": "updateContainerProperties",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "An array of container properties.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "container",
+					"description": "The name of the container you want to put the contents.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "createContainer() - Create container and/or add content.",
+				"description": "Post data as an array of folders and/or files.",
+				"operationId": "createContainer",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "Array of folders and/or files.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "query",
+					"name": "check_exist",
+					"description": "If true, the request fails when the file or folder to create already exists.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "clean",
+					"description": "Option when extract is true, clean the current folder before extracting files and folders.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "container",
+					"description": "The name of the container you want to put the contents.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "extract",
+					"description": "Extract an uploaded zip file into the container.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "The full URL of the file to upload.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "header",
+					"name": "X-HTTP-METHOD",
+					"description": "Override request using POST to tunnel other http request, such as DELETE.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/RackspaceCloudFiles/{container}/{file_path}": {
+			"delete": {
+				"summary": "deleteFile() - Delete one file.",
+				"description": "Careful, this removes the given file from the storage.",
+				"operationId": "deleteFile",
+				"parameters": [{
+					"in": "path",
+					"name": "container",
+					"description": "Name of the container where the file exists.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "file_path",
+					"description": "Path and name of the file to delete.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "getFile() - Download the file contents and/or its properties.",
+				"description": "By default, the file is streamed to the browser. Use the download parameter to prompt for download. Use the include_properties parameter (optionally add content to include base64 content) to list properties of the file.",
+				"operationId": "getFile",
+				"parameters": [{
+					"in": "path",
+					"name": "container",
+					"description": "Name of the container where the file exists.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "content",
+					"description": "Return the content as base64 of the file, only applies when include_properties is true.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "download",
+					"description": "Prompt the user to download the file from the browser.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "file_path",
+					"description": "Path and name of the file to retrieve.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "include_properties",
+					"description": "Return properties of the file.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"patch": {
+				"summary": "updateFileProperties() - Update properties of the file.",
+				"description": "Post body should be an array of file properties.",
+				"operationId": "updateFileProperties",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "Properties of the file.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "container",
+					"description": "Name of the container where the file exists.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "file_path",
+					"description": "Path and name of the file to update.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "createFile() - Create a new file.",
+				"description": "Post body should be the contents of the file or an object with file properties.",
+				"operationId": "createFile",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "Content and/or properties of the file.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "query",
+					"name": "check_exist",
+					"description": "If true, the request fails when the file to create already exists.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "container",
+					"description": "Name of the container where the file exists.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "file_path",
+					"description": "Path and name of the file to create.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "replaceFile() - Update content of the file.",
+				"description": "Post body should be the contents of the file.",
+				"operationId": "replaceFile",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "The content of the file.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "container",
+					"description": "Name of the container where the file exists.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "file_path",
+					"description": "Path and name of the file to update.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/RackspaceCloudFiles/{container}/{folder_path}/": {
+			"delete": {
+				"summary": "deleteFolder() - Delete one folder and/or its contents.",
+				"description": "Set content_only to true to delete the sub-folders and files contained, but not the folder. Set force to true to delete a non-empty folder. Alternatively, to delete by a listing of sub-folders and files, use the POST request with X-HTTP-METHOD = DELETE header and post listing.",
+				"operationId": "deleteFolder",
+				"parameters": [{
+					"in": "path",
+					"name": "container",
+					"description": "The name of the container where the folder exists.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "content_only",
+					"description": "Set to true to only delete the content of the folder.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "folder_path",
+					"description": "The path of the folder where you want to delete contents. This can be a sub-folder, with each level separated by a /",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "force",
+					"description": "Set to true to force delete on a non-empty folder.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "getFolder() - List the folder's content, including properties.",
+				"description": "Use include_properties to get properties of the folder. Use the include_folders and/or include_files to modify the listing.",
+				"operationId": "getFolder",
+				"parameters": [{
+					"in": "path",
+					"name": "container",
+					"description": "The name of the container from which you want to retrieve contents.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "folder_path",
+					"description": "The path of the folder you want to retrieve. This can be a sub-folder, with each level separated by a /",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "full_tree",
+					"description": "List the contents of all sub-folders as well.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "include_files",
+					"description": "Include files in the returned listing.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "include_folders",
+					"description": "Include folders in the returned listing.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "include_properties",
+					"description": "Return any properties of the folder in the response.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "zip",
+					"description": "Return the content of the folder as a zip file.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"patch": {
+				"summary": "updateFolderProperties() - Update folder properties.",
+				"description": "Post body as an array of folder properties.",
+				"operationId": "updateFolderProperties",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "Array of folder properties.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "container",
+					"description": "The name of the container where you want to put the contents.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "folder_path",
+					"description": "The path of the folder you want to update. This can be a sub-folder, with each level separated by a /",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "createFolder() - Create a folder and/or add content.",
+				"description": "Post data as an array of folders and/or files. Folders are created if they do not exist",
+				"operationId": "createFolder",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "Array of folders and/or files.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "query",
+					"name": "check_exist",
+					"description": "If true, the request fails when the file or folder to create already exists.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "clean",
+					"description": "Option when extract is true, clean the current folder before extracting files and folders.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "container",
+					"description": "The name of the container where you want to put the contents.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "extract",
+					"description": "Extract an uploaded zip file into the folder.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "folder_path",
+					"description": "The path of the folder where you want to put the contents. This can be a sub-folder, with each level separated by a /",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "The full URL of the file to upload.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "header",
+					"name": "X-HTTP-METHOD",
+					"description": "Override request using POST to tunnel other http request, such as DELETE.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"ComponentList": {
+			"properties": {
+				"resource": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Resource": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Resources": {
+			"properties": {
+				"resource": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Success": {
+			"properties": {
+				"success": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"FileRequest": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"path": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"content_type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"metadata": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"FileResponse": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"path": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"content_type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"metadata": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"content_length": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"last_modified": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"FolderRequest": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"path": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"metadata": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"folder": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"file": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"FolderResponse": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"path": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"metadata": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"last_modified": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"folder": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"file": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ContainerRequest": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"path": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"metadata": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"folder": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"file": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ContainerResponse": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"path": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"metadata": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"last_modified": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"folder": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"file": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"File": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"path": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"content_type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"metadata": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Folder": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"path": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"metadata": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Container": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"path": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"metadata": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ContainersRequest": {
+			"properties": {
+				"container": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ContainersResponse": {
+			"properties": {
+				"container": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

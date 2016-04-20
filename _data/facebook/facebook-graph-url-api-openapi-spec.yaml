@@ -1,0 +1,50 @@
+- swagger: "2.0"
+  info:
+    title: Facebook Graph (URL) API
+    description: API for managing Facebook URLs
+    termsOfService: https://www.facebook.com/policies/
+    version: ~
+  host: graph.facebook.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /?id=http%3A%2F%2Fwww.imdb.com%2Ftitle%2Ftt2015381%2F:
+      get:
+        summary: Represents an external URL as it relates to the Facebook social graph
+          - shares and comments from the URL on Facebook, and any Open Graph objects
+          associated with the URL
+        description: Represents an external URL as it relates to the Facebook social
+          graph - shares and comments from the URL on Facebook, and any Open Graph objects
+          associated with the URL
+        operationId: url
+        parameters:
+        - in: query
+          name: app_links
+          description: AppLinks data associated with this URL.
+          type: string
+        - in: query
+          name: id
+          description: The URL itself.
+          type: string
+        - in: query
+          name: og_object
+          description: The Open Graph object that is canonically associated with this
+            URL.
+          type: string
+        - in: query
+          name: share
+          description: An object that supplies information about the URL being shared
+            on Facebook.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - url
+        security: []
+  definitions: []

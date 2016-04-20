@@ -1,0 +1,108 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Alchemy Language Detection API",
+		"description": "AlchemyAPI provides a robust language detection facility, capable of detecting the language of any text, HTML, or web-based content. AlchemyAPI identifies more languages (95+) than any other text analysis service, at extremely high rates of accuracy. Easily categorize or filter any content based on the language it was written in.",
+		"termsOfService": "http://www.alchemyapi.com/company/terms.html",
+		"contact": {
+			"name": "AlchemyAPI",
+			"url": "http://www.alchemyapi.com/company/contact",
+			"email": "questions@alchemyapi.com"
+		},
+		"version": "v1"
+	},
+	"host": "access.alchemyapi.com",
+	"basePath": "/calls/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/url/URLGetLanguage": {
+			"get": {
+				"summary": "Extract Language",
+				"description": "AlchemyAPI provides a robust language detection facility, capable of detecting the language of any text, HTML, or web-based content. AlchemyAPI identifies more languages (95+) than any other text analysis service, at extremely high rates of accuracy. Easily categorize or filter any content based on the language it was written in.",
+				"operationId": "callsUrlURLGetLanguage",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/results"
+							}
+						}
+					}
+				},
+				"tags": ["Language"],
+				"security": [{
+					"apikey": []
+				}]
+			}
+		}
+	},
+	"securityDefinitions": {
+		"apikey": {
+			"type": "apiKey",
+			"name": "apikey",
+			"in": "query"
+		}
+	},
+	"definitions": {
+		"results": {
+			"properties": {
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"usage": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"language": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"iso-639-1": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"iso-639-2": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"iso-639-3": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ethnologue": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"native-speakers": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"wikipedia": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

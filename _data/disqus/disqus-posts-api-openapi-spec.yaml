@@ -1,0 +1,300 @@
+- swagger: "2.0"
+  info:
+    title: Disqus Posts API
+    version: ""
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /posts/create.json:
+      n    post:
+        summary: Posts Create
+        description: 'n     Posts Create '
+        operationId: posts-create
+        parameters:
+        - in: query
+          name: author_email
+          description: Defaults to null                         Email address (defined
+            by RFC 5322)
+        - in: query
+          name: author_name
+          description: Defaults to null
+        - in: query
+          name: author_url
+          description: Defaults to null                         URL (defined by RFC
+            3986)
+        - in: query
+          name: date
+          description: Defaults to null                         Unix timestamp (or ISO
+            datetime standard)
+        - in: query
+          name: ip_address
+          description: Defaults to null                         IP address (defined
+            by RFC 5322)
+        - in: query
+          name: message
+        - in: query
+          name: parent
+          description: Defaults to null                         Looks up a post by ID
+        - in: query
+          name: state
+          description: 'Defaults to null                         Choices: unapproved,
+            approved, spam, killed'
+        - in: query
+          name: thread
+          description: Defaults to null                         Looks up a thread by
+            ID
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /posts/details.json:
+      n    get:
+        summary: Posts Details
+        description: 'n     Posts Details '
+        operationId: posts-details
+        parameters:
+        - in: query
+          name: post
+          description: Looks up a post by ID
+        - in: query
+          name: related
+          description: 'Defaults to []                         You may specify relations
+            to include with your response. Choices: forum, thread'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /posts/getContext.json:
+      n    get:
+        summary: Posts GetContext
+        description: 'n     Posts GetContext '
+        operationId: posts-getcontext
+        parameters:
+        - in: query
+          name: depth
+          description: Defaults to 10                         Minimum value of 1 Maximum
+            value of 10
+        - in: query
+          name: post
+          description: Looks up a post by ID
+        - in: query
+          name: related
+          description: 'Defaults to []                         You may specify relations
+            to include with your response. Choices: forum, thread'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /posts/list.json:
+      n    get:
+        summary: Posts List
+        description: 'n     Posts List '
+        operationId: posts-list
+        parameters:
+        - in: query
+          name: category
+          description: Defaults to null                         Looks up a category
+            by ID
+        - in: query
+          name: cursor
+          description: Defaults to null
+        - in: query
+          name: forum
+          description: Defaults to null                         Defaults to all forums
+            you moderate. Use :all to retrieve all forums.
+        - in: query
+          name: include
+          description: 'Defaults to [  approved]                         Choices: unapproved,
+            approved, spam, deleted, flagged, highlighted'
+        - in: query
+          name: limit
+          description: Defaults to 25                         Maximum value of 100
+        - in: query
+          name: offset
+          description: 'Defaults to 0                         Deprecated: Please see
+            documentation on cursors'
+        - in: query
+          name: order
+          description: 'Defaults to desc                         Choices: asc, desc'
+        - in: query
+          name: query
+          description: Defaults to null
+        - in: query
+          name: related
+          description: 'Defaults to []                         You may specify relations
+            to include with your response. Choices: forum, thread'
+        - in: query
+          name: since
+          description: Defaults to null                         Unix timestamp (or ISO
+            datetime standard)
+        - in: query
+          name: thread
+          description: Defaults to null                         Looks up a thread by
+            ID
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /posts/listPopular.json:
+      n    get:
+        summary: Posts ListPopular
+        description: 'n     Posts ListPopular '
+        operationId: posts-listpopular
+        parameters:
+        - in: query
+          name: category
+          description: Defaults to null
+        - in: query
+          name: forum
+          description: Defaults to null                         Defaults to all forums
+            you moderate. Use :all to retrieve all forums.
+        - in: query
+          name: include
+          description: 'Defaults to [  approved]                         Choices: unapproved,
+            approved, spam, deleted, flagged, highlighted'
+        - in: query
+          name: interval
+          description: 'Defaults to 7d                         Choices: 1h, 6h, 12h,
+            1d, 3d, 7d, 30d, 60d, 90d'
+        - in: query
+          name: limit
+          description: Defaults to 25                         Maximum value of 100
+        - in: query
+          name: offset
+          description: Defaults to 0
+        - in: query
+          name: order
+          description: 'Defaults to popular                         Choices: popular,
+            best'
+        - in: query
+          name: organization
+          description: Defaults to null                         Looks up an organization
+            by ID
+        - in: query
+          name: query
+          description: Defaults to null
+        - in: query
+          name: related
+          description: 'Defaults to []                         You may specify relations
+            to include with your response. Choices: forum, thread'
+        - in: query
+          name: thread
+          description: Defaults to null                         Looks up a thread by
+            ID
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /posts/remove.json:
+      n    post:
+        summary: Posts Remove
+        description: 'n     Posts Remove '
+        operationId: posts-remove
+        parameters:
+        - in: query
+          name: post
+          description: Looks up a post by ID
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /posts/report.json:
+      n    post:
+        summary: Posts Report
+        description: 'n     Posts Report '
+        operationId: posts-report
+        parameters:
+        - in: query
+          name: post
+          description: Looks up a post by ID
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /posts/restore.json:
+      n    post:
+        summary: Posts Restore
+        description: 'n     Posts Restore '
+        operationId: posts-restore
+        parameters:
+        - in: query
+          name: post
+          description: Looks up a post by ID
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /posts/spam.json:
+      n    post:
+        summary: Posts Spam
+        description: 'n     Posts Spam '
+        operationId: posts-spam
+        parameters:
+        - in: query
+          name: post
+          description: Looks up a post by ID You must be a moderator on the selected
+            post&#39;s forum.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /posts/update.json:
+      n    post:
+        summary: Posts Update
+        description: 'n     Posts Update '
+        operationId: posts-update
+        parameters:
+        - in: query
+          name: message
+        - in: query
+          name: post
+          description: You must be the author of the post or a moderator on the applicable
+            forum.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /posts/vote.json:
+      n    post:
+        summary: Posts Vote
+        description: 'n     Posts Vote '
+        operationId: posts-vote
+        parameters:
+        - in: query
+          name: post
+          description: Looks up a post by ID
+        - in: query
+          name: vote
+          description: 'Choices: -1, 0, 1'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

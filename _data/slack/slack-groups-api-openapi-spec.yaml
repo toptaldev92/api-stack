@@ -1,0 +1,398 @@
+- swagger: "2.0"
+  info:
+    title: Slack Groups API
+    description: The API for management Slack Groupss
+    termsOfService: https://slack.com/terms-of-service/api
+    version: ~
+  host: slack.com
+  basePath: /api
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /methods/emoji.list:
+      get:
+        summary: Lists custom emoji for a team.
+        description: <td width=70%>Lists custom emoji for a team.</td>
+        operationId: emojilist
+        parameters:
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: emoji:read)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /methods/groups.archive:
+      get:
+        summary: Archives a private channel.
+        description: <td width=70%>Archives a private channel.</td>
+        operationId: groupsarchive
+        parameters:
+        - in: query
+          name: channel
+          description: Private channel to archive
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: groups:write)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /methods/groups.close:
+      get:
+        summary: Closes a private channel.
+        description: <td width=70%>Closes a private channel.</td>
+        operationId: groupsclose
+        parameters:
+        - in: query
+          name: channel
+          description: Private channel to close.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: groups:write)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /methods/groups.create:
+      get:
+        summary: Creates a private private channel.
+        description: <td width=70%>Creates a private private channel.</td>
+        operationId: groupscreate
+        parameters:
+        - in: query
+          name: name
+          description: Name of private channel to create
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: groups:write)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /methods/groups.createChild:
+      get:
+        summary: Clones and archives a private channel.
+        description: <td width=70%>Clones and archives a private channel.</td>
+        operationId: groupscreatechild
+        parameters:
+        - in: query
+          name: channel
+          description: Private channel to clone and archive.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: groups:write)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /methods/groups.history:
+      get:
+        summary: Fetches history of messages and events from a private channel.
+        description: <td width=70%>Fetches history of messages and events from a private
+          channel.</td>
+        operationId: groupshistory
+        parameters:
+        - in: query
+          name: channel
+          description: Private channel to fetch history for.
+          type: string
+        - in: query
+          name: count
+          description: Number of messages to return, between 1 and 1000.
+          type: string
+        - in: query
+          name: inclusive
+          description: Include messages with latest or oldest timestamp in results.
+          type: string
+        - in: query
+          name: latest
+          description: End of time range of messages to include in results.
+          type: string
+        - in: query
+          name: oldest
+          description: Start of time range of messages to include in results.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: groups:history)'
+          type: string
+        - in: query
+          name: unreads
+          description: Include unread_count_display in the output?
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /methods/groups.info:
+      get:
+        summary: Gets information about a private channel.
+        description: <td width=70%>Gets information about a private channel.</td>
+        operationId: groupsinfo
+        parameters:
+        - in: query
+          name: channel
+          description: Private channel to get info on
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: groups:read)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /methods/groups.invite:
+      get:
+        summary: Invites a user to a private channel.
+        description: <td width=70%>Invites a user to a private channel.</td>
+        operationId: groupsinvite
+        parameters:
+        - in: query
+          name: channel
+          description: Private channel to invite user to.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: groups:write)'
+          type: string
+        - in: query
+          name: user
+          description: User to invite.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /methods/groups.kick:
+      get:
+        summary: Removes a user from a private channel.
+        description: <td width=70%>Removes a user from a private channel.</td>
+        operationId: groupskick
+        parameters:
+        - in: query
+          name: channel
+          description: Private channel to remove user from.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: groups:write)'
+          type: string
+        - in: query
+          name: user
+          description: User to remove from private channel.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /methods/groups.leave:
+      get:
+        summary: Leaves a private channel.
+        description: <td width=70%>Leaves a private channel.</td>
+        operationId: groupsleave
+        parameters:
+        - in: query
+          name: channel
+          description: Private channel to leave
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: groups:write)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /methods/groups.list:
+      get:
+        summary: Lists private channels that the calling user has access to.
+        description: <td width=70%>Lists private channels that the calling user has
+          access to.</td>
+        operationId: groupslist
+        parameters:
+        - in: query
+          name: exclude_archived
+          description: Dont return archived private channels.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: groups:read)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /methods/groups.mark:
+      get:
+        summary: Sets the read cursor in a private channel.
+        description: <td width=70%>Sets the read cursor in a private channel.</td>
+        operationId: groupsmark
+        parameters:
+        - in: query
+          name: channel
+          description: Private channel to set reading cursor in.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: groups:write)'
+          type: string
+        - in: query
+          name: ts
+          description: Timestamp of the most recently seen message.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /methods/groups.open:
+      get:
+        summary: Opens a private channel.
+        description: <td width=70%>Opens a private channel.</td>
+        operationId: groupsopen
+        parameters:
+        - in: query
+          name: channel
+          description: Private channel to open.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: groups:write)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /methods/groups.rename:
+      get:
+        summary: Renames a private channel.
+        description: <td width=70%>Renames a private channel.</td>
+        operationId: groupsrename
+        parameters:
+        - in: query
+          name: channel
+          description: Private channel to rename
+          type: string
+        - in: query
+          name: name
+          description: New name for private channel.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: groups:write)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /methods/groups.setPurpose:
+      get:
+        summary: Sets the purpose for a private channel.
+        description: <td width=70%>Sets the purpose for a private channel.</td>
+        operationId: groupssetpurpose
+        parameters:
+        - in: query
+          name: channel
+          description: Private channel to set the purpose of
+          type: string
+        - in: query
+          name: purpose
+          description: The new purpose
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: groups:write)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /methods/groups.setTopic:
+      get:
+        summary: Sets the topic for a private channel.
+        description: <td width=70%>Sets the topic for a private channel.</td>
+        operationId: groupssettopic
+        parameters:
+        - in: query
+          name: channel
+          description: Private channel to set the topic of
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: groups:write)'
+          type: string
+        - in: query
+          name: topic
+          description: The new topic
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /methods/groups.unarchive:
+      get:
+        summary: Unarchives a private channel.
+        description: <td width=70%>Unarchives a private channel.</td>
+        operationId: groupsunarchive
+        parameters:
+        - in: query
+          name: channel
+          description: Private channel to unarchive
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: groups:write)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+  definitions: []

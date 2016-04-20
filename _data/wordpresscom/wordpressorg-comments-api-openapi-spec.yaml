@@ -1,0 +1,255 @@
+- swagger: "2.0"
+  info:
+    title: Wordpress.org Comments API
+    version: ~
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /comments:
+      get:
+        summary: List Comments
+        description: List Comments
+        operationId: list-comments
+        parameters:
+        - in: query
+          name: author
+          description: Limit result set to comments assigned to specific user ids. Requires
+            authorization.
+          type: string
+        - in: query
+          name: author_email
+          description: Limit result set to that from a specific author email. Requires
+            authorization.
+          type: string
+        - in: query
+          name: author_exclude
+          description: Ensure result set excludes comments assigned to specific user
+            ids. Requires authorization.
+          type: string
+        - in: query
+          name: context
+          description: 'Scope under which the request is made; determines fields present
+            in response.n                    n                    n                    n                        n                            Default:
+            viewn                        n                    n                    n                        One
+            of: view, embed, edit'
+          type: string
+        - in: query
+          name: exclude
+          description: 'Ensure result set excludes specific ids.n                    n                    n                    n                        n                            Default:'
+          type: string
+        - in: query
+          name: include
+          description: 'Limit result set to specific ids.n                    n                    n                    n                        n                            Default:'
+          type: string
+        - in: query
+          name: karma
+          description: Limit result set to that of a particular comment karma. Requires
+            authorization.
+          type: string
+        - in: query
+          name: offset
+          description: Offset the result set by a specific number of comments.
+          type: string
+        - in: query
+          name: order
+          description: 'Order sort attribute ascending or descending.n                    n                    n                    n                        n                            Default:
+            ascn                        n                    n                    n                        One
+            of: asc, desc'
+          type: string
+        - in: query
+          name: orderby
+          description: 'Sort collection by object attribute.n                    n                    n                    n                        n                            Default:
+            date_gmtn                        n                    n                    n                        One
+            of: date, date_gmt, id, include, post, parent, type'
+          type: string
+        - in: query
+          name: page
+          description: 'Current page of the collection.n                    n                    n                    n                        n                            Default:
+            1'
+          type: string
+        - in: query
+          name: parent
+          description: 'Limit result set to resources of specific parent ids.n                    n                    n                    n                        n                            Default:'
+          type: string
+        - in: query
+          name: parent_exclude
+          description: 'Ensure result set excludes specific parent ids.n                    n                    n                    n                        n                            Default:'
+          type: string
+        - in: query
+          name: per_page
+          description: 'Maximum number of items to be returned in result set.n                    n                    n                    n                        n                            Default:
+            10'
+          type: string
+        - in: query
+          name: post
+          description: 'Limit result set to resources assigned to specific post ids.n                    n                    n                    n                        n                            Default:'
+          type: string
+        - in: query
+          name: search
+          description: Limit results to those matching a string.
+          type: string
+        - in: query
+          name: status
+          description: 'Limit result set to comments assigned a specific status. Requires
+            authorization.n                    n                    n                    n                        n                            Default:
+            approve'
+          type: string
+        - in: query
+          name: type
+          description: 'Limit result set to comments assigned a specific type. Requires
+            authorization.n                    n                    n                    n                        n                            Default:
+            comment'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - comments
+        security: []
+      post:
+        summary: Create a Comment
+        description: Create a Comment
+        operationId: create-a-comment
+        parameters:
+        - in: query
+          name: author
+          type: string
+        - in: query
+          name: author_email
+          type: string
+        - in: query
+          name: author_name
+          description: 'Default:'
+          type: string
+        - in: query
+          name: author_url
+          type: string
+        - in: query
+          name: content
+          description: 'Default:'
+          type: string
+        - in: query
+          name: date
+          type: string
+        - in: query
+          name: date_gmt
+          type: string
+        - in: query
+          name: karma
+          type: string
+        - in: query
+          name: parent
+          description: 'Default: 0'
+          type: string
+        - in: query
+          name: post
+          description: 'Default: 0'
+          type: string
+        - in: query
+          name: status
+          type: string
+        - in: query
+          name: type
+          description: 'Default:'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - comments
+        security: []
+    /comments/{id}:
+      delete:
+        summary: Delete a Comment
+        description: Delete a Comment
+        operationId: delete-a-comment
+        parameters:
+        - in: query
+          name: force
+          description: Whether to bypass trash and force deletion.
+          type: string
+        - in: path
+          name: id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - comments
+        security: []
+      get:
+        summary: Retrieve a Comment
+        description: Retrieve a Comment
+        operationId: retrieve-a-comment
+        parameters:
+        - in: query
+          name: context
+          description: 'Scope under which the request is made; determines fields present
+            in response.n                    n                    n                    n                        n                            Default:
+            viewn                        n                    n                    n                        One
+            of: view, embed, edit'
+          type: string
+        - in: path
+          name: id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - comments
+        security: []
+      post:
+        summary: Update a Comment
+        description: Update a Comment
+        operationId: update-a-comment
+        parameters:
+        - in: query
+          name: author
+          type: string
+        - in: query
+          name: author_email
+          type: string
+        - in: query
+          name: author_name
+          type: string
+        - in: query
+          name: author_url
+          type: string
+        - in: query
+          name: content
+          type: string
+        - in: query
+          name: date
+          type: string
+        - in: query
+          name: date_gmt
+          type: string
+        - in: path
+          name: id
+          type: string
+        - in: query
+          name: karma
+          type: string
+        - in: query
+          name: parent
+          type: string
+        - in: query
+          name: post
+          type: string
+        - in: query
+          name: status
+          type: string
+        - in: query
+          name: type
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - comments
+        security: []
+  definitions: []

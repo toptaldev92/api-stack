@@ -1,0 +1,83 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Facebook Graph (Test User) API",
+		"description": "API for managing Facebook Test Users",
+		"termsOfService": "https://www.facebook.com/policies/",
+		"version": null
+	},
+	"host": "graph.facebook.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/v2.5/{test-user-1}/friends/{test-user-2}": {
+			"post": {
+				"summary": "The friends of a test user",
+				"description": "The friends of a test user",
+				"operationId": "test-user",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["test user"],
+				"security": []
+			}
+		},
+		"/v2.5/{test-user-id}": {
+			"delete": {
+				"summary": "A test user associated with a Facebook app",
+				"description": "A test user associated with a Facebook app",
+				"operationId": "test-user",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["test user"],
+				"security": []
+			},
+			"post": {
+				"summary": "A test user associated with a Facebook app",
+				"description": "A test user associated with a Facebook app",
+				"operationId": "test-user",
+				"parameters": [{
+					"in": "query",
+					"name": "name",
+					"description": "New name for the test user.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "password",
+					"description": "A new password for the test user.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["test user"],
+				"security": []
+			}
+		},
+		"/{user-id}": {
+			"get": {
+				"summary": "A test user associated with a Facebook app",
+				"description": "A test user associated with a Facebook app",
+				"operationId": "test-user",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["test user"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

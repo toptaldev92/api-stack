@@ -1,0 +1,939 @@
+- swagger: "2.0"
+  info:
+    title: Eventbrite Event API
+    description: The API for managing events on Eventbrite platform.
+    version: v3
+  host: www.eventbriteapi.com
+  basePath: /v3
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /events/:
+      'post ':
+        summary: Makes a new event, and returns an event for the specified event.
+        description: Makes a new event, and returns an event for the specified event.
+        operationId: makes-a-new-event-and-returns-an-event-for-the-specified-event
+        parameters:
+        - in: query
+          name: event.capacity
+          description: Set specific capacity (if omitted, sums ticket capacities)
+        - in: query
+          name: event.category_id
+          description: The category (vertical) of the event
+        - in: query
+          name: event.currency
+          description: Event currency (3 letter code)
+        - in: query
+          name: event.description.html
+          description: The description on the event page
+        - in: query
+          name: event.end.timezone
+          description: End time timezone (Olson format)
+        - in: query
+          name: event.end.utc
+          description: The end time of the event
+        - in: query
+          name: event.format_id
+          description: The format (general type) of the event
+        - in: query
+          name: event.invite_only
+          description: Only invited users can see the event page
+        - in: query
+          name: event.listed
+          description: If the event is publicly listed and searchable
+        - in: query
+          name: event.logo.id
+          description: (Deprecated) The logo for the event
+        - in: query
+          name: event.logo_id
+          description: The logo for the event
+        - in: query
+          name: event.name.html
+          description: The name of the event
+        - in: query
+          name: event.online_event
+          description: Is the event online-only (no venue)?
+        - in: query
+          name: event.organizer_id
+          description: The ID of the organizer of this event
+        - in: query
+          name: event.password
+          description: Password needed to see the event in unlisted mode
+        - in: query
+          name: event.shareable
+          description: If users can share the event on social media
+        - in: query
+          name: event.show_remaining
+          description: If the remaining number of tickets is publicly visible on the
+            event page
+        - in: query
+          name: event.start.timezone
+          description: Start time timezone (Olson format)
+        - in: query
+          name: event.start.utc
+          description: The start time of the event
+        - in: query
+          name: event.subcategory_id
+          description: The subcategory of the event (US only)
+        - in: query
+          name: event.venue_id
+          description: The ID of a previously-created venue to associate with this event.
+            You can omit this field or set it to null if you set online_event.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/search/:
+      'get ':
+        summary: Allows you to retrieve a paginated response of public event objects
+          from across Eventbriteu2019s directory, regardless of which user owns the
+          event.
+        description: Allows you to retrieve a paginated response of public event objects
+          from across Eventbriteu2019s directory, regardless of which user owns the
+          event.
+        operationId: allows-you-to-retrieve-a-paginated-response-of-public-event-objects-from-across-eventbrites-director
+        parameters:
+        - in: query
+          name: categories
+          description: Only return events under the given category IDs. This should
+            be a comma delimited string of category IDs.
+        - in: query
+          name: date_created.keyword
+          description: Only return events with created dates within the given keyword
+            date range, ie &#8220;this_week&#8221;.
+        - in: query
+          name: date_created.range_end
+          description: Only return events with created dates before the given UTC date.
+        - in: query
+          name: date_created.range_start
+          description: Only return events with created dates after the given UTC date.
+        - in: query
+          name: date_modified.keyword
+          description: Only return events with modified dates within the given keyword
+            date range, ie &#8220;this_week&#8221;.
+        - in: query
+          name: date_modified.range_end
+          description: Only return events with modified dates before the given UTC date.
+        - in: query
+          name: date_modified.range_start
+          description: Only return events with modified dates after the given UTC date.
+        - in: query
+          name: formats
+          description: Only return events with the given format IDs. This should be
+            a comma delimited string of format IDs.
+        - in: query
+          name: location.address
+          description: The address of the location you want to search for events around.
+        - in: query
+          name: location.latitude
+          description: The latitude of of the location you want to search for events
+            around.
+        - in: query
+          name: location.longitude
+          description: The longitude of the location you want to search for events around.
+        - in: query
+          name: location.viewport.northeast.latitude
+          description: The latitude of the northeast corner of a viewport.
+        - in: query
+          name: location.viewport.northeast.longitude
+          description: The longitude of the northeast corner of a viewport.
+        - in: query
+          name: location.viewport.southwest.latitude
+          description: The latitude of the southwest corner of a viewport.
+        - in: query
+          name: location.viewport.southwest.longitude
+          description: The longitude of the southwest corner of a viewport.
+        - in: query
+          name: location.within
+          description: The distance you want to search around the given location. This
+            should be an integer followed by &#8220;mi&#8221; or &#8220;km&#8221;.
+        - in: query
+          name: organizer.id
+          description: Only return events organized by the given Organizer ID.
+        - in: query
+          name: personalization_user.id
+          description: Return personalized events for this user.
+        - in: query
+          name: popular
+          description: Boolean for whether or not you want to only return popular results.
+        - in: query
+          name: price
+          description: Only return events that are &#8220;free&#8221; or &#8220;paid&#8221;
+        - in: query
+          name: q
+          description: Return events matching the given keywords.
+        - in: query
+          name: search_type
+          description: Use the preconfigured settings for this type of search.
+        - in: query
+          name: since_id
+          description: Return events after this Event ID.
+        - in: query
+          name: sort_by
+          description: Parameter you want to sort by - options are &#8220;id&#8221;,
+            &#8220;date&#8221;, &#8220;name&#8221;, &#8220;city&#8221;, &#8220;distance&#8221;
+            and &#8220;best&#8221;. Prefix with a hyphen to reverse the order, e.g.
+            &#8220;-date&#8221;.
+        - in: query
+          name: start_date.keyword
+          description: Only return events with start dates within the given keyword
+            date range, ie &#8220;this_week&#8221;.
+        - in: query
+          name: start_date.range_end
+          description: Only return events with start dates before the given UTC date.
+        - in: query
+          name: start_date.range_start
+          description: Only return events with start dates after the given UTC date.
+        - in: query
+          name: tracking_code
+          description: Append the given tracking_code to the event URLs returned.
+        - in: query
+          name: user.id
+          description: Only return events owned by the given User ID.
+        - in: query
+          name: venue.city
+          description: Only return events with venues in the given city.
+        - in: query
+          name: venue.country
+          description: Only return events with venues in the given country.
+        - in: query
+          name: venue.region
+          description: Only return events with venues in the given region.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/:
+      'get ':
+        summary: Returns an event for the specified event. Many of Eventbriteu2019s
+          API use cases resolve around pulling details of a specific event within an
+          Eventbrite account.
+        description: Returns an event for the specified event. Many of Eventbriteu2019s
+          API use cases resolve around pulling details of a specific event within an
+          Eventbrite account.
+        operationId: returns-an-event-for-the-specified-event-many-of-eventbrites-api-use-cases-resolve-around-pulling-de
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      'post ':
+        summary: Updates an event. Returns an event for the specified event.
+        description: Updates an event. Returns an event for the specified event.
+        operationId: updates-an-event-returns-an-event-for-the-specified-event
+        parameters:
+        - in: query
+          name: event.capacity
+          description: Set specific capacity (if omitted, sums ticket capacities)
+        - in: query
+          name: event.category_id
+          description: The category (vertical) of the event
+        - in: query
+          name: event.currency
+          description: Event currency (3 letter code)
+        - in: query
+          name: event.description.html
+          description: The description on the event page
+        - in: query
+          name: event.end.timezone
+          description: End time timezone (Olson format)
+        - in: query
+          name: event.end.utc
+          description: The end time of the event
+        - in: query
+          name: event.format_id
+          description: The format (general type) of the event
+        - in: query
+          name: event.invite_only
+          description: Only invited users can see the event page
+        - in: query
+          name: event.listed
+          description: If the event is publicly listed and searchable
+        - in: query
+          name: event.logo.id
+          description: (Deprecated) The logo for the event
+        - in: query
+          name: event.logo_id
+          description: The logo for the event
+        - in: query
+          name: event.name.html
+          description: The name of the event
+        - in: query
+          name: event.online_event
+          description: Is the event online-only (no venue)?
+        - in: query
+          name: event.organizer_id
+          description: The ID of the organizer of this event
+        - in: query
+          name: event.password
+          description: Password needed to see the event in unlisted mode
+        - in: query
+          name: event.shareable
+          description: If users can share the event on social media
+        - in: query
+          name: event.show_remaining
+          description: If the remaining number of tickets is publicly visible on the
+            event page
+        - in: query
+          name: event.start.timezone
+          description: Start time timezone (Olson format)
+        - in: query
+          name: event.start.utc
+          description: The start time of the event
+        - in: query
+          name: event.subcategory_id
+          description: The subcategory of the event (US only)
+        - in: query
+          name: event.venue_id
+          description: ID of the venue (this or online_event is required)
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/access_codes/:
+      'get ':
+        summary: Returns a paginated response with a key of access_codes, containing
+          a list of access_codes available on this event.
+        description: Returns a paginated response with a key of access_codes, containing
+          a list of access_codes available on this event.
+        operationId: returns-a-paginated-response-with-a-key-of-access-codes-containing-a-list-of-access-codes-available-
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      'post ':
+        summary: Creates a new access code; returns the result as a access_code as the
+          key access_code.
+        description: Creates a new access code; returns the result as a access_code
+          as the key access_code.
+        operationId: creates-a-new-access-code-returns-the-result-as-a-access-code-as-the-key-access-code
+        parameters:
+        - in: query
+          name: access_code.code
+          description: Code used to initiate access
+        - in: query
+          name: access_code.end_date
+          description: Allow use until this date
+        - in: query
+          name: access_code.quantity_available
+          description: Number of uses
+        - in: query
+          name: access_code.start_date
+          description: Allow use from this date
+        - in: query
+          name: access_code.ticket_ids
+          description: IDs of tickets to allow access to
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/access_codes/:access_code_id/:
+      'get ':
+        summary: Gets a access_code by ID as the key access_code.
+        description: Gets a access_code by ID as the key access_code.
+        operationId: gets-a-access-code-by-id-as-the-key-access-code
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      'post ':
+        summary: Updates an access code; returns the result as a access_code as thenkey
+          access_code.
+        description: Updates an access code; returns the result as a access_code as
+          thenkey access_code.
+        operationId: updates-an-access-code-returns-the-result-as-a-access-code-as-thekey-access-code
+        parameters:
+        - in: query
+          name: access_code.code
+          description: Code used to initiate access
+        - in: query
+          name: access_code.end_date
+          description: Allow use until this date
+        - in: query
+          name: access_code.quantity_available
+          description: Number of uses
+        - in: query
+          name: access_code.start_date
+          description: Allow use from this date
+        - in: query
+          name: access_code.ticket_ids
+          description: IDs of tickets to allow access to
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/attendees/:
+      'get ':
+        summary: Returns a paginated response with a key of attendees, containing a
+          list of attendee.
+        description: Returns a paginated response with a key of attendees, containing
+          a list of attendee.
+        operationId: returns-a-paginated-response-with-a-key-of-attendees-containing-a-list-of-attendee
+        parameters:
+        - in: query
+          name: changed_since
+          description: Only return attendees changed on or after the time given
+        - in: query
+          name: status
+          description: 'Limits results to either confirmed attendees or cancelled/refunded/etc.
+            attendees (Valid choices are: attending, or not_attending)'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/attendees/:attendee_id/:
+      'get ':
+        summary: Returns a single attendee by ID, as the key attendee.
+        description: Returns a single attendee by ID, as the key attendee.
+        operationId: returns-a-single-attendee-by-id-as-the-key-attendee
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/bookmarks/:
+      'get ':
+        summary: Returns number of users who have bookmarked an event.
+        description: Returns number of users who have bookmarked an event.
+        operationId: returns-number-of-users-who-have-bookmarked-an-event
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/canned_questions/:
+      'get ':
+        summary: 'This endpoint returns canned questions of a single event (examples:
+          first name, last name, company, prefix, etc.). This endpoint will return question.'
+        description: 'This endpoint returns canned questions of a single event (examples:
+          first name, last name, company, prefix, etc.). This endpoint will return question.'
+        operationId: this-endpoint-returns-canned-questions-of-a-single-event-examples-first-name-last-name-company-prefi
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/discounts/:
+      'get ':
+        summary: Returns a paginated response with a key of discounts,ncontaining a
+          list of discounts available on this event.
+        description: Returns a paginated response with a key of discounts,ncontaining
+          a list of discounts available on this event.
+        operationId: returns-a-paginated-response-with-a-key-of-discountscontaining-a-list-of-discounts-available-on-this
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      'post ':
+        summary: Creates a new discount; returns the result as a discount as the key
+          discount.
+        description: Creates a new discount; returns the result as a discount as the
+          key discount.
+        operationId: creates-a-new-discount-returns-the-result-as-a-discount-as-the-key-discount
+        parameters:
+        - in: query
+          name: discount.amount_off
+          description: Fixed reduction amount
+        - in: query
+          name: discount.code
+          description: Code used to activate discount
+        - in: query
+          name: discount.end_date
+          description: Allow use until this date
+        - in: query
+          name: discount.percent_off
+          description: Percentage reduction
+        - in: query
+          name: discount.quantity_available
+          description: Number of discount uses
+        - in: query
+          name: discount.start_date
+          description: Allow use from this date
+        - in: query
+          name: discount.ticket_ids
+          description: IDs of tickets to limit discount to
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/discounts/:discount_id/:
+      'get ':
+        summary: Gets a discount by ID as the key discount.
+        description: Gets a discount by ID as the key discount.
+        operationId: gets-a-discount-by-id-as-the-key-discount
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      'post ':
+        summary: Updates a discount; returns the result as a discount as the key discount.
+        description: Updates a discount; returns the result as a discount as the key
+          discount.
+        operationId: updates-a-discount-returns-the-result-as-a-discount-as-the-key-discount
+        parameters:
+        - in: query
+          name: discount.amount_off
+          description: Fixed reduction amount
+        - in: query
+          name: discount.code
+          description: Code used to activate discount
+        - in: query
+          name: discount.end_date
+          description: Allow use until this date
+        - in: query
+          name: discount.percent_off
+          description: Percentage reduction
+        - in: query
+          name: discount.quantity_available
+          description: Number of discount uses
+        - in: query
+          name: discount.start_date
+          description: Allow use from this date
+        - in: query
+          name: discount.ticket_ids
+          description: IDs of tickets to limit discount to
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/orders/:
+      'get ':
+        summary: Returns a paginated response with a key of orders, containing a list
+          of order against this event.
+        description: Returns a paginated response with a key of orders, containing a
+          list of order against this event.
+        operationId: returns-a-paginated-response-with-a-key-of-orders-containing-a-list-of-order-against-this-event
+        parameters:
+        - in: query
+          name: changed_since
+          description: Only return orders changed on or after the time given
+        - in: query
+          name: status
+          description: 'Filter to active (attending) or inactive (not attending) orders
+            (Valid choices are: active, or inactive)'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/public_discounts/:
+      'get ':
+        summary: Returns a paginated response with a key of discounts, containing a
+          list of public discounts available on this event.
+        description: Returns a paginated response with a key of discounts, containing
+          a list of public discounts available on this event.
+        operationId: returns-a-paginated-response-with-a-key-of-discounts-containing-a-list-of-public-discounts-available
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      'post ':
+        summary: Creates a new public discount; returns the result as a discount as
+          the key discount.
+        description: Creates a new public discount; returns the result as a discount
+          as the key discount.
+        operationId: creates-a-new-public-discount-returns-the-result-as-a-discount-as-the-key-discount
+        parameters:
+        - in: query
+          name: discount.amount_off
+          description: Fixed reduction amount
+        - in: query
+          name: discount.code
+          description: Code used to activate discount
+        - in: query
+          name: discount.end_date
+          description: Allow use until this date
+        - in: query
+          name: discount.percent_off
+          description: Percentage reduction
+        - in: query
+          name: discount.quantity_available
+          description: Number of discount uses
+        - in: query
+          name: discount.start_date
+          description: Allow use from this date
+        - in: query
+          name: discount.ticket_ids
+          description: IDs of tickets to limit discount to
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/public_discounts/:discount_id/:
+      'delete ':
+        summary: Deletes a public discount.
+        description: Deletes a public discount.
+        operationId: deletes-a-public-discount
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      'get ':
+        summary: Gets a public discount by ID as the key discount.
+        description: Gets a public discount by ID as the key discount.
+        operationId: gets-a-public-discount-by-id-as-the-key-discount
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      'post ':
+        summary: Updates a public discount; returns the result as a discount as the
+          key discount.
+        description: Updates a public discount; returns the result as a discount as
+          the key discount.
+        operationId: updates-a-public-discount-returns-the-result-as-a-discount-as-the-key-discount
+        parameters:
+        - in: query
+          name: discount.amount_off
+          description: Fixed reduction amount
+        - in: query
+          name: discount.code
+          description: Code used to activate discount
+        - in: query
+          name: discount.end_date
+          description: Allow use until this date
+        - in: query
+          name: discount.percent_off
+          description: Percentage reduction
+        - in: query
+          name: discount.quantity_available
+          description: Number of discount uses
+        - in: query
+          name: discount.start_date
+          description: Allow use from this date
+        - in: query
+          name: discount.ticket_ids
+          description: IDs of tickets to limit discount to
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/publish/:
+      'post ':
+        summary: Tries to publish an event; will error if the event cannot be published
+          (for example, it&#8217;s missing required payout information, or has no tickets).
+        description: Tries to publish an event; will error if the event cannot be published
+          (for example, it&#8217;s missing required payout information, or has no tickets).
+        operationId: tries-to-publish-an-event-will-error-if-the-event-cannot-be-published-for-example-it8217s-missing-re
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/questions/:
+      'get ':
+        summary: Eventbrite allows event organizers to add custom questions that attendees
+          fillnout upon registration. This endpoint can be helpful for determining whatncustom
+          information is collected and available per event.
+        description: Eventbrite allows event organizers to add custom questions that
+          attendees fillnout upon registration. This endpoint can be helpful for determining
+          whatncustom information is collected and available per event.
+        operationId: eventbrite-allows-event-organizers-to-add-custom-questions-that-attendees-fillout-upon-registration-
+        parameters:
+        - in: query
+          name: as_owner
+          description: Return private events and more details
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/questions/id/:
+      'get ':
+        summary: This endpoint will return question for a specific question id.
+        description: This endpoint will return question for a specific question id.
+        operationId: this-endpoint-will-return-question-for-a-specific-question-id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/teams/:
+      'get ':
+        summary: Returns a list of teams for the event.
+        description: Returns a list of teams for the event.
+        operationId: returns-a-list-of-teams-for-the-event
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/teams/{id}/:
+      'get ':
+        summary: Returns information for a single teams.
+        description: Returns information for a single teams.
+        operationId: returns-information-for-a-single-teams
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/teams/{id}/attendees/:
+      'get ':
+        summary: Returns attendees for a single teams.
+        description: Returns attendees for a single teams.
+        operationId: returns-attendees-for-a-single-teams
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/ticket_classes/:
+      'get ':
+        summary: Returns a paginated response with a key ofnticket_classes, containing
+          a list of ticket_class.
+        description: Returns a paginated response with a key ofnticket_classes, containing
+          a list of ticket_class.
+        operationId: returns-a-paginated-response-with-a-key-ofticket-classes-containing-a-list-of-ticket-class
+        parameters:
+        - in: query
+          name: pos
+          description: 'Only return ticket classes valid for the given point of sale
+            (Valid choices are: online, or at_the_door)'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      'post ':
+        summary: Creates a new ticket class, returning the result as a ticket_classnunder
+          the key ticket_class.
+        description: Creates a new ticket class, returning the result as a ticket_classnunder
+          the key ticket_class.
+        operationId: creates-a-new-ticket-class-returning-the-result-as-a-ticket-classunder-the-key-ticket-class
+        parameters:
+        - in: query
+          name: ticket_class.auto_hide
+          description: Hide this ticket when it is not on sale
+        - in: query
+          name: ticket_class.auto_hide_after
+          description: Override re-hide date for auto-hide
+        - in: query
+          name: ticket_class.auto_hide_before
+          description: Override reveal date for auto-hide
+        - in: query
+          name: ticket_class.cost
+          description: Cost of the ticket (currently currency must match event currency)
+            e.g. $45 would be &#8216;USD,4500&#8217;
+        - in: query
+          name: ticket_class.description
+          description: Description of the ticket
+        - in: query
+          name: ticket_class.donation
+          description: Is this a donation? (user-supplied cost)
+        - in: query
+          name: ticket_class.free
+          description: Is this a free ticket?
+        - in: query
+          name: ticket_class.hidden
+          description: Hide this ticket
+        - in: query
+          name: ticket_class.hide_description
+          description: Hide the ticket description on the event page
+        - in: query
+          name: ticket_class.include_fee
+          description: Absorb the fee into the displayed cost
+        - in: query
+          name: ticket_class.maximum_quantity
+          description: Maximum number per order (blank for unlimited)
+        - in: query
+          name: ticket_class.minimum_quantity
+          description: Minimum number per order
+        - in: query
+          name: ticket_class.name
+          description: Name of this ticket type
+        - in: query
+          name: ticket_class.quantity_total
+          description: Total available number of this ticket
+        - in: query
+          name: ticket_class.sales_end
+          description: When the ticket stops being on sale (leave empty for &#8216;one
+            hour before event start&#8217;)
+        - in: query
+          name: ticket_class.sales_start
+          description: When the ticket is available for sale (leave empty for &#8216;when
+            event published&#8217;)
+        - in: query
+          name: ticket_class.sales_start_after
+          description: The ID of another ticket class - when it sells out, this class
+            will go on sale.
+        - in: query
+          name: ticket_class.split_fee
+          description: Absorb the payment fee, but show the eventbrite fee
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/ticket_classes/:ticket_class_id/:
+      'delete ':
+        summary: 'Deletes the ticket class. Returns {&quot;deleted&quot;: true}.'
+        description: 'Deletes the ticket class. Returns {&quot;deleted&quot;: true}.'
+        operationId: deletes-the-ticket-class-returns-quotdeletedquot-true
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      'get ':
+        summary: Gets and returns a single ticket_class by ID, as the keynticket_class.
+        description: Gets and returns a single ticket_class by ID, as the keynticket_class.
+        operationId: gets-and-returns-a-single-ticket-class-by-id-as-the-keyticket-class
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      'post ':
+        summary: Updates an existing ticket class, returning the updated result as a
+          ticket_class under the key ticket_class.
+        description: Updates an existing ticket class, returning the updated result
+          as a ticket_class under the key ticket_class.
+        operationId: updates-an-existing-ticket-class-returning-the-updated-result-as-a-ticket-class-under-the-key-ticket
+        parameters:
+        - in: query
+          name: ticket_class.auto_hide
+          description: Hide this ticket when it is not on sale
+        - in: query
+          name: ticket_class.auto_hide_after
+          description: Override re-hide date for auto-hide
+        - in: query
+          name: ticket_class.auto_hide_before
+          description: Override reveal date for auto-hide
+        - in: query
+          name: ticket_class.cost
+          description: Cost of the ticket (currently currency must match event currency)
+            e.g. $45 would be &#8216;USD,4500&#8217;
+        - in: query
+          name: ticket_class.description
+          description: Description of the ticket
+        - in: query
+          name: ticket_class.donation
+          description: Is this a donation? (user-supplied cost)
+        - in: query
+          name: ticket_class.free
+          description: Is this a free ticket?
+        - in: query
+          name: ticket_class.hidden
+          description: Hide this ticket
+        - in: query
+          name: ticket_class.hide_description
+          description: Hide the ticket description on the event page
+        - in: query
+          name: ticket_class.include_fee
+          description: Absorb the fee into the displayed cost
+        - in: query
+          name: ticket_class.maximum_quantity
+          description: Maximum number per order (blank for unlimited)
+        - in: query
+          name: ticket_class.minimum_quantity
+          description: Minimum number per order
+        - in: query
+          name: ticket_class.name
+          description: Name of this ticket type
+        - in: query
+          name: ticket_class.quantity_total
+          description: Total available number of this ticket
+        - in: query
+          name: ticket_class.sales_end
+          description: When the ticket stops being on sale (leave empty for &#8216;one
+            hour before event start&#8217;)
+        - in: query
+          name: ticket_class.sales_start
+          description: When the ticket is available for sale (leave empty for &#8216;when
+            event published&#8217;)
+        - in: query
+          name: ticket_class.sales_start_after
+          description: The ID of another ticket class - when it sells out, this class
+            will go on sale.
+        - in: query
+          name: ticket_class.split_fee
+          description: Absorb the payment fee, but show the eventbrite fee
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/transfers/:
+      'get ':
+        summary: Returns a list of transfers for the event.
+        description: Returns a list of transfers for the event.
+        operationId: returns-a-list-of-transfers-for-the-event
+        parameters:
+        - in: query
+          name: changed_since
+          description: Only return transfers changed on or after the time given
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /events/{id}/unpublish/:
+      'post ':
+        summary: Tries to unpublish an event; will error if the event cannot be unpublishedn(for
+          example, it&#8217;s got sold tickets).
+        description: Tries to unpublish an event; will error if the event cannot be
+          unpublishedn(for example, it&#8217;s got sold tickets).
+        operationId: tries-to-unpublish-an-event-will-error-if-the-event-cannot-be-unpublishedfor-example-it8217s-got-sol
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

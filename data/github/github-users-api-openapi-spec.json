@@ -1,0 +1,636 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Github Users API",
+		"version": ""
+	},
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/user": {
+			"get": {
+				"summary": "DeleteGistComment",
+				"description": "DeleteGistComment",
+				"operationId": "deletegistcomment",
+				"parameters": [{
+					"in": "query",
+					"name": "User-Agent"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/user/emails": {
+			"post": {
+				"summary": "ListUserEmail",
+				"description": "ListUserEmail",
+				"operationId": "listuseremail",
+				"parameters": [{
+					"in": "query",
+					"name": "User-Agent"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/user/followers": {
+			"get": {
+				"summary": "ListUserFollower",
+				"description": "ListUserFollower",
+				"operationId": "listuserfollower",
+				"parameters": [{
+					"in": "query",
+					"name": "User-Agent"
+				},
+				{
+					"in": "query",
+					"name": "userName"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/user/following": {
+			"get": {
+				"summary": "ListUserFollowing",
+				"description": "ListUserFollowing",
+				"operationId": "listuserfollowing",
+				"parameters": [{
+					"in": "query",
+					"name": "User-Agent"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/user/following/{userName}": {
+			"put": {
+				"summary": "ListAuthUserFollowing",
+				"description": "ListAuthUserFollowing",
+				"operationId": "listauthuserfollowing",
+				"parameters": [{
+					"in": "query",
+					"name": "User-Agent"
+				},
+				{
+					"in": "query",
+					"name": "userName"
+				},
+				{
+					"in": "path",
+					"name": "userName"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/user/issues": {
+			"get": {
+				"summary": "ListIssues",
+				"description": "ListIssues",
+				"operationId": "listissues",
+				"parameters": [{
+					"in": "query",
+					"name": "direction"
+				},
+				{
+					"in": "query",
+					"name": "filter"
+				},
+				{
+					"in": "query",
+					"name": "sort"
+				},
+				{
+					"in": "query",
+					"name": "state"
+				},
+				{
+					"in": "query",
+					"name": "User-Agent"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/user/keys": {
+			"post": {
+				"summary": "GetPublicKey",
+				"description": "GetPublicKey",
+				"operationId": "getpublickey",
+				"parameters": [{
+					"in": "query",
+					"name": "User-Agent"
+				},
+				{
+					"in": "query",
+					"name": "userName"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/user/keys/{id}": {
+			"get": {
+				"summary": "ListPublicKeys",
+				"description": "ListPublicKeys",
+				"operationId": "listpublickeys",
+				"parameters": [{
+					"in": "query",
+					"name": "id"
+				},
+				{
+					"in": "path",
+					"name": "id"
+				},
+				{
+					"in": "query",
+					"name": "User-Agent"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/user/orgs": {
+			"get": {
+				"summary": "ListOrg",
+				"description": "ListOrg",
+				"operationId": "listorg",
+				"parameters": [{
+					"in": "query",
+					"name": "User-Agent"
+				},
+				{
+					"in": "query",
+					"name": "userName"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/user/repos": {
+			"post": {
+				"summary": "ListAllRepos",
+				"description": "ListAllRepos",
+				"operationId": "listallrepos",
+				"parameters": [{
+					"in": "query",
+					"name": "User-Agent"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/user/watched": {
+			"get": {
+				"summary": "ListReposWatched",
+				"description": "ListReposWatched",
+				"operationId": "listreposwatched",
+				"parameters": [{
+					"in": "query",
+					"name": "User-Agent"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/user/watched/{userName}/{repoName}": {
+			"put": {
+				"summary": "CheckRepoWatching",
+				"description": "CheckRepoWatching",
+				"operationId": "checkrepowatching",
+				"parameters": [{
+					"in": "query",
+					"name": "repoName"
+				},
+				{
+					"in": "path",
+					"name": "repoName"
+				},
+				{
+					"in": "query",
+					"name": "User-Agent"
+				},
+				{
+					"in": "query",
+					"name": "userName"
+				},
+				{
+					"in": "path",
+					"name": "userName"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/user/{user}/keys": {
+			"get": {
+				"summary": "GetFollowingUser",
+				"description": "GetFollowingUser",
+				"operationId": "getfollowinguser",
+				"parameters": [{
+					"in": "query",
+					"name": "user"
+				},
+				{
+					"in": "path",
+					"name": "user"
+				},
+				{
+					"in": "query",
+					"name": "User-Agent"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{userName}": {
+			"get": {
+				"summary": "GetAuthUser",
+				"description": "GetAuthUser",
+				"operationId": "getauthuser",
+				"parameters": [{
+					"in": "query",
+					"name": "User-Agent"
+				},
+				{
+					"in": "query",
+					"name": "userName"
+				},
+				{
+					"in": "path",
+					"name": "userName"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{userName}/events": {
+			"get": {
+				"summary": "ListUserReceivedPublicEvents",
+				"description": "ListUserReceivedPublicEvents",
+				"operationId": "listuserreceivedpublicevents",
+				"parameters": [{
+					"in": "query",
+					"name": "User-Agent"
+				},
+				{
+					"in": "query",
+					"name": "userName"
+				},
+				{
+					"in": "path",
+					"name": "userName"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{userName}/events/orgs/{org}": {
+			"get": {
+				"summary": "ListUserPublicEvents",
+				"description": "ListUserPublicEvents",
+				"operationId": "listuserpublicevents",
+				"parameters": [{
+					"in": "query",
+					"name": "org"
+				},
+				{
+					"in": "path",
+					"name": "org"
+				},
+				{
+					"in": "query",
+					"name": "User-Agent"
+				},
+				{
+					"in": "query",
+					"name": "userName"
+				},
+				{
+					"in": "path",
+					"name": "userName"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{userName}/events/public": {
+			"get": {
+				"summary": "ListUserEvents",
+				"description": "ListUserEvents",
+				"operationId": "listuserevents",
+				"parameters": [{
+					"in": "query",
+					"name": "User-Agent"
+				},
+				{
+					"in": "query",
+					"name": "userName"
+				},
+				{
+					"in": "path",
+					"name": "userName"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{userName}/followers": {
+			"get": {
+				"summary": "DeleteEmailAddresses",
+				"description": "DeleteEmailAddresses",
+				"operationId": "deleteemailaddresses",
+				"parameters": [{
+					"in": "query",
+					"name": "User-Agent"
+				},
+				{
+					"in": "query",
+					"name": "userName"
+				},
+				{
+					"in": "path",
+					"name": "userName"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{userName}/following": {
+			"get": {
+				"summary": "ListAuthUserFollower",
+				"description": "ListAuthUserFollower",
+				"operationId": "listauthuserfollower",
+				"parameters": [{
+					"in": "query",
+					"name": "User-Agent"
+				},
+				{
+					"in": "query",
+					"name": "userName"
+				},
+				{
+					"in": "path",
+					"name": "userName"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{userName}/gists": {
+			"post": {
+				"summary": "GetGist",
+				"description": "GetGist",
+				"operationId": "getgist",
+				"parameters": [{
+					"in": "query",
+					"name": "User-Agent"
+				},
+				{
+					"in": "query",
+					"name": "userName"
+				},
+				{
+					"in": "path",
+					"name": "userName"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{userName}/orgs": {
+			"get": {
+				"summary": "CreateTree",
+				"description": "CreateTree",
+				"operationId": "createtree",
+				"parameters": [{
+					"in": "query",
+					"name": "User-Agent"
+				},
+				{
+					"in": "query",
+					"name": "userName"
+				},
+				{
+					"in": "path",
+					"name": "userName"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{userName}/received_events": {
+			"get": {
+				"summary": "ListOrgPublicEvents",
+				"description": "ListOrgPublicEvents",
+				"operationId": "listorgpublicevents",
+				"parameters": [{
+					"in": "query",
+					"name": "User-Agent"
+				},
+				{
+					"in": "query",
+					"name": "userName"
+				},
+				{
+					"in": "path",
+					"name": "userName"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{userName}/received_events/public": {
+			"get": {
+				"summary": "ListUserReceivedEvents",
+				"description": "ListUserReceivedEvents",
+				"operationId": "listuserreceivedevents",
+				"parameters": [{
+					"in": "query",
+					"name": "User-Agent"
+				},
+				{
+					"in": "query",
+					"name": "userName"
+				},
+				{
+					"in": "path",
+					"name": "userName"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{userName}/repos": {
+			"get": {
+				"summary": "ListRepo",
+				"description": "ListRepo",
+				"operationId": "listrepo",
+				"parameters": [{
+					"in": "query",
+					"name": "userName"
+				},
+				{
+					"in": "path",
+					"name": "userName"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{userName}/watched": {
+			"get": {
+				"summary": "ListRepoWatchers",
+				"description": "ListRepoWatchers",
+				"operationId": "listrepowatchers",
+				"parameters": [{
+					"in": "query",
+					"name": "repoName"
+				},
+				{
+					"in": "query",
+					"name": "User-Agent"
+				},
+				{
+					"in": "query",
+					"name": "userName"
+				},
+				{
+					"in": "path",
+					"name": "userName"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

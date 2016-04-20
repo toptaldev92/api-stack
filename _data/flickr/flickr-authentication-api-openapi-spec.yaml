@@ -1,0 +1,320 @@
+- swagger: "2.0"
+  info:
+    title: Flickr Authentication API
+    description: The API for managing Flickr Authentication
+    termsOfService: https://www.flickr.com/services/api/tos/
+    version: ~
+  host: www.flickr.com
+  basePath: /services/rest/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /?method=flickr.auth.checkToken:
+      get:
+        summary: flickr.auth.checkToken
+        description: <div class=MethodDescription>Returns the credentials attached to
+          an authentication token. This call <b>must</b> be signed, and is <b><a href=/services/api/auth.oauth.html>deprecated
+          in favour of OAuth</a></b>.</div>
+        operationId: methodflickrauthchecktoken
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: auth_token
+          description: The authentication token to check.
+          type: string
+        responses:
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.auth.getFrob:
+      get:
+        summary: flickr.auth.getFrob
+        description: <div class=MethodDescription>Returns a frob to be used during authentication.
+          <b>This method call must be signed</b>, and is <b><a href=/services/api/auth.oauth.html>deprecated
+          in favour of OAuth</a></b>.</div>
+        operationId: methodflickrauthgetfrob
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        responses:
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.auth.getFullToken:
+      get:
+        summary: flickr.auth.getFullToken
+        description: <div class=MethodDescription>Get the full authentication token
+          for a mini-token. <b>This method call must be signed</b>, and is <b><a href=/services/api/auth.oauth.html>deprecated
+          in favour of OAuth</a></b>.</div>
+        operationId: methodflickrauthgetfulltoken
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: mini_token
+          description: The mini-token typed in by a user. It should be 9 digits long.
+            It may optionally contain dashes.
+          type: string
+        responses:
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          1:
+            description: Mini-token not found - The passed mini-token was not valid.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.auth.getToken:
+      get:
+        summary: flickr.auth.getToken
+        description: <div class=MethodDescription>Returns the auth token for the given
+          frob, if one has been attached. <b>This method call must be signed</b>, and
+          is <b><a href=/services/api/auth.oauth.html>deprecated in favour of OAuth</a></b>.</div>
+        operationId: methodflickrauthgettoken
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: frob
+          description: The frob to check.
+          type: string
+        responses:
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          1:
+            description: Mini-token not found - The passed mini-token was not valid.
+          108:
+            description: Invalid frob - The specified frob does not exist or has already
+              been used.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.auth.oauth.checkToken:
+      get:
+        summary: flickr.auth.oauth.checkToken
+        description: <div class=MethodDescription>Returns the credentials attached to
+          an OAuth authentication token.</div>
+        operationId: methodflickrauthoauthchecktoken
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: oauth_token
+          description: The OAuth authentication token to check.
+          type: string
+        responses:
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          1:
+            description: Mini-token not found - The passed mini-token was not valid.
+          108:
+            description: Invalid frob - The specified frob does not exist or has already
+              been used.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.auth.oauth.getAccessToken:
+      get:
+        summary: flickr.auth.oauth.getAccessToken
+        description: <div class=MethodDescription>Exchange an auth token from the old
+          Authentication API, to an OAuth access token. Calling this method will delete
+          the auth token used to make the request.</div>
+        operationId: methodflickrauthoauthgetaccesstoken
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        responses:
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          1:
+            description: Mini-token not found - The passed mini-token was not valid.
+          108:
+            description: Invalid frob - The specified frob does not exist or has already
+              been used.
+        tags:
+        - ""
+        security: []
+  definitions: []

@@ -1,0 +1,1425 @@
+- swagger: "2.0"
+  info:
+    title: No Title
+    version: ""
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /repos:
+      get:
+        summary: ""
+        description: ""
+        operationId: ""
+        parameters:
+        - in: query
+          name: num
+        - in: query
+          name: perPage
+        - in: query
+          name: User-Agent
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}:
+      get:
+        summary: CreateOrgRepo
+        description: CreateOrgRepo
+        operationId: createorgrepo
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/branches:
+      get:
+        summary: ListTags
+        description: ListTags
+        operationId: listtags
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/collaborators:
+      get:
+        summary: DeleteRepo
+        description: DeleteRepo
+        operationId: deleterepo
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/collaborators/{user}:
+      put:
+        summary: GetRepoCollaborator
+        description: GetRepoCollaborator
+        operationId: getrepocollaborator
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: user
+        - in: path
+          name: user
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/comments:
+      get:
+        summary: GetRepoCommit
+        description: GetRepoCommit
+        operationId: getrepocommit
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/comments/{id}:
+      get:
+        summary: CreateCommitComments
+        description: CreateCommitComments
+        operationId: createcommitcomments
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/commits:
+      get:
+        summary: DeleteRepoCollaborator
+        description: DeleteRepoCollaborator
+        operationId: deleterepocollaborator
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/commits/{sha}:
+      get:
+        summary: ListRepoCommits
+        description: ListRepoCommits
+        operationId: listrepocommits
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: sha
+        - in: path
+          name: sha
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/commits/{sha}/comments:
+      post:
+        summary: GetCommitComments
+        description: GetCommitComments
+        operationId: getcommitcomments
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: path
+          name: sha
+        - in: query
+          name: user
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/compare/{base}...{head}:
+      get:
+        summary: GetCommitComment
+        description: GetCommitComment
+        operationId: getcommitcomment
+        parameters:
+        - in: query
+          name: base
+        - in: path
+          name: base
+        - in: query
+          name: head
+        - in: path
+          name: head
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/contributors:
+      get:
+        summary: GetRepo
+        description: GetRepo
+        operationId: getrepo
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/downloads:
+      post:
+        summary: GetRepoDownload
+        description: GetRepoDownload
+        operationId: getrepodownload
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/downloads/{id}:
+      get:
+        summary: ListRepoDownloads
+        description: ListRepoDownloads
+        operationId: listrepodownloads
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/events:
+      get:
+        summary: ListPublicEvents
+        description: ListPublicEvents
+        operationId: listpublicevents
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/forks:
+      post:
+        summary: ListForks
+        description: ListForks
+        operationId: listforks
+        parameters:
+        - in: query
+          name: org
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/git/blobs:
+      post:
+        summary: GetBlob
+        description: GetBlob
+        operationId: getblob
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/git/blobs/{sha}:
+      get:
+        summary: DeletePublicKey
+        description: DeletePublicKey
+        operationId: deletepublickey
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: sha
+        - in: path
+          name: sha
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/git/commits:
+      post:
+        summary: GetCommit
+        description: GetCommit
+        operationId: getcommit
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/git/commits/{sha}:
+      get:
+        summary: CreateBlob
+        description: CreateBlob
+        operationId: createblob
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: sha
+        - in: path
+          name: sha
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/git/refs:
+      post:
+        summary: GetTagReferences
+        description: GetTagReferences
+        operationId: gettagreferences
+        parameters:
+        - in: path
+          name: repoName
+        - in: query
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/git/refs/tags:
+      get:
+        summary: GetReferences
+        description: GetReferences
+        operationId: getreferences
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/git/refs/{ref}:
+      get:
+        summary: CreateCommit
+        description: CreateCommit
+        operationId: createcommit
+        parameters:
+        - in: query
+          name: ref
+        - in: path
+          name: ref
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/git/tags:
+      post:
+        summary: GetTag
+        description: GetTag
+        operationId: gettag
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/git/tags/{sha}:
+      get:
+        summary: DeleteReference
+        description: DeleteReference
+        operationId: deletereference
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: sha
+        - in: path
+          name: sha
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/git/trees:
+      post:
+        summary: GetTreeRecursively
+        description: GetTreeRecursively
+        operationId: gettreerecursively
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/git/trees/{sha}:
+      get:
+        summary: CreateTagObject
+        description: CreateTagObject
+        operationId: createtagobject
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: sha
+        - in: path
+          name: sha
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/hooks:
+      post:
+        summary: GetRepoHook
+        description: GetRepoHook
+        operationId: getrepohook
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/hooks/{id}:
+      get:
+        summary: ListRepoHooks
+        description: ListRepoHooks
+        operationId: listrepohooks
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/hooks/{id}/test:
+      post:
+        summary: CreateRepoHook
+        description: CreateRepoHook
+        operationId: createrepohook
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/issues:
+      post:
+        summary: GetIssues
+        description: GetIssues
+        operationId: getissues
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/issues/comments:
+      get:
+        summary: GetIssue
+        description: GetIssue
+        operationId: getissue
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/issues/comments/{id}:
+      get:
+        summary: CreateIssueComment
+        description: CreateIssueComment
+        operationId: createissuecomment
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/issues/events:
+      get:
+        summary: GetIssueEvents
+        description: GetIssueEvents
+        operationId: getissueevents
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/issues/events/{id}:
+      get:
+        summary: GetRepoEvents
+        description: GetRepoEvents
+        operationId: getrepoevents
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/issues/{id}:
+      get:
+        summary: CreateIssue
+        description: CreateIssue
+        operationId: createissue
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/issues/{id}/comments:
+      post:
+        summary: GetIssueComments
+        description: GetIssueComments
+        operationId: getissuecomments
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/issues/{id}/labels:
+      put:
+        summary: DeleteIssueLabel
+        description: DeleteIssueLabel
+        operationId: deleteissuelabel
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/issues/{id}/labels/{id}:
+      delete:
+        summary: CreateIssueLabels
+        description: CreateIssueLabels
+        operationId: createissuelabels
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/issues/{issueId}/events:
+      get:
+        summary: DeleteMilestone
+        description: DeleteMilestone
+        operationId: deletemilestone
+        parameters:
+        - in: query
+          name: issueId
+        - in: path
+          name: issueId
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/keys:
+      post:
+        summary: GetRepoDeployKey
+        description: GetRepoDeployKey
+        operationId: getrepodeploykey
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/keys/{id}:
+      get:
+        summary: ListRepoDeployKeys
+        description: ListRepoDeployKeys
+        operationId: listrepodeploykeys
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/labels:
+      post:
+        summary: GetLabels
+        description: GetLabels
+        operationId: getlabels
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/labels/{id}:
+      get:
+        summary: CreateLabel
+        description: CreateLabel
+        operationId: createlabel
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/languages:
+      get:
+        summary: ListContributors
+        description: ListContributors
+        operationId: listcontributors
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/milestones:
+      post:
+        summary: GetMilestones
+        description: GetMilestones
+        operationId: getmilestones
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/milestones/{id}:
+      get:
+        summary: CreateMilestone
+        description: CreateMilestone
+        operationId: createmilestone
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/milestones/{id}/labels:
+      get:
+        summary: DeleteIssueLabels
+        description: DeleteIssueLabels
+        operationId: deleteissuelabels
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/pulls:
+      post:
+        summary: GetPullRequest
+        description: GetPullRequest
+        operationId: getpullrequest
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/pulls/comments/{id}:
+      delete:
+        summary: CreatePullRequestComment
+        description: CreatePullRequestComment
+        operationId: createpullrequestcomment
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/pulls/{id}:
+      get:
+        summary: GetPullRequests
+        description: GetPullRequests
+        operationId: getpullrequests
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/pulls/{id}/comments:
+      post:
+        summary: GetPullRequestComment
+        description: GetPullRequestComment
+        operationId: getpullrequestcomment
+        parameters:
+        - in: path
+          name: id
+        - in: query
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/pulls/{id}/commits:
+      get:
+        summary: CreatePullRequest
+        description: CreatePullRequest
+        operationId: createpullrequest
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/pulls/{id}/files:
+      get:
+        summary: ListPullRequestCommits
+        description: ListPullRequestCommits
+        operationId: listpullrequestcommits
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/pulls/{id}/merge:
+      put:
+        summary: GetPullRequestMerged
+        description: GetPullRequestMerged
+        operationId: getpullrequestmerged
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/tags:
+      get:
+        summary: ListTeams
+        description: ListTeams
+        operationId: listteams
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/teams:
+      get:
+        summary: ListLanguages
+        description: ListLanguages
+        operationId: listlanguages
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repos/{userName}/{repoName}/watchers:
+      get:
+        summary: DeleteRepoDeployKey
+        description: DeleteRepoDeployKey
+        operationId: deleterepodeploykey
+        parameters:
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /repositories:
+      get:
+        summary: ListOrgRepo
+        description: ListOrgRepo
+        operationId: listorgrepo
+        parameters:
+        - in: query
+          name: User-Agent
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

@@ -1,0 +1,140 @@
+- swagger: "2.0"
+  info:
+    title: Slack Multiparty Direct Messages API
+    description: The API for management Slack Multiparty Direct Messagess
+    termsOfService: https://slack.com/terms-of-service/api
+    version: ~
+  host: slack.com
+  basePath: /api
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /methods/mpim.close:
+      get:
+        summary: Closes a multiparty direct message channel.
+        description: <td width=70%>Closes a multiparty direct message channel.</td>
+        operationId: mpimclose
+        parameters:
+        - in: query
+          name: channel
+          description: MPIM to close.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: mpim:write)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - direct messages
+        security: []
+    /methods/mpim.history:
+      get:
+        summary: Fetches history of messages and events from a multiparty direct message.
+        description: <td width=70%>Fetches history of messages and events from a multiparty
+          direct message.</td>
+        operationId: mpimhistory
+        parameters:
+        - in: query
+          name: channel
+          description: Multiparty direct message to fetch history for.
+          type: string
+        - in: query
+          name: count
+          description: Number of messages to return, between 1 and 1000.
+          type: string
+        - in: query
+          name: inclusive
+          description: Include messages with latest or oldest timestamp in results.
+          type: string
+        - in: query
+          name: latest
+          description: End of time range of messages to include in results.
+          type: string
+        - in: query
+          name: oldest
+          description: Start of time range of messages to include in results.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: mpim:history)'
+          type: string
+        - in: query
+          name: unreads
+          description: Include unread_count_display in the output?
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - direct messages
+        security: []
+    /methods/mpim.list:
+      get:
+        summary: Lists multiparty direct message channels for the calling user.
+        description: <td width=70%>Lists multiparty direct message channels for the
+          calling user.</td>
+        operationId: mpimlist
+        parameters:
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: mpim:read)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - direct messages
+        security: []
+    /methods/mpim.mark:
+      get:
+        summary: Sets the read cursor in a multiparty direct message channel.
+        description: <td width=70%>Sets the read cursor in a multiparty direct message
+          channel.</td>
+        operationId: mpimmark
+        parameters:
+        - in: query
+          name: channel
+          description: multiparty direct message channel to set reading cursor in.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: mpim:write)'
+          type: string
+        - in: query
+          name: ts
+          description: Timestamp of the most recently seen message.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - direct messages
+        security: []
+    /methods/mpim.open:
+      get:
+        summary: This method opens a multiparty direct message.
+        description: <td width=70%>This method opens a multiparty direct message.</td>
+        operationId: mpimopen
+        parameters:
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: mpim:write)'
+          type: string
+        - in: query
+          name: users
+          description: Comma separated lists of users.  The ordering of the users is
+            preserved whenever a MPIM group is returned.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - direct messages
+        security: []
+  definitions: []

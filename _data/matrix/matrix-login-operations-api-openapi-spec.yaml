@@ -1,0 +1,80 @@
+- swagger: "2.0"
+  info:
+    title: Login Operations
+    version: ~
+  host: /login
+  basePath: http://localhost:8008/_matrix/client/api/v1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /login:
+      get:
+        summary: Get the login mechanism to use when logging in.
+        description: All login stages MUST be mentioned if there is >1 login type.
+        operationId: get_login_info
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Submit a login action.
+        description: If this is part of a multi-stage login, there MUST be a session
+          key.
+        operationId: submit_login
+        parameters:
+        - in: body
+          name: body
+          description: A login submission
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions:
+    LoginFlows:
+      properties:
+        flows:
+          description: This is a default description.
+          type: string
+    LoginInfo:
+      properties:
+        stages:
+          description: This is a default description.
+          type: string
+        type:
+          description: This is a default description.
+          type: string
+    LoginResult:
+      properties:
+        access_token:
+          description: This is a default description.
+          type: string
+        user_id:
+          description: This is a default description.
+          type: string
+        next:
+          description: This is a default description.
+          type: string
+        session:
+          description: This is a default description.
+          type: string
+    LoginSubmission:
+      properties:
+        type:
+          description: This is a default description.
+          type: string
+        session:
+          description: This is a default description.
+          type: string
+        _login_type_defined_keys_:
+          description: This is a default description.
+          type: string

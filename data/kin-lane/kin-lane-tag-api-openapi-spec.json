@@ -1,0 +1,138 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Tag",
+		"description": "This is a tag api",
+		"termsOfService": "http://stack.network/terms-of-service.html",
+		"version": null
+	},
+	"host": "tag.api.kinlane.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/tag/": {
+			"get": {
+				"summary": "retrieves all tags",
+				"description": "retrieves all tags",
+				"operationId": "getTags",
+				"parameters": [{
+					"in": "query",
+					"name": "query",
+					"description": "a text query to search across tag"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			},
+			"post": {
+				"summary": "add tag",
+				"description": "add a new tag",
+				"operationId": "addTag",
+				"parameters": [{
+					"in": "query",
+					"name": "tag",
+					"description": "name of the tag"
+				},
+				{
+					"in": "query",
+					"name": "tags",
+					"description": "tags for the tag"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			}
+		},
+		"/tag/{tag_id}/": {
+			"delete": {
+				"summary": "delete tag",
+				"description": "deletes an tag",
+				"operationId": "deleteTag",
+				"parameters": [{
+					"in": "path",
+					"name": "tag_id",
+					"description": "unique id for the tag"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			},
+			"get": {
+				"summary": "get tag",
+				"description": "get tag",
+				"operationId": "getTag",
+				"parameters": [{
+					"in": "path",
+					"name": "tag_id",
+					"description": "the unique id for the tag"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			},
+			"put": {
+				"summary": "update tag",
+				"description": "update tag",
+				"operationId": "updateTag",
+				"parameters": [{
+					"in": "query",
+					"name": "tag",
+					"description": "name of the tag"
+				},
+				{
+					"in": "query",
+					"name": "tags",
+					"description": "tags for the tag"
+				},
+				{
+					"in": "path",
+					"name": "tag_id",
+					"description": "unique tag_id for the tag"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"tag": {
+			"properties": {
+				"tag": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"tags": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"tag_id": {
+					"description": "This is a default description.",
+					"type": "delete"
+				}
+			}
+		}
+	}
+}

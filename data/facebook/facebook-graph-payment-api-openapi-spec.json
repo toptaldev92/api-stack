@@ -1,0 +1,173 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Facebook Graph (Payment) API",
+		"description": "API for managing Facebook Payments",
+		"termsOfService": "https://www.facebook.com/policies/",
+		"version": null
+	},
+	"host": "graph.facebook.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/v2.5/{payment-id}": {
+			"get": {
+				"summary": "Get Payment",
+				"description": "The details of a payment made in an app using Facebook Payments",
+				"operationId": "payment",
+				"parameters": [{
+					"in": "query",
+					"name": "actions",
+					"description": "The list of different action types that have occurred in this payment.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "application",
+					"description": "The app associated with this payment",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "Buyer&#039;s ISO Country Code, for tax purposes.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "created_time",
+					"description": "The time the payment was originally created.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "disputes",
+					"description": "Contains the information related to a dispute,  including the user_comment and user_email which is provided by the consumer when the dispute is initiated. Additionally contains the current status of the dispute, the time the dispute was created an an resolution reason, if available.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The payment ID",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "items",
+					"description": "The items associated with the payment.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "payout_foreign_exchange_rate",
+					"description": "Exchange rate used to calculate payout amount which is remitted in USD.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "product",
+					"description": "The URL of the og:product object ordered",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "quantity",
+					"description": "The quantity of the product contained in the order",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "request_id",
+					"description": "The unique, optional app-created identifier passed into the JS function (255 character maximum)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "tax",
+					"description": "The tax parameter specifies if a payment is subject to VAT and, if so, how the tax was paid. This can take on the following values:not_taxed: There&#039;s no VAT on this payment because it came from outside the European Union.  already_paid: The tax on this payment has already been paid by the user&#039;s mobile carrier or other upstream partytax_remitted: Facebook paid the VAT on this payment on your behalf. The tax amount will be deducted from your payout.See here for more information.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "tax_country",
+					"description": "The country determined by Facebook for tax calculation of this purchase, given as an ISO 3166-1 alpha-2 country code. Note: This field is for your information only and it should not be used for any recalculation or reconciliation purposes. If tax is equal to not_taxed or already_paid this field will be omitted.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "test",
+					"description": "Optional parameter that shows up when a payment is made by a payment tester listed in the app&#039;s dashboard. This represents a transaction that has not been charged to the consumer&#039;s payment instrument",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "The consumer&#039;s first and last name along with their user id. May be omitted in some cases.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["payments"],
+				"security": []
+			}
+		},
+		"/v2.5/{payment-id}/dispute": {
+			"post": {
+				"summary": "Dispute Payment",
+				"description": "Used to settle any payment disputes",
+				"operationId": "payment",
+				"parameters": [{
+					"in": "query",
+					"name": "reason",
+					"description": "The reason you are settling this dispute. This is required.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["payments"],
+				"security": []
+			}
+		},
+		"/v2.5/{payment-id}/refunds": {
+			"post": {
+				"summary": "Refund Payments",
+				"description": "Used to issue any payment refunds",
+				"operationId": "payment",
+				"parameters": [{
+					"in": "query",
+					"name": "amount",
+					"description": "The amount to refund. This is required. It must be less than or equal to the refundable_amount field on the parent Payment object.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "currency",
+					"description": "The three-letter ISO code of the currency in which the refund amount is specified; it must be the same as the currency in which the original purchase was denominated. This is required.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "reason",
+					"description": "The reason you are refunding this order.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["payments"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

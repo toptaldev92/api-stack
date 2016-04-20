@@ -1,0 +1,480 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "IBM Watson Question Answer API",
+		"description": "REST methods for Question and Answer",
+		"version": "v1"
+	},
+	"host": "service.platform.watson.ibm.com",
+	"basePath": "/qagw",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/v1/feedback": {
+			"put": {
+				"summary": "Submit feedback on the Question Answer Gateway service",
+				"description": "The feedback API allows you to provide information on how well the service performed. The feedback is used to further improve the service and future results.",
+				"operationId": "profile",
+				"parameters": [{
+					"in": "Header",
+					"name": "Basic Authorization",
+					"description": "Base64 Basic Auth",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "body",
+					"name": "Feedback information",
+					"description": "JSON Data",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/v1/ping": {
+			"get": {
+				"summary": "Pings the service to verify that it is available",
+				"description": "",
+				"operationId": "ping",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/v1/question/{id}": {
+			"post": {
+				"summary": "Sends a question to an instance of Watson",
+				"description": "Accepts a Question and Answer REST API request and routes it to the Watson instance identified by the id path parameter. The response includes answers and supporting evidence.",
+				"operationId": "question",
+				"parameters": [{
+					"in": "header",
+					"name": "Authorization",
+					"description": "Basic authentication that uses system id and password",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "Identifies the instance or domain that Watson is trained for",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "body",
+					"name": "question",
+					"description": "The container for the submitted question and its associated information.<br><pre><code>Example with required elements:<br>{<br>   question: {<br>      questionText:Question text here<br>   }<br>}</code></pre>",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "header",
+					"name": "X-SyncTimeout",
+					"description": "Specifies how long the Watson pipeline waits for a response",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/v1/services": {
+			"get": {
+				"summary": "Returns the list of supported Watson domains",
+				"description": "",
+				"operationId": "services",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"ping": {
+			"properties": []
+		},
+		"services": {
+			"properties": {
+				"services": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"service": {
+			"properties": {
+				"overall": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"description": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"watsonQuestion": {
+			"properties": {
+				"question": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"QuestionInformation": {
+			"properties": {
+				"questionText": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"items": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"evidenceRequest": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"answerAssertion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"category": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"context": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"formattedAnswer": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"passthru": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"synonyms": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"lat": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"filters": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"EvidenceRequest": {
+			"properties": {
+				"items": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"profile": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Filters": {
+			"properties": {
+				"filters": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Filter": {
+			"properties": {
+				"filterType": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"filterName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"values": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"WatsonAnswer": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"answers": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"category": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"errorNotifications": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"evidenceList": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"focusList": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"latList": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"pipelineid": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"qclasslist": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"supplemental": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"synonymList": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Answers": {
+			"properties": {
+				"answers": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Answer": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"text": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"confidence": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"evidence": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"evidenceProfile": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"formattedText": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Passage": {
+			"properties": {
+				"copyright": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"document": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"termsOfUse": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"text": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"EvidenceProfile": {
+			"properties": {
+				"featureGroup": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"FeatureGroup": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"value": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ErrorNotification": {
+			"properties": {
+				"error": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"text": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"SynonymList": {
+			"properties": {
+				"term": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"synSet": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"synonym": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Evidence": {
+			"properties": {
+				"copyright": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"metadataMap": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"termsOfUse": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"text": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"document": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"value": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"FeedbackInput": {
+			"properties": {
+				"questionId": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"questionText": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"answerId": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"answerText": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"userName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"mode": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"confidence": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"shown": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"evidenceViewed": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"feedback": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"comment": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

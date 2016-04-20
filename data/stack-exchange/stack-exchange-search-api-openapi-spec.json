@@ -1,0 +1,371 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Stack Exchange Search API",
+		"description": "The API for Stack Exchange search.",
+		"termsOfService": "http://stackexchange.com/legal/api-terms-of-use",
+		"version": "2.2"
+	},
+	"host": "api.stackexchange.com",
+	"basePath": "/2.2",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/search": {
+			"get": {
+				"summary": "Get Post's Specific Revision",
+				"description": "Get Posts Specific Revision",
+				"operationId": "get-posts-specific-revision",
+				"parameters": [{
+					"in": "query",
+					"name": "inline",
+					"description": "A string that must appear verbatim in the title of a question. string"
+				},
+				{
+					"in": "query",
+					"name": "max",
+					"description": "Maximum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "min",
+					"description": "Minimum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "nottagged",
+					"description": "List of tags delimited by semi-colons of which at least one must be on a question. This is a vectorized parameter, multiple ids can be sent a single request if delimited with a semi-colon. string"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "How the current sort should be ordered. one of desc (default), or asc"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The pagination offset for the current collection. Affected by the specified pagesize. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"description": "The number of collection results to display during pagination. Should be between 0 and 100 inclusive. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "How a collection should be sorted. one of activity (default), creation, or votes"
+				},
+				{
+					"in": "query",
+					"name": "tagged",
+					"description": "List of tags delimited by semi-colons of which at least one must be on a question. This is a vectorized parameter, multiple ids can be sent a single request if delimited with a semi-colon. string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/search/advanced": {
+			"get": {
+				"summary": "Search the site for questions using most of the on-site search options.",
+				"description": "Search the site for questions using most of the on-site search options.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "accepted",
+					"description": "true to return only questions with accepted answers, false to return only those without. Omit to elide constraint.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "answers",
+					"description": "the minimum number of answers returned questions must have.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"description": " text which must appear in returned questions bodies.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "closed",
+					"description": "true to return only closed questions, false to return only open ones. Omit to elide constraint.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "migrated",
+					"description": "true to return only questions migrated away from a site, false to return only those not. Omit to elide constraint.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "notice",
+					"description": "true to return only questions with post notices, false to return only those without.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "nottagged",
+					"description": "a semicolon delimited list of tags, none of which will be present on returned questions.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "a free form text parameter, will match all question properties based on an undocumented algorithm.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "tagged",
+					"description": "a semicolon delimited list of tags, of which at least one will be present on all returned questions.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "text which must appear in returned questions titles.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "a url which must be contained in a post, may include a wildcard.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "the id of the user who must own the questions returned.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "views",
+					"description": "the minimum number of views returned questions must have.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "wiki",
+					"description": "true to return only community wiki questions, false to return only non-community wiki ones. Omit to elide constraint.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Search"],
+				"security": []
+			}
+		},
+		"/search/excerpts": {
+			"get": {
+				"summary": "Searches a site.",
+				"description": "Searches a site.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "accepted",
+					"description": "true to return only questions with accepted answers, false to return only those without. Omit to elide constraint.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "answers",
+					"description": "the minimum number of answers returned questions must have.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"description": " text which must appear in returned questions bodies.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "closed",
+					"description": "true to return only closed questions, false to return only open ones. Omit to elide constraint.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "migrated",
+					"description": "true to return only questions migrated away from a site, false to return only those not. Omit to elide constraint.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "notice",
+					"description": "true to return only questions with post notices, false to return only those without.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "nottagged",
+					"description": "a semicolon delimited list of tags, none of which will be present on returned questions.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "a free form text parameter, will match all question properties based on an undocumented algorithm.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "tagged",
+					"description": "a semicolon delimited list of tags, of which at least one will be present on all returned questions.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "text which must appear in returned questions titles.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "a url which must be contained in a post, may include a wildcard.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "the id of the user who must own the questions returned.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "views",
+					"description": "the minimum number of views returned questions must have.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "wiki",
+					"description": "true to return only community wiki questions, false to return only non-community wiki ones. Omit to elide constraint.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Search"],
+				"security": []
+			}
+		},
+		"/similar": {
+			"get": {
+				"summary": "Search the site based on similarity to a title.",
+				"description": "Search the site based on similarity to a title.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "fromdate",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "max",
+					"description": "Maximum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "min",
+					"description": "Minimum of the range to include in the response according to the current sort. integer or unix epoch date"
+				},
+				{
+					"in": "query",
+					"name": "nottagged",
+					"description": "List of tags delimited by semi-colons of which at least one must be on a question. This is a vectorized parameter, multiple ids can be sent a single request if delimited with a semi-colon. string"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "How the current sort should be ordered. one of desc (default), or asc"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The pagination offset for the current collection. Affected by the specified pagesize. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"description": "The number of collection results to display during pagination. Should be between 0 and 100 inclusive. 32-bit signed integer"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "How a collection should be sorted. one of activity (default), creation, or votes"
+				},
+				{
+					"in": "query",
+					"name": "tagged",
+					"description": "List of tags delimited by semi-colons of which at least one must be on a question. This is a vectorized parameter, multiple ids can be sent a single request if delimited with a semi-colon. string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "Search the title"
+				},
+				{
+					"in": "query",
+					"name": "todate",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Search"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

@@ -1,0 +1,122 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "FullContact Person API",
+		"description": "The API for managing FullContact Persons",
+		"termsOfService": "https://www.fullcontact.com/terms/",
+		"version": "v2"
+	},
+	"host": "api.fullcontact.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/person.json": {
+			"get": {
+				"summary": "Get Person",
+				"description": "Get Person",
+				"operationId": "getPerson",
+				"parameters": [{
+					"in": "query",
+					"name": "apiKey",
+					"description": "This API key is assigned to you by FullContact. It is used to identify and authorize your request. Your API key should be kept private, and should never be displayed publicly.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "callback",
+					"description": "If specified, the response will be wrapped as JSONP in a function call. ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "countryCode",
+					"description": "This parameter must be passed when using non US/Canada based numbers. Use the ISO-3166 two-digit country code (Great Britain = GB). If not entered it defaults to US.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "css",
+					"description": "The css parameter can be used to customize the look of person.html.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "email",
+					"description": "The email address of the person being looked up.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "emailMD5",
+					"description": "emailMD5 is an optional parameter that can be used in the place of the email parameter, allowing you to query by an MD5-hashed email address. Match rates for emailMD5 lookups will be slightly lower than those returned via the standard email parameter.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "facebookId",
+					"description": "The numeric facebook ID of the person being looked up. (Use in place of the facebookUsername parameter.)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "facebookUsername",
+					"description": "The facebook username of the person being looked up.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "phone",
+					"description": "The phone number of the person being looked up.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "prettyPrint",
+					"description": "The prettyPrint parameter can be used to disable prettyprint formatting on the API response.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "queue",
+					"description": "Using this parameter notifies FullContact that the email address in question will be called later. It allows the API to make sure it has indexed the email address prior to the application needing it. When using this parameter, it will always return a response code of 202.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "style",
+					"description": "The style parameter can be used to control the document structure returned. The default value, list, indicates that collections such as photos or socialProfiles should be grouped as arrays. ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "twitter",
+					"description": "The twitter name of the person being looked up.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Person"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

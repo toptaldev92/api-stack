@@ -1,0 +1,133 @@
+- swagger: "2.0"
+  info:
+    title: Github Teams API
+    version: ""
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /teams/{id}:
+      get:
+        summary: ListOrgTeams
+        description: ListOrgTeams
+        operationId: listorgteams
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /teams/{id}/members:
+      get:
+        summary: DeleteTeam
+        description: DeleteTeam
+        operationId: deleteteam
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /teams/{id}/members/{userName}:
+      put:
+        summary: GetTeamMember
+        description: GetTeamMember
+        operationId: getteammember
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /teams/{id}/members/{user}:
+      put:
+        summary: GetMember
+        description: GetMember
+        operationId: getmember
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: path
+          name: user
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /teams/{id}/repos:
+      get:
+        summary: DeleteTeamMember
+        description: DeleteTeamMember
+        operationId: deleteteammember
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: User-Agent
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /teams/{id}/repos/{userName}/{repoName}:
+      put:
+        summary: GetTeamRepo
+        description: GetTeamRepo
+        operationId: getteamrepo
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: repoName
+        - in: path
+          name: repoName
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

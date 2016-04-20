@@ -1,0 +1,83 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Eventbrite Webhooks API",
+		"description": "The API for managing Eventbrite webhooks.",
+		"version": "v3"
+	},
+	"host": "www.eventbriteapi.com",
+	"basePath": "/v3",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/webhooks/": {
+			"get ": {
+				"summary": "Returns the list of webhook objects that belong to the authenticated user.",
+				"description": "Returns the list of webhook objects that belong to the authenticated user.",
+				"operationId": "returns-the-list-of-webhook-objects-that-belong-to-the-authenticated-user",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post ": {
+				"summary": "Creates a webhook for the authenticated user.",
+				"description": "Creates a webhook for the authenticated user.",
+				"operationId": "creates-a-webhook-for-the-authenticated-user",
+				"parameters": [{
+					"in": "query",
+					"name": "actions",
+					"description": "Determines what actions the hook is triggered for.An empty list means that all actions trigger a webhook post.See below for a more complete description."
+				},
+				{
+					"in": "query",
+					"name": "endpoint_url",
+					"description": "The target URL of the Webhook subscription."
+				},
+				{
+					"in": "query",
+					"name": "event_id",
+					"description": "The ID of the event that triggers this webhook. Leave blank for all events."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/webhooks/{id}/": {
+			"delete ": {
+				"summary": "Deletes the specified webhook object.",
+				"description": "Deletes the specified webhook object.",
+				"operationId": "deletes-the-specified-webhook-object",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get ": {
+				"summary": "Returns a webhook for the specified webhook as webhook.",
+				"description": "Returns a webhook for the specified webhook as webhook.",
+				"operationId": "returns-a-webhook-for-the-specified-webhook-as-webhook",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

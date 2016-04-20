@@ -1,0 +1,45 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "FullContact Account Stats API",
+		"description": "The API for managing FullContact Account Statss",
+		"termsOfService": "https://www.fullcontact.com/terms/",
+		"version": "v2"
+	},
+	"host": "api.fullcontact.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/stats.json": {
+			"get": {
+				"summary": "Get Account Stats",
+				"description": "Get Account Stats",
+				"operationId": "getAccountStats",
+				"parameters": [{
+					"in": "query",
+					"name": "apiKey",
+					"description": "This API key is assigned to you by FullContact. It is used to identify and authorize your request. Your API key should be kept private, and should never be displayed publicly.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "period",
+					"description": "You can define the month that you want to see usage stats for by using the period parameter. The format is YYYY-MM (period=2012-08).",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Account Stats"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

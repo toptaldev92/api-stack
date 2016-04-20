@@ -1,0 +1,98 @@
+- swagger: "2.0"
+  info:
+    title: Facebook Graph (Milestone) API
+    description: API for managing Facebook Milestones
+    termsOfService: https://www.facebook.com/policies/
+    version: ~
+  host: graph.facebook.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /v2.5/{milestone-id}:
+      get:
+        summary: This represents a milestone on a Facebook Page
+        description: This represents a milestone on a Facebook Page
+        operationId: milestone
+        parameters:
+        - in: query
+          name: created_time
+          description: The creation time of the milestone
+          type: string
+        - in: query
+          name: description
+          description: The description of the milestone
+          type: string
+        - in: query
+          name: end_time
+          description: The end time of the milestone. Page milestones have the same
+            start and end time
+          type: string
+        - in: query
+          name: from
+          description: The Page that posted the milestone.
+          type: string
+        - in: query
+          name: id
+          description: The ID of a milestone event
+          type: string
+        - in: query
+          name: start_time
+          description: The start time of the milestone
+          type: string
+        - in: query
+          name: title
+          description: The title of the milestone
+          type: string
+        - in: query
+          name: updated_time
+          description: The update time of the milestone
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - milestones
+        security: []
+    /v2.5/{milestone-id}/photos:
+      get:
+        summary: The photos attached to a milestone on a Facebook Page
+        description: The photos attached to a milestone on a Facebook Page
+        operationId: milestone
+        responses:
+          200:
+            description: OK
+        tags:
+        - milestones
+        security: []
+      post:
+        summary: The photos attached to a milestone on a Facebook Page
+        description: The photos attached to a milestone on a Facebook Page
+        operationId: milestone
+        parameters:
+        - in: query
+          name: source
+          description: The photo, encoded as form data. This field is required.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - milestones
+        security: []
+    /{page-id}/milestones:
+      get:
+        summary: This represents a milestone on a Facebook Page
+        description: This represents a milestone on a Facebook Page
+        operationId: milestone
+        responses:
+          200:
+            description: OK
+        tags:
+        - milestones
+        security: []
+  definitions: []

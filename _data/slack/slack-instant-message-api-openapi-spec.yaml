@@ -1,0 +1,121 @@
+- swagger: "2.0"
+  info:
+    title: Slack Instant Message API
+    description: The API for management Slack Instant Messages
+    termsOfService: https://slack.com/terms-of-service/api
+    version: ~
+  host: slack.com
+  basePath: /api
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /methods/im.close:
+      get:
+        summary: Close a direct message channel.
+        description: <td width=70%>Close a direct message channel.</td>
+        operationId: imclose
+        parameters:
+        - in: query
+          name: channel
+          description: Direct message channel to close.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: im:write)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - instant messages
+        security: []
+    /methods/im.history:
+      get:
+        summary: Fetches history of messages and events from direct message channel.
+        description: <td width=70%>Fetches history of messages and events from direct
+          message channel.</td>
+        operationId: imhistory
+        parameters:
+        - in: query
+          name: channel
+          description: Direct message channel to fetch history for.
+          type: string
+        - in: query
+          name: count
+          description: Number of messages to return, between 1 and 1000.
+          type: string
+        - in: query
+          name: inclusive
+          description: Include messages with latest or oldest timestamp in results.
+          type: string
+        - in: query
+          name: latest
+          description: End of time range of messages to include in results.
+          type: string
+        - in: query
+          name: oldest
+          description: Start of time range of messages to include in results.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: im:history)'
+          type: string
+        - in: query
+          name: unreads
+          description: Include unread_count_display in the output?
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - instant messages
+        security: []
+    /methods/im.mark:
+      get:
+        summary: Sets the read cursor in a direct message channel.
+        description: <td width=70%>Sets the read cursor in a direct message channel.</td>
+        operationId: immark
+        parameters:
+        - in: query
+          name: channel
+          description: Direct message channel to set reading cursor in.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: im:write)'
+          type: string
+        - in: query
+          name: ts
+          description: Timestamp of the most recently seen message.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - instant messages
+        security: []
+    /methods/im.open:
+      get:
+        summary: Opens a direct message channel.
+        description: <td width=70%>Opens a direct message channel.</td>
+        operationId: imopen
+        parameters:
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: im:write)'
+          type: string
+        - in: query
+          name: user
+          description: User to open a direct message channel with.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - instant messages
+        security: []
+  definitions: []

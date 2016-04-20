@@ -1,0 +1,98 @@
+- swagger: "2.0"
+  info:
+    title: USA Today Articles
+    description: Using the USA TODAY Articles API, anybody is capable of constructing
+      their own custom feeds for USA TODAY stories going back to 2004. Stories may be
+      retrieved a number of ways, including pulling editorially prioritized content
+      by section, employing either basic search or tag search, or calling feeds for
+      one of the USA TODAY communities. All article feeds are available in both RSS
+      and JSON formatting.
+    version: v1
+  host: api.usatoday.com
+  basePath: open/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    articles/:
+      get:
+        summary: Articles
+        description: 'There are three kinds of feeds that a programmer can construct
+          using the USA TODAY Articles API: (1) a Top News feed, (2) a keyword feed
+          or (3) a community feed. Every call to the USA TODAY Articles API must be
+          authenticated with the programmers unique API key, as demonstrated in the
+          sample requests below.'
+        operationId: ""
+        parameters:
+        - in: query
+          name: api_key
+          description: The API key used for the query
+          type: string
+          format: string
+        - in: query
+          name: count
+          description: Use this value to set the number of incoming stories. (default
+            is 10)
+          type: string
+          format: string
+        - in: query
+          name: days
+          description: Returns stories that are no older than X days old, where X equals
+            the input value.
+          type: string
+          format: string
+        - in: query
+          name: fromdate
+          description: Returns stories back to the FromDate value. Must use yyyy-mm-dd
+            format.
+          type: string
+          format: string
+        - in: query
+          name: most
+          description: Allows programmers with the ability to retrieve articles based
+            on most read, most E-mailed and most commented.
+          type: string
+          format: string
+        - in: query
+          name: page
+          description: Returns the Xth page of results, where X equals the input value.
+          type: string
+          format: string
+        - in: query
+          name: reporter
+          description: Returns only stories from a specific reporter. Query searches
+            byline field.
+          type: string
+          format: string
+        - in: query
+          name: search
+          description: Keyword to search by
+          type: string
+          format: string
+        - in: query
+          name: tag
+          description: Tag to search by
+          type: string
+          format: string
+        - in: query
+          name: tickersonly
+          description: When set to Y, returns only stories with embedded stock values.
+            Best used with Money stories.
+          type: string
+          format: string
+        - in: query
+          name: todate
+          description: Returns stories starting at the ToDate value and moving back.
+            Must use yyyy-mm-dd format.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        security: []
+  definitions: []

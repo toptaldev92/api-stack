@@ -1,0 +1,191 @@
+- swagger: "2.0"
+  info:
+    title: Github Organzations API
+    version: ""
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /orgs/{org}:
+      get:
+        summary: ListAuthUserOrg
+        description: ListAuthUserOrg
+        operationId: listauthuserorg
+        parameters:
+        - in: query
+          name: org
+        - in: path
+          name: org
+        - in: query
+          name: User-Agent
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /orgs/{org}/events:
+      get:
+        summary: ListRepoPublicEvents
+        description: ListRepoPublicEvents
+        operationId: listrepopublicevents
+        parameters:
+        - in: query
+          name: org
+        - in: path
+          name: org
+        - in: query
+          name: User-Agent
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /orgs/{org}/issues:
+      get:
+        summary: ListIssuesForUser
+        description: ListIssuesForUser
+        operationId: listissuesforuser
+        parameters:
+        - in: query
+          name: direction
+        - in: query
+          name: filter
+        - in: query
+          name: org
+        - in: path
+          name: org
+        - in: query
+          name: sort
+        - in: query
+          name: state
+        - in: query
+          name: User-Agent
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /orgs/{org}/members:
+      get:
+        summary: GetOrg
+        description: GetOrg
+        operationId: getorg
+        parameters:
+        - in: query
+          name: org
+        - in: path
+          name: org
+        - in: query
+          name: User-Agent
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /orgs/{org}/members/{userName}:
+      get:
+        summary: ListMembers
+        description: ListMembers
+        operationId: listmembers
+        parameters:
+        - in: query
+          name: org
+        - in: path
+          name: org
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /orgs/{org}/public_members:
+      get:
+        summary: DeleteMember
+        description: DeleteMember
+        operationId: deletemember
+        parameters:
+        - in: query
+          name: org
+        - in: path
+          name: org
+        - in: query
+          name: User-Agent
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /orgs/{org}/public_members/{userName}:
+      put:
+        summary: GetUserPublicMember
+        description: GetUserPublicMember
+        operationId: getuserpublicmember
+        parameters:
+        - in: query
+          name: org
+        - in: path
+          name: org
+        - in: query
+          name: User-Agent
+        - in: query
+          name: userName
+        - in: path
+          name: userName
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /orgs/{org}/repos:
+      post:
+        summary: CreateRepo
+        description: CreateRepo
+        operationId: createrepo
+        parameters:
+        - in: query
+          name: org
+        - in: path
+          name: org
+        - in: query
+          name: User-Agent
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /orgs/{org}/teams:
+      post:
+        summary: GetTeam
+        description: GetTeam
+        operationId: getteam
+        parameters:
+        - in: query
+          name: org
+        - in: path
+          name: org
+        - in: query
+          name: User-Agent
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

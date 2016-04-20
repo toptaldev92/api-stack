@@ -1,0 +1,36 @@
+- swagger: "2.0"
+  info:
+    title: Stack Exchange Privileges API
+    description: The API for managing Stack Exchange privileges.
+    termsOfService: http://stackexchange.com/legal/api-terms-of-use
+    version: "2.2"
+  host: api.stackexchange.com
+  basePath: /2.2
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /privileges:
+      get:
+        summary: Returns the earnable privileges on a site.
+        description: Returns the earnable privileges on a site.
+        operationId: returnsTheEarnablePrivilegesOnASite
+        parameters:
+        - in: query
+          name: page
+          type: string
+          format: string
+        - in: query
+          name: pagesize
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Privileges
+        security: []
+  definitions: []

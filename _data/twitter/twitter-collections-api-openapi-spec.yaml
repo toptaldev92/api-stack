@@ -1,0 +1,303 @@
+- swagger: "2.0"
+  info:
+    title: Twitter Collections API
+    description: This is the collections API for Twitter.
+    termsOfService: http://dev.twitter.com/overview/terms
+    contact:
+      name: Twitter
+      url: https://dev.twitter.com/discussions
+    version: "1.1"
+  host: api.twitter.com
+  basePath: /1.1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /collections/create/:
+      post:
+        summary: Create Collections
+        description: Create a Collection owned by the currently authenticated user.
+        operationId: createCollection
+        parameters:
+        - in: formData
+          name: description
+          description: A brief description of this collection in 160 characters or fewer.
+          type: string
+          format: string
+        - in: formData
+          name: name
+          description: he title of the collection being created, in 25 characters or
+            less.
+          type: string
+          format: string
+        - in: formData
+          name: timeline_order
+          description: Order Tweets chronologically or in the order they are added to
+            a Collection.
+          type: string
+          format: string
+        - in: formData
+          name: url
+          description: A fully-qualified URL to associate with this collection.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Collections
+        security: []
+    /collections/destroy/:
+      post:
+        summary: Destroy Collections
+        description: Permanently delete a Collection owned by the currently authenticated
+          user.
+        operationId: destroyCollections
+        parameters:
+        - in: formData
+          name: id
+          description: The identifier of the Collection to destroy.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Collections
+        security: []
+    /collections/entries/:
+      get:
+        summary: Collections Entries
+        description: Retrieve the identified Collection, presented as a list of the
+          Tweets curated within.
+        operationId: getCollectionsEntries
+        parameters:
+        - in: query
+          name: count
+          description: Specifies the maximum number of results to include in the response.
+            Specify a count between 1 and 200. A next_cursor value will be provided
+            in the response if additional results are available.
+          type: integer
+          format: integer
+        - in: query
+          name: id
+          description: The identifier of the Collection to return results for.
+          type: string
+          format: string
+        - in: query
+          name: max_position
+          description: Returns results with a position value less than or equal to the
+            specified position.
+          type: integer
+          format: integer
+        - in: query
+          name: min_position
+          description: Returns results with a position greater than the specified position.
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: OK
+        tags:
+        - Collections
+        security: []
+    /collections/entries/add/:
+      post:
+        summary: Add Collection Entry
+        description: Add a specified Tweet to a Collection.
+        operationId: addCollectionEntries
+        parameters:
+        - in: formData
+          name: above
+          description: 'Set to false to insert the specified tweet_id below the relative_to
+            Tweet in the collection. Default: true'
+          type: boolean
+          format: boolean
+        - in: formData
+          name: id
+          description: The identifier of the Collection receiving the Tweet.
+          type: string
+          format: string
+        - in: formData
+          name: relative_to
+          description: The identifier of the Tweet used for relative positioning in
+            a curation_reverse_chron ordered collection.
+          type: string
+          format: string
+        - in: formData
+          name: tweet_id
+          description: The identifier of the Tweet to add to the Collection.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Collections
+        security: []
+    /collections/entries/curate/:
+      post:
+        summary: Create Collections Entries
+        description: Curate a Collection by adding or removing Tweets in bulk. Updates
+          must be limited to 100 cumulative additions or removals per request.
+        operationId: curateCollectionsEntries
+        responses:
+          200:
+            description: OK
+        tags:
+        - Collections
+        security: []
+    /collections/entries/move/:
+      post:
+        summary: Move Collections Entries
+        description: Move a specified Tweet to a new position in a curation_reverse_chron
+          ordered collection.
+        operationId: moveCollectionsEntries
+        parameters:
+        - in: formData
+          name: above
+          description: 'Set to false to insert the specified tweet_id below the relative_to
+            Tweet in the collection. '
+          type: boolean
+          format: boolean
+        - in: formData
+          name: id
+          description: The identifier of the Collection receiving the Tweet.
+          type: string
+          format: string
+        - in: formData
+          name: relative_to
+          description: The identifier of the Tweet used for relative positioning.
+          type: string
+          format: string
+        - in: formData
+          name: tweet_id
+          description: The identifier of the Tweet to add to the Collection.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Collections
+        security: []
+    /collections/list:
+      get:
+        summary: Collections List
+        description: Find Collections created by a specific user or containing a specific
+          curated Tweet.
+        operationId: getCollectiosnLIst
+        parameters:
+        - in: query
+          name: count
+          description: Specifies the maximum number of results to include in the response.
+            Specify a count between 1 and 200. A next_cursor value will be provided
+            in the response if additional results are available.
+          type: string
+          format: string
+        - in: query
+          name: cursor
+          description: A string identifying the segment of the current result set to
+            retrieve. Values for this parameter are yielded in the cursors node attached
+            to response objects. Usage of the count parameter affects cursoring.
+          type: string
+          format: string
+        - in: query
+          name: screen_name
+          description: The screen name of the user for whom to return results for.
+          type: string
+          format: string
+        - in: query
+          name: tweet_id
+          description: The identifier of the Tweet for which to return results for.
+          type: string
+          format: string
+        - in: query
+          name: user_id
+          description: The ID of the user for whom to return results for.
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: OK
+        tags:
+        - Collections
+        security: []
+    /collections/show:
+      get:
+        summary: Collections Show
+        description: Retrieve information associated with a specific Collection.
+        operationId: getCollectionsShow
+        parameters:
+        - in: query
+          name: id
+          description: ' required The identifier of the Collection to return results
+            for.'
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Collections
+        security: []
+    /collections/update/:
+      post:
+        summary: Update Collections
+        description: Update information concerning a Collection owned by the currently
+          authenticated user.
+        operationId: updateCollection
+        parameters:
+        - in: formData
+          name: description
+          description: A brief description of this Collection in 160 characters or fewer.
+          type: string
+          format: string
+        - in: formData
+          name: id
+          description: he identifier of the Collection to modify.
+          type: string
+          format: string
+        - in: formData
+          name: name
+          description: The title of the Collection being created, in 25 characters or
+            fewer.
+          type: string
+          format: string
+        - in: query
+          name: url
+          description: A fully-qualified URL to associate with this Collection.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Collections
+        security: []
+    collections/entries/remove:
+      put:
+        summary: Remove Collections Entries
+        description: Remove the specified Tweet from a Collection.
+        operationId: remmoveCollectionsEntries
+        parameters:
+        - in: formData
+          name: id
+          description: The identifier of the target Collection
+          type: string
+          format: string
+        - in: formData
+          name: tweet_id
+          description: The identifier of the Tweet to remove.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Collections
+        security: []
+  definitions: []

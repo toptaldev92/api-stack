@@ -1,0 +1,189 @@
+- swagger: "2.0"
+  info:
+    title: AngelList Messages API
+    description: Manages messages on AngelList platform.
+    termsOfService: https://angel.co/terms
+    contact:
+      name: AngelList
+      url: https://angel.co/api
+      email: api@angel.co
+    version: v1
+  host: api.angel.co
+  basePath: /1/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /messages:
+      get:
+        summary: Get Messages
+        description: Get Messages
+        operationId: messages
+        parameters:
+        - in: query
+          name: likable_type
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/messages'
+        tags:
+        - Messages
+        security:
+        - oauth: []
+      post:
+        summary: Add Message
+        description: Add Message
+        operationId: messages
+        parameters:
+        - in: query
+          name: body
+          type: string
+          format: string
+        - in: query
+          name: recipient_id
+          type: string
+          format: string
+        - in: query
+          name: thread_id
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/messages'
+        tags:
+        - Messages
+        security:
+        - oauth: []
+    /messages/mark:
+      post:
+        summary: Mark As Read
+        description: Marks message as read.
+        operationId: messages
+        parameters:
+        - in: query
+          name: thread_ids
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/messages'
+          500:
+            description: Error
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/error'
+        tags:
+        - Messages
+        security:
+        - oauth: []
+    /messages/{message_id}:
+      get:
+        summary: Get Message
+        description: Get Message
+        operationId: message
+        parameters:
+        - in: query
+          name: likable_type
+          type: string
+          format: string
+        - in: path
+          name: message_id
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: OK
+          500:
+            description: Error
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/error'
+        tags:
+        - Messages
+        security:
+        - oauth: []
+  securityDefinitions:
+    oauth:
+      type: oauth2
+      flow: accessCode
+      authorizationUrl: https://angel.co/api/oauth/authorize
+      tokenUrl: https://angel.co/api/oauth/token
+  definitions:
+    error:
+      properties:
+        error:
+          description: This is a default description.
+          type: string
+        message:
+          description: This is a default description.
+          type: string
+        type:
+          description: This is a default description.
+          type: string
+    last_message:
+      properties:
+        body:
+          description: This is a default description.
+          type: string
+        created_at:
+          description: This is a default description.
+          type: string
+        id:
+          description: This is a default description.
+          type: integer
+        last_message:
+          description: This is a default description.
+          type: string
+        recipient_id:
+          description: This is a default description.
+          type: integer
+        sender_id:
+          description: This is a default description.
+          type: integer
+        viewed:
+          description: This is a default description.
+          type: string
+    messages:
+      properties:
+        body:
+          description: This is a default description.
+          type: string
+        cards:
+          description: This is a default description.
+          type: string
+        created_at:
+          description: This is a default description.
+          type: string
+        id:
+          description: This is a default description.
+          type: integer
+        messages:
+          description: This is a default description.
+          type: string
+        recipient_id:
+          description: This is a default description.
+          type: integer
+        sender_id:
+          description: This is a default description.
+          type: integer
+        viewed:
+          description: This is a default description.
+          type: string

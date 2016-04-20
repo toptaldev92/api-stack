@@ -1,0 +1,71 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Docker Remote Build API",
+		"description": "The API for managing Docker Remote Build",
+		"termsOfService": "https://www.docker.com/docker-terms-service",
+		"version": ""
+	},
+	"host": "api.example.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/build": {
+			"post": {
+				"summary": "Build an image from Dockerfile via stdin",
+				"description": "Build an image from Dockerfile via stdin",
+				"operationId": "build-an-image-from-dockerfile-via-stdin",
+				"parameters": [{
+					"in": "query",
+					"name": "Content-type",
+					"description": "should be set to application/tar."
+				},
+				{
+					"in": "query",
+					"name": "forcerm",
+					"description": "always remove intermediate containers (includes rm)Request Headers:"
+				},
+				{
+					"in": "query",
+					"name": "nocache",
+					"description": "do not use the cache when building the image"
+				},
+				{
+					"in": "query",
+					"name": "pull",
+					"description": "attempt to pull the image even if an older image exists locally"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "suppress verbose build output"
+				},
+				{
+					"in": "query",
+					"name": "rm",
+					"description": "remove intermediate containers after a successful build (default behavior)"
+				},
+				{
+					"in": "query",
+					"name": "t",
+					"description": "repository name (and optionally a tag) to be applied to        the resulting image in case of success"
+				},
+				{
+					"in": "query",
+					"name": "X-Registry-Config",
+					"description": "base64-encoded ConfigFile objec"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

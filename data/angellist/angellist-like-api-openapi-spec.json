@@ -1,0 +1,226 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "AngelList Like API",
+		"description": "Managing likes for AngelList users and startups.",
+		"termsOfService": "https://angel.co/terms",
+		"contact": {
+			"name": "AngelList",
+			"url": "https://angel.co/api",
+			"email": "api@angel.co"
+		},
+		"version": "v1"
+	},
+	"host": "api.angel.co",
+	"basePath": "/1/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/like": {
+			"post": {
+				"summary": "Add Like",
+				"description": "Add like.",
+				"operationId": "like",
+				"parameters": [{
+					"in": "query",
+					"name": "likable_id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "likable_type",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/user"
+							}
+						}
+					}
+				},
+				"tags": ["Likes"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		},
+		"/likes": {
+			"get": {
+				"summary": "Get Likes",
+				"description": "Get likes",
+				"operationId": "likes",
+				"parameters": [{
+					"in": "query",
+					"name": "likable_id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "likable_type",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/user"
+							}
+						}
+					}
+				},
+				"tags": ["Likes"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			},
+			"post": {
+				"summary": "Add Like",
+				"description": "Add Like",
+				"operationId": "likes",
+				"parameters": [{
+					"in": "query",
+					"name": "likable_id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "likable_type",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/user"
+							}
+						}
+					}
+				},
+				"tags": ["Likes"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		},
+		"/likes/{like_id}": {
+			"delete": {
+				"summary": "Delete Like",
+				"description": "Delete Like",
+				"operationId": "likes",
+				"parameters": [{
+					"in": "query",
+					"name": "likable_type",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "like_id",
+					"type": "integer",
+					"format": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/user"
+							}
+						}
+					},
+					"500": {
+						"description": "Error",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/error"
+							}
+						}
+					}
+				},
+				"tags": ["Likes"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
+		}
+	},
+	"definitions": {
+		"error": {
+			"properties": {
+				"error": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"message": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"gadget": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"user": {
+			"properties": {
+				"angellist_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"bio": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"follower_count": {
+					"description": "This is a default description.",
+					"type": "integer"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "integer"
+				},
+				"image": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"user": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

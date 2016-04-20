@@ -1,0 +1,459 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Auth0",
+		"version": null
+	},
+	"host": "login.auth0.com",
+	"basePath": "/clients",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/api/v2/clients": {
+			"get": {
+				"summary": "Retrieves all client.",
+				"description": "<strong>Important:</strong> The <code>client_secret</code>,<code>encryption_key</code> and <code>signing_keys</code> attributes can only be retrieved with the <code>read:client_keys</code> scope.",
+				"operationId": "get_clients",
+				"parameters": [{
+					"in": "query",
+					"name": "exclude_fields",
+					"description": "true if the fields specified are to be excluded from the result, false otherwise.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "fields",
+					"description": "A comma separated list of fields to include or exclude (depending on exclude_fields) from the result. Empty to retrieve all fields.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Creates a client.",
+				"description": "",
+				"operationId": "post_clients",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v2/clients/{id}": {
+			"delete": {
+				"summary": "Deletes a client.",
+				"description": "",
+				"operationId": "delete_clients_by_id",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The client_id of the client to delete.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Retrieves a client by client_id.",
+				"description": "<strong>Important:</strong> The <code>client_secret</code>,<code>encryption_key</code> and <code>signing_keys</code> attributes can only be retrieved with the <code>read:client_keys</code> scope.",
+				"operationId": "get_clients_by_id",
+				"parameters": [{
+					"in": "query",
+					"name": "exclude_fields",
+					"description": "true if the fields specified are to be excluded from the result, false otherwise.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "fields",
+					"description": "A comma separated list of fields to include or exclude (depending on exclude_fields) from the result. Empty to retrieve all fields.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "The client_id of the client to retrieve.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"patch": {
+				"summary": "Updates a client's attributes.",
+				"description": "<strong>Important:</strong> The <code>client_secret</code>,<code>encryption_key</code> and <code>signing_keys</code> attributes can only be updated with the <code>update:client_keys</code> scope.",
+				"operationId": "patch_clients_by_id",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "The client_id of the client to retrieve.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"client_secret": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"callbacks": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"allowed_origins": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"client_aliases": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"allowed_clients": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"jwt_configuration": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"signing_keys": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"encryption_key": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sso": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"custom_login_page_off": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"custom_login_page": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"custom_login_page_preview": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"form_template": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"addons": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"lifetime_in_seconds": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"secret_not_encoded": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"scopes": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"alg": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"pub": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"cert": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"is_heroku_app": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"aws": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"azure_sb": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"box": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"cloudbees": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"concur": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"dropbox": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"echosign": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"egnyte": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"firebase": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"newrelic": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"office365": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"salesforce": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"salesforce_api": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"salesforce_sandbox_api": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"samlp": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sap_api": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sharepoint": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"springcm": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"wams": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"wsfed": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"zendesk": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"zoom": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"principal": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"role": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"namespace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sasKeyName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sasKey": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"entityPath": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"expiration": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"secret": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"entity_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"clientid": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"communityName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"community_url_section": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"mappings": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"audience": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"recipient": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"createUpnClaim": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"mapUnknownClaimsAsIs": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"passthroughClaimsWithNoMapping": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"mapIdentities": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"signatureAlgorithm": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"digestAlgorithm": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"issuer": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"destination": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"lifetimeInSeconds": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"signResponse": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"nameIdentifierFormat": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"nameIdentifierProbes": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"authnContextClassRef": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"usernameAttribute": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"tokenEndpointUrl": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"scope": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"servicePassword": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"masterkey": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"account": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

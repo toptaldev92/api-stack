@@ -1,0 +1,136 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Fitbit Subscription API",
+		"description": "The Fitbit API allows developers to interact with Fitbit data in their own applications, products and services.",
+		"version": "1"
+	},
+	"host": "api.fitbit.com",
+	"basePath": "/1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/user/-{collection-path}apiSubscriptions.{format}": {
+			"get": {
+				"summary": "Remove Subscription",
+				"description": "Remove Subscription",
+				"operationId": "remove-subscription",
+				"parameters": [{
+					"in": "query",
+					"name": "collection-path",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "collection-path",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["subscriptions"],
+				"security": []
+			}
+		},
+		"/user/-{collection-path}apiSubscriptions/{subscription-id}.{format}": {
+			"delete": {
+				"summary": "Add Subscription",
+				"description": "Add Subscription",
+				"operationId": "add-subscription",
+				"parameters": [{
+					"in": "query",
+					"name": "collection-path",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "collection-path",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "subscription-id",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "subscription-id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["subscriptions"],
+				"security": []
+			},
+			"post": {
+				"summary": "Accept/Reject Invite",
+				"description": "Accept/Reject Invite",
+				"operationId": "acceptreject-invite",
+				"parameters": [{
+					"in": "query",
+					"name": "collection-path",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "collection-path",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "subscription-id",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "subscription-id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["subscriptions"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

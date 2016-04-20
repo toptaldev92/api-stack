@@ -1,0 +1,32 @@
+- swagger: "2.0"
+  info:
+    title: Slack Authentication API
+    description: The API for management Slack Authentications
+    termsOfService: https://slack.com/terms-of-service/api
+    version: ~
+  host: slack.com
+  basePath: /api
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /methods/auth.test:
+      get:
+        summary: Checks authentication &amp; identity.
+        description: <td width=70%>Checks authentication &amp; identity.</td>
+        operationId: authtest
+        parameters:
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: identify)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - authentication
+        security: []
+  definitions: []

@@ -1,0 +1,287 @@
+- swagger: "2.0"
+  info:
+    title: Instructure Canvas Calendar Events API
+    description: 'Canvas LMS includes a REST API for accessing and modifying data externally
+      from the main application, in your own programs and scripts. '
+    termsOfService: https://www.canvaslms.com/policies/api-policy
+    version: v1
+  host: canvas.instructure.com
+  basePath: /api/v1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /calendar_events:
+      get:
+        summary: List calendar events
+        description: ""
+        operationId: list-calendar-events
+        parameters:
+        - in: query
+          name: all_events
+          description: Defaults to false (uses start_date, end_date, and undated criteria).
+            Ifntrue, all events are returned, ignoring start_date, end_date, and undatedncriteria.
+          type: boolean
+        - in: query
+          name: context_codes[]
+          description: 'List of context codes of courses/groups/users whose events you
+            want to see.nIf not specified, defaults to the current user (i.e personal
+            calendar, noncourse/group events). Limited to 10 context codes, additional
+            ones arenignored. The format of this field is the context type, followed
+            by annunderscore, followed by the context id. For example: course_42'
+          type: string
+        - in: query
+          name: end_date
+          description: 'Only return events before the end_date (inclusive). Defaults
+            to start_date.nThe value should be formatted as: yyyy-mm-dd or ISO 8601nYYYY-MM-DDTHH:MM:SSZ.
+            If end_date is the same as start_date, then onlynevents on that day are
+            returned.'
+          type: date
+        - in: query
+          name: excludes[]
+          description: Array of attributes to exclude. Possible values are u201cdescriptionu201d,nu201cchild_eventsu201d
+            and u201cassignmentu201d
+          type: array
+        - in: query
+          name: start_date
+          description: 'Only return events since the start_date (inclusive). Defaults
+            to today. Thenvalue should be formatted as: yyyy-mm-dd or ISO 8601 YYYY-MM-DDTHH:MM:SSZ.'
+          type: date
+        - in: query
+          name: type
+          description: 'Defaults to u201ceventu201dnn        n        n          Allowed
+            values: event, assignment'
+          type: string
+        - in: query
+          name: undated
+          description: Defaults to false (dated events only). If true, only return undated
+            eventsnand ignore start_date and end_date.
+          type: boolean
+        responses:
+          200:
+            description: OK
+        tags:
+        - events
+        security: []
+      post:
+        summary: Create a calendar event
+        description: ""
+        operationId: create-a-calendar-event
+        parameters:
+        - in: query
+          name: calendar_event[child_event_data][X][context_code]
+          description: Context code(s) corresponding to the section-level start and
+            end time(s).
+          type: string
+        - in: query
+          name: calendar_event[child_event_data][X][end_at]
+          description: Section-level end time(s) if this is a course event.
+          type: datetime
+        - in: query
+          name: calendar_event[child_event_data][X][start_at]
+          description: Section-level start time(s) if this is a course event. X can
+            be anynidentifier, provided that it is consistent across the start_at, end_at
+            andncontext_code
+          type: datetime
+        - in: query
+          name: calendar_event[context_code]
+          description: Context code of the course/group/user whose calendar this event
+            should benadded to.
+          type: string
+        - in: query
+          name: calendar_event[description]
+          description: Longer HTML description of the event.
+          type: string
+        - in: query
+          name: calendar_event[duplicate][append_iterator]
+          description: Defaults to false.  If set to `true`, an increasing counter number
+            will benappended to the event title when the event is duplicated.  (e.g.
+            Event 1,nEvent 2, Event 3, etc)
+          type: boolean
+        - in: query
+          name: calendar_event[duplicate][count]
+          description: Number of times to copy/duplicate the event.
+          type: number
+        - in: query
+          name: calendar_event[duplicate][frequency]
+          description: 'Defaults to u201cweeklyu201d.  The frequency at which to duplicate
+            the eventnn        n        n          Allowed values: daily, weekly, monthly'
+          type: string
+        - in: query
+          name: calendar_event[duplicate][interval]
+          description: Defaults to 1 if duplicate `count` is set.  The interval between
+            thenduplicated events.
+          type: number
+        - in: query
+          name: calendar_event[end_at]
+          description: End date/time of the event.
+          type: datetime
+        - in: query
+          name: calendar_event[location_address]
+          description: Location address
+          type: string
+        - in: query
+          name: calendar_event[location_name]
+          description: Location name of the event.
+          type: string
+        - in: query
+          name: calendar_event[start_at]
+          description: Start date/time of the event.
+          type: datetime
+        - in: query
+          name: calendar_event[time_zone_edited]
+          description: Time zone of the user editing the event. Allowed time zones arenIANA
+            time zones or friendliernRuby on Rails time zones.
+          type: string
+        - in: query
+          name: calendar_event[title]
+          description: Short title for the calendar event.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - events
+        security: []
+    /calendar_events/{id}:
+      delete:
+        summary: Delete a calendar event
+        description: ""
+        operationId: delete-a-calendar-event
+        parameters:
+        - in: query
+          name: cancel_reason
+          description: Reason for deleting/canceling the event.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - events
+        security: []
+      get:
+        summary: Get a single calendar event or assignment
+        description: ""
+        operationId: get-a-single-calendar-event-or-assignment
+        responses:
+          200:
+            description: OK
+        tags:
+        - events
+        security: []
+      put:
+        summary: Update a calendar event
+        description: ""
+        operationId: update-a-calendar-event
+        parameters:
+        - in: query
+          name: calendar_event[child_event_data][X][context_code]
+          description: Context code(s) corresponding to the section-level start and
+            end time(s).
+          type: string
+        - in: query
+          name: calendar_event[child_event_data][X][end_at]
+          description: Section-level end time(s) if this is a course event.
+          type: datetime
+        - in: query
+          name: calendar_event[child_event_data][X][start_at]
+          description: Section-level start time(s) if this is a course event. X can
+            be anynidentifier, provided that it is consistent across the start_at, end_at
+            andncontext_code
+          type: datetime
+        - in: query
+          name: calendar_event[context_code]
+          description: Context code of the course/group/user whose calendar this event
+            should benadded to.
+          type: string
+        - in: query
+          name: calendar_event[description]
+          description: Longer HTML description of the event.
+          type: string
+        - in: query
+          name: calendar_event[end_at]
+          description: End date/time of the event.
+          type: datetime
+        - in: query
+          name: calendar_event[location_address]
+          description: Location address
+          type: string
+        - in: query
+          name: calendar_event[location_name]
+          description: Location name of the event.
+          type: string
+        - in: query
+          name: calendar_event[start_at]
+          description: Start date/time of the event.
+          type: datetime
+        - in: query
+          name: calendar_event[time_zone_edited]
+          description: Time zone of the user editing the event. Allowed time zones arenIANA
+            time zones or friendliernRuby on Rails time zones.
+          type: string
+        - in: query
+          name: calendar_event[title]
+          description: Short title for the calendar event.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - events
+        security: []
+    /calendar_events/{id}/reservations:
+      post:
+        summary: Reserve a time slot
+        description: ""
+        operationId: reserve-a-time-slot
+        parameters:
+        - in: query
+          name: cancel_existing
+          description: Defaults to false. If true, cancel any previous reservation(s)
+            for thisnparticipant and appointment group.
+          type: boolean
+        - in: query
+          name: comments
+          description: Comments to associate with this reservation
+          type: string
+        - in: query
+          name: participant_id
+          description: User or group id for whom you are making the reservation (depends
+            on thenparticipant type). Defaults to the current user (or user&#39;s candidatengroup).
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - events
+        security: []
+    /calendar_events/{id}/reservations/participant_id:
+      post:
+        summary: Reserve a time slot
+        description: ""
+        operationId: reserve-a-time-slot
+        parameters:
+        - in: query
+          name: cancel_existing
+          description: Defaults to false. If true, cancel any previous reservation(s)
+            for thisnparticipant and appointment group.
+          type: boolean
+        - in: query
+          name: comments
+          description: Comments to associate with this reservation
+          type: string
+        - in: query
+          name: participant_id
+          description: User or group id for whom you are making the reservation (depends
+            on thenparticipant type). Defaults to the current user (or user&#39;s candidatengroup).
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - events
+        security: []
+  definitions: []

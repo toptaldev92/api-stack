@@ -1,0 +1,142 @@
+- swagger: "2.0"
+  info:
+    title: Meetup Comments API
+    description: The API for managing Meetup comments.
+    termsOfService: http://www.meetup.com/terms/
+    version: ~
+  host: api.meetup.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /:urlname/abuse_reports:
+      post:
+        summary: Report Group
+        description: Submits a new abuse report for a target group. Abuse reports will
+          be followed up on by our Community support team.
+        operationId: abuse
+        parameters:
+        - in: query
+          name: '*type'
+          description: A required identifier for type of abuse you are reporting. Acceptable
+            values include graphic_content, harmful_activities, licensed_services, not_community,
+            nudity, other, promotion_focus, violence
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /:urlname/events/:event_id/comments:
+      get:
+        summary: Event Comments List
+        description: Lists the comments and replies posted in a given Meetup Event
+        operationId: comments
+        parameters:
+        - in: query
+          name: fields
+          description: A comma-delimited list of optional fields to append to the response.n             |
+            Currently only self is supported
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /self/abuse_reports:
+      post:
+        summary: Report Abuse
+        description: Submits a new abuse report for a target member. Abuse reports will
+          be followed up on by our Community support team.
+        operationId: abuse
+        parameters:
+        - in: query
+          name: '*type'
+          description: A required identifier for type of abuse you are reporting. Acceptable
+            values include abuse, copyright, cron, dangerous, fake, harass, inappropriate,
+            join, other, photo, spam
+          type: string
+        - in: query
+          name: comments
+          description: An optional string of text that describes why you are submitting
+            this report
+          type: string
+        - in: query
+          name: content_tag
+          description: 'An optional identifier for flagged content that identifies both
+            the type and id, where possible, of the content reported. The type and id
+            should be separated by a : character, e.g `event_comment:{event_comment_id}`.
+            Valid content_tag types include boards, chapter, convo, convo_message, email,
+            event_comment, event_photo, member_photo, ml, reply. If member_id is not
+            provided, content_tag should be provided to imply member_id'
+          type: string
+        - in: query
+          name: member_id
+          description: A numeric identifier for the member being reported. If not provided,
+            this will be infered by the author of the content associated with the provided
+            `content_tag`
+          type: string
+        - in: query
+          name: url
+          description: An optional URL for the location of the reported content if one
+            exists
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /self/blocks/:member_id:
+      delete:
+        summary: Unblock member
+        description: Unblocks a previously blocked member from various interactions
+          with the authenticated member on the platform
+        operationId: abuse
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: Block status
+        description: Checks the block status for a target member relative to the authenticated
+          member
+        operationId: abuse
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Block member
+        description: Blocks a target member from various interactions with the authenticated
+          member on the platform
+        operationId: abuse
+        parameters:
+        - in: query
+          name: comments
+          description: An optional string of text describing why you have chosen to
+            block this member
+          type: string
+        - in: query
+          name: report
+          description: 'An optional value that represents a type of abuse the target
+            member is being blocked for. Acceptable values include one of the following:
+            fake, harass, inappropriate, spam'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

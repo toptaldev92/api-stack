@@ -1,0 +1,73 @@
+- swagger: "2.0"
+  info:
+    title: Facebook Graph (Notification) API
+    description: API for managing Facebook Notifications
+    termsOfService: https://www.facebook.com/policies/
+    version: ~
+  host: graph.facebook.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /v2.5/{notification-id}:
+      get:
+        summary: An individual unread Facebook notification
+        description: An individual unread Facebook notification
+        operationId: notification
+        parameters:
+        - in: query
+          name: application
+          description: The app responsible for generating the notification. Some of
+            the core Facebook features have their own app that shows up here, such as
+            likes when someone likes another person&#039;s content.
+          type: string
+        - in: query
+          name: created_time
+          description: When the notification was created.
+          type: string
+        - in: query
+          name: from
+          description: The entity (user, page, app, etc.) that &#039;sent&#039;, or
+            is the source of the notification.
+          type: string
+        - in: query
+          name: id
+          description: The notification&#039;s id.
+          type: string
+        - in: query
+          name: link
+          description: The URL that clicking on the notification would take someone.
+          type: string
+        - in: query
+          name: object
+          description: The object (this can be a post, a photo, a comment, etc.) that
+            was the subject of the notification.
+          type: string
+        - in: query
+          name: title
+          description: The message text in the notification.
+          type: string
+        - in: query
+          name: to
+          description: The entity that received the notification.
+          type: string
+        - in: query
+          name: unread
+          description: Indicates that the notification is unread. Note that &#039;read&#039;
+            notifications will not be accessible.
+          type: string
+        - in: query
+          name: updated_time
+          description: When the notification was last updated.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - notifications
+        security: []
+  definitions: []

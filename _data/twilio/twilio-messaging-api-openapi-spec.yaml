@@ -1,0 +1,218 @@
+- swagger: "2.0"
+  info:
+    title: Twilio Messaging API
+    description: Twilio is a cloud communications Infrastructure as a Service(IaaS)
+      company based in San Francisco, California. Twilio allows software developers
+      to programmatically make and receive phone calls and send and receive text messages
+      using its web service APIs. Twilio's services are accessed over HTTP and are billed
+      based on usage.
+    termsOfService: https://www.twilio.com/legal/tos
+    version: "2010-04-01"
+  host: api.twilio.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /Accounts/{AccountSid}/Messages/{MessageSid}/Media/{MediaSid}{mediaTypeExtension}:
+      get:
+        summary: Get Message Media
+        description: Without an extension, the media is returned using the mime-type
+          provided when the media was generated.
+        operationId: without-an-extension-the-media-is-returned-using-the-mimetype-provided-when-the-media-was-generated
+        parameters:
+        - in: path
+          name: AccountSid
+        - in: path
+          name: MediaSid
+        - in: path
+          name: mediaTypeExtension
+          description: By default, Twilios REST API returns XML. You may obtain CSV,
+            JSON or HTML by appending .csv, .json, or .html.n
+        - in: path
+          name: MessageSid
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' SMS'
+        security: []
+    /Accounts/{AccountSid}/Messages/{MessageSid}/Media{mediaTypeExtension}:
+      get:
+        summary: Get Message Media
+        description: Returns a list of media associated with your message.
+        operationId: returns-a-list-of-media-associated-with-your-message
+        parameters:
+        - in: path
+          name: AccountSid
+        - in: path
+          name: mediaTypeExtension
+          description: By default, Twilios REST API returns XML. You may obtain CSV,
+            JSON or HTML by appending .csv, .json, or .html.n
+        - in: path
+          name: MessageSid
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' SMS'
+        security: []
+    /Accounts/{AccountSid}/Messages/{MessageSid}{mediaTypeExtension}:
+      get:
+        summary: Get Message Media
+        description: Returns a single message specified by the provided {MessageSid}.n
+        operationId: returns-a-single-message-specified-by-the-provided-messagesid
+        parameters:
+        - in: path
+          name: AccountSid
+        - in: path
+          name: mediaTypeExtension
+          description: By default, Twilios REST API returns XML. You may obtain CSV,
+            JSON or HTML by appending .csv, .json, or .html.n
+        - in: path
+          name: MessageSid
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' SMS'
+        security: []
+    /Accounts/{AccountSid}/Messages{mediaTypeExtension}:
+      get:
+        summary: Get Message Media
+        description: Returns a list of messages associated with your account. The list
+          includes paging information.
+        operationId: returns-a-list-of-messages-associated-with-your-account-the-list-includes-paging-information
+        parameters:
+        - in: path
+          name: AccountSid
+        - in: path
+          name: mediaTypeExtension
+          description: By default, Twilios REST API returns XML. You may obtain CSV,
+            JSON or HTML by appending .csv, .json, or .html.n
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' SMS'
+        security: []
+      post:
+        summary: Add Message Media
+        description: To send a new outgoing message, make an HTTP POST to your Messages
+          list resource URI
+        operationId: to-send-a-new-outgoing-message-make-an-http-post-to-your-messages-list-resource-uri
+        parameters:
+        - in: path
+          name: AccountSid
+        - in: path
+          name: mediaTypeExtension
+          description: By default, Twilios REST API returns XML. You may obtain CSV,
+            JSON or HTML by appending .csv, .json, or .html.n
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' SMS'
+        security: []
+    Messages/:
+      post:
+        summary: Add Message
+        description: A Message instance resource represents an inbound or outbound message.
+          When you send an SMS or MMS message via the REST API, use the <Message> verb
+          in TwiML, or someone sends a message to one of your Twilio numbers Twilio
+          creates a Message instance resource.
+        operationId: ""
+        parameters:
+        - in: path
+          name: AccountSid
+          description: Account ID
+          type: string
+          format: string
+        - in: query
+          name: ApplicationSid
+          description: Twilio will POST MessageSid as well as MessageStatus=sent or
+            MessageStatus=failed to the URL in the MessageStatusCallback property of
+            this Application. If the StatusCallback parameter above is also passed,
+            the Applications MessageStatusCallback parameter will take precedence.
+          type: string
+          format: string
+        - in: query
+          name: Body
+          description: The text of the message you want to send, limited to 1600 characters.
+          type: string
+          format: string
+        - in: query
+          name: From
+          description: A Twilio phone number enabled for the type of message you wish
+            to send. Only phone numbers or short codes purchased from Twilio work here;
+            you cannot (for example) spoof messages from your own cell phone number.
+          type: string
+          format: string
+        - in: query
+          name: MediaUrl
+          description: The URL of the media you wish to send out with the message. gif
+            , png and jpeg content is currently supported and will be formatted correctly
+            on the recipients device. Other types are also accepted by the API. The
+            media size limit is 5MB. If you wish to send more than one image in the
+            message body, please provide multiple MediaUrls values in the POST request.
+            You may include up to 10 MediaUrls per message.
+          type: string
+          format: string
+        - in: query
+          name: StatusCallback
+          description: 'A URL that Twilio will POST to each time your message status
+            changes to one of the following: failed, sent, delivered, or undelivered.
+            Twilio will POST the MessageSid along with the other standard request parameters
+            as well as MessageStatus and ErrorCode.'
+          type: string
+          format: string
+        - in: query
+          name: To
+          description: The destination phone number. Format with a + and country code
+            e.g., +16175551212 (E.164 format). For To numbers without a +, Twilio will
+            use the same country code as the From number. Twilio will also attempt to
+            handle locally formatted numbers for that country code (e.g. (415) 555-1212
+            for US, 07400123456 for GB). If you are sending to a different country than
+            the From number, you must include a + and the country code to ensure proper
+            delivery.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' SMS'
+        security: []
+    Messages/{MessageSid}/:
+      get:
+        summary: Get Message
+        description: This resource represents an individual SMS or MMS message.
+        operationId: ""
+        parameters:
+        - in: path
+          name: MessageSid
+          description: The message ID.
+          type: string
+          format: string
+        - in: path
+          name: This resource represents an individual SMS or MMS message.
+          description: The account ID.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' SMS'
+        security: []
+  definitions: []

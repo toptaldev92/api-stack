@@ -1,0 +1,764 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "CrunchBase",
+		"description": "The CrunchBase API is a (relatively) straightforward REST service that allows developers to access data in the Business Graph.",
+		"termsOfService": "https://data.crunchbase.com/v3/page/accessing-the-dataset",
+		"contact": {
+			"name": "Crunchbase",
+			"url": "https://groups.google.com/forum/#!forum/crunchbase-api",
+			"email": "data@crunchbase.com"
+		},
+		"version": "v3"
+	},
+	"host": "api.crunchbase.com",
+	"basePath": "/v/3",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/acquisitions/{uuid}": {
+			"get": {
+				"summary": "Acquistions",
+				"description": "Pull from Acquisition",
+				"operationId": "acquistions",
+				"parameters": [{
+					"in": "query",
+					"name": "user_key",
+					"description": "This user_key is used to validate each developers access to the API and ensure that any rate limits or quotas are respected.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "uuid",
+					"description": "The UUID of the acquisition",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Acquisitions"],
+				"security": []
+			}
+		},
+		"/acquisitions/{uuid}/{relationship_name}": {
+			"get": {
+				"summary": "Get Acquisitions Relationships",
+				"description": "Get Acquisitions Relationships",
+				"operationId": "acquisitionsRelationships",
+				"parameters": [{
+					"in": "query",
+					"name": "page",
+					"description": "The number of the page to retrieve",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "relationship_name",
+					"description": "The name of the relationship connecting Items",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort_order",
+					"description": "The sort order.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "uuid",
+					"description": "32-character uuid of the Acquisition",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Acquisitions"],
+				"security": []
+			}
+		},
+		"/categories": {
+			"get": {
+				"summary": "Get Categories",
+				"description": "Get Categories",
+				"operationId": "categories",
+				"parameters": [{
+					"in": "query",
+					"name": "page",
+					"description": "Page number of the results to retrieve",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort_order",
+					"description": "The sort order.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Categories"],
+				"security": []
+			}
+		},
+		"/funding-rounds/{uuid}": {
+			"get": {
+				"summary": "Funding Rounds",
+				"description": "Gets funding rounds by UUID",
+				"operationId": "fundingRounds",
+				"parameters": [{
+					"in": "query",
+					"name": "user_key",
+					"description": "Possible values are: 7a582a92032069b4f775a15b1acbe256",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "uuid",
+					"description": "The UUID of the Funding Round",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Funding Rounds"],
+				"security": []
+			}
+		},
+		"/funding-rounds/{uuid}/{relationship_name}": {
+			"get": {
+				"summary": "Get Funding Rounds Relationships",
+				"description": "Get Funding Rounds Relationships",
+				"operationId": "fundingRoundRelationships",
+				"parameters": [{
+					"in": "query",
+					"name": "page",
+					"description": "The page number to retrieve",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "relationship_name",
+					"description": "The name of the relationship connecting Items",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort_order",
+					"description": "The sort order.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "uuid",
+					"description": "The 32-character uuid of the FundingRound",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Funding Rounds"],
+				"security": []
+			}
+		},
+		"/funds/:uuid/{relationship_name}": {
+			"get": {
+				"summary": "Get Fund Relationships",
+				"description": "Get Fund Relationships",
+				"operationId": "fundRelationships",
+				"parameters": [{
+					"in": "query",
+					"name": "page",
+					"description": "The number of the page to retrieve",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "relationship_name",
+					"description": "The name of the connection between the Fund and related Items",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort_order",
+					"description": "The sort order.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "uuid",
+					"description": "The 32-character identifier of the Fund",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Funds"],
+				"security": []
+			}
+		},
+		"/funds/{uuid}": {
+			"get": {
+				"summary": "Get Funds",
+				"description": "Get Funds",
+				"operationId": "funds",
+				"parameters": [{
+					"in": "path",
+					"name": "uuid",
+					"description": "The UUID of the Fund Raise",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Funds"],
+				"security": []
+			}
+		},
+		"/ipos/{uuid}": {
+			"get": {
+				"summary": "Get IPO",
+				"description": "Get IPO Using UUID",
+				"operationId": "ipo",
+				"parameters": [{
+					"in": "query",
+					"name": "user_key",
+					"description": "Possible values are: 7a582a92032069b4f775a15b1acbe256",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "uuid",
+					"description": "The UUID of the IPO",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["IPO"],
+				"security": []
+			}
+		},
+		"/ipos/{uuid}/{relationship_name}": {
+			"get": {
+				"summary": "Get IPO Relationships",
+				"description": "Get IPO Relationships",
+				"operationId": "ipoRelationships",
+				"parameters": [{
+					"in": "query",
+					"name": "order",
+					"description": "The sort order.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "relationship_name",
+					"description": "The name of the relationship connecting Items",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "The page number to retrieve",
+					"description": "The page number to retrieve",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "uuid",
+					"description": "The 32-character identifier of the Ipo",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["IPO"],
+				"security": []
+			}
+		},
+		"/locations": {
+			"get": {
+				"summary": "Get Locations",
+				"description": "Get Locations",
+				"operationId": "locations",
+				"parameters": [{
+					"in": "query",
+					"name": "page",
+					"description": "Page number of the results to retrieve",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort_order",
+					"description": "The sort order.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/organizations": {
+			"get": {
+				"summary": "Organizations",
+				"description": "Get Organizations",
+				"operationId": "organizations",
+				"parameters": [{
+					"in": "query",
+					"name": "categories",
+					"description": "Filter by categories (comma separated, ANDd together) e.g. categories=Automotive,Public Transportation",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "category_uuids",
+					"description": "Filter by one or more Categories. Separate multiple UUIDs with commas. When passed, multiple UUIDs are logically ANDd together",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "domain_name",
+					"description": " Text search of an Organizations domain_name (e.g. www.google.com)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "locations",
+					"description": "Filter by location names (comma separated, ANDd together) e.g. locations=California,San Francisco",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "Full text search limited to name and aliases",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "organization_types",
+					"description": "Filter by one or more types. Multiple types are separated by commas. Available types are company, investor, school, and group. Multiple organization_types are logically ANDd.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Page number of the results to retrieve.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "query",
+					"description": "Full text search of an Organizations name, aliases (i.e. previous names or also known as), and short description",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort_order",
+					"description": "The sort order of the collection. Options are created_at ASC, created_at DESC, updated_at ASC, and updated_at DESC",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "updated_since",
+					"description": "Timestamp When provided, restricts the result set to Organizations where updated_at >= the passed value",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_key",
+					"description": "Possible values are: 7a582a92032069b4f775a15b1acbe256",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Organizations"],
+				"security": []
+			}
+		},
+		"/organizations/{permalink}": {
+			"get": {
+				"summary": "Get Organizations",
+				"description": "Get Organization Using Permalink",
+				"operationId": "organizations",
+				"parameters": [{
+					"in": "path",
+					"name": "permalink",
+					"description": "The permalink of the organization.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_key",
+					"description": "Possible values are: 7a582a92032069b4f775a15b1acbe256",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Organizations"],
+				"security": []
+			}
+		},
+		"/organizations/{permalink}/{relationship_name}": {
+			"get": {
+				"summary": "Get Organization Relationships",
+				"description": "Get Organizations Relationships Using Permlink",
+				"operationId": "organizationRelationships",
+				"parameters": [{
+					"in": "query",
+					"name": "page",
+					"description": "Page number to retrieve",
+					"type": "integer",
+					"format": "integer"
+				},
+				{
+					"in": "path",
+					"name": "permalink",
+					"description": "The permalink of the organization",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "relationship_name",
+					"description": "The name of the rleationship to attached items",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort_order",
+					"description": "The sort order",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_key",
+					"description": "Possible values are: 7a582a92032069b4f775a15b1acbe256",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Organizations"],
+				"security": []
+			}
+		},
+		"/people": {
+			"get": {
+				"summary": "Get People",
+				"description": "Get People",
+				"operationId": "people",
+				"parameters": [{
+					"in": "query",
+					"name": "locations",
+					"description": "Filter by location names (comma separated, ANDd together) e.g. locations=California,San Francisco",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "A full-text query of name only",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "the 1-indexed page number to retrieve",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "query",
+					"description": "A full-text query of name, title, and company",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "socials",
+					"description": "Filter by social media identity (comma separated, ANDd together) e.g. socials=ronconway",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort_order",
+					"description": "The sort order.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "types",
+					"description": "Filter by type (currently, either this is empty, or is simply investor)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "updated_since",
+					"description": "When provided, restricts the result set to People where updated_at >= the passed value",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["People"],
+				"security": []
+			}
+		},
+		"/people/{permalink}": {
+			"get": {
+				"summary": "Get People",
+				"description": "Get People Using Permalink",
+				"operationId": "people",
+				"parameters": [{
+					"in": "path",
+					"name": "permalink",
+					"description": "The permalink of the organization",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_key",
+					"description": "Possible values are: 7a582a92032069b4f775a15b1acbe256",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["People"],
+				"security": []
+			}
+		},
+		"/people/{permalink}/{relationship_name}": {
+			"get": {
+				"summary": "Get People Relationships",
+				"description": "Get People Relationships",
+				"operationId": "peopleRelationships",
+				"parameters": [{
+					"in": "query",
+					"name": "page",
+					"description": "The page number to retrieve",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "permalink",
+					"description": "The permalink of the Person",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "relationship_name",
+					"description": "The name of the relationship to connected Items",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort_order",
+					"description": "The sort order.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["People"],
+				"security": []
+			}
+		},
+		"/products": {
+			"get": {
+				"summary": "Get Products",
+				"description": "Get Products",
+				"operationId": "products",
+				"parameters": [{
+					"in": "query",
+					"name": "page",
+					"description": "the 1-indexed page number to retrieve",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort_order",
+					"description": "The sort order for the collection",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "updated_since",
+					"description": "When provided, restricts the result set to Products where updated_at >= the passed value",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Products"],
+				"security": []
+			}
+		},
+		"/products/{permalink}": {
+			"get": {
+				"summary": "Get Products",
+				"description": "Get Products Using Permalink",
+				"operationId": "products",
+				"parameters": [{
+					"in": "path",
+					"name": "permalink",
+					"description": "The permalink of the organization",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_key",
+					"description": "Possible values are: 7a582a92032069b4f775a15b1acbe256",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Products"],
+				"security": []
+			}
+		},
+		"/products/{permalink}/{relationship_name}": {
+			"get": {
+				"summary": "Get Product Relationships",
+				"description": "Get Product Relationships",
+				"operationId": "productRelationships",
+				"parameters": [{
+					"in": "query",
+					"name": "page",
+					"description": "The page number to retrieve",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "permalink",
+					"description": "The permalink of the Product",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "relationship_name",
+					"description": "The name of the relationship connecting Items",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort_order",
+					"description": "The sort order.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Products"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

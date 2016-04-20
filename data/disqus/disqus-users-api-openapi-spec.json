@@ -1,0 +1,656 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Disqus Users API",
+		"version": ""
+	},
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/users/details.json": {
+			"n    get": {
+				"summary": "Users Details",
+				"description": "n     Users Details ",
+				"operationId": "users-details",
+				"parameters": [{
+					"in": "query",
+					"name": "user",
+					"description": "Defaults to null                         Looks up a user by ID You may look up a user by username using the &#39;username&#39; query type."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/follow.json": {
+			"n    post": {
+				"summary": "Users Follow",
+				"description": "n     Users Follow ",
+				"operationId": "users-follow",
+				"parameters": [{
+					"in": "query",
+					"name": "target",
+					"description": "Looks up a user by ID You may look up a user by username using the &#39;username&#39; query type."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/interestingUsers.json": {
+			"n    get": {
+				"summary": "Users InterestingUsers",
+				"description": "n     Users InterestingUsers ",
+				"operationId": "users-interestingusers",
+				"parameters": [{
+					"in": "query",
+					"name": "limit",
+					"description": "Defaults to 5                         Maximum value of 100"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/listActiveForums.json": {
+			"n    get": {
+				"summary": "Users ListActiveForums",
+				"description": "n     Users ListActiveForums ",
+				"operationId": "users-listactiveforums",
+				"parameters": [{
+					"in": "query",
+					"name": "cursor",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "Defaults to 25                         Maximum value of 100"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "Defaults to asc                         Choices: asc, desc"
+				},
+				{
+					"in": "query",
+					"name": "since_id",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "Defaults to null                         Looks up a user by ID You may look up a user by username using the &#39;username&#39; query type."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/listActiveThreads.json": {
+			"n    get": {
+				"summary": "Users ListActiveThreads",
+				"description": "n     Users ListActiveThreads ",
+				"operationId": "users-listactivethreads",
+				"parameters": [{
+					"in": "query",
+					"name": "cursor",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "forum",
+					"description": "Defaults to null                         Looks up a forum by ID (aka short name)"
+				},
+				{
+					"in": "query",
+					"name": "include",
+					"description": "Defaults to [  open,  closed]                         Choices: open, closed, killed"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "Defaults to 25                         Maximum value of 100"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "Defaults to desc                         Choices: asc, desc"
+				},
+				{
+					"in": "query",
+					"name": "related",
+					"description": "Defaults to []                         You may specify relations to include with your response. Choices: forum, author, category"
+				},
+				{
+					"in": "query",
+					"name": "since",
+					"description": "Defaults to null                         Unix timestamp (or ISO datetime standard)"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "Defaults to null                         Looks up a user by ID You may look up a user by username using the &#39;username&#39; query type."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/listActivity.json": {
+			"n    get": {
+				"summary": "Users ListActivity",
+				"description": "n     Users ListActivity ",
+				"operationId": "users-listactivity",
+				"parameters": [{
+					"in": "query",
+					"name": "anon_user",
+					"description": "Defaults to null                         Looks up an anonymous user by unique hash"
+				},
+				{
+					"in": "query",
+					"name": "cursor",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "include",
+					"description": "Defaults to [  user,  replies,  following]                         Choices: user, replies, following"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "Defaults to 25                         Maximum value of 100"
+				},
+				{
+					"in": "query",
+					"name": "query",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "related",
+					"description": "Defaults to [  forum,  thread]                         You may specify relations to include with your response. Choices: forum, thread"
+				},
+				{
+					"in": "query",
+					"name": "since",
+					"description": "Defaults to null                         Unix timestamp (or ISO datetime standard)"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "Defaults to null                         Looks up a user by ID You may look up a user by username using the &#39;username&#39; query type."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/listFollowers.json": {
+			"n    get": {
+				"summary": "Users ListFollowers",
+				"description": "n     Users ListFollowers ",
+				"operationId": "users-listfollowers",
+				"parameters": [{
+					"in": "query",
+					"name": "cursor",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "Defaults to 25                         Maximum value of 100"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "Defaults to asc                         Choices: asc, desc"
+				},
+				{
+					"in": "query",
+					"name": "since_id",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "Defaults to null                         Looks up a user by ID You may look up a user by username using the &#39;username&#39; query type."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/listFollowing.json": {
+			"n    get": {
+				"summary": "Users ListFollowing",
+				"description": "n     Users ListFollowing ",
+				"operationId": "users-listfollowing",
+				"parameters": [{
+					"in": "query",
+					"name": "cursor",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "Defaults to 25                         Maximum value of 100"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "Defaults to asc                         Choices: asc, desc"
+				},
+				{
+					"in": "query",
+					"name": "since_id",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "Defaults to null                         Looks up a user by ID You may look up a user by username using the &#39;username&#39; query type."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/listFollowingChannels.json": {
+			"n    get": {
+				"summary": "Users ListFollowingChannels",
+				"description": "n     Users ListFollowingChannels ",
+				"operationId": "users-listfollowingchannels",
+				"parameters": [{
+					"in": "query",
+					"name": "cursor",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "excludeModerated",
+					"description": "Defaults to false                         Whether to exclude Channels that the user moderates fromthe results"
+				},
+				{
+					"in": "query",
+					"name": "excludeOwned",
+					"description": "Defaults to false                         Whether to exclude Channels that the user owns from the results"
+				},
+				{
+					"in": "query",
+					"name": "includeFollowedPrimaryForums",
+					"description": "Defaults to false                         Whether to include Channels where the user follows the primary forum"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "Defaults to 25                         Maximum value of 100"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "Defaults to asc                         Choices: asc, desc"
+				},
+				{
+					"in": "query",
+					"name": "since_id",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "Defaults to null                         Looks up a user by ID You may look up a user by username using the &#39;username&#39; query type."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/listFollowingForums.json": {
+			"n    get": {
+				"summary": "Users ListFollowingForums",
+				"description": "n     Users ListFollowingForums ",
+				"operationId": "users-listfollowingforums",
+				"parameters": [{
+					"in": "query",
+					"name": "cursor",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "Defaults to 25                         Maximum value of 100"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "Defaults to asc                         Choices: asc, desc"
+				},
+				{
+					"in": "query",
+					"name": "since_id",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "Defaults to null                         Looks up a user by ID You may look up a user by username using the &#39;username&#39; query type."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/listForums.json": {
+			"n    get": {
+				"summary": "Users ListForums",
+				"description": "n     Users ListForums ",
+				"operationId": "users-listforums",
+				"parameters": [{
+					"in": "query",
+					"name": "cursor",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "Defaults to 25                         Maximum value of 100"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "Defaults to asc                         Choices: asc, desc"
+				},
+				{
+					"in": "query",
+					"name": "since_id",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "Defaults to null                         Looks up a user by ID You may look up a user by username using the &#39;username&#39; query type."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/listModeratedChannels.json": {
+			"n    get": {
+				"summary": "Users ListModeratedChannels",
+				"description": "n     Users ListModeratedChannels ",
+				"operationId": "users-listmoderatedchannels",
+				"parameters": [{
+					"in": "query",
+					"name": "cursor",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "excludeOwned",
+					"description": "Defaults to false                         Whether to exclude Channels that the user owns from the results"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "Defaults to 25                         Maximum value of 100"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "Defaults to asc                         Choices: asc, desc"
+				},
+				{
+					"in": "query",
+					"name": "since_id",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "Defaults to null                         Looks up a user by ID You may look up a user by username using the &#39;username&#39; query type."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/listMostActiveForums.json": {
+			"n    get": {
+				"summary": "Users ListMostActiveForums",
+				"description": "n     Users ListMostActiveForums ",
+				"operationId": "users-listmostactiveforums",
+				"parameters": [{
+					"in": "query",
+					"name": "limit",
+					"description": "Defaults to 25                         Maximum value of 100"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "Defaults to null                         Looks up a user by ID You may look up a user by username using the &#39;username&#39; query type."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/listOwnedChannels.json": {
+			"n    get": {
+				"summary": "Users ListOwnedChannels",
+				"description": "n     Users ListOwnedChannels ",
+				"operationId": "users-listownedchannels",
+				"parameters": [{
+					"in": "query",
+					"name": "cursor",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "Defaults to 25                         Maximum value of 100"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "Defaults to asc                         Choices: asc, desc"
+				},
+				{
+					"in": "query",
+					"name": "since_id",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "Defaults to null                         Looks up a user by ID You may look up a user by username using the &#39;username&#39; query type."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/listPosts.json": {
+			"n    get": {
+				"summary": "Users ListPosts",
+				"description": "n     Users ListPosts ",
+				"operationId": "users-listposts",
+				"parameters": [{
+					"in": "query",
+					"name": "cursor",
+					"description": "Defaults to null"
+				},
+				{
+					"in": "query",
+					"name": "include",
+					"description": "Defaults to [  approved]                         Choices: unapproved, approved, spam, deleted, flagged, highlighted"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "Defaults to 25                         Maximum value of 100"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "Defaults to desc                         Choices: asc, desc"
+				},
+				{
+					"in": "query",
+					"name": "related",
+					"description": "Defaults to []                         You may specify relations to include with your response. Choices: forum, thread"
+				},
+				{
+					"in": "query",
+					"name": "since",
+					"description": "Defaults to null                         Unix timestamp (or ISO datetime standard)"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "Defaults to null                         Looks up a user by ID You may look up a user by username using the &#39;username&#39; query type."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/removeFollower.json": {
+			"n    post": {
+				"summary": "Users RemoveFollower",
+				"description": "n     Users RemoveFollower ",
+				"operationId": "users-removefollower",
+				"parameters": [{
+					"in": "query",
+					"name": "follower",
+					"description": "Looks up a user by ID You may look up a user by username using the &#39;username&#39; query type."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/unfollow.json": {
+			"n    post": {
+				"summary": "Users Unfollow",
+				"description": "n     Users Unfollow ",
+				"operationId": "users-unfollow",
+				"parameters": [{
+					"in": "query",
+					"name": "target",
+					"description": "Looks up a user by ID You may look up a user by username using the &#39;username&#39; query type."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/updateProfile.json": {
+			"n    post": {
+				"summary": "Users UpdateProfile",
+				"description": "n     Users UpdateProfile ",
+				"operationId": "users-updateprofile",
+				"parameters": [{
+					"in": "query",
+					"name": "about",
+					"description": "Defaults to "
+				},
+				{
+					"in": "query",
+					"name": "location",
+					"description": "Defaults to                          Maximum length of 255"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "Defaults to                          Minimum length of 2 Maximum length of 30"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "Defaults to                          URL (defined by RFC 3986) Maximum length of 200"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

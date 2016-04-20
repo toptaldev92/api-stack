@@ -1,0 +1,79 @@
+- swagger: "2.0"
+  info:
+    title: Alchemy News API
+    description: AlchemyData News indexes 250k to 300k English language news and blog
+      articles every day with historical search available for the past 60 days.
+    termsOfService: http://www.alchemyapi.com/company/terms.html
+    contact:
+      name: AlchemyAPI
+      url: http://www.alchemyapi.com/company/contact
+      email: questions@alchemyapi.com
+    version: v1
+  host: access.alchemyapi.com
+  basePath: /calls/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /data/GetNews:
+      get:
+        summary: Get News
+        description: AlchemyData News indexes 250k to 300k English language news and
+          blog articles every day with historical search available for the past 60 days.
+        operationId: callsDataGetNews
+        parameters:
+        - in: query
+          name: apikey
+          type: string
+          format: string
+        - in: query
+          name: count
+          type: string
+          format: string
+        - in: query
+          name: end
+          type: string
+          format: string
+        - in: query
+          name: outputMode
+          type: string
+          format: string
+        - in: query
+          name: q.enriched.url.title
+          type: string
+          format: string
+        - in: query
+          name: return
+          type: string
+          format: string
+        - in: query
+          name: start
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/docs'
+        tags:
+        - News
+        security:
+        - apikey: []
+  securityDefinitions:
+    apikey:
+      type: apiKey
+      name: apikey
+  definitions:
+    docs:
+      properties:
+        docs:
+          description: This is a default description.
+          type: string
+        id:
+          description: This is a default description.
+          type: string

@@ -1,0 +1,287 @@
+- swagger: "2.0"
+  info:
+    title: AP Metadata Services
+    description: Add value to your news content with APu2019s industry-leading metadata
+      -- accurate, comprehensive, richly detailed data, designed specifically for use
+      by news publishers. AP Metadata Services is a new set of APIs that gives you direct
+      access to the same metadata system that supports APu2019s award-winning, global
+      news operation.
+    version: v1
+  host: cv.ap.org
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    api/cm/:
+      get:
+        summary: Change Log
+        description: Returns a list of changes to the AP vocabulary terms according
+          to the specified criteria.
+        operationId: ""
+        parameters:
+        - in: query
+          name: apiKey
+          description: API Key
+          type: string
+          format: string
+        - in: query
+          name: authority
+          description: authority
+          type: string
+          format: string
+        - in: query
+          name: enddate
+          description: This parameter can be used in conjunction with the startdate
+            parameter to  specify a date range. The date must be in the format yyyy-mm-dd.
+            If  enddate is included in the request, startdate must also be specified.
+          type: string
+          format: string
+        - in: query
+          name: format
+          description: 'Specifies the output format: comma-separated values (CSV) or
+            XML. If no  format is specified as the format parameter value or in the
+            Accept header,  XML is returned.'
+          type: string
+          format: string
+        - in: query
+          name: lastversion
+          description: Returns all change logs since (but not including) the specified
+            version  number, in the format {AuthorityVersion}.{Revision}.
+          type: string
+          format: string
+        - in: query
+          name: startdate
+          description: eturns all change logs since (and including) the specified date.
+            The date  must be in the format yyyy-mm-dd. This parameter can be used in  conjunction
+            with the enddate parameter to specify a date range.
+          type: string
+          format: string
+        - in: query
+          name: version
+          description: 'Returns the change log for the specified version number, in
+            the format  {AuthorityVersion}.{Revision} where {AuthorityVersion} is the
+            authority  version found in the AP Tagging Service output for each applied
+            term. '
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' tags'
+        - ' change log'
+        security: []
+    c/{class}.{format}:
+      get:
+        summary: Ontology Definition
+        description: Returns the AP ontology definition for the specified AP property
+          or class and the specified format.
+        operationId: ""
+        parameters:
+        - in: query
+          name: apikey
+          description: API Key
+          type: string
+          format: string
+        - in: path
+          name: class
+          description: The name of an AP property or class
+          type: string
+          format: string
+        - in: path
+          name: format
+          description: The format of the returned AP ontology data. If no format  is
+            specified as the format parameter value or in the Accept  header, RDF/XML
+            is returned.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' ontology'
+        security: []
+    d/DeprecatedCompany.{format}:
+      get:
+        summary: DeprecatedCompany
+        description: Returns a list of deprecated AP vocabulary terms in the specified
+          format for the AP Company authority  or for the other four AP authorities.
+        operationId: ""
+        parameters:
+        - in: query
+          name: apiKey
+          description: API Key
+          type: string
+          format: string
+        - in: path
+          name: format
+          description: The format of the returned taxonomy data (RDF/XML, RDF/TTL or  NewsML-G2).
+            If no format is specified as the format parameter  value or in the Accept
+            header, RDF/XML is returned.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' companies'
+        security: []
+    d/DeprecatedTerm.{format}:
+      get:
+        summary: Deprecated Terms
+        description: Returns a list of deprecated AP vocabulary terms in the specified
+          format for the AP Company authority  or for the other four AP authorities.
+        operationId: ""
+        parameters:
+        - in: query
+          name: apiKey
+          description: API Key
+          type: string
+          format: string
+        - in: path
+          name: format
+          description: The format of the returned taxonomy data (RDF/XML, RDF/TTL or  NewsML-G2).
+            If no format is specified as the format parameter  value or in the Accept
+            header, RDF/XML is returned.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' terms '
+        - deprecated
+        security: []
+    d/{authority}.{format}:
+      get:
+        summary: Taxonomy Information
+        description: Returns the taxonomy information for the specified authority and
+          the specified format.
+        operationId: ""
+        parameters:
+        - in: query
+          name: apikey
+          description: API Key
+          type: string
+          format: string
+        - in: path
+          name: authority
+          description: The name of a classification authority (not case-sensitive).
+          type: string
+          format: string
+        - in: path
+          name: format
+          description: The format of the returned taxonomy data. If no format is  specified
+            as the format parameter value or in the Accept  header, RDF/XML is returned.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' taxonomy'
+        security: []
+    d/{authority}/{GUID}.{format}:
+      get:
+        summary: Authority
+        description: Returns a document for the specified authority and format with
+          the AP vocabulary data for the  specified term GUID and the subset of the
+          vocabulary located below the specified term.
+        operationId: ""
+        parameters:
+        - in: query
+          name: apikey
+          description: API Key
+          type: string
+          format: string
+        - in: path
+          name: authority
+          description: The name of a classification authority (not case-sensitive).
+          type: string
+          format: string
+        - in: path
+          name: format
+          description: The format of the returned taxonomy data. If no format is  specified
+            as the format parameter value or in the Accept header,  RDF/XML is returned.
+          type: string
+          format: string
+        - in: path
+          name: GUID
+          description: The GUID of an AP term below which the returned taxonomy data  subset
+            is located in the AP taxonomy hierarchy. The GUID is not case-sensitive
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' authority'
+        security: []
+    id/{GUID}.{format}:
+      get:
+        summary: Taxonomy Information
+        description: Returns the taxonomy information for the specified GUID of an AP
+          term and the specified format.
+        operationId: ""
+        parameters:
+        - in: query
+          name: apiKey
+          description: API Key
+          type: string
+          format: string
+        - in: path
+          name: format
+          description: The format of the returned taxonomy data. If no format is  specified
+            as the format parameter value or in the Accept  header, RDF/XML is returned.
+          type: string
+          format: string
+        - in: path
+          name: GUID
+          description: The GUID of an AP term (not case-sensitive).
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' taxonomy'
+        security: []
+    Tags/:
+      post:
+        summary: Tags
+        description: Returns the set of AP standardized vocabulary terms that apply
+          to the submitted news content. The  output can be limited to one or more authorities
+          specified in the request; for example, you can choose  to apply only AP Organization,
+          AP Subject and AP Geography tags to the submitted content, but not  AP Person
+          or AP Company.
+        operationId: ""
+        parameters:
+        - in: query
+          name: apiKey
+          description: API Key
+          type: string
+          format: string
+        - in: body
+          name: story
+          description: URL-encoded content  submitted for tagging.
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' tags'
+        security: []
+  definitions: []

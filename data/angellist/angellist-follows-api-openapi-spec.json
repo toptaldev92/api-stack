@@ -1,0 +1,235 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "AngelList Follows API",
+		"description": "Managing who follows users and startups on AngelList.",
+		"termsOfService": "https://angel.co/terms",
+		"contact": {
+			"name": "AngelList",
+			"url": "https://angel.co/api",
+			"email": "api@angel.co"
+		},
+		"version": "v1"
+	},
+	"host": "api.angel.co",
+	"basePath": "/1/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/follows": {
+			"delete": {
+				"summary": "Delete Follow",
+				"description": "Delete the follow for given user or startup.",
+				"operationId": "follows",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/followed"
+							}
+						}
+					}
+				},
+				"tags": ["Follows"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			},
+			"post": {
+				"summary": "Add Follow",
+				"description": "Add a follow for user or startup on AngelList.",
+				"operationId": "follows",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/followed"
+							}
+						}
+					}
+				},
+				"tags": ["Follows"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		},
+		"/follows/batch": {
+			"get": {
+				"summary": "Get Batch of Follows",
+				"description": "Returns a batched lists of follows",
+				"operationId": "followsBatch",
+				"parameters": [{
+					"in": "query",
+					"name": "ids",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/followed"
+							}
+						}
+					},
+					"500": {
+						"description": "Error",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/error"
+							}
+						}
+					}
+				},
+				"tags": ["Follows"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		},
+		"/follows/relationship": {
+			"get": {
+				"summary": "Get Follows Relationship",
+				"description": "Gets the relationships for followers",
+				"operationId": "followsRelationship",
+				"parameters": [{
+					"in": "query",
+					"name": "source_id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "target_id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "target_type",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/followed"
+							}
+						}
+					},
+					"500": {
+						"description": "Error",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/error"
+							}
+						}
+					}
+				},
+				"tags": ["Follows"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
+		}
+	},
+	"definitions": {
+		"error": {
+			"properties": {
+				"error": {
+					"description": "The error.",
+					"type": "string"
+				},
+				"message": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "The error type.",
+					"type": "string"
+				}
+			}
+		},
+		"followed": {
+			"properties": {
+				"angellist_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"bio": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"followed": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"follower_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"image": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

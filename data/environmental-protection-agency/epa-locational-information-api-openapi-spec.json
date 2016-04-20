@@ -1,0 +1,1401 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "EPA Locational information API",
+		"description": "Locational information for EPA-regulated facilities in Envirofacts is cultivated from many sources, including EPA federal program systems, EPA regional offices, and the states.",
+		"contact": {
+			"name": "EP Envirofacts",
+			"url": "http://www.epa.gov/enviro/index.html"
+		},
+		"version": "v1"
+	},
+	"host": "iaspub.epa.gov",
+	"basePath": "/enviro/efservice/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/FRS_FACILITY_SITE/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_FRS_FACILITY_SITE",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/frs_facility_site"
+							}
+						}
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/FRS_PROGRAM_FACILITY/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_FRS_PROGRAM_FACILITY",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/frs_program_facility"
+							}
+						}
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/GEO_ASSIGN_ACC_LK/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_GEO_ASSIGN_ACC_LK",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/geo_assign_acc_lk"
+							}
+						}
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/GEO_COLLECT_MTH_LK/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_GEO_COLLECT_MTH_LK",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/geo_collect_mth_lk"
+							}
+						}
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/GEO_CONVEYOR/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_GEO_CONVEYOR",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/geo_conveyor"
+							}
+						}
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/GEO_FACILITY_POINT/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_GEO_FACILITY_POINT",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/geo_facility_point"
+							}
+						}
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/GEO_GEOMETRIC_TYPE_LK/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_GEO_GEOMETRIC_TYPE_LK",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/geo_geometric_type_lk"
+							}
+						}
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/GEO_HORIZ_DATUM_LK/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_GEO_HORIZ_DATUM_LK",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/geo_horiz_datum_lk"
+							}
+						}
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/GEO_PHP_FACILITY_COORDINATE/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_GEO_PHP_FACILITY_COORDINATE",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/geo_php_facility_coordinate"
+							}
+						}
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/GEO_REF_POINT_LK/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_GEO_REF_POINT_LK",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/geo_ref_point_lk"
+							}
+						}
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/GEO_SOURCE_LK/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_GEO_SOURCE_LK",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/geo_source_lk"
+							}
+						}
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/GEO_SUB_ID_REF/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_GEO_SUB_ID_REF",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/geo_sub_id_ref"
+							}
+						}
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/GEO_SUB_TYPE_LK/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_GEO_SUB_TYPE_LK",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/geo_sub_type_lk"
+							}
+						}
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/GEO_VERIFY_LK/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_GEO_VERIFY_LK",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/geo_verify_lk"
+							}
+						}
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/GEO_VERT_DATUM_LK/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_GEO_VERT_DATUM_LK",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/geo_vert_datum_lk"
+							}
+						}
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/GEO_VERT_METHOD_LK/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_GEO_VERT_METHOD_LK",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/geo_vert_method_lk"
+							}
+						}
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/MV_GEO_FACILITY_POINT/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_MV_GEO_FACILITY_POINT",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/mv_geo_facility_point"
+							}
+						}
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/V_GEO_PGM_COORDINATE_ALL/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_V_GEO_PGM_COORDINATE_ALL",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/v_geo_pgm_coordinate_all"
+							}
+						}
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"geo_conveyor": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		},
+		"geo_vert_datum_lk": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		},
+		"geo_horiz_datum_lk": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		},
+		"geo_vert_method_lk": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		},
+		"geo_ref_point_lk": {
+			"properties": {
+				"REF_POINT_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"REF_POINT_DESC": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SHAPE": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"geo_sub_type_lk": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		},
+		"geo_source_lk": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		},
+		"geo_geometric_type_lk": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		},
+		"geo_collect_mth_lk": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				},
+				"COLLECT_DESC": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"COLLECT_MTH_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"geo_verify_lk": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		},
+		"geo_sub_id_ref": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		},
+		"geo_assign_acc_lk": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		},
+		"mv_geo_facility_point": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		},
+		"frs_facility_site": {
+			"properties": {
+				"ADDR_TYPE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CITY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"COUNTRY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"COUNTY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CREATE_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"DATA_QUALITY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ENV_JUSTICE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"EPA_REGION_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FEDERAL_AGENCY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FEDERAL_FACILITY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FIPS_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ICIS_IDENTIFIER": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"INTEREST_STATUS_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LAST_REPORTED_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LEGISLATIVE_DIST_NUM": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LOCATION_ADDRESS": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LOCATION_DESCRIPTION": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PARENT_REGISTRY_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"POSTAL_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PRIMARY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PUBLIC_IND": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"REFRESH_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"REGISTRY_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"REVIEW_FLAG": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"REVIEW_REASON": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SENSITIVE_IND": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_TYPE_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SMALL_BUS_IND": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STAND_ALONE_FLAG": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STATE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STATE_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_BASE_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_CITY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_COUNTRY": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_COUNTY_FIPS": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_COUNTY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_FULL_ADDRESS": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_HOUSE_NUMBER": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_LOC_ADDRESS": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_POSTAL_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_PREFIX": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_STATE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_STREET_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_STYPE_AFTER": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_STYPE_BEFORE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_SUFFIX": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SUPPLEMENTAL_LOCATION": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"TRIBAL_LAND_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"TRIBAL_LAND_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"UPDATE_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"USER_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		},
+		"frs_program_facility": {
+			"properties": {
+				"ADDR_TYPE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CITY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"COUNTRY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"COUNTY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CREATE_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"DATA_QUALITY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ENV_JUSTICE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"EPA_REGION_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FEDERAL_AGENCY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FEDERAL_FACILITY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FIPS_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"HUC_CODE_12": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"HUC_CODE_8": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LAST_REPORTED_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LEGISLATIVE_DIST_NUM": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LINK_MTHD": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LOCATION_ADDRESS": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LOCATION_DESCRIPTION": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PARENT_PGM_SYS_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PGM_SYS_ACRNM": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PGM_SYS_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"POSTAL_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PRIMARY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PUBLIC_IND": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"REFRESH_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"REGISTRY_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SENSITIVE_IND": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_TYPE_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SMALL_BUS_IND": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SOURCE_OF_DATA": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STAND_ALONE_FLAG": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STATE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STATE_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_BASE_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_CITY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_COUNTRY": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_COUNTY_FIPS": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_COUNTY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_FULL_ADDRESS": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_HOUSE_NUMBER": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_LOC_ADDRESS": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_POSTAL_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_PREFIX": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_STATE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_STREET_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_STYPE_AFTER": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_STYPE_BEFORE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STD_SUFFIX": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SUPPLEMENTAL_LOCATION": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"TRIBAL_LAND_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"TRIBAL_LAND_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"UPDATE_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"USER_COMMENT": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"USER_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		},
+		"geo_facility_point": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		},
+		"geo_php_facility_coordinate": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		},
+		"v_geo_pgm_coordinate_all": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

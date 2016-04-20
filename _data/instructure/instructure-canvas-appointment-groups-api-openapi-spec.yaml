@@ -1,0 +1,266 @@
+- swagger: "2.0"
+  info:
+    title: Instructure Canvas Appointment Groups API
+    description: 'Canvas LMS includes a REST API for accessing and modifying data externally
+      from the main application, in your own programs and scripts. '
+    termsOfService: https://www.canvaslms.com/policies/api-policy
+    version: v1
+  host: canvas.instructure.com
+  basePath: /api/v1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /appointment_groups:
+      get:
+        summary: List appointment groups
+        description: ""
+        operationId: list-appointment-groups
+        parameters:
+        - in: query
+          name: context_codes[]
+          description: Array of context codes used to limit returned results.
+          type: string
+        - in: query
+          name: include[]
+          description: 'Array of additional information to include.nu201cappointmentsu201dnncalendar
+            event time slots for this appointment groupnu201cchild_eventsu201dnnreservations
+            of those time slotsnu201cparticipant_countu201dnnnumber of reservationsnu201creserved_timesu201dnnthe
+            event id, start time and end time of reservations the current user hasnmade)nnn        n        n          Allowed
+            values: appointments, child_events, participant_count, reserved_times'
+          type: string
+        - in: query
+          name: include_past_appointments
+          description: Defaults to false. If true, includes past appointment groups
+          type: boolean
+        - in: query
+          name: scope
+          description: 'Defaults to u201creservableu201dnn        n        n          Allowed
+            values: reservable, manageable'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - appointment groups
+        security: []
+      post:
+        summary: Create an appointment group
+        description: ""
+        operationId: create-an-appointment-group
+        parameters:
+        - in: query
+          name: appointment_group[context_codes][]
+          description: Array of context codes (courses, e.g. course_1) this group should
+            be linkednto (1 or more). Users in the course(s) with appropriate permissions
+            will benable to sign up for this appointment group.
+          type: string
+        - in: query
+          name: appointment_group[description]
+          description: Longer text description of the appointment group.
+          type: string
+        - in: query
+          name: appointment_group[location_address]
+          description: Location address.
+          type: string
+        - in: query
+          name: appointment_group[location_name]
+          description: Location name of the appointment group.
+          type: string
+        - in: query
+          name: appointment_group[max_appointments_per_participant]
+          description: Maximum number of time slots a user may register for.
+          type: integer
+        - in: query
+          name: appointment_group[min_appointments_per_participant]
+          description: Minimum number of time slots a user must register for. If not
+            set, users donnot need to sign up for any time slots.
+          type: integer
+        - in: query
+          name: appointment_group[new_appointments][X][]
+          description: Nested array of start time/end time pairs indicating time slots
+            for thisnappointment group. Refer to the example request.
+          type: string
+        - in: query
+          name: appointment_group[participants_per_appointment]
+          description: Maximum number of participants that may register for each time
+            slot.nDefaults to null (no limit).
+          type: integer
+        - in: query
+          name: appointment_group[participant_visibility]
+          description: 'u201cprivateu201dnnparticipants cannot see who has signed up
+            for a particular time slotnu201cprotectedu201dnnparticipants can see who
+            has signed up.  Defaults to u201cprivateu201d.nnn        n        n          Allowed
+            values: private, protected'
+          type: string
+        - in: query
+          name: appointment_group[publish]
+          description: Indicates whether this appointment group should be published
+            (i.e. madenavailable for signup). Once published, an appointment group cannot
+            benunpublished. Defaults to false.
+          type: boolean
+        - in: query
+          name: appointment_group[sub_context_codes][]
+          description: Array of sub context codes (course sections or a single group
+            category)nthis group should be linked to. Used to limit the appointment
+            group tonparticular sections. If a group category is specified, students
+            will signnup in groups and the participant_type will be u201cGroupu201d
+            instead of u201cUseru201d.
+          type: string
+        - in: query
+          name: appointment_group[title]
+          description: Short title for the appointment group.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - appointment groups
+        security: []
+    /appointment_groups/{id}:
+      delete:
+        summary: Delete an appointment group
+        description: ""
+        operationId: delete-an-appointment-group
+        parameters:
+        - in: query
+          name: cancel_reason
+          description: Reason for deleting/canceling the appointment group.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - appointment groups
+        security: []
+      get:
+        summary: Get a single appointment group
+        description: ""
+        operationId: get-a-single-appointment-group
+        parameters:
+        - in: query
+          name: include[]
+          description: 'Array of additional information to include. Ssee include[] argument
+            ofnu201cList appointment groupsu201d action.nu201cchild_eventsu201dnnreservations
+            of time slots time slotsnu201cappointmentsu201dnnwill always be returnednnn        n        n          Allowed
+            values: child_events, appointments'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - appointment groups
+        security: []
+      put:
+        summary: Update an appointment group
+        description: ""
+        operationId: update-an-appointment-group
+        parameters:
+        - in: query
+          name: appointment_group[context_codes][]
+          description: Array of context codes (courses, e.g. course_1) this group should
+            be linkednto (1 or more). Users in the course(s) with appropriate permissions
+            will benable to sign up for this appointment group.
+          type: string
+        - in: query
+          name: appointment_group[description]
+          description: Longer text description of the appointment group.
+          type: string
+        - in: query
+          name: appointment_group[location_address]
+          description: Location address.
+          type: string
+        - in: query
+          name: appointment_group[location_name]
+          description: Location name of the appointment group.
+          type: string
+        - in: query
+          name: appointment_group[max_appointments_per_participant]
+          description: Maximum number of time slots a user may register for.
+          type: integer
+        - in: query
+          name: appointment_group[min_appointments_per_participant]
+          description: Minimum number of time slots a user must register for. If not
+            set, users donnot need to sign up for any time slots.
+          type: integer
+        - in: query
+          name: appointment_group[new_appointments][X][]
+          description: Nested array of start time/end time pairs indicating time slots
+            for thisnappointment group. Refer to the example request.
+          type: string
+        - in: query
+          name: appointment_group[participants_per_appointment]
+          description: Maximum number of participants that may register for each time
+            slot.nDefaults to null (no limit).
+          type: integer
+        - in: query
+          name: appointment_group[participant_visibility]
+          description: 'u201cprivateu201dnnparticipants cannot see who has signed up
+            for a particular time slotnu201cprotectedu201dnnparticipants can see who
+            has signed up. Defaults to u201cprivateu201d.nnn        n        n          Allowed
+            values: private, protected'
+          type: string
+        - in: query
+          name: appointment_group[publish]
+          description: Indicates whether this appointment group should be published
+            (i.e. madenavailable for signup). Once published, an appointment group cannot
+            benunpublished. Defaults to false.
+          type: boolean
+        - in: query
+          name: appointment_group[sub_context_codes][]
+          description: Array of sub context codes (course sections or a single group
+            category)nthis group should be linked to. Used to limit the appointment
+            group tonparticular sections. If a group category is specified, students
+            will signnup in groups and the participant_type will be u201cGroupu201d
+            instead of u201cUseru201d.
+          type: string
+        - in: query
+          name: appointment_group[title]
+          description: Short title for the appointment group.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - appointment groups
+        security: []
+    /appointment_groups/{id}/groups:
+      get:
+        summary: List student group participants
+        description: ""
+        operationId: list-student-group-participants
+        parameters:
+        - in: query
+          name: registration_status
+          description: 'Limits results to the a given participation status, defaults
+            to u201callu201dnn        n        n          Allowed values: all, registered,
+            registered'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - appointment groups
+        security: []
+    /appointment_groups/{id}/users:
+      get:
+        summary: List user participants
+        description: ""
+        operationId: list-user-participants
+        parameters:
+        - in: query
+          name: registration_status
+          description: 'Limits results to the a given participation status, defaults
+            to u201callu201dnn        n        n          Allowed values: all, registered,
+            registered'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - appointment groups
+        security: []
+  definitions: []

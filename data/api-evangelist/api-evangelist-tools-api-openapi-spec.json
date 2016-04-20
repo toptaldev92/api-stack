@@ -1,0 +1,137 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "API Evangelist Tools API",
+		"description": "This is an API that provides access to the tools that I curate from around the API space.",
+		"termsOfService": "http://developer.apievangelist.com/index.html",
+		"contact": {
+			"name": "Kin Lane",
+			"url": "http://kinlane.com",
+			"email": "info@apievangelist.com"
+		},
+		"license": {
+			"name": "MIT",
+			"url": "http://opensource.org/licenses/MIT"
+		},
+		"version": "1.0"
+	},
+	"host": "api.apievangelist.com",
+	"basePath": "/v1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/tool/{id}": {
+			"get": {
+				"summary": "Retrieve a tool using its ID",
+				"description": "Returns a tool detail",
+				"operationId": "getTool",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "application id for application making calls",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "application key for application making calls",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the tool to be returned",
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Tool Response"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/tools/": {
+			"get": {
+				"summary": "Pull tool",
+				"description": "Returns a list of all tools filtered by keyword.",
+				"operationId": "getTool",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "application id for application making calls",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "application key for application making calls",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "query",
+					"description": "a text query to search across tools",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Tool Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/tool"
+							}
+						}
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"tool": {
+			"properties": {
+				"Tools_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"Post_Date": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"Name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"Details": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"URL": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Error": {
+			"properties": {
+				"code": {
+					"description": "This is a default description.",
+					"type": "integer"
+				},
+				"message": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"fields": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

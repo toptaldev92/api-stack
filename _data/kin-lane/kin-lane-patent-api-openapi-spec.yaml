@@ -1,0 +1,165 @@
+- swagger: "2.0"
+  info:
+    title: Patent
+    description: This is a patent api
+    termsOfService: http://stack.network/terms-of-service.html
+    version: ~
+  host: patent.api.kinlane.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /patent/:
+      get:
+        summary: retrieves all patents
+        description: pulls all patents, with filter by keyword
+        operationId: getPatents
+        parameters:
+        - in: query
+          name: query
+          description: a text query to search across patent
+        responses:
+          200:
+            description: OK
+        tags:
+        - Patents
+        security: []
+      post:
+        summary: add patent
+        description: add a new patent
+        operationId: addPatent
+        parameters:
+        - in: query
+          name: abstract
+          description: abstracrt for the patent
+        - in: query
+          name: name
+          description: name of the patent
+        - in: query
+          name: number
+          description: number for the patent
+        - in: query
+          name: owner
+          description: url for the patent
+        - in: query
+          name: summary
+          description: abstracrt for the patent
+        - in: query
+          name: tags
+          description: tags for the patent
+        - in: query
+          name: url
+          description: url for the patent
+        responses:
+          200:
+            description: OK
+        tags:
+        - Patents
+        security: []
+    /patent/filters/by-owner/:
+      get:
+        summary: get patents by owner
+        description: get patents by owner
+        operationId: getPatentsByOwner
+        responses:
+          200:
+            description: OK
+        tags:
+        - Patents
+        security: []
+    /patent/{slug}/:
+      delete:
+        summary: delete patent
+        description: deletes an patent
+        operationId: deletePatent
+        parameters:
+        - in: path
+          name: slug
+          description: unique slug for the patent
+        responses:
+          200:
+            description: OK
+        tags:
+        - Patents
+        security: []
+      get:
+        summary: Retrieve a patent using its slug
+        description: Returns the patent detail
+        operationId: getPatent
+        parameters:
+        - in: path
+          name: slug
+          description: slug for the patent, notice this is in the path, not a query
+            variable
+        responses:
+          200:
+            description: OK
+        tags:
+        - Patents
+        security: []
+      put:
+        summary: update patent
+        description: update patent
+        operationId: updatePatent
+        parameters:
+        - in: query
+          name: abstract
+          description: abstracrt for the patent
+        - in: query
+          name: name
+          description: name of the patent
+        - in: query
+          name: number
+          description: number for the patent
+        - in: query
+          name: owner
+          description: url for the patent
+        - in: path
+          name: slug
+          description: unique slug for the patent
+        - in: query
+          name: summary
+          description: abstracrt for the patent
+        - in: query
+          name: tags
+          description: tags for the patent
+        - in: query
+          name: url
+          description: url for the patent
+        responses:
+          200:
+            description: OK
+        tags:
+        - Patents
+        security: []
+  definitions:
+    patent:
+      properties:
+        name:
+          description: This is a default description.
+          type: get
+        summary:
+          description: This is a default description.
+          type: get
+        abstract:
+          description: This is a default description.
+          type: get
+        url:
+          description: This is a default description.
+          type: get
+        owner:
+          description: This is a default description.
+          type: get
+        number:
+          description: This is a default description.
+          type: get
+        tags:
+          description: This is a default description.
+          type: get
+        slug:
+          description: This is a default description.
+          type: get

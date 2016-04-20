@@ -1,0 +1,565 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "EPA Radiation Information Database API",
+		"description": "The Radiation Information Database provides information aobut certain facilities that EPA regulates for radiation and radioactivity.",
+		"contact": {
+			"name": "EP Envirofacts",
+			"url": "http://www.epa.gov/enviro/index.html"
+		},
+		"version": "v1"
+	},
+	"host": "iaspub.epa.gov",
+	"basePath": "/enviro/efservice/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/RAD_FACILITY/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_RAD_FACILITY",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/rad_facility"
+							}
+						}
+					}
+				},
+				"tags": ["Radiation"],
+				"security": []
+			}
+		},
+		"/RAD_FACILITY_TYPE/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_RAD_FACILITY_TYPE",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/rad_facility_type"
+							}
+						}
+					}
+				},
+				"tags": ["Radiation"],
+				"security": []
+			}
+		},
+		"/RAD_GEO_LOCATION/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_RAD_GEO_LOCATION",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/rad_geo_location"
+							}
+						}
+					}
+				},
+				"tags": ["Radiation"],
+				"security": []
+			}
+		},
+		"/RAD_REGULATION/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_RAD_REGULATION",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/rad_regulation"
+							}
+						}
+					}
+				},
+				"tags": ["Radiation"],
+				"security": []
+			}
+		},
+		"/RAD_REGULATORY_PROG/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_RAD_REGULATORY_PROG",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/rad_regulatory_prog"
+							}
+						}
+					}
+				},
+				"tags": ["Radiation"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"rad_regulatory_prog": {
+			"properties": {
+				"": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CIT_REF_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ENFORCEMENT_AGENCY": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"OPERATING_ORGANIZATION": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"OVERSIGHT_AGENCY": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PROG_FAC_STATUS": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PROG_FAC_TYPE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAD_CHANGE_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAD_SYS_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SEC_CIT_REF_FLAG": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SUBPART_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"rad_facility": {
+			"properties": {
+				"": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CITY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CONGRESSIONAL_DIST_NUM": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"COUNTRY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"COUNTY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"EF_PGM_SOURCE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"EPA_REGION_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FACILITY_REGISTRY_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FED_FACILITY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FRS_UPDATE_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"HUC_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LOCATION_ADDRESS": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"POSTAL_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PRIMARY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAD_CHANGE_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAD_SYS_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SOURCE_DATA": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STATE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STATE_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SUPPLEMENTAL_LOCATION": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"TRIBAL_LAND_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"TRIBAL_LAND_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"URL": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"URL_LINK_DESCRIPTION": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"rad_geo_location": {
+			"properties": {
+				"": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"COORDINATE_DATA_SOURCE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"DATA_COLLECTION_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"EF_PGM_SOURCE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"GEOMETRIC_TYPE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"HORIZONTAL_ACCURACY_MEASURE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"HORIZONTAL_COLLECT_METHOD_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"HORIZONTAL_REFER_DATUM_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LATITUDE_MEASURE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LOCATION_COMMENTS_TEXT": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LONGITUDE_MEASURE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAD_CHANGE_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAD_OVERRIDE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAD_SYS_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"REFERENCE_POINT_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SOURCE_MAP_SCALE_NUMBER": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SUB_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SUB_TYPE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"VERTICAL_ACCURACY_MEASURE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"VERTICAL_COLLECT_METHOD_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"VERTICAL_MEASURE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"VERTICAL_REFERENCE_DATA_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"rad_regulation": {
+			"properties": {
+				"": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CFR_PART": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CFR_SUBPART": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CIT_REF_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CRF_SECTION": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PART_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAD_CHANGE_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"REG_TITLE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SECTION_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STATUTE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STAT_ACRONYM": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SUBPART_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"TITLE_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"URL": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"rad_facility_type": {
+			"properties": {
+				"": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CIT_REF_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FACILITY_TYPE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SEC_CIT_REF_FLAG": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SUBPART_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

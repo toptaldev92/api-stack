@@ -1,0 +1,484 @@
+- swagger: "2.0"
+  info:
+    title: Twitter Lists API
+    description: The lists API for Twitter.
+    termsOfService: http://dev.twitter.com/overview/terms
+    contact:
+      name: Twitter
+      url: https://dev.twitter.com/discussions
+    version: "1.1"
+  host: api.twitter.com
+  basePath: /1.1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /lists/destroy/:
+      post:
+        summary: lists/destroy
+        description: Deletes the specified list. The authenticated user must own the
+          list to be able to destroy it.
+        operationId: listsDestroy
+        parameters:
+        - in: query
+          name: list_id
+        - in: query
+          name: owner_id
+        - in: query
+          name: owner_screen_name
+        - in: query
+          name: slug
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lists/list/:
+      get:
+        summary: lists/list
+        description: Returns all lists the authenticating or specified user subscribes
+          to, including their own. The user is specified using the user_id or screen_name
+          parameters. If no user is given, the authenticating user is used.This method
+          used to be GET lists in version 1.0 of the API and has been renamed for consistency
+          with other call.A maximum of 100 results will be returned by this call.  Subscribed
+          lists are returned first, followed by owned lists.  This means that if a user
+          subscribes to 90 lists and owns 20 lists, this method returns 90 subscriptions
+          and 10 owned lists.  The reverse method returns owned lists first, so with
+          reverse=true, 20 owned lists and 80 subscriptions would be returned.  If your
+          goal is to obtain every list a user owns or subscribes to, use GET lists /
+          ownerships and/or GET lists / subscriptions instead.
+        operationId: listsList
+        parameters:
+        - in: query
+          name: reverse
+        - in: query
+          name: screen_name
+        - in: query
+          name: user_id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lists/members/:
+      get:
+        summary: lists/members
+        description: Returns the members of the specified list. Private list members
+          will only be shown if the authenticated user owns the specified list.
+        operationId: listsMembers
+        parameters:
+        - in: query
+          name: count
+        - in: query
+          name: cursor
+        - in: query
+          name: include_entities
+        - in: query
+          name: list_id
+        - in: query
+          name: owner_id
+        - in: query
+          name: owner_screen_name
+        - in: query
+          name: skip_status
+        - in: query
+          name: slug
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lists/members/create/:
+      post:
+        summary: lists/members/create
+        description: Add a member to a list. The authenticated user must own the list
+          to be able to add members to it. Note that lists cannot have more than 5,000
+          members.
+        operationId: listsMembersCreate
+        parameters:
+        - in: query
+          name: list_id
+        - in: query
+          name: owner_id
+        - in: query
+          name: owner_screen_name
+        - in: query
+          name: screen_name
+        - in: query
+          name: slug
+        - in: query
+          name: user_id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lists/members/create_all/:
+      post:
+        summary: lists/members/create_all
+        description: Adds multiple members to a list, by specifying a comma-separated
+          list of member ids or screen names. The authenticated user must own the list
+          to be able to add members to it. Note that lists can&#8217;t have more than
+          5,000 members, and you are limited to adding up to 100 members to a list at
+          a time with this method.Please note that there can be issues with lists that
+          rapidly remove and add memberships. Take care when using these methods such
+          that you are not too rapidly switching between removals and adds on the same
+          list.
+        operationId: listsMembersCreateAll
+        parameters:
+        - in: query
+          name: list_id
+        - in: query
+          name: owner_id
+        - in: query
+          name: owner_screen_name
+        - in: query
+          name: screen_name
+        - in: query
+          name: slug
+        - in: query
+          name: user_id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lists/members/destroy/:
+      post:
+        summary: lists/members/destroy
+        description: Removes the specified member from the list. The authenticated user
+          must be the list&#8217;s owner to remove members from the list.
+        operationId: listsMembersDestroy
+        parameters:
+        - in: query
+          name: list_id
+        - in: query
+          name: owner_id
+        - in: query
+          name: owner_screen_name
+        - in: query
+          name: screen_name
+        - in: query
+          name: slug
+        - in: query
+          name: user_id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lists/members/destroy_all/:
+      post:
+        summary: lists/members/destroy_all
+        description: Removes multiple members from a list, by specifying a comma-separated
+          list of member ids or screen names. The authenticated user must own the list
+          to be able to remove members from it. Note that lists can&#8217;t have more
+          than 500 members, and you are limited to removing up to 100 members to a list
+          at a time with this method.Please note that there can be issues with lists
+          that rapidly remove and add memberships. Take care when using these methods
+          such that you are not too rapidly switching between removals and adds on the
+          same list.
+        operationId: listsMembersDestroyAll
+        parameters:
+        - in: query
+          name: list_id
+        - in: query
+          name: owner_id
+        - in: query
+          name: owner_screen_name
+        - in: query
+          name: screen_name
+        - in: query
+          name: slug
+        - in: query
+          name: user_id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lists/members/show/:
+      get:
+        summary: lists/members/show
+        description: Check if the specified user is a member of the specified list.
+        operationId: listsMembersShow
+        parameters:
+        - in: query
+          name: include_entities
+        - in: query
+          name: list_id
+        - in: query
+          name: owner_id
+        - in: query
+          name: owner_screen_name
+        - in: query
+          name: screen_name
+        - in: query
+          name: skip_status
+        - in: query
+          name: slug
+        - in: query
+          name: user_id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lists/memberships/:
+      get:
+        summary: lists/memberships
+        description: Returns the lists the specified user has been added to. If user_id
+          or screen_name are not provided the memberships for the authenticating user
+          are returned.
+        operationId: listsMemberships
+        parameters:
+        - in: query
+          name: count
+        - in: query
+          name: cursor
+        - in: query
+          name: filter_to_owned_lists
+        - in: query
+          name: screen_name
+        - in: query
+          name: user_id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lists/ownerships/:
+      get:
+        summary: lists/ownerships
+        description: Returns the lists owned by the specified Twitter user. Private
+          lists will only be shown if the authenticated user is also the owner of the
+          lists.
+        operationId: listsOwnerships
+        parameters:
+        - in: query
+          name: count
+        - in: query
+          name: cursor
+        - in: query
+          name: screen_name
+        - in: query
+          name: user_id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lists/show/:
+      get:
+        summary: lists/show
+        description: Returns the specified list. Private lists will only be shown if
+          the authenticated user owns the specified list.
+        operationId: listsShow
+        parameters:
+        - in: query
+          name: list_id
+        - in: query
+          name: owner_id
+        - in: query
+          name: owner_screen_name
+        - in: query
+          name: slug
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lists/statuses/:
+      get:
+        summary: lists/statuses
+        description: Returns a timeline of tweets authored by members of the specified
+          list. Retweets are included by default. Use the include_rts=false parameter
+          to omit retweets.Embedded Timelines is a great way to embed list timelines
+          on your website.
+        operationId: listsStatuses
+        parameters:
+        - in: query
+          name: count
+        - in: query
+          name: include_entities
+        - in: query
+          name: include_rts
+        - in: query
+          name: list_id
+        - in: query
+          name: max_id
+        - in: query
+          name: owner_id
+        - in: query
+          name: owner_screen_name
+        - in: query
+          name: since_id
+        - in: query
+          name: slug
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lists/subscribers/:
+      get:
+        summary: lists/subscribers
+        description: Returns the subscribers of the specified list. Private list subscribers
+          will only be shown if the authenticated user owns the specified list.
+        operationId: listsSubscribers
+        parameters:
+        - in: query
+          name: count
+        - in: query
+          name: cursor
+        - in: query
+          name: include_entities
+        - in: query
+          name: list_id
+        - in: query
+          name: owner_id
+        - in: query
+          name: owner_screen_name
+        - in: query
+          name: skip_status
+        - in: query
+          name: slug
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lists/subscribers/create/:
+      post:
+        summary: lists/subscribers/create
+        description: Subscribes the authenticated user to the specified list.
+        operationId: listsSubscribersCreate
+        parameters:
+        - in: query
+          name: list_id
+        - in: query
+          name: owner_id
+        - in: query
+          name: owner_screen_name
+        - in: query
+          name: slug
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lists/subscribers/destroy/:
+      post:
+        summary: lists/subscribers/destroy
+        description: Unsubscribes the authenticated user from the specified list.
+        operationId: listsSubscribersDestroy
+        parameters:
+        - in: query
+          name: list_id
+        - in: query
+          name: owner_id
+        - in: query
+          name: owner_screen_name
+        - in: query
+          name: slug
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lists/subscribers/show/:
+      get:
+        summary: lists/subscribers/show
+        description: Check if the specified user is a subscriber of the specified list.
+          Returns the user if they are subscriber.
+        operationId: listsSubscribersShow
+        parameters:
+        - in: query
+          name: include_entities
+        - in: query
+          name: list_id
+        - in: query
+          name: owner_id
+        - in: query
+          name: owner_screen_name
+        - in: query
+          name: screen_name
+        - in: query
+          name: skip_status
+        - in: query
+          name: slug
+        - in: query
+          name: user_id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lists/subscriptions/:
+      get:
+        summary: lists/subscriptions
+        description: Obtain a collection of the lists the specified user is subscribed
+          to, 20 lists per page by default.  Does not include the user&#8217;s own lists.
+        operationId: listsSubscriptions
+        parameters:
+        - in: query
+          name: count
+        - in: query
+          name: cursor
+        - in: query
+          name: screen_name
+        - in: query
+          name: user_id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lists/update/:
+      post:
+        summary: lists/update
+        description: Updates the specified list. The authenticated user must own the
+          list to be able to update it.
+        operationId: listsUpdate
+        parameters:
+        - in: query
+          name: description
+        - in: query
+          name: list_id
+        - in: query
+          name: mode
+        - in: query
+          name: name
+        - in: query
+          name: owner_id
+        - in: query
+          name: owner_screen_name
+        - in: query
+          name: slug
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

@@ -1,0 +1,134 @@
+- swagger: "2.0"
+  info:
+    title: Meetup RSVP API
+    description: The API for managing Meetup RSVPs.
+    termsOfService: http://www.meetup.com/terms/
+    version: ~
+  host: api.meetup.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /2/rsvp:
+      post:
+        summary: RSVP Create/Update
+        description: Creates or updates an existing RSVP
+        operationId: rsvps
+        parameters:
+        - in: query
+          name: '*event_id'
+          description: The event that you are RSVPing to
+          type: string
+        - in: query
+          name: '*rsvp'
+          description: The RSVP setting - value must be either yes, no or waitlist
+          type: string
+        - in: query
+          name: agree_to_refund
+          description: For events with fees, the authorized member must agree to the
+            events refund policy. This must be set to either true or false
+          type: string
+        - in: query
+          name: answer_{qid}
+          description: Answers to event survey questions. Answers may not be longer
+            than 250 characters. Organizers and hosts my not edit or create answers
+            on behalf of members
+          type: string
+        - in: query
+          name: comments
+          description: A comment to post along with the RSVP
+          type: string
+        - in: query
+          name: guests
+          description: Number of guests also coming to the event.
+          type: string
+        - in: query
+          name: member_id
+          description: ' Organizers and event hosts may RSVP on behalf of a member by
+            specifying an ID here. As when editing RSVPs on the site, organizers may
+            enter a yes for a member even if the event requires payment.'
+          type: string
+        - in: query
+          name: opt_to_pay
+          description: For events with fees, the authorized member may opt to pay as
+            part of the RSVP request. This may be set to true or false
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /2/rsvp/:id:
+      get:
+        summary: RSVP Get
+        description: Retrieve a single RSVP
+        operationId: rsvps
+        parameters:
+        - in: query
+          name: fields
+          description: Request that additional fields (separated by commas) be included
+            in the output
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /2/rsvps:
+      get:
+        summary: RSVPs v2
+        description: Query for Event RSVPs by event
+        operationId: rsvps
+        parameters:
+        - in: query
+          name: '*callback'
+          description: Name of a function to be called with an array of RSVP notification
+            objects. If this nparameter is not supplied, the chunked stream is joined
+            instead.
+          type: string
+        - in: query
+          name: '*event_id'
+          description: Multiple alphanumeric ids may be separated with commas
+          type: string
+        - in: query
+          name: api_version
+          description: "2"
+          type: string
+        - in: query
+          name: event_id
+          description: Limit notifications to a specific event id. Use alphanumeric
+            ids for repeating events.
+          type: string
+        - in: query
+          name: fields
+          description: Parameter for requesting optional response properties, set to
+            other_services for a list of third party services
+          type: string
+        - in: query
+          name: rsvp
+          description: Filters response on RSVP status. yes if member RSVPd yes otherwise
+            no
+          type: string
+        - in: query
+          name: since_count
+          description: Request that some number of recent messages be sent immediately,
+            if available. May not be specified in the same request as since_mtime.
+          type: string
+        - in: query
+          name: since_mtime
+          description: Should be supplied for all but the first polling request, so
+            that any missed notifications are can be sent in an immediate response
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

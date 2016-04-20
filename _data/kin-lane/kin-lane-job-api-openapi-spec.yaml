@@ -1,0 +1,240 @@
+- swagger: "2.0"
+  info:
+    title: Job
+    description: This is an job for all my jobs, which I use to orchestrate my infrastructure.
+      I aggregate the jobs across all of my system and use a centralized CRON approach
+      to executing orchestration.
+    termsOfService: http://stack.network/terms-of-service.html
+    version: ~
+  host: job.api.kinlane.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /job/:
+      get:
+        summary: all jobs
+        description: all jobs
+        operationId: getJobs
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the job
+        - in: query
+          name: appkey
+          description: your appkey for accessing the job
+        - in: query
+          name: query
+          description: a text query to search across job
+        responses:
+          200:
+            description: OK
+        tags:
+        - Jobs
+        security: []
+      post:
+        summary: add a job post
+        description: add a job post
+        operationId: addJob
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the job
+        - in: query
+          name: appkey
+          description: your appkey for accessing the job
+        - in: query
+          name: author
+          description: author of the job
+        - in: query
+          name: body
+          description: full text for the job
+        - in: query
+          name: status
+          description: status of the job
+        - in: query
+          name: title
+          description: ttle for the job
+        responses:
+          200:
+            description: OK
+        tags:
+        - Jobs
+        security: []
+    /job/{job_id}/:
+      delete:
+        summary: delete job
+        description: delete job
+        operationId: deleteJob
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the job
+        - in: query
+          name: appkey
+          description: your appkey for accessing the job
+        - in: path
+          name: job_id
+          description: the unique id for job entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Jobs
+        security: []
+      get:
+        summary: get job using its id
+        description: Returns the job detail
+        operationId: getJob
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the job
+        - in: query
+          name: appkey
+          description: your appkey for accessing the job
+        - in: path
+          name: job_id
+          description: the unique id for job entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Jobs
+        security: []
+      put:
+        summary: update job
+        description: update job
+        operationId: updateJob
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the job
+        - in: query
+          name: appkey
+          description: your appkey for accessing the job
+        - in: query
+          name: author
+          description: author of the job
+        - in: query
+          name: body
+          description: full text for the job
+        - in: path
+          name: job_id
+          description: the unique id for job entry
+        - in: query
+          name: status
+          description: status of the job
+        - in: query
+          name: title
+          description: ttle for the job
+        responses:
+          200:
+            description: OK
+        tags:
+        - Jobs
+        security: []
+    /job/{job_id}/tags/:
+      get:
+        summary: job tags
+        description: job tags
+        operationId: getjobTags
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the job
+        - in: query
+          name: appkey
+          description: your appkey for accessing the job
+        - in: path
+          name: job_id
+          description: id for job
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+      post:
+        summary: add tag to job
+        description: add tag to job
+        operationId: addJobTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the job
+        - in: query
+          name: appkey
+          description: your appkey for accessing the job
+        - in: path
+          name: job_id
+          description: id for the job
+        - in: query
+          name: tag
+          description: tag name
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /job/{job_id}/tags/{tag}:
+      delete:
+        summary: delete job tag
+        description: delete job tag
+        operationId: deletejobTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the job
+        - in: query
+          name: appkey
+          description: your appkey for accessing the job
+        - in: path
+          name: job_id
+          description: id for the job
+        - in: path
+          name: tag
+          description: tag to remove from job
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+  definitions:
+    job:
+      properties:
+        job_id:
+          description: This is a default description.
+          type: delete
+        post_date:
+          description: This is a default description.
+          type: delete
+        title:
+          description: This is a default description.
+          type: delete
+        author:
+          description: This is a default description.
+          type: delete
+        body:
+          description: This is a default description.
+          type: delete
+        status:
+          description: This is a default description.
+          type: delete
+    tag:
+      properties:
+        tag_id:
+          description: This is a default description.
+          type: delete
+        tag:
+          description: This is a default description.
+          type: delete
+        api_count:
+          description: This is a default description.
+          type: delete

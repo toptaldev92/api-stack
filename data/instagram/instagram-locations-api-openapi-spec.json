@@ -1,0 +1,163 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Instagram Locations API",
+		"version": ""
+	},
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/locations/location-id": {
+			"get": {
+				"summary": "Locations",
+				"description": "Get information about a location.",
+				"operationId": "locations",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["location"],
+				"security": []
+			}
+		},
+		"/locations/location-id/media/recent": {
+			"get": {
+				"summary": "Locations",
+				"description": "Get a list of recent media objects from a given location. May return a mix of both image and video types.n                n            nn            n            n                Parametersn                n                    n                    n                        min_timestampn                        Return media after this UNIX timestampn                    n                    n                    n                        min_idn                        Return media before this min_id.n                    n                    n                    n                        max_idn                        Return media after this max_id.n                    n                    n                    n                        max_timestampn                        Return media before this UNIX timestamp",
+				"operationId": "locations",
+				"parameters": [{
+					"in": "query",
+					"name": "max_id",
+					"description": "Return media after this max_id."
+				},
+				{
+					"in": "query",
+					"name": "max_timestamp",
+					"description": "Return media before this UNIX timestamp"
+				},
+				{
+					"in": "query",
+					"name": "min_id",
+					"description": "Return media before this min_id."
+				},
+				{
+					"in": "query",
+					"name": "min_timestamp",
+					"description": "Return media after this UNIX timestamp"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["location"],
+				"security": []
+			}
+		},
+		"/locations/search": {
+			"get": {
+				"summary": "Locations",
+				"description": "Search for a location by geographic coordinate.n                n            nn            n            n                Parametersn                n                    n                    n                        distancen                        Default is 1000m (distance=1000), max distance is 5000.n                    n                    n                    n                        facebook_places_idn                        Returns a location mapped off of a Facebook places id. If used, a Foursquare id and lat, lng are not required.n                    n                    n                    n                        foursquare_idn                        Returns a location mapped off of a foursquare v1 api location id. If used, you are not required to use lat and lng. Note that this method is deprecated; you should use the new foursquare IDs with V2 of their API.n                    n                    n                    n                        latn                        Latitude of the center search coordinate. If used, lng is required.n                    n                    n                    n                        lngn                        Longitude of the center search coordinate. If used, lat is required.n                    n                    n                    n                        foursquare_v2_idn                        Returns a location mapped off of a foursquare v2 api location id. If used, you are not required to use lat and lng.",
+				"operationId": "locations",
+				"parameters": [{
+					"in": "query",
+					"name": "distance",
+					"description": "Default is 1000m (distance=1000), max distance is 5000."
+				},
+				{
+					"in": "query",
+					"name": "facebook_places_id",
+					"description": "Returns a location mapped off of a Facebook places id. If used, a Foursquare id and lat, lng are not required."
+				},
+				{
+					"in": "query",
+					"name": "foursquare_id",
+					"description": "Returns a location mapped off of a foursquare v1 api location id. If used, you are not required to use lat and lng. Note that this method is deprecated; you should use the new foursquare IDs with V2 of their API."
+				},
+				{
+					"in": "query",
+					"name": "foursquare_v2_id",
+					"description": "Returns a location mapped off of a foursquare v2 api location id. If used, you are not required to use lat and lng."
+				},
+				{
+					"in": "query",
+					"name": "lat",
+					"description": "Latitude of the center search coordinate. If used, lng is required."
+				},
+				{
+					"in": "query",
+					"name": "lng",
+					"description": "Longitude of the center search coordinate. If used, lat is required."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["location"],
+				"security": []
+			}
+		},
+		"/locations/{location-id}": {
+			"get": {
+				"summary": "Get Location",
+				"description": "Get information about a location.",
+				"operationId": "get-information-about-a-location",
+				"parameters": [{
+					"in": "path",
+					"name": "location-id",
+					"description": "The location ID."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["location"],
+				"security": []
+			}
+		},
+		"/locations/{location-id}/media/recent": {
+			"get": {
+				"summary": "Get Recent Media by Location",
+				"description": "Get a list of recent media objects from a given location. May return a mix of both image and video types.n                n            nn            n            n                Parametersn                n                    n                    n                        min_timestampn                        Return media after this UNIX timestampn                    n                    n                    n                        min_idn                        Return media before this min_id.n                    n                    n                    n                        max_idn                        Return media after this max_id.n                    n                    n                    n                        max_timestampn                        Return media before this UNIX timestamp",
+				"operationId": "locations",
+				"parameters": [{
+					"in": "query",
+					"name": "max_id",
+					"description": "Return media after this max_id.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "max_timestamp",
+					"description": "Return media before this UNIX timestamp",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "min_id",
+					"description": "Return media before this min_id.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "min_timestamp",
+					"description": "Return media after this UNIX timestamp",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["location"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

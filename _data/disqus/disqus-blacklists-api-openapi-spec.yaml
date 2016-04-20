@@ -1,0 +1,85 @@
+- swagger: "2.0"
+  info:
+    title: Disqus Blacklists API
+    version: ""
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /blacklists/list.json:
+      n    get:
+        summary: Blacklists List
+        description: 'Blacklists List '
+        operationId: blacklists-list
+        parameters:
+        - in: query
+          name: cursor
+          description: Defaults to null
+        - in: query
+          name: forum
+          description: Looks up a forum by ID (aka short name)
+        - in: query
+          name: limit
+          description: Defaults to 25 - Maximum value of 100
+        - in: query
+          name: order
+          description: 'Defaults to asc                         Choices: asc, desc'
+        - in: query
+          name: query
+          description: Defaults to null
+        - in: query
+          name: related
+          description: 'Defaults to [] -  You may specify relations to include with
+            your response. Choices: forum'
+        - in: query
+          name: since
+          description: Defaults to null - Unix timestamp (or ISO datetime standard)
+        - in: query
+          name: since_id
+          description: Defaults to null
+        - in: query
+          name: type
+          description: 'Defaults to null                         Choices: domain, word,
+            ip, user, thread_slug, email, brand_unsafe_word'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /blacklists/remove.json:
+      n    post:
+        summary: Blacklists Remove
+        description: Blacklists Remove
+        operationId: blacklists-remove
+        parameters:
+        - in: query
+          name: domain
+          description: Defaults to []                         Domain Name
+        - in: query
+          name: email
+          description: Defaults to [] - Email address (defined by RFC 5322)
+        - in: query
+          name: forum
+          description: Looks up a forum by ID (aka short name)
+        - in: query
+          name: ip
+          description: Defaults to [] - IP address in CIDR notation
+        - in: query
+          name: user
+          description: Defaults to [] - Looks up a user by ID You may look up a user
+            by username using the username query type.
+        - in: query
+          name: word
+          description: Defaults to [] - Maximum length of 200
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

@@ -1,0 +1,405 @@
+- swagger: "2.0"
+  info:
+    title: News
+    description: This is an news for all my news entries. I use a single news system
+      to manage all my sites. Based upon tagging, I then publish each post out to its
+      respective Github Page based repo.
+    termsOfService: http://stack.network/terms-of-service.html
+    version: ~
+  host: news.api.kinlane.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /news/:
+      get:
+        summary: all news
+        description: all newss
+        operationId: getNewss
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the news
+        - in: query
+          name: appkey
+          description: your appkey for accessing the news
+        - in: query
+          name: count
+          description: how many to show on page
+        - in: query
+          name: page
+          description: which page of results to show
+        - in: query
+          name: query
+          description: a text query to search across news
+        - in: query
+          name: sort
+          description: which field to sort by
+        responses:
+          200:
+            description: OK
+        tags:
+        - News
+        security: []
+      post:
+        summary: add a news post
+        description: add a news post
+        operationId: addNews
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the news
+        - in: query
+          name: appkey
+          description: your appkey for accessing the news
+        - in: query
+          name: author
+          description: author of the news
+        - in: query
+          name: body
+          description: full text for the news
+        - in: query
+          name: curated_id
+          description: full text for the news
+        - in: query
+          name: footer
+          description: curated id the news originated from
+        - in: query
+          name: status
+          description: status of the news
+        - in: query
+          name: summary
+          description: summary for the news
+        - in: query
+          name: title
+          description: ttle for the news
+        responses:
+          200:
+            description: OK
+        tags:
+        - News
+        security: []
+    /news/byweek/:
+      get:
+        summary: newss by week
+        description: newss by week
+        operationId: getNewssByWeek
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the news
+        - in: query
+          name: appkey
+          description: your appkey for accessing the news
+        responses:
+          200:
+            description: OK
+        tags:
+        - News
+        security: []
+    /news/draft/:
+      get:
+        summary: draft newss
+        description: draft newss
+        operationId: getDraftNewss
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the news
+        - in: query
+          name: appkey
+          description: your appkey for accessing the news
+        - in: query
+          name: count
+          description: how many to show on page
+        - in: query
+          name: page
+          description: which page of results to show
+        - in: query
+          name: sort
+          description: which field to sort by
+        responses:
+          200:
+            description: OK
+        tags:
+        - News
+        security: []
+    /news/published/:
+      get:
+        summary: published newss
+        description: published newss
+        operationId: getPublishedNewss
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the news
+        - in: query
+          name: appkey
+          description: your appkey for accessing the news
+        - in: query
+          name: count
+          description: how many to show on page
+        - in: query
+          name: page
+          description: which page of results to show
+        - in: query
+          name: sort
+          description: which field to sort by
+        responses:
+          200:
+            description: OK
+        tags:
+        - News
+        security: []
+    /news/tags/byweek/:
+      get:
+        summary: news tags by week
+        description: news tags by week
+        operationId: getNewsTagsByWeek
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the news
+        - in: query
+          name: appkey
+          description: your appkey for accessing the news
+        - in: query
+          name: week
+          description: the week to retrieve tags by
+        - in: query
+          name: year
+          description: the year to retrieve tags by
+        responses:
+          200:
+            description: OK
+        tags:
+        - News
+        security: []
+    /news/tags/byweek/{tag}/news/:
+      get:
+        summary: news tags by week newss
+        description: news tags by week newss
+        operationId: getNewsTagCNews
+        parameters:
+        - in: path
+          name: tag
+          description: the tag to filter by
+        - in: query
+          name: week
+          description: the week to filter by, defaults to this week
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /news/{news_id}/:
+      delete:
+        summary: delete news
+        description: delete news
+        operationId: deleteNews
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the news
+        - in: query
+          name: appkey
+          description: your appkey for accessing the news
+        - in: path
+          name: news_id
+          description: the unique id for news entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - News
+        security: []
+      get:
+        summary: get news using id
+        description: Returns the news detail
+        operationId: getNews
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the news
+        - in: query
+          name: appkey
+          description: your appkey for accessing the news
+        - in: path
+          name: news_id
+          description: the unique id for news entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - News
+        security: []
+      put:
+        summary: update news
+        description: update news
+        operationId: updateNews
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the news
+        - in: query
+          name: appkey
+          description: your appkey for accessing the news
+        - in: query
+          name: author
+          description: author of the news
+        - in: query
+          name: body
+          description: full text for the news
+        - in: query
+          name: build_page
+          description: whether or not this news post needs page built
+        - in: query
+          name: curated_id
+          description: full text for the news
+        - in: query
+          name: footer
+          description: curated id the news originated from
+        - in: path
+          name: news_id
+          description: the unique id for news entry
+        - in: query
+          name: post_date
+          description: date the news was posted
+        - in: query
+          name: show_on_site
+          description: Whether or not this news post will show on any site
+        - in: query
+          name: status
+          description: status of the news
+        - in: query
+          name: summary
+          description: summary for the news
+        - in: query
+          name: title
+          description: ttle for the news
+        responses:
+          200:
+            description: OK
+        tags:
+        - News
+        security: []
+    /news/{news_id}/tags/:
+      get:
+        summary: news tags
+        description: news tags
+        operationId: getnewsTags
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the news
+        - in: query
+          name: appkey
+          description: your appkey for accessing the news
+        - in: path
+          name: news_id
+          description: id for news
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+      post:
+        summary: add tag to news
+        description: add tag to news
+        operationId: addNewsTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the news
+        - in: query
+          name: appkey
+          description: your appkey for accessing the news
+        - in: path
+          name: news_id
+          description: id for the news
+        - in: query
+          name: tag
+          description: tag name
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /news/{news_id}/tags/{tag}:
+      delete:
+        summary: delete news tag
+        description: delete news tag
+        operationId: deletenewsTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the news
+        - in: query
+          name: appkey
+          description: your appkey for accessing the news
+        - in: path
+          name: news_id
+          description: id for the news
+        - in: path
+          name: tag
+          description: tag to remove from news
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+  definitions:
+    news:
+      properties:
+        news_id:
+          description: This is a default description.
+          type: get
+        post_date:
+          description: This is a default description.
+          type: get
+        title:
+          description: This is a default description.
+          type: get
+        author:
+          description: This is a default description.
+          type: get
+        summary:
+          description: This is a default description.
+          type: get
+        body:
+          description: This is a default description.
+          type: get
+        footer:
+          description: This is a default description.
+          type: get
+        status:
+          description: This is a default description.
+          type: get
+        curated_id:
+          description: This is a default description.
+          type: get
+        build_page:
+          description: This is a default description.
+          type: get
+        show_on_site:
+          description: This is a default description.
+          type: get
+    tag:
+      properties:
+        tag_id:
+          description: This is a default description.
+          type: get
+        tag:
+          description: This is a default description.
+          type: get
+        api_count:
+          description: This is a default description.
+          type: get

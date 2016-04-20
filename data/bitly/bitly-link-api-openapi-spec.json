@@ -1,0 +1,438 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Bitly Link API",
+		"description": "The Bitly Link API.",
+		"termsOfService": "http://dev.bitly.com/best_practices.html",
+		"version": "3.0"
+	},
+	"host": "api-ssl.bitly.com",
+	"basePath": "/v3",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/search": {
+			"get": {
+				"summary": "Link Search",
+				"description": "Search links receiving clicks across bitly by content, language, location, and more.",
+				"operationId": "searchLinks",
+				"parameters": [{
+					"in": "query",
+					"name": "cities",
+					"description": "show links active in this city (ordered like country-state-city, e.g. us-il-chicago).",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "domain",
+					"description": "restrict results to this web domain (like bitly.com).",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "fields",
+					"description": "which fields to return in the response (comma-separated). May be any of: domain, initial_epoch, h2, h3, site, lastindexed, keywords, last_indexed_epoch, title, initial, summaryText, content, score, summaryTitle, type, description, cities, lang, url, referrer, aggregate_link, lastseen, page, ogtitle, aggregate_link. By default, all will be returned.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "full_domain",
+					"description": "restrict results to this full web domain (like blog.bitly.com).",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "lang",
+					"description": "favor results in this language (two letter ISO code).",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "which result to start with (defaults to 0).",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "query",
+					"description": "string to query for.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Links Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/Links"
+							}
+						}
+					}
+				},
+				"tags": ["Links"],
+				"security": []
+			}
+		},
+		"/v3/expand": {
+			"get": {
+				"summary": "expand",
+				"description": "expand",
+				"operationId": "expand",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"description": "json, xml, txt. Default: json.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "hash",
+					"description": "refers to one or more bitly hashes. e.g.: 2bYgqR or a-custom-name.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "shortUrl",
+					"description": "refers to one or more Bitlinks. e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Links"],
+				"security": []
+			}
+		},
+		"/v3/info": {
+			"get": {
+				"summary": "info",
+				"description": "info",
+				"operationId": "info",
+				"parameters": [{
+					"in": "query",
+					"name": "expand_user",
+					"description": "optional true|false - include extra user info in response.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "hash",
+					"description": "refers to one or more bitly hashes, (e.g.: 2bYgqR or a-custom-name ).",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "shortUrl",
+					"description": "refers to one or more Bitlinks e.g.: http://bit.ly/1RmnUT or http://j.mp/1RmnUT.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Links"],
+				"security": []
+			}
+		},
+		"/v3/link/lookup": {
+			"get": {
+				"summary": "lookup",
+				"description": "lookup",
+				"operationId": "lookup",
+				"parameters": [{
+					"in": "query",
+					"name": "url",
+					"description": "one or more long URLs to lookup.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Links"],
+				"security": []
+			}
+		},
+		"/v3/shorten": {
+			"get": {
+				"summary": "shorten",
+				"description": "shorten",
+				"operationId": "shorten",
+				"parameters": [{
+					"in": "query",
+					"name": "domain",
+					"description": "until we have model",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"description": "json, xml, txt. Default: json.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "longUrl",
+					"description": "a long URL to be shortened (example: http://betaworks.com/).",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Links"],
+				"security": []
+			}
+		},
+		"/v3/user/link_edit": {
+			"get": {
+				"summary": "Edit User Link",
+				"description": "Changes link metadata in a users history.",
+				"operationId": "editUserLink",
+				"parameters": [{
+					"in": "query",
+					"name": "archived",
+					"description": "indicating whether or not link is to be archived.",
+					"type": "boolean",
+					"format": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "clear_deeplinks",
+					"description": "indicating that all deeplinks should be removed form the bitlink",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "deeplinks",
+					"description": "urlencoded json array of deeplink items",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "edit",
+					"description": "a comma separated string of fields to be edited. ie: to edit the note field you also need to pass edit=note.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "link",
+					"description": "Successful response",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "note",
+					"description": "a description of, or note about, this Bitlink.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "private",
+					"description": "boolean true or false indicating privacy setting (defaults to user-level setting).",
+					"type": "boolean",
+					"format": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "the title of this Bitlink.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_ts",
+					"description": "timestamp as an integer epoch.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Links"],
+				"security": []
+			}
+		},
+		"/v3/user/link_lookup": {
+			"get": {
+				"summary": "User Link Lookup",
+				"description": "This is used to query for a Bitlink shortened by the authenticated user based on a long URL or a Bitlink.",
+				"operationId": "userLinkLookup",
+				"parameters": [{
+					"in": "query",
+					"name": "link",
+					"description": "one or more Bitlinks to lookup.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "one or more long URLs to lookup.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Links"],
+				"security": []
+			}
+		},
+		"/v3/user/link_save": {
+			"get": {
+				"summary": "Save User Link",
+				"description": "Saves a long URL as a Bitlink in a users history, with optional pre-set metadata. (Also returns a short URL for that link.)",
+				"operationId": "saveUserLink",
+				"parameters": [{
+					"in": "query",
+					"name": "deeplinks",
+					"description": "urlencoded json array of deeplink items",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "domain",
+					"description": "the short domain to use; either bit.ly, j.mp, or bitly.com or a custom short domain. The default for this parameter is the short domain selected by each user in their bitly account settings. Passing a specific domain via this parameter will override the default settings.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "longUrl",
+					"description": "the URL to be saved as a Bitlink.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "note",
+					"description": "a description of, or note about, this Bitlink.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "private",
+					"description": "indicating privacy setting (defaults to user-level setting).",
+					"type": "boolean",
+					"format": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "the title of this Bitlink.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_ts",
+					"description": "timestamp as an integer epoch.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Links"],
+				"security": []
+			}
+		},
+		"/v3/user/save_custom_domain_keyword": {
+			"get": {
+				"summary": "Save Custom Bitlink",
+				"description": "Save a Custom Bitlink for a custom short domain.",
+				"operationId": "saveCustomBitlink",
+				"parameters": [{
+					"in": "query",
+					"name": "keyword_link",
+					"description": "the Custom Bitlink (short domain and keyword combination) to set",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "overwrite",
+					"description": "Ovewrite existing entry if one exists. Default: false.",
+					"type": "boolean",
+					"format": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "target_link",
+					"description": "the Bitlink the specified keyword will map to (as returned from /v3/shorten)",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Links"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"Link": {
+			"properties": {
+				"aggregate_link": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

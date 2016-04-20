@@ -1,0 +1,55 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Slack OAuth API",
+		"description": "The API for management Slack OAuths",
+		"termsOfService": "https://slack.com/terms-of-service/api",
+		"version": null
+	},
+	"host": "slack.com",
+	"basePath": "/api",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/methods/oauth.access": {
+			"get": {
+				"summary": "Exchanges a temporary OAuth code for an API token.",
+				"description": "<td width=70%>Exchanges a temporary OAuth code for an API token.</td>",
+				"operationId": "oauthaccess",
+				"parameters": [{
+					"in": "query",
+					"name": "client_id",
+					"description": "Issued when you created your application.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "client_secret",
+					"description": "Issued when you created your application.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "code",
+					"description": "The code param returned via the OAuth callback.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "redirect_uri",
+					"description": "This must match the originally submitted URI (if one was sent).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["oauth"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

@@ -1,0 +1,108 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Github Reports API",
+		"version": ""
+	},
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/reports": {
+			"get": {
+				"summary": "List URL Channels",
+				"description": "List URL Channels",
+				"operationId": "list-url-channels",
+				"parameters": [{
+					"in": "query",
+					"name": "accountId",
+					"description": "Accounts upon which to report."
+				},
+				{
+					"in": "query",
+					"name": "callback",
+					"description": "Name of the JavaScript callback function that handles the response. Used in JavaScript JSON-P requests."
+				},
+				{
+					"in": "query",
+					"name": "currency",
+					"description": "Not available."
+				},
+				{
+					"in": "query",
+					"name": "dimension",
+					"description": "Optional dimensions on which to base the report.Available dimensions are:- DATE- WEEK- MONTH- AD_CLIENT_ID- PRODUCT_CODE- PRODUCT_NAME- AD_UNIT_ID- AD_UNIT_CODE- AD_UNIT_NAME- AD_UNIT_SIZE_CODE- AD_UNIT_SIZE_NAME- CUSTOM_CHANNEL_ID- CUSTOM_CHANNEL_CODE- CUSTOM_CHANNEL_NAME- URL_CHANNEL_ID- URL_CHANNEL_NAME- AD_FORMAT_CODE- AD_FORMAT_NAME- BRANDING_TYPE_CODE- BRANDING_TYPE_NAME- BUYER_NETWORK_ID- BUYER_NETWORK_NAME- BID_TYPE_CODE- BID_TYPE_NAME- DOMAIN_NAME- COUNTRY_CODE- COUNTRY_NAME- TARGETING_"
+				},
+				{
+					"in": "query",
+					"name": "endDate",
+					"description": "End of the date range on which to report in YYYY-MM-DD format, inclusive."
+				},
+				{
+					"in": "query",
+					"name": "fields",
+					"description": "Selector specifying a subset of fields to include in the response. Use for better performance."
+				},
+				{
+					"in": "query",
+					"name": "filter",
+					"description": "Set of filters to be applied to the report."
+				},
+				{
+					"in": "query",
+					"name": "locale",
+					"description": "Optional locale to use for translating report output to a local language. Defaults to en_US if not specified."
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "The maximum number of rows of report data to return. The minumum value is 0 (zero), the maximum value is 50000 (50 thousand)."
+				},
+				{
+					"in": "query",
+					"name": "metric",
+					"description": "Optional numeric columns to include in the report.Available metrics are:- PAGE_VIEWS- PAGE_VIEWS_CTR- PAGE_VIEWS_RPM- AD_REQUESTS- AD_REQUESTS_COVERAGE- AD_REQUESTS_CTR- AD_REQUESTS_RPM- MATCHED_AD_REQUESTS- MATCHED_AD_REQUESTS_CTR- MATCHED_AD_REQUESTS_RPM- INDIVIDUAL_AD_IMPRESSIONS- INDIVIDUAL_AD_IMPRESSIONS_CTR- INDIVIDUAL_AD_IMPRESSIONS_RPM- CLICKS- EARNINGS- TOTAL_EARNINGS- COST_PER_CLICK"
+				},
+				{
+					"in": "query",
+					"name": "prettyPrint",
+					"description": "Returns the response in a human-readable format (with indentations and line breaks) if true. When this is false, it can reduce the response payload size, which might lead to better performance in some environments. Default value: false."
+				},
+				{
+					"in": "query",
+					"name": "quotaUser",
+					"description": "Lets you enforce per-user quotas from a server-side application even in cases when the users IP address is unknown. This can occur, for example, with applications that run cron jobs on App Engine on a users behalf. You can choose any arbitrary string that uniquely identifies a user, but it is limited to 40 characters. Alternative to userIp, overrides userIp if both are provided."
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "Optional name of a dimension or metric on which to sort the resulting report. Optionally prefixed with + to sort ascending or - to sort descending. If no prefix is specified, the column is sorted ascending:- DATE- WEEK- MONTH- AD_CLIENT_ID- PRODUCT_CODE- PRODUCT_NAME- AD_UNIT_ID- AD_UNIT_CODE- AD_UNIT_NAME- AD_UNIT_SIZE_CODE- AD_UNIT_SIZE_NAME- CUSTOM_CHANNEL_ID- CUSTOM_CHANNEL_CODE- CUSTOM_CHANNEL_NAME- URL_CHANNEL_ID- URL_CHANNEL_NAME- AD_FORMAT_CODE- AD_FORMAT_NAME- BRANDING_TYPE_CODE- BRANDI"
+				},
+				{
+					"in": "query",
+					"name": "startDate",
+					"description": "Start of the date range on which to report in YYYY-MM-DD format, inclusive."
+				},
+				{
+					"in": "query",
+					"name": "startIndex",
+					"description": "Index of the first row of report data to return. The minumum value is 0 (zero), the maximum value is 5000 (5 thousand). If startIndex is either unset or zero, the API will return as many rows as specified by the value of maxResults. If maxResults is not set the API will return as many rows as possible, up to 50,000. If startIndex is set to a non-zero value, the sum of startIndex and maxResults cannot be greater than 5000, or an error will be returned: paging past row 5000 is unsupported."
+				},
+				{
+					"in": "query",
+					"name": "userIp",
+					"description": "IP address of the end user for whom the API call is being made. Lets you enforce per-user quotas when calling the API from a server-side application."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

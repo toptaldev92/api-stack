@@ -1,0 +1,449 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Wordpress.org Post API",
+		"description": "This API provides an easy to use REST API, available via HTTP, allowing you to grab your sites data in simple JSON format, including users, posts, taxonomies and more.",
+		"version": "v2"
+	},
+	"host": "api.example.com",
+	"basePath": "/wp-json/wp/v2",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/posts": {
+			"get": {
+				"summary": "List Posts",
+				"description": "List Posts",
+				"operationId": "list-posts",
+				"parameters": [{
+					"in": "query",
+					"name": "author",
+					"description": "Limit result set to posts assigned to specific authors.n                    n                    n                    n                        n                            Default:",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "author_exclude",
+					"description": "Ensure result set excludes posts assigned to specific authors.n                    n                    n                    n                        n                            Default:",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "context",
+					"description": "Scope under which the request is made; determines fields present in response.n                    n                    n                    n                        n                            Default: viewn                        n                    n                    n                        One of: view, embed, edit",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "exclude",
+					"description": "Ensure result set excludes specific ids.n                    n                    n                    n                        n                            Default:",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "filter",
+					"description": "Use WP Query arguments to modify the response; private query vars require appropriate authorization.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "include",
+					"description": "Limit result set to specific ids.n                    n                    n                    n                        n                            Default:",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "Offset the result set by a specific number of items.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "Order sort attribute ascending or descending.n                    n                    n                    n                        n                            Default: descn                        n                    n                    n                        One of: asc, desc",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "orderby",
+					"description": "Sort collection by object attribute.n                    n                    n                    n                        n                            Default: daten                        n                    n                    n                        One of: date, id, include, title, slug",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Current page of the collection.n                    n                    n                    n                        n                            Default: 1",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Maximum number of items to be returned in result set.n                    n                    n                    n                        n                            Default: 10",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "search",
+					"description": "Limit results to those matching a string.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "slug",
+					"description": "Limit result set to posts with a specific slug.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "status",
+					"description": "Limit result set to posts assigned a specific status.n                    n                    n                    n                        n                            Default: publish",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["blog posts"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create a Post",
+				"description": "Create a Post",
+				"operationId": "create-a-post",
+				"parameters": [{
+					"in": "query",
+					"name": "author",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "categories",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "comment_status",
+					"description": "One of: open, closed",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "content",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date_gmt",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "excerpt",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "featured_media",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"description": "One of: standard, aside, chat, gallery, link, image, quote, status, video, audio",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "password",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "ping_status",
+					"description": "One of: open, closed",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "slug",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "status",
+					"description": "One of: publish, future, draft, pending, private",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sticky",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "tags",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["blog posts"],
+				"security": []
+			}
+		},
+		"/posts/{id}": {
+			"delete": {
+				"summary": "Delete a Post",
+				"description": "Delete a Post",
+				"operationId": "delete-a-post",
+				"parameters": [{
+					"in": "query",
+					"name": "force",
+					"description": "Whether to bypass trash and force deletion.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["blog posts"],
+				"security": []
+			},
+			"get": {
+				"summary": "Retrieve a Post",
+				"description": "Retrieve a Post",
+				"operationId": "retrieve-a-post",
+				"parameters": [{
+					"in": "query",
+					"name": "context",
+					"description": "Scope under which the request is made; determines fields present in response.n                    n                    n                    n                        n                            Default: viewn                        n                    n                    n                        One of: view, embed, edit",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["blog posts"],
+				"security": []
+			},
+			"post": {
+				"summary": "Update a Post",
+				"description": "Update a Post",
+				"operationId": "update-a-post",
+				"parameters": [{
+					"in": "query",
+					"name": "author",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "categories",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "comment_status",
+					"description": "One of: open, closed",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "content",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date_gmt",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "excerpt",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "featured_media",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"description": "One of: standard, aside, chat, gallery, link, image, quote, status, video, audio",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "password",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "ping_status",
+					"description": "One of: open, closed",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "slug",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "status",
+					"description": "One of: publish, future, draft, pending, private",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sticky",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "tags",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["blog posts"],
+				"security": []
+			}
+		},
+		"/statuses": {
+			"get": {
+				"summary": "List Statuss",
+				"description": "List Statuss",
+				"operationId": "list-statuss",
+				"parameters": [{
+					"in": "query",
+					"name": "context",
+					"description": "Scope under which the request is made; determines fields present in response.n                    n                    n                    n                        n                            Default: viewn                        n                    n                    n                        One of: view, embed, edit",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["blog posts"],
+				"security": []
+			}
+		},
+		"/statuses/{status}": {
+			"get": {
+				"summary": "Retrieve a Status",
+				"description": "Retrieve a Status",
+				"operationId": "retrieve-a-status",
+				"parameters": [{
+					"in": "query",
+					"name": "context",
+					"description": "Scope under which the request is made; determines fields present in response.n                    n                    n                    n                        n                            Default: viewn                        n                    n                    n                        One of: view, embed, edit",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "status",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["blog posts"],
+				"security": []
+			}
+		},
+		"/types": {
+			"get": {
+				"summary": "List Types",
+				"description": "List Types",
+				"operationId": "list-types",
+				"parameters": [{
+					"in": "query",
+					"name": "context",
+					"description": "Scope under which the request is made; determines fields present in response.n                    n                    n                    n                        n                            Default: viewn                        n                    n                    n                        One of: view, embed, edit",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["blog posts"],
+				"security": []
+			}
+		},
+		"/types/{type}": {
+			"get": {
+				"summary": "Retrieve a Type",
+				"description": "Retrieve a Type",
+				"operationId": "retrieve-a-type",
+				"parameters": [{
+					"in": "query",
+					"name": "context",
+					"description": "Scope under which the request is made; determines fields present in response.n                    n                    n                    n                        n                            Default: viewn                        n                    n                    n                        One of: view, embed, edit",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "type",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["blog posts"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

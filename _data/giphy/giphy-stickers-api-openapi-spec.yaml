@@ -1,0 +1,143 @@
+- swagger: "2.0"
+  info:
+    title: Giphy Stickers API
+    description: Giphy is an animated GIF search engine. The Giphy API is open to the
+      public. We have instituted a simple, single public beta key system to let anyone
+      try it out. The API key is required for all endpoints.
+    termsOfService: http://giphy.com/terms
+    contact:
+      name: Giphy
+      url: https://github.com/Giphy/GiphyAPI
+      email: api@giphy.com
+    version: v1
+  host: api.giphy.com
+  basePath: v1/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /stickers/random:
+      get:
+        summary: Get Random Stickers
+        description: Returns a spotaneously selected sticker from Giphys sticker collection.
+          Optionally limit scope of result to a specific tag. Like the GIF random endpoint,
+          Punctuation will be stripped and ignored. Use a hyphen for phrases. Example
+          <a href=http://api.giphy.com/v1/stickers/random?api_key=dc6zaTOxFJmzC&tag=oops
+          target=_blank>oops</a>, <a href=http://api.giphy.com/v1/stickers/random?api_key=dc6zaTOxFJmzC&tag=birthday
+          target=_blank>birthday</a> or <a href=http://api.giphy.com/v1/stickers/random?api_key=dc6zaTOxFJmzC&tag=whatever
+          target=_blank>thank-you</a>. Search terms should be URL encoded.n    n    http://api.giphy.com/v1/stickers/random?api_key=dc6zaTOxFJmzC&tag=oopsnn<a
+          href=http://api.giphy.com/v1/stickers/random?api_key=dc6zaTOxFJmzC target=_blank>Example</a>
+          random query.
+        operationId: Random
+        parameters:
+        - in: path
+          name: user-id
+          description: The ID of a user, or **self** to retrieve information about authenticated
+            user.
+        responses:
+          200:
+            description: OK
+        tags:
+        - stickers
+        security: []
+      parameters:
+        summary: Get Random Stickers Parameters
+        description: ""
+        operationId: ""
+        parameters:
+        - in: path
+          name: user-id
+          description: The ID of a user to get information about, or **self** to retrieve
+            information about authenticated user.
+        responses:
+          200:
+            description: OK
+        tags:
+        - stickers
+        security: []
+    /stickers/search:
+      get:
+        summary: Search Stickers
+        description: Replicates the functionality and requirements of the classic Giphy
+          search, but returns animated stickers rather than gifs. Example <a href=http://api.giphy.com/v1/stickers/search?q=cat&api_key=dc6zaTOxFJmzC
+          target=_blank>Cat</a>nn    http://api.giphy.com/v1/stickers/search?q=cat&api_key=dc6zaTOxFJmzC
+        operationId: Search
+        parameters:
+        - in: query
+          name: q
+        responses:
+          200:
+            description: OK
+        tags:
+        - stickers
+        security: []
+      parameters:
+        summary: Get Search Stickers Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - stickers
+        security: []
+    /stickers/translate:
+      get:
+        summary: Translate Stickers
+        description: Using the same alogirithm as the GIF translate endpoint, the sticker
+          translate endpoint turns words into stickers.nn    http://api.giphy.com/v1/stickers/translate?s=hungry&api_key=dc6zaTOxFJmzCnn<a
+          href=http://api.giphy.com/v1/stickers/translate?s=hungry&api_key=dc6zaTOxFJmzC
+          target=_blank>Example</a> translate query.
+        operationId: Translate
+        parameters:
+        - in: query
+          name: s
+        responses:
+          200:
+            description: OK
+        tags:
+        - stickers
+        security: []
+      parameters:
+        summary: Get Translate Stickers Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - stickers
+        security: []
+    /stickers/trending:
+      get:
+        summary: Get Trending Stickers
+        description: Get the latest stickers trending on Giphy with this endpoint. Hand
+          curated by the Giphy editorial team and refreshed daily.  nn    http://api.giphy.com/v1/stickers/trending?api_key=dc6zaTOxFJmzCnn<a
+          href=http://api.giphy.com/v1/stickers/trending?api_key=dc6zaTOxFJmzC&limit=4&fmt=html
+          target=_blank>Example</a> trending query with html formatted response.nn<a
+          href=http://api.giphy.com/v1/stickers/trending?api_key=dc6zaTOxFJmzC&limit=4
+          target=_blank>Example</a> trending query with default json response.
+        operationId: Trending
+        parameters:
+        - in: query
+          name: limit
+        responses:
+          200:
+            description: OK
+        tags:
+        - stickers
+        security: []
+      parameters:
+        summary: Get Trending Stickers Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - stickers
+        security: []
+  definitions: []

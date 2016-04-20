@@ -1,0 +1,381 @@
+- swagger: "2.0"
+  info:
+    title: Fitbit Activities API
+    description: The Fitbit API allows developers to interact with Fitbit data in their
+      own applications, products and services.
+    version: "1"
+  host: api.fitbit.com
+  basePath: /1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /activities.{format}:
+      get:
+        summary: Get Devices
+        description: Get Devices
+        operationId: get-devices
+        parameters:
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - activities
+        security: []
+    /activities/{id}.{format}:
+      get:
+        summary: Browse Activities
+        description: Browse Activities
+        operationId: browse-activities
+        parameters:
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        - in: query
+          name: id
+          type: string
+        - in: path
+          name: id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - activities
+        security: []
+    /user/-/activities.{format}:
+      get:
+        summary: Delete Activity Log
+        description: Delete Activity Log
+        operationId: delete-activity-log
+        parameters:
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - activities
+        security: []
+      post:
+        summary: Get Friends Leaderboard
+        description: Get Friends Leaderboard
+        operationId: get-friends-leaderboard
+        parameters:
+        - in: query
+          name: activityId
+          type: string
+        - in: query
+          name: date
+          type: string
+        - in: query
+          name: distance
+          type: string
+        - in: query
+          name: durationMillis
+          type: string
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        - in: query
+          name: startTime
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - activities
+        security: []
+    /user/-/activities/favorite.{format}:
+      get:
+        summary: Get Frequent Activities
+        description: Get Frequent Activities
+        operationId: get-frequent-activities
+        parameters:
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - activities
+        security: []
+    /user/-/activities/frequent.{format}:
+      get:
+        summary: Get Recent Activities
+        description: Get Recent Activities
+        operationId: get-recent-activities
+        parameters:
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - activities
+        security: []
+    /user/-/activities/goals/daily.{format}:
+      get:
+        summary: Delete Favorite Activity
+        description: Delete Favorite Activity
+        operationId: delete-favorite-activity
+        parameters:
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+      post:
+        summary: Get Activity Weekly Goals
+        description: Get Activity Weekly Goals
+        operationId: get-activity-weekly-goals
+        parameters:
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        - in: query
+          name: type
+          type: string
+        - in: query
+          name: value
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - activities
+        security: []
+    /user/-/activities/goals/weekly.{format}:
+      get:
+        summary: Get Activity Daily Goals
+        description: Get Activity Daily Goals
+        operationId: get-activity-daily-goals
+        parameters:
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - activities
+        security: []
+      post:
+        summary: Update Activity Daily Goals
+        description: Update Activity Daily Goals
+        operationId: update-activity-daily-goals
+        parameters:
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        - in: query
+          name: type
+          type: string
+        - in: query
+          name: value
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - activities
+        security: []
+    /user/-/activities/log/favorite/{id}.{format}:
+      delete:
+        summary: Add Favorite Activity
+        description: Add Favorite Activity
+        operationId: add-favorite-activity
+        parameters:
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        - in: query
+          name: id
+          type: string
+        - in: path
+          name: id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - activities
+        security: []
+      post:
+        summary: Get Favorite Foods
+        description: Get Favorite Foods
+        operationId: get-favorite-foods
+        parameters:
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        - in: query
+          name: id
+          type: string
+        - in: path
+          name: id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - activities
+        security: []
+    /user/-/activities/recent.{format}:
+      get:
+        summary: Get Time Series
+        description: Get Time Series
+        operationId: get-time-series
+        parameters:
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - activities
+        security: []
+    /user/-/activities/{activity-log-id}.{format}:
+      delete:
+        summary: Delete Food Log
+        description: Delete Food Log
+        operationId: delete-food-log
+        parameters:
+        - in: query
+          name: activity-log-id
+          type: string
+        - in: path
+          name: activity-log-id
+          type: string
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - activities
+        security: []
+    /user/{user-id}/activities/calories/date/{start-date-or-end-date}/{end-date-or-period}.{format}:
+      get:
+        summary: Delete Blood Pressure Log
+        description: Delete Blood Pressure Log
+        operationId: delete-blood-pressure-log
+        parameters:
+        - in: query
+          name: end-date-or-period
+          type: string
+        - in: path
+          name: end-date-or-period
+          type: string
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        - in: query
+          name: start-date-or-end-date
+          type: string
+        - in: path
+          name: start-date-or-end-date
+          type: string
+        - in: query
+          name: user-id
+          type: string
+        - in: path
+          name: user-id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blood pressure
+        security: []
+    /user/{user-id}/activities/date/{date}.{format}:
+      get:
+        summary: Get Body Fat
+        description: Get Body Fat
+        operationId: get-body-fat
+        parameters:
+        - in: query
+          name: date
+          type: string
+        - in: path
+          name: date
+          type: string
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        - in: query
+          name: user-id
+          type: string
+        - in: path
+          name: user-id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - body
+        security: []
+  definitions: []

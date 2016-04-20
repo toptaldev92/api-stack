@@ -1,0 +1,211 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Facebook Graph (Achievement) API",
+		"description": "API for managing Facebook Achievements",
+		"termsOfService": "https://www.facebook.com/policies/",
+		"version": null
+	},
+	"host": "graph.facebook.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/v2.5/{achievement-id}": {
+			"get": {
+				"summary": "Get Achievement",
+				"description": "Represents a user gaining an achievement in a Facebook game",
+				"operationId": "achievement",
+				"parameters": [{
+					"in": "query",
+					"name": "application",
+					"description": "The app in which the user achieved this.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "data",
+					"description": "Information about the achievement type this instance is connected with.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "from",
+					"description": "The user who achieved this.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "ID of this particular achievement.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "no_feed_story",
+					"description": "Indicates whether gaining the achievement published a feed story for the user.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "publish_time",
+					"description": "Time at which this was achieved.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "Always game.achievement.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["achievements"],
+				"security": []
+			}
+		},
+		"/v2.5/{object-id}/comments": {
+			"get": {
+				"summary": "Get Object Comments",
+				"description": "This reference describes the /comments edge that is common to multiple Graph API nodes",
+				"operationId": "achievement",
+				"parameters": [{
+					"in": "query",
+					"name": "filter",
+					"description": "This determines which comments are returned when comment replies are available. It can be either:toplevel - this is the default, returns all top-level comments in either ranked or chronological order depending on how the comments are ordered on Facebook. This filter is useful for displaying comments in the same structure as they appear on Facebook.stream - all-level comments in chronological order. This filter is useful for comment moderation tools where it is helpful to see a chronological list of all comments.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "Order in which comments were returned.  + ranked indicates the most interesting comments are sorted first. + chronological indicates comments are sorted by the oldest comments first.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "summary",
+					"description": "Shows a summary of metadata about the comments on the object. Importantly this metadata includes order which indicates how the comments are being sorted.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "total_count",
+					"description": "The count of comments on this node. It is important to note that this value is changed depending on the filter modifier being used (where comment replies are available):if filter is stream then total_count will be a count of all comments (including replies) on the node.if filter is toplevel then total_count will be a count of all top-level comments on the node.total_count can be greater than or equal to the actual number of comments returned due to privacy or deletion",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["graph"],
+				"security": []
+			},
+			"post": {
+				"summary": "Add Object Comments",
+				"description": "This reference describes the /comments edge that is common to multiple Graph API nodes",
+				"operationId": "achievement",
+				"parameters": [{
+					"in": "query",
+					"name": "attachment_id",
+					"description": "An optional ID of a unpublished photo (see no_story field in /&#123;user-id&#125;/photos) uploaded to Facebook to include as a photo comment. One of attachment_url, attachment_id, message or source must be provided when publishing.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "attachment_url",
+					"description": "The URL of an image to include as a photo comment. One of attachment_url, attachment_id, message or source must be provided when publishing.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The newly created comment ID",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "message",
+					"description": "The comment text. One of attachment_url, attachment_id, message or source must be provided when publishing.When a Page is publishing the comment, this message parameter can contain mentions of other Facebook Pages using the following syntax:&#064;[page-id]For example the following message would mention the Facebook Developers page inline:Test message &#064;[19292868552] tagUsage of this feature is subject to review but by using Pages you are an admin of (both to make the API call, and to be used in a mention), and an app you are a developer of, you can test it for yourself before review.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "A photo, encoded as form data, to use as a photo comment. One of attachment_url, attachment_id, message or source must be provided when publishing.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["graph"],
+				"security": []
+			}
+		},
+		"/v2.5/{object-id}/likes": {
+			"delete": {
+				"summary": "Delete Object Likes",
+				"description": "This reference describes the /likes edge that is common to multiple Graph API nodes",
+				"operationId": "achievement",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["graph"],
+				"security": []
+			},
+			"get": {
+				"summary": "Add Object Likes",
+				"description": "This reference describes the /likes edge that is common to multiple Graph API nodes",
+				"operationId": "achievement",
+				"parameters": [{
+					"in": "query",
+					"name": "total_count",
+					"description": "Total number of people who liked. This is only returned when the flag summary=true is set.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["graph"],
+				"security": []
+			},
+			"post": {
+				"summary": "Get Object Likes",
+				"description": "This reference describes the /likes edge that is common to multiple Graph API nodes",
+				"operationId": "achievement",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["graph"],
+				"security": []
+			}
+		},
+		"/{user-id}/achievements": {
+			"get": {
+				"summary": "Get Achievements",
+				"description": "Represents a user gaining an achievement in a Facebook game",
+				"operationId": "achievement",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["achievements"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

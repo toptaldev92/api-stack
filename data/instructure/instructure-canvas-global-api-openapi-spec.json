@@ -1,0 +1,329 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Instructure Canvas Global API",
+		"description": "Canvas LMS includes a REST API for accessing and modifying data externally from the main application, in your own programs and scripts. ",
+		"termsOfService": "https://www.canvaslms.com/policies/api-policy",
+		"version": "v1"
+	},
+	"host": "canvas.instructure.com",
+	"basePath": "/api/v1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/global/outcome_groups/{id}": {
+			"delete": {
+				"summary": "Delete an outcome group",
+				"description": "",
+				"operationId": "delete-an-outcome-group",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			},
+			"get": {
+				"summary": "Show an outcome group",
+				"description": "",
+				"operationId": "show-an-outcome-group",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update an outcome group",
+				"description": "",
+				"operationId": "update-an-outcome-group",
+				"parameters": [{
+					"in": "query",
+					"name": "description",
+					"description": "The new outcome group description.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "parent_outcome_group_id",
+					"description": "The id of the new parent outcome group.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "The new outcome group title.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "vendor_guid",
+					"description": "A custom GUID for the learning standard.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			}
+		},
+		"/global/outcome_groups/{id}/import": {
+			"post": {
+				"summary": "Import an outcome group",
+				"description": "",
+				"operationId": "import-an-outcome-group",
+				"parameters": [{
+					"in": "query",
+					"name": "source_outcome_group_id",
+					"description": "The ID of the source outcome group.",
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			}
+		},
+		"/global/outcome_groups/{id}/outcomes": {
+			"get": {
+				"summary": "List linked outcomes",
+				"description": "",
+				"operationId": "list-linked-outcomes",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create/link an outcome",
+				"description": "",
+				"operationId": "createlink-an-outcome",
+				"parameters": [{
+					"in": "query",
+					"name": "calculation_int",
+					"description": "The new calculation int.  Only applies if the calculation_method isnu201cdecaying_averageu201d or u201cn_masteryu201d",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "calculation_method",
+					"description": "The new calculation method.  Defaults to u201chighestu201dnn        n        n          Allowed values: decaying_average, n_mastery, latest, highest",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "The description of the new outcome.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "display_name",
+					"description": "A friendly name shown in reports for outcomes with cryptic titles, such asncommon core standards names.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "mastery_points",
+					"description": "The mastery threshold for the embedded rubric criterion.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "outcome_id",
+					"description": "The ID of the existing outcome to link.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "ratings[][description]",
+					"description": "The description of a rating level for the embedded rubric criterion.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "ratings[][points]",
+					"description": "The points corresponding to a rating level for the embedded rubricncriterion.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "The title of the new outcome. Required if outcome_id is absent.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "vendor_guid",
+					"description": "A custom GUID for the learning standard.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			}
+		},
+		"/global/outcome_groups/{id}/outcomes/outcome_id": {
+			"delete": {
+				"summary": "Unlink an outcome",
+				"description": "",
+				"operationId": "unlink-an-outcome",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			},
+			"put": {
+				"summary": "Create/link an outcome",
+				"description": "",
+				"operationId": "createlink-an-outcome",
+				"parameters": [{
+					"in": "query",
+					"name": "calculation_int",
+					"description": "The new calculation int.  Only applies if the calculation_method isnu201cdecaying_averageu201d or u201cn_masteryu201d",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "calculation_method",
+					"description": "The new calculation method.  Defaults to u201chighestu201dnn        n        n          Allowed values: decaying_average, n_mastery, latest, highest",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "The description of the new outcome.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "display_name",
+					"description": "A friendly name shown in reports for outcomes with cryptic titles, such asncommon core standards names.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "mastery_points",
+					"description": "The mastery threshold for the embedded rubric criterion.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "outcome_id",
+					"description": "The ID of the existing outcome to link.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "ratings[][description]",
+					"description": "The description of a rating level for the embedded rubric criterion.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "ratings[][points]",
+					"description": "The points corresponding to a rating level for the embedded rubricncriterion.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "The title of the new outcome. Required if outcome_id is absent.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "vendor_guid",
+					"description": "A custom GUID for the learning standard.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			}
+		},
+		"/global/outcome_groups/{id}/subgroups": {
+			"get": {
+				"summary": "List subgroups",
+				"description": "",
+				"operationId": "list-subgroups",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create a subgroup",
+				"description": "",
+				"operationId": "create-a-subgroup",
+				"parameters": [{
+					"in": "query",
+					"name": "description",
+					"description": "The description of the new outcome group.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "The title of the new outcome group.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "vendor_guid",
+					"description": "A custom GUID for the learning standard",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			}
+		},
+		"/global/root_outcome_group": {
+			"get": {
+				"summary": "Redirect to root outcome group for context",
+				"description": "",
+				"operationId": "redirect-to-root-outcome-group-for-context",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

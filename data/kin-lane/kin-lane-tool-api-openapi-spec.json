@@ -1,0 +1,1175 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Tool",
+		"description": "This is an tool API that I use to keep track of companies who are doing interesting things in the API space, or at least they should be.",
+		"termsOfService": "http://kinlane.com/terms-of-service.html",
+		"version": null
+	},
+	"host": "tool.api.kinlane.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/tool/": {
+			"get": {
+				"summary": "get tools",
+				"description": "get tools",
+				"operationId": "getTools",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "query",
+					"name": "query",
+					"description": "a text query to search across tools"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tools"],
+				"security": []
+			},
+			"post": {
+				"summary": "add new tool",
+				"description": "add new tool",
+				"operationId": "addTool",
+				"parameters": [{
+					"in": "formData",
+					"name": "address",
+					"description": "primary address of the tool"
+				},
+				{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "formData",
+					"name": "city",
+					"description": "primary city of the tool"
+				},
+				{
+					"in": "formData",
+					"name": "country",
+					"description": "primary country of the tool"
+				},
+				{
+					"in": "formData",
+					"name": "details",
+					"description": "details for the tool"
+				},
+				{
+					"in": "formData",
+					"name": "email",
+					"description": "email for the tool"
+				},
+				{
+					"in": "formData",
+					"name": "location",
+					"description": "primary location of the tool"
+				},
+				{
+					"in": "formData",
+					"name": "name",
+					"description": "name of tool"
+				},
+				{
+					"in": "formData",
+					"name": "phone",
+					"description": "phone for the tool"
+				},
+				{
+					"in": "formData",
+					"name": "photo",
+					"description": "primary photo of the tool"
+				},
+				{
+					"in": "formData",
+					"name": "postal_code",
+					"description": "primary postal code of the tool"
+				},
+				{
+					"in": "formData",
+					"name": "rank",
+					"description": "ranking for the tool"
+				},
+				{
+					"in": "formData",
+					"name": "state",
+					"description": "primary state of the tool"
+				},
+				{
+					"in": "formData",
+					"name": "summary",
+					"description": "sumary of the tool"
+				},
+				{
+					"in": "formData",
+					"name": "url",
+					"description": "unique url for the tool"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tools"],
+				"security": []
+			}
+		},
+		"/tool/{tool_id}/": {
+			"delete": {
+				"summary": "delete tool",
+				"description": "delete tool",
+				"operationId": "deleteTool",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "the unique id for the tool"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tools"],
+				"security": []
+			},
+			"get": {
+				"summary": "get tool",
+				"description": "get tool",
+				"operationId": "getTool",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "the unique id for tool"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tools"],
+				"security": []
+			},
+			"put": {
+				"summary": "update tool",
+				"description": "update tool",
+				"operationId": "updateTool",
+				"parameters": [{
+					"in": "formData",
+					"name": "address",
+					"description": "primary address of the tool"
+				},
+				{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "formData",
+					"name": "city",
+					"description": "primary city of the tool"
+				},
+				{
+					"in": "formData",
+					"name": "country",
+					"description": "primary country of the tool"
+				},
+				{
+					"in": "formData",
+					"name": "details",
+					"description": "details for the tool"
+				},
+				{
+					"in": "formData",
+					"name": "email",
+					"description": "email for the tool"
+				},
+				{
+					"in": "formData",
+					"name": "location",
+					"description": "primary location of the tool"
+				},
+				{
+					"in": "formData",
+					"name": "name",
+					"description": "name of tool"
+				},
+				{
+					"in": "formData",
+					"name": "phone",
+					"description": "phone for the tool"
+				},
+				{
+					"in": "formData",
+					"name": "photo",
+					"description": "primary photo of the tool"
+				},
+				{
+					"in": "formData",
+					"name": "postal_code",
+					"description": "primary postal code of the tool"
+				},
+				{
+					"in": "formData",
+					"name": "rank",
+					"description": "ranking for the tool"
+				},
+				{
+					"in": "formData",
+					"name": "state",
+					"description": "primary state of the tool"
+				},
+				{
+					"in": "formData",
+					"name": "summary",
+					"description": "sumary of the tool"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "the unique id for the tool"
+				},
+				{
+					"in": "formData",
+					"name": "url",
+					"description": "unique url for the tool"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tools"],
+				"security": []
+			}
+		},
+		"/tool/{tool_id}/buildingblocks/": {
+			"get": {
+				"summary": "retrieve tool building blocks",
+				"description": "retrieve tool building blocks",
+				"operationId": "getToolBuildingBlocks",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for tool"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Building Blocks"],
+				"security": []
+			},
+			"post": {
+				"summary": "add building block to tool",
+				"description": "add building block for tool",
+				"operationId": "addToolBuildingBlock",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "formData",
+					"name": "building_block_id",
+					"description": "building block unique id"
+				},
+				{
+					"in": "formData",
+					"name": "tools_id",
+					"description": "tool id for the building block"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for the tool"
+				},
+				{
+					"in": "formData",
+					"name": "url",
+					"description": "url for the building block"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Building Blocks"],
+				"security": []
+			}
+		},
+		"/tool/{tool_id}/buildingblocks/{building_block_id}": {
+			"delete": {
+				"summary": "delete a tool building block",
+				"description": "delete a tool building block",
+				"operationId": "deleteToolBuildingBlock",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "path",
+					"name": "building_block_id",
+					"description": "building block to remove from tool"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for the tool"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Building Blocks"],
+				"security": []
+			}
+		},
+		"/tool/{tool_id}/images/": {
+			"get": {
+				"summary": "retrieve tool images",
+				"description": "Returns the images for an tool",
+				"operationId": "getToolImages",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for tool"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Images"],
+				"security": []
+			},
+			"post": {
+				"summary": "add image to tool",
+				"description": "add image for tool",
+				"operationId": "addToolImage",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "formData",
+					"name": "name",
+					"description": "image name"
+				},
+				{
+					"in": "formData",
+					"name": "path",
+					"description": "image path"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for the tool"
+				},
+				{
+					"in": "formData",
+					"name": "type",
+					"description": "image type"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Images"],
+				"security": []
+			}
+		},
+		"/tool/{tool_id}/images/{image_id}": {
+			"delete": {
+				"summary": "delete a tool image",
+				"description": "deletes a image applied to tool",
+				"operationId": "deleteToolImage",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "path",
+					"name": "image_id",
+					"description": "id for the image to remove from tool"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for the tool"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Images"],
+				"security": []
+			}
+		},
+		"/tool/{tool_id}/logs/": {
+			"get": {
+				"summary": "retrieve tool logs",
+				"description": "retrieve tool logs",
+				"operationId": "getToolLogs",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for tool"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Logs"],
+				"security": []
+			},
+			"post": {
+				"summary": "add log to tool",
+				"description": "add log to tool",
+				"operationId": "addToolLog",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "formData",
+					"name": "details",
+					"description": "log details"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for the tool"
+				},
+				{
+					"in": "formData",
+					"name": "type",
+					"description": "type of log entry"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Logs"],
+				"security": []
+			}
+		},
+		"/tool/{tool_id}/logs/{log_id}": {
+			"delete": {
+				"summary": "delete a tool log",
+				"description": "delete a tool log",
+				"operationId": "deleteToolLog",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "path",
+					"name": "log_id",
+					"description": "id for the log"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for the tool"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Logs"],
+				"security": []
+			}
+		},
+		"/tool/{tool_id}/notes/": {
+			"get": {
+				"summary": "retrieve an APIs notes",
+				"description": "Returns the notes for an API",
+				"operationId": "getToolNotes",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for the API"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Notes"],
+				"security": []
+			},
+			"post": {
+				"summary": "add an Tool note",
+				"description": "Add a note for the tool",
+				"operationId": "addToolNote",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the API"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the API"
+				},
+				{
+					"in": "formData",
+					"name": "note",
+					"description": "the full text of note"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for the api item"
+				},
+				{
+					"in": "formData",
+					"name": "type",
+					"description": "type of the note"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Logs"],
+				"security": []
+			}
+		},
+		"/tool/{tool_id}/notes/{note_id}": {
+			"delete": {
+				"summary": "delete an tool note",
+				"description": "Deletes a note for a tool",
+				"operationId": "deleteToolNote",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API"
+				},
+				{
+					"in": "path",
+					"name": "note_id",
+					"description": "id for the note"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for the API"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Logs"],
+				"security": []
+			}
+		},
+		"/tool/{tool_id}/screenshots/": {
+			"get": {
+				"summary": "retrieve tool screenshots",
+				"description": "retrieve tool screenshots",
+				"operationId": "getToolScreenshots",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for tool"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Screenshots"],
+				"security": []
+			},
+			"post": {
+				"summary": "add screenshots to tool",
+				"description": "add screenshots for tool",
+				"operationId": "addToolScreenshot",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "formData",
+					"name": "name",
+					"description": "image name"
+				},
+				{
+					"in": "formData",
+					"name": "path",
+					"description": "image path"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for the tool"
+				},
+				{
+					"in": "formData",
+					"name": "type",
+					"description": "image type"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Screenshots"],
+				"security": []
+			}
+		},
+		"/tool/{tool_id}/screenshots/{screenshot_id}": {
+			"delete": {
+				"summary": "delete a tool screenshot",
+				"description": "delete a tool screenshot",
+				"operationId": "deleteToolScreenshot",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "path",
+					"name": "screenshot_id",
+					"description": "id of the screenshot to remove from tool"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for the tool"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Screenshots"],
+				"security": []
+			}
+		},
+		"/tool/{tool_id}/tags/": {
+			"get": {
+				"summary": "retrieve tool tags",
+				"description": "retrieve tool tags",
+				"operationId": "getToolTags",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for tool"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			},
+			"post": {
+				"summary": "add tag to tool",
+				"description": "add tag for tool",
+				"operationId": "addToolTag",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "formData",
+					"name": "tag",
+					"description": "tag name"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for the tool"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			}
+		},
+		"/tool/{tool_id}/tags/{tag}": {
+			"delete": {
+				"summary": "delete a tool tag",
+				"description": "deletes a tag applied to tool",
+				"operationId": "deleteToolTag",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "path",
+					"name": "tag",
+					"description": "tag to remove from tool"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for the tool"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			}
+		},
+		"/tool/{tool_id}/urls/": {
+			"get": {
+				"summary": "retrieve tool url",
+				"description": "retrieve tool url",
+				"operationId": "getToolURLs",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for tool"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Urls"],
+				"security": []
+			},
+			"post": {
+				"summary": "add URL to tool",
+				"description": "add URL for tool",
+				"operationId": "addToolURL",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "formData",
+					"name": "name",
+					"description": "a name for the url"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for the tool"
+				},
+				{
+					"in": "formData",
+					"name": "type",
+					"description": "type of url"
+				},
+				{
+					"in": "formData",
+					"name": "url",
+					"description": "the url"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Urls"],
+				"security": []
+			}
+		},
+		"/tool/{tool_id}/urls/{url_id}": {
+			"delete": {
+				"summary": "delete a tool url",
+				"description": "delete a tool url",
+				"operationId": "deleteToolURL",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tool"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tool"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "id for the tool"
+				},
+				{
+					"in": "path",
+					"name": "url_id",
+					"description": "id for the url"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Urls"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"tool": {
+			"properties": {
+				"tool_id": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"details": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"post_date": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "delete"
+				}
+			}
+		},
+		"tag": {
+			"properties": {
+				"tag_id": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"tag": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"api_count": {
+					"description": "This is a default description.",
+					"type": "delete"
+				}
+			}
+		},
+		"note": {
+			"properties": {
+				"note_id": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"note": {
+					"description": "This is a default description.",
+					"type": "delete"
+				}
+			}
+		},
+		"url": {
+			"properties": {
+				"note_id": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "delete"
+				}
+			}
+		},
+		"image": {
+			"properties": {
+				"api_id": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"image_id": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"path": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "delete"
+				}
+			}
+		},
+		"screenshot": {
+			"properties": {
+				"api_id": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"screenshot_id": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"path": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "delete"
+				}
+			}
+		},
+		"buildingblock": {
+			"properties": {
+				"api_id": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"building_block_api": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"tool_id": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "delete"
+				}
+			}
+		},
+		"log": {
+			"properties": {
+				"api_id": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"note": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"details": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"log_date": {
+					"description": "This is a default description.",
+					"type": "delete"
+				}
+			}
+		}
+	}
+}

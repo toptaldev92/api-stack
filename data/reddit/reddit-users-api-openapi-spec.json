@@ -1,0 +1,414 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Reddit Users API",
+		"description": "API for manageming Reddit users.",
+		"termsOfService": "https://github.com/reddit/reddit/wiki/API",
+		"version": null
+	},
+	"host": "www.reddit.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/api/username_available": {
+			"get": {
+				"summary": "Check whether a username is available for registration.",
+				"description": "Check whether a username is available for registration.",
+				"operationId": "users",
+				"parameters": [{
+					"in": "query",
+					"name": "user",
+					"description": "a valid, unused, username",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1/me/friends/username": {
+			"delete": {
+				"summary": "Stop being friends with a user.",
+				"description": "Stop being friends with a user.",
+				"operationId": "users",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "A valid, existing reddit username",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Get information about a specific &#39;friend&#39;, such as notes.",
+				"description": "Get information about a specific &#39;friend&#39;, such as notes.",
+				"operationId": "users",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "A valid, existing reddit username",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Create or update a &quot;friend&quot; relationship.",
+				"description": "Create or update a &quot;friend&quot; relationship.",
+				"operationId": "users",
+				"parameters": [{
+					"in": "query",
+					"name": "This endpoint expects JSON data of this format",
+					"description": "{  &quot;name&quot;: A valid, existing reddit username,  &quot;note&quot;: a string no longer than 300 characters,}",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1/me/notifications": {
+			"get": {
+				"summary": "Get my notifications.",
+				"description": "Get my notifications.",
+				"operationId": "users",
+				"parameters": [{
+					"in": "query",
+					"name": "count",
+					"description": "an integer between 0 and 1000 (default: 30)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "end_date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "one of (new, old, None)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "start_date",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1/me/notifications/id": {
+			"patch": {
+				"summary": "",
+				"description": "",
+				"operationId": "users",
+				"parameters": [{
+					"in": "query",
+					"name": "This endpoint expects JSON data of this format",
+					"description": "{  &quot;read&quot;: boolean value,}",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1/user/username/trophies": {
+			"get": {
+				"summary": "Return a list of trophies for the a given user.",
+				"description": "Return a list of trophies for the a given user.",
+				"operationId": "users",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "A valid, existing reddit username",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/user/username/about": {
+			"get": {
+				"summary": "Return information about the user, including karma and gold status.",
+				"description": "Return information about the user, including karma and gold status.",
+				"operationId": "users",
+				"parameters": [{
+					"in": "query",
+					"name": "username",
+					"description": "the name of an existing user",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/user/username/where": {
+			"get": {
+				"summary": "This endpoint is a listing.",
+				"description": "This endpoint is a listing.",
+				"operationId": "users",
+				"parameters": [{
+					"in": "query",
+					"name": "after",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "before",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "count",
+					"description": "a positive integer (default: 0)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "the maximum number of items desired (default: 25, maximum: 100)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "show",
+					"description": "one of (given)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "one of (hot, new, top, controversial)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sr_detail",
+					"description": "(optional) expand subreddits",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "t",
+					"description": "one of (hour, day, week, month, year, all)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "the name of an existing user",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/api/friend": {
+			"post": {
+				"summary": "Create a relationship between a user and another user or subreddit",
+				"description": "Create a relationship between a user and another user or subreddit",
+				"operationId": "users",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "ban_message",
+					"description": "raw markdown text",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "ban_reason",
+					"description": "a string no longer than 100 characters",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "container",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "duration",
+					"description": "an integer between 1 and 999",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "the name of an existing user",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "note",
+					"description": "a string no longer than 300 characters",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "permissions",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "one of (friend, moderator, moderator_invite, contributor, banned, muted, wikibanned, wikicontributor)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/api/setpermissions": {
+			"post": {
+				"summary": "the string json",
+				"description": "the string json",
+				"operationId": "users",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "the name of an existing user",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "permissions",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/api/unfriend": {
+			"post": {
+				"summary": "Remove a relationship between a user and another user or subreddit",
+				"description": "Remove a relationship between a user and another user or subreddit",
+				"operationId": "users",
+				"parameters": [{
+					"in": "query",
+					"name": "container",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "the name of an existing user",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "one of (friend, enemy, moderator, moderator_invite, contributor, banned, muted, wikibanned, wikicontributor)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

@@ -1,0 +1,131 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Slack Pins API",
+		"description": "The API for management Slack Pinss",
+		"termsOfService": "https://slack.com/terms-of-service/api",
+		"version": null
+	},
+	"host": "slack.com",
+	"basePath": "/api",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/methods/pins.add": {
+			"get": {
+				"summary": "Pins an item to a channel.",
+				"description": "<td width=70%>Pins an item to a channel.</td>",
+				"operationId": "pinsadd",
+				"parameters": [{
+					"in": "query",
+					"name": "channel",
+					"description": "Channel to pin the item in.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "file",
+					"description": "File to pin.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "file_comment",
+					"description": "File comment to pin.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "timestamp",
+					"description": "Timestamp of the message to pin.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: pins:write)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["pins"],
+				"security": []
+			}
+		},
+		"/methods/pins.list": {
+			"get": {
+				"summary": "Lists items pinned to a channel.",
+				"description": "<td width=70%>Lists items pinned to a channel.</td>",
+				"operationId": "pinslist",
+				"parameters": [{
+					"in": "query",
+					"name": "channel",
+					"description": "Channel to get pinned items for.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: pins:read)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["pins"],
+				"security": []
+			}
+		},
+		"/methods/pins.remove": {
+			"get": {
+				"summary": "Un-pins an item from a channel.",
+				"description": "<td width=70%>Un-pins an item from a channel.</td>",
+				"operationId": "pinsremove",
+				"parameters": [{
+					"in": "query",
+					"name": "channel",
+					"description": "Channel where the item is pinned to.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "file",
+					"description": "File to un-pin.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "file_comment",
+					"description": "File comment to un-pin.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "timestamp",
+					"description": "Timestamp of the message to un-pin.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: pins:write)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["pins"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

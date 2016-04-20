@@ -1,0 +1,160 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "AngelList Paths API",
+		"description": "Show paths between a user and given user/startup ids.",
+		"termsOfService": "https://angel.co/terms",
+		"contact": {
+			"name": "AngelList",
+			"url": "https://angel.co/api",
+			"email": "api@angel.co"
+		},
+		"version": "v1"
+	},
+	"host": "api.angel.co",
+	"basePath": "/1/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/path": {
+			"post": {
+				"summary": "Add Path",
+				"description": "Add Path",
+				"operationId": "paths",
+				"parameters": [{
+					"in": "query",
+					"name": "direction",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "startup_ids",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_ids",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/connection"
+							}
+						}
+					}
+				},
+				"tags": ["Paths"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		},
+		"/paths": {
+			"get": {
+				"summary": "Get Paths",
+				"description": "Get Paths",
+				"operationId": "paths",
+				"parameters": [{
+					"in": "query",
+					"name": "direction",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "startup_ids",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_ids",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/connection"
+							}
+						}
+					},
+					"500": {
+						"description": "Error",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/error"
+							}
+						}
+					}
+				},
+				"tags": ["Paths"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
+		}
+	},
+	"definitions": {
+		"error": {
+			"properties": {
+				"error": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"message": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"connection": {
+			"properties": {
+				"connection": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"in": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"out": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"via": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

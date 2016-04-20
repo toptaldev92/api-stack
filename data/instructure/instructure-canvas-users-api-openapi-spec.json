@@ -1,0 +1,1913 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Instructure Canvas Users API",
+		"description": "Canvas LMS includes a REST API for accessing and modifying data externally from the main application, in your own programs and scripts. ",
+		"termsOfService": "https://www.canvaslms.com/policies/api-policy",
+		"version": "v1"
+	},
+	"host": "canvas.instructure.com",
+	"basePath": "/api/v1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/users/activity_stream": {
+			"get": {
+				"summary": "List the activity stream",
+				"description": "",
+				"operationId": "list-the-activity-stream",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user activity stream"],
+				"security": []
+			}
+		},
+		"/users/self/activity_stream": {
+			"delete": {
+				"summary": "Hide all stream items",
+				"description": "",
+				"operationId": "hide-all-stream-items",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user activity stream"],
+				"security": []
+			},
+			"get": {
+				"summary": "List the activity stream",
+				"description": "",
+				"operationId": "list-the-activity-stream",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user activity stream"],
+				"security": []
+			}
+		},
+		"/users/self/activity_stream/summary": {
+			"get": {
+				"summary": "Activity stream summary",
+				"description": "",
+				"operationId": "activity-stream-summary",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user activity stream"],
+				"security": []
+			}
+		},
+		"/users/self/activity_stream/{id}": {
+			"delete": {
+				"summary": "Hide a stream item",
+				"description": "",
+				"operationId": "hide-a-stream-item",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user activity stream"],
+				"security": []
+			}
+		},
+		"/users/self/bookmarks": {
+			"get": {
+				"summary": "List bookmarks",
+				"description": "",
+				"operationId": "list-bookmarks",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user bookmarks"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create bookmark",
+				"description": "",
+				"operationId": "create-bookmark",
+				"parameters": [{
+					"in": "query",
+					"name": "data",
+					"description": "The data associated with the bookmark",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "The name of the bookmark",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "position",
+					"description": "The position of the bookmark. Defaults to the bottom.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "The url of the bookmark",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user bookmarks"],
+				"security": []
+			}
+		},
+		"/users/self/bookmarks/{id}": {
+			"delete": {
+				"summary": "Delete bookmark",
+				"description": "",
+				"operationId": "delete-bookmark",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user bookmarks"],
+				"security": []
+			},
+			"get": {
+				"summary": "Get bookmark",
+				"description": "",
+				"operationId": "get-bookmark",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user bookmarks"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update bookmark",
+				"description": "",
+				"operationId": "update-bookmark",
+				"parameters": [{
+					"in": "query",
+					"name": "data",
+					"description": "The data associated with the bookmark",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "The name of the bookmark",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "position",
+					"description": "The position of the bookmark. Defaults to the bottom.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "The url of the bookmark",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user bookmarks"],
+				"security": []
+			}
+		},
+		"/users/self/communication_channels/{communication_channel_id}/notification_preferences": {
+			"put": {
+				"summary": "Update multiple preferences",
+				"description": "",
+				"operationId": "update-multiple-preferences",
+				"parameters": [{
+					"in": "query",
+					"name": "notification_preferences[&lt;X&gt;][frequency]",
+					"description": "The desired frequency for &lt;X&gt; notification",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user communication channels"],
+				"security": []
+			}
+		},
+		"/users/self/communication_channels/{communication_channel_id}/notification_preferences/notification": {
+			"put": {
+				"summary": "Update a preference",
+				"description": "",
+				"operationId": "update-a-preference",
+				"parameters": [{
+					"in": "query",
+					"name": "notification_preferences[frequency]",
+					"description": "The desired frequency for this notification",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user communication channels"],
+				"security": []
+			}
+		},
+		"/users/self/communication_channels/{communication_channel_id}/notification_preference_categories/category": {
+			"put": {
+				"summary": "Update preferences by category",
+				"description": "",
+				"operationId": "update-preferences-by-category",
+				"parameters": [{
+					"in": "query",
+					"name": "category",
+					"description": "The name of the category. Must be parameterized (e.g. The category u201cCoursenContentu201d should be u201ccourse_contentu201d)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "notification_preferences[frequency]",
+					"description": "The desired frequency for each notification in the category",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user communication channels"],
+				"security": []
+			}
+		},
+		"/users/self/communication_channels/{type}/address/notification_preferences": {
+			"put": {
+				"summary": "Update multiple preferences",
+				"description": "",
+				"operationId": "update-multiple-preferences",
+				"parameters": [{
+					"in": "query",
+					"name": "notification_preferences[&lt;X&gt;][frequency]",
+					"description": "The desired frequency for &lt;X&gt; notification",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user communication channels"],
+				"security": []
+			}
+		},
+		"/users/self/communication_channels/{type}/address/notification_preferences/{notification}": {
+			"put": {
+				"summary": "Update a preference",
+				"description": "",
+				"operationId": "update-a-preference",
+				"parameters": [{
+					"in": "query",
+					"name": "notification_preferences[frequency]",
+					"description": "The desired frequency for this notification",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user communication channels"],
+				"security": []
+			}
+		},
+		"/users/self/course_nicknames": {
+			"delete": {
+				"summary": "Clear course nicknames",
+				"description": "",
+				"operationId": "clear-course-nicknames",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user course nicknames"],
+				"security": []
+			},
+			"get": {
+				"summary": "List course nicknames",
+				"description": "",
+				"operationId": "list-course-nicknames",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user course nicknames"],
+				"security": []
+			}
+		},
+		"/users/self/course_nicknames/{course_id}": {
+			"delete": {
+				"summary": "Remove course nickname",
+				"description": "",
+				"operationId": "remove-course-nickname",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user course nicknames"],
+				"security": []
+			},
+			"get": {
+				"summary": "Get course nickname",
+				"description": "",
+				"operationId": "get-course-nickname",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user course nicknames"],
+				"security": []
+			},
+			"put": {
+				"summary": "Set course nickname",
+				"description": "",
+				"operationId": "set-course-nickname",
+				"parameters": [{
+					"in": "query",
+					"name": "nickname",
+					"description": "The nickname to set.  It must be non-empty and shorter than 60 characters.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user course nicknames"],
+				"security": []
+			}
+		},
+		"/users/self/favorites/courses": {
+			"delete": {
+				"summary": "Reset course favorites",
+				"description": "",
+				"operationId": "reset-course-favorites",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user favorite courses"],
+				"security": []
+			},
+			"get": {
+				"summary": "List favorite courses",
+				"description": "",
+				"operationId": "list-favorite-courses",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user favorite courses"],
+				"security": []
+			}
+		},
+		"/users/self/favorites/courses/{id}": {
+			"delete": {
+				"summary": "Remove course from favorites",
+				"description": "",
+				"operationId": "remove-course-from-favorites",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "the ID or SIS ID of the course to remove",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user favorite courses"],
+				"security": []
+			},
+			"post": {
+				"summary": "Add course to favorites",
+				"description": "",
+				"operationId": "add-course-to-favorites",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "The ID or SIS ID of the course to add.  The current user must be registerednin the course.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user favorite courses"],
+				"security": []
+			}
+		},
+		"/users/self/favorites/groups": {
+			"delete": {
+				"summary": "Reset group favorites",
+				"description": "",
+				"operationId": "reset-group-favorites",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user favorite groups"],
+				"security": []
+			},
+			"get": {
+				"summary": "List favorite groups",
+				"description": "",
+				"operationId": "list-favorite-groups",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user favorite groups"],
+				"security": []
+			}
+		},
+		"/users/self/favorites/groups/{id}": {
+			"delete": {
+				"summary": "Remove group from favorites",
+				"description": "",
+				"operationId": "remove-group-from-favorites",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "the ID or SIS ID of the group to remove",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user favorite groups"],
+				"security": []
+			},
+			"post": {
+				"summary": "Add group to favorites",
+				"description": "",
+				"operationId": "add-group-to-favorites",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "The ID or SIS ID of the group to add.  The current user must be a member ofnthe group.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user favorite groups"],
+				"security": []
+			}
+		},
+		"/users/self/groups": {
+			"get": {
+				"summary": "List your groups",
+				"description": "",
+				"operationId": "list-your-groups",
+				"parameters": [{
+					"in": "query",
+					"name": "context_type",
+					"description": "Only include groups that are in this type of context.nn        n        n          Allowed values: Account, Course",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user groups"],
+				"security": []
+			}
+		},
+		"/users/self/todo": {
+			"get": {
+				"summary": "List the TODO items",
+				"description": "",
+				"operationId": "list-the-todo-items",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user todo"],
+				"security": []
+			}
+		},
+		"/users/self/upcoming_events": {
+			"get": {
+				"summary": "List upcoming assignments, calendar events",
+				"description": "",
+				"operationId": "list-upcoming-assignments-calendar-events",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user events"],
+				"security": []
+			}
+		},
+		"/users/{id}": {
+			"get": {
+				"summary": "Show user details",
+				"description": "",
+				"operationId": "show-user-details",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["users"],
+				"security": []
+			},
+			"put": {
+				"summary": "Edit a user",
+				"description": "",
+				"operationId": "edit-a-user",
+				"parameters": [{
+					"in": "query",
+					"name": "user[avatar][token]",
+					"description": "A unique representation of the avatar record to assign as the user&#39;sncurrent avatar. This token can be obtained from the user avatars endpoint.nThis supersedes the user [avatar] [url] argument, and if both are includednthe url will be ignored. Note: this is an internal representation and isnsubject to change without notice. It should be consumed with this apinendpoint and used in the user update endpoint, and should not benconstructed by the client.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user[avatar][url]",
+					"description": "To set the user&#39;s avatar to point to an external url, do not include antoken and instead pass the url here. Warning: For maximum compatibility,nplease use 128 px square images.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user[email]",
+					"description": "The default email address of the user.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user[locale]",
+					"description": "The user&#39;s preferred language as a two-letter ISO 639-1 code.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user[name]",
+					"description": "The full name of the user. This name will be used by teacher for grading.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user[short_name]",
+					"description": "User&#39;s name as it will be displayed in discussions, messages, andncomments.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user[sortable_name]",
+					"description": "User&#39;s name as used to sort alphabetically in lists.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user[time_zone]",
+					"description": "The time zone for the user. Allowed time zones arenIANA time zones or friendliernRuby on Rails time zones.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["users"],
+				"security": []
+			}
+		},
+		"/users/{id}/colors": {
+			"get": {
+				"summary": "Get custom colors",
+				"description": "",
+				"operationId": "get-custom-colors",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user colors"],
+				"security": []
+			}
+		},
+		"/users/{id}/colors/asset_string": {
+			"get": {
+				"summary": "Get custom color",
+				"description": "",
+				"operationId": "get-custom-color",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user colors"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update custom color",
+				"description": "",
+				"operationId": "update-custom-color",
+				"parameters": [{
+					"in": "query",
+					"name": "hexcode",
+					"description": "The hexcode of the color to set for the context, if you choose to pass thenhexcode as a query parameter rather than in the request body you should NOTninclude the &#39;#&#39; unless you escape it first.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user colors"],
+				"security": []
+			}
+		},
+		"/users/{id}/merge_into/accounts/destination_account_id/users/{destination_user_id}": {
+			"put": {
+				"summary": "Merge user into another user",
+				"description": "",
+				"operationId": "merge-user-into-another-user",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["users merge"],
+				"security": []
+			}
+		},
+		"/users/{id}/merge_into/destination_user_id": {
+			"put": {
+				"summary": "Merge user into another user",
+				"description": "",
+				"operationId": "merge-user-into-another-user",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user colors"],
+				"security": []
+			}
+		},
+		"/users/{id}/settings": {
+			"get": {
+				"summary": "Update user settings.",
+				"description": "",
+				"operationId": "update-user-settings",
+				"parameters": [{
+					"in": "query",
+					"name": "manual_mark_as_read",
+					"description": "If true, require user to manually mark discussion posts as read (don&#39;tnauto-mark as read).",
+					"type": "boolean"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["users"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update user settings.",
+				"description": "",
+				"operationId": "update-user-settings",
+				"parameters": [{
+					"in": "query",
+					"name": "manual_mark_as_read",
+					"description": "If true, require user to manually mark discussion posts as read (don&#39;tnauto-mark as read).",
+					"type": "boolean"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["users"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/avatars": {
+			"get": {
+				"summary": "List avatar options",
+				"description": "",
+				"operationId": "list-avatar-options",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["users"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/calendar_events": {
+			"get": {
+				"summary": "List calendar events for a user",
+				"description": "",
+				"operationId": "list-calendar-events-for-a-user",
+				"parameters": [{
+					"in": "query",
+					"name": "all_events",
+					"description": "Defaults to false (uses start_date, end_date, and undated criteria). Ifntrue, all events are returned, ignoring start_date, end_date, and undatedncriteria.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "context_codes[]",
+					"description": "List of context codes of courses/groups/users whose events you want to see.nIf not specified, defaults to the current user (i.e personal calendar, noncourse/group events). Limited to 10 context codes, additional ones arenignored. The format of this field is the context type, followed by annunderscore, followed by the context id. For example: course_42",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "end_date",
+					"description": "Only return events before the end_date (inclusive). Defaults to start_date.nThe value should be formatted as: yyyy-mm-dd or ISO 8601nYYYY-MM-DDTHH:MM:SSZ. If end_date is the same as start_date, then onlynevents on that day are returned.",
+					"type": "date"
+				},
+				{
+					"in": "query",
+					"name": "excludes[]",
+					"description": "Array of attributes to exclude. Possible values are u201cdescriptionu201d,nu201cchild_eventsu201d and u201cassignmentu201d",
+					"type": "array"
+				},
+				{
+					"in": "query",
+					"name": "start_date",
+					"description": "Only return events since the start_date (inclusive). Defaults to today. Thenvalue should be formatted as: yyyy-mm-dd or ISO 8601 YYYY-MM-DDTHH:MM:SSZ.",
+					"type": "date"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "Defaults to u201ceventu201dnn        n        n          Allowed values: event, assignment",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "undated",
+					"description": "Defaults to false (dated events only). If true, only return undated eventsnand ignore start_date and end_date.",
+					"type": "boolean"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user calendar events"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/communication_channels": {
+			"get": {
+				"summary": "List user communication channels",
+				"description": "",
+				"operationId": "list-user-communication-channels",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user communication channels"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create a communication channel",
+				"description": "",
+				"operationId": "create-a-communication-channel",
+				"parameters": [{
+					"in": "query",
+					"name": "communication_channel[address]",
+					"description": "An email address or SMS number. Not required for u201cpushu201d type channels.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "communication_channel[token]",
+					"description": "A registration id, device token, or equivalent token given to an app whennregistering with a push notification provider. Only valid for u201cpushu201d typenchannels.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "communication_channel[type]",
+					"description": "The type of communication channel.nnIn order to enable push notification support, the server must be properlynconfigured (via sns.yml) to communicate with Amazon Simple NotificationnServices, and the developer key used to create the access token from thisnrequest must have an SNS ARN configured on it.nn        n        n          Allowed values: email, sms, push",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "skip_confirmation",
+					"description": "Only valid for site admins and account admins making requests; If true, thenchannel is automatically validated and no confirmation email or SMS isnsent. Otherwise, the user must respond to a confirmation message to confirmnthe channel.",
+					"type": "boolean"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user communication channels"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/communication_channels/communication_channel_id/notification_preferences": {
+			"get": {
+				"summary": "List preferences",
+				"description": "",
+				"operationId": "list-preferences",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user communication channels"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/communication_channels/communication_channel_id/notification_preferences/{notification}": {
+			"get": {
+				"summary": "Get a preference",
+				"description": "",
+				"operationId": "get-a-preference",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user communication channels"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/communication_channels/communication_channel_id/notification_preference_categories": {
+			"get": {
+				"summary": "List of preference categories",
+				"description": "",
+				"operationId": "list-of-preference-categories",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user communication channels"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/communication_channels/id": {
+			"delete": {
+				"summary": "Delete a communication channel",
+				"description": "",
+				"operationId": "delete-a-communication-channel",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user communication channels"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/communication_channels/type/{address}": {
+			"delete": {
+				"summary": "Delete a communication channel",
+				"description": "",
+				"operationId": "delete-a-communication-channel",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user communication channels"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/communication_channels/type/{address}/notification_preferences": {
+			"get": {
+				"summary": "List preferences",
+				"description": "",
+				"operationId": "list-preferences",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user communication channels"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/communication_channels/type/{address}/notification_preferences/notification": {
+			"get": {
+				"summary": "Get a preference",
+				"description": "",
+				"operationId": "get-a-preference",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user communication channels"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/content_exports": {
+			"get": {
+				"summary": "List content exports",
+				"description": "",
+				"operationId": "list-content-exports",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user content exports"],
+				"security": []
+			},
+			"post": {
+				"summary": "Export content",
+				"description": "",
+				"operationId": "export-content",
+				"parameters": [{
+					"in": "query",
+					"name": "export_type",
+					"description": "u201ccommon_cartridgeu201dnnExport the contents of the course in the Common Cartridge (.imscc) formatnu201cqtiu201dnnExport quizzes from a course in the QTI formatnu201czipu201dnnExport files from a course, group, or user in a zip filennn        n        n          Allowed values: common_cartridge, qti, zip",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "skip_notifications",
+					"description": "Don&#39;t send the notifications about the export to the user. Default:nfalse",
+					"type": "boolean"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user content exports"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/content_exports/id": {
+			"get": {
+				"summary": "Show content export",
+				"description": "",
+				"operationId": "show-content-export",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user content exports"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/content_licenses": {
+			"get": {
+				"summary": "List licenses",
+				"description": "",
+				"operationId": "list-licenses",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user content licenses"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/content_migrations": {
+			"get": {
+				"summary": "List content migrations",
+				"description": "",
+				"operationId": "list-content-migrations",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user content migrations"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create a content migration",
+				"description": "",
+				"operationId": "create-a-content-migration",
+				"parameters": [{
+					"in": "query",
+					"name": "date_shift_options[day_substitutions][X]",
+					"description": "Move anything scheduled for day &#39;X&#39; to the specified day.n(0-Sunday, 1-Monday, 2-Tuesday, 3-Wednesday, 4-Thursday, 5-Friday,n6-Saturday)",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "date_shift_options[new_end_date]",
+					"description": "The new end date for the source content/course",
+					"type": "date"
+				},
+				{
+					"in": "query",
+					"name": "date_shift_options[new_start_date]",
+					"description": "The new start date for the content/course",
+					"type": "date"
+				},
+				{
+					"in": "query",
+					"name": "date_shift_options[old_end_date]",
+					"description": "The original end date of the source content/course",
+					"type": "date"
+				},
+				{
+					"in": "query",
+					"name": "date_shift_options[old_start_date]",
+					"description": "The original start date of the source content/course",
+					"type": "date"
+				},
+				{
+					"in": "query",
+					"name": "date_shift_options[remove_dates]",
+					"description": "Whether to remove dates in the copied course. Cannot be used in conjunctionnwith shift_dates.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "date_shift_options[shift_dates]",
+					"description": "Whether to shift dates in the copied course",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "migration_type",
+					"description": "The type of the migration. Use thenMigrator endpoint tonsee all available migrators. Default allowed values:ncanvas_cartridge_importer, common_cartridge_importer, course_copy_importer,nzip_file_importer, qti_converter, moodle_converter",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "pre_attachment[*]",
+					"description": "Other file upload properties, See File Upload Documentation",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "pre_attachment[name]",
+					"description": "Required if uploading a file. This is the first step in uploading a file tonthe content migration. See the File Upload Documentation for details on the file upload workflow.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "settings[file_url]",
+					"description": "A URL to download the file from. Must not require authentication.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "settings[folder_id]",
+					"description": "The folder to unzip the .zip file into for a zip_file_import.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "settings[overwrite_quizzes]",
+					"description": "Whether to overwrite quizzes with the same identifiers between contentnpackages.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "settings[question_bank_id]",
+					"description": "The existing question bank ID to import questions into if not specified innthe content package.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "settings[question_bank_name]",
+					"description": "The question bank to import questions into if not specified in the contentnpackage, if both bank id and name are set, id will take precedence.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "settings[source_course_id]",
+					"description": "The course to copy from for a course copy migration. (required if doingncourse copy)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user content migrations"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/content_migrations/content_migration_id/migration_issues": {
+			"get": {
+				"summary": "List migration issues",
+				"description": "",
+				"operationId": "list-migration-issues",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user content migrations"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/content_migrations/content_migration_id/migration_issues/{id}": {
+			"get": {
+				"summary": "Get a migration issue",
+				"description": "",
+				"operationId": "get-a-migration-issue",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user content migrations"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update a migration issue",
+				"description": "",
+				"operationId": "update-a-migration-issue",
+				"parameters": [{
+					"in": "query",
+					"name": "workflow_state",
+					"description": "Set the workflow_state of the issue.nn        n        n          Allowed values: active, resolved",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user content migrations"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/content_migrations/id": {
+			"get": {
+				"summary": "Get a content migration",
+				"description": "",
+				"operationId": "get-a-content-migration",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user content migrations"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update a content migration",
+				"description": "",
+				"operationId": "update-a-content-migration",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user content migrations"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/content_migrations/migrators": {
+			"get": {
+				"summary": "List Migration Systems",
+				"description": "",
+				"operationId": "list-migration-systems",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user content migrations"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/courses": {
+			"get": {
+				"summary": "List courses for a user",
+				"description": "",
+				"operationId": "list-courses-for-a-user",
+				"parameters": [{
+					"in": "query",
+					"name": "include[]",
+					"description": "u201cneeds_grading_countu201d: Optional information to include with each Course.nWhen needs_grading_count is given, and the current user has grading rights,nthe total number of submissions needing grading for all assignments isnreturned.nnu201csyllabus_bodyu201d: Optional information to include with each Course. Whennsyllabus_body is given the user-generated html for the course syllabus isnreturned.nnu201ctotal_scoresu201d: Optional information to include with each Course. Whenntotal_scores is given, any student enrollments will also include the fieldsn&#39;computed_current_score&#39;, &#39;computed_final_score&#39;,n&#39;computed_current_grade&#39;, and &#39;computed_final_grade&#39; (seenEnrollment documentation for more information on these fields). Thisnargument is ignored if the course is configured to hide final grades.nnu201ccurrent_grading_period_scoresu201d: Optional information to include with eachnCourse. When current_grading_period_scores is given and total_scores isngiven, any student enrollments will also include the fieldsn&#39;multiple_grading_periods_enabled&#39;,n&#39;totals_for_all_grading_periods_option&#39;,n&#39;current_grading_period_title&#39;,n&#39;current_grading_period_id&#39;,ncurrent_period_computed_current_score&#39;,n&#39;current_period_computed_final_score&#39;,n&#39;current_period_computed_current_grade&#39;, andn&#39;current_period_computed_final_grade&#39; (see Enrollment documentationnfor more information on these fields). This argument is ignored if thencourse is configured to hide final grades or if the total_scores argumentnis not included.nnu201ctermu201d: Optional information to include with each Course. When term isngiven, the information for the enrollment term for each course is returned.nnu201ccourse_progressu201d: Optional information to include with each Course. Whenncourse_progress is given, each course will include an&#39;course_progress&#39; object with the fields:n&#39;requirement_count&#39;, an integer specifying the total number ofnrequirements in the course, &#39;requirement_completed_count&#39;, anninteger specifying the total number of requirements in this course thatnhave been completed, and &#39;next_requirement_url&#39;, a string url tonthe next requirement item, and &#39;completed_at&#39;, the date the coursenwas completed (null if incomplete). &#39;next_requirement_url&#39; will bennull if all requirements have been completed or the current module does notnrequire sequential progress. u201ccourse_progressu201d will return an error messagenif the course is not module based or the user is not enrolled as a studentnin the course.nnu201csectionsu201d: Section enrollment information to include with each Course.nReturns an array of hashes containing the section ID (id), section namen(name), start and end dates (start_at, end_at), as well as the enrollmentntype (enrollment_role, e.g. &#39;StudentEnrollment&#39;).nnu201cstorage_quota_used_mbu201d: The amount of storage space used by the files innthis coursennu201ctotal_studentsu201d: Optional information to include with each Course. Returnsnan integer for the total amount of active and invited students.nnu201cpassback_statusu201d: Include the grade passback_statusnnu201cfavoritesu201d: Optional information to include with each Course. Indicates ifnthe user has marked the course as a favorite course.nnn        n        n          Allowed values: needs_grading_count, syllabus_body, total_scores, term, course_progress, sections, storage_quota_used_mb, total_students, favorites, current_grading_period_scores",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "state[]",
+					"description": "If set, only return courses that are in the given state(s). By default,nu201cavailableu201d is returned for students and observers, and anything exceptnu201cdeletedu201d, for all other enrollment typesnn        n        n          Allowed values: unpublished, available, completed, deleted",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user courses"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/courses/course_id/assignments": {
+			"get": {
+				"summary": "List assignments for user",
+				"description": "",
+				"operationId": "list-assignments-for-user",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user courses"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/custom_data(/*scope)": {
+			"delete": {
+				"summary": "Delete custom data",
+				"description": "",
+				"operationId": "delete-custom-data",
+				"parameters": [{
+					"in": "query",
+					"name": "ns",
+					"description": "The namespace from which to delete the data.  This should be somethingnother Canvas API apps aren&#39;t likely to use, such as a reverse DNS fornyour organization.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user custom data"],
+				"security": []
+			},
+			"get": {
+				"summary": "Load custom data",
+				"description": "",
+				"operationId": "load-custom-data",
+				"parameters": [{
+					"in": "query",
+					"name": "ns",
+					"description": "The namespace from which to retrieve the data.  This should be somethingnother Canvas API apps aren&#39;t likely to use, such as a reverse DNS fornyour organization.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user custom data"],
+				"security": []
+			},
+			"put": {
+				"summary": "Store custom data",
+				"description": "",
+				"operationId": "store-custom-data",
+				"parameters": [{
+					"in": "query",
+					"name": "data",
+					"description": "The data you want to store for the user, at the specified scope.  If thendata is composed of (possibly nested) JSON objects, scopes will bengenerated for the (nested) keys (see examples).",
+					"type": "json"
+				},
+				{
+					"in": "query",
+					"name": "ns",
+					"description": "The namespace under which to store the data.  This should be somethingnother Canvas API apps aren&#39;t likely to use, such as a reverse DNS fornyour organization.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user custom data"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/enrollments": {
+			"get": {
+				"summary": "List enrollments",
+				"description": "",
+				"operationId": "list-enrollments",
+				"parameters": [{
+					"in": "query",
+					"name": "grading_period_id",
+					"description": "Return grades for the given grading_period.  If this parameter is notnspecified, the returned grades will be for the whole course.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "role[]",
+					"description": "A list of enrollment roles to return. Accepted values include course-levelnroles created by the Add Role API asnwell as the base enrollment types accepted by the `type` argument above.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "state[]",
+					"description": "Filter by enrollment state. If omitted, &#39;active&#39; andn&#39;invited&#39; enrollments are returned. When querying a user&#39;snenrollments (either via user_id argument or via user enrollments endpoint),nthe following additional synthetic states are supported:nu201ccurrent_and_invitedu201d|u201ccurrent_and_futureu201d|u201ccurrent_and_concludedu201dnn        n        n          Allowed values: active, invited, creation_pending, deleted, rejected, completed, inactive",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "type[]",
+					"description": "A list of enrollment types to return. Accepted values aren&#39;StudentEnrollment&#39;, &#39;TeacherEnrollment&#39;,n&#39;TaEnrollment&#39;, &#39;DesignerEnrollment&#39;, andn&#39;ObserverEnrollment.&#39; If omitted, all enrollment types arenreturned. This argument is ignored if `role` is given.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "Filter by user_id (only valid for course or section enrollment queries). Ifnset to the current user&#39;s id, this is a way to determine if the usernhas any enrollments in the course or section, independent of whether thenuser has permission to view other people on the roster.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user enrollments"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/features": {
+			"get": {
+				"summary": "List features",
+				"description": "",
+				"operationId": "list-features",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user features"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/features/enabled": {
+			"get": {
+				"summary": "List enabled features",
+				"description": "",
+				"operationId": "list-enabled-features",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user features"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/features/flags/feature": {
+			"delete": {
+				"summary": "Remove feature flag",
+				"description": "",
+				"operationId": "remove-feature-flag",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user features"],
+				"security": []
+			},
+			"get": {
+				"summary": "Get feature flag",
+				"description": "",
+				"operationId": "get-feature-flag",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user features"],
+				"security": []
+			},
+			"put": {
+				"summary": "Set feature flag",
+				"description": "",
+				"operationId": "set-feature-flag",
+				"parameters": [{
+					"in": "query",
+					"name": "locking_account_id",
+					"description": "If set, this FeatureFlag may only be modified by someone withnadministrative rights in the specified account. The locking account must benabove the target object in the account chain.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "state",
+					"description": "u201coffu201dnnThe feature is not available for the course, user, or account andnsub-accounts.nu201callowedu201dnn(valid only on accounts) The feature is off in the account, but may benenabled in sub-accounts and courses by setting a feature flag on thensub-account or course.nu201conu201dnnThe feature is turned on unconditionally for the user, course, or accountnand sub-accounts.nnn        n        n          Allowed values: off, allowed, on",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user features"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/files": {
+			"get": {
+				"summary": "List files",
+				"description": "",
+				"operationId": "list-files",
+				"parameters": [{
+					"in": "query",
+					"name": "content_types[]",
+					"description": "Filter results by content-type. You can specify type/subtype pairs (e.g.,n&#39;image/jpeg&#39;), or simply types (e.g., &#39;image&#39;, which willnmatch &#39;image/gif&#39;, &#39;image/jpeg&#39;, etc.).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "include[]",
+					"description": "Array of additional information to include.nu201cuseru201dnnthe user who uploaded the file or last edited its contentnu201cusage_rightsu201dnncopyright and license information for the file (see UsageRights)nnn        n        n          Allowed values: user",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "only[]",
+					"description": "Array of information to restrict to. Overrides include[]nu201cnamesu201dnnonly returns file name information",
+					"type": "array"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "The sorting order. Defaults to &#39;asc&#39;.nn        n        n          Allowed values: asc, desc",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "search_term",
+					"description": "The partial name of the files to match and return.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "Sort results by this field. Defaults to &#39;name&#39;. Note thatn`sort=user` implies `include[]=user`.nn        n        n          Allowed values: name, size, created_at, updated_at, content_type, user",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user files"],
+				"security": []
+			},
+			"post": {
+				"summary": "Upload a file",
+				"description": "",
+				"operationId": "upload-a-file",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user files"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/files/id": {
+			"get": {
+				"summary": "Get file",
+				"description": "",
+				"operationId": "get-file",
+				"parameters": [{
+					"in": "query",
+					"name": "include[]",
+					"description": "Array of additional information to include.nu201cuseru201dnnthe user who uploaded the file or last edited its contentnu201cusage_rightsu201dnncopyright and license information for the file (see UsageRights)nnn        n        n          Allowed values: user",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user files"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/files/quota": {
+			"get": {
+				"summary": "Get quota information",
+				"description": "",
+				"operationId": "get-quota-information",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user files"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/folders": {
+			"get": {
+				"summary": "List all folders",
+				"description": "",
+				"operationId": "list-all-folders",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user folders"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create folder",
+				"description": "",
+				"operationId": "create-folder",
+				"parameters": [{
+					"in": "query",
+					"name": "hidden",
+					"description": "Flag the folder as hidden",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "locked",
+					"description": "Flag the folder as locked",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "lock_at",
+					"description": "The datetime to lock the folder at",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "The name of the folder",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "parent_folder_id",
+					"description": "The id of the folder to store the file in. If this and parent_folder_pathnare sent an error will be returned. If neither is given, a default foldernwill be used.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "parent_folder_path",
+					"description": "The path of the folder to store the new folder in. The path separator isnthe forward slash `/`, never a back slash. The parent folder will bencreated if it does not already exist. This parameter only applies to newnfolders in a context that has folders, such as a user, a course, or angroup. If this and parent_folder_id are sent an error will be returned. Ifnneither is given, a default folder will be used.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "position",
+					"description": "Set an explicit sort position for the folder",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "unlock_at",
+					"description": "The datetime to unlock the folder at",
+					"type": "datetime"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user folders"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/folders/by_path": {
+			"get": {
+				"summary": "Resolve path",
+				"description": "",
+				"operationId": "resolve-path",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user folders"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/folders/by_path/*full_path": {
+			"get": {
+				"summary": "Resolve path",
+				"description": "",
+				"operationId": "resolve-path",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user folders"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/folders/id": {
+			"get": {
+				"summary": "Get folder",
+				"description": "",
+				"operationId": "get-folder",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user folders"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/logins": {
+			"get": {
+				"summary": "List user logins",
+				"description": "",
+				"operationId": "list-user-logins",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user logins"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/logins/id": {
+			"delete": {
+				"summary": "Delete a user login",
+				"description": "",
+				"operationId": "delete-a-user-login",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user logins"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/missing_submissions": {
+			"get": {
+				"summary": "List Missing Submissions",
+				"description": "",
+				"operationId": "list-missing-submissions",
+				"parameters": [{
+					"in": "query",
+					"name": "user_id",
+					"description": "the student&#39;s ID",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user missing submissions"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/observees": {
+			"get": {
+				"summary": "List observees",
+				"description": "",
+				"operationId": "list-observees",
+				"parameters": [{
+					"in": "query",
+					"name": "include[]",
+					"description": "u201cavatar_urlu201d: Optionally include avatar_url.nnn        n        n          Allowed values: avatar_url",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user observees"],
+				"security": []
+			},
+			"post": {
+				"summary": "Add an observee with credentials",
+				"description": "",
+				"operationId": "add-an-observee-with-credentials",
+				"parameters": [{
+					"in": "query",
+					"name": "access_token",
+					"description": "The access token for the user to observe.  Required ifnobservee[unique_id] or observee[password] arenomitted.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "observee[password]",
+					"description": "The password for the user to observe. Required if access_token is omitted.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "observee[unique_id]",
+					"description": "The login id for the user to observe.  Required if access_token is omitted.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user observees"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/observees/observee_id": {
+			"delete": {
+				"summary": "Remove an observee",
+				"description": "",
+				"operationId": "remove-an-observee",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user observees"],
+				"security": []
+			},
+			"get": {
+				"summary": "Show an observee",
+				"description": "",
+				"operationId": "show-an-observee",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user observees"],
+				"security": []
+			},
+			"put": {
+				"summary": "Add an observee",
+				"description": "",
+				"operationId": "add-an-observee",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user observees"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/page_views": {
+			"get": {
+				"summary": "List user page views",
+				"description": "",
+				"operationId": "list-user-page-views",
+				"parameters": [{
+					"in": "query",
+					"name": "end_time",
+					"description": "The end of the time range from which you want page views.",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "start_time",
+					"description": "The beginning of the time range from which you want page views.",
+					"type": "datetime"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user page views"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/profile": {
+			"get": {
+				"summary": "Get user profile",
+				"description": "",
+				"operationId": "get-user-profile",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user profile"],
+				"security": []
+			}
+		},
+		"/users/{user_id}/usage_rights": {
+			"delete": {
+				"summary": "Remove usage rights",
+				"description": "",
+				"operationId": "remove-usage-rights",
+				"parameters": [{
+					"in": "query",
+					"name": "file_ids[]",
+					"description": "List of ids of files to remove associated usage rights from.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "folder_ids[]",
+					"description": "List of ids of folders. Usage rights will be removed from all files innthese folders.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user usage rights"],
+				"security": []
+			},
+			"put": {
+				"summary": "Set usage rights",
+				"description": "",
+				"operationId": "set-usage-rights",
+				"parameters": [{
+					"in": "query",
+					"name": "file_ids[]",
+					"description": "List of ids of files to set usage rights for.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "folder_ids[]",
+					"description": "List of ids of folders to search for files to set usage rights for. Notenthat new files uploaded to these folders do not automatically inherit thesenrights.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "publish",
+					"description": "Whether the file(s) or folder(s) should be published on save, provided thatnusage rights have been specified (set to `true` to publish on save).",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "usage_rights[legal_copyright]",
+					"description": "The legal copyright line for the files",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "usage_rights[license]",
+					"description": "The license that applies to the files. See thenList licenses endpoint for thensupported license types.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "usage_rights[use_justification]",
+					"description": "The intellectual property justification for using the files in Canvasnn        n        n          Allowed values: own_copyright, used_by_permission, fair_use, public_domain, creative_commons",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user usage rights"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

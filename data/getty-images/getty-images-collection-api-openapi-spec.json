@@ -1,0 +1,87 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Getty Images Collection API",
+		"version": "v3"
+	},
+	"host": "connect.gettyimages.com",
+	"basePath": "/v3/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/v3/collections": {
+			"get": {
+				"summary": "Gets collections applicable for the customer.",
+				"description": "",
+				"operationId": "Collections_GetCollections",
+				"parameters": [{
+					"in": "header",
+					"name": "Accept-Language",
+					"description": "Accept-Language parameter optional. Used to restrict the set of natural languages that are preferred as a response to the request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "header",
+					"name": "Api-Key",
+					"description": "Api-Key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "header",
+					"name": "Authorization",
+					"description": "Authorization token required. Used for applying content access restrictions. Use one of the OAuth2 grants to auto-populate this value.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"collections": {
+			"properties": {
+				"collections": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"collection": {
+			"properties": {
+				"applicable_product_offerings": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"code": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"image_family": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"license_model": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

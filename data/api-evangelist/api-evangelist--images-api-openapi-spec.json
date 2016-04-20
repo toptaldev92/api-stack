@@ -1,0 +1,98 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "API Evangelist - Images API",
+		"description": "This is a template images API from API Evangelist.",
+		"termsOfService": "http://apievangelist.com/terms-of-service.html",
+		"version": "v1"
+	},
+	"host": "images.api.apievangelist.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/images/": {
+			"get": {
+				"summary": "Pulls a listing of images",
+				"description": "Returns a list of images, allowing you to filter by keyword query.",
+				"operationId": "getJobs",
+				"parameters": [{
+					"in": "query",
+					"name": "query",
+					"description": "a text query to search across images",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/images/{id}": {
+			"get": {
+				"summary": "Retrieve an image using its ID",
+				"description": "Returns a images detail",
+				"operationId": "getJobs",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id for the job, notice this is in the path, not a query variable",
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"images": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"description": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"image": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"thumbnailUrl": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"width": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"height": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"creator": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

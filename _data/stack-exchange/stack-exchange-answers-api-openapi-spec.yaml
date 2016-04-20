@@ -1,0 +1,447 @@
+- swagger: "2.0"
+  info:
+    title: Stack Exchange Answers API
+    description: The API for working with Stack Exchange answers.
+    termsOfService: http://stackexchange.com/legal/api-terms-of-use
+    version: ""
+  host: api.stackexchange.com
+  basePath: /2.2
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /answers:
+      get:
+        summary: Get all answers on the site.
+        description: Get all answers on the site.
+        operationId: getAllAnswers
+        parameters:
+        - in: query
+          name: fromdate
+          type: string
+          format: string
+        - in: query
+          name: max
+          type: string
+          format: string
+        - in: query
+          name: min
+          type: string
+          format: string
+        - in: query
+          name: order
+          type: string
+          format: string
+        - in: query
+          name: page
+          type: string
+          format: string
+        - in: query
+          name: pagesize
+          type: string
+          format: string
+        - in: query
+          name: sort
+          type: string
+          format: string
+        - in: query
+          name: todate
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Answers
+        security: []
+    /answers/{ids}:
+      get:
+        summary: Get answers identified by a set of ids.
+        description: Get answers identified by a set of ids.
+        operationId: getAnswersByID
+        parameters:
+        - in: path
+          name: ids
+          description: '{ids} can contain up to 100 semicolon delimited ids, to find
+            ids programatically look for answer_id on answer objects.'
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Answers
+        security: []
+    /answers/{ids}/comments:
+      get:
+        summary: Get comments on the answers identified by a set of ids.
+        description: Get comments on the answers identified by a set of ids.
+        operationId: getCommentsOnTheAnswersIdentifiedByASetofIds
+        parameters:
+        - in: query
+          name: fromdate
+          type: string
+          format: string
+        - in: path
+          name: ids
+          description: '{ids} can contain up to 100 semicolon delimited ids, to find
+            ids programatically look for answer_id on answer objects.'
+          type: string
+          format: string
+        - in: query
+          name: max
+          type: string
+          format: string
+        - in: query
+          name: min
+          type: string
+          format: string
+        - in: query
+          name: order
+          type: string
+          format: string
+        - in: query
+          name: page
+          type: string
+          format: string
+        - in: query
+          name: pagesize
+          type: string
+          format: string
+        - in: query
+          name: sort
+          type: string
+          format: string
+        - in: query
+          name: todate
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Answers
+        security: []
+    /answers/{ids}/questions:
+      get:
+        summary: Gets all questions the answers identified by ids are on.
+        description: Gets all questions the answers identified by ids are on.
+        operationId: getAllQuestionsTheAnswersIdentifiedbyIdsAreOn
+        parameters:
+        - in: query
+          name: fromdate
+          type: string
+          format: string
+        - in: path
+          name: ids
+          description: '{ids} can contain up to 100 semicolon delimited ids, to find
+            ids programatically look for answer_id on answer objects.'
+          type: string
+          format: string
+        - in: query
+          name: max
+          type: string
+          format: string
+        - in: query
+          name: min
+          type: string
+          format: string
+        - in: query
+          name: order
+          type: string
+          format: string
+        - in: query
+          name: page
+          type: string
+          format: string
+        - in: query
+          name: pagesize
+          type: string
+          format: string
+        - in: query
+          name: sort
+          type: string
+          format: string
+        - in: query
+          name: todate
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Answers
+        security: []
+    /answers/{id}/accept:
+      get:
+        summary: 'Casts an accept vote on the given answer. '
+        description: 'Casts an accept vote on the given answer. '
+        operationId: castsAnAcceptVoteOnGivenAnswer
+        parameters:
+        - in: path
+          name: ids
+          description: '{ids} can contain up to 100 semicolon delimited ids, to find
+            ids programatically look for answer_id on answer objects.'
+          type: string
+          format: string
+        - in: query
+          name: key
+          type: string
+          format: string
+        - in: query
+          name: preview
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Answers
+        security: []
+    /answers/{id}/accept/undo:
+      get:
+        summary: 'Undoes an accept vote on the given answer. '
+        description: 'Undoes an accept vote on the given answer. '
+        operationId: undoesAnAcceptVoteOnGivenAnswer
+        parameters:
+        - in: query
+          name: id
+          description: The id of the answer
+          type: string
+          format: string
+        - in: query
+          name: key
+          type: string
+          format: string
+        - in: query
+          name: preview
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Answers
+        security: []
+    /answers/{id}/delete:
+      get:
+        summary: Deletes the given answer.
+        description: Deletes the given answer.
+        operationId: deletesTheGivenAnswer
+        parameters:
+        - in: path
+          name: id
+          description: '{ids} can contain up to 100 semicolon delimited ids, to find
+            ids programatically look for answer_id on answer objects.'
+          type: string
+          format: string
+        - in: query
+          name: key
+          type: string
+          format: string
+        - in: query
+          name: preview
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Answers
+        security: []
+    /answers/{id}/downvote:
+      get:
+        summary: Casts a downvote on the given answer.
+        description: Casts a downvote on the given answer.
+        operationId: castsADownvoteOnTheGivenAnswer
+        parameters:
+        - in: path
+          name: id
+          description: '{ids} can contain up to 100 semicolon delimited ids, to find
+            ids programatically look for answer_id on answer objects.'
+          type: string
+          format: string
+        - in: query
+          name: key
+          type: string
+          format: string
+        - in: query
+          name: preview
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Answers
+        security: []
+    /answers/{id}/downvote/undo:
+      get:
+        summary: Undoes a downvote on the given answer.
+        description: Undoes a downvote on the given answer.
+        operationId: undoesADownvoteOnTheGivenAnswer
+        parameters:
+        - in: path
+          name: id
+          description: '{ids} can contain up to 100 semicolon delimited ids, to find
+            ids programatically look for answer_id on answer objects.'
+          type: string
+          format: string
+        - in: query
+          name: key
+          type: string
+          format: string
+        - in: query
+          name: preview
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Answers
+        security: []
+    /answers/{id}/edit:
+      get:
+        summary: Edits the given answer.
+        description: Edits the given answer.
+        operationId: editsTheGivenAnswer
+        parameters:
+        - in: query
+          name: access_token
+          type: string
+          format: string
+        - in: query
+          name: body
+          type: string
+          format: string
+        - in: path
+          name: id
+          description: '{ids} can contain up to 100 semicolon delimited ids, to find
+            ids programatically look for answer_id on answer objects.'
+          type: string
+          format: string
+        - in: query
+          name: key
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Answers
+        security: []
+    /answers/{id}/flags/add:
+      get:
+        summary: Casts a flag on the given answer.
+        description: Casts a flag on the given answer.
+        operationId: castsAFlagOnTheGivenAnswer
+        parameters:
+        - in: query
+          name: access_token
+          type: string
+          format: string
+        - in: query
+          name: id
+          type: string
+          format: string
+        - in: query
+          name: key
+          type: string
+          format: string
+        - in: query
+          name: option_id
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Answers
+        security: []
+    /answers/{id}/flags/options:
+      get:
+        summary: Returns valid flag options for the given answer.
+        description: Returns valid flag options for the given answer.
+        operationId: returnsValidFlagOptionsForTheGivenAnswer
+        parameters:
+        - in: query
+          name: access_token
+          type: string
+          format: string
+        - in: path
+          name: id
+          description: '{ids} can contain up to 100 semicolon delimited ids, to find
+            ids programatically look for answer_id on answer objects.'
+          type: string
+          format: string
+        - in: query
+          name: key
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Answers
+        security: []
+    /answers/{id}/upvote:
+      get:
+        summary: Casts an upvote on the given answer.
+        description: Casts an upvote on the given answer.
+        operationId: castsAnUpvoteOnTheGivenAnswer
+        parameters:
+        - in: query
+          name: access_token
+          type: string
+          format: string
+        - in: query
+          name: id
+          type: string
+          format: string
+        - in: query
+          name: key
+          type: string
+          format: string
+        - in: query
+          name: preview
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Answers
+        security: []
+    /answers/{id}/upvote/undo:
+      get:
+        summary: Undoes an upvote on the given answer.
+        description: Undoes an upvote on the given answer.
+        operationId: undoesAnUpvoteOnTheGivenAnswer
+        parameters:
+        - in: query
+          name: access_token
+          type: string
+          format: string
+        - in: path
+          name: id
+          type: string
+          format: string
+        - in: query
+          name: key
+          type: string
+          format: string
+        - in: query
+          name: preview
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Answers
+        security: []
+  definitions: []

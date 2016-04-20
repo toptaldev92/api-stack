@@ -1,0 +1,1480 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Spreaker API",
+		"version": "v1"
+	},
+	"host": "api.spreaker.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/categories/flat": {
+			"get": {
+				"summary": "Get Categories",
+				"description": "Retrieves all categories in Spreaker",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Categories"],
+				"security": []
+			}
+		},
+		"/episode/<episode_id>/image": {
+			"put": {
+				"summary": "Change Episode Image",
+				"description": "Change Episode Image",
+				"operationId": "",
+				"parameters": [{
+					"in": "path",
+					"name": "episode_id",
+					"description": "The unique episode id.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "image_id",
+					"description": "The id of the image to set to the episode. The image must be uploaded before using it (see Upload an image) and must belong to episode authors images storage.",
+					"type": "integer",
+					"format": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Episode Images"],
+				"security": []
+			}
+		},
+		"/episode/{episode_id}": {
+			"delete": {
+				"summary": "Delete Episode",
+				"description": "Deletes an episode. Theres no way to recover a deleted episode.",
+				"operationId": "",
+				"parameters": [{
+					"in": "path",
+					"name": "episode_id",
+					"description": "The unique episode id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Episode"],
+				"security": []
+			},
+			"get": {
+				"summary": "Get Episode",
+				"description": "Retrieves an episode by unique identifier.",
+				"operationId": "",
+				"parameters": [{
+					"in": "path",
+					"name": "episode_id",
+					"description": "The episode unique id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Episode"],
+				"security": []
+			},
+			"put": {
+				"summary": "Edit Episode",
+				"description": "Edit episode info (eg. title, description, category, tags, ...)",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "category_id",
+					"description": "Episode category",
+					"type": "integer",
+					"format": "integer"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "Episode description, max length 10k chars",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "episode_id",
+					"description": "the episode id.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "tags",
+					"description": " Episode tags (comma separated)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": " Episode title, max length 40 chars",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Episode"],
+				"security": []
+			}
+		},
+		"/episode/{episode_id}/media": {
+			"get": {
+				"summary": "Get Episode Media List",
+				"description": "Get Episode Media List",
+				"operationId": "",
+				"parameters": [{
+					"in": "path",
+					"name": "episode_id",
+					"description": "Unique id of episode.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Media"],
+				"security": []
+			}
+		},
+		"/episode/{episode_id}/streams/icy": {
+			"get": {
+				"summary": "Get Episode Streams",
+				"description": "The response contains a collection of ICY streams.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "episode_id",
+					"description": "The episode id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Episodes"],
+				"security": []
+			}
+		},
+		"/episode/{episode_id}/streams/rtmp": {
+			"get": {
+				"summary": "Get Episode Streams",
+				"description": "The response contains a collection of RTMP / RTMPT streams.",
+				"operationId": "",
+				"parameters": [{
+					"in": "path",
+					"name": "episode_id",
+					"description": "The episode id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Episodes"],
+				"security": []
+			}
+		},
+		"/episodes/live": {
+			"get": {
+				"summary": "Get Live Episodes",
+				"description": "Retrieves all live episodes at the moment of the request",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "show_id",
+					"description": "An list of show_id applied as a filter",
+					"type": "integer",
+					"format": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Episodes"],
+				"security": []
+			}
+		},
+		"/explore/{category_id}": {
+			"get": {
+				"summary": "Explore Category Items",
+				"description": "This API returns information and items of a specific category. The response contains two properties at root level:",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "explore_category",
+					"description": "contains category information, the exact same information exported by /explore/categories API",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "items",
+					"description": "contains a sorted list of shows or episodes, depending on the category type (type 1 and 3 contain episodes, type 2 contains shows)",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Explore Categories"],
+				"security": []
+			}
+		},
+		"/library/{user_id}": {
+			"post": {
+				"summary": "Create Media",
+				"description": "Upload a new Media in the specified user library",
+				"operationId": "",
+				"parameters": [{
+					"in": "path",
+					"name": "Filedata",
+					"description": " The file to upload, encoded multipart/form-data",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "length",
+					"description": "The media length in milliseconds. It will be autodetected is missing. The real length will be calculated while encoding either if this property is specified.",
+					"type": "integer",
+					"format": "integer"
+				},
+				{
+					"in": "query",
+					"name": "style_id",
+					"description": "The music style associated to this media. Can be only a Style supported by Spreaker",
+					"type": "integer",
+					"format": "integer"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "The media type: can be one of SONG, JINGLE, LOOP, UNKNOWN, EFFECT, EPISODE",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The unique user id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Media"],
+				"security": []
+			}
+		},
+		"/library/{user_id}/effects/owned": {
+			"get": {
+				"summary": "Get Owned Media",
+				"description": "Get a paginated list of media owned by <user_id> filtered by type:.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "sort_col",
+					"description": "The column upon which the results are sorted. Accepted values: name, created_at",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort_dir",
+					"description": "The direction of sorting. Accepted values: ASC, DESC",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The user id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Media"],
+				"security": []
+			}
+		},
+		"/library/{user_id}/jingles/owned": {
+			"get": {
+				"summary": "Get Owned Media",
+				"description": "Get a paginated list of media owned by <user_id> filtered by type:.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "sort_col",
+					"description": "The column upon which the results are sorted. Accepted values: name, created_at",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort_dir",
+					"description": "The direction of sorting. Accepted values: ASC, DESC",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The user id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Media"],
+				"security": []
+			}
+		},
+		"/library/{user_id}/loops/owned": {
+			"get": {
+				"summary": "Get Owned Media",
+				"description": "Get a paginated list of media owned by <user_id> filtered by type:.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "sort_col",
+					"description": "The column upon which the results are sorted. Accepted values: name, created_at",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort_dir",
+					"description": "The direction of sorting. Accepted values: ASC, DESC",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The user id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Media"],
+				"security": []
+			}
+		},
+		"/library/{user_id}/songs/owned": {
+			"get": {
+				"summary": "Get Owned Media",
+				"description": "Get a paginated list of media owned by <user_id> filtered by type:.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "sort_col",
+					"description": "The column upon which the results are sorted. Accepted values: name, created_at",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort_dir",
+					"description": "The direction of sorting. Accepted values: ASC, DESC",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "Users id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Media"],
+				"security": []
+			}
+		},
+		"/library/{user_id}/soundtracks/owned": {
+			"get": {
+				"summary": "Get Owned Media",
+				"description": "Get a paginated list of media owned by <user_id> filtered by type:.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "sort_col",
+					"description": "The column upon which the results are sorted. Accepted values: name, created_at",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort_dir",
+					"description": " The direction of sorting. Accepted values: ASC, DESC",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The user id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Media"],
+				"security": []
+			}
+		},
+		"/lives/top": {
+			"get": {
+				"summary": "Get Top Live Episodes",
+				"description": "Retrieves live episodes sorted by rank",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "I",
+					"description": "The rank is language - based. This parameter specify which language you want to use to filter contents",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Episodes"],
+				"security": []
+			}
+		},
+		"/media/{media_id}": {
+			"get": {
+				"summary": "Get Media",
+				"description": "Retrieves a Media by unique identifier.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Media"],
+				"security": []
+			}
+		},
+		"/search/{query}": {
+			"get": {
+				"summary": "Search users, shows and episodes",
+				"description": "Search users, shows and episodes",
+				"operationId": "",
+				"parameters": [{
+					"in": "path",
+					"name": "query",
+					"description": "Search query",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Search"],
+				"security": []
+			}
+		},
+		"/show/search/{query}": {
+			"get": {
+				"summary": "Search Shows",
+				"description": "This API allows to find shows.",
+				"operationId": "",
+				"parameters": [{
+					"in": "path",
+					"name": "query",
+					"description": "Search query",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Shows"],
+				"security": []
+			}
+		},
+		"/show/{show_id}": {
+			"delete": {
+				"summary": "Dele Show",
+				"description": "Deletes a show. Theres no way to recover a deleted show. Only show without episodes in it can be deleted.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "description",
+					"description": "Show description",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "email",
+					"description": "Shows email contact",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "facebook_url",
+					"description": "Shows facebook page url",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "show_id",
+					"description": "The show id.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "skype_name",
+					"description": "Shows skypy account name",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sms_number",
+					"description": "Shows sms number (eg. numer to text to)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "tel_number",
+					"description": "Shows telephone number (eg. number to call for interviews)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "Show title",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "twitter_name",
+					"description": "Shows twitter account name",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "website_url",
+					"description": " Shows website url",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Shows"],
+				"security": []
+			},
+			"get": {
+				"summary": "Get Show",
+				"description": "Retrieves show information.",
+				"operationId": "",
+				"parameters": [{
+					"in": "path",
+					"name": "show_id",
+					"description": "The show id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Shows"],
+				"security": []
+			},
+			"put": {
+				"summary": "Edit Show",
+				"description": "Edit show info (name, description and contacts).",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Shows"],
+				"security": []
+			}
+		},
+		"/show/{show_id}/episodes": {
+			"get": {
+				"summary": "Get Show Episodes",
+				"description": "Retrieves all listenable episodes by show (both live and podcast, ordered by published_at DESC).",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Show Episodes"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create podcast",
+				"description": "Creates new podcast episode.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "category_id",
+					"description": " Episode category",
+					"type": "integer",
+					"format": "integer"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "Episode description",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "download_enabled",
+					"description": "Enable / disable download (defaults to true)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "explicit",
+					"description": "True if the episode contains explicit content (defaults to false)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "hidden",
+					"description": "True if the episode should be private (defaults to false)",
+					"type": "boolean",
+					"format": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "media_id",
+					"description": "The single media_id or ordered list of media_id that compose the episode",
+					"type": "integer",
+					"format": "integer"
+				},
+				{
+					"in": "query",
+					"name": "shares",
+					"description": "The channels on which this episode has to be shared. ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "show_id",
+					"description": "Unique show id.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "tags",
+					"description": "Episode tags (comma separated)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "Episode title",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Podcast"],
+				"security": []
+			}
+		},
+		"/show/{show_id}/episodes/all": {
+			"get": {
+				"summary": "Get All Show Episodes",
+				"description": "Retrieves all episodes by show (both live and podcast, ordered by published_at DESC).",
+				"operationId": "",
+				"parameters": [{
+					"in": "path",
+					"name": "show_id",
+					"description": "The unique show id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Show Episodes"],
+				"security": []
+			}
+		},
+		"/shows": {
+			"post": {
+				"summary": "Create Show",
+				"description": "Create a new Show.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "title",
+					"description": "Show title. Min length: 5. Max length: 40",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Shows"],
+				"security": []
+			}
+		},
+		"/shows/top": {
+			"get": {
+				"summary": "Get Top Shows",
+				"description": "Retrieves top shows on Spreaker.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "l",
+					"description": "The rank is language - based. This parameter specify which language you want to use to filter contents",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "latest_episode",
+					"description": " True (1) to enable the export of the latest episode. The latest episode could be the current live (if any) or th",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Shows"],
+				"security": []
+			}
+		},
+		"/user/{followed_id}/fans": {
+			"get": {
+				"summary": "Get List of Followers",
+				"description": "Get List of Followers",
+				"operationId": "",
+				"parameters": [{
+					"in": "path",
+					"name": "followed_id",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Users"],
+				"security": []
+			},
+			"post": {
+				"summary": "Follow User",
+				"description": "Follow User",
+				"operationId": "",
+				"parameters": [{
+					"in": "path",
+					"name": "followed_id",
+					"description": "Allows the authenticating user to follow the user specified in the <followed_id> parameter.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Users"],
+				"security": []
+			}
+		},
+		"/user/{followed_id}/fans/{follower_id}": {
+			"delete": {
+				"summary": "Unfollow User",
+				"description": "Unfollow User",
+				"operationId": "",
+				"parameters": [{
+					"in": "path",
+					"name": "followed_id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "follower_id",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Users"],
+				"security": []
+			}
+		},
+		"/user/{follower_id}/users/fan": {
+			"get": {
+				"summary": "Get List of Following",
+				"description": "Get List of Following",
+				"operationId": "",
+				"parameters": [{
+					"in": "path",
+					"name": "follower_id",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Users"],
+				"security": []
+			}
+		},
+		"/user/{user_id}": {
+			"get": {
+				"summary": "Get User",
+				"description": "Retrieves an user by unique identifier.",
+				"operationId": "",
+				"parameters": [{
+					"in": "path",
+					"name": "user_id",
+					"description": "The user id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Users"],
+				"security": []
+			},
+			"put": {
+				"summary": "Edit User",
+				"description": "Edit user info (eg. fullname, description aka biography, gender, birthday, ...).",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "description",
+					"description": "User biography, max length 180 chars",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "fullname",
+					"description": "User fullname, max length 30 chars",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "gender",
+					"description": "User gender: can be MALE or FEMALE",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "show_age",
+					"type": "boolean",
+					"format": "boolean"
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The user id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Users"],
+				"security": []
+			}
+		},
+		"/user/{user_id}/actions": {
+			"get": {
+				"summary": "Get User Actions",
+				"description": "Retrieves the user actions settings",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "EPISODE_BROADCAST",
+					"description": "The user has published a new episode ( either live or podcast )",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "FACEBOOK",
+					"description": " The user wants to share on facebook the specified action",
+					"type": "boolean",
+					"format": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "RADIO_FOLLOW",
+					"description": "The user starts following a radio",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "RADIO_MESSAGE",
+					"description": "The user has sent a message to a radio",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "SHOW_FOLLOW",
+					"description": " The user starts following a show",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "SHOW_MESSAGE",
+					"description": " The user has sent a message to a show",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "TWITTER",
+					"description": "The user wants to share on twitter the specified action",
+					"type": "boolean",
+					"format": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "USER_FOLLOW",
+					"description": "The user starts following another user",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "The user id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Users"],
+				"security": []
+			}
+		},
+		"/user/{user_id}/actions/facebook": {
+			"get": {
+				"summary": "Facebook Settings",
+				"description": "Edit facebook share settings.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "EPISODE_BROADCAST",
+					"description": "on to enable sharing when the user has published a new episode, off otherwise",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "RADIO_FOLLOW",
+					"description": "on to enable sharing when the user starts following a radio, off otherwise",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "RADIO_MESSAGE",
+					"description": " on to enable sharing when the user has sent a message to a radio, off otherwise",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "SHOW_FOLLOW",
+					"description": " on to enable sharing when the user starts following a show, off otherwise",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "SHOW_MESSAGE",
+					"description": "on to enable sharing when the user has sent a message to a show, off otherwise",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "USER_FOLLOW",
+					"description": "on to enable sharing when the user starts following another user, off otherwise",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The user id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Users"],
+				"security": []
+			}
+		},
+		"/user/{user_id}/actions/twitter": {
+			"put": {
+				"summary": "Twitter Settings",
+				"description": "Edit twitter share settings.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "EPISODE_BROADCAST",
+					"description": "on to enable sharing when the user has published a new episode, off otherwise",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "RADIO_FOLLOW",
+					"description": "on to enable sharing when the user starts following a radio, off otherwise",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "SHOW_FOLLOW",
+					"description": "on to enable sharing when the user starts following a show, off otherwise",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "USER_FOLLOW",
+					"description": " on to enable sharing when the user starts following another user, off otherwise",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The user id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Users"],
+				"security": []
+			}
+		},
+		"/user/{user_id}/device/{token}": {
+			"delete": {
+				"summary": "Delete Device",
+				"description": "Delete the association from a mobile device and a registered user",
+				"operationId": "",
+				"parameters": [{
+					"in": "path",
+					"name": "token",
+					"description": "The device token.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The user id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Device"],
+				"security": []
+			}
+		},
+		"/user/{user_id}/devices": {
+			"get": {
+				"summary": "Create Device",
+				"description": "Creates a new device.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "application_id",
+					"description": "The application related to the request",
+					"type": "integer",
+					"format": "integer"
+				},
+				{
+					"in": "path",
+					"name": "Delete Device",
+					"description": "The user id.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "device_name",
+					"description": "The device name, max length 255",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "device_token",
+					"description": "The device token, max length 255",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Devices"],
+				"security": []
+			}
+		},
+		"/user/{user_id}/episodes": {
+			"get": {
+				"summary": "Get User Episodes",
+				"description": "Retrieves all listenable episodes by user (both live and podcast, ordered by published_at DESC).",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["User Episodes"],
+				"security": []
+			}
+		},
+		"/user/{user_id}/image": {
+			"put": {
+				"summary": "Change User Profile Image",
+				"description": "Change User Profile Image",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "image_id",
+					"description": "The id of the image to set to the user profile. The image must be uploaded before using it (see Upload an image) and must belong to the same <user_id> images storage.",
+					"type": "integer",
+					"format": "integer"
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The unique user id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["User Images"],
+				"security": []
+			}
+		},
+		"/user/{user_id}/images": {
+			"post": {
+				"summary": "Upload An Image",
+				"description": "Upload An Image",
+				"operationId": "",
+				"parameters": [{
+					"in": "body",
+					"name": "Filedata",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Users Images"],
+				"security": []
+			}
+		},
+		"/user/{user_id}/lives/fan": {
+			"get": {
+				"summary": "Get Favorite Live Episodes",
+				"description": "",
+				"operationId": "Retrieves users favorite live episodes (the user is a fan/follower of these shows).",
+				"parameters": [{
+					"in": "path",
+					"name": "/user/{user_id}/lives/fan",
+					"description": "Users id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["User Episodes"],
+				"security": []
+			}
+		},
+		"/user/{user_id}/newsfeed": {
+			"get": {
+				"summary": "Newsfeed",
+				"description": "This API returns a list of newsfeed items. The request MUST be authenticated (an user can only fetch its own newsfeed).",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "last_id",
+					"description": " The last newsfeed item received in the previous request, so that this request will contains immediately subsequent items",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "max_per_page",
+					"description": " Max number of items in the response",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The user id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Newsfeed"],
+				"security": []
+			}
+		},
+		"/user/{user_id}/shows/author": {
+			"get": {
+				"summary": "GEt Shows By Author",
+				"description": "",
+				"operationId": "Retrieves all shows by author.",
+				"parameters": [{
+					"in": "path",
+					"name": "user_id",
+					"description": "The user id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["User Shows"],
+				"security": []
+			}
+		},
+		"/user/{user_id}/shows/fan": {
+			"get": {
+				"summary": "Get Favorite Shows",
+				"description": "Retrieves the list of shows whose authors are followed by <user_id>.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "latest_episode",
+					"description": "True (1) to enable the export of the latest episode. The latest episode could be the current live (if any) or the latest podcast.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "The user id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["User Shows"],
+				"security": []
+			}
+		},
+		"/users/search/{query}": {
+			"get": {
+				"summary": "Search Users",
+				"description": "This API allows to find users. ",
+				"operationId": "",
+				"parameters": [{
+					"in": "path",
+					"name": "query",
+					"description": "Search query",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Users"],
+				"security": []
+			}
+		},
+		"/whoami": {
+			"get": {
+				"summary": "Get Authenticated User",
+				"description": "Retrieves information about the authenticated user.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Users"],
+				"security": []
+			}
+		},
+		"show/{show_id}/image": {
+			"put": {
+				"summary": "Change Show Image",
+				"description": "Change Show Image",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "image_id",
+					"description": "The id of the image to set to the show. The image must be uploaded before using it (see Upload an image) and must belong to show authors images storage.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "show_id",
+					"description": "Unique show id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Show Images"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

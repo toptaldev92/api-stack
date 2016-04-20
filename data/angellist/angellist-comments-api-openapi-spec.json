@@ -1,0 +1,183 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "AngelList Comments API",
+		"description": "Manage comments for users and startups on AngelList.",
+		"termsOfService": "https://angel.co/terms",
+		"contact": {
+			"name": "AngelList",
+			"url": "https://angel.co/api",
+			"email": "api@angel.co"
+		},
+		"version": "v1"
+	},
+	"host": "api.angel.co",
+	"basePath": "/1/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/comments": {
+			"get": {
+				"summary": "Get Comments",
+				"description": "Pulls the comments for given object.",
+				"operationId": "comments",
+				"parameters": [{
+					"in": "query",
+					"name": "commentable_id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "commentable_type",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/comments"
+							}
+						}
+					},
+					"500": {
+						"description": "Error",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/error"
+							}
+						}
+					}
+				},
+				"tags": ["Comments"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			},
+			"post": {
+				"summary": "Add Comment",
+				"description": "Adds a comment for given object",
+				"operationId": "comment",
+				"parameters": [{
+					"in": "query",
+					"name": "comment",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "commentable_id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "commentable_type",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/comments"
+							}
+						}
+					},
+					"500": {
+						"description": "Error",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/error"
+							}
+						}
+					}
+				},
+				"tags": ["Comments"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		},
+		"/comments/{comment_id}": {
+			"delete": {
+				"summary": "Delete Comment",
+				"description": "Deletes a comment for given object",
+				"operationId": "comment",
+				"parameters": [{
+					"in": "path",
+					"name": "comment_id",
+					"description": "The comment id.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/comments"
+							}
+						}
+					},
+					"500": {
+						"description": "Error",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/error"
+							}
+						}
+					}
+				},
+				"tags": ["Comments"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
+		}
+	},
+	"definitions": {
+		"error": {
+			"properties": {
+				"error": {
+					"description": "The error.",
+					"type": "string"
+				},
+				"message": {
+					"description": "The error message.",
+					"type": "string"
+				},
+				"type": {
+					"description": "The error type.",
+					"type": "string"
+				}
+			}
+		},
+		"comments": {
+			"properties": {
+				"id": {
+					"description": "Comment id.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

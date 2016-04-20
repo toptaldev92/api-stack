@@ -1,0 +1,137 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Instructure Canvas Quiz Submissions API",
+		"description": "Canvas LMS includes a REST API for accessing and modifying data externally from the main application, in your own programs and scripts. ",
+		"termsOfService": "https://www.canvaslms.com/policies/api-policy",
+		"version": "v1"
+	},
+	"host": "canvas.instructure.com",
+	"basePath": "/api/v1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/quiz_submissions/{quiz_submission_id}/questions": {
+			"get": {
+				"summary": "Get all quiz submission questions.",
+				"description": "",
+				"operationId": "get-all-quiz-submission-questions",
+				"parameters": [{
+					"in": "query",
+					"name": "include[]",
+					"description": "Associations to include with the quiz submission question.nn        n        n          Allowed values: quiz_question",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["quizzes"],
+				"security": []
+			},
+			"post": {
+				"summary": "Answering questions",
+				"description": "",
+				"operationId": "answering-questions",
+				"parameters": [{
+					"in": "query",
+					"name": "access_code",
+					"description": "Access code for the Quiz, if any.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "attempt",
+					"description": "The attempt number of the quiz submission being taken. Note that this mustnbe the latest attempt index, as questions for earlier attempts can not benmodified.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "quiz_questions[]",
+					"description": "Set of question IDs and the answer value.nnSee Appendix: Question Answer Formats for the accepted answer formats forneach question type.",
+					"type": "quizsubmissionquestion"
+				},
+				{
+					"in": "query",
+					"name": "validation_token",
+					"description": "The unique validation token you received when the Quiz Submission wasncreated.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["quizzes"],
+				"security": []
+			}
+		},
+		"/quiz_submissions/{quiz_submission_id}/questions/id/flag": {
+			"put": {
+				"summary": "Flagging a question.",
+				"description": "",
+				"operationId": "flagging-a-question",
+				"parameters": [{
+					"in": "query",
+					"name": "access_code",
+					"description": "Access code for the Quiz, if any.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "attempt",
+					"description": "The attempt number of the quiz submission being taken. Note that this mustnbe the latest attempt index, as questions for earlier attempts can not benmodified.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "validation_token",
+					"description": "The unique validation token you received when the Quiz Submission wasncreated.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["quizzes"],
+				"security": []
+			}
+		},
+		"/quiz_submissions/{quiz_submission_id}/questions/id/unflag": {
+			"put": {
+				"summary": "Unflagging a question.",
+				"description": "",
+				"operationId": "unflagging-a-question",
+				"parameters": [{
+					"in": "query",
+					"name": "access_code",
+					"description": "Access code for the Quiz, if any.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "attempt",
+					"description": "The attempt number of the quiz submission being taken. Note that this mustnbe the latest attempt index, as questions for earlier attempts can not benmodified.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "validation_token",
+					"description": "The unique validation token you received when the Quiz Submission wasncreated.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["quizzes"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

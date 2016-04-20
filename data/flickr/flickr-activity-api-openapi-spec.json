@@ -1,0 +1,159 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Flickr Activity API",
+		"description": "The API for managing Flickr Activity",
+		"termsOfService": "https://www.flickr.com/services/api/tos/",
+		"version": null
+	},
+	"host": "www.flickr.com",
+	"basePath": "/services/rest/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/?method=flickr.activity.userComments": {
+			"get": {
+				"summary": "flickr.activity.userComments",
+				"description": "<div class=MethodDescription>Returns a list of recent activity on photos commented on by the calling user. <b>Do not poll this method more than once an hour</b>.</div>",
+				"operationId": "methodflickractivityusercomments",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of results to return. If this argument is omitted, it defaults to 1.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of items to return per page. If this argument is omitted, it defaults to 10. The maximum allowed value is 50.",
+					"type": "string"
+				}],
+				"responses": {
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.activity.userPhotos": {
+			"get": {
+				"summary": "flickr.activity.userPhotos",
+				"description": "<div class=MethodDescription>Returns a list of recent activity on photos belonging to the calling user. <b>Do not poll this method more than once an hour</b>.</div>",
+				"operationId": "methodflickractivityuserphotos",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of results to return. If this argument is omitted, it defaults to 1.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of items to return per page. If this argument is omitted, it defaults to 10. The maximum allowed value is 50.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "timeframe",
+					"description": "The timeframe in which to return updates for. This can be specified in days (2d) or hours (4h). The default behavoir is to return changes since the beginning of the previous user session.",
+					"type": "string"
+				}],
+				"responses": {
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

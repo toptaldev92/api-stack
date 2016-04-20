@@ -1,0 +1,356 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "OneNote API",
+		"description": "Microsoft OneNote API enables developers to write apps on many different platforms and device-types that create and manipulate user's information stored in Microsoft OneNote. ",
+		"termsOfService": "http://go.microsoft.com/fwlink/?LinkId=391954&clcid=0x409",
+		"version": "v1"
+	},
+	"host": "www.onenote.com",
+	"basePath": "/api/v1.0",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/notebooks": {
+			"get": {
+				"summary": "notebooks",
+				"description": "notebooks",
+				"operationId": "notebooks",
+				"parameters": [{
+					"in": "query",
+					"name": "Content-Type",
+					"description": "Required: indicates type of content being sent",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "pages",
+				"description": "pages",
+				"operationId": "pages",
+				"parameters": [{
+					"in": "query",
+					"name": "Content-Type",
+					"description": "Required: indicates type of content being sent",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/notebooks/{notebookId}": {
+			"get": {
+				"summary": "notebooks",
+				"description": "notebooks",
+				"operationId": "notebooks",
+				"parameters": [{
+					"in": "query",
+					"name": "notebookId",
+					"description": "Specifies the specific notebook",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "notebookId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/notebooks/{notebookId}/sectiongroups": {
+			"get": {
+				"summary": "notebooks/{notebookId}/sections",
+				"description": "notebooks/{notebookId}/sections",
+				"operationId": "notebooksnotebookidsections",
+				"parameters": [{
+					"in": "query",
+					"name": "notebookId",
+					"description": "Specifies the notebook.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "notebookId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/notebooks/{notebookId}/sections": {
+			"get": {
+				"summary": "notebooks/{notebookId}/sections",
+				"description": "notebooks/{notebookId}/sections",
+				"operationId": "notebooksnotebookidsections",
+				"parameters": [{
+					"in": "query",
+					"name": "notebookId",
+					"description": "Specifies the notebook.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "notebookId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "notebooks/{notebookId}",
+				"description": "notebooks/{notebookId}",
+				"operationId": "notebooksnotebookid",
+				"parameters": [{
+					"in": "query",
+					"name": "Content-Type",
+					"description": "Required: indicates type of content being sent",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "notebookId",
+					"description": "Specifies the notebook.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "notebookId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/pages": {
+			"post": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "Content-Type",
+					"description": "Required: indicates type of content sent",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sectionName",
+					"description": "Optional: indicates the name of the section in the default notebook that the page should be created in. This section will be created if it does not already exist.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/sectionGroups/": {
+			"get": {
+				"summary": "notebooks/{notebookId}/sectionGroups",
+				"description": "notebooks/{notebookId}/sectionGroups",
+				"operationId": "notebooksnotebookidsectiongroups",
+				"parameters": [{
+					"in": "query",
+					"name": "notebookId",
+					"description": "Specifies the notebook.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/sectionGroups/{sectionGroupId}": {
+			"get": {
+				"summary": "sectionGroups",
+				"description": "sectionGroups",
+				"operationId": "sectiongroups",
+				"parameters": [{
+					"in": "query",
+					"name": "SectionGroupID",
+					"description": "Specifies the specific section group",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "sectionGroupId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/sectionGroups/{sectionGroupId}/sectionGroups": {
+			"get": {
+				"summary": "sectionGroups/{sectionGroupId}/sections",
+				"description": "sectionGroups/{sectionGroupId}/sections",
+				"operationId": "sectiongroupssectiongroupidsections",
+				"parameters": [{
+					"in": "query",
+					"name": "sectionGroupId",
+					"description": "Specifies the section group.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "sectionGroupId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/sectionGroups/{sectionGroupId}/sections": {
+			"get": {
+				"summary": "sectionGroups/{sectionGroupId}",
+				"description": "sectionGroups/{sectionGroupId}",
+				"operationId": "sectiongroupssectiongroupid",
+				"parameters": [{
+					"in": "query",
+					"name": "sectionGroupId",
+					"description": "Specifies the section group.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "sectionGroupId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/sections/": {
+			"get": {
+				"summary": "sectionGroups/{sectionGroupId}/sectionGroups",
+				"description": "sectionGroups/{sectionGroupId}/sectionGroups",
+				"operationId": "sectiongroupssectiongroupidsectiongroups",
+				"parameters": [{
+					"in": "query",
+					"name": "sectionGroupId",
+					"description": "Specifies the section group.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/sections/{sectionId}": {
+			"get": {
+				"summary": "sections",
+				"description": "sections",
+				"operationId": "sections",
+				"parameters": [{
+					"in": "query",
+					"name": "sectionId",
+					"description": "Specifies the specific Section",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "sectionId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/sections/{sectionId}/pages": {
+			"post": {
+				"summary": "sections/{sectionId}",
+				"description": "sections/{sectionId}",
+				"operationId": "sectionssectionid",
+				"parameters": [{
+					"in": "query",
+					"name": "Content-Type",
+					"description": "Required: indicates type of content sent",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sectionId",
+					"description": "Specifies the Section to Create the Page in.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "sectionId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

@@ -1,0 +1,347 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Note",
+		"description": "This is where I put all of my notes, my thoughts, and what I write about.",
+		"termsOfService": "http://stack.network/terms-of-service.html",
+		"version": "v1"
+	},
+	"host": "notes.api.kinlane.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/notes/": {
+			"get": {
+				"summary": "get notes",
+				"description": "get notes",
+				"operationId": "getNotes",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "query",
+					"description": "a text query to search across notes",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Notes"],
+				"security": []
+			},
+			"post": {
+				"summary": "add note",
+				"description": "add note",
+				"operationId": "addNote",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the API",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the API",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "notes",
+					"description": "details of the notes",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "title",
+					"description": "title of the notes",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Notes"],
+				"security": []
+			}
+		},
+		"/notes/{notes_id}/": {
+			"delete": {
+				"summary": "delete note",
+				"description": "delete note",
+				"operationId": "deleteNote",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "notes_id",
+					"description": "unique id for the notes",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Notes"],
+				"security": []
+			},
+			"get": {
+				"summary": "get note",
+				"description": "get note",
+				"operationId": "getNote",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "notes_id",
+					"description": "id for the notes",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Notes"],
+				"security": []
+			},
+			"put": {
+				"summary": "update note",
+				"description": "update note",
+				"operationId": "updateNote",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the API",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the API",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "notes",
+					"description": "details of the notes",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "notes_id",
+					"description": "unique notes_id for the notes",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "title",
+					"description": "title of the notes",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Notes"],
+				"security": []
+			}
+		},
+		"/notes/{notes_id}/tags/": {
+			"get": {
+				"summary": "get note tags",
+				"description": "get note tags",
+				"operationId": "getNotesTags",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the notes",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the notes",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "notes_id",
+					"description": "id for notes",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Notes"],
+				"security": []
+			},
+			"post": {
+				"summary": "add note tag",
+				"description": "add note tag",
+				"operationId": "addNoteTags",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the notes",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the notes",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "notes_id",
+					"description": "id for the notes",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "tag",
+					"description": "tag name",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Notes"],
+				"security": []
+			}
+		},
+		"/notes/{notes_id}/tags/{tag}/": {
+			"delete": {
+				"summary": "delete a notes tag",
+				"description": "delete a notes tag",
+				"operationId": "deleteNotesTag",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the notes",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the notes",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "notes_id",
+					"description": "id for the notes",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "tag",
+					"description": "tag to remove from notes",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Notes"],
+				"security": []
+			}
+		}
+	},
+	"definitions": [{
+		"properties": {
+			"title": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"notes": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"tag_id": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"tag": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"api_count": {
+				"description": "This is a default description.",
+				"type": "delete"
+			}
+		}
+	}]
+}

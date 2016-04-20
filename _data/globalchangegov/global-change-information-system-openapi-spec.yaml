@@ -1,0 +1,1643 @@
+- swagger: "2.0"
+  info:
+    title: Global Change Information System API
+    description: Who we are, what the GCIS is, and how we use identifiers and semantic
+      information to provide points of reference and traceability. Examples and tutorials
+      for using this system as a researcher, citizen scientist, application developer
+      or information theorist. A description of how the information is structured, including
+      the overlaps between relational and semantic representations of the information.
+      Complete documentation for the API, including methods for browsing and finding
+      resources.
+    version: v1
+  host: data.globalchange.gov
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /activity:
+      get:
+        summary: List activities.
+        description: List the activities, 20 per page.
+        operationId: list-the-activities-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the activities.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /activity/{activity_identifier}:
+      get:
+        summary: Get a representation of an activity.
+        description: Get JSON which represents the structure of an activity.
+        operationId: get-json-which-represents-the-structure-of-an-activity
+        parameters:
+        - in: path
+          name: activity_identifier
+          description: activity_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /array:
+      get:
+        summary: List arrays.
+        description: List the arrays, 20 per page.
+        operationId: list-the-arrays-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the arrays.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /array/{array_identifier}:
+      get:
+        summary: Get a representation of an array.
+        description: Get JSON which represents the structure of an array.
+        operationId: get-json-which-represents-the-structure-of-an-array
+        parameters:
+        - in: path
+          name: array_identifier
+          description: array_identifier description
+        - in: query
+          name: with_gcmd
+          description: Include GCMD keywords associated with the array.
+        - in: query
+          name: with_regions
+          description: Include regions associated with the array.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /article:
+      get:
+        summary: List articles.
+        description: List the articles, 20 per page.
+        operationId: list-the-articles-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the articles.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /article/{article_identifier}:
+      get:
+        summary: Get a representation of an article.
+        description: Get JSON which represents the structure of an article.
+        operationId: get-json-which-represents-the-structure-of-an-article
+        parameters:
+        - in: path
+          name: article_identifier
+          description: article_identifier description
+        - in: query
+          name: with_gcmd
+          description: Include GCMD keywords associated with the article.
+        - in: query
+          name: with_regions
+          description: Include regions associated with the article.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /book:
+      get:
+        summary: List books.
+        description: List the books, 20 per page.
+        operationId: list-the-books-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the books.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /book/{book_identifier}:
+      get:
+        summary: Get a representation of a book.
+        description: Get JSON which represents the structure of a book.
+        operationId: get-json-which-represents-the-structure-of-a-book
+        parameters:
+        - in: path
+          name: book_identifier
+          description: book_identifier description
+        - in: query
+          name: with_gcmd
+          description: Include GCMD keywords associated with the book.
+        - in: query
+          name: with_regions
+          description: Include regions associated with the book.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /contributor/{contributor_identifier}:
+      get:
+        summary: Redirect to a particular contributor.
+        description: Given a numeric ID, redirect to the full URI of a contributor.
+        operationId: given-a-numeric-id-redirect-to-the-full-uri-of-a-contributor
+        parameters:
+        - in: path
+          name: contributor_identifier
+          description: contributor_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /dataset:
+      get:
+        summary: List datasets.
+        description: List the datasets, 20 per page.
+        operationId: list-the-datasets-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the datasets.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /dataset/lookup/{doi}:
+      get:
+        summary: Look up a dataset by DOI.
+        description: Given a DOI, return a redirect to the GCIS dataset.
+        operationId: given-a-doi-return-a-redirect-to-the-gcis-dataset
+        parameters:
+        - in: path
+          name: doi
+          description: doi description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /dataset/{dataset_identifier}:
+      get:
+        summary: Get a representation of a dataset.
+        description: Get JSON which represents the structure of a dataset.
+        operationId: get-json-which-represents-the-structure-of-a-dataset
+        parameters:
+        - in: path
+          name: dataset_identifier
+          description: dataset_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /figure:
+      get:
+        summary: List all figures
+        description: List all the figures in GCIS.
+        operationId: list-all-the-figures-in-gcis
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the figures.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /file/{file_identifier}:
+      get:
+        summary: Get a representation of a file.
+        description: Get JSON which represents the structure of a file.
+        operationId: get-json-which-represents-the-structure-of-a-file
+        parameters:
+        - in: path
+          name: file_identifier
+          description: file_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /gcmd_keyword:
+      get:
+        summary: List GCMD keywords in the GCIS.
+        description: List the GCMD keywords in the GCIS, 20 per page.
+        operationId: list-the-gcmd-keywords-in-the-gcis-20-per-page
+        parameters:
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /gcmd_keyword/{gcmd_keyword_identifier}:
+      get:
+        summary: Get a representation of a GCMD keyword.
+        description: Get JSON which represents the structure of a GCMD keyword.
+        operationId: get-json-which-represents-the-structure-of-a-gcmd-keyword
+        parameters:
+        - in: path
+          name: gcmd_keyword_identifier
+          description: gcmd_keyword_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /generic:
+      get:
+        summary: List generic publications.
+        description: List the generic publications, 20 per page.
+        operationId: list-the-generic-publications-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the generic publications.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /generic/{generic_identifier}:
+      get:
+        summary: Get a representation of a generic publication.
+        description: Get JSON which represents the structure of a generic publication.
+        operationId: get-json-which-represents-the-structure-of-a-generic-publication
+        parameters:
+        - in: path
+          name: generic_identifier
+          description: generic_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /image:
+      get:
+        summary: List images.
+        description: List the images, 20 per page.
+        operationId: list-the-images-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the images.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /image/{image_identifier}:
+      get:
+        summary: Get a representation of an image.
+        description: Get JSON which represents the structure of an image.
+        operationId: get-json-which-represents-the-structure-of-an-image
+        parameters:
+        - in: path
+          name: image_identifier
+          description: image_identifier description
+        - in: query
+          name: with_gcmd
+          description: Include GCMD keywords associated with the image.
+        - in: query
+          name: with_regions
+          description: Include regions associated with the image.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /instrument:
+      get:
+        summary: List instruments.
+        description: List the instruments, 20 per page.
+        operationId: list-the-instruments-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the instruments.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /instrument/{instrument_identifier}:
+      get:
+        summary: Get a representation of an instrument.
+        description: Get JSON which represents the structure of an instrument.
+        operationId: get-json-which-represents-the-structure-of-an-instrument
+        parameters:
+        - in: path
+          name: instrument_identifier
+          description: instrument_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /journal:
+      get:
+        summary: List journals.
+        description: List the journals, 20 per page.
+        operationId: list-the-journals-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the journals.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /journal/{journal_identifier}:
+      get:
+        summary: Get a representation of a journal.
+        description: Get JSON which represents the structure of a journal.
+        operationId: get-json-which-represents-the-structure-of-a-journal
+        parameters:
+        - in: path
+          name: journal_identifier
+          description: journal_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lexicon:
+      get:
+        summary: List lexicons.
+        description: List the lexicons, 20 per page.
+        operationId: list-the-lexicons-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the lexicons.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lexicon/{lexicon_identifier}:
+      get:
+        summary: Get a representation of a lexicon.
+        description: Get JSON which represents the structure of a lexicon.
+        operationId: get-json-which-represents-the-structure-of-a-lexicon
+        parameters:
+        - in: path
+          name: lexicon_identifier
+          description: lexicon_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lexicon/{lexicon_identifier}/find/{context}/{term}:
+      get:
+        summary: Lookup a GCID from a term
+        description: Given a lexicon, term, and context, return a 303 redirect to a
+          GCID
+        operationId: given-a-lexicon-term-and-context-return-a-303-redirect-to-a-gcid
+        parameters:
+        - in: path
+          name: context
+          description: context description
+        - in: path
+          name: lexicon_identifier
+          description: lexicon_identifier description
+        - in: path
+          name: term
+          description: term description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lexicon/{lexicon_identifier}/list/{context}:
+      get:
+        summary: List the terms within a context of a lexicon
+        description: List the terms within a context of a lexicon
+        operationId: list-the-terms-within-a-context-of-a-lexicon
+        parameters:
+        - in: path
+          name: context
+          description: context description
+        - in: path
+          name: lexicon_identifier
+          description: lexicon_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /lexicon/{lexicon_identifier}/{context}/{term}:
+      get:
+        summary: Lookup a GCID from a term
+        description: Given a lexicon, term, and context, return a 303 redirect to a
+          GCID
+        operationId: given-a-lexicon-term-and-context-return-a-303-redirect-to-a-gcid
+        parameters:
+        - in: path
+          name: context
+          description: context description
+        - in: path
+          name: lexicon_identifier
+          description: lexicon_identifier description
+        - in: path
+          name: term
+          description: term description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /metrics:
+      get:
+        summary: Get overall metrics about GCIS data
+        description: Get overall metrics about GCIS data
+        operationId: get-overall-metrics-about-gcis-data
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /model:
+      get:
+        summary: List models.
+        description: List the models, 20 per page.
+        operationId: list-the-models-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the models.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /model/{model_identifier}:
+      get:
+        summary: Get a representation of a model.
+        description: Get JSON which represents the structure of a model.
+        operationId: get-json-which-represents-the-structure-of-a-model
+        parameters:
+        - in: path
+          name: model_identifier
+          description: model_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /model/{model_identifier}/run:
+      get:
+        summary: List model runs for a particular model.
+        description: List the model runs for a particular model, 20 per page.
+        operationId: list-the-model-runs-for-a-particular-model-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the model runs.
+        - in: path
+          name: model_identifier
+          description: model_identifier description
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /model_run:
+      get:
+        summary: List model runs.
+        description: List the model runs, 20 per page.
+        operationId: list-the-model-runs-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the model runs.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /model_run/{model_identifier}/{scenario_identifier}/{range_start}/{range_end}/{spatial_resolution}/{time_resolution}/{sequence}:
+      get:
+        summary: Get a representation of a model run.
+        description: Get JSON which represents the structure of a model run.
+        operationId: get-json-which-represents-the-structure-of-a-model-run
+        parameters:
+        - in: path
+          name: model_identifier
+          description: model_identifier description
+        - in: path
+          name: range_end
+          description: range_end description
+        - in: path
+          name: range_start
+          description: range_start description
+        - in: path
+          name: scenario_identifier
+          description: scenario_identifier description
+        - in: path
+          name: sequence
+          description: sequence description
+        - in: path
+          name: spatial_resolution
+          description: spatial_resolution description
+        - in: path
+          name: time_resolution
+          description: time_resolution description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /model_run/{model_run_identifier}:
+      get:
+        summary: Get a representation of a model run.
+        description: Get JSON which represents the structure of a model run.
+        operationId: get-json-which-represents-the-structure-of-a-model-run
+        parameters:
+        - in: path
+          name: model_run_identifier
+          description: model_run_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /organization:
+      get:
+        summary: List organizations.
+        description: List the organizations, 20 per page.
+        operationId: list-the-organizations-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the organizations.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /organization/{organization_identifier}:
+      get:
+        summary: Get a representation of an organization.
+        description: Get JSON which represents the structure of an organization.
+        operationId: get-json-which-represents-the-structure-of-an-organization
+        parameters:
+        - in: path
+          name: organization_identifier
+          description: organization_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /organization/{organization_identifier}/contributions/{role_type_identifier}/{resource}:
+      get:
+        summary: Show contributions of a certain type by an organization
+        description: Given a resource (dataset, report, etc.) and a role (editor, etc),
+          and an identifier for an organization, show the resources to which the organization
+          has contributed in that role.
+        operationId: given-a-resource-dataset-report-etc-and-a-role-editor-etc-and-an-identifier-for-an-organization-show
+        parameters:
+        - in: path
+          name: organization_identifier
+          description: organization_identifier description
+        - in: path
+          name: resource
+          description: resource description
+        - in: path
+          name: role_type_identifier
+          description: role_type_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /person:
+      get:
+        summary: List people.
+        description: List the people, 20 per page.
+        operationId: list-the-people-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the people.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /person/{name}:
+      get:
+        summary: Redirect to a person based on a name
+        description: Given a name (case sensitive, concatenated by dashes), redirect
+          if there is a single match.  The first and last names can be in either order.
+        operationId: given-a-name-case-sensitive-concatenated-by-dashes-redirect-if-there-is-a-single-match--the-first-an
+        parameters:
+        - in: path
+          name: name
+          description: name description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /person/{orcid}:
+      get:
+        summary: Redirect to a person based on an ORCID.
+        description: Given an ORCID, if there is a match, redirect to the persons URI.
+        operationId: given-an-orcid-if-there-is-a-match-redirect-to-the-persons-uri
+        parameters:
+        - in: path
+          name: orcid
+          description: orcid description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /person/{person_identifier}:
+      get:
+        summary: Get a representation of a person.
+        description: Get JSON which represents the structure of a person.
+        operationId: get-json-which-represents-the-structure-of-a-person
+        parameters:
+        - in: path
+          name: person_identifier
+          description: person_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /person/{person_identifier}/contributions/{role_type_identifier}/{resource}:
+      get:
+        summary: Show contributions of a certain type by a person
+        description: Given a resource (dataset, report, etc.) and a role (editor, etc),
+          and an identifier for a person, show the resources to which the person has
+          contributed in that role.
+        operationId: given-a-resource-dataset-report-etc-and-a-role-editor-etc-and-an-identifier-for-a-person-show-the-re
+        parameters:
+        - in: path
+          name: person_identifier
+          description: person_identifier description
+        - in: path
+          name: resource
+          description: resource description
+        - in: path
+          name: role_type_identifier
+          description: role_type_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /platform:
+      get:
+        summary: List platforms.
+        description: List the platforms, 20 per page.
+        operationId: list-the-platforms-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the platforms.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /platform/{platform_identifier}:
+      get:
+        summary: Get a representation of a platform.
+        description: Get JSON which represents the structure of a platform.
+        operationId: get-json-which-represents-the-structure-of-a-platform
+        parameters:
+        - in: path
+          name: platform_identifier
+          description: platform_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /platform/{platform_identifier}/instrument:
+      get:
+        summary: List instruments on a platform.
+        description: List the instruments on a platform, 20 per page.
+        operationId: list-the-instruments-on-a-platform-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the instruments.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        - in: path
+          name: platform_identifier
+          description: platform_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /platform/{platform_identifier}/instrument/{instrument_identifier}:
+      get:
+        summary: Get a representation of an instrument on a platform.
+        description: Get JSON which represents the structure of an instrument on a platform.
+        operationId: get-json-which-represents-the-structure-of-an-instrument-on-a-platform
+        parameters:
+        - in: path
+          name: instrument_identifier
+          description: instrument_identifier description
+        - in: path
+          name: platform_identifier
+          description: platform_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /project:
+      get:
+        summary: List projects.
+        description: List the projects, 20 per page.
+        operationId: list-the-projects-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the projects.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /project/{project_identifier}:
+      get:
+        summary: Get a representation of a project.
+        description: Get JSON which represents the structure of a project.
+        operationId: get-json-which-represents-the-structure-of-a-project
+        parameters:
+        - in: path
+          name: project_identifier
+          description: project_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /publication/{publication_identifier}:
+      get:
+        summary: Redirect to a particular publication.
+        description: Given a numeric ID, redirect to the full URI of a publication.
+        operationId: given-a-numeric-id-redirect-to-the-full-uri-of-a-publication
+        parameters:
+        - in: path
+          name: publication_identifier
+          description: publication_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /reference:
+      get:
+        summary: List references.
+        description: List the references, 20 per page.
+        operationId: list-the-references-20-per-page
+        parameters:
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /reference/{reference_identifier}:
+      get:
+        summary: Get a representation of a reference.
+        description: Get JSON which represents the structure of a reference.
+        operationId: get-json-which-represents-the-structure-of-a-reference
+        parameters:
+        - in: path
+          name: reference_identifier
+          description: reference_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /region:
+      get:
+        summary: List regions.
+        description: List the regions, 20 per page.
+        operationId: list-the-regions-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the regions.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /region/{region_identifier}:
+      get:
+        summary: Get a representation of a region.
+        description: Get JSON which represents the structure of a region.
+        operationId: get-json-which-represents-the-structure-of-a-region
+        parameters:
+        - in: path
+          name: region_identifier
+          description: region_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report:
+      get:
+        summary: Get a list of reports.
+        description: List the reports, 20 per page.
+        operationId: list-the-reports-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the reports.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        - in: query
+          name: report_type
+          description: 'The type of report.  Currently : report, assessment, technical_input,
+            or indicator.'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}:
+      get:
+        summary: Get a representation of a report.
+        description: Get JSON which represents the structure of a report.
+        operationId: get-json-which-represents-the-structure-of-a-report
+        parameters:
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        - in: query
+          name: with_gcmd
+          description: Include GCMD keywords associated with the report.
+        - in: query
+          name: with_regions
+          description: Include regions associated with the report.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/array:
+      get:
+        summary: List arrays associated with a report.
+        description: List the arrays associated with a report, 20 per page.
+        operationId: list-the-arrays-associated-with-a-report-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the arrays.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/book:
+      get:
+        summary: List books associated with a report.
+        description: List the books associated with a report, 20 per page.
+        operationId: list-the-books-associated-with-a-report-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the books.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/chapter:
+      get:
+        summary: List chapters in a report
+        description: Get a list of chapters in a report.
+        operationId: get-a-list-of-chapters-in-a-report
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the chapters.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/chapter/{chapter_identifier}:
+      get:
+        summary: Get a representation of a chapter.
+        description: Get JSON which represents the structure of a chapter.
+        operationId: get-json-which-represents-the-structure-of-a-chapter
+        parameters:
+        - in: path
+          name: chapter_identifier
+          description: chapter_identifier description
+        - in: path
+          name: ids
+          description: '{ids} can contain up to 100 semicolon delimited ids, to find
+            ids programatically look for answer_id on answer objects.'
+          type: string
+          format: string
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        - in: query
+          name: with_gcmd
+          description: Include GCMD keywords associated with the chapter.
+        - in: query
+          name: with_regions
+          description: Include regions associated with the chapter.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/chapter/{chapter_identifier}/figure:
+      get:
+        summary: List figures in a chapter
+        description: Get a list of figures in a chapter.
+        operationId: get-a-list-of-figures-in-a-chapter
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the figures.
+        - in: path
+          name: chapter_identifier
+          description: chapter_identifier description
+        - in: path
+          name: ids
+          description: '{ids} can contain up to 100 semicolon delimited ids, to find
+            ids programatically look for answer_id on answer objects.'
+          type: string
+          format: string
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/chapter/{chapter_identifier}/figure/{figure_identifier}:
+      get:
+        summary: Get a representation of a figure in a chapter.
+        description: Get JSON which represents the structure of a figure in a chapter.
+        operationId: get-json-which-represents-the-structure-of-a-figure-in-a-chapter
+        parameters:
+        - in: path
+          name: chapter_identifier
+          description: chapter_identifier description
+        - in: path
+          name: figure_identifier
+          description: figure_identifier description
+        - in: path
+          name: ids
+          description: '{ids} can contain up to 100 semicolon delimited ids, to find
+            ids programatically look for answer_id on answer objects.'
+          type: string
+          format: string
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        - in: query
+          name: with_gcmd
+          description: Include GCMD keywords associated with the figure.
+        - in: query
+          name: with_regions
+          description: Include regions associated with the figure.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/chapter/{chapter_identifier}/finding:
+      get:
+        summary: List findings in a chapter
+        description: Get a list of findings in a chapter.
+        operationId: get-a-list-of-findings-in-a-chapter
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the findings.
+        - in: path
+          name: chapter_identifier
+          description: chapter_identifier description
+        - in: path
+          name: ids
+          description: '{ids} can contain up to 100 semicolon delimited ids, to find
+            ids programatically look for answer_id on answer objects.'
+          type: string
+          format: string
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/chapter/{chapter_identifier}/finding/{finding_identifier}:
+      get:
+        summary: Get a representation of a finding in a chapter.
+        description: Get JSON which represents the structure of a finding in a chapter.
+        operationId: get-json-which-represents-the-structure-of-a-finding-in-a-chapter
+        parameters:
+        - in: path
+          name: chapter_identifier
+          description: chapter_identifier description
+        - in: path
+          name: finding_identifier
+          description: finding_identifier description
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        - in: query
+          name: with_gcmd
+          description: Include GCMD keywords associated with the finding.
+        - in: query
+          name: with_regions
+          description: Include regions associated with the finding.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/chapter/{chapter_identifier}/reference:
+      get:
+        summary: List references in a chapter
+        description: Get a list of references in a chapter.
+        operationId: get-a-list-of-references-in-a-chapter
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the references.
+        - in: path
+          name: chapter_identifier
+          description: chapter_identifier description
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/chapter/{chapter_identifier}/table:
+      get:
+        summary: List tables in a chapter
+        description: Get a list of tables in a chapter.
+        operationId: get-a-list-of-tables-in-a-chapter
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the tables.
+        - in: path
+          name: chapter_identifier
+          description: chapter_identifier description
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/chapter/{chapter_identifier}/table/{table_identifier}:
+      get:
+        summary: Get a representation of a table in a chapter.
+        description: Get JSON which represents the structure of a table in a chapter.
+        operationId: get-json-which-represents-the-structure-of-a-table-in-a-chapter
+        parameters:
+        - in: path
+          name: chapter_identifier
+          description: chapter_identifier description
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        - in: path
+          name: table_identifier
+          description: table_identifier description
+        - in: query
+          name: with_gcmd
+          description: Include GCMD keywords associated with the table.
+        - in: query
+          name: with_regions
+          description: Include regions associated with the table.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/figure:
+      get:
+        summary: List figures in a report.
+        description: List the figures in a report, 20 per page.
+        operationId: list-the-figures-in-a-report-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the figures.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/figure/{figure_identifier}:
+      get:
+        summary: Get a representation of a figure.
+        description: Get JSON which represents the structure of a figure.
+        operationId: get-json-which-represents-the-structure-of-a-figure
+        parameters:
+        - in: path
+          name: figure_identifier
+          description: figure_identifier description
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        - in: query
+          name: with_gcmd
+          description: Include GCMD keywords associated with the figure.
+        - in: query
+          name: with_regions
+          description: Include regions associated with the figure.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/finding:
+      get:
+        summary: List findings in a report.
+        description: List the findings in a report, 20 per page.
+        operationId: list-the-findings-in-a-report-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the findings.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/finding/{finding_identifier}:
+      get:
+        summary: Get a representation of a finding.
+        description: Get JSON which represents the structure of a finding.
+        operationId: get-json-which-represents-the-structure-of-a-finding
+        parameters:
+        - in: path
+          name: finding_identifier
+          description: finding_identifier description
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        - in: query
+          name: with_gcmd
+          description: Include GCMD keywords associated with the finding.
+        - in: query
+          name: with_regions
+          description: Include regions associated with the finding.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/image:
+      get:
+        summary: List images associated with a report.
+        description: List the images associated with a report, 20 per page.
+        operationId: list-the-images-associated-with-a-report-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the images.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/reference:
+      get:
+        summary: List references in a report.
+        description: List the references in a report, 20 per page.
+        operationId: list-the-references-in-a-report-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the references.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/table:
+      get:
+        summary: List tables in a report.
+        description: List the tables in a report, 20 per page.
+        operationId: list-the-tables-in-a-report-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the tables.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/table/{table_identifier}:
+      get:
+        summary: Get a representation of a table.
+        description: Get JSON which represents the structure of a table.
+        operationId: get-json-which-represents-the-structure-of-a-table
+        parameters:
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        - in: path
+          name: table_identifier
+          description: table_identifier description
+        - in: query
+          name: with_gcmd
+          description: Include GCMD keywords associated with the table.
+        - in: query
+          name: with_regions
+          description: Include regions associated with the table.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /report/{report_identifier}/webpage:
+      get:
+        summary: List webpages associated with a report.
+        description: List the webpages associated with a report, 20 per page.
+        operationId: list-the-webpages-associated-with-a-report-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the webpages.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        - in: path
+          name: report_identifier
+          description: report_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /role_type:
+      get:
+        summary: List roles
+        description: Get a list of the types of roles for contributors.
+        operationId: get-a-list-of-the-types-of-roles-for-contributors
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the contributors.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /scenario:
+      get:
+        summary: List scenarios.
+        description: List the scenarios, 20 per page.
+        operationId: list-the-scenarios-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the scenarios.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /scenario/{scenario_identifier}:
+      get:
+        summary: Get a representation of a scenario.
+        description: Get JSON which represents the structure of a scenario.
+        operationId: get-json-which-represents-the-structure-of-a-scenario
+        parameters:
+        - in: path
+          name: scenario_identifier
+          description: scenario_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /scenario/{scenario_identifier}/run:
+      get:
+        summary: List model runs for a particular scenario.
+        description: List the model runs for a particular scenario, 20 per page.
+        operationId: list-the-model-runs-for-a-particular-scenario-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the model runs.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        - in: path
+          name: scenario_identifier
+          description: scenario_identifier description
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /uuid:
+      get:
+        summary: Generate a UUID.
+        description: <p>Generate version 4 Universally Unique Identifiers.  The algorithm
+          used for thisn    is described <a target=_blank href=https://en.wikipedia.org/wiki/UUID#Version_4_.28random.29>here</a>.n    </p>
+        operationId: pgenerate-version-4-universally-unique-identifiers--the-algorithm-used-for-this----is-described-a-ta
+        parameters:
+        - in: query
+          name: count
+          description: Number of UUIDs to generate (max 1000)
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /webpage:
+      get:
+        summary: List web pages.
+        description: List the web pages, 20 per page.
+        operationId: list-the-web-pages-20-per-page
+        parameters:
+        - in: query
+          name: all
+          description: Set to 1 to get all of the web pages.
+        - in: query
+          name: page
+          description: The page number (starting at 1).
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /webpage/{webpage_identifier}:
+      get:
+        summary: Get a representation of a web page.
+        description: Get JSON which represents the structure of a web page.
+        operationId: get-json-which-represents-the-structure-of-a-web-page
+        parameters:
+        - in: path
+          name: webpage_identifier
+          description: webpage_identifier description
+        - in: query
+          name: with_gcmd
+          description: Include GCMD keywords associated with the web page.
+        - in: query
+          name: with_regions
+          description: Include regions associated with the web page.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

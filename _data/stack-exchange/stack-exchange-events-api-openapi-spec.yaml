@@ -1,0 +1,44 @@
+- swagger: "2.0"
+  info:
+    title: Stack Exchange Events API
+    description: The API for managing Stack Exchange events.
+    termsOfService: http://stackexchange.com/legal/api-terms-of-use
+    version: "2.2"
+  host: api.stackexchange.com
+  basePath: /2.2
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /events:
+      get:
+        summary: Returns a stream of events that have occurred on the site.
+        description: Returns a stream of events that have occurred on the site.
+        operationId: returnsAStreamOfEventsThatHaveOccuredOnTheSite
+        parameters:
+        - in: query
+          name: access_token
+          type: string
+          format: string
+        - in: query
+          name: page
+          type: string
+          format: string
+        - in: query
+          name: pagesize
+          type: string
+          format: string
+        - in: query
+          name: since
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Events
+        security: []
+  definitions: []

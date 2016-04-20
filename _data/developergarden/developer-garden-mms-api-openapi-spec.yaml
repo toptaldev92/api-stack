@@ -1,0 +1,81 @@
+- swagger: "2.0"
+  info:
+    title: Developer Garden MMS API
+    description: The Send MMS service allows sending MMS messages to mobile phones.
+    version: v1
+  host: gateway.developer.telekom.com
+  basePath: /p3gw-mod-odg-mms/rest/{environment}/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    sendMMS/:
+      get:
+        summary: Send MMS
+        description: The Send MMS service allows sending MMS messages to mobile phones.
+        operationId: ""
+        parameters:
+        - in: query
+          name: account
+          description: Account ID of the sub-account that should be billed for the service
+            use. If the parameter is not specified, the main account is billed.
+          type: string
+          format: string
+        - in: query
+          name: attachment
+          description: Base64 encoded attachment to send. (optional)  Attachments of
+            arbitrary type (Picture, Sound, Video, Text) are supported. The file type
+            has to be specified through contentType. Furthermore, the file name has
+            to be specified through filename.  At least one of the fields, message and
+            attachment, has to be present.
+          type: string
+          format: string
+        - in: query
+          name: contentType
+          description: File type of the attachment, if an attachment is to be sent.
+          type: string
+          format: string
+        - in: path
+          name: environment
+          description: is one of production, sandbox or mock
+          type: string
+          format: string
+        - in: query
+          name: filename
+          description: File name of the attachment, if an attachment is to be sent.
+            (optional)
+          type: string
+          format: string
+        - in: query
+          name: message
+          description: ' text message. (optional). At least one of the fields, message
+            and attachment, has to be present.'
+          type: string
+          format: string
+        - in: query
+          name: number
+          description: Recipient phone numbers, separated by commas (,).
+          type: string
+          format: string
+        - in: query
+          name: originator
+          description: 'The sender as displayed to the recipient. '
+          type: string
+          format: string
+        - in: query
+          name: subject
+          description: The subject line.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' SMS'
+        - ' MMS'
+        security: []
+  definitions: []

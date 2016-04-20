@@ -1,0 +1,157 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "DreamFactory Email API",
+		"description": "You can set up email services to facilitate sending of emails via the REST API.",
+		"version": null
+	},
+	"host": "/email",
+	"basePath": "https://dsp-sandman1.cloud.dreamfactory.com/rest",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/email": {
+			"post": {
+				"summary": "sendEmail() - Send an email created from posted data and/or a template.",
+				"description": "If a template is not used with all required fields, then they must be included in the request. If the from address is not provisioned in the service, then it must be included in the request.",
+				"operationId": "sendEmail",
+				"parameters": [{
+					"in": "body",
+					"name": "data",
+					"description": "Data containing name-value pairs used for provisioning emails.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "query",
+					"name": "template",
+					"description": "Optional template name to base email on.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "template_id",
+					"description": "Optional template id to base email on.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"ComponentList": {
+			"properties": {
+				"resource": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Resource": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Resources": {
+			"properties": {
+				"resource": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Success": {
+			"properties": {
+				"success": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"EmailResponse": {
+			"properties": {
+				"count": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"EmailRequest": {
+			"properties": {
+				"template": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"template_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"to": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"cc": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"bcc": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"subject": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"body_text": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"body_html": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"from_name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"from_email": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"reply_to_name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"reply_to_email": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"EmailAddress": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"email": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

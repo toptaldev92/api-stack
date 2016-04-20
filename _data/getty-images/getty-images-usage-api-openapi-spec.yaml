@@ -1,0 +1,74 @@
+- swagger: "2.0"
+  info:
+    title: Getty Images Usage API
+    version: v3
+  host: connect.gettyimages.com
+  basePath: /v3/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /v3/usage-batches/{id}:
+      put:
+        summary: Provides the api for reporting usage of assets in a batch format.
+        description: ""
+        operationId: Usage_Put
+        parameters:
+        - in: header
+          name: Accept-Language
+          description: Accept-Language parameter optional. Used to restrict the set
+            of natural languages that are preferred as a response to the request.
+          type: string
+          format: string
+        - in: header
+          name: Api-Key
+          description: Api-Key
+          type: string
+          format: string
+        - in: header
+          name: Authorization
+          description: Authorization token required. Used for applying content access
+            restrictions. Use one of the OAuth2 grants to auto-populate this value.
+          type: string
+          format: string
+        - in: path
+          name: id
+          description: Batch Id to record with the report. Must be unique.
+          type: string
+          format: string
+        - in: body
+          name: request
+          description: Json model with asset usages to report. Supports up to 1000 usages
+            per batch. Given the atomic nature of the operation,rn             all Image
+            Ids included in a request must be valid for the batch to be recorded. Batches
+            containing an invalid Image Id will cause the operationrn             to
+            fail and return an error response. In this case, none of the reported usages
+            will be recorded.
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions:
+    report_usage_batch_request:
+      properties:
+        asset_usages:
+          description: This is a default description.
+          type: string
+    asset_usage:
+      properties:
+        asset_id:
+          description: This is a default description.
+          type: string
+        quantity:
+          description: This is a default description.
+          type: string
+        usage_date:
+          description: This is a default description.
+          type: string

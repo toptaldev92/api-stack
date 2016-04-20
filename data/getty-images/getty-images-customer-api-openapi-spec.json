@@ -1,0 +1,98 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Getty Images Customer API",
+		"version": "v3"
+	},
+	"host": "connect.gettyimages.com",
+	"basePath": "/v3/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/v3/customers": {
+			"post": {
+				"summary": "Creates a new customer.",
+				"description": "",
+				"operationId": "Customers_CreateCustomer",
+				"parameters": [{
+					"in": "header",
+					"name": "Accept-Language",
+					"description": "Accept-Language parameter optional. Used to restrict the set of natural languages that are preferred as a response to the request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "header",
+					"name": "Api-Key",
+					"description": "Api-Key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "header",
+					"name": "Authorization",
+					"description": "Authorization token optional. Used for applying content access restrictions. Use one of the OAuth2 grants to auto-populate this value.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "body",
+					"name": "customer",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"CreateCustomerAccountInfo": {
+			"properties": {
+				"billing_country_iso_alpha_3": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"email_address": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"marketing_email_opt_in": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name_first": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name_last": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name_middle": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"password": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"phone_number": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"username": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

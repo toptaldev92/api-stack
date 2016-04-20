@@ -1,0 +1,83 @@
+- swagger: "2.0"
+  info:
+    title: Alchemy Entity Extraction API
+    description: 'AlchemyAPI offers easy-to-use facilities for processing your content:
+      Extract the semantic richness from any website, or HTML file, or text data.'
+    termsOfService: http://www.alchemyapi.com/company/terms.html
+    contact:
+      name: AlchemyAPI
+      url: http://www.alchemyapi.com/company/contact
+      email: questions@alchemyapi.com
+    version: v1
+  host: access.alchemyapi.com
+  basePath: /calls/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /url/URLGetRankedNamedEntities:
+      get:
+        summary: Get Ranked Named Entities
+        description: 'AlchemyAPI offers easy-to-use facilities for processing your content:
+          Extract the semantic richness from any website, or HTML file, or text data.'
+        operationId: callsUrlURLGetRankedNamedEntities
+        parameters:
+        - in: query
+          name: apikey
+          type: string
+          format: string
+        - in: query
+          name: url
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/results'
+        tags:
+        - Entities
+        security:
+        - apikey: []
+  securityDefinitions:
+    apikey:
+      type: apiKey
+      name: apikey
+      in: query
+  definitions:
+    results:
+      properties:
+        status:
+          description: This is a default description.
+          type: string
+        usage:
+          description: This is a default description.
+          type: string
+        url:
+          description: This is a default description.
+          type: string
+        language:
+          description: This is a default description.
+          type: string
+        entities:
+          description: This is a default description.
+          type: string
+    entitty:
+      properties:
+        type:
+          description: This is a default description.
+          type: string
+        relevance:
+          description: This is a default description.
+          type: string
+        count:
+          description: This is a default description.
+          type: string
+        text:
+          description: This is a default description.
+          type: string

@@ -1,0 +1,54 @@
+- swagger: "2.0"
+  info:
+    title: Clickatell SMS
+    description: The Clickatell HTTP/S API provides just about the simplest way of programming
+      your connection to Clickatell, and if you need to overcome a firewall problem
+      HTTP/S is almost certainly your best solution.
+    termsOfService: https://www.clickatell.com/about-us/terms-and-conditions/?_ga=1.209522258.1120142809.1413957851
+    version: v1
+  host: api.clickatell.com
+  basePath: http/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    sendmsg/:
+      get:
+        summary: Send Message
+        description: The Clickatell HTTP/S API provides just about the simplest way
+          of programming your connection to Clickatell, and if you need to overcome
+          a firewall problem HTTP/S is almost certainly your best solution.
+        operationId: ""
+        parameters:
+        - in: query
+          name: api_id
+          type: string
+          format: string
+        - in: query
+          name: password
+          type: string
+          format: string
+        - in: query
+          name: text
+          type: string
+          format: string
+        - in: query
+          name: to
+          type: string
+          format: string
+        - in: query
+          name: user
+          description: The user id sending message.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' SMS'
+        security: []
+  definitions: []

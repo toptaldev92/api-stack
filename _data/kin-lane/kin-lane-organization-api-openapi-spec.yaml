@@ -1,0 +1,1428 @@
+- swagger: "2.0"
+  info:
+    title: Organization
+    description: This is an organization for all my organization entries. I use a single
+      organization system to manage all my sites. Based upon tagging, I then publish
+      each post out to its respective Github Page based repo.
+    termsOfService: http://stack.network/terms-of-service.html
+    version: v2
+  host: organization.api.kinlane.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /organization/:
+      get:
+        summary: get organizations
+        description: get organizations
+        operationId: getOrganizations
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: query
+          description: a text query to search across organizations
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Organizations
+        security: []
+      post:
+        summary: add new organization
+        description: add new organization
+        operationId: addOrganization
+        parameters:
+        - in: formData
+          name: address
+          description: primary address of the organization
+          type: string
+          format: string
+        - in: formData
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: city
+          description: primary city of the organization
+          type: string
+          format: string
+        - in: formData
+          name: country
+          description: primary country of the organization
+          type: string
+          format: string
+        - in: formData
+          name: details
+          description: details for the organization
+          type: string
+          format: string
+        - in: formData
+          name: email
+          description: email for the organization
+          type: string
+          format: string
+        - in: formData
+          name: location
+          description: primary location of the organization
+          type: string
+          format: string
+        - in: formData
+          name: name
+          description: name of organization
+          type: string
+          format: string
+        - in: formData
+          name: phone
+          description: phone for the organization
+          type: string
+          format: string
+        - in: formData
+          name: photo
+          description: primary photo of the organization
+          type: string
+          format: string
+        - in: formData
+          name: postal_code
+          description: primary postal code of the organization
+          type: string
+          format: string
+        - in: formData
+          name: rank
+          description: ranking for the organization
+          type: string
+          format: string
+        - in: formData
+          name: state
+          description: primary state of the organization
+          type: string
+          format: string
+        - in: formData
+          name: summary
+          description: sumary of the organization
+          type: string
+          format: string
+        - in: formData
+          name: url
+          description: unique url for the organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Organizations
+        security: []
+    /organization/{organization_id}/:
+      delete:
+        summary: delete organization
+        description: delete organization
+        operationId: deleteOrganization
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: the unique id for the organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Organizations
+        security: []
+      get:
+        summary: get organization
+        description: get organization
+        operationId: getOrganization
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: the unique id for organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Organizations
+        security: []
+      put:
+        summary: update organization
+        description: update organization
+        operationId: updateOrganization
+        parameters:
+        - in: formData
+          name: address
+          description: primary address of the organization
+          type: string
+          format: string
+        - in: formData
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: city
+          description: primary city of the organization
+          type: string
+          format: string
+        - in: formData
+          name: country
+          description: primary country of the organization
+          type: string
+          format: string
+        - in: formData
+          name: details
+          description: details for the organization
+          type: string
+          format: string
+        - in: formData
+          name: email
+          description: email for the organization
+          type: string
+          format: string
+        - in: formData
+          name: location
+          description: primary location of the organization
+          type: string
+          format: string
+        - in: formData
+          name: name
+          description: name of organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: the unique id for the organization
+          type: string
+          format: string
+        - in: formData
+          name: phone
+          description: phone for the organization
+          type: string
+          format: string
+        - in: formData
+          name: photo
+          description: primary photo of the organization
+          type: string
+          format: string
+        - in: formData
+          name: postal_code
+          description: primary postal code of the organization
+          type: string
+          format: string
+        - in: formData
+          name: rank
+          description: ranking for the organization
+          type: string
+          format: string
+        - in: formData
+          name: state
+          description: primary state of the organization
+          type: string
+          format: string
+        - in: formData
+          name: summary
+          description: sumary of the organization
+          type: string
+          format: string
+        - in: formData
+          name: url
+          description: unique url for the organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Organizations
+        security: []
+    /organization/{organization_id}/apis/:
+      get:
+        summary: retrieve organization APIs
+        description: Returns the APIs for an organization
+        operationId: getAPIsForOrganization
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - APIs
+        security: []
+      post:
+        summary: add API to organization
+        description: add API for organization
+        operationId: addOrganizationAPI
+        parameters:
+        - in: formData
+          name: api_id
+          description: API unique ID
+          type: string
+          format: string
+        - in: formData
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - APIs
+        security: []
+    /organization/{organization_id}/apis/{api_id}:
+      delete:
+        summary: delete a organization API
+        description: deletes a API applied to organization
+        operationId: deleteOrganizationAPI
+        parameters:
+        - in: path
+          name: api_id
+          description: unique ID for API to remove from organization
+          type: string
+          format: string
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - APIs
+        security: []
+    /organization/{organization_id}/buildingblocks/:
+      get:
+        summary: retrieve organization building blocks
+        description: retrieve organization building blocks
+        operationId: getOrganizationBuildingBlocks
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Building Blocks
+        security: []
+      post:
+        summary: add building block to organization
+        description: add building block for organization
+        operationId: addOrganizationBuildingBlock
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: building_block_id
+          description: building block unique id
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the organization
+          type: string
+          format: string
+        - in: formData
+          name: tools_id
+          description: tool id for the building block
+          type: string
+          format: string
+        - in: formData
+          name: url
+          description: url for the building block
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Building Blocks
+        security: []
+    /organization/{organization_id}/buildingblocks/{building_block_id}:
+      delete:
+        summary: delete a organization building block
+        description: delete a organization building block
+        operationId: deleteOrganizationBuildingBlock
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: building_block_id
+          description: building block to remove from organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Building Blocks
+        security: []
+    /organization/{organization_id}/images/:
+      get:
+        summary: retrieve organization images
+        description: Returns the images for an organization
+        operationId: getOrganizationImages
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Images
+        security: []
+      post:
+        summary: add image to organization
+        description: add image for organization
+        operationId: addOrganizationImage
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: name
+          description: image name
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the organization
+          type: string
+          format: string
+        - in: formData
+          name: path
+          description: image path
+          type: string
+          format: string
+        - in: formData
+          name: type
+          description: image type
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Images
+        security: []
+    /organization/{organization_id}/images/{image_id}:
+      delete:
+        summary: delete a organization image
+        description: deletes a image applied to organization
+        operationId: deleteOrganizationImage
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: image_id
+          description: id for the image to remove from organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Images
+        security: []
+    /organization/{organization_id}/locations/:
+      get:
+        summary: retrieve organization locations
+        description: Returns the locations for an organization
+        operationId: getOrganizationLocations
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Locations
+        security: []
+      post:
+        summary: add location to organization
+        description: add location for organization
+        operationId: addOrganizationLocation
+        parameters:
+        - in: formData
+          name: address1
+          description: location address 1
+          type: string
+          format: string
+        - in: formData
+          name: address2
+          description: location address 2
+          type: string
+          format: string
+        - in: formData
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: city
+          description: location city
+          type: string
+          format: string
+        - in: formData
+          name: country_code
+          description: location country code
+          type: string
+          format: string
+        - in: formData
+          name: description
+          description: location description
+          type: string
+          format: string
+        - in: formData
+          name: latitude
+          description: location latitude
+          type: string
+          format: string
+        - in: formData
+          name: longitude
+          description: location longitude
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the organization
+          type: string
+          format: string
+        - in: formData
+          name: state_code
+          description: location state code
+          type: string
+          format: string
+        - in: formData
+          name: zip_code
+          description: location zip code
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Locations
+        security: []
+    /organization/{organization_id}/locations/{location_id}:
+      delete:
+        summary: delete a organization tag
+        description: delete a organization tag
+        operationId: deleteorganizationLocation
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: location_id
+          description: id of location to remove from organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Locations
+        security: []
+    /organization/{organization_id}/logs/:
+      get:
+        summary: retrieve organization logs
+        description: retrieve organization logs
+        operationId: getOrganizationLogs
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Logs
+        security: []
+      post:
+        summary: add log to organization
+        description: add log to organization
+        operationId: addOrganizationLog
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: details
+          description: log details
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the organization
+          type: string
+          format: string
+        - in: formData
+          name: type
+          description: type of log entry
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Logs
+        security: []
+    /organization/{organization_id}/logs/{log_id}:
+      delete:
+        summary: delete a organization log
+        description: delete a organization log
+        operationId: deleteOrganizationLog
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: log_id
+          description: id for the log
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Logs
+        security: []
+    /organization/{organization_id}/notes/:
+      get:
+        summary: retrieve an APIs notes
+        description: Returns the notes for an API
+        operationId: getOrganizationNotes
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the API
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Notes
+        security: []
+      post:
+        summary: add an Organization note
+        description: Add a note for the organization
+        operationId: addOrganizationNote
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the API
+          type: string
+          format: string
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the API
+          type: string
+          format: string
+        - in: formData
+          name: note
+          description: the full text of note
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the api item
+          type: string
+          format: string
+        - in: formData
+          name: type
+          description: type of the note
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Notes
+        security: []
+    /organization/{organization_id}/notes/{note_id}:
+      delete:
+        summary: delete an organization note
+        description: Deletes a note for a organization
+        operationId: deleteOrganizationNote
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+          type: string
+          format: string
+        - in: path
+          name: note_id
+          description: id for the note
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the API
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Notes
+        security: []
+    /organization/{organization_id}/screenshots/:
+      get:
+        summary: retrieve organization screenshots
+        description: retrieve organization screenshots
+        operationId: getOrganizationScreenshots
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Screenshots
+        security: []
+      post:
+        summary: add screenshots to organization
+        description: add screenshots for organization
+        operationId: addOrganizationScreenshot
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: name
+          description: image name
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the organization
+          type: string
+          format: string
+        - in: formData
+          name: path
+          description: image path
+          type: string
+          format: string
+        - in: formData
+          name: type
+          description: image type
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Screenshots
+        security: []
+    /organization/{organization_id}/screenshots/{screenshot_id}:
+      delete:
+        summary: delete a organization screenshot
+        description: delete a organization screenshot
+        operationId: deleteOrganizationScreenshot
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the organization
+          type: string
+          format: string
+        - in: path
+          name: screenshot_id
+          description: id of the screenshot to remove from organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Screenshots
+        security: []
+    /organization/{organization_id}/tags/:
+      get:
+        summary: retrieve organization tags
+        description: retrieve organization tags
+        operationId: getOrganizationTags
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+      post:
+        summary: add tag to organization
+        description: add tag for organization
+        operationId: addOrganizationTag
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the organization
+          type: string
+          format: string
+        - in: formData
+          name: tag
+          description: tag name
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /organization/{organization_id}/tags/{tag}:
+      delete:
+        summary: delete a organization tag
+        description: deletes a tag applied to organization
+        operationId: deleteOrganizationTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the organization
+          type: string
+          format: string
+        - in: path
+          name: tag
+          description: tag to remove from organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /organization/{organization_id}/tools/:
+      get:
+        summary: retrieve organization tools
+        description: Returns the tols for an organization
+        operationId: getOrganizationTools
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tools
+        security: []
+      post:
+        summary: add tool to organization
+        description: add tool for organization
+        operationId: addOrganizationTool
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the organization
+          type: string
+          format: string
+        - in: formData
+          name: tool_id
+          description: the unique tool id
+          type: string
+          format: string
+        - in: formData
+          name: url
+          description: url for the tool
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tools
+        security: []
+    /organization/{organization_id}/tools/{tool_id}:
+      delete:
+        summary: delete a organization tool
+        description: deletes a tool applied to organization
+        operationId: getOrganizationTool
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the organization
+          type: string
+          format: string
+        - in: path
+          name: tool_id
+          description: tool to remove from organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tools
+        security: []
+    /organization/{organization_id}/urls/:
+      get:
+        summary: retrieve organization url
+        description: retrieve organization url
+        operationId: getOrganizationURLs
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for organization
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - URLs
+        security: []
+      post:
+        summary: add URL to organization
+        description: add URL for organization
+        operationId: addOrganizationURL
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: formData
+          name: name
+          description: a name for the url
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the organization
+          type: string
+          format: string
+        - in: formData
+          name: type
+          description: type of url
+          type: string
+          format: string
+        - in: formData
+          name: url
+          description: the url
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - URLs
+        security: []
+    /organization/{organization_id}/urls/{url_id}:
+      delete:
+        summary: delete a organization url
+        description: delete a organization url
+        operationId: deleteOrganizationURL
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the organization
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the organization
+          type: string
+          format: string
+        - in: path
+          name: organization_id
+          description: id for the organization
+          type: string
+          format: string
+        - in: path
+          name: url_id
+          description: id for the url
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - URLs
+        security: []
+  definitions:
+  - properties:
+      organization_id:
+        description: This is a default description.
+        type: delete
+      name:
+        description: This is a default description.
+        type: delete
+      details:
+        description: This is a default description.
+        type: delete
+      summary:
+        description: This is a default description.
+        type: delete
+      post_date:
+        description: This is a default description.
+        type: delete
+      url:
+        description: This is a default description.
+        type: delete
+      phone:
+        description: This is a default description.
+        type: delete
+      email:
+        description: This is a default description.
+        type: delete
+      address:
+        description: This is a default description.
+        type: delete
+      city:
+        description: This is a default description.
+        type: delete
+      state:
+        description: This is a default description.
+        type: delete
+      postal_code:
+        description: This is a default description.
+        type: delete
+      country:
+        description: This is a default description.
+        type: delete
+      rank:
+        description: This is a default description.
+        type: delete
+      location:
+        description: This is a default description.
+        type: delete
+      photo:
+        description: This is a default description.
+        type: delete
+      api_id:
+        description: This is a default description.
+        type: delete
+      title:
+        description: This is a default description.
+        type: delete
+      link:
+        description: This is a default description.
+        type: delete
+      item_date:
+        description: This is a default description.
+        type: delete
+      status:
+        description: This is a default description.
+        type: delete
+      public_comment:
+        description: This is a default description.
+        type: delete
+      original_date:
+        description: This is a default description.
+        type: delete
+      author:
+        description: This is a default description.
+        type: delete
+      processed:
+        description: This is a default description.
+        type: delete
+      domain:
+        description: This is a default description.
+        type: delete
+      screenshot_url:
+        description: This is a default description.
+        type: delete
+      resolved_url:
+        description: This is a default description.
+        type: delete
+      weekly_summary:
+        description: This is a default description.
+        type: delete
+      weekly_roundup:
+        description: This is a default description.
+        type: delete
+      tag_id:
+        description: This is a default description.
+        type: delete
+      tag:
+        description: This is a default description.
+        type: delete
+      api_count:
+        description: This is a default description.
+        type: delete
+      note_id:
+        description: This is a default description.
+        type: delete
+      type:
+        description: This is a default description.
+        type: delete
+      note:
+        description: This is a default description.
+        type: delete
+      image_id:
+        description: This is a default description.
+        type: delete
+      path:
+        description: This is a default description.
+        type: delete
+      screenshot_id:
+        description: This is a default description.
+        type: delete
+      building_block_api:
+        description: This is a default description.
+        type: delete
+      tool_id:
+        description: This is a default description.
+        type: delete
+      log_date:
+        description: This is a default description.
+        type: delete
+      location_id:
+        description: This is a default description.
+        type: delete
+      description:
+        description: This is a default description.
+        type: delete
+      address1:
+        description: This is a default description.
+        type: delete
+      address2:
+        description: This is a default description.
+        type: delete
+      post_code:
+        description: This is a default description.
+        type: delete
+      latitude:
+        description: This is a default description.
+        type: delete
+      longitude:
+        description: This is a default description.
+        type: delete

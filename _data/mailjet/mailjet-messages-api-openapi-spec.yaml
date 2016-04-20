@@ -1,0 +1,472 @@
+- swagger: "2.0"
+  info:
+    title: Mailjet Messages API
+    description: Allows you to list and view the details of a Message (an e-mail) processed
+      by Mailjet
+    version: v3
+  host: api.mailjet.com
+  basePath: v3/REST/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    message/:
+      get:
+        summary: Message List
+        description: Allows you to list messages.
+        operationId: ""
+        parameters:
+        - in: query
+          name: Campaign
+          description: Only retrieve message resources for which Campaign ID equals
+            the specified value.nn                            n                                [
+            Type Int64 ]
+          type: string
+        - in: query
+          name: Contact
+          description: Only retrieve message resources for which Contact ID equals the
+            specified value.nn                            n                                [
+            Type Int64 ]
+          type: string
+        - in: query
+          name: MessageState
+          description: Only show messages with this state.nn                            n                                [
+            Type Int64 ]
+          type: string
+        - in: query
+          name: PlanSubscription
+          description: Only retrieve message resources for which PlanSubscription ID
+            equals the specified value.nn                            n                                [
+            Type Int64 ]
+          type: string
+        - in: query
+          name: Sender
+          description: Only show messages from this sender.nn                            n                                [
+            Type Int64 ]
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messagehistory/:
+      get:
+        summary: Message History
+        description: 'List message history resources '
+        operationId: ""
+        parameters:
+        - in: path
+          name: Message
+          description: ID of message for which to show the history.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messagehistory/{id}:
+      get:
+        summary: Message History
+        description: Get the history of a message.
+        operationId: ""
+        parameters:
+        - in: path
+          name: id
+          description: ID of the message history.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messageinformation/:
+      get:
+        summary: Message Information
+        description: Lists the information about a message.
+        operationId: ""
+        parameters:
+        - in: query
+          name: CampaignID
+          description: Unique numerical ID for this object.nn                            n                                [
+            Type Int64 ]
+          type: string
+        - in: query
+          name: CampaignStatus
+          description: Only retrieve campaigns with status equal to specified value.nn                            n                                [
+            Type SmallInt ]
+          type: string
+        - in: query
+          name: ContactsList
+          description: Only retrieve campaigns sent to specified Contacts list.nn                            n                                [
+            Type Int64 ]
+          type: string
+        - in: query
+          name: CustomCampaign
+          description: Only retrieve campaigns with given Custom Value.nn                            n                                [
+            Type AnsiString ]
+          type: string
+        - in: query
+          name: From
+          description: Only retrieve campaigns with given From header.nn                            n                                [
+            Type AnsiString ]
+          type: string
+        - in: query
+          name: FromDomain
+          description: Only retrieve campaigns with given domain in From header.nn                            n                                [
+            Type AnsiString ]
+          type: string
+        - in: query
+          name: FromID
+          description: Only retrieve campaigns with this sender ID.nn                            n                                [
+            Type Int64 ]
+          type: string
+        - in: query
+          name: FromTS
+          description: Only retrieve campaigns with SendStartAt after this timestamp.nn                            n                                [
+            Type TRFC3339DateTime ]
+          type: string
+        - in: query
+          name: FromType
+          description: Only retrieve campaigns with FromType equal to specified value.nn                            n                                [
+            Type LongInt ]
+          type: string
+        - in: query
+          name: IsDeleted
+          description: Only retrieve campaigns where isDeleted matches the specified
+            value.nn                            n                                [ Type
+            TBooleanFilter ]
+          type: string
+        - in: query
+          name: IsNewsletterTool
+          description: Only retrieve campaigns which were started by the newsletter
+            tool.nn                            n                                [ Type
+            TBooleanFilter ]
+          type: string
+        - in: query
+          name: IsStarred
+          description: Only retrieve campaigns which were marked as starred.nn                            n                                [
+            Type TBooleanFilter ]
+          type: string
+        - in: query
+          name: MessageStatus
+          description: Only retrieve messages with status equal to specified value.nn                            n                                [
+            Type TMessageStatus ]
+          type: string
+        - in: query
+          name: Period
+          description: Set FromTS and ToTS timestamps to beginning of indicated period
+            and current timestamp, respectively.nn                            n                                [
+            Type AnsiString ]
+          type: string
+        - in: query
+          name: ToTS
+          description: Only retrieve campaigns with SendStartAt timestamp less than
+            the specified value.nn                            n                                [
+            Type TRFC3339DateTime ]
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messageinformation/{id}:
+      get:
+        summary: Message Information
+        description: Lists a message informaiton.
+        operationId: ""
+        parameters:
+        - in: path
+          name: id
+          description: ID of the message.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messagesentstatistics/:
+      get:
+        summary: Message Statistics
+        description: Lists the message statistics.
+        operationId: ""
+        parameters:
+        - in: query
+          name: AllMessages
+          description: Retrieve all messages. Normally, only the first message of each
+            campaign is retrieved.nn                            n                                [
+            Type TBooleanFilter ]
+          type: string
+        - in: query
+          name: CampaignID
+          description: Unique numerical ID for this object.nn                            n                                [
+            Type Int64 ]
+          type: string
+        - in: query
+          name: CampaignStatus
+          description: Only retrieve campaigns with Status equal to specified value.nn                            n                                [
+            Type SmallInt ]
+          type: string
+        - in: query
+          name: Contact
+          description: Only retrieve messagesentstatistics resources for which Contact
+            equals the specified value.nn                            n                                [
+            Type Int64 ]
+          type: string
+        - in: query
+          name: ContactsList
+          description: Only retrieve campaigns sent to specified Contacts list.nn                            n                                [
+            Type Int64 ]
+          type: string
+        - in: query
+          name: CustomCampaign
+          description: Only retrieve campaigns with given Custom Value.nn                            n                                [
+            Type AnsiString ]
+          type: string
+        - in: query
+          name: From
+          description: Only retrieve campaigns with given From header.nn                            n                                [
+            Type AnsiString ]
+          type: string
+        - in: query
+          name: FromDomain
+          description: Only retrieve campaigns with given domain in From header.nn                            n                                [
+            Type AnsiString ]
+          type: string
+        - in: query
+          name: FromID
+          description: Only retrieve campaigns with this sender ID.nn                            n                                [
+            Type Int64 ]
+          type: string
+        - in: query
+          name: FromTS
+          description: Only retrieve campaigns with SendStartAt after this timestamp.nn                            n                                [
+            Type TRFC3339DateTime ]
+          type: string
+        - in: query
+          name: FromType
+          description: Only retrieve campaigns with FromType equal to specified value.nn                            n                                [
+            Type LongInt ]
+          type: string
+        - in: query
+          name: IsDeleted
+          description: Only retrieve campaigns where isDeleted matches the specified
+            value.nn                            n                                [ Type
+            TBooleanFilter ]
+          type: string
+        - in: query
+          name: IsNewsletterTool
+          description: Only retrieve campaigns which were started by the newsletter
+            tool.nn                            n                                [ Type
+            TBooleanFilter ]
+          type: string
+        - in: query
+          name: IsStarred
+          description: Only retrieve campaigns which were marked as starred.nn                            n                                [
+            Type TBooleanFilter ]
+          type: string
+        - in: query
+          name: MessageStatus
+          description: Only retrieve messages with Status equal to specified value.nn                            n                                [
+            Type TMessageStatus ]
+          type: string
+        - in: query
+          name: Period
+          description: Set FromTS and ToTS timestamps to beginning of indicated period
+            and current timestamp, respectively.nn                            n                                [
+            Type AnsiString ]
+          type: string
+        - in: query
+          name: ShowExtraData
+          description: '[ Type TBooleanFilter ]'
+          type: string
+        - in: query
+          name: ToTS
+          description: Only retrieve campaigns with SendStartAt timestamp less than
+            the specified value.nn                            n                                [
+            Type TRFC3339DateTime ]
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messagesentstatistics/{id}:
+      get:
+        summary: Message Statistics
+        description: List message statistics.
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messagestate/{id}:
+      get:
+        summary: Message State
+        description: Returns message state.
+        operationId: ""
+        parameters:
+        - in: query
+          name: id
+          description: Id of the message.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messagestatistics/:
+      get:
+        summary: Message Statistics
+        description: Message Statistics
+        operationId: ""
+        parameters:
+        - in: query
+          name: CampaignID
+          description: Unique numerical ID for this object.nn                            n                                [
+            Type Int64 ]
+          type: string
+        - in: query
+          name: CampaignStatus
+          description: Only retrieve campaigns with status equal to specified value.nn                            n                                [
+            Type SmallInt ]
+          type: string
+        - in: query
+          name: ContactEmail
+          description: Only retrieve message statistics for this contact email address.nn                            n                                [
+            Type AnsiString ]
+          type: string
+        - in: query
+          name: ContactID
+          description: Unique numerical ID for this object.nn                            n                                [
+            Type Int64 ]
+          type: string
+        - in: query
+          name: ContactListID
+          description: '[ Type Int64 ]'
+          type: string
+        - in: query
+          name: CustomCampaign
+          description: Only retrieve campaigns with given Custom Value.nn                            n                                [
+            Type AnsiString ]
+          type: string
+        - in: query
+          name: From
+          description: Only retrieve campaigns with given From header.nn                            n                                [
+            Type AnsiString ]
+          type: string
+        - in: query
+          name: FromDomain
+          description: Only retrieve campaigns with given domain in From header.nn                            n                                [
+            Type AnsiString ]
+          type: string
+        - in: query
+          name: FromID
+          description: Only retrieve campaigns with this sender ID.nn                            n                                [
+            Type Int64 ]
+          type: string
+        - in: query
+          name: FromTS
+          description: Only retrieve campaigns with SendStartAt after this timestamp.nn                            n                                [
+            Type TRFC3339DateTime ]
+          type: string
+        - in: query
+          name: FromType
+          description: Only retrieve campaigns with FromType equal to specified value.nn                            n                                [
+            Type LongInt ]
+          type: string
+        - in: query
+          name: IsDeleted
+          description: Only retrieve campaigns where isDeleted matches the specified
+            value.nn                            n                                [ Type
+            TBooleanFilter ]
+          type: string
+        - in: query
+          name: IsNewsletterTool
+          description: Only retrieve campaigns which were started by the newsletter
+            tool.nn                            n                                [ Type
+            TBooleanFilter ]
+          type: string
+        - in: query
+          name: IsStarred
+          description: Only retrieve campaigns which were marked as starred.nn                            n                                [
+            Type TBooleanFilter ]
+          type: string
+        - in: query
+          name: MessageStatus
+          description: Only retrieve messages with status equal to specified value.nn                            n                                [
+            Type TMessageStatus ]
+          type: string
+        - in: query
+          name: Period
+          description: Set FromTS and ToTS timestamps to beginning of indicated period
+            and current timestamp, respectively.nn                            n                                [
+            Type AnsiString ]
+          type: string
+        - in: query
+          name: ToTS
+          description: Only retrieve campaigns with SendStartAt timestamp less than
+            the specified value.nn                            n                                [
+            Type TRFC3339DateTime ]
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messagestatistics/{id}:
+      get:
+        summary: Message Statistics
+        description: Message Statistics
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    message{id}:
+      get:
+        summary: Message Detail
+        description: View the details of a message.
+        operationId: ""
+        parameters:
+        - in: path
+          name: id
+          description: Message ID.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+  definitions: []

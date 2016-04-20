@@ -1,0 +1,501 @@
+- swagger: "2.0"
+  info:
+    title: DreamFactory User API
+    description: 'The Users module allows the administrator to create user accounts,
+      to grant system admin access to new users, and to assign roles to user accounts. '
+    version: ~
+  host: dsp-sandman1.cloud.dreamfactory.com
+  basePath: /rest/user
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /user:
+      get:
+        summary: getResources() - List resources available for user session management.
+        description: See listed operations for each resource available.
+        operationId: getResources
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/custom:
+      get:
+        summary: getCustomSettings() - Retrieve all custom user settings.
+        description: Returns an object containing name-value pairs for custom user settings
+        operationId: getCustomSettings
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: setCustomSettings() - Set or update one or more custom user settings.
+        description: A valid session is required to edit settings. Post body should
+          be an array of name-value pairs.
+        operationId: setCustomSettings
+        parameters:
+        - in: body
+          name: body
+          description: Data containing name-value pairs of desired settings.
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/custom/{setting}:
+      delete:
+        summary: deleteCustomSetting() - Delete one custom setting.
+        description: A valid session is required to delete settings.
+        operationId: deleteCustomSetting
+        parameters:
+        - in: path
+          name: setting
+          description: Name of the setting to delete.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: getCustomSetting() - Retrieve one custom user setting.
+        description: Setting will be returned as an object containing name-value pair.
+          A value of null is returned for settings that are not found.
+        operationId: getCustomSetting
+        parameters:
+        - in: path
+          name: setting
+          description: Name of the setting to retrieve.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/device:
+      get:
+        summary: getDevices() - Retrieve the current user's device information.
+        description: A valid current session is required to use this API.
+        operationId: getDevices
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: setDevice() - Create a record of the current user's device information.
+        description: Record the device information for this session. This method is
+          idempotent and will only create one entry per uuid.
+        operationId: setDevice
+        parameters:
+        - in: body
+          name: body
+          description: Data containing name-value pairs for the user device.
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/password:
+      post:
+        summary: changePassword() - Change or reset the current user's password.
+        description: A valid current session along with old and new password are required
+          to change the password directly posting old_password and new_password. <br/>To
+          request password reset, post email and set reset to true. <br/>To reset the
+          password from an email confirmation, post email, code, and new_password. <br/>To
+          reset the password from a security question, post email, security_answer,
+          and new_password.
+        operationId: changePassword
+        parameters:
+        - in: body
+          name: body
+          description: Data containing name-value pairs for password change.
+          schema:
+            $ref: '#/definitions/holder'
+        - in: query
+          name: login
+          description: Login and create a session upon successful password reset.
+          type: string
+          format: string
+        - in: query
+          name: reset
+          description: Set to true to perform password reset.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/profile:
+      get:
+        summary: getProfile() - Retrieve the current user's profile information.
+        description: A valid current session is required to use this API. This profile,
+          along with password, is the only things that the user can directly change.
+        operationId: getProfile
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: updateProfile() - Update the current user's profile information.
+        description: Update the display name, phone, etc., as well as, security question
+          and answer.
+        operationId: updateProfile
+        parameters:
+        - in: body
+          name: body
+          description: Data containing name-value pairs for the user profile.
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/register:
+      post:
+        summary: register() - Register a new user in the system.
+        description: The new user is created and, if required, sent an email for confirmation.
+          This also handles the registration confirmation by posting email, confirmation
+          code and new password.
+        operationId: register
+        parameters:
+        - in: body
+          name: body
+          description: Data containing name-value pairs for new user registration.
+          schema:
+            $ref: '#/definitions/holder'
+        - in: query
+          name: login
+          description: Login and create a session upon successful registration.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/session:
+      delete:
+        summary: logout() - Logout and destroy the current user session.
+        description: Calling this deletes the current session and logs out the user.
+        operationId: logout
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: getSession() - Retrieve the current user session information.
+        description: Calling this refreshes the current session, or returns an error
+          for timed-out or invalid sessions.
+        operationId: getSession
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: login() - Login and create a new user session.
+        description: Calling this creates a new session and logs in the user.
+        operationId: login
+        parameters:
+        - in: body
+          name: body
+          description: Data containing name-value pairs used for logging into the system.
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions:
+    ComponentList:
+      properties:
+        resource:
+          description: This is a default description.
+          type: string
+    Resource:
+      properties:
+        name:
+          description: This is a default description.
+          type: string
+    Resources:
+      properties:
+        resource:
+          description: This is a default description.
+          type: string
+    Success:
+      properties:
+        success:
+          description: This is a default description.
+          type: string
+    CustomSettings:
+      properties:
+        name:
+          description: This is a default description.
+          type: string
+    CustomSetting:
+      properties:
+        name:
+          description: This is a default description.
+          type: string
+    DeviceRequest:
+      properties:
+        id:
+          description: This is a default description.
+          type: string
+        uuid:
+          description: This is a default description.
+          type: string
+        platform:
+          description: This is a default description.
+          type: string
+        version:
+          description: This is a default description.
+          type: string
+        model:
+          description: This is a default description.
+          type: string
+        extra:
+          description: This is a default description.
+          type: string
+    DeviceResponse:
+      properties:
+        id:
+          description: This is a default description.
+          type: string
+        uuid:
+          description: This is a default description.
+          type: string
+        platform:
+          description: This is a default description.
+          type: string
+        version:
+          description: This is a default description.
+          type: string
+        model:
+          description: This is a default description.
+          type: string
+        extra:
+          description: This is a default description.
+          type: string
+        created_date:
+          description: This is a default description.
+          type: string
+        last_modified_date:
+          description: This is a default description.
+          type: string
+    DevicesRequest:
+      properties:
+        record:
+          description: This is a default description.
+          type: string
+        ids:
+          description: This is a default description.
+          type: string
+    DevicesResponse:
+      properties:
+        record:
+          description: This is a default description.
+          type: string
+    PasswordRequest:
+      properties:
+        old_password:
+          description: This is a default description.
+          type: string
+        new_password:
+          description: This is a default description.
+          type: string
+        email:
+          description: This is a default description.
+          type: string
+        code:
+          description: This is a default description.
+          type: string
+    PasswordResponse:
+      properties:
+        security_question:
+          description: This is a default description.
+          type: string
+        success:
+          description: This is a default description.
+          type: string
+    ProfileRequest:
+      properties:
+        email:
+          description: This is a default description.
+          type: string
+        first_name:
+          description: This is a default description.
+          type: string
+        last_name:
+          description: This is a default description.
+          type: string
+        display_name:
+          description: This is a default description.
+          type: string
+        phone:
+          description: This is a default description.
+          type: string
+        security_question:
+          description: This is a default description.
+          type: string
+        default_app_id:
+          description: This is a default description.
+          type: string
+        security_answer:
+          description: This is a default description.
+          type: string
+    ProfileResponse:
+      properties:
+        email:
+          description: This is a default description.
+          type: string
+        first_name:
+          description: This is a default description.
+          type: string
+        last_name:
+          description: This is a default description.
+          type: string
+        display_name:
+          description: This is a default description.
+          type: string
+        phone:
+          description: This is a default description.
+          type: string
+        security_question:
+          description: This is a default description.
+          type: string
+        default_app_id:
+          description: This is a default description.
+          type: string
+    Register:
+      properties:
+        email:
+          description: This is a default description.
+          type: string
+        first_name:
+          description: This is a default description.
+          type: string
+        last_name:
+          description: This is a default description.
+          type: string
+        display_name:
+          description: This is a default description.
+          type: string
+        new_password:
+          description: This is a default description.
+          type: string
+        code:
+          description: This is a default description.
+          type: string
+    Session:
+      properties:
+        id:
+          description: This is a default description.
+          type: string
+        email:
+          description: This is a default description.
+          type: string
+        first_name:
+          description: This is a default description.
+          type: string
+        last_name:
+          description: This is a default description.
+          type: string
+        display_name:
+          description: This is a default description.
+          type: string
+        is_sys_admin:
+          description: This is a default description.
+          type: string
+        role:
+          description: This is a default description.
+          type: string
+        last_login_date:
+          description: This is a default description.
+          type: string
+        app_groups:
+          description: This is a default description.
+          type: string
+        no_group_apps:
+          description: This is a default description.
+          type: string
+        session_id:
+          description: This is a default description.
+          type: string
+        ticket:
+          description: This is a default description.
+          type: string
+        ticket_expiry:
+          description: This is a default description.
+          type: string
+    Login:
+      properties:
+        email:
+          description: This is a default description.
+          type: string
+        password:
+          description: This is a default description.
+          type: string
+        duration:
+          description: This is a default description.
+          type: string
+    SessionApp:
+      properties:
+        id:
+          description: This is a default description.
+          type: string
+        name:
+          description: This is a default description.
+          type: string
+        description:
+          description: This is a default description.
+          type: string
+        is_url_external:
+          description: This is a default description.
+          type: string
+        launch_url:
+          description: This is a default description.
+          type: string
+        requires_fullscreen:
+          description: This is a default description.
+          type: string
+        allow_fullscreen_toggle:
+          description: This is a default description.
+          type: string
+        toggle_location:
+          description: This is a default description.
+          type: string
+        is_default:
+          description: This is a default description.
+          type: string

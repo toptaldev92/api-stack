@@ -1,0 +1,86 @@
+- swagger: "2.0"
+  info:
+    title: TigerConnect Roster API
+    description: The roster system for TigerConnect messaging platform.
+    termsOfService: http://www.tigertext.com/developer-terms-of-use
+    contact:
+      name: TigerText
+      url: http://www.tigertext.com/supportform/
+      email: info@tigertext.com
+    version: v2
+  host: developer.tigertext.me
+  basePath: /v2/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /roster/:
+      get:
+        summary: Get the recent conversation list for a user. As new messages are sent
+          and received, the roster is updated with those conversations.
+        description: Get the recent conversation list for a user. As new messages are
+          sent and received, the roster is updated with those conversations.
+        operationId: getRoster
+        responses:
+          200:
+            description: With a JSON body as shown
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/roster'
+        tags:
+        - Roster
+        security: []
+    /roster/{user_address}/:
+      delete:
+        summary: Remove a conversation from the recent conversation list.
+        description: Remove a conversation from the recent conversation list. For conversations
+          that are with another User, all messages are deleted. For conversations with
+          a group, the User leaves the group and is no longer receives subsequent group
+          messages.
+        operationId: removeRoster
+        parameters:
+        - in: query
+          name: TT-X-Organization-Key
+          description: The organization with which the entity is associated in the roster.
+            Defaults to the TigerText Consumer organization
+          type: string
+          format: string
+        - in: query
+          name: TT-X-Type
+          description: The entity type.
+          type: string
+          format: string
+        - in: path
+          name: user_address
+          description: User address or group token
+          type: string
+          format: string
+        responses:
+          200:
+            description: With a JSON body as shown
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/roster'
+          204:
+            description: The user or group was correctly removed from the roster.
+          400:
+            description: If the provided parameters are somehow incorrect. A proper
+              description of the error will be provided
+          403:
+            description: If the user is not a member of the provided organization
+          404:
+            description: ' If the provided organization does not exist'
+        tags:
+        - Roster
+        security: []
+  definitions:
+    roster:
+      properties:
+        Name:
+          description: Name of the roster.
+          type: string

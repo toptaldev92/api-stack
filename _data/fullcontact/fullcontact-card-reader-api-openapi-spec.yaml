@@ -1,0 +1,87 @@
+- swagger: "2.0"
+  info:
+    title: FullContact Card Reader API
+    description: The API for managing FullContact Card Readers
+    termsOfService: https://www.fullcontact.com/terms/
+    version: v2
+  host: api.fullcontact.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /cardReader:
+      get:
+        summary: Read Card
+        description: Read Card
+        operationId: readCard
+        parameters:
+        - in: query
+          name: apiKey
+          description: This API key is assigned to you by FullContact. It is used to
+            identify and authorize your request. Your API key should be kept private,
+            and should never be displayed publicly.
+          type: string
+          format: string
+        - in: query
+          name: casing
+          description: Card Reader can alter the casing of certain fields in the final
+            results.
+          type: string
+          format: string
+        - in: query
+          name: Custom Params
+          description: Card Reader has the ability to funnel your own custom params
+            through requests.
+          type: string
+          format: string
+        - in: query
+          name: format
+          description: Used to specify response in json.
+          type: string
+          format: string
+        - in: body
+          name: requestBody
+          description: You can either send in the files as a multipart/form-data request
+            or as a JSON object with BASE64 encoded images.
+          schema:
+            $ref: '#/definitions/holder'
+        - in: query
+          name: returnedData
+          description: A response can contain verified and unverified data, this parameter
+            can be used to exclude unverified data from being returned in the response.
+          type: string
+          format: string
+        - in: query
+          name: sandbox
+          description: Card Reader Sandbox is a free, quick response mode for testing
+            and development.
+          type: string
+          format: string
+        - in: query
+          name: URID
+          description: URID stands for Unique Request Identifier.
+          type: string
+          format: string
+        - in: query
+          name: verified
+          description: Used to specify the quality of transcription. Calls to verified=medium|high
+            require a FullContact premium account.
+          type: string
+          format: string
+        - in: query
+          name: webhookUrl
+          description: 'This is the URL that a request will be made to once the card
+            has been processed. '
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Card Reader
+        security: []
+  definitions: []

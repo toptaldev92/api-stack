@@ -1,0 +1,76 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Scraping",
+		"description": "This is my scraping API, used to harvest content from websites.",
+		"termsOfService": "http://kinlane.com/terms-of-service.html",
+		"version": null
+	},
+	"host": "api.api.kinlane.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/parse-remote-html-form/": {
+			"get": {
+				"summary": "parse remote html form",
+				"description": "parse remote html form",
+				"operationId": "parseRemoteHTMLForm",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "referrer",
+					"description": "referrer to show"
+				},
+				{
+					"in": "query",
+					"name": "target",
+					"description": "the target url"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Scraping"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"form": {
+			"properties": {
+				"action": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"method": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"selects": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"inputs": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		}
+	}
+}

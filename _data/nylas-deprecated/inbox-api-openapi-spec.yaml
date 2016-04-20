@@ -1,0 +1,449 @@
+- swagger: "2.0"
+  info:
+    title: Inbox API
+    description: Inbox is a modern API that works with existing email providers. It
+      makes it easy to integrate with your usersu2019 email data, and eliminates the
+      complexity of old protocols like IMAP and MIME.
+    version: ~
+  host: api.inboxapp.com
+  basePath: n/{namespace_id}/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    drafts/:
+      get:
+        summary: Retrieving Drafts
+        description: Retrieving Drafts
+        operationId: ""
+        parameters:
+        - in: query
+          name: namespace_id
+          description: Namespaces are essentially references to linked accounts. They
+            are the top-level unit of a useru2019s data.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+      post:
+        summary: Creating a Draft
+        description: Creating a Draft
+        operationId: ""
+        parameters:
+        - in: query
+          name: bcc
+          description: Blind carbon messages.
+          type: string
+          format: string
+        - in: query
+          name: body
+          description: Body of the message.
+          type: string
+          format: string
+        - in: query
+          name: cc
+          description: Other address to send to.
+          type: string
+          format: string
+        - in: query
+          name: file_ids
+          description: Files to associate with email.
+          type: string
+          format: string
+        - in: query
+          name: namespace_id
+          description: Namespaces are essentially references to linked accounts. They
+            are the top-level unit of a useru2019s data.
+          type: string
+          format: string
+        - in: query
+          name: subject
+          description: Subject of the message.
+          type: string
+          format: string
+        - in: query
+          name: thread_id
+          description: ID thread to associate messages.
+          type: string
+          format: string
+        - in: query
+          name: to
+          description: Who the message is to.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    drafts/{draft_id}:
+      delete:
+        summary: Deleting a draft
+        description: Deleting a draft
+        operationId: ""
+        parameters:
+        - in: query
+          name: draft_id
+          description: The ID of the draft.
+          type: string
+          format: string
+        - in: query
+          name: namespace_id
+          description: Namespaces are essentially references to linked accounts. They
+            are the top-level unit of a useru2019s data.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+      get:
+        summary: Retrieving Draft
+        description: Retrieving Draft
+        operationId: ""
+        parameters:
+        - in: query
+          name: draft_id
+          description: The ID of the draft.
+          type: string
+          format: string
+        - in: query
+          name: namespace_id
+          description: Namespaces are essentially references to linked accounts. They
+            are the top-level unit of a useru2019s data.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+      put:
+        summary: Updating a draft
+        description: Updating a draft
+        operationId: ""
+        parameters:
+        - in: query
+          name: namespace_id
+          description: Namespaces are essentially references to linked accounts. They
+            are the top-level unit of a useru2019s data.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    files/:
+      post:
+        summary: Uploading a new file
+        description: Uploading a new file
+        operationId: ""
+        parameters:
+        - in: query
+          name: namespace_id
+          description: Namespaces are essentially references to linked accounts. They
+            are the top-level unit of a useru2019s data.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    files/{file_id}:
+      get:
+        summary: Retrieving a specific files metadata
+        description: Retrieving a specific files metadata
+        operationId: ""
+        parameters:
+        - in: query
+          name: namespace_id
+          description: Namespaces are essentially references to linked accounts. They
+            are the top-level unit of a useru2019s data.
+          type: string
+          format: string
+        - in: query
+          name: Uploading a new file
+          description: The ID of the file.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    files/{file_id}/download:
+      get:
+        summary: Downloading files
+        description: Downloading files
+        operationId: ""
+        parameters:
+        - in: query
+          name: file_id
+          description: The ID of the file.
+          type: string
+          format: string
+        - in: query
+          name: namespace_id
+          description: Namespaces are essentially references to linked accounts. They
+            are the top-level unit of a useru2019s data.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messages/:
+      get:
+        summary: Retrieving Many Messages
+        description: Retrieving Many Messages
+        operationId: ""
+        parameters:
+        - in: query
+          name: namespace_id
+          description: Namespaces are essentially references to linked accounts. They
+            are the top-level unit of a useru2019s data.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messages/{message_id}:
+      get:
+        summary: Retrieving a Message
+        description: Retrieving a Message
+        operationId: ""
+        parameters:
+        - in: query
+          name: message_id
+          description: The ID of the Message.
+          type: string
+          format: string
+        - in: query
+          name: namespace_id
+          description: Namespaces are essentially references to linked accounts. They
+            are the top-level unit of a useru2019s data.
+          type: string
+          format: string
+        - in: query
+          name: thread_id
+          description: One of the filter parameters available on messages is thread.
+            Given a thread_id value, the API call will will return all messages in the
+            thread.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    send/:
+      get:
+        summary: Sending
+        description: Sending
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    tags/:
+      get:
+        summary: Tags
+        description: Inbox Tags are a powerful way to store metadata on threads and
+          group them for the user. The unread tag, for example, indicates that a thread
+          is unread. Other tags might be used to organize threads by project, categorize
+          threads with attachments, or record whether an email had been handled by a
+          task-management app.
+        operationId: ""
+        parameters:
+        - in: query
+          name: namespace_id
+          description: Namespaces are essentially references to linked accounts. They
+            are the top-level unit of a useru2019s data.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+      post:
+        summary: Creating Custom Tags
+        description: Creating Custom Tags
+        operationId: ""
+        parameters:
+        - in: body
+          name: name
+          description: Tag name.
+          schema:
+            $ref: '#/definitions/holder'
+        - in: query
+          name: namespace_id
+          description: Namespaces are essentially references to linked accounts. They
+            are the top-level unit of a useru2019s data.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    tags/{tag_id}:
+      get:
+        summary: Getting a Single Tag
+        description: Getting a Single Tag
+        operationId: ""
+        parameters:
+        - in: query
+          name: namespace_id
+          description: Namespaces are essentially references to linked accounts. They
+            are the top-level unit of a useru2019s data.
+          type: string
+          format: string
+        - in: query
+          name: tag_id
+          description: ID of single tag.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+      put:
+        summary: Changing custom tag names
+        description: Changing custom tag names
+        operationId: ""
+        parameters:
+        - in: query
+          name: name
+          description: The name of the tag.
+          type: string
+          format: string
+        - in: query
+          name: namespace_id
+          description: Namespaces are essentially references to linked accounts. They
+            are the top-level unit of a useru2019s data.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    threads/:
+      get:
+        summary: Getting Threads with a Tag
+        description: Getting Threads with a Tag
+        operationId: ""
+        parameters:
+        - in: query
+          name: namespace_id
+          description: Namespaces are essentially references to linked accounts. They
+            are the top-level unit of a useru2019s data.
+          type: string
+          format: string
+        - in: query
+          name: tag
+          description: You can list all of the threads with a given tag using a Tag
+            Filter. The tag parameter can be a tag ID, such as 4zv7pgvihjvuptbwv57kiz62
+            or a tag name, like inbox or hiking.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    threads/{thread_id}:
+      get:
+        summary: Retrieving a Thread
+        description: Retrieving a Thread
+        operationId: ""
+        parameters:
+        - in: query
+          name: namespace_id
+          description: Namespaces are essentially references to linked accounts. They
+            are the top-level unit of a useru2019s data.
+          type: string
+          format: string
+        - in: query
+          name: thread_id
+          description: The thread ID.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+      put:
+        summary: Updating Tags & Performing Actions
+        description: Updating Tags & Performing Actions
+        operationId: ""
+        parameters:
+        - in: query
+          name: namespace_id
+          description: Namespaces are essentially references to linked accounts. They
+            are the top-level unit of a useru2019s data.
+          type: string
+          format: string
+        - in: query
+          name: thread_id
+          description: ID of the thread.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+  definitions: []

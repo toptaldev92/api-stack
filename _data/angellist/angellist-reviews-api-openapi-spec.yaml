@@ -1,0 +1,97 @@
+- swagger: "2.0"
+  info:
+    title: AngelList Reviews API
+    description: Manages the reviews for startups and users.
+    termsOfService: https://angel.co/terms
+    contact:
+      name: AngelList
+      url: https://angel.co/api
+      email: api@angel.co
+    version: v1
+  host: api.angel.co
+  basePath: /1/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /reviews:
+      get:
+        summary: Get Reviews
+        description: Get Reviews
+        operationId: reviews
+        parameters:
+        - in: query
+          name: user_id
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/relationship_to_reviewer'
+        tags:
+        - Reviews
+        security: []
+    /reviews/{review_id}:
+      get:
+        summary: Get Review
+        description: Get Review
+        operationId: reviews
+        parameters:
+        - in: path
+          name: review_id
+          type: integer
+          format: integer
+        - in: query
+          name: startup_id
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/relationship_to_reviewer'
+        tags:
+        - Reviews
+        security:
+        - AngelListAuth: []
+  securityDefinitions:
+    AngelListAuth:
+      type: oauth2
+      flow: accessCode
+      authorizationUrl: https://angel.co/api/oauth/authorize
+      tokenUrl: https://angel.co/api/oauth/token
+  definitions:
+    relationship_to_reviewer:
+      properties:
+        as:
+          description: This is a default description.
+          type: string
+        created_at:
+          description: This is a default description.
+          type: string
+        id:
+          description: This is a default description.
+          type: string
+        note:
+          description: This is a default description.
+          type: string
+        relationship:
+          description: This is a default description.
+          type: string
+        relationship_to_reviewer:
+          description: This is a default description.
+          type: string
+        reviewer:
+          description: This is a default description.
+          type: string
+        permissions:
+          description: This is a default description.
+          type: string

@@ -1,0 +1,87 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Alchemy Relation Extraction API",
+		"description": "AlchemyAPI is capable of identifying Subject-Action-Object relations within your HTML, text, or web-based content. We employ sophisticated statistical algorithms and natural language processing technology to analyze your information, extracting the semantic richness embedded within.",
+		"termsOfService": "http://www.alchemyapi.com/company/terms.html",
+		"contact": {
+			"name": "AlchemyAPI",
+			"url": "http://www.alchemyapi.com/company/contact",
+			"email": "questions@alchemyapi.com"
+		},
+		"version": "v1"
+	},
+	"host": "access.alchemyapi.com",
+	"basePath": "/calls/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/url/URLGetRelations": {
+			"get": {
+				"summary": "Get Relations Using URL",
+				"description": "AlchemyAPI is capable of identifying Subject-Action-Object relations within your HTML, text, or web-based content. We employ sophisticated statistical algorithms and natural language processing technology to analyze your information, extracting the semantic richness embedded within.",
+				"operationId": "callsUrlURLGetRelations",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/results"
+							}
+						}
+					}
+				},
+				"tags": ["Relations"],
+				"security": [{
+					"apikey": []
+				}]
+			}
+		}
+	},
+	"securityDefinitions": {
+		"apikey": {
+			"type": "apiKey",
+			"name": "apikey"
+		}
+	},
+	"definitions": {
+		"results": {
+			"properties": {
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"usage": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"language": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"relations": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

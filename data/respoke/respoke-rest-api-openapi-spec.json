@@ -1,0 +1,243 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Respoke REST API",
+		"description": "Add live voice, video, text, and data features to your website or app.",
+		"termsOfService": "https://www.respoke.io/files/respoke-tos-20141007.pdf",
+		"version": "v1"
+	},
+	"host": "api.respoke.io",
+	"basePath": "v1/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"admin-sessions/": {
+			"post": {
+				"summary": "Admin Sessions",
+				"description": "Log in with the account username and password. Get an Admin-Token.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "password",
+					"description": "Your password.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Your username.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["authentication"],
+				"security": []
+			}
+		},
+		"adminsessions/": {
+			"post": {
+				"summary": "Permissions",
+				"description": "Full API permissions are obtained by POSTing your username and password to [base]/adminsessions.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "password",
+					"description": "Your username.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "username",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["authentication"],
+				"security": []
+			}
+		},
+		"appauthsessions/": {
+			"post": {
+				"summary": "App Auth Sessions",
+				"description": "Your users authenticate to Respoke using an App-Token obtained when they POST your tokenId to [base]/appauthsessions.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "App-Token",
+					"description": "Your application token.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["authentication"],
+				"security": []
+			}
+		},
+		"apps/": {
+			"get": {
+				"summary": "Apps",
+				"description": "Create an app.",
+				"operationId": "",
+				"parameters": [{
+					"in": "header",
+					"name": "Admin-Token",
+					"description": "Your admin token.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["application"],
+				"security": []
+			}
+		},
+		"roles/": {
+			"post": {
+				"summary": "Roles",
+				"description": "Create roleId and roleName for creating tokens.",
+				"operationId": "",
+				"parameters": [{
+					"in": "body",
+					"name": "",
+					"description": "{     appId: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX,     name:your-role-name-here,     mediaRelay: false,     events: {         subscribe: false,         unsubscribe: false,     },     groups: {         list: true,         *: {             subscribe: true,             unsubscribe: true,             create: true,             destroy: true,             publish: true,             getsubscribers: true         }     } }",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "header",
+					"name": "App-Secret",
+					"description": "Your application secret.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["roles"],
+				"security": []
+			}
+		},
+		"session-tokens/": {
+			"post": {
+				"summary": "Session Tokens",
+				"description": "An end-user client posts a tokenId from POST [base]/tokens to authenticate to an app as endpointId.",
+				"operationId": "",
+				"parameters": [{
+					"in": "body",
+					"name": "",
+					"description": "{     tokenId: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX }",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "header",
+					"name": "App-Token",
+					"description": "Your application token.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Session Tokens"],
+				"security": []
+			}
+		},
+		"tokens/": {
+			"post": {
+				"summary": "Tokens",
+				"description": "Get an access token tokenId for an end-user.",
+				"operationId": "",
+				"parameters": [{
+					"in": "body",
+					"name": "",
+					"description": "{     appId: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX,     endpointId: yourendpointwithnospaces,     /* response token will expire in this many seconds */     ttl: 86400,     /* from POST permissions response id (optional if roleName is provided) */     roleId: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX,     /* optional if roleId is provided */     roleName: your role name }",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "header",
+					"name": "App-Secret",
+					"description": "Your application secret.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["tokens",
+				" authentication"],
+				"security": []
+			},
+			"put": {
+				"summary": "Tokens",
+				"description": "By using the App-Secret header, you can perform API calls to obtain Respoke sessions for your users via POST to [base]/tokens. App-Secrets are found in the Dev Console.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "App-Secret",
+					"description": "Your application token.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Authentication"],
+				"security": []
+			}
+		},
+		"turn/": {
+			"post": {
+				"summary": "Turn",
+				"description": "Get TURN credentials.",
+				"operationId": "",
+				"parameters": [{
+					"in": "header",
+					"name": "App-Token",
+					"description": "Get TURN credentials.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Turn"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

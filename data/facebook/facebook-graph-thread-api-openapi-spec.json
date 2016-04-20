@@ -1,0 +1,67 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Facebook Graph (Thread) API",
+		"description": "API for managing Facebook Threads",
+		"termsOfService": "https://www.facebook.com/policies/",
+		"version": null
+	},
+	"host": "graph.facebook.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/v2.5/{thread-id}": {
+			"get": {
+				"summary": "A Facebook Messages conversation thread",
+				"description": "A Facebook Messages conversation thread",
+				"operationId": "thread",
+				"parameters": [{
+					"in": "query",
+					"name": "comments",
+					"description": "The messages in this thread.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The unique ID for this message thread.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "to",
+					"description": "Profiles that are subscribed to the thread.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "unread",
+					"description": "The amount of messages that are unread by the session profile.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "unseen",
+					"description": "The amount of messages that are unseen by the session profile.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "updated_time",
+					"description": "When the thread was last updated.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["threads"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

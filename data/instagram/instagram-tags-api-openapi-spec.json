@@ -1,0 +1,129 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Instagram Tags API",
+		"version": ""
+	},
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/tags/search": {
+			"get": {
+				"summary": "Tags",
+				"description": "Search for tags by name. Results are ordered first as an exact match, then by popularity. Short tags will be treated as exact matches.n                n            nn            n            n                Parametersn                n                    n                    n                        qn                        A valid tag name without a leading #. (eg. snowy, nofilter)",
+				"operationId": "tags",
+				"parameters": [{
+					"in": "query",
+					"name": "q",
+					"description": "A valid tag name without a leading #. (eg. snowy, nofilter)"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["tags"],
+				"security": []
+			}
+		},
+		"/tags/tag-name": {
+			"get": {
+				"summary": "Tags",
+				"description": "Get information about a tag object.",
+				"operationId": "tags",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["tags"],
+				"security": []
+			}
+		},
+		"/tags/tag-name/media/recent": {
+			"get": {
+				"summary": "Tags",
+				"description": "Get a list of recently tagged media. Note that this media is ordered by when the media was tagged with this tag, rather than the order it was posted. Use the max_tag_id and min_tag_id parameters in the pagination response to paginate through these objects. Can return a mix of image and video types.n                n            nn            n            n                Parametersn                n                    n                    n                        countn                        Count of tagged media to return.n                    n                    n                    n                        min_tag_idn                        Return media before this min_tag_id.n                    n                    n                    n                        max_tag_idn                        Return media after this max_tag_id.",
+				"operationId": "tags",
+				"parameters": [{
+					"in": "query",
+					"name": "count",
+					"description": "Count of tagged media to return."
+				},
+				{
+					"in": "query",
+					"name": "max_tag_id",
+					"description": "Return media after this max_tag_id."
+				},
+				{
+					"in": "query",
+					"name": "min_tag_id",
+					"description": "Return media before this min_tag_id."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["tags"],
+				"security": []
+			}
+		},
+		"/tags/{tag-name}": {
+			"get": {
+				"summary": "Get Tag",
+				"description": "Get information about a tag object.",
+				"operationId": "get-information-about-a-tag-object",
+				"parameters": [{
+					"in": "path",
+					"name": "tag-name",
+					"description": "The tag name."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["tags"],
+				"security": []
+			}
+		},
+		"/tags/{tag-name}/media/recent": {
+			"get": {
+				"summary": "Get Recent By Using Tag",
+				"description": "Get a list of recently tagged media. Use the `max_tag_id` and `min_tag_id` parameters in the paginationnresponse to paginate through these objects.n",
+				"operationId": "get-a-list-of-recently-tagged-media-use-the-max_tag_id-and-min_tag_id-parameters-in-the-paginationre",
+				"parameters": [{
+					"in": "query",
+					"name": "count",
+					"description": "Count of tagged media to return."
+				},
+				{
+					"in": "query",
+					"name": "max_tag_id",
+					"description": "Return media after this `max_tag_id`."
+				},
+				{
+					"in": "query",
+					"name": "min_tag_id",
+					"description": "Return media before this `min_tag_id`."
+				},
+				{
+					"in": "path",
+					"name": "tag-name",
+					"description": "The tag name."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["tags"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

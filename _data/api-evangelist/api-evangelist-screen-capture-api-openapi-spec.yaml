@@ -1,0 +1,71 @@
+- swagger: "2.0"
+  info:
+    title: API Evangelist Screen Capture API
+    description: This is a simple API that accepts a URL to any website, then returns
+      an image screenshot of the page.
+    termsOfService: http://developer.apievangelist.com/index.html
+    contact:
+      name: Kin Lane
+      url: http://kinlane.com
+      email: info@apievangelist.com
+    license:
+      name: MIT
+      url: http://opensource.org/licenses/MIT
+    version: "1.0"
+  host: screen-capture.api.apievangelist.com
+  basePath: /v1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /screen-capture:
+      get:
+        summary: Returns a screen capture of a url.
+        description: Returns PNG file returned from screen capture of a url.
+        operationId: captureScreen
+        parameters:
+        - in: query
+          name: appid
+          description: application id for application making calls
+          type: string
+        - in: query
+          name: code
+          description: application key for application making calls
+          type: string
+        - in: query
+          name: url
+          description: a url for screen capture
+          type: string
+        responses:
+          200:
+            description: Returns successful screen capture image.
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/screen-capture'
+        tags:
+        - URL
+        - ' Links'
+        - ' Screenshot'
+        - ' Screen Capture'
+        security: []
+  definitions:
+    screen-capture:
+      properties:
+        url:
+          description: This is a default description.
+          type: string
+    Error:
+      properties:
+        code:
+          description: This is a default description.
+          type: integer
+        message:
+          description: This is a default description.
+          type: string
+        fields:
+          description: This is a default description.
+          type: string

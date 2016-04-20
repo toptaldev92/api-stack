@@ -1,0 +1,123 @@
+- swagger: "2.0"
+  info:
+    title: Fitbit Friends API
+    description: The Fitbit API allows developers to interact with Fitbit data in their
+      own applications, products and services.
+    version: "1"
+  host: api.fitbit.com
+  basePath: /1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /user/-/friends/invitations.{format}:
+      get:
+        summary: Get Food Units
+        description: Get Food Units
+        operationId: get-food-units
+        parameters:
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - friends
+        security: []
+      post:
+        summary: Get Invites
+        description: Get Invites
+        operationId: get-invites
+        parameters:
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        - in: query
+          name: invitedUserEmail
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - friends
+        security: []
+    /user/-/friends/invitations/{from-user-id}.{format}:
+      post:
+        summary: Create Invite
+        description: Create Invite
+        operationId: create-invite
+        parameters:
+        - in: query
+          name: accept
+          type: string
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        - in: query
+          name: from-user-id
+          type: string
+        - in: path
+          name: from-user-id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - friends
+        security: []
+    /user/-/friends/leaderboard.{format}:
+      get:
+        summary: Get Friends
+        description: Get Friends
+        operationId: get-friends
+        parameters:
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - friends
+        security: []
+    /user/{user-id}/friends.{format}:
+      get:
+        summary: Get Glucose
+        description: Get Glucose
+        operationId: get-glucose
+        parameters:
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        - in: query
+          name: user-id
+          type: string
+        - in: path
+          name: user-id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - friends
+        security: []
+  definitions: []

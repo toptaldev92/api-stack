@@ -1,0 +1,74 @@
+- swagger: "2.0"
+  info:
+    title: Stack Exchange Revisions API
+    description: The API for managing Stack Exchange revisions.
+    termsOfService: http://stackexchange.com/legal/api-terms-of-use
+    version: "2.2"
+  host: api.stackexchange.com
+  basePath: /2.2
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /revisions/{ids}:
+      get:
+        summary: Get Questions With No Answers
+        description: Get Questions With No Answers
+        operationId: get-questions-with-no-answers
+        parameters:
+        - in: query
+          name: fromdate
+          description: Unix timestamp of the minimum creation date on a returned item.
+            unix epoch date, range [0, 253,402,300,799]
+        - in: query
+          name: ids
+          description: A single primary key identifier or a vectorized, semicolon-delimited
+            list of identifiers. This is a vectorized parameter, multiple ids can be
+            sent a single request if delimited with a semi-colon. string
+        - in: path
+          name: ids
+        - in: query
+          name: todate
+          description: Unix timestamp of the maximum creation date on a returned item.
+            Unix epoch date, range [0, 253,402,300,799]
+        responses:
+          200:
+            description: OK
+        tags:
+        - Revisions
+        security: []
+    /revisions/{id}/{revisionguid}:
+      get:
+        summary: Get Posts' Revisions By Ids
+        description: Get Posts Revisions By Ids
+        operationId: get-posts-revisions-by-ids
+        parameters:
+        - in: query
+          name: fromdate
+          description: Unix timestamp of the minimum creation date on a returned item.
+            unix epoch date, range [0, 253,402,300,799]
+        - in: query
+          name: id
+          description: A single primary key identifier or a vectorized, semicolon-delimited
+            list of identifiers. string
+        - in: path
+          name: id
+        - in: query
+          name: revisionguid
+          description: specific revision id. guid, 8-4-4-4-12 format
+        - in: path
+          name: revisionguid
+        - in: query
+          name: todate
+          description: Unix timestamp of the maximum creation date on a returned item.
+            Unix epoch date, range [0, 253,402,300,799]
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

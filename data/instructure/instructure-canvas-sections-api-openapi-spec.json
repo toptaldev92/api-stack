@@ -1,0 +1,651 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Instructure Canvas Sections API",
+		"description": "Canvas LMS includes a REST API for accessing and modifying data externally from the main application, in your own programs and scripts. ",
+		"termsOfService": "https://www.canvaslms.com/policies/api-policy",
+		"version": "v1"
+	},
+	"host": "canvas.instructure.com",
+	"basePath": "/api/v1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/sections/{course_section_id}/assignments/assignment_id/override": {
+			"get": {
+				"summary": "Redirect to the assignment override for a section",
+				"description": "",
+				"operationId": "redirect-to-the-assignment-override-for-a-section",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["sections"],
+				"security": []
+			}
+		},
+		"/sections/{id}": {
+			"delete": {
+				"summary": "Delete a section",
+				"description": "",
+				"operationId": "delete-a-section",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["sections"],
+				"security": []
+			},
+			"get": {
+				"summary": "Get section information",
+				"description": "",
+				"operationId": "get-section-information",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["sections"],
+				"security": []
+			},
+			"put": {
+				"summary": "Edit a section",
+				"description": "",
+				"operationId": "edit-a-section",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["sections"],
+				"security": []
+			}
+		},
+		"/sections/{id}/crosslist": {
+			"delete": {
+				"summary": "De-cross-list a Section",
+				"description": "",
+				"operationId": "decrosslist-a-section",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["section crosslist"],
+				"security": []
+			}
+		},
+		"/sections/{id}/crosslist/new_course_id": {
+			"post": {
+				"summary": "Cross-list a Section",
+				"description": "",
+				"operationId": "crosslist-a-section",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["section crosslist"],
+				"security": []
+			}
+		},
+		"/sections/{section_id}/assignments/assignment_id/peer_reviews": {
+			"get": {
+				"summary": "Get all Peer Reviews",
+				"description": "",
+				"operationId": "get-all-peer-reviews",
+				"parameters": [{
+					"in": "query",
+					"name": "include[]",
+					"description": "Associations to include with the peer review.nn        n        n          Allowed values: submission_comments, user",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["section assignments"],
+				"security": []
+			}
+		},
+		"/sections/{section_id}/assignments/assignment_id/submissions": {
+			"get": {
+				"summary": "List assignment submissions",
+				"description": "",
+				"operationId": "list-assignment-submissions",
+				"parameters": [{
+					"in": "query",
+					"name": "grouped",
+					"description": "If this argument is true, the response will be grouped by student groups.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "include[]",
+					"description": "Associations to include with the group.nn        n        n          Allowed values: submission_history, submission_comments, rubric_assessment, assignment, visibility, course, user",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["section assignments"],
+				"security": []
+			},
+			"post": {
+				"summary": "Submit an assignment",
+				"description": "",
+				"operationId": "submit-an-assignment",
+				"parameters": [{
+					"in": "query",
+					"name": "comment[text_comment]",
+					"description": "Include a textual comment with the submission.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "submission[body]",
+					"description": "Submit the assignment as an HTML document snippet. Note this HTML snippetnwill be sanitized using the same ruleset as a submission made from thenCanvas web UI. The sanitized HTML will be returned in the response as thensubmission body. Requires a submission_type of u201conline_text_entryu201d.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "submission[file_ids][]",
+					"description": "Submit the assignment as a set of one or more previously uploaded filesnresiding in the submitting user&#39;s files section (or the group&#39;snfiles section, for group assignments).nnTo upload a new file to submit, see the submissionsnUpload a file API.nnRequires a submission_type of u201conline_uploadu201d.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "submission[media_comment_id]",
+					"description": "The media comment id to submit. Media comment ids can be submitted via thisnAPI, however, note that there is not yet an API to generate or listnexisting media comments, so this functionality is currently of limited use.nnRequires a submission_type of u201cmedia_recordingu201d.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "submission[media_comment_type]",
+					"description": "The type of media comment being submitted.nn        n        n          Allowed values: audio, video",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "submission[submission_type]",
+					"description": "The type of submission being made. The assignment submission_types mustninclude this submission type as an allowed option, or the submission willnbe rejected with a 400 error.nnThe submission_type given determines which of the following parameters isnused. For instance, to submit a URL, submission [submission_type] must benset to u201conline_urlu201d, otherwise the submission [url] parameter will benignored.nn        n        n          Allowed values: online_text_entry, online_url, online_upload, media_recording",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "submission[url]",
+					"description": "Submit the assignment as a URL. The URL scheme must be u201chttpu201d or u201chttpsu201d,nno u201cftpu201d or other URL schemes are allowed. If no scheme is given (e.g. u201cwww.example.comu201d) then u201chttpu201d will benassumed. Requires a submission_type of u201conline_urlu201d.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["section assignments"],
+				"security": []
+			}
+		},
+		"/sections/{section_id}/assignments/assignment_id/submissions/update_grades": {
+			"post": {
+				"summary": "Grade or comment on multiple submissions",
+				"description": "",
+				"operationId": "grade-or-comment-on-multiple-submissions",
+				"parameters": [{
+					"in": "query",
+					"name": "grade_data[&lt;student_id&gt;][file_ids][]",
+					"description": "See documentation for the comment[] arguments in thenSubmissions Update documentation",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "grade_data[&lt;student_id&gt;][group_comment]",
+					"description": "no description",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "grade_data[&lt;student_id&gt;][media_comment_id]",
+					"description": "no description",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "grade_data[&lt;student_id&gt;][media_comment_type]",
+					"description": "no descriptionnn        n        n          Allowed values: audio, video",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "grade_data[&lt;student_id&gt;][posted_grade]",
+					"description": "See documentation for the posted_grade argument in thenSubmissions Update documentation",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "grade_data[&lt;student_id&gt;][rubric_assessment]",
+					"description": "See documentation for the rubric_assessment argument in thenSubmissions Update documentation",
+					"type": "rubricassessment"
+				},
+				{
+					"in": "query",
+					"name": "grade_data[&lt;student_id&gt;][text_comment]",
+					"description": "no description",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["section assignments"],
+				"security": []
+			}
+		},
+		"/sections/{section_id}/assignments/assignment_id/submissions/{submission_id}/peer_reviews": {
+			"delete": {
+				"summary": "Create Peer Review",
+				"description": "",
+				"operationId": "create-peer-review",
+				"parameters": [{
+					"in": "query",
+					"name": "user_id",
+					"description": "user_id to delete as reviewer on this assignment",
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["section assignments"],
+				"security": []
+			},
+			"get": {
+				"summary": "Get all Peer Reviews",
+				"description": "",
+				"operationId": "get-all-peer-reviews",
+				"parameters": [{
+					"in": "query",
+					"name": "include[]",
+					"description": "Associations to include with the peer review.nn        n        n          Allowed values: submission_comments, user",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["section assignments"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create Peer Review",
+				"description": "",
+				"operationId": "create-peer-review",
+				"parameters": [{
+					"in": "query",
+					"name": "user_id",
+					"description": "user_id to assign as reviewer on this assignment",
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["section assignments"],
+				"security": []
+			}
+		},
+		"/sections/{section_id}/assignments/assignment_id/submissions/{user_id}": {
+			"get": {
+				"summary": "Get a single submission",
+				"description": "",
+				"operationId": "get-a-single-submission",
+				"parameters": [{
+					"in": "query",
+					"name": "include[]",
+					"description": "Associations to include with the group.nn        n        n          Allowed values: submission_history, submission_comments, rubric_assessment, visibility, course, user",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["section assignments"],
+				"security": []
+			},
+			"put": {
+				"summary": "Grade or comment on a submission",
+				"description": "",
+				"operationId": "grade-or-comment-on-a-submission",
+				"parameters": [{
+					"in": "query",
+					"name": "comment[file_ids][]",
+					"description": "Attach files to this comment that were previously uploaded using thenSubmission Comment API&#39;s files action",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "comment[group_comment]",
+					"description": "Whether or not this comment should be sent to the entire group (defaults tonfalse). Ignored if this is not a group assignment or if no text_comment isnprovided.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "comment[media_comment_id]",
+					"description": "Add an audio/video comment to the submission. Media comments can be addednvia this API, however, note that there is not yet an API to generate ornlist existing media comments, so this functionality is currently of limitednuse.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "comment[media_comment_type]",
+					"description": "The type of media comment being added.nn        n        n          Allowed values: audio, video",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "comment[text_comment]",
+					"description": "Add a textual comment to the submission.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "include[visibility]",
+					"description": "Whether this assignment is visible to the owner of the submission",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "rubric_assessment",
+					"description": "Assign a rubric assessment to this assignment submission. Thensub-parameters here depend on the rubric for the assignment. The generalnformat is, for each row in the rubric:nnThe points awarded for this row.nnrubric_assessment[criterion_id][points]nnComments to add for this row.nnrubric_assessment[criterion_id][comments]nnFor example, if the assignment rubric is (in JSON format):nn[n  {n    &#39;id&#39;: &#39;crit1&#39;,n    &#39;points&#39;: 10,n    &#39;description&#39;: &#39;Criterion 1&#39;,n    &#39;ratings&#39;:n    [n      { &#39;description&#39;: &#39;Good&#39;, &#39;points&#39;: 10 },n      { &#39;description&#39;: &#39;Poor&#39;, &#39;points&#39;: 3 }n    ]n  },n  {n    &#39;id&#39;: &#39;crit2&#39;,n    &#39;points&#39;: 5,n    &#39;description&#39;: &#39;Criterion 2&#39;,n    &#39;ratings&#39;:n    [n      { &#39;description&#39;: &#39;Complete&#39;, &#39;points&#39;: 5 },n      { &#39;description&#39;: &#39;Incomplete&#39;, &#39;points&#39;: 0 }n    ]n  }n]nnThen a possible set of values for rubric_assessment would be:nnrubric_assessment[crit1][points]=3&amp;rubric_assessment[crit2][points]=5&amp;rubric_assessment[crit2][comments]=Well%20Done.",
+					"type": "rubricassessment"
+				},
+				{
+					"in": "query",
+					"name": "submission[excuse]",
+					"description": "Sets the u201cexcusedu201d status of an assignment.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "submission[posted_grade]",
+					"description": "Assign a score to the submission, updating both the u201cscoreu201d and u201cgradeu201dnfields on the submission record. This parameter can be passed in a fewndifferent formats:npointsnnA floating point or integral value, such as u201c13.5u201d. The gradennnwill be interpreted directly as the score of the assignment.nValues above assignment.points_possible are allowed, for awardingnextra credit.npercentagennA floating point value appended with a percent sign, such asnnn&quot;40%&quot;. The grade will be interpreted as a percentage score on thenassignment, where 100% == assignment.points_possible. Values above 100%nare allowed, for awarding extra credit.nletter gradennA letter grade, following the assignment&#39;s defined letternnngrading scheme. For example, &quot;A-&quot;. The resulting score will be the highnend of the defined range for the letter grade. For instance, if &quot;B&quot; isndefined as 86% to 84%, a letter grade of &quot;B&quot; will be worth 86%. Thenletter grade will be rejected if the assignment does not have a definednletter grading scheme. For more fine-grained control of scores, pass innpoints or percentage rather than the letter grade.nu201cpass/complete/fail/incompleteu201dnnA string value of u201cpassu201d or u201ccompleteu201dnnnwill give a score of 100%. &quot;fail&quot; or &quot;incomplete&quot; will give a score ofn0.nnNote that assignments with grading_type of u201cpass_failu201d can only be assignedna score of 0 or assignment.points_possible, nothing inbetween. If anposted_grade in the u201cpointsu201d or u201cpercentageu201d format is sent, the grade willnonly be accepted if the grade equals one of those two values.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["section assignments"],
+				"security": []
+			}
+		},
+		"/sections/{section_id}/assignments/assignment_id/submissions/{user_id}/files": {
+			"post": {
+				"summary": "Upload a file",
+				"description": "",
+				"operationId": "upload-a-file",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["section assignments"],
+				"security": []
+			}
+		},
+		"/sections/{section_id}/assignments/assignment_id/submissions/{user_id}/read": {
+			"delete": {
+				"summary": "Mark submission as unread",
+				"description": "",
+				"operationId": "mark-submission-as-unread",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["section assignments"],
+				"security": []
+			},
+			"put": {
+				"summary": "Mark submission as read",
+				"description": "",
+				"operationId": "mark-submission-as-read",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["section assignments"],
+				"security": []
+			}
+		},
+		"/sections/{section_id}/enrollments": {
+			"get": {
+				"summary": "List enrollments",
+				"description": "",
+				"operationId": "list-enrollments",
+				"parameters": [{
+					"in": "query",
+					"name": "grading_period_id",
+					"description": "Return grades for the given grading_period.  If this parameter is notnspecified, the returned grades will be for the whole course.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "role[]",
+					"description": "A list of enrollment roles to return. Accepted values include course-levelnroles created by the Add Role API asnwell as the base enrollment types accepted by the `type` argument above.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "state[]",
+					"description": "Filter by enrollment state. If omitted, &#39;active&#39; andn&#39;invited&#39; enrollments are returned. When querying a user&#39;snenrollments (either via user_id argument or via user enrollments endpoint),nthe following additional synthetic states are supported:nu201ccurrent_and_invitedu201d|u201ccurrent_and_futureu201d|u201ccurrent_and_concludedu201dnn        n        n          Allowed values: active, invited, creation_pending, deleted, rejected, completed, inactive",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "type[]",
+					"description": "A list of enrollment types to return. Accepted values aren&#39;StudentEnrollment&#39;, &#39;TeacherEnrollment&#39;,n&#39;TaEnrollment&#39;, &#39;DesignerEnrollment&#39;, andn&#39;ObserverEnrollment.&#39; If omitted, all enrollment types arenreturned. This argument is ignored if `role` is given.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "Filter by user_id (only valid for course or section enrollment queries). Ifnset to the current user&#39;s id, this is a way to determine if the usernhas any enrollments in the course or section, independent of whether thenuser has permission to view other people on the roster.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["section enrollments"],
+				"security": []
+			},
+			"post": {
+				"summary": "Enroll a user",
+				"description": "",
+				"operationId": "enroll-a-user",
+				"parameters": [{
+					"in": "query",
+					"name": "enrollment[course_section_id]",
+					"description": "The ID of the course section to enroll the student in. If thensection-specific URL is used, this argument is redundant and will benignored.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "enrollment[enrollment_state]",
+					"description": "If set to &#39;active,&#39; student will be immediately enrolled in thencourse. Otherwise they will be required to accept a course invitation.nDefault is &#39;invited.&#39;.nnIf set to &#39;inactive&#39;, student will be listed in the course rosternfor teachers, but will not be able to participate in the course until theirnenrollment is activated.nn        n        n          Allowed values: active, invited, inactive",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "enrollment[limit_privileges_to_course_section]",
+					"description": "If set, the enrollment will only allow the user to see and interact withnusers enrolled in the section given by course_section_id.nnFor teachers and TAs, this includes grading privileges.nnSection-limited students will not see any users (including teachers andnTAs) not enrolled in their sections.nnUsers may have other enrollments that grant privileges to multiple sectionsnin the same course.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "enrollment[notify]",
+					"description": "If true, a notification will be sent to the enrolled user. Notificationsnare not sent by default.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "enrollment[role]",
+					"description": "Assigns a custom course-level role to the user.",
+					"type": "deprecated"
+				},
+				{
+					"in": "query",
+					"name": "enrollment[role_id]",
+					"description": "Assigns a custom course-level role to the user.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "enrollment[self_enrolled]",
+					"description": "If true, marks the enrollment as a self-enrollment, which gives studentsnthe ability to drop the course if desired. Defaults to false.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "enrollment[self_enrollment_code]",
+					"description": "If the current user is not allowed to manage enrollments in this course,nbut the course allows self-enrollment, the user can self- enroll as anstudent in the default section by passing in a valid code. Whennself-enrolling, the user_id must be &#39;self&#39;. The enrollment_statenwill be set to &#39;active&#39; and all other arguments will be ignored.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "enrollment[type]",
+					"description": "Enroll the user as a student, teacher, TA, observer, or designer. If nonvalue is given, the type will be inferred by enrollment if supplied, otherwisen&#39;StudentEnrollment&#39; will be used.nn        n        n          Allowed values: StudentEnrollment, TeacherEnrollment, TaEnrollment, ObserverEnrollment, DesignerEnrollment",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "enrollment[user_id]",
+					"description": "The ID of the user to be enrolled in the course.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["section enrollments"],
+				"security": []
+			}
+		},
+		"/sections/{section_id}/students/submissions": {
+			"get": {
+				"summary": "List submissions for multiple assignments",
+				"description": "",
+				"operationId": "list-submissions-for-multiple-assignments",
+				"parameters": [{
+					"in": "query",
+					"name": "assignment_ids[]",
+					"description": "List of assignments to return submissions for. If none are given,nsubmissions for all assignments are returned.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "grading_period_id",
+					"description": "The id of the grading period in which submissions are being requestedn(Requires the Multiple Grading Periods account feature turned on)",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "grouped",
+					"description": "If this argument is present, the response will be grouped by student,nrather than a flat array of submissions.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "include[]",
+					"description": "Associations to include with the group. `total_scores` requires then`grouped` argument.nn        n        n          Allowed values: submission_history, submission_comments, rubric_assessment, assignment, total_scores, visibility, course, user",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "student_ids[]",
+					"description": "List of student ids to return submissions for. If this argument is omitted,nreturn submissions for the calling user. Students may only list their ownnsubmissions. Observers may only list those of associated students. Thenspecial id u201callu201d will return submissions for all students in thencourse/section as appropriate.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["section submissions"],
+				"security": []
+			}
+		},
+		"/sections/{section_id}/submissions/update_grades": {
+			"post": {
+				"summary": "Grade or comment on multiple submissions",
+				"description": "",
+				"operationId": "grade-or-comment-on-multiple-submissions",
+				"parameters": [{
+					"in": "query",
+					"name": "grade_data[&lt;student_id&gt;][file_ids][]",
+					"description": "See documentation for the comment[] arguments in thenSubmissions Update documentation",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "grade_data[&lt;student_id&gt;][group_comment]",
+					"description": "no description",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "grade_data[&lt;student_id&gt;][media_comment_id]",
+					"description": "no description",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "grade_data[&lt;student_id&gt;][media_comment_type]",
+					"description": "no descriptionnn        n        n          Allowed values: audio, video",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "grade_data[&lt;student_id&gt;][posted_grade]",
+					"description": "See documentation for the posted_grade argument in thenSubmissions Update documentation",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "grade_data[&lt;student_id&gt;][rubric_assessment]",
+					"description": "See documentation for the rubric_assessment argument in thenSubmissions Update documentation",
+					"type": "rubricassessment"
+				},
+				{
+					"in": "query",
+					"name": "grade_data[&lt;student_id&gt;][text_comment]",
+					"description": "no description",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["section submissions"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

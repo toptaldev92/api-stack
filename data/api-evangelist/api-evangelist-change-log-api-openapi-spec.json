@@ -1,0 +1,367 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "API Evangelist - Change Log API",
+		"description": "This is an change log for helping manage the change log details of many disparate Change Log. Not all APis use the same approach, and this is an attempt to organize the mess.",
+		"termsOfService": "http://kinlane.com/terms-of-service.html",
+		"version": "v1"
+	},
+	"host": "change-log.api.apievangelist.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/change-log/": {
+			"get": {
+				"summary": "Get Change Log",
+				"description": "retrieves all change log entries",
+				"operationId": "getChange Log",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "host",
+					"description": "host for the change log entry"
+				},
+				{
+					"in": "query",
+					"name": "query",
+					"description": "a text query to search across change log entries"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Change Log"],
+				"security": []
+			},
+			"post": {
+				"summary": "Add Change Log",
+				"description": "add change log",
+				"operationId": "addChangeLog",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "footer",
+					"description": "footer for the change log entry"
+				},
+				{
+					"in": "query",
+					"name": "header",
+					"description": "header for the change log entry"
+				},
+				{
+					"in": "query",
+					"name": "host",
+					"description": "host of the change log entry"
+				},
+				{
+					"in": "query",
+					"name": "image",
+					"description": "image for the change log entry"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "title of the change log entry"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Change Log"],
+				"security": []
+			}
+		},
+		"/change-log/{change_log_id}/": {
+			"delete": {
+				"summary": "Delete Change Log",
+				"description": "delete an change log entry",
+				"operationId": "deleteChangeLog",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API"
+				},
+				{
+					"in": "path",
+					"name": "change_log_id",
+					"description": "id for the change log entry"
+				},
+				{
+					"in": "query",
+					"name": "host",
+					"description": "host for the change log entry"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Change Log"],
+				"security": []
+			},
+			"get": {
+				"summary": "Get Change Log",
+				"description": "retrieve a specific change log entry",
+				"operationId": "getChangeLogEntry",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API"
+				},
+				{
+					"in": "path",
+					"name": "change_log_id",
+					"description": "id for the change log entry"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Change Log"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update Change Log",
+				"description": "update an change log entry",
+				"operationId": "updateChangeLog",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "footer",
+					"description": "footer for the change log entry"
+				},
+				{
+					"in": "query",
+					"name": "header",
+					"description": "header for the change log entry"
+				},
+				{
+					"in": "query",
+					"name": "host",
+					"description": "host for the change log entry"
+				},
+				{
+					"in": "query",
+					"name": "image",
+					"description": "image for the change log entry"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "title of the change log entry"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Change Log"],
+				"security": []
+			}
+		},
+		"/change-log/{change_log_id}/keys/": {
+			"post": {
+				"summary": "Add Change Log Key",
+				"description": "Add change log key",
+				"operationId": "addChangeLogKey",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "change_log_id",
+					"description": "unique id of the change log entry"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "description for the change log entry key"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "name of the change log entry key"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Change Log"],
+				"security": []
+			}
+		},
+		"/change-log/{host}/": {
+			"get": {
+				"summary": "Get Change Log by Host",
+				"description": "retrieves all change_log entries by host",
+				"operationId": "getChange Log",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "host",
+					"description": "host for the change log entry"
+				},
+				{
+					"in": "query",
+					"name": "query",
+					"description": "a text query to search across change log entries"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Change Log"],
+				"security": []
+			}
+		},
+		"/change-log/{host}/default/": {
+			"post": {
+				"summary": "Set Default Change Log For Host",
+				"description": "set default change log for host",
+				"operationId": "setDefaultChangeLogForHost",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "change_log_id",
+					"description": "unique id of the change log entry"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "description for the change log entry key"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "name of the change log entry key"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Change Log"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"change_log": {
+			"properties": {
+				"change_log_id": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"image": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"header": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"footer": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"keys": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"keys": {
+			"properties": {
+				"key_id": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"description": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"change_log_id": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		}
+	}
+}

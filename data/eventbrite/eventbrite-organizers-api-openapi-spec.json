@@ -1,0 +1,99 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Eventbrite Organizers API",
+		"description": "The API for managing Eventbrite organizers.",
+		"version": "v3"
+	},
+	"host": "www.eventbriteapi.com",
+	"basePath": "/v3",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/organizers/": {
+			"post ": {
+				"summary": "Makes a new organizer.nReturns an organizer as organizer.",
+				"description": "Makes a new organizer.nReturns an organizer as organizer.",
+				"operationId": "makes-a-new-organizerreturns-an-organizer-as-organizer",
+				"parameters": [{
+					"in": "query",
+					"name": "organizer.description.html",
+					"description": "The description of the organizer"
+				},
+				{
+					"in": "query",
+					"name": "organizer.logo.id",
+					"description": "The logo id of the organizer"
+				},
+				{
+					"in": "query",
+					"name": "organizer.name",
+					"description": "The name of the organizer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Organizers"],
+				"security": []
+			},
+			"post": {
+				"summary": "Add Organizer",
+				"description": "Add Organizer",
+				"operationId": "addOrganizer",
+				"parameters": [{
+					"in": "query",
+					"name": "organizer.description.html",
+					"description": "The description of the organizer",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "organizer.logo.id",
+					"description": "The logo id of the organizer",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "organizer.name",
+					"description": "The name of the organizer",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Organizers"],
+				"security": []
+			}
+		},
+		"/organizers/{id}/": {
+			"get": {
+				"summary": "Get Organizer",
+				"description": "Get Organizer",
+				"operationId": "getOrganizer",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The id of the organizer.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Organizers"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

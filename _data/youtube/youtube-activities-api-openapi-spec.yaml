@@ -1,0 +1,121 @@
+- swagger: "2.0"
+  info:
+    title: YouTube Activities API
+    description: Programmatic access to YouTube features.
+    termsOfService: https://developers.google.com/youtube/terms
+    contact:
+      name: Google
+    version: v3
+  host: www.googleapis.com
+  basePath: /youtube/v3
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /activities:
+      get:
+        summary: List Activities
+        description: Returns a list of channel activity events that match the request
+          criteria. For example, you can retrieve events associated with a particular
+          channel, events associated with the users subscriptions and Google+ friends,
+          or the YouTube home page feed, which is customized for each user.
+        operationId: list-activities
+        parameters:
+        - in: query
+          name: channelId
+          description: The channelId parameter specifies a unique YouTube channel ID.
+            The API will then return a list of that channels activities.
+          type: string
+        - in: query
+          name: home
+          description: This parameter can only be used in a properly authorized request.
+            Set this parameters value to true to retrieve the activity feed that displays
+            on the YouTube home page for the currently authenticated user.
+          type: boolean
+        - in: query
+          name: maxResults
+          description: The maxResults parameter specifies the maximum number of items
+            that should be returned in the result set. Acceptable values are 0 to 50,
+            inclusive. The default value is 5.
+          type: unsigned integer
+        - in: query
+          name: mine
+          description: This parameter can only be used in a properly authorized request.
+            Set this parameters value to true to retrieve a feed of the authenticated
+            users activities.
+          type: boolean
+        - in: query
+          name: pageToken
+          description: The pageToken parameter identifies a specific page in the result
+            set that should be returned. In an API response, the nextPageToken and prevPageToken
+            properties identify other pages that could be retrieved.
+          type: string
+        - in: query
+          name: part
+          description: The part parameter specifies a comma-separated list of one or
+            more activity resource properties that the API response will include.If
+            the parameter identifies a property that contains child properties, the
+            child properties will be included in the response. For example, in an activity
+            resource, the snippet property contains other properties that identify the
+            type of activity, a display title for the activity, and so forth. If you
+            set part=snippet, the API response will also contain all of those n
+          type: string
+        - in: query
+          name: publishedAfter
+          description: The publishedAfter parameter specifies the earliest date and
+            time that an activity could have occurred for that activity to be included
+            in the API response. If the parameter value specifies a day, but not a time,
+            then any activities that occurred that day will be included in the result
+            set. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+          type: datetime
+        - in: query
+          name: publishedBefore
+          description: The publishedBefore parameter specifies the date and time before
+            which an activity must have occurred for that activity to be included in
+            the API response. If the parameter value specifies a day, but not a time,
+            then any activities that occurred that day will be excluded from the result
+            set. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
+          type: datetime
+        - in: query
+          name: regionCode
+          description: The regionCode parameter instructs the API to return results
+            for the specified country. The parameter value is an ISO 3166-1 alpha-2
+            country code. YouTube uses this value when the authorized users previous
+            activity on YouTube does not provide enough information to generate the
+            activity feed.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - activities
+        security: []
+      post:
+        summary: Insert Activities
+        description: 'Posts a bulletin for a specific channel. (The user submitting
+          the request must be authorized to act on the channels behalf.)Note: Even though
+          an activity resource can contain information about actions like a user rating
+          a video or marking a video as a favorite, you need to use other API methods
+          to generate those activity resources. For example, you would use the APIs
+          videos.rate() method to rate a video and the playlistItems.insert() method
+          to mark a video as a favorite.'
+        operationId: insert-activities
+        parameters:
+        - in: query
+          name: part
+          description: 'The part parameter serves two purposes in this operation. It
+            identifies the properties that the write operation will set as well as the
+            properties that the API response will include.The list below contains the
+            part names that you can include in the parameter value and the quota cost
+            for each part:contentDetails: 2id: 0snippet: 2'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - activities
+        security: []
+  definitions: []

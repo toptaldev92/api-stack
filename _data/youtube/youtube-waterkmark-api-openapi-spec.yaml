@@ -1,0 +1,72 @@
+- swagger: "2.0"
+  info:
+    title: YouTube Waterkmark API
+    description: Programmatic access to YouTube features.
+    termsOfService: https://developers.google.com/youtube/terms
+    contact:
+      name: Google
+    version: v3
+  host: www.googleapis.com
+  basePath: /youtube/v3
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /watermarks/set:
+      post:
+        summary: Set Watermarks
+        description: Uploads a watermark image to YouTube and sets it for a channel.
+        operationId: set-watermarks
+        parameters:
+        - in: query
+          name: channelId
+          description: The channelId parameter specifies the YouTube channel ID for
+            which the watermark is being provided.
+          type: string
+        - in: query
+          name: onBehalfOfContentOwner
+          description: 'Note: This parameter is intended exclusively for YouTube content
+            partners.The onBehalfOfContentOwner parameter indicates that the requests
+            authorization credentials identify a YouTube CMS user who is acting on behalf
+            of the content owner specified in the parameter value. This parameter is
+            intended for YouTube content partners that own and manage many different
+            YouTube channels. It allows content owners to authenticate once and get
+            access to all their video and channel data, without having to pr'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - watermarks
+        security: []
+    /watermarks/unset:
+      post:
+        summary: Unset Watermarks
+        description: Deletes a channels watermark image.
+        operationId: unset-watermarks
+        parameters:
+        - in: query
+          name: channelId
+          description: The channelId parameter specifies the YouTube channel ID for
+            which the watermark is being unset.
+          type: string
+        - in: query
+          name: onBehalfOfContentOwner
+          description: 'Note: This parameter is intended exclusively for YouTube content
+            partners.The onBehalfOfContentOwner parameter indicates that the requests
+            authorization credentials identify a YouTube CMS user who is acting on behalf
+            of the content owner specified in the parameter value. This parameter is
+            intended for YouTube content partners that own and manage many different
+            YouTube channels. It allows content owners to authenticate once and get
+            access to all their video and channel data, without having to pr'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - watermarks
+        security: []
+  definitions: []

@@ -1,0 +1,767 @@
+- swagger: "2.0"
+  info:
+    title: Heroku
+    description: Learn about building, deploying and managing your apps on Heroku.
+    version: "1"
+  host: api.heroku.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /addons:
+      get:
+        summary: ""
+        description: ""
+        operationId: ""
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apps:
+      get:
+        summary: Uninstall Addon from an App
+        description: Uninstall Addon from an App
+        operationId: uninstall-addon-from-an-app
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: List Apps
+        description: List Apps
+        operationId: list-apps
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apps/{app}/addons:
+      get:
+        summary: List Addons
+        description: List Addons
+        operationId: list-addons
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apps/{app}/addons/{addon}:
+      delete:
+        summary: Upgrade Addon to an App
+        description: Upgrade Addon to an App
+        operationId: upgrade-addon-to-an-app
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: addon
+          description: the addon name.
+          type: string
+        - in: path
+          name: addon
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: List Addons on an App
+        description: List Addons on an App
+        operationId: list-addons-on-an-app
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: addon
+          description: the addon name.
+          type: string
+        - in: path
+          name: addon
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: Install Addon to an App
+        description: Install Addon to an App
+        operationId: install-addon-to-an-app
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: addon
+          description: the addon name.
+          type: string
+        - in: path
+          name: addon
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apps/{app}/collaborators:
+      get:
+        summary: Destroy App
+        description: Destroy App
+        operationId: destroy-app
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apps/{app}/collaborators/{email}:
+      delete:
+        summary: List Collaborators
+        description: List Collaborators
+        operationId: list-collaborators
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        - in: query
+          name: email
+          description: The email of the user to remove as a collaborator.
+          type: string
+        - in: path
+          name: email
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apps/{app}/config_vars:
+      get:
+        summary: Remove Collaborator
+        description: Remove Collaborator
+        operationId: remove-collaborator
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: List Config Vars
+        description: List Config Vars
+        operationId: list-config-vars
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apps/{app}/config_vars/{key}:
+      delete:
+        summary: Add Config Vars
+        description: Add Config Vars
+        operationId: add-config-vars
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        - in: query
+          name: key
+          description: The config var to remove.
+          type: string
+        - in: path
+          name: key
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apps/{app}/domains:
+      get:
+        summary: Remove Config Var
+        description: Remove Config Var
+        operationId: remove-config-var
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apps/{app}/domains/{domain_name}:
+      delete:
+        summary: List Domains
+        description: List Domains
+        operationId: list-domains
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        - in: query
+          name: domain_name
+          description: The domain to remove.
+          type: string
+        - in: path
+          name: domain_name
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apps/{app}/logs:
+      get:
+        summary: Remove SSH key
+        description: Remove SSH key
+        operationId: remove-ssh-key
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        - in: query
+          name: logplex
+          description: Use logplex to stream logs (always true).
+          type: string
+        - in: query
+          name: num
+          description: The number of lines to display.
+          type: integer
+        - in: query
+          name: ps
+          description: Only display logs from a given process.
+          type: string
+        - in: query
+          name: source
+          description: Only display logs from a given source.
+          type: string
+        - in: query
+          name: tail
+          description: '1: continually stream logs - : display only num logs'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apps/{app}/ps:
+      get:
+        summary: Get App Logs
+        description: Get App Logs
+        operationId: get-app-logs
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: List Processes
+        description: List Processes
+        operationId: list-processes
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        - in: query
+          name: attach
+          description: 'true: use rendezvous to access stdin/stdout - : stream process
+            output to the application log'
+          type: string
+        - in: query
+          name: command
+          description: The command to run.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apps/{app}/ps/restart:
+      post:
+        summary: Run a one-off Process
+        description: Run a one-off Process
+        operationId: run-a-oneoff-process
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        - in: query
+          name: ps
+          description: The name of a process to restart.
+          type: string
+        - in: query
+          name: type
+          description: The type of process to restart.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apps/{app}/ps/scale:
+      post:
+        summary: Stop Processes
+        description: Stop Processes
+        operationId: stop-processes
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        - in: query
+          name: qty
+          description: The desired number of processes of this type.
+          type: string
+        - in: query
+          name: type
+          description: The type of process to scale.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apps/{app}/ps/stop:
+      post:
+        summary: Restart Processes
+        description: Restart Processes
+        operationId: restart-processes
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        - in: query
+          name: ps
+          description: The name of a process to stop.
+          type: xsd:string
+        - in: query
+          name: type
+          description: The type of process to stop.
+          type: xsd:string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apps/{app}/releases:
+      get:
+        summary: Scale Processes
+        description: Scale Processes
+        operationId: scale-processes
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: List Releases
+        description: List Releases
+        operationId: list-releases
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        - in: query
+          name: rollback
+          description: The release to which to roll back.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apps/{app}/releases/{release}:
+      get:
+        summary: Rollback to a Release
+        description: Rollback to a Release
+        operationId: rollback-to-a-release
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        - in: query
+          name: release
+          description: The release name.
+          type: string
+        - in: path
+          name: release
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apps/{app}/stack:
+      get:
+        summary: Get Release Info
+        description: Get Release Info
+        operationId: get-release-info
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: List Stacks
+        description: List Stacks
+        operationId: list-stacks
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: app
+          description: The app name.
+          type: string
+        - in: path
+          name: app
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apps/{name}:
+      delete:
+        summary: Get App Info
+        description: Get App Info
+        operationId: get-app-info
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: name
+          description: The app name.
+          type: string
+        - in: path
+          name: name
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: Create App
+        description: Create App
+        operationId: create-app
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: name
+          description: The app name.
+          type: string
+        - in: path
+          name: name
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/keys:
+      get:
+        summary: Remove Domain
+        description: Remove Domain
+        operationId: remove-domain
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: List SSH keys
+        description: List SSH keys
+        operationId: list-ssh-keys
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/keys/{key}:
+      delete:
+        summary: Associate an SSH key
+        description: Associate an SSH key
+        operationId: associate-an-ssh-key
+        parameters:
+        - in: query
+          name: Accept
+          description: Content type.
+          type: string
+        - in: query
+          name: key
+          description: The username@hostname description field of the key.
+          type: string
+        - in: path
+          name: key
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

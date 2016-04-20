@@ -1,0 +1,3067 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Instructure Canvas Accounts API",
+		"description": "Canvas LMS includes a REST API for accessing and modifying data externally from the main application, in your own programs and scripts. ",
+		"termsOfService": "https://www.canvaslms.com/policies/api-policy",
+		"version": "v1"
+	},
+	"host": "canvas.instructure.com",
+	"basePath": "/api/v1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/accounts": {
+			"get": {
+				"summary": "List accounts",
+				"description": "",
+				"operationId": "list-accounts",
+				"parameters": [{
+					"in": "query",
+					"name": "include[]",
+					"description": "Array of additional information to include.nu201clti_guidu201dnnthe &#39;tool_consumer_instance_guid&#39; that will be sent for thisnaccount on LTI launchesnu201cregistration_settingsu201dnnreturns info about the privacy policy and terms of usennn        n        n          Allowed values: lti_guid, registration_settings",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["accounts"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create a new root account",
+				"description": "",
+				"operationId": "create-a-new-root-account",
+				"parameters": [{
+					"in": "query",
+					"name": "account[domain]",
+					"description": "The domain to use for this account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "account[external_integration_keys][salesforce_account_id]",
+					"description": "no description",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "account[name]",
+					"description": "The account name.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "account[services]",
+					"description": "A hash of service settings. If set",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "account[settings]",
+					"description": "A hash of account setting options. If set to",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["accounts"],
+				"security": []
+			}
+		},
+		"/accounts/search": {
+			"get": {
+				"summary": "Search account domains",
+				"description": "",
+				"operationId": "search-account-domains",
+				"parameters": [{
+					"in": "query",
+					"name": "domain",
+					"description": "no description",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "latitude",
+					"description": "no description",
+					"type": "float"
+				},
+				{
+					"in": "query",
+					"name": "longitude",
+					"description": "no description",
+					"type": "float"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "campus name",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["accounts"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/account_authorization_configs": {
+			"get": {
+				"summary": "List authentication providers",
+				"description": "",
+				"operationId": "list-authentication-providers",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["accounts"],
+				"security": []
+			},
+			"post": {
+				"summary": "Add authentication provider",
+				"description": "",
+				"operationId": "add-authentication-provider",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["accounts"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/account_authorization_configs/discovery_url": {
+			"delete": {
+				"summary": "Delete discovery url _Deprecated_[2015-05-08]",
+				"description": "",
+				"operationId": "delete-discovery-url--deprecated-20150508",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["accounts"],
+				"security": []
+			},
+			"get": {
+				"summary": "GET discovery url _Deprecated_[2015-05-08]",
+				"description": "",
+				"operationId": "get-discovery-url--deprecated-20150508",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["accounts"],
+				"security": []
+			},
+			"put": {
+				"summary": "Set discovery url _Deprecated_[2015-05-08]",
+				"description": "",
+				"operationId": "set-discovery-url--deprecated-20150508",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["accounts"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/account_authorization_configs/id": {
+			"delete": {
+				"summary": "Delete authentication provider",
+				"description": "",
+				"operationId": "delete-authentication-provider",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["accounts"],
+				"security": []
+			},
+			"get": {
+				"summary": "Get authentication provider",
+				"description": "",
+				"operationId": "get-authentication-provider",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["accounts"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update authentication provider",
+				"description": "",
+				"operationId": "update-authentication-provider",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["accounts"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/account_notifications": {
+			"post": {
+				"summary": "Create a global notification",
+				"description": "",
+				"operationId": "create-a-global-notification",
+				"parameters": [{
+					"in": "query",
+					"name": "account_notification[end_at]",
+					"description": "The end date and time of the notification in ISO8601 format. e.g.n2014-01-01T01:00Z",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "account_notification[icon]",
+					"description": "The icon to display with the notification. Note: Defaults to warning.nn        n        n          Allowed values: warning, information, question, error, calendar",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "account_notification[message]",
+					"description": "The message body of the notification.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "account_notification[start_at]",
+					"description": "The start date and time of the notification in ISO8601 format. e.g.n2014-01-01T01:00Z",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "account_notification[subject]",
+					"description": "The subject of the notification.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "account_notification_roles[]",
+					"description": "The role(s) to send global notification to.  Note:  ommitting this fieldnwill send to everyone Example:nnaccount_notification_roles: [&quot;StudentEnrollment&quot;, &quot;TeacherEnrollment&quot;]",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["accounts"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/admins": {
+			"get": {
+				"summary": "List account admins",
+				"description": "",
+				"operationId": "list-account-admins",
+				"parameters": [{
+					"in": "query",
+					"name": "user_id[]",
+					"description": "Scope the results to those with user IDs equal to any of the IDs specifiednhere.",
+					"type": "[integer]"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["accounts"],
+				"security": []
+			},
+			"post": {
+				"summary": "Make an account admin",
+				"description": "",
+				"operationId": "make-an-account-admin",
+				"parameters": [{
+					"in": "query",
+					"name": "role",
+					"description": "(deprecated) The user&#39;s admin relationship with the account will bencreated with the given role. Defaults to &#39;AccountAdmin&#39;.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "role_id",
+					"description": "The user&#39;s admin relationship with the account will be created with thengiven role. Defaults to the built-in role for &#39;AccountAdmin&#39;.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "send_confirmation",
+					"description": "Send a notification email to the new admin if true. Default is true.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "The id of the user to promote.",
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["accounts"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/admins/user_id": {
+			"delete": {
+				"summary": "Remove account admin",
+				"description": "",
+				"operationId": "remove-account-admin",
+				"parameters": [{
+					"in": "query",
+					"name": "role",
+					"description": "(Deprecated) Account role to remove from the user. Defaults ton&#39;AccountAdmin&#39;. Any other account role must be specifiednexplicitly.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "role_id",
+					"description": "The user&#39;s admin relationship with the account will be created with thengiven role. Defaults to the built-in role for &#39;AccountAdmin&#39;.",
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["accounts"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/analytics/completed/activity": {
+			"get": {
+				"summary": "Get department-level participation data",
+				"description": "",
+				"operationId": "get-departmentlevel-participation-data",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["analytics"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/analytics/completed/grades": {
+			"get": {
+				"summary": "Get department-level grade data",
+				"description": "",
+				"operationId": "get-departmentlevel-grade-data",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["analytics"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/analytics/completed/statistics": {
+			"get": {
+				"summary": "Get department-level statistics",
+				"description": "",
+				"operationId": "get-departmentlevel-statistics",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["analytics"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/analytics/current/activity": {
+			"get": {
+				"summary": "Get department-level participation data",
+				"description": "",
+				"operationId": "get-departmentlevel-participation-data",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["analytics"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/analytics/current/grades": {
+			"get": {
+				"summary": "Get department-level grade data",
+				"description": "",
+				"operationId": "get-departmentlevel-grade-data",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["analytics"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/analytics/current/statistics": {
+			"get": {
+				"summary": "Get department-level statistics",
+				"description": "",
+				"operationId": "get-departmentlevel-statistics",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["analytics"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/analytics/terms/term_id/activity": {
+			"get": {
+				"summary": "Get department-level participation data",
+				"description": "",
+				"operationId": "get-departmentlevel-participation-data",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["analytics"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/analytics/terms/term_id/grades": {
+			"get": {
+				"summary": "Get department-level grade data",
+				"description": "",
+				"operationId": "get-departmentlevel-grade-data",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["analytics"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/analytics/terms/term_id/statistics": {
+			"get": {
+				"summary": "Get department-level statistics",
+				"description": "",
+				"operationId": "get-departmentlevel-statistics",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["analytics"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/authentication_providers": {
+			"get": {
+				"summary": "List authentication providers",
+				"description": "",
+				"operationId": "list-authentication-providers",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["authentication providers"],
+				"security": []
+			},
+			"post": {
+				"summary": "Add authentication provider",
+				"description": "",
+				"operationId": "add-authentication-provider",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["authentication providers"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/authentication_providers/id": {
+			"delete": {
+				"summary": "Delete authentication provider",
+				"description": "",
+				"operationId": "delete-authentication-provider",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["authentication providers"],
+				"security": []
+			},
+			"get": {
+				"summary": "Get authentication provider",
+				"description": "",
+				"operationId": "get-authentication-provider",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["authentication providers"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update authentication provider",
+				"description": "",
+				"operationId": "update-authentication-provider",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["authentication providers"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/content_migrations": {
+			"get": {
+				"summary": "List content migrations",
+				"description": "",
+				"operationId": "list-content-migrations",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["content migrations"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create a content migration",
+				"description": "",
+				"operationId": "create-a-content-migration",
+				"parameters": [{
+					"in": "query",
+					"name": "date_shift_options[day_substitutions][X]",
+					"description": "Move anything scheduled for day &#39;X&#39; to the specified day.n(0-Sunday, 1-Monday, 2-Tuesday, 3-Wednesday, 4-Thursday, 5-Friday,n6-Saturday)",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "date_shift_options[new_end_date]",
+					"description": "The new end date for the source content/course",
+					"type": "date"
+				},
+				{
+					"in": "query",
+					"name": "date_shift_options[new_start_date]",
+					"description": "The new start date for the content/course",
+					"type": "date"
+				},
+				{
+					"in": "query",
+					"name": "date_shift_options[old_end_date]",
+					"description": "The original end date of the source content/course",
+					"type": "date"
+				},
+				{
+					"in": "query",
+					"name": "date_shift_options[old_start_date]",
+					"description": "The original start date of the source content/course",
+					"type": "date"
+				},
+				{
+					"in": "query",
+					"name": "date_shift_options[remove_dates]",
+					"description": "Whether to remove dates in the copied course. Cannot be used in conjunctionnwith shift_dates.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "date_shift_options[shift_dates]",
+					"description": "Whether to shift dates in the copied course",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "migration_type",
+					"description": "The type of the migration. Use thenMigrator endpoint tonsee all available migrators. Default allowed values:ncanvas_cartridge_importer, common_cartridge_importer, course_copy_importer,nzip_file_importer, qti_converter, moodle_converter",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "pre_attachment[*]",
+					"description": "Other file upload properties, See File Upload Documentation",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "pre_attachment[name]",
+					"description": "Required if uploading a file. This is the first step in uploading a file tonthe content migration. See the File Upload Documentation for details on the file upload workflow.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "settings[file_url]",
+					"description": "A URL to download the file from. Must not require authentication.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "settings[folder_id]",
+					"description": "The folder to unzip the .zip file into for a zip_file_import.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "settings[overwrite_quizzes]",
+					"description": "Whether to overwrite quizzes with the same identifiers between contentnpackages.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "settings[question_bank_id]",
+					"description": "The existing question bank ID to import questions into if not specified innthe content package.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "settings[question_bank_name]",
+					"description": "The question bank to import questions into if not specified in the contentnpackage, if both bank id and name are set, id will take precedence.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "settings[source_course_id]",
+					"description": "The course to copy from for a course copy migration. (required if doingncourse copy)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["content migrations"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/content_migrations/content_migration_id/migration_issues": {
+			"get": {
+				"summary": "List migration issues",
+				"description": "",
+				"operationId": "list-migration-issues",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["content migrations"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/content_migrations/content_migration_id/migration_issues/{id}": {
+			"get": {
+				"summary": "Get a migration issue",
+				"description": "",
+				"operationId": "get-a-migration-issue",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["content migrations"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update a migration issue",
+				"description": "",
+				"operationId": "update-a-migration-issue",
+				"parameters": [{
+					"in": "query",
+					"name": "workflow_state",
+					"description": "Set the workflow_state of the issue.nn        n        n          Allowed values: active, resolved",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["content migrations"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/content_migrations/id": {
+			"get": {
+				"summary": "Get a content migration",
+				"description": "",
+				"operationId": "get-a-content-migration",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["content migrations"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update a content migration",
+				"description": "",
+				"operationId": "update-a-content-migration",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["content migrations"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/content_migrations/migrators": {
+			"get": {
+				"summary": "List Migration Systems",
+				"description": "",
+				"operationId": "list-migration-systems",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["content migrations"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/courses": {
+			"get": {
+				"summary": "List active courses in an account",
+				"description": "",
+				"operationId": "list-active-courses-in-an-account",
+				"parameters": [{
+					"in": "query",
+					"name": "by_subaccounts[]",
+					"description": "List of Account IDs; if supplied, include only courses associated with onenof the referenced subaccounts.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "by_teachers[]",
+					"description": "List of User IDs of teachers; if supplied, include only courses taught bynone of the referenced users.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "completed",
+					"description": "If true, include only completed courses (these may be in staten&#39;completed&#39;, or their enrollment term may have ended).  If false,nexclude completed courses.  If not present, do not filter on completednstatus.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "enrollment_term_id",
+					"description": "If set, only includes courses from the specified term.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "enrollment_type[]",
+					"description": "If set, only return courses that have at least one user enrolled in in thencourse with one of the specified enrollment types.nn        n        n          Allowed values: teacher, student, ta, observer, designer",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "hide_enrollmentless_courses",
+					"description": "If present, only return courses that have at least one enrollment.nEquivalent to &#39;with_enrollments=true&#39;; retained for compatibility.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "include[]",
+					"description": "All explanations can be seen in the Course API index documentationnnu201csectionsu201d, u201cneeds_grading_countu201d and u201ctotal_scoresu201d are not valid optionsnat the account levelnnn        n        n          Allowed values: syllabus_body, term, course_progress, storage_quota_used_mb, total_students, teachers",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "published",
+					"description": "If true, include only published courses.  If false, exclude publishedncourses.  If not present, do not filter on published status.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "search_term",
+					"description": "The partial course name, code, or full ID to match and return in thenresults list. Must be at least 3 characters.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "state[]",
+					"description": "If set, only return courses that are in the given state(s). By default, allnstates but u201cdeletedu201d are returned.nn        n        n          Allowed values: created, claimed, available, completed, deleted, all",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "with_enrollments",
+					"description": "If true, include only courses with at least one enrollment.  If false,ninclude only courses with no enrollments.  If not present, do not filter onncourse enrollment status.",
+					"type": "boolean"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["courses"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create a new course",
+				"description": "",
+				"operationId": "create-a-new-course",
+				"parameters": [{
+					"in": "query",
+					"name": "account_id",
+					"description": "The unique ID of the account to create to course under.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "course[allow_student_forum_attachments]",
+					"description": "If true, students can attach files to forum posts.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "course[allow_student_wiki_edits]",
+					"description": "If true, students will be able to modify the course wiki.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "course[allow_wiki_comments]",
+					"description": "If true, course members will be able to comment on wiki pages.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "course[apply_assignment_group_weights]",
+					"description": "Set to true to weight final grade based on assignment groups percentages.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "course[course_code]",
+					"description": "The course code for the course.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "course[course_format]",
+					"description": "Optional. Specifies the format of the course. (Should be eithern&#39;on_campus&#39; or &#39;online&#39;)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "course[end_at]",
+					"description": "Course end date in ISO8601 format. e.g. 2011-01-01T01:00Z",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "course[grading_standard_id]",
+					"description": "The grading standard id to set for the course.  If no value is provided fornthis argument the current grading_standard will be un-set from this course.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "course[hide_final_grades]",
+					"description": "If this option is set to true, the totals in student grades summary will benhidden.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "course[integration_id]",
+					"description": "The unique Integration identifier.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "course[is_public]",
+					"description": "Set to true if course if public.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "course[is_public_to_auth_users]",
+					"description": "Set to true if course if public to authenticated users.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "course[license]",
+					"description": "The name of the licensing. Should be one of the following abbreviations (andescriptive name is included in parenthesis for reference):nn&#39;private&#39; (Private Copyrighted)nn&#39;cc_by_nc_nd&#39; (CC Attribution Non-Commercial No Derivatives)nn&#39;cc_by_nc_sa&#39; (CC Attribution Non-Commercial Share Alike)nn&#39;cc_by_nc&#39; (CC Attribution Non-Commercial)nn&#39;cc_by_nd&#39; (CC Attribution No Derivatives)nn&#39;cc_by_sa&#39; (CC Attribution Share Alike)nn&#39;cc_by&#39; (CC Attribution)nn&#39;public_domain&#39; (Public Domain).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "course[name]",
+					"description": "The name of the course. If omitted, the course will be named u201cUnnamednCourse.u201d",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "course[open_enrollment]",
+					"description": "Set to true if the course is open enrollment.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "course[public_description]",
+					"description": "A publicly visible description of the course.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "course[public_syllabus]",
+					"description": "Set to true to make the course syllabus public.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "course[restrict_enrollments_to_course_dates]",
+					"description": "Set to true to restrict user enrollments to the start and end dates of thencourse.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "course[self_enrollment]",
+					"description": "Set to true if the course is self enrollment.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "course[sis_course_id]",
+					"description": "The unique SIS identifier.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "course[start_at]",
+					"description": "Course start date in ISO8601 format, e.g. 2011-01-01T01:00Z",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "course[syllabus_body]",
+					"description": "The syllabus body for the course",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "course[term_id]",
+					"description": "The unique ID of the term to create to course in.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "enable_sis_reactivation",
+					"description": "When true, will first try to re-activate a deleted course with matchingnsis_course_id if possible.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "enroll_me",
+					"description": "Set to true to enroll the current user as the teacher.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "offer",
+					"description": "If this option is set to true, the course will be available to studentsnimmediately.",
+					"type": "boolean"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["courses"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update courses",
+				"description": "",
+				"operationId": "update-courses",
+				"parameters": [{
+					"in": "query",
+					"name": "course_ids[]",
+					"description": "List of ids of courses to update. At most 500 courses may be updated in onencall.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "event",
+					"description": "no descriptionnn        n        n          Allowed values: offer, conclude, delete, undelete",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["courses"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/courses/id": {
+			"get": {
+				"summary": "Get a single course",
+				"description": "",
+				"operationId": "get-a-single-course",
+				"parameters": [{
+					"in": "query",
+					"name": "include[]",
+					"description": "u201call_coursesu201d: Also search recently deleted courses.nnu201cpermissionsu201d: Include permissions the current user has for the course.nnu201cobserved_usersu201d: include observed users in the enrollmentsnnn        n        n          Allowed values: all_courses, permissions, observed_users",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["courses"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/enrollments/id": {
+			"get": {
+				"summary": "Enrollment by ID",
+				"description": "",
+				"operationId": "enrollment-by-id",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "The ID of the enrollment object",
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["enrollments"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/external_tools": {
+			"get": {
+				"summary": "List external tools",
+				"description": "",
+				"operationId": "list-external-tools",
+				"parameters": [{
+					"in": "query",
+					"name": "search_term",
+					"description": "The partial name of the tools to match and return.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "selectable",
+					"description": "If true, then only tools that are meant to be selectable are returned",
+					"type": "boolean"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["external tools"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create an external tool",
+				"description": "",
+				"operationId": "create-an-external-tool",
+				"parameters": [{
+					"in": "query",
+					"name": "account_navigation[enabled]",
+					"description": "Set this to enable this feature",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "account_navigation[text]",
+					"description": "The text that will show on the left-tab in the account navigation",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "account_navigation[url]",
+					"description": "The url of the external tool for account navigation",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_type",
+					"description": "Configuration can be passed in as CC xml instead of using query parameters.nIf this value is u201cby_urlu201d or u201cby_xmlu201d then an xml configuration will benexpected in either the u201cconfig_xmlu201d or u201cconfig_urlu201d parameter. Note thatnthe name parameter overrides the tool name provided in the xml",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_url",
+					"description": "URL where the server can retrieve an XML tool configuration, as specifiednin the CC xml specification. This is required if u201cconfig_typeu201d is set tonu201cby_urlu201d",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_xml",
+					"description": "XML tool configuration, as specified in the CC xml specification. This isnrequired if u201cconfig_typeu201d is set to u201cby_xmlu201d",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "consumer_key",
+					"description": "The consumer key for the external tool",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "course_navigation[default]",
+					"description": "Whether the navigation option will show in the course by default or whethernthe teacher will have to explicitly enable it",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "course_navigation[enabled]",
+					"description": "Set this to enable this feature",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "course_navigation[text]",
+					"description": "The text that will show on the left-tab in the course navigation",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "course_navigation[url]",
+					"description": "The url of the external tool for course navigation",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "course_navigation[visibility]",
+					"description": "Who will see the navigation tab. u201cadminsu201d for course admins, u201cmembersu201d fornstudents, null for everyonenn        n        n          Allowed values: admins, members",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "custom_fields",
+					"description": "Custom fields that will be sent to the tool consumer, specified as custom_fields",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "A description of the tool",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "domain",
+					"description": "The domain to match links against. Either u201curlu201d or u201cdomainu201d should be set,nnot both.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "editor_button[enabled]",
+					"description": "Set this to enable this feature",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "editor_button[icon_url]",
+					"description": "The url of the icon to show in the WYSIWYG editor",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "editor_button[selection_height]",
+					"description": "The height of the dialog the tool is launched in",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "editor_button[selection_width]",
+					"description": "The width of the dialog the tool is launched in",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "editor_button[url]",
+					"description": "The url of the external tool",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "icon_url",
+					"description": "The url of the icon to show for this tool",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "The name of the tool",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "not_selectable",
+					"description": "Default: false, if set to true the tool won&#39;t show up in the externalntool selection UI in modules and assignments",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "privacy_level",
+					"description": "What information to send to the external tool.nn        n        n          Allowed values: anonymous, name_only, public",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "resource_selection[enabled]",
+					"description": "Set this to enable this feature",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "resource_selection[icon_url]",
+					"description": "The url of the icon to show in the module external tool list",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "resource_selection[selection_height]",
+					"description": "The height of the dialog the tool is launched in",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "resource_selection[selection_width]",
+					"description": "The width of the dialog the tool is launched in",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "resource_selection[url]",
+					"description": "The url of the external tool",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "shared_secret",
+					"description": "The shared secret with the external tool",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "text",
+					"description": "The default text to show for this tool",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "The url to match links against. Either u201curlu201d or u201cdomainu201d should be set, notnboth.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_navigation[enabled]",
+					"description": "Set this to enable this feature",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "user_navigation[text]",
+					"description": "The text that will show on the left-tab in the user navigation",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_navigation[url]",
+					"description": "The url of the external tool for user navigation",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["external tools"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/external_tools/external_tool_id": {
+			"delete": {
+				"summary": "Delete an external tool",
+				"description": "",
+				"operationId": "delete-an-external-tool",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["external tools"],
+				"security": []
+			},
+			"get": {
+				"summary": "Get a single external tool",
+				"description": "",
+				"operationId": "get-a-single-external-tool",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["external tools"],
+				"security": []
+			},
+			"put": {
+				"summary": "Edit an external tool",
+				"description": "",
+				"operationId": "edit-an-external-tool",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["external tools"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/external_tools/sessionless_launch": {
+			"get": {
+				"summary": "Get a sessionless launch url for an external tool.",
+				"description": "",
+				"operationId": "get-a-sessionless-launch-url-for-an-external-tool",
+				"parameters": [{
+					"in": "query",
+					"name": "assignment_id",
+					"description": "The assignment id for an assignment launch.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The external id of the tool to launch.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "launch_type",
+					"description": "The type of launch to perform on the external tool.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "The LTI launch url for the external tool.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["external tools"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/features": {
+			"get": {
+				"summary": "List features",
+				"description": "",
+				"operationId": "list-features",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["features"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/features/enabled": {
+			"get": {
+				"summary": "List enabled features",
+				"description": "",
+				"operationId": "list-enabled-features",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["features"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/features/flags/feature": {
+			"delete": {
+				"summary": "Remove feature flag",
+				"description": "",
+				"operationId": "remove-feature-flag",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["features"],
+				"security": []
+			},
+			"get": {
+				"summary": "Get feature flag",
+				"description": "",
+				"operationId": "get-feature-flag",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["features"],
+				"security": []
+			},
+			"put": {
+				"summary": "Set feature flag",
+				"description": "",
+				"operationId": "set-feature-flag",
+				"parameters": [{
+					"in": "query",
+					"name": "locking_account_id",
+					"description": "If set, this FeatureFlag may only be modified by someone withnadministrative rights in the specified account. The locking account must benabove the target object in the account chain.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "state",
+					"description": "u201coffu201dnnThe feature is not available for the course, user, or account andnsub-accounts.nu201callowedu201dnn(valid only on accounts) The feature is off in the account, but may benenabled in sub-accounts and courses by setting a feature flag on thensub-account or course.nu201conu201dnnThe feature is turned on unconditionally for the user, course, or accountnand sub-accounts.nnn        n        n          Allowed values: off, allowed, on",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["features"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/grading_periods": {
+			"get": {
+				"summary": "List grading periods",
+				"description": "",
+				"operationId": "list-grading-periods",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["grading periods"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create a single grading period",
+				"description": "",
+				"operationId": "create-a-single-grading-period",
+				"parameters": [{
+					"in": "query",
+					"name": "grading_periods[][end_date]",
+					"description": "no description",
+					"type": "date"
+				},
+				{
+					"in": "query",
+					"name": "grading_periods[][start_date]",
+					"description": "The date the grading period starts.",
+					"type": "date"
+				},
+				{
+					"in": "query",
+					"name": "grading_periods[][weight]",
+					"description": "The percentage weight of how much the period should count toward the coursengrade.",
+					"type": "number"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["grading periods"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/grading_periods/id": {
+			"delete": {
+				"summary": "Delete a grading period",
+				"description": "",
+				"operationId": "delete-a-grading-period",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["grading periods"],
+				"security": []
+			},
+			"get": {
+				"summary": "Get a single grading period",
+				"description": "",
+				"operationId": "get-a-single-grading-period",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["grading periods"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update a single grading period",
+				"description": "",
+				"operationId": "update-a-single-grading-period",
+				"parameters": [{
+					"in": "query",
+					"name": "grading_periods[][end_date]",
+					"description": "no description",
+					"type": "date"
+				},
+				{
+					"in": "query",
+					"name": "grading_periods[][start_date]",
+					"description": "The date the grading period starts.",
+					"type": "date"
+				},
+				{
+					"in": "query",
+					"name": "grading_periods[][weight]",
+					"description": "The percentage weight of how much the period should count toward the coursengrade.",
+					"type": "number"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["grading periods"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/grading_standards": {
+			"get": {
+				"summary": "List the grading standards available in a context.",
+				"description": "",
+				"operationId": "list-the-grading-standards-available-in-a-context",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["grading standards"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create a new grading standard",
+				"description": "",
+				"operationId": "create-a-new-grading-standard",
+				"parameters": [{
+					"in": "query",
+					"name": "grading_scheme_entry[][name]",
+					"description": "The name for an entry value within a GradingStandard that describes thenrange of the value e.g. A-",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "grading_scheme_entry[][value]",
+					"description": "The value for the name of the entry within a GradingStandard. The entrynrepresents the lower bound of the range for the entry. This range includesnthe value up to the next entry in the GradingStandard, or 100 if there isnno upper bound. The lowest value will have a lower bound range of 0. e.g.n93",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "The title for the Grading Standard.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["grading standards"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/groups": {
+			"get": {
+				"summary": "List the groups available in a context.",
+				"description": "",
+				"operationId": "list-the-groups-available-in-a-context",
+				"parameters": [{
+					"in": "query",
+					"name": "only_own_groups",
+					"description": "Will only include groups that the user belongs to if this is set",
+					"type": "boolean"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/group_categories": {
+			"get": {
+				"summary": "List group categories for a context",
+				"description": "",
+				"operationId": "list-group-categories-for-a-context",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create a Group Category",
+				"description": "",
+				"operationId": "create-a-group-category",
+				"parameters": [{
+					"in": "query",
+					"name": "auto_leader",
+					"description": "Assigns group leaders automatically when generating and allocating studentsnto groups Valid values are:nu201cfirstu201dnnthe first student to be allocated to a group is the leadernu201crandomu201dnna random student from all members is chosen as the leadernnn        n        n          Allowed values: first, random",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "create_group_count",
+					"description": "Create this number of groups (Course Only).",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "group_limit",
+					"description": "Limit the maximum number of users in each group (Course Only). Requiresnself signup.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "Name of the group category",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "self_signup",
+					"description": "Allow students to sign up for a group themselves (Course Only). validnvalues are:nu201cenabledu201dnnallows students to self sign up for any group in coursenu201crestrictedu201dnnallows students to self sign up only for groups in the same section nullndisallows self sign upnnn        n        n          Allowed values: enabled, restricted",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "split_group_count",
+					"description": "(Deprecated) Create this number of groups, and evenly distribute studentsnamong them. not allowed with u201cenable_self_signupu201d. because the groupnassignment happens synchronously, it&#39;s recommended that you instead usenthe assign_unassigned_members endpoint. (Course Only)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/logins": {
+			"get": {
+				"summary": "List user logins",
+				"description": "",
+				"operationId": "list-user-logins",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["logins"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create a user login",
+				"description": "",
+				"operationId": "create-a-user-login",
+				"parameters": [{
+					"in": "query",
+					"name": "login[authentication_provider_id]",
+					"description": "The authentication provider this login is associated with. Loginsnassociated with a specific provider can only be used with that provider.nLegacy providers (LDAP, CAS, SAML) will search for logins associated withnthem, or unassociated logins. New providers will only search for loginsnexplicitly associated with them. This can be the integer ID of thenprovider, or the type of the provider (in which case, it will find thenfirst matching provider).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "login[password]",
+					"description": "The new login&#39;s password.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "login[sis_user_id]",
+					"description": "SIS ID for the login. To set this parameter, the caller must be able tonmanage SIS permissions on the account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "login[unique_id]",
+					"description": "The unique ID for the new login.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user[id]",
+					"description": "The ID of the user to create the login for.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["logins"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/logins/id": {
+			"put": {
+				"summary": "Edit a user login",
+				"description": "",
+				"operationId": "edit-a-user-login",
+				"parameters": [{
+					"in": "query",
+					"name": "login[password]",
+					"description": "The new password for the login. Can only be set by an admin user if adminsnare allowed to change passwords for the account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "login[sis_user_id]",
+					"description": "SIS ID for the login. To set this parameter, the caller must be able tonmanage SIS permissions on the account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "login[unique_id]",
+					"description": "The new unique ID for the login.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["logins"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/outcome_groups": {
+			"get": {
+				"summary": "Get all outcome groups for context",
+				"description": "",
+				"operationId": "get-all-outcome-groups-for-context",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/outcome_groups/id": {
+			"delete": {
+				"summary": "Delete an outcome group",
+				"description": "",
+				"operationId": "delete-an-outcome-group",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			},
+			"get": {
+				"summary": "Show an outcome group",
+				"description": "",
+				"operationId": "show-an-outcome-group",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update an outcome group",
+				"description": "",
+				"operationId": "update-an-outcome-group",
+				"parameters": [{
+					"in": "query",
+					"name": "description",
+					"description": "The new outcome group description.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "parent_outcome_group_id",
+					"description": "The id of the new parent outcome group.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "The new outcome group title.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "vendor_guid",
+					"description": "A custom GUID for the learning standard.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/outcome_groups/id/import": {
+			"post": {
+				"summary": "Import an outcome group",
+				"description": "",
+				"operationId": "import-an-outcome-group",
+				"parameters": [{
+					"in": "query",
+					"name": "source_outcome_group_id",
+					"description": "The ID of the source outcome group.",
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/outcome_groups/id/outcomes": {
+			"get": {
+				"summary": "List linked outcomes",
+				"description": "",
+				"operationId": "list-linked-outcomes",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create/link an outcome",
+				"description": "",
+				"operationId": "createlink-an-outcome",
+				"parameters": [{
+					"in": "query",
+					"name": "calculation_int",
+					"description": "The new calculation int.  Only applies if the calculation_method isnu201cdecaying_averageu201d or u201cn_masteryu201d",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "calculation_method",
+					"description": "The new calculation method.  Defaults to u201chighestu201dnn        n        n          Allowed values: decaying_average, n_mastery, latest, highest",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "The description of the new outcome.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "display_name",
+					"description": "A friendly name shown in reports for outcomes with cryptic titles, such asncommon core standards names.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "mastery_points",
+					"description": "The mastery threshold for the embedded rubric criterion.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "outcome_id",
+					"description": "The ID of the existing outcome to link.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "ratings[][description]",
+					"description": "The description of a rating level for the embedded rubric criterion.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "ratings[][points]",
+					"description": "The points corresponding to a rating level for the embedded rubricncriterion.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "The title of the new outcome. Required if outcome_id is absent.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "vendor_guid",
+					"description": "A custom GUID for the learning standard.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/outcome_groups/id/outcomes/{outcome_id}": {
+			"delete": {
+				"summary": "Unlink an outcome",
+				"description": "",
+				"operationId": "unlink-an-outcome",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			},
+			"put": {
+				"summary": "Create/link an outcome",
+				"description": "",
+				"operationId": "createlink-an-outcome",
+				"parameters": [{
+					"in": "query",
+					"name": "calculation_int",
+					"description": "The new calculation int.  Only applies if the calculation_method isnu201cdecaying_averageu201d or u201cn_masteryu201d",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "calculation_method",
+					"description": "The new calculation method.  Defaults to u201chighestu201dnn        n        n          Allowed values: decaying_average, n_mastery, latest, highest",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "The description of the new outcome.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "display_name",
+					"description": "A friendly name shown in reports for outcomes with cryptic titles, such asncommon core standards names.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "mastery_points",
+					"description": "The mastery threshold for the embedded rubric criterion.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "outcome_id",
+					"description": "The ID of the existing outcome to link.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "ratings[][description]",
+					"description": "The description of a rating level for the embedded rubric criterion.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "ratings[][points]",
+					"description": "The points corresponding to a rating level for the embedded rubricncriterion.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "The title of the new outcome. Required if outcome_id is absent.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "vendor_guid",
+					"description": "A custom GUID for the learning standard.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/outcome_groups/id/subgroups": {
+			"get": {
+				"summary": "List subgroups",
+				"description": "",
+				"operationId": "list-subgroups",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create a subgroup",
+				"description": "",
+				"operationId": "create-a-subgroup",
+				"parameters": [{
+					"in": "query",
+					"name": "description",
+					"description": "The description of the new outcome group.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "The title of the new outcome group.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "vendor_guid",
+					"description": "A custom GUID for the learning standard",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/outcome_group_links": {
+			"get": {
+				"summary": "Get all outcome links for context",
+				"description": "",
+				"operationId": "get-all-outcome-links-for-context",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["outcome groups"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/reports": {
+			"get": {
+				"summary": "List Available Reports",
+				"description": "",
+				"operationId": "list-available-reports",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["reports"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/reports/report": {
+			"get": {
+				"summary": "Index of Reports",
+				"description": "",
+				"operationId": "index-of-reports",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["reports"],
+				"security": []
+			},
+			"post": {
+				"summary": "Start a Report",
+				"description": "",
+				"operationId": "start-a-report",
+				"parameters": [{
+					"in": "query",
+					"name": "[parameters]",
+					"description": "The parameters will vary for each report",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["reports"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/reports/report/{id}": {
+			"delete": {
+				"summary": "Delete a Report",
+				"description": "",
+				"operationId": "delete-a-report",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["reports"],
+				"security": []
+			},
+			"get": {
+				"summary": "Status of a Report",
+				"description": "",
+				"operationId": "status-of-a-report",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["reports"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/roles": {
+			"get": {
+				"summary": "List roles",
+				"description": "",
+				"operationId": "list-roles",
+				"parameters": [{
+					"in": "query",
+					"name": "account_id",
+					"description": "The id of the account to retrieve roles for.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "show_inherited",
+					"description": "If this argument is true, all roles inherited from parent accounts will benincluded.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "state[]",
+					"description": "Filter by role state. If this argument is omitted, only &#39;active&#39;nroles are returned.nn        n        n          Allowed values: active, inactive",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["roles"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create a new role",
+				"description": "",
+				"operationId": "create-a-new-role",
+				"parameters": [{
+					"in": "query",
+					"name": "base_role_type",
+					"description": "Specifies the role type that will be used as a base for the permissionsngranted to this role.nnDefaults to &#39;AccountMembership&#39; if absentnn        n        n          Allowed values: AccountMembership, StudentEnrollment, TeacherEnrollment, TaEnrollment, ObserverEnrollment, DesignerEnrollment",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "label",
+					"description": "Label for the role.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "permissions[&lt;X&gt;][enabled]",
+					"description": "If explicit is 1 and enabled is 1, permission &lt;X&gt; will be explicitlyngranted to this role. If explicit is 1 and enabled has any other valuen(typically 0), permission &lt;X&gt; will be explicitly denied to this role.nIf explicit is any other value (typically 0) or absent, or if enabled isnabsent, the value for permission &lt;X&gt; will be inherited from upstream.nIgnored if permission &lt;X&gt; is locked upstream (in an ancestornaccount).nnMay occur multiple times with unique values for &lt;X&gt;. Recognizednpermission names for &lt;X&gt; are:nn[For Account-Level Roles Only]nbecome_user                      -- Become other usersnmanage_account_memberships       -- Add/remove other admins for the accountnmanage_account_settings          -- Manage account-level settingsnmanage_alerts                    -- Manage global alertsnmanage_courses                   -- Manage ( add / edit / delete ) coursesnmanage_developer_keys            -- Manage developer keysnmanage_global_outcomes           -- Manage learning outcomesnmanage_jobs                      -- Manage background jobsnmanage_role_overrides            -- Manage permissionsnmanage_storage_quotas            -- Set storage quotas for courses, groups, and usersnmanage_sis                       -- Import and manage SIS datanmanage_site_settings             -- Manage site-wide and plugin settingsnmanage_user_logins               -- Modify login details for usersnread_course_content              -- View course contentnread_course_list                 -- View the list of coursesnread_messages                    -- View notifications sent to usersnsite_admin                       -- Use the Site Admin section and admin all other accountsnview_error_reports               -- View error reportsnview_statistics                  -- View statisticsnmanage_feature_flags             -- Enable or disable features at an account levelnn[For both Account-Level and Course-Level roles]n Note: Applicable enrollment types for course-level roles are given in brackets:n       S = student, T = teacher, A = TA, D = designer, O = observer.n       Lower-case letters indicate permissions that are off by default.n       A missing letter indicates the permission cannot be enabled for the rolen       or any derived custom roles.nchange_course_state              -- [ TaD ] Change course statencomment_on_others_submissions    -- [sTAD ] View all students&#39; submissions and make comments on themncreate_collaborations            -- [STADo] Create student collaborationsncreate_conferences               -- [STADo] Create web conferencesnmanage_admin_users               -- [ Tad ] Add/remove other teachers, course designers or TAs to the coursenmanage_assignments               -- [ TADo] Manage (add / edit / delete) assignments and quizzesnmanage_calendar                  -- [sTADo] Add, edit and delete events on the course calendarnmanage_content                   -- [ TADo] Manage all other course contentnmanage_files                     -- [ TADo] Manage (add / edit / delete) course filesnmanage_grades                    -- [ TA  ] Edit gradesnmanage_groups                    -- [ TAD ] Manage (create / edit / delete) groupsnmanage_interaction_alerts        -- [ Ta  ] Manage alertsnmanage_outcomes                  -- [sTaDo] Manage learning outcomesnmanage_sections                  -- [ TaD ] Manage (create / edit / delete) course sectionsnmanage_students                  -- [ TAD ] Add/remove students for the coursenmanage_user_notes                -- [ TA  ] Manage faculty journal entriesnmanage_rubrics                   -- [ TAD ] Edit assessing rubricsnmanage_wiki                      -- [ TADo] Manage wiki (add / edit / delete pages)nread_forum                       -- [STADO] View discussionsnmoderate_forum                   -- [sTADo] Moderate discussions (delete/edit others&#39; posts, lock topics)npost_to_forum                    -- [STADo] Post to discussionsnread_question_banks              -- [ TADo] View and link to question banksnread_reports                     -- [ TAD ] View usage reports for the coursenread_roster                      -- [STADo] See the list of usersnread_sis                         -- [sTa  ] Read SIS datansend_messages                    -- [STADo] Send messages to individual course membersnsend_messages_all                -- [sTADo] Send messages to the entire classnview_all_grades                  -- [ TAd ] View all gradesnview_group_pages                 -- [sTADo] View the group pages of all student groupsnnnSome of these permissions are applicable only for roles on the site adminnaccount, on a root account, or for course-level roles with a particularnbase role type; if a specified permission is inapplicable, it will benignored.nnAdditional permissions may exist based on installed plugins.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "permissions[&lt;X&gt;][explicit]",
+					"description": "no description",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "permissions[&lt;X&gt;][locked]",
+					"description": "If the value is 1, permission &lt;X&gt; will be locked downstream (newnroles in subaccounts cannot override the setting). For any other value,npermission &lt;X&gt; is left unlocked. Ignored if permission &lt;X&gt; isnalready locked upstream. May occur multiple times with unique values forn&lt;X&gt;.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "role",
+					"description": "Deprecated alias for label.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["roles"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/roles/id": {
+			"delete": {
+				"summary": "Deactivate a role",
+				"description": "",
+				"operationId": "deactivate-a-role",
+				"parameters": [{
+					"in": "query",
+					"name": "role",
+					"description": "The name for the role",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "role_id",
+					"description": "The unique identifier for the role",
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["roles"],
+				"security": []
+			},
+			"get": {
+				"summary": "Get a single role",
+				"description": "",
+				"operationId": "get-a-single-role",
+				"parameters": [{
+					"in": "query",
+					"name": "account_id",
+					"description": "The id of the account containing the role",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "role",
+					"description": "The name for the role",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "role_id",
+					"description": "The unique identifier for the role",
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["roles"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update a role",
+				"description": "",
+				"operationId": "update-a-role",
+				"parameters": [{
+					"in": "query",
+					"name": "label",
+					"description": "The label for the role. Can only change the label of a custom role thatnbelongs directly to the account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "permissions[&lt;X&gt;][enabled]",
+					"description": "These arguments are described in the documentation for thenadd_role method.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "permissions[&lt;X&gt;][explicit]",
+					"description": "no description",
+					"type": "boolean"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["roles"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/roles/id/activate": {
+			"post": {
+				"summary": "Activate a role",
+				"description": "",
+				"operationId": "activate-a-role",
+				"parameters": [{
+					"in": "query",
+					"name": "role",
+					"description": "The name for the role",
+					"type": "deprecated"
+				},
+				{
+					"in": "query",
+					"name": "role_id",
+					"description": "The unique identifier for the role",
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["roles"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/root_accounts": {
+			"post": {
+				"summary": "Create a new root account",
+				"description": "",
+				"operationId": "create-a-new-root-account",
+				"parameters": [{
+					"in": "query",
+					"name": "account[domain]",
+					"description": "The domain to use for this account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "account[external_integration_keys][salesforce_account_id]",
+					"description": "no description",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "account[name]",
+					"description": "The account name.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "account[services]",
+					"description": "A hash of service settings. If set",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "account[settings]",
+					"description": "A hash of account setting options. If set to",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["accounts"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/root_outcome_group": {
+			"get": {
+				"summary": "Redirect to root outcome group for context",
+				"description": "",
+				"operationId": "redirect-to-root-outcome-group-for-context",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["root outcome group"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/self_registration": {
+			"post": {
+				"summary": "Self register a user",
+				"description": "",
+				"operationId": "self-register-a-user",
+				"parameters": [{
+					"in": "query",
+					"name": "communication_channel[address]",
+					"description": "The communication channel address, e.g. the user&#39;s email address.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "communication_channel[type]",
+					"description": "The communication channel type, e.g. &#39;email&#39; or &#39;sms&#39;.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "pseudonym[unique_id]",
+					"description": "User&#39;s login ID. Must be a valid email address.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user[birthdate]",
+					"description": "The user&#39;s birth date.",
+					"type": "date"
+				},
+				{
+					"in": "query",
+					"name": "user[locale]",
+					"description": "The user&#39;s preferred language as a two-letter ISO 639-1 code.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user[name]",
+					"description": "The full name of the user. This name will be used by teacher for grading.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user[short_name]",
+					"description": "User&#39;s name as it will be displayed in discussions, messages, andncomments.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user[sortable_name]",
+					"description": "User&#39;s name as used to sort alphabetically in lists.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user[terms_of_use]",
+					"description": "Whether the user accepts the terms of use.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "user[time_zone]",
+					"description": "The time zone for the user. Allowed time zones arenIANA time zones or friendliernRuby on Rails time zones.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["registration"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/sis_imports": {
+			"get": {
+				"summary": "Get SIS import list",
+				"description": "",
+				"operationId": "get-sis-import-list",
+				"parameters": [{
+					"in": "query",
+					"name": "created_since",
+					"description": "If set, only shows imports created after the specified date (use ISO8601nformat)",
+					"type": "datetime"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["imports"],
+				"security": []
+			},
+			"post": {
+				"summary": "Import SIS data",
+				"description": "",
+				"operationId": "import-sis-data",
+				"parameters": [{
+					"in": "query",
+					"name": "add_sis_stickiness",
+					"description": "This option, if present, will process all changes as if they were UInchanges. This means that u201cstickinessu201d will be added to changed fields. Thisnoption is only processed if &#39;override_sis_stickiness&#39; is alsonprovided.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "attachment",
+					"description": "There are two ways to post SIS import data - either via anmultipart/form-data form-field-style attachment, or via a non-multipart rawnpost request.nn&#39;attachment&#39; is required for multipart/form-data style posts.nAssumed to be SIS data from a file upload form field namedn&#39;attachment&#39;.nnExamples:nncurl -F attachment=@&lt;filename&gt; -H &quot;Authorization: Bearer &lt;token&gt;&quot; \n    &#39;https://&lt;canvas&gt;/api/v1/accounts/&lt;account_id&gt;/sis_imports.json?import_type=instructure_csv&#39;nnIf you decide to do a raw post, you can skip the &#39;attachment&#39;nargument, but you will then be required to provide a suitable Content-Typenheader. You are encouraged to also provide the &#39;extension&#39;nargument.nnExamples:nncurl -H &#39;Content-Type: application/octet-stream&#39; --data-binary @&lt;filename&gt;.zip \n    -H &quot;Authorization: Bearer &lt;token&gt;&quot; \n    &#39;https://&lt;canvas&gt;/api/v1/accounts/&lt;account_id&gt;/sis_imports.json?import_type=instructure_csv&amp;extension=zip&#39;nncurl -H &#39;Content-Type: application/zip&#39; --data-binary @&lt;filename&gt;.zip \n    -H &quot;Authorization: Bearer &lt;token&gt;&quot; \n    &#39;https://&lt;canvas&gt;/api/v1/accounts/&lt;account_id&gt;/sis_imports.json?import_type=instructure_csv&#39;nncurl -H &#39;Content-Type: text/csv&#39; --data-binary @&lt;filename&gt;.csv \n    -H &quot;Authorization: Bearer &lt;token&gt;&quot; \n    &#39;https://&lt;canvas&gt;/api/v1/accounts/&lt;account_id&gt;/sis_imports.json?import_type=instructure_csv&#39;nncurl -H &#39;Content-Type: text/csv&#39; --data-binary @&lt;filename&gt;.csv \n    -H &quot;Authorization: Bearer &lt;token&gt;&quot; \n    &#39;https://&lt;canvas&gt;/api/v1/accounts/&lt;account_id&gt;/sis_imports.json?import_type=instructure_csv&amp;batch_mode=1&amp;batch_mode_term_id=15&#39;",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "batch_mode",
+					"description": "If set, this SIS import will be run in batch mode, deleting any datanpreviously imported via SIS that is not present in this latest import. Seenthe SIS CSV Format page for details.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "batch_mode_term_id",
+					"description": "Limit deletions to only this term. Required if batch mode is enabled.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "clear_sis_stickiness",
+					"description": "This option, if present, will clear u201cstickinessu201d from all fields touched bynthis import. Requires that &#39;override_sis_stickiness&#39; is alsonprovided. If &#39;add_sis_stickiness&#39; is also provided,n&#39;clear_sis_stickiness&#39; will overrule the behavior ofn&#39;add_sis_stickiness&#39;",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "diffing_data_set_identifier",
+					"description": "If set on a CSV import, Canvas will attempt to optimize the SIS import byncomparing this set of CSVs to the previous set that has the same data setnidentifier, and only appliying the difference between the two. See the SISnCSV Format documentation for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "diffing_remaster_data_set",
+					"description": "If true, and diffing_data_set_identifier is sent, this SIS import will benpart of the data set, but diffing will not be performed. See the SIS CSVnFormat documentation for details.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "extension",
+					"description": "Recommended for raw post request style imports. This field will be used tondistinguish between zip, xml, csv, and other file format extensions thatnwould usually be provided with the filename in the multipart post requestnscenario. If not provided, this value will be inferred from thenContent-Type, falling back to zip-file format if all else fails.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "import_type",
+					"description": "Choose the data format for reading SIS data. With a standard Canvasninstall, this option can only be &#39;instructure_csv&#39;, and ifnunprovided, will be assumed to be so. Can be part of the query string.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "override_sis_stickiness",
+					"description": "Many fields on records in Canvas can be marked u201csticky,u201d which means thatnwhen something changes in the UI apart from the SIS, that field getsnu201cstuck.u201d In this way, by default, SIS imports do not override UI changes.nIf this field is present, however, it will tell the SIS import to ignorenu201cstickinessu201d and override all fields.",
+					"type": "boolean"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["roles"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/sis_imports/id": {
+			"get": {
+				"summary": "Get SIS import status",
+				"description": "",
+				"operationId": "get-sis-import-status",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["roles"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/sso_settings": {
+			"get": {
+				"summary": "show account auth settings",
+				"description": "",
+				"operationId": "show-account-auth-settings",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["sso settings"],
+				"security": []
+			},
+			"put": {
+				"summary": "update account auth settings",
+				"description": "",
+				"operationId": "update-account-auth-settings",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["sso settings"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/sub_accounts": {
+			"get": {
+				"summary": "Get the sub-accounts of an account",
+				"description": "",
+				"operationId": "get-the-subaccounts-of-an-account",
+				"parameters": [{
+					"in": "query",
+					"name": "recursive",
+					"description": "If true, the entire account tree underneath this account will be returnedn(though still paginated). If false, only direct sub-accounts of thisnaccount will be returned. Defaults to false.",
+					"type": "boolean"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["sub accounts"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create a new sub-account",
+				"description": "",
+				"operationId": "create-a-new-subaccount",
+				"parameters": [{
+					"in": "query",
+					"name": "account[default_group_storage_quota_mb]",
+					"description": "The default group storage quota to be used, if not otherwise specified.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "account[default_storage_quota_mb]",
+					"description": "The default course storage quota to be used, if not otherwise specified.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "account[default_user_storage_quota_mb]",
+					"description": "The default user storage quota to be used, if not otherwise specified.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "account[name]",
+					"description": "The name of the new sub-account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "account[sis_account_id]",
+					"description": "The account&#39;s identifier in the Student Information System.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["sub accounts"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/terms": {
+			"get": {
+				"summary": "List enrollment terms",
+				"description": "",
+				"operationId": "list-enrollment-terms",
+				"parameters": [{
+					"in": "query",
+					"name": "workflow_state[]",
+					"description": "If set, only returns terms that are in the given state. Defaults ton&#39;active&#39;.nn        n        n          Allowed values: active, deleted, all",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["terms"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create enrollment term",
+				"description": "",
+				"operationId": "create-enrollment-term",
+				"parameters": [{
+					"in": "query",
+					"name": "enrollment_term[end_at]",
+					"description": "The day/time the term ends. Accepts times in ISO 8601 format, e.g.n2015-01-10T18:48:00Z.",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "enrollment_term[name]",
+					"description": "The name of the term.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "enrollment_term[sis_term_id]",
+					"description": "The unique SIS identifier for the term.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "enrollment_term[start_at]",
+					"description": "The day/time the term starts. Accepts times in ISO 8601 format, e.g.n2015-01-10T18:48:00Z.",
+					"type": "datetime"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["terms"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/terms/id": {
+			"delete": {
+				"summary": "Delete enrollment term",
+				"description": "",
+				"operationId": "delete-enrollment-term",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["terms"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update enrollment term",
+				"description": "",
+				"operationId": "update-enrollment-term",
+				"parameters": [{
+					"in": "query",
+					"name": "enrollment_term[end_at]",
+					"description": "The day/time the term ends. Accepts times in ISO 8601 format, e.g.n2015-01-10T18:48:00Z.",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "enrollment_term[name]",
+					"description": "The name of the term.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "enrollment_term[sis_term_id]",
+					"description": "The unique SIS identifier for the term.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "enrollment_term[start_at]",
+					"description": "The day/time the term starts. Accepts times in ISO 8601 format, e.g.n2015-01-10T18:48:00Z.",
+					"type": "datetime"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["terms"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/users": {
+			"get": {
+				"summary": "List users in account",
+				"description": "",
+				"operationId": "list-users-in-account",
+				"parameters": [{
+					"in": "query",
+					"name": "search_term",
+					"description": "The partial name or full ID of the users to match and return in the resultsnlist. Must be at least 3 characters.nnNote that the API will prefer matching on canonical user ID if the ID has annumeric form. It will only search against other fields if non-numeric innform, or if the numeric value doesn&#39;t yield any matches. Queries bynadministrative users will search on SIS ID, name, or email address; non-nadministrative queries will only be compared against name.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["users"],
+				"security": []
+			},
+			"post": {
+				"summary": "Create a user",
+				"description": "",
+				"operationId": "create-a-user",
+				"parameters": [{
+					"in": "query",
+					"name": "communication_channel[address]",
+					"description": "The communication channel address, e.g. the user&#39;s email address.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "communication_channel[confirmation_url]",
+					"description": "Only valid for account admins. If true, returns the new user accountnconfirmation URL in the response.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "communication_channel[skip_confirmation]",
+					"description": "Only valid for site admins and account admins making requests; If true, thenchannel is automatically validated and no confirmation email or SMS isnsent. Otherwise, the user must respond to a confirmation message to confirmnthe channel.nnIf this is true, it is recommended to setn&quot;pseudonym[send_confirmation]&quot; to true as well.nOtherwise, the user will not receive any messages about their accountncreation.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "communication_channel[type]",
+					"description": "The communication channel type, e.g. &#39;email&#39; or &#39;sms&#39;.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "enable_sis_reactivation",
+					"description": "When true, will first try to re-activate a deleted user with matchingnsis_user_id if possible.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "force_validations",
+					"description": "If true, validations are performed on the newly created user (and theirnassociated pseudonym) even if the request is made by a privileged user likenan admin. When set to false, or not included in the request parameters, anynnewly created users are subject to validations unless the request is madenby a user with a &#39;manage_user_logins&#39; right. In which case, certainnvalidations such as &#39;require_acceptance_of_terms&#39; andn&#39;require_presence_of_name&#39; are not enforced. Use this parameter tonreturn helpful json errors while building users with an admin request.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "pseudonym[authentication_provider_id]",
+					"description": "The authentication provider this login is associated with. Loginsnassociated with a specific provider can only be used with that provider.nLegacy providers (LDAP, CAS, SAML) will search for logins associated withnthem, or unassociated logins. New providers will only search for loginsnexplicitly associated with them. This can be the integer ID of thenprovider, or the type of the provider (in which case, it will find thenfirst matching provider).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "pseudonym[force_self_registration]",
+					"description": "Send user a self-registration style email if true. Setting it means thenusers will get a notification asking them to u201ccomplete the registrationnprocessu201d by clicking it, setting a password, and letting them in.  Willnonly be executed on if the user does not need admin approval. Defaults tonfalse unless explicitly provided.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "pseudonym[password]",
+					"description": "User&#39;s password. Cannot be set during self-registration.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "pseudonym[send_confirmation]",
+					"description": "Send user notification of account creation if true. Automatically set tontrue during self-registration.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "pseudonym[sis_user_id]",
+					"description": "SIS ID for the user&#39;s account. To set this parameter, the caller mustnbe able to manage SIS permissions.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "pseudonym[unique_id]",
+					"description": "User&#39;s login ID. If this is a self-registration, it must be a validnemail address.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user[birthdate]",
+					"description": "The user&#39;s birth date.",
+					"type": "date"
+				},
+				{
+					"in": "query",
+					"name": "user[locale]",
+					"description": "The user&#39;s preferred language as a two-letter ISO 639-1 code.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user[name]",
+					"description": "The full name of the user. This name will be used by teacher for grading.nRequired if this is a self-registration.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user[short_name]",
+					"description": "User&#39;s name as it will be displayed in discussions, messages, andncomments.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user[skip_registration]",
+					"description": "Automatically mark the user as registered.nnIf this is true, it is recommended to setn&quot;pseudonym[send_confirmation]&quot; to true as well.nOtherwise, the user will not receive any messages about their accountncreation.nnThe users communication channel confirmation can be skipped by settingn&quot;communication_channel[skip_confirmation]&quot; to truenas well.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "user[sortable_name]",
+					"description": "User&#39;s name as used to sort alphabetically in lists.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user[terms_of_use]",
+					"description": "Whether the user accepts the terms of use. Required if this is anself-registration and this canvas instance requires users to accept thenterms (on by default).nnIf this is true, it will mark the user as having accepted the terms of use.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "user[time_zone]",
+					"description": "The time zone for the user. Allowed time zones arenIANA time zones or friendliernRuby on Rails time zones.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["users"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/users/user_id": {
+			"delete": {
+				"summary": "Delete a user from the root account",
+				"description": "",
+				"operationId": "delete-a-user-from-the-root-account",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["users"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/users/user_id/account_notifications": {
+			"get": {
+				"summary": "Index of active global notification for the user",
+				"description": "",
+				"operationId": "index-of-active-global-notification-for-the-user",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["users"],
+				"security": []
+			}
+		},
+		"/accounts/{account_id}/users/user_id/account_notifications/{id}": {
+			"delete": {
+				"summary": "Close notification for user",
+				"description": "",
+				"operationId": "close-notification-for-user",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["users"],
+				"security": []
+			}
+		},
+		"/accounts/{id}": {
+			"get": {
+				"summary": "Get a single account",
+				"description": "",
+				"operationId": "get-a-single-account",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["account"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update an account",
+				"description": "",
+				"operationId": "update-an-account",
+				"parameters": [{
+					"in": "query",
+					"name": "account[default_group_storage_quota_mb]",
+					"description": "The default group storage quota to be used, if not otherwise specified.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "account[default_storage_quota_mb]",
+					"description": "The default course storage quota to be used, if not otherwise specified.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "account[default_time_zone]",
+					"description": "The default time zone of the account. Allowed time zones arenIANA time zones or friendliernRuby on Rails time zones.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "account[default_user_storage_quota_mb]",
+					"description": "The default user storage quota to be used, if not otherwise specified.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "account[name]",
+					"description": "Updates the account name",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "account[settings][restrict_student_future_view]",
+					"description": "Restrict students from viewing courses before start date",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "account[settings][restrict_student_past_view]",
+					"description": "Restrict students from viewing courses after end date",
+					"type": "boolean"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["account"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

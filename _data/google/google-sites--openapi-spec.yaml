@@ -1,0 +1,1178 @@
+- swagger: "2.0"
+  info:
+    title: 'Google Sites '
+    description: 'The Google Sites API allows client applications to access, publish,
+      and modify content within a Google Site. '
+    termsOfService: https://developers.google.com/google-apps/sites/terms
+    version: ~
+  host: sites.google.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /acl/site/{domainName}/{siteName}:
+      get:
+        summary: Update Attachment Metadata and Content
+        description: Update Attachment Metadata and Content
+        operationId: update-attachment-metadata-and-content
+        parameters:
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: siteName
+          description: The webspace name of your site; found in the Sites URL (e.g.
+            myCoolSite).
+          type: string
+        - in: path
+          name: siteName
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Retrieve Site's Sharing Permissions
+        description: Retrieve Sites Sharing Permissions
+        operationId: retrieve-sites-sharing-permissions
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Specifies Content Type.
+          type: string
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: siteName
+          description: The webspace name of your site; found in the Sites URL (e.g.
+            myCoolSite).
+          type: string
+        - in: path
+          name: siteName
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /acl/site/{domainName}/{siteName}/user%3A{user_mail}:
+      delete:
+        summary: Modify Sharing Permissions
+        description: Modify Sharing Permissions
+        operationId: modify-sharing-permissions
+        parameters:
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: siteName
+          description: The webspace name of your site; found in the Sites URL (e.g.
+            myCoolSite).
+          type: string
+        - in: path
+          name: siteName
+          type: string
+        - in: query
+          name: user_mail
+          description: 'User mail. Example: new_writer%40example.com.'
+          type: string
+        - in: path
+          name: user_mail
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: Share a Site
+        description: Share a Site
+        operationId: share-a-site
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Specifies Content Type.
+          type: string
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: siteName
+          description: The webspace name of your site; found in the Sites URL (e.g.
+            myCoolSite).
+          type: string
+        - in: path
+          name: siteName
+          type: string
+        - in: query
+          name: user_mail
+          description: 'User mail. Example: new_writer%40example.com.'
+          type: string
+        - in: path
+          name: user_mail
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /activity/{domainName}/{siteName}:
+      get:
+        summary: Add Categories
+        description: Add Categories
+        operationId: add-categories
+        parameters:
+        - in: query
+          name: author
+          description: Entry author. The service returns entries where the author name
+            and/or email address match your query string.
+          type: string
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: max-results
+          description: Maximum number of results to be retrieved. By default the API
+            will return the first 100 documents and files in the users resource list.
+            To request more or less than 100 resources, use the max-results GET parameter
+            with any resources feed URL. Valid values for this parameter are integers
+            from 1 to 1000, inclusive.
+          type: int
+        - in: query
+          name: q
+          description: 'Full-text query string. When creating a query, list search terms
+            separated by spaces, in the form q=term1 term2 term3. (As with all of the
+            query parameter values, the spaces must be URL encoded.) The service returns
+            all entries that match all of the search terms (like using AND between terms).
+            Like Googles web search, a service searches on complete words (and related
+            words with the same stem), not substrings.To search for an exact phrase,
+            enclose the phrase in quotation marks: q=exact phrase.To'
+          type: string
+        - in: query
+          name: siteName
+          description: The webspace name of your site; found in the Sites URL (e.g.
+            myCoolSite).
+          type: string
+        - in: path
+          name: siteName
+          type: string
+        - in: query
+          name: start-index
+          description: 1-based index of the first result to be retrieved. Note that
+            this isnt a general cursoring mechanism. If you first send a query with
+            ?start-index=1&max-results=10 and then send another query with ?start-index=11&max-results=10,
+            the service cannot guarantee that the results are equivalent to ?start-index=1&max-results=20,
+            because insertions and deletions could have taken place in between the two
+            queries.
+          type: string
+        - in: query
+          name: updated-max
+          description: 'Bound on the entry update date. Use the RFC 3339 timestamp format.
+            For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive, whereas
+            the upper bound is exclusive. In some cases (such as when using v2.1 or
+            newer of the Calendar Data API), specifying an updated-min that is too far
+            in the past will cause an HTTP 410 (Gone) status to be returned.'
+          type: string
+        - in: query
+          name: updated-min
+          description: 'Bound on the entry update date. Use the RFC 3339 timestamp format.
+            For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive, whereas
+            the upper bound is exclusive. In some cases (such as when using v2.1 or
+            newer of the Calendar Data API), specifying an updated-min that is too far
+            in the past will cause an HTTP 410 (Gone) status to be returned.'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /activity/{domainName}/{siteName}/{activityEntryID}:
+      get:
+        summary: Get Site Activities
+        description: Get Site Activities
+        operationId: get-site-activities
+        parameters:
+        - in: query
+          name: activityEntryID
+          description: Specifies Activity Entry ID.}
+          type: string
+        - in: path
+          name: activityEntryID
+          type: string
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: siteName
+          description: The webspace name of your site; found in the Sites URL (e.g.
+            myCoolSite).
+          type: string
+        - in: path
+          name: siteName
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /content/{domainName}/{siteName}:
+      get:
+        summary: Get a Revision for Content Entry
+        description: Get a Revision for Content Entry
+        operationId: get-a-revision-for-content-entry
+        parameters:
+        - in: query
+          name: ancestor
+          description: 'Requests only entries that have the specified ancestor. Provide
+            the ID of the desired ancestor entry. For example: 0123456789. Returns all
+            entries that have the specified ancestor as a parent, a parents parent,
+            and so on.'
+          type: string
+        - in: query
+          name: author
+          description: Entry author. The service returns entries where the author name
+            and/or email address match your query string.
+          type: string
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: include-deleted
+          description: Specifies whether to include deleted entries. Possible values
+            are true or false. Default is false.
+          type: boolean
+        - in: query
+          name: include-draft
+          description: Specifies whether to include draft entries. Possible values are
+            true or false. Default is false. You need to be the owner or author of the
+            draft to view it.
+          type: boolean
+        - in: query
+          name: kind
+          description: Specifies the kind(s) of content entries to return. These follow
+            the type of page within Google Sites.
+          type: string
+        - in: query
+          name: max-results
+          description: Maximum number of results to be retrieved. By default the API
+            will return the first 100 documents and files in the users resource list.
+            To request more or less than 100 resources, use the max-results GET parameter
+            with any resources feed URL. Valid values for this parameter are integers
+            from 1 to 1000, inclusive.
+          type: int
+        - in: query
+          name: parent
+          description: 'Requests only entries that have the specified parent. Provide
+            the ID of the parent entry. For example: 0123456789.'
+          type: string
+        - in: query
+          name: path
+          description: 'Requests content under a certain page hierarchy. The path to
+            a subpage within a Site to fetch content for. For example: path=/path/to/page.'
+          type: string
+        - in: query
+          name: published-max
+          description: 'Bound on the entry publication date. Use the RFC 3339 timestamp
+            format. For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive,
+            whereas the upper bound is exclusive.'
+          type: string
+        - in: query
+          name: published-min
+          description: 'Bound on the entry publication date. Use the RFC 3339 timestamp
+            format. For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive,
+            whereas the upper bound is exclusive.'
+          type: string
+        - in: query
+          name: q
+          description: 'Full-text query string. When creating a query, list search terms
+            separated by spaces, in the form q=term1 term2 term3. (As with all of the
+            query parameter values, the spaces must be URL encoded.) The service returns
+            all entries that match all of the search terms (like using AND between terms).
+            Like Googles web search, a service searches on complete words (and related
+            words with the same stem), not substrings.To search for an exact phrase,
+            enclose the phrase in quotation marks: q=exact phrase.To'
+          type: string
+        - in: query
+          name: siteName
+          description: The webspace name of your site; found in the Sites URL (e.g.
+            myCoolSite).
+          type: string
+        - in: path
+          name: siteName
+          type: string
+        - in: query
+          name: start-index
+          description: 1-based index of the first result to be retrieved. Note that
+            this isnt a general cursoring mechanism. If you first send a query with
+            ?start-index=1&max-results=10 and then send another query with ?start-index=11&max-results=10,
+            the service cannot guarantee that the results are equivalent to ?start-index=1&max-results=20,
+            because insertions and deletions could have taken place in between the two
+            queries.
+          type: string
+        - in: query
+          name: updated-max
+          description: 'Bound on the entry update date. Use the RFC 3339 timestamp format.
+            For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive, whereas
+            the upper bound is exclusive. In some cases (such as when using v2.1 or
+            newer of the Calendar Data API), specifying an updated-min that is too far
+            in the past will cause an HTTP 410 (Gone) status to be returned.'
+          type: string
+        - in: query
+          name: updated-min
+          description: 'Bound on the entry update date. Use the RFC 3339 timestamp format.
+            For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive, whereas
+            the upper bound is exclusive. In some cases (such as when using v2.1 or
+            newer of the Calendar Data API), specifying an updated-min that is too far
+            in the past will cause an HTTP 410 (Gone) status to be returned.'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Retrieve a Sites's Current Content
+        description: Retrieve a Sitess Current Content
+        operationId: retrieve-a-sitess-current-content
+        parameters:
+        - in: query
+          name: ancestor
+          description: 'Requests only entries that have the specified ancestor. Provide
+            the ID of the desired ancestor entry. For example: 0123456789. Returns all
+            entries that have the specified ancestor as a parent, a parents parent,
+            and so on.'
+          type: string
+        - in: query
+          name: author
+          description: Entry author. The service returns entries where the author name
+            and/or email address match your query string.
+          type: string
+        - in: query
+          name: Content-Type
+          description: Specifies Content Type.
+          type: string
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: include-deleted
+          description: Specifies whether to include deleted entries. Possible values
+            are true or false. Default is false.
+          type: boolean
+        - in: query
+          name: include-draft
+          description: Specifies whether to include draft entries. Possible values are
+            true or false. Default is false. You need to be the owner or author of the
+            draft to view it.
+          type: boolean
+        - in: query
+          name: kind
+          description: Specifies the kind(s) of content entries to return. These follow
+            the type of page within Google Sites.
+          type: string
+        - in: query
+          name: max-results
+          description: Maximum number of results to be retrieved. By default the API
+            will return the first 100 documents and files in the users resource list.
+            To request more or less than 100 resources, use the max-results GET parameter
+            with any resources feed URL. Valid values for this parameter are integers
+            from 1 to 1000, inclusive.
+          type: int
+        - in: query
+          name: parent
+          description: 'Requests only entries that have the specified parent. Provide
+            the ID of the parent entry. For example: 0123456789.'
+          type: string
+        - in: query
+          name: path
+          description: 'Requests content under a certain page hierarchy. The path to
+            a subpage within a Site to fetch content for. For example: path=/path/to/page.'
+          type: string
+        - in: query
+          name: published-max
+          description: 'Bound on the entry publication date. Use the RFC 3339 timestamp
+            format. For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive,
+            whereas the upper bound is exclusive.'
+          type: string
+        - in: query
+          name: published-min
+          description: 'Bound on the entry publication date. Use the RFC 3339 timestamp
+            format. For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive,
+            whereas the upper bound is exclusive.'
+          type: string
+        - in: query
+          name: q
+          description: 'Full-text query string. When creating a query, list search terms
+            separated by spaces, in the form q=term1 term2 term3. (As with all of the
+            query parameter values, the spaces must be URL encoded.) The service returns
+            all entries that match all of the search terms (like using AND between terms).
+            Like Googles web search, a service searches on complete words (and related
+            words with the same stem), not substrings.To search for an exact phrase,
+            enclose the phrase in quotation marks: q=exact phrase.To'
+          type: string
+        - in: query
+          name: siteName
+          description: The webspace name of your site; found in the Sites URL (e.g.
+            myCoolSite).
+          type: string
+        - in: path
+          name: siteName
+          type: string
+        - in: query
+          name: start-index
+          description: 1-based index of the first result to be retrieved. Note that
+            this isnt a general cursoring mechanism. If you first send a query with
+            ?start-index=1&max-results=10 and then send another query with ?start-index=11&max-results=10,
+            the service cannot guarantee that the results are equivalent to ?start-index=1&max-results=20,
+            because insertions and deletions could have taken place in between the two
+            queries.
+          type: string
+        - in: query
+          name: updated-max
+          description: 'Bound on the entry update date. Use the RFC 3339 timestamp format.
+            For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive, whereas
+            the upper bound is exclusive. In some cases (such as when using v2.1 or
+            newer of the Calendar Data API), specifying an updated-min that is too far
+            in the past will cause an HTTP 410 (Gone) status to be returned.'
+          type: string
+        - in: query
+          name: updated-min
+          description: 'Bound on the entry update date. Use the RFC 3339 timestamp format.
+            For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive, whereas
+            the upper bound is exclusive. In some cases (such as when using v2.1 or
+            newer of the Calendar Data API), specifying an updated-min that is too far
+            in the past will cause an HTTP 410 (Gone) status to be returned.'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /content/{domainName}/{siteName}/batch:
+      post:
+        summary: Remove Sharing Permissions
+        description: Remove Sharing Permissions
+        operationId: remove-sharing-permissions
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Specifies Content Type.
+          type: string
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: siteName
+          description: The webspace name of your site; found in the Sites URL (e.g.
+            myCoolSite).
+          type: string
+        - in: path
+          name: siteName
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /content/{domainName}/{siteName}/{contentEntryID}:
+      get:
+        summary: Web Attachment
+        description: Web Attachment
+        operationId: web-attachment
+        parameters:
+        - in: query
+          name: contentEntryID
+          description: Specifies Content Entry ID.
+          type: string
+        - in: path
+          name: contentEntryID
+          type: string
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: siteName
+          description: The webspace name of your site; found in the Sites URL (e.g.
+            myCoolSite).
+          type: string
+        - in: path
+          name: siteName
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /content/{domainName}/{siteName}/{entryID}:
+      delete:
+        summary: Update an Item's Metadata or Html Content
+        description: Update an Items Metadata or Html Content
+        operationId: update-an-items-metadata-or-html-content
+        parameters:
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: entryID
+          description: Specifies entry ID.
+          type: string
+        - in: path
+          name: entryID
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: If-Match
+          description: ETag or * here.
+          type: string
+        - in: query
+          name: siteName
+          description: The webspace name of your site; found in the Sites URL (e.g.
+            myCoolSite).
+          type: string
+        - in: path
+          name: siteName
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: Retrieve Content
+        description: Retrieve Content
+        operationId: retrieve-content
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Specifies Content Type.
+          type: string
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: entryID
+          description: Specifies entry ID.
+          type: string
+        - in: path
+          name: entryID
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: siteName
+          description: The webspace name of your site; found in the Sites URL (e.g.
+            myCoolSite).
+          type: string
+        - in: path
+          name: siteName
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /media/content/{domainName}/{siteName}/{attchmentEntryID}:
+      put:
+        summary: Delete Content
+        description: Delete Content
+        operationId: delete-content
+        parameters:
+        - in: query
+          name: attchmentEntryID
+          description: Specifies Attchment Entry ID.
+          type: string
+        - in: path
+          name: attchmentEntryID
+          type: string
+        - in: query
+          name: Content-Type
+          description: Specifies Content Type.
+          type: string
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: siteName
+          description: The webspace name of your site; found in the Sites URL (e.g.
+            myCoolSite).
+          type: string
+        - in: path
+          name: siteName
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /revision/{domainName}/{siteName}/{contentEntryID}:
+      get:
+        summary: Get an Activity
+        description: Get an Activity
+        operationId: get-an-activity
+        parameters:
+        - in: query
+          name: author
+          description: Entry author. The service returns entries where the author name
+            and/or email address match your query string.
+          type: string
+        - in: query
+          name: contentEntryID
+          description: Specifies Content Entry ID.
+          type: string
+        - in: path
+          name: contentEntryID
+          type: string
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: max-results
+          description: Maximum number of results to be retrieved. By default the API
+            will return the first 100 documents and files in the users resource list.
+            To request more or less than 100 resources, use the max-results GET parameter
+            with any resources feed URL. Valid values for this parameter are integers
+            from 1 to 1000, inclusive.
+          type: int
+        - in: query
+          name: q
+          description: 'Full-text query string. When creating a query, list search terms
+            separated by spaces, in the form q=term1 term2 term3. (As with all of the
+            query parameter values, the spaces must be URL encoded.) The service returns
+            all entries that match all of the search terms (like using AND between terms).
+            Like Googles web search, a service searches on complete words (and related
+            words with the same stem), not substrings.To search for an exact phrase,
+            enclose the phrase in quotation marks: q=exact phrase.To'
+          type: string
+        - in: query
+          name: siteName
+          description: The webspace name of your site; found in the Sites URL (e.g.
+            myCoolSite).
+          type: string
+        - in: path
+          name: siteName
+          type: string
+        - in: query
+          name: start-index
+          description: 1-based index of the first result to be retrieved. Note that
+            this isnt a general cursoring mechanism. If you first send a query with
+            ?start-index=1&max-results=10 and then send another query with ?start-index=11&max-results=10,
+            the service cannot guarantee that the results are equivalent to ?start-index=1&max-results=20,
+            because insertions and deletions could have taken place in between the two
+            queries.
+          type: string
+        - in: query
+          name: updated-max
+          description: 'Bound on the entry update date. Use the RFC 3339 timestamp format.
+            For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive, whereas
+            the upper bound is exclusive. In some cases (such as when using v2.1 or
+            newer of the Calendar Data API), specifying an updated-min that is too far
+            in the past will cause an HTTP 410 (Gone) status to be returned.'
+          type: string
+        - in: query
+          name: updated-min
+          description: 'Bound on the entry update date. Use the RFC 3339 timestamp format.
+            For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive, whereas
+            the upper bound is exclusive. In some cases (such as when using v2.1 or
+            newer of the Calendar Data API), specifying an updated-min that is too far
+            in the past will cause an HTTP 410 (Gone) status to be returned.'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /revision/{domainName}/{siteName}/{contentEntryID}/{revisionEntryID}:
+      get:
+        summary: Get Revision History for Content Entry
+        description: Get Revision History for Content Entry
+        operationId: get-revision-history-for-content-entry
+        parameters:
+        - in: query
+          name: contentEntryID
+          description: Specifies Content Entry ID.
+          type: string
+        - in: path
+          name: contentEntryID
+          type: string
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: revisionEntryID
+          description: Specifies an Revision Entry ID.
+          type: string
+        - in: path
+          name: revisionEntryID
+          type: string
+        - in: query
+          name: siteName
+          description: The webspace name of your site; found in the Sites URL (e.g.
+            myCoolSite).
+          type: string
+        - in: path
+          name: siteName
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /site/{domainName}:
+      get:
+        summary: ""
+        description: ""
+        operationId: ""
+        parameters:
+        - in: query
+          name: author
+          description: Entry author. The service returns entries where the author name
+            and/or email address match your query string.
+          type: string
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: include-all-sites
+          description: List all sites that can be at least viewed by the user in the
+            Google Apps domain. This parameter is only applicable when listing sites
+            for a Google Apps domain. Possible values are true or false. Default is
+            false.
+          type: boolean
+        - in: query
+          name: max-results
+          description: Maximum number of results to be retrieved. By default the API
+            will return the first 100 documents and files in the users resource list.
+            To request more or less than 100 resources, use the max-results GET parameter
+            with any resources feed URL. Valid values for this parameter are integers
+            from 1 to 1000, inclusive.
+          type: int
+        - in: query
+          name: q
+          description: 'Full-text query string. When creating a query, list search terms
+            separated by spaces, in the form q=term1 term2 term3. (As with all of the
+            query parameter values, the spaces must be URL encoded.) The service returns
+            all entries that match all of the search terms (like using AND between terms).
+            Like Googles web search, a service searches on complete words (and related
+            words with the same stem), not substrings.To search for an exact phrase,
+            enclose the phrase in quotation marks: q=exact phrase.To'
+          type: string
+        - in: query
+          name: start-index
+          description: 1-based index of the first result to be retrieved. Note that
+            this isnt a general cursoring mechanism. If you first send a query with
+            ?start-index=1&max-results=10 and then send another query with ?start-index=11&max-results=10,
+            the service cannot guarantee that the results are equivalent to ?start-index=1&max-results=20,
+            because insertions and deletions could have taken place in between the two
+            queries.
+          type: string
+        - in: query
+          name: updated-max
+          description: 'Bound on the entry update date. Use the RFC 3339 timestamp format.
+            For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive, whereas
+            the upper bound is exclusive. In some cases (such as when using v2.1 or
+            newer of the Calendar Data API), specifying an updated-min that is too far
+            in the past will cause an HTTP 410 (Gone) status to be returned.'
+          type: string
+        - in: query
+          name: updated-min
+          description: 'Bound on the entry update date. Use the RFC 3339 timestamp format.
+            For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive, whereas
+            the upper bound is exclusive. In some cases (such as when using v2.1 or
+            newer of the Calendar Data API), specifying an updated-min that is too far
+            in the past will cause an HTTP 410 (Gone) status to be returned.'
+          type: string
+        - in: query
+          name: with-mappings
+          description: Includes the web address mappings in a site entry. Possible values
+            are true or false. Default is false.
+          type: boolean
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Get Sites
+        description: Get Sites
+        operationId: get-sites
+        parameters:
+        - in: query
+          name: author
+          description: Entry author. The service returns entries where the author name
+            and/or email address match your query string.
+          type: string
+        - in: query
+          name: Content-Type
+          description: Specifies Content Type.
+          type: string
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: include-all-sites
+          description: List all sites that can be at least viewed by the user in the
+            Google Apps domain. This parameter is only applicable when listing sites
+            for a Google Apps domain. Possible values are true or false. Default is
+            false.
+          type: boolean
+        - in: query
+          name: max-results
+          description: Maximum number of results to be retrieved. By default the API
+            will return the first 100 documents and files in the users resource list.
+            To request more or less than 100 resources, use the max-results GET parameter
+            with any resources feed URL. Valid values for this parameter are integers
+            from 1 to 1000, inclusive.
+          type: int
+        - in: query
+          name: q
+          description: 'Full-text query string. When creating a query, list search terms
+            separated by spaces, in the form q=term1 term2 term3. (As with all of the
+            query parameter values, the spaces must be URL encoded.) The service returns
+            all entries that match all of the search terms (like using AND between terms).
+            Like Googles web search, a service searches on complete words (and related
+            words with the same stem), not substrings.To search for an exact phrase,
+            enclose the phrase in quotation marks: q=exact phrase.To'
+          type: string
+        - in: query
+          name: start-index
+          description: 1-based index of the first result to be retrieved. Note that
+            this isnt a general cursoring mechanism. If you first send a query with
+            ?start-index=1&max-results=10 and then send another query with ?start-index=11&max-results=10,
+            the service cannot guarantee that the results are equivalent to ?start-index=1&max-results=20,
+            because insertions and deletions could have taken place in between the two
+            queries.
+          type: string
+        - in: query
+          name: updated-max
+          description: 'Bound on the entry update date. Use the RFC 3339 timestamp format.
+            For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive, whereas
+            the upper bound is exclusive. In some cases (such as when using v2.1 or
+            newer of the Calendar Data API), specifying an updated-min that is too far
+            in the past will cause an HTTP 410 (Gone) status to be returned.'
+          type: string
+        - in: query
+          name: updated-min
+          description: 'Bound on the entry update date. Use the RFC 3339 timestamp format.
+            For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive, whereas
+            the upper bound is exclusive. In some cases (such as when using v2.1 or
+            newer of the Calendar Data API), specifying an updated-min that is too far
+            in the past will cause an HTTP 410 (Gone) status to be returned.'
+          type: string
+        - in: query
+          name: with-mappings
+          description: Includes the web address mappings in a site entry. Possible values
+            are true or false. Default is false.
+          type: boolean
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: Copy Site
+        description: Copy Site
+        operationId: copy-site
+        parameters:
+        - in: query
+          name: author
+          description: Entry author. The service returns entries where the author name
+            and/or email address match your query string.
+          type: string
+        - in: query
+          name: Content-Type
+          description: Specifies Content Type.
+          type: string
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: include-all-sites
+          description: List all sites that can be at least viewed by the user in the
+            Google Apps domain. This parameter is only applicable when listing sites
+            for a Google Apps domain. Possible values are true or false. Default is
+            false.
+          type: boolean
+        - in: query
+          name: max-results
+          description: Maximum number of results to be retrieved. By default the API
+            will return the first 100 documents and files in the users resource list.
+            To request more or less than 100 resources, use the max-results GET parameter
+            with any resources feed URL. Valid values for this parameter are integers
+            from 1 to 1000, inclusive.
+          type: int
+        - in: query
+          name: q
+          description: 'Full-text query string. When creating a query, list search terms
+            separated by spaces, in the form q=term1 term2 term3. (As with all of the
+            query parameter values, the spaces must be URL encoded.) The service returns
+            all entries that match all of the search terms (like using AND between terms).
+            Like Googles web search, a service searches on complete words (and related
+            words with the same stem), not substrings.To search for an exact phrase,
+            enclose the phrase in quotation marks: q=exact phrase.To'
+          type: string
+        - in: query
+          name: start-index
+          description: 1-based index of the first result to be retrieved. Note that
+            this isnt a general cursoring mechanism. If you first send a query with
+            ?start-index=1&max-results=10 and then send another query with ?start-index=11&max-results=10,
+            the service cannot guarantee that the results are equivalent to ?start-index=1&max-results=20,
+            because insertions and deletions could have taken place in between the two
+            queries.
+          type: string
+        - in: query
+          name: updated-max
+          description: 'Bound on the entry update date. Use the RFC 3339 timestamp format.
+            For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive, whereas
+            the upper bound is exclusive. In some cases (such as when using v2.1 or
+            newer of the Calendar Data API), specifying an updated-min that is too far
+            in the past will cause an HTTP 410 (Gone) status to be returned.'
+          type: string
+        - in: query
+          name: updated-min
+          description: 'Bound on the entry update date. Use the RFC 3339 timestamp format.
+            For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive, whereas
+            the upper bound is exclusive. In some cases (such as when using v2.1 or
+            newer of the Calendar Data API), specifying an updated-min that is too far
+            in the past will cause an HTTP 410 (Gone) status to be returned.'
+          type: string
+        - in: query
+          name: with-mappings
+          description: Includes the web address mappings in a site entry. Possible values
+            are true or false. Default is false.
+          type: boolean
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /site/{domainName}/{siteName}:
+      get:
+        summary: Modify Web Address Mappings
+        description: Modify Web Address Mappings
+        operationId: modify-web-address-mappings
+        parameters:
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: siteName
+          description: The webspace name of your site; found in the Sites URL (e.g.
+            myCoolSite).
+          type: string
+        - in: path
+          name: siteName
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: Get a Site
+        description: Get a Site
+        operationId: get-a-site
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Specifies Content Type.
+          type: string
+        - in: query
+          name: domainName
+          description: site or the domain of your Google Apps hosted domain (e.g. example.com).
+          type: string
+        - in: path
+          name: domainName
+          type: string
+        - in: query
+          name: GData-Version
+          description: Specifies a version number.
+          type: string
+        - in: query
+          name: siteName
+          description: The webspace name of your site; found in the Sites URL (e.g.
+            myCoolSite).
+          type: string
+        - in: path
+          name: siteName
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

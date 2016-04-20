@@ -1,0 +1,49 @@
+- swagger: "2.0"
+  info:
+    title: SoundCloud Playlists API
+    description: The API for managing SoundCloud Playlistss
+    termsOfService: https://soundcloud.com/terms-of-use
+    version: ~
+  host: api.soundcloud.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /playlists.{format}:
+      get:
+        summary: /playlists.{format}
+        description: /playlists.{format}
+        operationId: playlistsformat
+        parameters:
+        - in: path
+          name: format
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /playlists/{playlist_id}.{format}:
+      get:
+        summary: /playlists/{playlist_id}.{format}
+        description: /playlists/{playlist_id}.{format}
+        operationId: playlistsplaylist-idformat
+        parameters:
+        - in: path
+          name: format
+          type: string
+        - in: path
+          name: playlist_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

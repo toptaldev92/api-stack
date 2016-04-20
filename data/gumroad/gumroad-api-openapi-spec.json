@@ -1,0 +1,598 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Gumroad API",
+		"description": "API for selling of digital goods, and media.",
+		"termsOfService": "https://gumroad.com/terms",
+		"version": "v1"
+	},
+	"host": "api.gumroad.com",
+	"basePath": "/v2",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/products": {
+			"get": {
+				"summary": "",
+				"description": "Retrieve all of the existing products for the authenticated user.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "",
+				"description": "Create a new product for the user.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "country_available",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "customizable_price",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "custom_filetype",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "custom_permalink",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "custom_product_type",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "custom_receipt",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "custom_summary",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "max_purchase_count",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "preview_urlnornpreview",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "price",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "require_shipping",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "shown_on_profile",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "urlnornfile",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "webhook",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/products/:id": {
+			"delete": {
+				"summary": "",
+				"description": "Permanently delete a product.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "",
+				"description": "Retrieve the details of a product.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "",
+				"description": "Edit an existing product.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "countries_available",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "customizable_price",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "custom_filetype",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "custom_permalink",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "custom_product_type",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "custom_receipt",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "custom_summary",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "max_purchase_count",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "preview_urlnornpreview",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "price",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "product",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "require_shipping",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "shown_on_profile",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "subscription_duration",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "urlnornfile",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "webhook",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/products/:id/enable": {
+			"put": {
+				"summary": "",
+				"description": "Enable an existing product.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/products/:product_id/custom_fields": {
+			"get": {
+				"summary": "",
+				"description": "Retrieve all of the existing custom fields for a product.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "",
+				"description": "Create a new custom field for a product.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "required",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "variant",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/products/:product_id/custom_fields/:name": {
+			"put": {
+				"summary": "",
+				"description": "Edit an existing products custom field.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "required",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "variant",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/products/:product_id/offer_codes": {
+			"get": {
+				"summary": "",
+				"description": "Retrieve all of the existing offer codes for a product. Either amount_cents or percent_off will be returned depending if the offer code is a fixed amount off or a percentage off. A universal offer code is one that applies to all products.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "",
+				"description": "Create a new offer code for a product. Default offer code is in cents. A universal offer code is one that applies to all products.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "amount_off",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "max_purchase_count",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "offer_code",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "offer_type",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "universal",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/products/:product_id/offer_codes/:id": {
+			"get": {
+				"summary": "",
+				"description": "Retrieve the details of a specific offer code of a product",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "",
+				"description": "Edit an existing products offer code.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "max_purchase_count",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "offer_code",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/products/:product_id/variant_categories": {
+			"get": {
+				"summary": "",
+				"description": "Retrieve all of the existing variant categories of a product.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "",
+				"description": "Create a new variant category on a product.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "title",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "variant_category",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/products/:product_id/variant_categories/:id": {
+			"delete": {
+				"summary": "",
+				"description": "Permanently delete a variant category of a product.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "",
+				"description": "Retrieve the details of a variant category of a product.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "",
+				"description": "Edit a variant category of an existing product.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "title",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "variant_category",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/products/:product_id/variant_categories/:variant_category_id/variants": {
+			"post": {
+				"summary": "",
+				"description": "Create a new variant of a product.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "max_purchase_count",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "price_difference_cents",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "variant",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/products/:product_id/variant_categories/:variant_category_id/variants/:id": {
+			"delete": {
+				"summary": "",
+				"description": "Permanently delete a variant of a product.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "",
+				"description": "Retrieve the details of a variant of a product.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "",
+				"description": "Edit a variant of an existing product.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "max_purchase_count",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "price_difference_cents",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "variant",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

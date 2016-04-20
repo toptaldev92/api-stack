@@ -1,0 +1,67 @@
+- swagger: "2.0"
+  info:
+    title: Pinboard API
+    description: The Pinboard API is a way to interact programatically with your bookmarks,
+      notes and other Pinboard data.
+    termsOfService: https://pinboard.in/tos/
+    version: "1.0"
+  host: api.pinboard.in
+  basePath: /v1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /notes/list:
+      get:
+        summary: Tags Rename
+        description: Returns a list of the users notes
+        operationId: tags-rename
+        responses:
+          200:
+            description: OK
+        tags:
+        - links
+        security: []
+    /tags/get:
+      get:
+        summary: Tags Get
+        description: Returns a full list of the users tags along with the number of
+          times they were used.
+        operationId: tags-get
+        parameters:
+        - in: query
+          name: tag
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - links
+        security: []
+  definitions:
+    Post:
+      properties:
+        href:
+          description: This is a default description.
+          type: string
+        time:
+          description: This is a default description.
+          type: string
+        description:
+          description: This is a default description.
+          type: string
+        extended:
+          description: This is a default description.
+          type: string
+        tags:
+          description: This is a default description.
+          type: string
+        hash:
+          description: This is a default description.
+          type: string
+        meta:
+          description: This is a default description.
+          type: string

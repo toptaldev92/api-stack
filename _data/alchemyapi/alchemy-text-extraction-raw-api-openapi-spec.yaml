@@ -1,0 +1,69 @@
+- swagger: "2.0"
+  info:
+    title: Alchemy Raw Text Extraction API
+    description: The URLGetRawText call is utilized to extract all text from a web page.
+      AlchemyAPI will download the requested URL, extract text from the HTML document
+      structure, including page navigation, advertisements, and other page content.
+      To ignore this content, please use the URLGetText call.
+    termsOfService: http://www.alchemyapi.com/company/terms.html
+    contact:
+      name: AlchemyAPI
+      url: http://www.alchemyapi.com/company/contact
+      email: questions@alchemyapi.com
+    version: v1
+  host: access.alchemyapi.com
+  basePath: /calls/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /url/URLGetRawText:
+      get:
+        summary: Get Raw Text
+        description: The URLGetRawText call is utilized to extract all text from a web
+          page. AlchemyAPI will download the requested URL, extract text from the HTML
+          document structure, including page navigation, advertisements, and other page
+          content. To ignore this content, please use the URLGetText call.
+        operationId: callsUrlURLGetRawText
+        parameters:
+        - in: query
+          name: apikey
+          type: string
+          format: string
+        - in: query
+          name: url
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/results'
+        tags:
+        - Content
+        security:
+        - apikey: []
+  securityDefinitions:
+    apikey:
+      type: apiKey
+      name: apikey
+  definitions:
+    results:
+      properties:
+        status:
+          description: This is a default description.
+          type: string
+        usage:
+          description: This is a default description.
+          type: string
+        url:
+          description: This is a default description.
+          type: string
+        text:
+          description: This is a default description.
+          type: string

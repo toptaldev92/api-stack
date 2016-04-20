@@ -1,0 +1,36 @@
+- swagger: "2.0"
+  info:
+    title: Slack Testing API
+    description: The API for management Slack Testings
+    termsOfService: https://slack.com/terms-of-service/api
+    version: ~
+  host: slack.com
+  basePath: /api
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /methods/api.test:
+      get:
+        summary: Checks API calling code.
+        description: <td width=70%>Checks API calling code.</td>
+        operationId: apitest
+        parameters:
+        - in: query
+          name: error
+          description: Error response to return
+          type: string
+        - in: query
+          name: foo
+          description: example property to return
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - testing
+        security: []
+  definitions: []

@@ -1,0 +1,80 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "FullContact Icon API",
+		"description": "The API for managing FullContact Icons",
+		"termsOfService": "https://www.fullcontact.com/terms/",
+		"version": "v2"
+	},
+	"host": "api.fullcontact.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/icon": {
+			"get": {
+				"summary": "Get Icons",
+				"description": "Get Icons",
+				"operationId": "getIcons",
+				"parameters": [{
+					"in": "query",
+					"name": "apiKey",
+					"description": "This API key is assigned to you by FullContact. It is used to identify and authorize your request. Your API key should be kept private, and should never be displayed publicly.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Icons"],
+				"security": []
+			}
+		},
+		"/icon/{typeId}/{size}/{style}": {
+			"get": {
+				"summary": "Get Icon",
+				"description": "Get Icon",
+				"operationId": "getIcon",
+				"parameters": [{
+					"in": "query",
+					"name": "apiKey",
+					"description": "This API key is assigned to you by FullContact. It is used to identify and authorize your request. Your API key should be kept private, and should never be displayed publicly.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "size",
+					"description": "The size parameter allows you to specify the size of icon that you want. Icons are available in 16, 24, 32 and 64 pixels square.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "style",
+					"description": "The style parameter allows you to pick from the available styles of the icons.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "typeId",
+					"description": "The typeId is the name of the icon you want. The Icons API can used with just this parameter, doing so will return the icon you want in the default style, 16 x 16 pixels. See below for a list of available icons.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Icons"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

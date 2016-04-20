@@ -1,0 +1,588 @@
+- swagger: "2.0"
+  info:
+    title: Blog
+    description: This is an blog for all my blog entries. I use a single blog system
+      to manage all my sites. Based upon tagging, I then publish each post out to its
+      respective Github Page based repo.
+    termsOfService: http://stack.network/terms-of-service.html
+    version: v2
+  host: blog.api.kinlane.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /blog/:
+      get:
+        summary: Get All Blog Posts
+        description: all blogs
+        operationId: getBlogs
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the blog
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the blog
+          type: string
+          format: string
+        - in: query
+          name: count
+          description: how many to show on page
+        - in: query
+          name: page
+          description: which page of results to show
+        - in: query
+          name: query
+          description: a text query to search across blog
+          type: string
+          format: string
+        - in: query
+          name: sort
+          description: which field to sort by
+        responses:
+          200:
+            description: OK
+        tags:
+        - Blog
+        security: []
+      post:
+        summary: Add Blog Post
+        description: add a blog post
+        operationId: addBlog
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the blog
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the blog
+          type: string
+          format: string
+        - in: query
+          name: author
+          description: author of the blog
+          type: string
+          format: string
+        - in: query
+          name: body
+          description: full text for the blog
+          type: string
+          format: string
+        - in: query
+          name: curated_id
+          description: full text for the blog
+          type: string
+          format: string
+        - in: query
+          name: footer
+          description: curated id the blog originated from
+          type: string
+          format: string
+        - in: query
+          name: post_date
+          description: date the blog was posted
+          type: string
+          format: string
+        - in: query
+          name: status
+          description: status of the blog
+          type: string
+          format: string
+        - in: query
+          name: summary
+          description: summary for the blog
+          type: string
+          format: string
+        - in: query
+          name: title
+          description: ttle for the blog
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Blog
+        security: []
+    /blog/byweek/:
+      get:
+        summary: Get Blog Posts By Week
+        description: blogs by week
+        operationId: getBlogsByWeek
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the blog
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the blog
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Blog
+        security: []
+    /blog/draft/:
+      get:
+        summary: Get Draft Blog Posts
+        description: draft blogs
+        operationId: getDraftBlogs
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the blog
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the blog
+          type: string
+          format: string
+        - in: query
+          name: count
+          description: how many to show on page
+        - in: query
+          name: page
+          description: which page of results to show
+        - in: query
+          name: sort
+          description: which field to sort by
+        responses:
+          200:
+            description: OK
+        tags:
+        - Blog
+        security: []
+    /blog/published/:
+      get:
+        summary: Get Published Blog Posts
+        description: published blogs
+        operationId: getPublishedBlogs
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the blog
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the blog
+          type: string
+          format: string
+        - in: query
+          name: count
+          description: how many to show on page
+        - in: query
+          name: page
+          description: which page of results to show
+        - in: query
+          name: sort
+          description: which field to sort by
+        responses:
+          200:
+            description: OK
+        tags:
+        - Blog
+        security: []
+    /blog/tags/byweek/:
+      get:
+        summary: Get Blog Tags by Week
+        description: blog tags by week
+        operationId: getBlogTagsByWeek
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the blog
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the blog
+          type: string
+          format: string
+        - in: query
+          name: week
+          description: the week to retrieve tags by
+          type: string
+          format: string
+        - in: query
+          name: year
+          description: the year to retrieve tags by
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /blog/tags/byweek/{tag}/blog/:
+      get:
+        summary: Get Blog Tags by Tag and Week
+        description: blog tags by week blogs
+        operationId: getBlogTagCBlog
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the blog
+        - in: query
+          name: appkey
+          description: your appkey for accessing the blog
+        - in: path
+          name: tag
+          description: the tag to filter by
+          type: string
+          format: string
+        - in: query
+          name: week
+          description: the week to filter by, defaults to this week
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /blog/tags/{tag}/build/:
+      get:
+        summary: Build By Blog Tag
+        description: build by tag
+        operationId: getBlogsToBuildByTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the blog
+        - in: query
+          name: appkey
+          description: your appkey for accessing the blog
+        - in: path
+          name: tag
+          description: the tag to filter by
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /blog/{blog_id}/:
+      delete:
+        summary: Delete Blog Post
+        description: delete blog
+        operationId: deleteBlog
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the blog
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the blog
+          type: string
+          format: string
+        - in: path
+          name: blog_id
+          description: the unique id for blog entry
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Blog
+        security: []
+      get:
+        summary: Get Blog Post
+        description: Returns the blog detail
+        operationId: getBlog
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the blog
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the blog
+          type: string
+          format: string
+        - in: path
+          name: blog_id
+          description: the unique id for blog entry
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Blog
+        security: []
+      put:
+        summary: Update Blog Post
+        description: update blog
+        operationId: updateBlog
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the blog
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the blog
+          type: string
+          format: string
+        - in: query
+          name: author
+          description: author of the blog
+          type: string
+          format: string
+        - in: path
+          name: blog_id
+          description: the unique id for blog entry
+          type: string
+          format: string
+        - in: query
+          name: body
+          description: full text for the blog
+          type: string
+          format: string
+        - in: query
+          name: build_page
+          description: whether or not this blog post needs page built
+        - in: query
+          name: curated_id
+          description: full text for the blog
+          type: string
+          format: string
+        - in: query
+          name: footer
+          description: curated id the blog originated from
+          type: string
+          format: string
+        - in: query
+          name: github_build
+          description: the github build string
+        - in: query
+          name: linkedin_build
+          description: the linkedin build string
+        - in: query
+          name: post_date
+          description: date the blog was posted
+          type: string
+          format: string
+        - in: query
+          name: show_on_site
+          description: Whether or not this blog post will show on any site
+        - in: query
+          name: status
+          description: status of the blog
+          type: string
+          format: string
+        - in: query
+          name: summary
+          description: summary for the blog
+          type: string
+          format: string
+        - in: query
+          name: title
+          description: ttle for the blog
+          type: string
+          format: string
+        - in: query
+          name: twitter_build
+          description: the twitter build string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Blog
+        security: []
+    /blog/{blog_id}/tags/:
+      get:
+        summary: Get Tags for Blog Post
+        description: blog tags
+        operationId: getblogTags
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the blog
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the blog
+          type: string
+          format: string
+        - in: path
+          name: blog_id
+          description: id for blog
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+      post:
+        summary: Add Tag for Blog Post
+        description: add tag to blog
+        operationId: addBlogTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the blog
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the blog
+          type: string
+          format: string
+        - in: path
+          name: blog_id
+          description: id for the blog
+          type: string
+          format: string
+        - in: query
+          name: tag
+          description: tag name
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /blog/{blog_id}/tags/{tag}:
+      delete:
+        summary: delete Tag for Blog Post
+        description: delete blog tag
+        operationId: deleteblogTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the blog
+          type: string
+          format: string
+        - in: query
+          name: appkey
+          description: your appkey for accessing the blog
+          type: string
+          format: string
+        - in: path
+          name: blog_id
+          description: id for the blog
+          type: string
+          format: string
+        - in: path
+          name: tag
+          description: tag to remove from blog
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+  definitions:
+    0:
+      properties:
+        blog_id:
+          description: This is a default description.
+          type: get
+        post_date:
+          description: This is a default description.
+          type: get
+        title:
+          description: This is a default description.
+          type: get
+        author:
+          description: This is a default description.
+          type: get
+        summary:
+          description: This is a default description.
+          type: get
+        body:
+          description: This is a default description.
+          type: get
+        footer:
+          description: This is a default description.
+          type: get
+        status:
+          description: This is a default description.
+          type: get
+        curated_id:
+          description: This is a default description.
+          type: get
+        tag_id:
+          description: This is a default description.
+          type: get
+        tag:
+          description: This is a default description.
+          type: get
+        api_count:
+          description: This is a default description.
+          type: get
+    blog:
+      properties:
+        blog_id:
+          description: This is a default description.
+          type: get
+        post_date:
+          description: This is a default description.
+          type: get
+        title:
+          description: This is a default description.
+          type: get
+        author:
+          description: This is a default description.
+          type: get
+        summary:
+          description: This is a default description.
+          type: get
+        body:
+          description: This is a default description.
+          type: get
+        footer:
+          description: This is a default description.
+          type: get
+        status:
+          description: This is a default description.
+          type: get
+        curated_id:
+          description: This is a default description.
+          type: get
+        build_page:
+          description: This is a default description.
+          type: get
+        show_on_site:
+          description: This is a default description.
+          type: get
+    tag:
+      properties:
+        tag_id:
+          description: This is a default description.
+          type: get
+        tag:
+          description: This is a default description.
+          type: get
+        api_count:
+          description: This is a default description.
+          type: get

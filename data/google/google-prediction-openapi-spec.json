@@ -1,0 +1,182 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Google Prediction",
+		"description": "Use Googleu2019s machine learning algorithms to analyze data and predict future outcomes using a familiar RESTful interface",
+		"termsOfService": "https://cloud.google.com/cloud/terms/",
+		"version": null
+	},
+	"host": "www.googleapis.com",
+	"basePath": "/prediction/v1.6/projects/{productid}/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/hostedmodels/{hostedModelName}/predict": {
+			"post": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "fields",
+					"description": "Selector specifying which fields to include in a partial response.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "hostedModelName",
+					"description": "The name of a hosted model.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "hostedModelName",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/trainedmodels": {
+			"post": {
+				"summary": "Delete Trained Model",
+				"description": "Delete Trained Model",
+				"operationId": "delete-trained-model",
+				"parameters": [{
+					"in": "query",
+					"name": "fields",
+					"description": "Selector specifying which fields to include in a partial response.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/trainedmodels/{id}": {
+			"delete": {
+				"summary": "Add Streaming Training",
+				"description": "Add Streaming Training",
+				"operationId": "add-streaming-training",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "The unique name for the predictive model.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Predict Against Hosted Model",
+				"description": "Predict Against Hosted Model",
+				"operationId": "predict-against-hosted-model",
+				"parameters": [{
+					"in": "query",
+					"name": "fields",
+					"description": "Selector specifying which fields to include in a partial response.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The unique name for the predictive model.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Get Model Information",
+				"description": "Get Model Information",
+				"operationId": "get-model-information",
+				"parameters": [{
+					"in": "query",
+					"name": "fields",
+					"description": "Selector specifying which fields to include in a partial response.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The unique name for the predictive model.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/trainedmodels/{id}/predict": {
+			"post": {
+				"summary": "Train New Model",
+				"description": "Train New Model",
+				"operationId": "train-new-model",
+				"parameters": [{
+					"in": "query",
+					"name": "fields",
+					"description": "Selector specifying which fields to include in a partial response.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The unique name for the predictive model.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

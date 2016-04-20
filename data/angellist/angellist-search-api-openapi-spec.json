@@ -1,0 +1,145 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "AngelList Search API",
+		"description": "Search AngelList platform.",
+		"termsOfService": "https://angel.co/terms",
+		"contact": {
+			"name": "AngelList",
+			"url": "https://angel.co/api",
+			"email": "api@angel.co"
+		},
+		"version": "v1"
+	},
+	"host": "api.angel.co",
+	"basePath": "/1/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/search": {
+			"get": {
+				"summary": "Search AngelList",
+				"description": "Search AngelList.",
+				"operationId": "search",
+				"parameters": [{
+					"in": "query",
+					"name": "query",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/search"
+							}
+						}
+					}
+				},
+				"tags": ["Search"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		},
+		"/search/slugs": {
+			"get": {
+				"summary": "Search Slugs",
+				"description": "Search by slug",
+				"operationId": "search",
+				"parameters": [{
+					"in": "query",
+					"name": "query",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "s",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/search"
+							}
+						}
+					}
+				},
+				"tags": ["Search"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		},
+		"/startups": {
+			"get": {
+				"summary": "Search Startups",
+				"description": "Search Startups",
+				"operationId": "startups",
+				"parameters": [{
+					"in": "query",
+					"name": "filter",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/search"
+							}
+						}
+					}
+				},
+				"tags": ["Search"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
+		}
+	},
+	"definitions": {
+		"search": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "integer"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"pic": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

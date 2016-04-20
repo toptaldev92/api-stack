@@ -1,0 +1,947 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "7digital Purchasing API",
+		"description": "The Purchasing API allows 3rd parties to deliver digital content to individual users.",
+		"version": "1.2"
+	},
+	"host": "api.7digital.com",
+	"basePath": "1.2/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"artist/browse": {
+			"get ": {
+				"summary": "artist/browse",
+				"description": "This method returns a list of artists from the 7digital catalogue whose names match the start letter(s) supplied.",
+				"operationId": "artistbrowse",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "artistId",
+					"description": "unique identifier of the artist",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "nttttttt 2 letter ISO country code of the country whose releases you would like to searchntttttt ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "imageSize",
+					"description": "nttttttt The requested width of the image in pixelsntttttt ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "letter",
+					"description": "The first letter(s) of the artist name to browse.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Page number of the result set. If not supplied, defaults to 1",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageSize",
+					"description": "Number of items to be returned per page. If not supplied this defaults to 10. Maximum page size is 50",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "period",
+					"description": "The time period for which the chart is generated. Default value is a week.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "streamable",
+					"description": "If provided search results will contain only releases that can/cannot be streamed",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "toDate",
+					"description": "The last day the chart should include data for. If not provided, by default the most recent chart for requested period will be returned.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "Releases can be of type album, single or video. If specified, results are filtered by release type.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"basket": {
+			"<h4 ": {
+				"summary": "basket",
+				"description": "",
+				"operationId": "basket",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "amountDue",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "artistName",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "basket id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "basketId",
+					"description": "nttttttttThe unique identifier of the basket as acquired by basket/create methodnttttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "basketItem id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "basketItems",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "The code of the country the end user resides in. The country will default to GB if not provided.ntttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "discount",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "itemCount",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "itemName",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "package",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "price",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "releaseId",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "trackId",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"basket/addpriceditem": {
+			"get ": {
+				"summary": "basket/addpriceditem",
+				"description": "This method allows an item to be added to a basket with a specified price. The specified price can be higher or lower than the 7digital catalogue price, including a price of 0.00 to make an item free.",
+				"operationId": "basketaddpriceditem",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "basketId",
+					"description": "The unique identifier of the basket generated by the basket/create method",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "nttttttttThe country that all basket items were selected from.  The country will default to UK if it is not provided.nttttttttProvide this if you are purchasing from a territory other than the UK.nttttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "country/shopId",
+					"description": "nttttttttA Country Code needs to be provided if you are delivering content from a 7digital international shop. Provide a shop ID if you have a dedicated pool of content and you have been assigned a shop ID by 7digital.nttttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "emailAddress",
+					"description": "The email address of the User.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "oauth_token",
+					"description": "users OAuth accesstoken",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "price",
+					"description": "nttttttttThe custom price for the item to add to the basket e.g. 11.95.nttttttttThe price cannot be negative and must not be more than 2 decimal places. The price should not include any commas (,).nttttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "purchaseid",
+					"description": "purchase id identifying the transaction at 7digitals end that the refunded item belongs to",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "releaseId",
+					"description": "The unique identifier of the release",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "retailPrice",
+					"description": "Compulsory if you are charging your users different prices than 7digital RRP. If youre giving away items for free please use retailPrice=0, if youre using vouchers or youre not sure what to report please contact our sales team.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "shopid",
+					"description": "nttttttttThe shop ID that all basket items were selected from.  The shop ID will default to the 7digital UK shop if it is not provided.nttttttttIf the shop ID is provided, the country parameter will be ignored.nttttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "trackId",
+					"description": "The unique identifier of the track. If supplied, you must also supply the releaseId that the track belongs to.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "transactionId",
+					"description": "The transaction ID provided will be stored along with a 7digital purchase ID in the 7digital transactions log.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"playlists": {
+			"get ": {
+				"summary": "playlists",
+				"description": "Returns a list of all public playlists. If an oauth_token is provided then also given users private playlists will be included in the response.",
+				"operationId": "playlists",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "oauth_token",
+					"description": "Users OAuth access token - allows user to view Private playlist if it belongs to them",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "nttttttPage number of the result set. If not supplied, defaults to 1nttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageSize",
+					"description": "Number of items to be returned per page. If not supplied, defaults to 10. Maximum page size is 500",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "This allows you to pass the id of a user you wish to view the playlists of a specific user. It must be in the format id:{userId}",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"playlists/{playlistId}": {
+			"get ": {
+				"summary": "playlists/{playlistId}",
+				"description": "Returns playlist details and track listing. Access to private playlists is only allowed when an oauth_token of the playlist owner is provided.",
+				"operationId": "playlistsplaylistid",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "oauth_token",
+					"description": "Users OAuth access token - allows user to view private playlist if it belongs to them",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"playlists/{playlistId}/details": {
+			"post ": {
+				"summary": "playlists/{playlistId}/details",
+				"description": "Updates playlist details at {playlistId} with the supplied playlist details. It does not affect playlist tracks. Use this method e.g. for changing visibility of the playlist from private to public. The playlist details can only be updated by the playlist owner, i.e. oauth_token representing the user has to be provided.",
+				"operationId": "playlistsplaylistiddetails",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "oauth_token",
+					"description": "Users OAuth access token",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"playlists/{playlistId}/tracks/{playlisttrackid}": {
+			"delete ": {
+				"summary": "playlists/{playlistId}/tracks/{playlisttrackid}",
+				"description": "Removes the specified track {playlisttrackid} from the specified playlist at {playlistId}.  Tracks can only be removed by the playlist owner, i.e. oauth_token representing the user has to be provided.",
+				"operationId": "playlistsplaylistidtracksplaylisttrackid",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "oauth_token",
+					"description": "Users OAuth access token",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"release/chart": {
+			"get ": {
+				"summary": "release/chart",
+				"description": "This endpoint returns a chart of the most purchased releases for given week. Only albums are included in this chart. To retrieve the most recent charts as published on 7digital.com the toDate parameter should be omitted.",
+				"operationId": "releasechart",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "nttttttt 2 letter ISO country code of the country whose releases you would like to viewntttttt ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "imageSize",
+					"description": "nttttttt The requested width of the image in pixelsntttttt ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Page number of the result set. If not supplied, defaults to 1",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageSize",
+					"description": "Number of items to be returned per page. If not supplied this defaults to 10. Maximum page size is 50",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "streamable",
+					"description": "If provided search results will contain only releases that can/cannot be streamed",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "toDate",
+					"description": "The last day the chart should include data for. If not provided, it defaults to the most recent chart week.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"tag": {
+			"get ": {
+				"summary": "tag",
+				"description": "This method returns a list of all available tags.",
+				"operationId": "tag",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "artistId",
+					"description": "The unique identifier of the artist.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "nttttttt2 letter ISO country code of the country whose artists you would like to searchntttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "imageSize",
+					"description": "ntttttttThe requested width of the image in pixelsntttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Page number of the result set. If not supplied, defaults to 1",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageSize",
+					"description": "Number of items to be returned per page. If not supplied this defaults to 10. Maximum page size is 50",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "streamable",
+					"description": "If provided search results will contain only artists that can/cannot be streamed",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "tags",
+					"description": "A single or comma separated list of tags.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"track/chart": {
+			"get ": {
+				"summary": "track/chart",
+				"description": "This endpoint returns a chart of the most purchased tracks for given week. To retrieve the most recent charts as published on 7digital.com the toDate parameter should be omitted.",
+				"operationId": "trackchart",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "2 letter ISO country code of the country whose tracks you would like to search",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "imageSize",
+					"description": "The requested width of the image in pixels",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Page number of the result set. If not supplied, defaults to 1",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageSize",
+					"description": "Number of items to be returned per page. If not supplied this defaults to 10. Maximum page size is 50",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "streamable",
+					"description": "If provided search results will contain only tracks that can/cannot be streamed",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "toDate",
+					"description": "The last day the chart should include data for. If not provided, it defaults to the most recent chart week.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"user/locker": {
+			"get ": {
+				"summary": "user/locker",
+				"description": "Returns a paged list of releases and tracks for a users locker (collection of all purchased tracks). This method must be OAuth signed.",
+				"operationId": "userlocker",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "The code of the country the end user resides in. The country will default to GB if not provided.nttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "oauth_token",
+					"description": "users OAuth accesstoken",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "sets the page to be returned in paged list of the customers releases and tracks, by default this is the first page. page=1",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pagesize",
+					"description": "sets the number of releases that will be returned per page, the default is 10, the maximum is 50",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "purchaseId",
+					"description": "nttttt If supplied will return only the releases and tracks for that basket. Will return an error if no tracks are found.nttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "releaseId",
+					"description": "The 7digital ID of the release to be that we are interested in. You will use this to filter out and return a specific release from the users locker. Will return an empty locker response if no match is found.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "nttttttOrders the returned results. Supplied as a string in the format: {sortColumn} {sortOrder}, for example: purchaseDate desc ntttwill show recent purchases first. Currently you can sort by releaseTitle (asc or desc), purchaseDate (asc or desc) and artistName (asc or desc). If no sort is ntttsupplied, the default is releaseTitle asc. If no order is supplied the default is ascending.nttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "trackId",
+					"description": "nttttttIf supplied together with the releaseId, will returned only that specific track (provided it exists in user locker).nttttttWill return an empty locker response if no match is found.nttttt",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"user/purchase/basket": {
+			"get ": {
+				"summary": "user/purchase/basket",
+				"description": "This method allows a user to purchase a basket with items that have been added via basket/additem or basket/addpriceditem. It will return the download URL of each item purchased. For example, if a release consisting of multiple tracks was purchased, then the download URL of each item constituting the release will be returned.",
+				"operationId": "userpurchasebasket",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "basketid",
+					"description": "This is the session ID for the basket that contains the items to purchase.  This is the basketid returned from basket/create.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "nttttttttThe country that all basket items were selected from.  The country will default to UK if it is not provided.nttttttttProvide this if you are purchasing from a territory other than the UK.nttttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "oauth_token",
+					"description": "users OAuth accesstoken",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "shopid",
+					"description": "nttttttttThe shop ID that all basket items were selected from.  The shop ID will default to the 7digital UK shop if it is not provided.nttttttttIf the shop ID is provided, the country parameter will be ignored.nttttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "tag_*key*",
+					"description": "nttttttttAdditional data to be stored with successful transactions, for the purposes such as tagging affiliated or marketing information.nttttttttup to 10 tags can be stored. A tag key can be a maximum of 50 characters, and a tag value a maximum of 100 characters.nttttttttE.g. tag_MyPartner=MagazinePromoABC&amp;tag_ApplicationVersion=1.5.nttttttttThis data will only be available to API clients subscribing to customized sales reports service.nttttttt",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"user/purchase/item": {
+			"get ": {
+				"summary": "user/purchase/item",
+				"description": "This method allows a user to purchase an item at the price as advertised on 7digital.com. It will return the download URL of each item purchased. For example, if a release consisting of multiple tracks was purchased, then the download URL of each item constituting the release will be returned.nttttttFor a user purchase to be processed, the user should already have a default debit or credit card set up for payments.ntttThis method allows users to take advantage of 7digital.com promotional offers and is only available to selected partners building 7digital branded integrations. For white-label integrations please use user/purchase/rrpItem or user/purchase/pricedItem.",
+				"operationId": "userpurchaseitem",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "The code of the country the end user resides in. The country will default to GB if not provided.nttttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "oauth_token",
+					"description": "users OAuth accesstoken",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "price",
+					"description": "nttttttttThe price that has been displayed to the user prior to purchase. If the actual 7digital.com price is different to the supplied value the purchase is aborted and 3004 error message is returned instead. This is used to ensure the users cannot be charged a different amount than the advertised price (e.g. if the price was cached and/or has changed after it was displayed.)nttttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "releaseId",
+					"description": "The unique ID of the release being purchased. If a track is being purchased, this needs to identify the release the track appears on.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "shopid",
+					"description": "nttttttttThe shop ID that all basket items were selected from.  The shop ID will default to the 7digital UK shop if it is not provided.nttttttttIf the shop ID is provided, the country parameter will be ignored.nttttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "tag_*key*",
+					"description": "nttttttttAdditional data to be stored with successful transactions, for the purposes such as tagging affiliated or marketing information.nttttttttup to 10 tags can be stored. A tag key can be a maximum of 50 characters, and a tag value a maximum of 100 characters.nttttttttE.g. tag_MyPartner=MagazinePromoABC&amp;tag_ApplicationVersion=1.5.nttttttttThis data will only be available to API clients subscribing to customized sales reports service.nttttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "trackId",
+					"description": "The unique ID of the track being purchased. If supplied, only the track is delivered - otherwise the full release is delivered.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"user/purchase/rrpItem": {
+			"get ": {
+				"summary": "user/purchase/rrpItem",
+				"description": "This method allows a user to purchase an item at 7digital recommended retail price (RRP). It will return the download URL of each item purchased. For example, if a release consisting of multiple tracks was purchased, then the download URL of each item constituting the release will be returned.nttttttFor a user purchase to be processed, the user should already have a default debit or credit card set up for payments.",
+				"operationId": "userpurchaserrpitem",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "nttttttttThe country that all basket items were selected from.  The country will default to UK if it is not provided.nttttttttProvide this if you are purchasing from a territory other than the UK.nttttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "oauth_token",
+					"description": "users OAuth accesstoken",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "price",
+					"description": "nttttttttThe price that has been displayed to the user prior to purchase. If the actual 7digital recommended retail price is different to the supplied value the purchase is aborted and 3004 error message is returned instead. This is used to ensure the users cannot be charged a different amount than the advertised price (e.g. if the price was cached and/or has changed after it was displayed.)nttttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "releaseId",
+					"description": "The unique ID of the release being purchased. If a track is being purchased, this needs to identify the release the track appears on.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "shopid",
+					"description": "nttttttttThe shop ID that all basket items were selected from.  The shop ID will default to the 7digital UK shop if it is not provided.nttttttttIf the shop ID is provided, the country parameter will be ignored.nttttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "tag_*key*",
+					"description": "nttttttttAdditional data to be stored with successful transactions, for the purposes such as tagging affiliated or marketing information.nttttttttup to 10 tags can be stored. A tag key can be a maximum of 50 characters, and a tag value a maximum of 100 characters.nttttttttE.g. tag_MyPartner=MagazinePromoABC&amp;tag_ApplicationVersion=1.5.nttttttttThis data will only be available to API clients subscribing to customized sales reports service.nttttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "trackId",
+					"description": "The unique ID of the track being purchased. If supplied, only the track is delivered - otherwise the full release is delivered.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"user/purchase/{purchaseid}/track/{trackid}": {
+			"delete ": {
+				"summary": "user/purchase/{purchaseid}/track/{trackid}",
+				"description": "This method allows a user to remove a purchase of a track from the sales report when the purchase has been refunded.",
+				"operationId": "userpurchasepurchaseidtracktrackid",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "purchaseid",
+					"description": "purchase id identifying the transaction at 7digitals end that the refunded item belongs to",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "trackid",
+					"description": "nttttttttThe 7digital id of the track being refundednnttttttt",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

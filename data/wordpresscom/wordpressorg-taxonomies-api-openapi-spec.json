@@ -1,0 +1,64 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Wordpress.org Taxonomies API",
+		"version": null
+	},
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/taxonomies": {
+			"get": {
+				"summary": "List Taxonomys",
+				"description": "List Taxonomys",
+				"operationId": "list-taxonomys",
+				"parameters": [{
+					"in": "query",
+					"name": "context",
+					"description": "Scope under which the request is made; determines fields present in response.n                    n                    n                    n                        n                            Default: viewn                        n                    n                    n                        One of: view, embed, edit",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "Limit results to resources associated with a specific post type.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["taxonomies"],
+				"security": []
+			}
+		},
+		"/taxonomies/{taxonomy}": {
+			"get": {
+				"summary": "Retrieve a Taxonomy",
+				"description": "Retrieve a Taxonomy",
+				"operationId": "retrieve-a-taxonomy",
+				"parameters": [{
+					"in": "query",
+					"name": "context",
+					"description": "Scope under which the request is made; determines fields present in response.n                    n                    n                    n                        n                            Default: viewn                        n                    n                    n                        One of: view, embed, edit",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "taxonomy",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["taxonomies"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

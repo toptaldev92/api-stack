@@ -1,0 +1,136 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "YouTube Subscription API",
+		"description": "Programmatic access to YouTube features.",
+		"termsOfService": "https://developers.google.com/youtube/terms",
+		"contact": {
+			"name": "Google"
+		},
+		"version": "v3"
+	},
+	"host": "www.googleapis.com",
+	"basePath": "/youtube/v3",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/subscriptions": {
+			"delete": {
+				"summary": "Delete Subscriptions",
+				"description": "Deletes a subscription.",
+				"operationId": "delete-subscriptions",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "The id parameter specifies the YouTube subscription ID for the resource that is being deleted. In a subscription resource, the id property specifies the YouTube subscription ID.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["subscriptions"],
+				"security": []
+			},
+			"get": {
+				"summary": "List Subscriptions",
+				"description": "Returns subscription resources that match the API request criteria.",
+				"operationId": "list-subscriptions",
+				"parameters": [{
+					"in": "query",
+					"name": "channelId",
+					"description": "The channelId parameter specifies a YouTube channel ID. The API will only return that channels subscriptions.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "forChannelId",
+					"description": "The forChannelId parameter specifies a comma-separated list of channel IDs. The API response will then only contain subscriptions matching those channels.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The id parameter specifies a comma-separated list of the YouTube subscription ID(s) for the resource(s) that are being retrieved. In a subscription resource, the id property specifies the YouTube subscription ID.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "The maxResults parameter specifies the maximum number of items that should be returned in the result set. Acceptable values are 0 to 50, inclusive. The default value is 5.",
+					"type": "unsigned integer"
+				},
+				{
+					"in": "query",
+					"name": "mine",
+					"description": "This parameter can only be used in a properly authorized request. Set this parameters value to true to retrieve a feed of the authenticated users subscriptions.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "mySubscribers",
+					"description": "This parameter can only be used in a properly authorized request. Set this parameters value to true to retrieve a feed of the subscribers of the authenticated user.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to pr",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "onBehalfOfContentOwnerChannel",
+					"description": "This parameter can only be used in a properly authorized request. Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is l",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "The order parameter specifies the method that will be used to sort resources in the API response. The default value is SUBSCRIPTION_ORDER_RELEVANCE.Acceptable values are:alphabetical &ndash; Sort alphabetically.relevance &ndash; Sort by relevance.unread &ndash; Sort by order of activity.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageToken",
+					"description": "The pageToken parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter specifies a comma-separated list of one or more subscription resource properties that the API response will include.If the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a subscription resource, the snippet property contains other properties, such as a display title for the subscription. If you set part=snippet, the API response will also contain all of those nested properties.The list belo",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["subscriptions"],
+				"security": []
+			},
+			"post": {
+				"summary": "Insert Subscriptions",
+				"description": "Adds a subscription for the authenticated users channel.",
+				"operationId": "insert-subscriptions",
+				"parameters": [{
+					"in": "query",
+					"name": "part",
+					"description": "The part parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include.The list below contains the part names that you can include in the parameter value and the quota cost for each part:contentDetails: 2id: 0snippet: 2subscriberSnippet: 2",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["subscriptions"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

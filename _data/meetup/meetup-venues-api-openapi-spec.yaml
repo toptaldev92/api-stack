@@ -1,0 +1,259 @@
+- swagger: "2.0"
+  info:
+    title: Meetup Venues API
+    description: The API for managing Meetup venues.
+    termsOfService: http://www.meetup.com/terms/
+    version: ~
+  host: api.meetup.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /2/open_venues:
+      get:
+        summary: OpenVenues
+        description: Searches for public venues within a given geo space. To search
+          for specific venues that your group has used, use the [Venues](/meetup_api/docs/2/venues)
+          method
+        operationId: venues
+        parameters:
+        - in: query
+          name: '*city'
+          description: A valid city
+          type: string
+        - in: query
+          name: '*country'
+          description: A valid country code.
+          type: string
+        - in: query
+          name: '*group_urlname'
+          description: Returns venues with location relative to the group associated
+            with this urlname
+          type: string
+        - in: query
+          name: '*lat'
+          description: A valid latitude, limits the returned venues to those within
+            radius miles
+          type: string
+        - in: query
+          name: '*lon'
+          description: A valid longitude, limits the returned venues to those within
+            radius miles
+          type: string
+        - in: query
+          name: '*state'
+          description: For the US, a valid 2 character state code
+          type: string
+        - in: query
+          name: '*text'
+          description: Venues that contain the given term or terms somewhere in their
+            content. Separate terms with  AND  for venues that have combined terms.
+            Append a trailing * to treat this as a prefix search
+          type: string
+        - in: query
+          name: '*zip'
+          description: A valid US zip code, limits the returned venues to those within
+            radius miles
+          type: string
+        - in: query
+          name: api_version
+          description: "2"
+          type: string
+        - in: query
+          name: fields
+          description: Request that additional fields (separated by commas) be included
+            in the output
+          type: string
+        - in: query
+          name: radius
+          description: Radius, in miles for geographic requests, default 25.0 -- maximum
+            100.0
+          type: string
+        - in: query
+          name: since_count
+          description: Request that some number of recent messages be sent immediately,
+            if available. May not be specified in the same request as since_mtime.
+          type: string
+        - in: query
+          name: since_mtime
+          description: Return recent open venues with an mtime greater then the supplied
+            time, in milliseconds since the epoch
+          type: string
+        - in: query
+          name: trickle
+          description: When supplied with a request, the Meetup API will push your client
+            the entire Meetup database of public venues in batches of 512
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /2/venues:
+      get:
+        summary: Venues
+        description: Search for Meetup venues by one of your groups, events, or venue
+          identifiers. For a full text search on public venues use [OpenVenues](/meetup_api/docs/2/open_venues).
+        operationId: venues
+        parameters:
+        - in: query
+          name: '*event_id'
+          description: multiple ids may be separated with commas
+          type: string
+        - in: query
+          name: '*group_id'
+          description: multiple ids may be separated with commas
+          type: string
+        - in: query
+          name: '*group_urlname'
+          description: path to group from meetup.com, no slashes
+          type: string
+        - in: query
+          name: '*venue_id'
+          description: multiple ids may be separated with commas
+          type: string
+        - in: query
+          name: fields
+          description: Request that additional fields (separated by commas) be included
+            in the output
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /:urlname/venues:
+      get:
+        summary: Group Venues
+        description: Returns venues a group has previously hosted events at
+        operationId: venues
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Venue Create
+        description: Interface for creating new Meetup venues
+        operationId: venues
+        parameters:
+        - in: query
+          name: '*address_1'
+          description: Primary address of the venue
+          type: string
+        - in: query
+          name: '*city'
+          description: City name of the venue
+          type: string
+        - in: query
+          name: '*country'
+          description: 2 character country code of the venue
+          type: string
+        - in: query
+          name: '*name'
+          description: Unique name of the venue
+          type: string
+        - in: query
+          name: '*state'
+          description: If in the US or CA, the state code for the venue
+          type: string
+        - in: query
+          name: address_2
+          description: Secondary address info
+          type: string
+        - in: query
+          name: hours
+          description: Open hours information about the venue
+          type: string
+        - in: query
+          name: phone
+          description: Optional phone number for the venue
+          type: string
+        - in: query
+          name: visibility
+          description: Optional value indicating the venues visibility to others. May
+            be one of private or public. Defaults to public
+          type: string
+        - in: query
+          name: web_url
+          description: Optional web url for the venue
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /recommended/venues:
+      get:
+        summary: Recommended Venues
+        description: Returns venues Meetup finds relevant to you based on location and
+          category. This method does not yet support sorting or pagination.
+        operationId: venues
+        parameters:
+        - in: query
+          name: category
+          description: Comma-delimited list of up to 200 category ids to help inform
+            recommendations
+          type: string
+        - in: query
+          name: country
+          description: A valid two character country code, defaults to US
+          type: string
+        - in: query
+          name: group_id
+          description: Comma-delimited list of up to 200 group ids to help inform recommendations
+          type: string
+        - in: query
+          name: group_urlname
+          description: Comma-delimited list of up to 200 group urlnames to help inform
+            recommendations
+          type: string
+        - in: query
+          name: lat
+          description: Approximate latitude
+          type: string
+        - in: query
+          name: location
+          description: Raw text location query
+          type: string
+        - in: query
+          name: lon
+          description: Approximate longitude
+          type: string
+        - in: query
+          name: min_groups
+          description: The minimum number of groups that have hosted events at this
+            venue
+          type: string
+        - in: query
+          name: radius
+          description: Radius in miles. Defaults to members preferred radius
+          type: string
+        - in: query
+          name: used_between
+          description: Return venues that have been used within the given time range,
+            defined by two times separated with a single comma. Each end of the range
+            may be specified with relative dates, such as 1m for one month from now,
+            or by absolute time in milliseconds since the epoch. If an endpoint is omitted,
+            the range is unbounded on that end. The default value is unbounded on both
+            ends (though restricted to the search window described above).
+          type: string
+        - in: query
+          name: zip
+          description: Zip code you are searching for recommendations in
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

@@ -1,0 +1,436 @@
+- swagger: "2.0"
+  info:
+    title: Meetup Profiles API
+    description: The API for managing Meetup profiles.
+    termsOfService: http://www.meetup.com/terms/
+    version: ~
+  host: api.meetup.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /2/profile:
+      post:
+        summary: Profile Create (Group Join)
+        description: This method allows an authenticated member to join a group by creating
+          a profile
+        operationId: profiles
+        parameters:
+        - in: query
+          name: '*group_id'
+          description: Id of group to join
+          type: string
+        - in: query
+          name: '*group_urlname'
+          description: Urlname of group to join
+          type: string
+        - in: query
+          name: answer_{qid}
+          description: Answers to questions from groups API join_info question fields
+          type: string
+        - in: query
+          name: intro
+          description: Provides a Member an opportunity to tell the group about themselves
+          type: string
+        - in: query
+          name: new_photo
+          description: file upload for a new member photo
+          type: string
+        - in: query
+          name: photo_id
+          description: photo_id of the photo to use for this profile
+          type: string
+        - in: query
+          name: site_name
+          description: Name of members site. Max length is 32
+          type: string
+        - in: query
+          name: site_url
+          description: Link to members site. Max length is 80
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /2/profile/:gid/:mid:
+      delete:
+        summary: Profile Delete (Leave Group)
+        description: Deletes a members group profile
+        operationId: profiles
+        parameters:
+        - in: query
+          name: exit_comment
+          description: Optional message to the organizer when leaving
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: Profile Get
+        description: Retrieves a single group profile
+        operationId: profiles
+        parameters:
+        - in: query
+          name: fields
+          description: Request that additional fields (separated by commas) be included
+            in the output
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Profile Edit
+        description: Update a members group profile
+        operationId: profiles
+        parameters:
+        - in: query
+          name: add_role
+          description: 'Allows those with permission to assign one of the following
+            roles: coorganizer, event_organizer, assistant_organizer'
+          type: string
+        - in: query
+          name: answer_{qid}
+          description: Answers to questions from groups API join_info question fields
+          type: string
+        - in: query
+          name: intro
+          description: Provides a Member an opportunity to tell the group about themselves
+          type: string
+        - in: query
+          name: new_photo
+          description: file upload for a new member photo
+          type: string
+        - in: query
+          name: photo_id
+          description: photo_id of the photo to use for this profile. set to 0 to unset
+            the current photo
+          type: string
+        - in: query
+          name: remove_role
+          description: 'Allows those with permission to remove one of the following
+            roles: coorganizer, event_organizer, assistant_organizer'
+          type: string
+        - in: query
+          name: site_name
+          description: Name of members site. Max length is 32
+          type: string
+        - in: query
+          name: site_url
+          description: Link to members site. Max length is 80
+          type: string
+        - in: query
+          name: title
+          description: An organizer-defined member title.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /2/profiles:
+      get:
+        summary: Profiles
+        description: This method returns member *profiles* associated with a particular
+          group. Meetup members have separate profiles for each group they join.
+        operationId: profiles
+        parameters:
+        - in: query
+          name: '*group_id'
+          description: Return profiles in the group with this ID
+          type: string
+        - in: query
+          name: '*group_urlname'
+          description: Return profiles for the group with the given custom URL path
+          type: string
+        - in: query
+          name: '*member_id'
+          description: Return the profiles for members with these IDs, separated by
+            commas
+          type: string
+        - in: query
+          name: '*topic, groupnum'
+          description: Group identification by topic, deprecated
+          type: string
+        - in: query
+          name: fields
+          description: comma delimited list of optional response properties. A value
+            of membership_dues will populate membership dues for the authorized user
+            or members of the groups the authorized user organizes
+          type: string
+        - in: query
+          name: role
+          description: if leads, only profiles for members of the leadership team are
+            included
+          type: string
+        - in: query
+          name: status
+          description: Status filter for members. Only organizers may see pending. Request
+            must also contain a `group_id` or `group_urlname`. Status may be one of
+            active, pending
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /:urlname/member/approvals:
+      delete:
+        summary: Membership Decline
+        description: Declines one or more requests for group membership
+        operationId: profiles
+        parameters:
+        - in: query
+          name: anon
+          description: Optional Boolean value indicating whether the declining members
+            email address should be hidden in the resulting response. Default is true.
+          type: string
+        - in: query
+          name: ban
+          description: Optional Boolean value indicating whether or not to ban the member
+            in the future. Default is false
+          type: string
+        - in: query
+          name: explanation
+          description: Optional explanation to send to the members being declined. Max
+            message size is 2000
+          type: string
+        - in: query
+          name: member
+          description: Comma-delimited numeric pending member IDs. The maximum allowed
+            is 200
+          type: string
+        - in: query
+          name: send_copy
+          description: Optional Boolean value indicating whether or not to send a copy
+            to the member issuing the decline. Default is false
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Membership Approval
+        description: Approves one or more requests for group membership
+        operationId: profiles
+        parameters:
+        - in: query
+          name: member
+          description: Comma-delimited numeric pending member IDs. The maximum allowed
+            is 200
+          type: string
+        - in: query
+          name: send_copy
+          description: Optional Boolean value indicating whether or not the org should
+            receive a copy of the message sent to the approved members
+          type: string
+        - in: query
+          name: welcome_message
+          description: Optional message to send to the members being approved. If not
+            provided, the groups default welcome message will be sent. Max message size
+            is 2000
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /:urlname/members/:member_id:
+      get:
+        summary: Get Group Member Profile
+        description: Gets Group Profiles.nFor Member Profiles, see [this endpoint](/meetup_api/docs/members/:member_id)
+        operationId: profiles
+        parameters:
+        - in: query
+          name: fields
+          description: A comma-delimited string of optional response field names.nThis
+            may include birthday, gender, groups, privacy, self and topics
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      patch:
+        summary: Edit Group Member Profile
+        description: Edits Group Profiles.nTo fetch Group Member Profiles,nsee [this
+          endpoint](/meetup_api/docs/:urlname/members/:member_id#get)
+        operationId: profiles
+        parameters:
+        - in: query
+          name: add_role
+          description: Allows those with permission to assign one of the following roles:nassistant_organizer,
+            coorganizer, event_organizer
+          type: string
+        - in: query
+          name: answer_{qid}
+          description: Answers to questions from groups API join_info question fields.nnThe
+            name of these parameters must contain a suffix of _ + the numericnquestion
+            id from the Meetup Groups join info question listnnAnswers may not be longer
+            than 1000ncharacters in length
+          type: string
+        - in: query
+          name: fields
+          description: A comma-delimited string of optional response field names.nThis
+            may include birthday, gender, groups, privacy, self and topics
+          type: string
+        - in: query
+          name: intro
+          description: Provides a Member an opportunity to tell the group about themselves,nin
+            at most 255 characters
+          type: string
+        - in: query
+          name: photo_id
+          description: Numeric id of the photo to use for this profile. Send a value
+            of 0 to unset the current photo
+          type: string
+        - in: query
+          name: remove_role
+          description: Allows those with permission to remove one of the following roles:nassistant_organizer,
+            coorganizer, event_organizer
+          type: string
+        - in: query
+          name: title
+          description: An organizer-defined title,nin at most 255 characters
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /members/:member_id:
+      get:
+        summary: Get Member Profile
+        description: Gets Member Profiles.nFor Group Profiles, see [this endpoint](/meetup_api/docs/:urlname/members/:member_id)
+        operationId: profiles
+        parameters:
+        - in: query
+          name: fields
+          description: A comma-delimited string of optional response field names.nThis
+            may include groups, privacy, and topics
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      patch:
+        summary: Member Profile Edit
+        description: ""
+        operationId: profiles
+        parameters:
+        - in: query
+          name: add_topics
+          description: Comma-delimited list of topic ids to add to members interest
+            list
+          type: string
+        - in: query
+          name: bio
+          description: Member bio of up to 250 characters
+          type: string
+        - in: query
+          name: bio_privacy
+          description: Preference for hiding or showing member bio to others.nValue
+            may be one of hidden, visible
+          type: string
+        - in: query
+          name: birthday
+          description: Members date or year of birth.nMay be specfied in one of the
+            following formats.nyyyy, mmddyyy or alternatively -1, which indicates that
+            birthdayndata should be cleared
+          type: string
+        - in: query
+          name: city_id
+          description: Valid Meetup City identifier that indicates the city in which
+            which member resides
+          type: string
+        - in: query
+          name: facebook_privacy
+          description: Preference for hiding showing information members facebook connection.nValue
+            may be one of hidden, visible
+          type: string
+        - in: query
+          name: gender
+          description: Members gender.nValue may be one of female, male, none, other
+          type: string
+        - in: query
+          name: groups_privacy
+          description: Preference for hiding or showing group memberships to others.nValue
+            may be one of hidden, visible
+          type: string
+        - in: query
+          name: lang
+          description: Members language preference.nValue may be one of de, en_US, es,
+            fr, it, ja, pt
+          type: string
+        - in: query
+          name: lat
+          description: A valid latitude to resolve the closest city to associate with
+            the member
+          type: string
+        - in: query
+          name: lon
+          description: A valid longitude to resolve the closest city to associate with
+            the member
+          type: string
+        - in: query
+          name: messaging_pref
+          description: Preference for which members may contact you via the Meetup platform.nValue
+            may be one of all_members, groups_only, orgs_only
+          type: string
+        - in: query
+          name: name
+          description: Member name
+          type: string
+        - in: query
+          name: photo_id
+          description: A valid Photo id to this member has previously updated to use
+            as profile photo
+          type: string
+        - in: query
+          name: radius
+          description: A radius (in miles) to search for the closest city given a center
+            pointnidentified by (lat, lon) to associate with the member.nDefaults to
+            25.0 when not provided
+          type: string
+        - in: query
+          name: remove_topics
+          description: Comma-delimited list of topic ids to remove from members interest
+            list
+          type: string
+        - in: query
+          name: sync_photo
+          description: When set to true, this parameter will sync all the groupnprofile
+            photos for the member with the provided photo_id
+          type: string
+        - in: query
+          name: topics_privacy
+          description: Preference for hiding or showing member interests to others.nValue
+            may be one of hidden, visible
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

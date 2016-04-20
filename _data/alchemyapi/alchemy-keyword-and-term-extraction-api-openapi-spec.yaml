@@ -1,0 +1,134 @@
+- swagger: "2.0"
+  info:
+    title: Alchemy Keyword and Term Extraction API
+    description: AlchemyAPI provides easy-to-use facilities for extracting topic keywords
+      from your publicly-accessible web-based content. These URL processing calls automatically
+      fetch the desired Internet webpage, normalize / clean it (removing ads, navigation
+      links, and other unimportant content), and extract topic keywords.
+    termsOfService: http://www.alchemyapi.com/company/terms.html
+    contact:
+      name: AlchemyAPI
+      url: http://www.alchemyapi.com/company/contact
+      email: questions@alchemyapi.com
+    version: v1
+  host: access.alchemyapi.com
+  basePath: /calls/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /ur/URLGetRankedKeywords:
+      get:
+        summary: Keyword Extraction
+        description: AlchemyAPI provides easy-to-use facilities for extracting topic
+          keywords from your publicly-accessible web-based content. These URL processing
+          calls automatically fetch the desired Internet webpage, normalize / clean
+          it (removing ads, navigation links, and other unimportant content), and extract
+          topic keywords.
+        operationId: getKeywords
+        parameters:
+        - in: query
+          name: apikey
+          description: your private api key
+          type: string
+          format: string
+        - in: query
+          name: baseUrl
+          description: el-tag output base http url (must be uri-argument encoded)
+          type: string
+          format: string
+        - in: query
+          name: cquery
+          description: a visual constraints query to apply to the web page.
+          type: string
+          format: string
+        - in: query
+          name: jsonp
+          description: desired JSONP callback
+          type: string
+          format: string
+        - in: query
+          name: keywordExtractMode
+          description: keyword extraction mode (normal or strict)
+          type: string
+          format: string
+        - in: query
+          name: maxRetrieve
+          description: 'maximum number of keywords to extract (default: 50)'
+          type: string
+          format: string
+        - in: query
+          name: outputMode
+          type: string
+          format: string
+          default: desired API output format
+        - in: query
+          name: sentiment
+          description: whether to enable keyword-level sentiment analysis
+          type: string
+          format: string
+        - in: query
+          name: showSourceText
+          description: whether to include the original source text the keywords were
+            extracted from within the API response
+          type: string
+          format: string
+        - in: query
+          name: sourceText
+          description: where to obtain the text that will be processed by this API call.
+          type: string
+          format: string
+        - in: query
+          name: url
+          description: apikey
+          type: string
+          format: string
+        - in: query
+          name: xpath
+          description: an XPath query to apply to the web page.
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful Keyword Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/results'
+        tags:
+        - Keywords
+        security:
+        - apikey: []
+  securityDefinitions:
+    apikey:
+      type: apiKey
+      name: apikey
+      in: query
+  definitions:
+    results:
+      properties:
+        status:
+          description: success / failure status indicating whether the request was processed.
+          type: string
+        language:
+          description: the detected language that the source text was written in.
+          type: string
+        url:
+          description: http url information was requested for.
+          type: string
+        relevance:
+          description: relevance score for a detected keyword.
+          type: string
+        text:
+          description: the detected keyword text.
+          type: string
+        sentiment:
+          description: sentiment for the detected keyword (sent only if keyword-level
+            sentiment analysis is enabled)
+          type: string
+        statusInfo:
+          description: failure status information
+          type: string

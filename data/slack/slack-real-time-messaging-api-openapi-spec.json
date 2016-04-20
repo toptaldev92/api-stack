@@ -1,0 +1,55 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Slack Real Time Messaging API",
+		"description": "The API for management Slack Real Time Messagings",
+		"termsOfService": "https://slack.com/terms-of-service/api",
+		"version": null
+	},
+	"host": "slack.com",
+	"basePath": "/api",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/methods/rtm.start": {
+			"get": {
+				"summary": "Starts a Real Time Messaging session.",
+				"description": "<td width=70%>Starts a Real Time Messaging session.</td>",
+				"operationId": "rtmstart",
+				"parameters": [{
+					"in": "query",
+					"name": "mpim_aware",
+					"description": "Returns MPIMs to the client in the API response.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "no_unreads",
+					"description": "Skip unread counts for each channel (improves performance).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "simple_latest",
+					"description": "Return timestamp only for latest message object of each channel (improves performance).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: client)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["real time messaging"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

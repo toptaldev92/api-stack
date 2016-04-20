@@ -1,0 +1,374 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "The Noun Project API",
+		"description": "With our API you can bring a growing collection of high quality symbols to anything you create.",
+		"termsOfService": "https://thenounproject.com/legal#terms",
+		"version": "v1"
+	},
+	"host": "api.thenounproject.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/collection/{id}": {
+			"get": {
+				"summary": "Get collection by id",
+				"description": "Returns a single collection",
+				"operationId": "getCollectionById",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "Collection id",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/collection/{id}/icons": {
+			"get": {
+				"summary": "Get collection icons by id",
+				"description": "Returns a list of icons associated with a collection",
+				"operationId": "getCollectionIconsById",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "Collection id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "Maximum number of results",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "Number of results to displace or skip over",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Number of results of limit length to displace or skip over",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/collection/{slug}": {
+			"get": {
+				"summary": "Get collection by slug",
+				"description": "Returns a single collection",
+				"operationId": "getCollectionBySlug",
+				"parameters": [{
+					"in": "path",
+					"name": "slug",
+					"description": "Collection slug",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/collection/{slug}/icons": {
+			"get": {
+				"summary": "Get collection icons by slug",
+				"description": "Returns a list of icons associated with a collection",
+				"operationId": "getCollectionIconsBySlug",
+				"parameters": [{
+					"in": "query",
+					"name": "limit",
+					"description": "Maximum number of results",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "Number of results to displace or skip over",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Number of results of limit length to displace or skip over",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "slug",
+					"description": "Collection slug",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/icon/{id}": {
+			"get": {
+				"summary": "Get icon by id",
+				"description": "Returns a single icon",
+				"operationId": "getIconById",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "Icon id",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/icon/{term}": {
+			"get": {
+				"summary": "Get icon by term",
+				"description": "Returns a single icon",
+				"operationId": "getIconByTerm",
+				"parameters": [{
+					"in": "path",
+					"name": "term",
+					"description": "Icon term",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/icons/recent_uploads": {
+			"get": {
+				"summary": "Get recent icons",
+				"description": "Returns list of most recently uploaded icons",
+				"operationId": "getRecentIcons",
+				"parameters": [{
+					"in": "query",
+					"name": "limit",
+					"description": "Maximum number of results",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "Number of results to displace or skip over",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Number of results of limit length to displace or skip over",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/icons/{term}": {
+			"get": {
+				"summary": "Get icons by term",
+				"description": "Returns a list of icons",
+				"operationId": "getIconsByTerm",
+				"parameters": [{
+					"in": "query",
+					"name": "limit",
+					"description": "Maximum number of results",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "limit_to_public_domain",
+					"description": "Limit results to public domain icons only",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "Number of results to displace or skip over",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Number of results of limit length to displace or skip over",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "term",
+					"description": "Icon term",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/oauth/usage": {
+			"get": {
+				"summary": "Get api quota status",
+				"description": "Returns current oauth usage and limits",
+				"operationId": "getApiQuotaStatus",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/user/{username}/uploads": {
+			"get": {
+				"summary": "Get user uploads with user",
+				"description": "Returns a list of uploads associated with a user",
+				"operationId": "getUserUploadsWithUser",
+				"parameters": [{
+					"in": "query",
+					"name": "limit",
+					"description": "Maximum number of results",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "Number of results to displace or skip over",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Number of results of limit length to displace or skip over",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "username",
+					"description": "Username",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/user/{user_id}/collections": {
+			"get": {
+				"summary": "Get user collections",
+				"description": "Returns a list of collections associated with a user",
+				"operationId": "getUserCollections",
+				"parameters": [{
+					"in": "path",
+					"name": "user_id",
+					"description": "User id",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/user/{user_id}/collections/{slug}": {
+			"get": {
+				"summary": "Get user collection",
+				"description": "Returns a single collection associated with a user",
+				"operationId": "getUserCollection",
+				"parameters": [{
+					"in": "path",
+					"name": "slug",
+					"description": "Collection slug",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "user_id",
+					"description": "User id",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

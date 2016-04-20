@@ -1,0 +1,306 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Auth0 Users API",
+		"version": "v1"
+	},
+	"host": "login.auth0.com",
+	"basePath": "/users",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/api/v2/users": {
+			"delete": {
+				"summary": "Deletes all users. <strong>USE WITH CAUTION</strong>",
+				"description": "",
+				"operationId": "delete_users",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Gets all users who have logged in.",
+				"description": "",
+				"operationId": "get_users",
+				"parameters": [{
+					"in": "query",
+					"name": "connection",
+					"description": "Connection filter.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "exclude_fields",
+					"description": "true if the fields specified are to be excluded from the result, false otherwise.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "fields",
+					"description": "A comma separated list of fields to include or exclude (depending on exclude_fields) from the result. Empty to retrieve all fields.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "include_totals",
+					"description": "true if a query summary must be included in the result.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page number. Zero based.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "The amount of entries per page.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "The field to use for sorting. 1 == ascending and -1 == descending.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Creates a user.",
+				"description": "",
+				"operationId": "post_users",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v2/users/{id}": {
+			"delete": {
+				"summary": "Deletes a user.",
+				"description": "",
+				"operationId": "delete_users_by_id",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The user_id of the user to delete",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Gets a user.",
+				"description": "",
+				"operationId": "get_users_by_id",
+				"parameters": [{
+					"in": "query",
+					"name": "exclude_fields",
+					"description": "true if the fields specified are to be excluded from the result, false otherwise.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "fields",
+					"description": "A comma separated list of fields to include or exclude (depending on exclude_fields) from the result. Empty to retrieve all fields.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "The user_id of the user to retrieve.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"patch": {
+				"summary": "Updates a user.",
+				"description": "",
+				"operationId": "patch_users_by_id",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "The user_id of the user to update.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v2/users/{id}/multifactor/{provider}": {
+			"delete": {
+				"summary": "Deletes a multifactor provider for a user.",
+				"description": "",
+				"operationId": "delete_multifactor_by_provider",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The user_id of the user to delete.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "provider",
+					"description": "The multifactor provider. Supported values duo or google-authenticator",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"": {
+			"properties": {
+				"email": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"email_verified": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"picture": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"username": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"user_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"nickname": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"created_at": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"identities_ids": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"identities": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"app_metadata": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"user_metadata": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"password": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"phone_number": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"given_name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"family_name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"connection": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"blocked": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"verify_email": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"verify_password": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"client_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

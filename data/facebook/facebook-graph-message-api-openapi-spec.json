@@ -1,0 +1,149 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Facebook Graph (Message) API",
+		"description": "API for managing Facebook Messages",
+		"termsOfService": "https://www.facebook.com/policies/",
+		"version": null
+	},
+	"host": "graph.facebook.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/v2.5/{message-id}": {
+			"get": {
+				"summary": "An individual message in Facebook Messenger",
+				"description": "An individual message in Facebook Messenger",
+				"operationId": "message",
+				"parameters": [{
+					"in": "query",
+					"name": "created_time",
+					"description": "A timestamp of when this message was created",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "from",
+					"description": "The sender of this message.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The unique ID for this message.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "message",
+					"description": "The text of the message.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "subject",
+					"description": "The subject of the message.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "tags",
+					"description": "A set of tags indicating the message folder and source of the message.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "to",
+					"description": "A list of recipients of the message.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["messages"],
+				"security": []
+			}
+		},
+		"/v2.5/{message-id}/attachments": {
+			"get": {
+				"summary": "Files attached to a message",
+				"description": "Files attached to a message",
+				"operationId": "message",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "The attachment ID.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "mime_type",
+					"description": "The file MIME type.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "The filename of the attachment.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "size",
+					"description": "The file size in bytes.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["messages"],
+				"security": []
+			}
+		},
+		"/v2.5/{message-id}/shares": {
+			"get": {
+				"summary": "Shared items in a message",
+				"description": "Shared items in a message",
+				"operationId": "message",
+				"parameters": [{
+					"in": "query",
+					"name": "description",
+					"description": "The description of the shared item.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The shared item ID.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "link",
+					"description": "The URL to the shared item.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "The title of the shared item.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["messages"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

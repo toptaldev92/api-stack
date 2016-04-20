@@ -1,0 +1,971 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Elastic Email SMTP API",
+		"description": "API for sending and management email.",
+		"version": "v1"
+	},
+	"host": "api.elasticemail.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"attachments/upload/": {
+			"get": {
+				"summary": "Upload Attachment",
+				"description": "The upload attachment command is used to upload an attachment for sending.  ",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "your api key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "file",
+					"description": "The file name being uploaded",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "username",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" Email"],
+				"security": []
+			}
+		},
+		"lists/add-contact": {
+			"get": {
+				"summary": "Add Existing Subscriber To List",
+				"description": "Add Existing Subscriber To List",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API Key.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "listname",
+					"description": "name of list you wish to add subscriber to (separate by semi-colon to add to multiple lists)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Your user name.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" Email"],
+				"security": []
+			}
+		},
+		"lists/create-contact": {
+			"get": {
+				"summary": "Create New Subscriber",
+				"description": "Create New Subscriber",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "your api key found on the Account screen",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "birthdate",
+					"description": "date of birth of the subscriber",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "city",
+					"description": "city of the subscriber",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "country of the subscriber",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "email",
+					"description": "email address of subscriber/recipient",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "firstname",
+					"description": "first name of the subscriber",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "gender",
+					"description": "male or female",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "lastname",
+					"description": " last name of the subscriber",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "listname",
+					"description": "the name of the list or lists (separated by semi-colon) the subscriber will be added to - if blank, it will just create the subscriber. If the list does not exist it will raise an error and fail",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "organizationname",
+					"description": "organization name the subscriber works for",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "phone",
+					"description": "phone number for the subscriber",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "postalcode",
+					"description": "the zip or postal code of the subscriber",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "state",
+					"description": "the state or province for the subscriber",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "the zip or postal code of the subscriber",
+					"description": "Your user name.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "the title for the subscriber (Mr., Mrs, Miss, etc)",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" Email"],
+				"security": []
+			}
+		},
+		"lists/create-lists": {
+			"get": {
+				"summary": "Create New List",
+				"description": "Create New List",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API Key.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "listname",
+					"description": "name of list you wish to create",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Your user name.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" Email"],
+				"security": []
+			}
+		},
+		"lists/delete": {
+			"get": {
+				"summary": "Delete Existing List",
+				"description": "Delete Existing List",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API Key.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "listname",
+					"description": "name of list you wish to delete",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Your user name.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" Email"],
+				"security": []
+			}
+		},
+		"lists/delete-contact": {
+			"get": {
+				"summary": "Delete Existing Subscriber",
+				"description": "Delete Existing Subscriber",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API Key.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "email",
+					"description": "email address of subscriber/recipient (separate by semi-colon to remove multiple)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Your user name.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" Email"],
+				"security": []
+			}
+		},
+		"lists/remove-contact": {
+			"get": {
+				"summary": "Remove Existing Subscriber From List",
+				"description": "Remove Existing Subscriber From List",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API Key.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "listname",
+					"description": "name of list you wish to remove subscriber from (separate by semi-colon to remove from multiple lists)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Your user name.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" Email"],
+				"security": []
+			}
+		},
+		"lists/upload-contacts": {
+			"get": {
+				"summary": "Create Multiple Subscriber From CSV File",
+				"description": "Create Multiple Subscriber From CSV File",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API Key.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "birthdate",
+					"description": "date of birth of the subscriber",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "city",
+					"description": "city of the subscriber",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "country of the subscriber",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "email",
+					"description": "email address of subscriber/recipient",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "firstname",
+					"description": "first name of the subscriber",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "gender",
+					"description": "male or female",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "lastname",
+					"description": "last name of the subscriber",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "listname",
+					"description": "the name of the list or lists (separated by semi-colon) the subscriber will be added to - if blank, it will just create the subscriber. If the list does not exist it will raise an error and fail",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "organizationname",
+					"description": "organization name the subscriber works for",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "phone",
+					"description": "phone number for the subscriber",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "postalcode",
+					"description": "the zip or postal code of the subscriber",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "state",
+					"description": "the state or province for the subscriber",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "the title for the subscriber (Mr., Mrs, Miss, etc)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Your user name.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" Email"],
+				"security": []
+			}
+		},
+		"mailer/account-details": {
+			"get": {
+				"summary": "Account Details",
+				"description": "The Account Details command is used to determine how much credit you have left.  ",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API Key.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Your user name.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" Email"],
+				"security": []
+			}
+		},
+		"mailer/channel/delete": {
+			"get": {
+				"summary": "Deleting Channel",
+				"description": "Deleting Channel",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API Key.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"description": "csv or xml",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "channel name to delete",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Your user name.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" Email"],
+				"security": []
+			}
+		},
+		"mailer/channel/list": {
+			"get": {
+				"summary": "Listing of Active Channels",
+				"description": "Listing of Active Channels",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API Key.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"description": "csv or xml",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Your user name.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" Email"],
+				"security": []
+			}
+		},
+		"mailer/list/bounced": {
+			"get": {
+				"summary": "Bounced",
+				"description": "This api will return you the list of email addresses which are currently in your block list. ",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API Key.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Your user name.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" Email"],
+				"security": []
+			}
+		},
+		"mailer/list/complaint": {
+			"get": {
+				"summary": "Complaint",
+				"description": "This api will return you the list of email addresses which are currently in your block list. ",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API Key.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Your user name.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" Email"],
+				"security": []
+			}
+		},
+		"mailer/lists/unsubscribed": {
+			"get": {
+				"summary": "Unsubscribed",
+				"description": "This api will return you the list of email addresses which are currently in your block list. ",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API Key.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Your user name.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" Email"],
+				"security": []
+			}
+		},
+		"mailer/send/": {
+			"get": {
+				"summary": "Send Email",
+				"description": "api.elasticemail.com",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "your api key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "body_html",
+					"description": "html email body",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "body_text",
+					"description": "text email body",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "channel",
+					"description": "an id field (max 60 chars) that can be used for reporting",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "charset",
+					"description": "text value of encoding for example: iso-8859-1, windows-1251, utf-8, us-ascii, windows-1250",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "encodingtype",
+					"description": "0 for None, 1 for Raw7Bit, 2 for Raw8Bit, 3 for QuotedPrintable, 4 for Base64 (Default), 5 for Uue  note that you can also provide the text version such as Raw7Bit for value 1. ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "from",
+					"description": "from email address",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "from_name",
+					"description": "display name for from email address",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "lists",
+					"description": "the name of a contact list you would like to send to. Separate multiple contact lists by commas",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "merge_firstname",
+					"description": "if sending to a template you can send merge_ fields to merge data with the template. Template fields are entered with {firstname}, {lastname} etc.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "merge_lastname",
+					"description": "if sending to a template you can send merge_ fields to merge data with the template. Template fields are entered with {firstname}, {lastname} etc.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "reply_to",
+					"description": "email address to reply to",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "reply_to_name",
+					"description": "display name of the reply to address",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sender",
+					"description": "email address of the sender",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sender_name",
+					"description": "display name sender ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "subject",
+					"description": "email subject ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "template",
+					"description": "the name of an email template you have created in your account. If you send a template",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "time_offset_minutes",
+					"description": "number of minutes in the future this email should be sent ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "total",
+					"description": "semi colon separated list of email recipients (each email is treated separately, like a BCC)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "your account email address",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" Email"],
+				"security": []
+			}
+		},
+		"mailer/status/log": {
+			"get": {
+				"summary": "Log Activity",
+				"description": "The detailed activity log api allows you to get detailed information from your activity log on the emails that you have sent. Information can be narrowed by email status, channel and datetime.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API Key.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "channel",
+					"description": "If you included a channel name when submitting your requests you can filter here. If you did not submit a specific channel it is defaulted to the from email address.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "compress",
+					"description": "True if you want the results returned as a compressed zip file",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"description": "xml or csv",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "from",
+					"description": "Server time in the format: 5/19/2011 10:54:20 PM",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "status",
+					"description": "One of the following status values: 0 or all, 1 for ReadyToSend, 2 for InProgress, 4 for Bounced, 5 for Sent, 6 for Opened, 7 for Clicked, 8 for Unsubscribed, 9 for Abuse Report",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "to",
+					"description": "Server time in the format: 5/19/2011 10:54:20 PM",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Your user name.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" Email"],
+				"security": []
+			}
+		},
+		"mailer/status/{message_id}": {
+			"get": {
+				"summary": "Get Status",
+				"description": "Get the status of an email message",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API Key.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "message_id",
+					"description": "The ID of the email message.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "showdelivered",
+					"description": "true - This will return all the recipients who succeeded. ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "showdetails",
+					"description": "true  - This will return all recipients for each status.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "showerrors",
+					"description": "true - This will return all the recipients who bounced with details on why",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "showfailed",
+					"description": "true - This will return all the recipients who bounced. ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "showpending",
+					"description": "true - This will return all the recipients still in progress. ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "showstats",
+					"description": "Show stats.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Your user name.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" Email"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

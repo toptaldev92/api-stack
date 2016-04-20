@@ -1,0 +1,34 @@
+- swagger: "2.0"
+  info:
+    title: Meetup Batch API
+    description: The API for managing Meetup batches.
+    termsOfService: http://www.meetup.com/terms/
+    version: ~
+  host: api.meetup.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /batch:
+      post:
+        summary: batch
+        description: Performs multiple API requests in batch, useful for reducing HTTP
+          network requests. This method is only available for OAuth authentication
+        operationId: batch
+        parameters:
+        - in: query
+          name: '*requests'
+          description: JSON-encoding of multiple request objects as described in the
+            parameter notes
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

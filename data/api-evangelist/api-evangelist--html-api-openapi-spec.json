@@ -1,0 +1,84 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "API Evangelist - HTML API",
+		"description": "This is my utility API for working with HTML pages.",
+		"termsOfService": "http://apievangelist.com/terms-of-service.html",
+		"version": "v1"
+	},
+	"host": "html.api.apievangelist.com",
+	"basePath": "/html/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/is-there-a-table-on-this-html-page/": {
+			"get": {
+				"summary": "Checks To See If There Are Tables On Web Page",
+				"description": "Turns a listing of the number of tables, and number of rows for tables in an HTML web page",
+				"operationId": "getTables",
+				"parameters": [{
+					"in": "query",
+					"name": "url",
+					"description": "the url of html page to evaluate",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/return-urls-in-this-html-page/": {
+			"get": {
+				"summary": "Return URLs",
+				"description": "Returns a list of any url present in an HTML web page.",
+				"operationId": "getURLs",
+				"parameters": [{
+					"in": "query",
+					"name": "extensions",
+					"description": "any file extension, separated by commas",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "the url of html page to evaluate",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"urls": {
+			"properties": {
+				"url": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"tables": {
+			"properties": {
+				"table": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"rows": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

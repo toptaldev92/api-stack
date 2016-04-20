@@ -1,0 +1,295 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Slack User Groups API",
+		"description": "The API for management Slack User Groupss",
+		"termsOfService": "https://slack.com/terms-of-service/api",
+		"version": null
+	},
+	"host": "slack.com",
+	"basePath": "/api",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/methods/usergroups.create": {
+			"get": {
+				"summary": "Create a user group",
+				"description": "<td width=70%>Create a user group</td>",
+				"operationId": "usergroupscreate",
+				"parameters": [{
+					"in": "query",
+					"name": "channels",
+					"description": "A comma separated string of encoded channel IDs for which the user group uses as a default.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "A short description of the user group.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "handle",
+					"description": "A mention handle. Must be unique among channels, users and user groups.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "include_count",
+					"description": "Include the number of users in each user group.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "A name for the user group. Must be unique among user groups.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: usergroups:write)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user groups"],
+				"security": []
+			}
+		},
+		"/methods/usergroups.disable": {
+			"get": {
+				"summary": "Disable an existing user group",
+				"description": "<td width=70%>Disable an existing user group</td>",
+				"operationId": "usergroupsdisable",
+				"parameters": [{
+					"in": "query",
+					"name": "include_count",
+					"description": "Include the number of users in the user group.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: usergroups:write)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "usergroup",
+					"description": "The encoded ID of the user group to disable.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user groups"],
+				"security": []
+			}
+		},
+		"/methods/usergroups.enable": {
+			"get": {
+				"summary": "Enable a user group",
+				"description": "<td width=70%>Enable a user group</td>",
+				"operationId": "usergroupsenable",
+				"parameters": [{
+					"in": "query",
+					"name": "include_count",
+					"description": "Include the number of users in the user group.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: usergroups:write)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "usergroup",
+					"description": "The encoded ID of the user group to enable.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user groups"],
+				"security": []
+			}
+		},
+		"/methods/usergroups.list": {
+			"get": {
+				"summary": "List all user groups for a team",
+				"description": "<td width=70%>List all user groups for a team</td>",
+				"operationId": "usergroupslist",
+				"parameters": [{
+					"in": "query",
+					"name": "include_count",
+					"description": "Include the number of users in each user group.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "include_disabled",
+					"description": "Include disabled user groups.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "include_users",
+					"description": "Include the list of users for each user group.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: usergroups:read)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user groups"],
+				"security": []
+			}
+		},
+		"/methods/usergroups.update": {
+			"get": {
+				"summary": "Update an existing user group",
+				"description": "<td width=70%>Update an existing user group</td>",
+				"operationId": "usergroupsupdate",
+				"parameters": [{
+					"in": "query",
+					"name": "channels",
+					"description": "A comma separated string of encoded channel IDs for which the user group uses as a default.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "A short description of the user group.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "handle",
+					"description": "A mention handle. Must be unique among channels, users and user groups.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "include_count",
+					"description": "Include the number of users in the user group.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "A name for the user group. Must be unique among user groups.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: usergroups:write)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "usergroup",
+					"description": "The encoded ID of the user group to update.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user groups"],
+				"security": []
+			}
+		},
+		"/methods/usergroups.users.list": {
+			"get": {
+				"summary": "List all users in a user group",
+				"description": "<td width=70%>List all users in a user group</td>",
+				"operationId": "usergroupsuserslist",
+				"parameters": [{
+					"in": "query",
+					"name": "include_disabled",
+					"description": "Allow results that involve disabled user groups.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: usergroups:read)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "usergroup",
+					"description": "The encoded ID of the user group to update.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user groups"],
+				"security": []
+			}
+		},
+		"/methods/usergroups.users.update": {
+			"get": {
+				"summary": "Update the list of users for a user group",
+				"description": "<td width=70%>Update the list of users for a user group</td>",
+				"operationId": "usergroupsusersupdate",
+				"parameters": [{
+					"in": "query",
+					"name": "include_count",
+					"description": "Include the number of users in the user group.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: usergroups:write)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "usergroup",
+					"description": "The encoded ID of the user group to update.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "users",
+					"description": "A comma separated string of encoded user IDs that represent the entire list of users for the user group.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["user groups"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

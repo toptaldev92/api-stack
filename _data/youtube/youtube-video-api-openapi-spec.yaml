@@ -1,0 +1,307 @@
+- swagger: "2.0"
+  info:
+    title: YouTube Video API
+    description: Programmatic access to YouTube features.
+    termsOfService: https://developers.google.com/youtube/terms
+    contact:
+      name: Google
+    version: v3
+  host: www.googleapis.com
+  basePath: /youtube/v3
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /videoCategories:
+      get:
+        summary: List VideoCategories
+        description: Returns a list of categories that can be associated with YouTube
+          videos.
+        operationId: list-videocategories
+        parameters:
+        - in: query
+          name: hl
+          description: The hl parameter specifies the language that should be used for
+            text values in the API response. The default value is en_US.
+          type: string
+        - in: query
+          name: id
+          description: The id parameter specifies a comma-separated list of video category
+            IDs for the resources that you are retrieving.
+          type: string
+        - in: query
+          name: part
+          description: The part parameter specifies the videoCategory resource properties
+            that the API response will include. Set the parameter value to snippet.
+            The snippet part has a quota cost of 2 units.
+          type: string
+        - in: query
+          name: regionCode
+          description: The regionCode parameter instructs the API to return the list
+            of video categories available in the specified country. The parameter value
+            is an ISO 3166-1 alpha-2 country code.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - videos
+        security: []
+    /videos:
+      delete:
+        summary: Delete Videos
+        description: Deletes a YouTube video.
+        operationId: delete-videos
+        parameters:
+        - in: query
+          name: id
+          description: The id parameter specifies the YouTube video ID for the resource
+            that is being deleted. In a video resource, the id property specifies the
+            videos ID.
+          type: string
+        - in: query
+          name: onBehalfOfContentOwner
+          description: 'This parameter can only be used in a properly authorized request.
+            Note: This parameter is intended exclusively for YouTube content partners.The
+            onBehalfOfContentOwner parameter indicates that the requests authorization
+            credentials identify a YouTube CMS user who is acting on behalf of the content
+            owner specified in the parameter value. This parameter is intended for YouTube
+            content partners that own and manage many different YouTube channels. It
+            allows content owners to authenticate once and ge'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - videos
+        security: []
+      get:
+        summary: List Videos
+        description: Returns a list of videos that match the API request parameters.
+        operationId: list-videos
+        parameters:
+        - in: query
+          name: chart
+          description: The chart parameter identifies the chart that you want to retrieve.Acceptable
+            values are:mostPopular &ndash; Return the most popular videos for the specified
+            content region and video category.
+          type: string
+        - in: query
+          name: id
+          description: The id parameter specifies a comma-separated list of the YouTube
+            video ID(s) for the resource(s) that are being retrieved. In a video resource,
+            the id property specifies the videos ID.
+          type: string
+        - in: query
+          name: maxResults
+          description: 'The maxResults parameter specifies the maximum number of items
+            that should be returned in the result set.Note: This parameter is supported
+            for use in conjunction with the myRating parameter, but it is not supported
+            for use in conjunction with the id parameter. Acceptable values are 1 to
+            50, inclusive. The default value is 5.'
+          type: unsigned integer
+        - in: query
+          name: myRating
+          description: This parameter can only be used in a properly authorized request.
+            Set this parameters value to like or dislike to instruct the API to only
+            return videos liked or disliked by the authenticated user.Acceptable values
+            are:dislike &ndash; Returns only videos disliked by the authenticated user.like
+            &ndash; Returns only video liked by the authenticated user.
+          type: string
+        - in: query
+          name: onBehalfOfContentOwner
+          description: 'This parameter can only be used in a properly authorized request.
+            Note: This parameter is intended exclusively for YouTube content partners.The
+            onBehalfOfContentOwner parameter indicates that the requests authorization
+            credentials identify a YouTube CMS user who is acting on behalf of the content
+            owner specified in the parameter value. This parameter is intended for YouTube
+            content partners that own and manage many different YouTube channels. It
+            allows content owners to authenticate once and ge'
+          type: string
+        - in: query
+          name: pageToken
+          description: 'The pageToken parameter identifies a specific page in the result
+            set that should be returned. In an API response, the nextPageToken and prevPageToken
+            properties identify other pages that could be retrieved.Note: This parameter
+            is supported for use in conjunction with the myRating parameter, but it
+            is not supported for use in conjunction with the id parameter.'
+          type: string
+        - in: query
+          name: part
+          description: The part parameter specifies a comma-separated list of one or
+            more video resource properties that the API response will include.If the
+            parameter identifies a property that contains child properties, the child
+            properties will be included in the response. For example, in a video resource,
+            the snippet property contains the channelId, title, description, tags, and
+            categoryId properties. As such, if you set part=snippet, the API response
+            will contain all of those properties.The list below contains th
+          type: string
+        - in: query
+          name: regionCode
+          description: The regionCode parameter instructs the API to select a video
+            chart available in the specified region. This parameter can only be used
+            in conjunction with the chart parameter. The parameter value is an ISO 3166-1
+            alpha-2 country code.
+          type: string
+        - in: query
+          name: videoCategoryId
+          description: The videoCategoryId parameter identifies the video category for
+            which the chart should be retrieved. This parameter can only be used in
+            conjunction with the chart parameter. By default, charts are not restricted
+            to a particular category. The default value is 0.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - videos
+        security: []
+      post:
+        summary: Insert Videos
+        description: Uploads a video to YouTube and optionally sets the videos metadata.
+        operationId: insert-videos
+        parameters:
+        - in: query
+          name: autoLevels
+          description: The autoLevels parameter indicates whether YouTube should automatically
+            enhance the videos lighting and color.
+          type: boolean
+        - in: query
+          name: notifySubscribers
+          description: The notifySubscribers parameter indicates whether YouTube should
+            send a notification about the new video to users who subscribe to the videos
+            channel. A parameter value of True indicates that subscribers will be notified
+            of newly uploaded videos. However, a channel owner who is uploading many
+            videos might prefer to set the value to False to avoid sending a notification
+            about each new video to the channels subscribers. The default value is True.
+          type: boolean
+        - in: query
+          name: onBehalfOfContentOwner
+          description: 'This parameter can only be used in a properly authorized request.
+            Note: This parameter is intended exclusively for YouTube content partners.The
+            onBehalfOfContentOwner parameter indicates that the requests authorization
+            credentials identify a YouTube CMS user who is acting on behalf of the content
+            owner specified in the parameter value. This parameter is intended for YouTube
+            content partners that own and manage many different YouTube channels. It
+            allows content owners to authenticate once and ge'
+          type: string
+        - in: query
+          name: onBehalfOfContentOwnerChannel
+          description: 'This parameter can only be used in a properly authorized request.
+            This parameter can only be used in a properly authorized request. Note:
+            This parameter is intended exclusively for YouTube content partners.The
+            onBehalfOfContentOwnerChannel parameter specifies the YouTube channel ID
+            of the channel to which a video is being added. This parameter is required
+            when a request specifies a value for the onBehalfOfContentOwner parameter,
+            and it can only be used in conjunction with that parameter. In addi'
+          type: string
+        - in: query
+          name: part
+          description: The part parameter serves two purposes in this operation. It
+            identifies the properties that the write operation will set as well as the
+            properties that the API response will include.Note that not all parts contain
+            properties that can be set when inserting or updating a video. For example,
+            the statistics object encapsulates statistics that YouTube calculates for
+            a video and does not contain values that you can set or modify. If the parameter
+            value specifies a part that does not contain mutable va
+          type: string
+        - in: query
+          name: stabilize
+          description: The stabilize parameter indicates whether YouTube should adjust
+            the video to remove shaky camera motions.
+          type: boolean
+        responses:
+          200:
+            description: OK
+        tags:
+        - videos
+        security: []
+      put:
+        summary: Update Videos
+        description: Updates a videos metadata.
+        operationId: update-videos
+        parameters:
+        - in: query
+          name: onBehalfOfContentOwner
+          description: 'This parameter can only be used in a properly authorized request.
+            Note: This parameter is intended exclusively for YouTube content partners.The
+            onBehalfOfContentOwner parameter indicates that the requests authorization
+            credentials identify a YouTube CMS user who is acting on behalf of the content
+            owner specified in the parameter value. This parameter is intended for YouTube
+            content partners that own and manage many different YouTube channels. It
+            allows content owners to authenticate once and ge'
+          type: string
+        - in: query
+          name: part
+          description: The part parameter serves two purposes in this operation. It
+            identifies the properties that the write operation will set as well as the
+            properties that the API response will include.Note that this method will
+            override the existing values for all of the mutable properties that are
+            contained in any parts that the parameter value specifies. For example,
+            a videos privacy setting is contained in the status part. As such, if your
+            request is updating a private video, and the requests part parameter v
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - videos
+        security: []
+    /videos/getRating:
+      get:
+        summary: GetRating Videos
+        description: Retrieves the ratings that the authorized user gave to a list of
+          specified videos.
+        operationId: getrating-videos
+        parameters:
+        - in: query
+          name: id
+          description: The id parameter specifies a comma-separated list of the YouTube
+            video ID(s) for the resource(s) for which you are retrieving rating data.
+            In a video resource, the id property specifies the videos ID.
+          type: string
+        - in: query
+          name: onBehalfOfContentOwner
+          description: 'This parameter can only be used in a properly authorized request.
+            Note: This parameter is intended exclusively for YouTube content partners.The
+            onBehalfOfContentOwner parameter indicates that the requests authorization
+            credentials identify a YouTube CMS user who is acting on behalf of the content
+            owner specified in the parameter value. This parameter is intended for YouTube
+            content partners that own and manage many different YouTube channels. It
+            allows content owners to authenticate once and ge'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - videos
+        security: []
+    /videos/rate:
+      post:
+        summary: Rate Videos
+        description: Add a like or dislike rating to a video or remove a rating from
+          a video.
+        operationId: rate-videos
+        parameters:
+        - in: query
+          name: id
+          description: The id parameter specifies the YouTube video ID of the video
+            that is being rated or having its rating removed.
+          type: string
+        - in: query
+          name: rating
+          description: Specifies the rating to record.Acceptable values are:dislike
+            &ndash; Records that the authenticated user disliked the video.like &ndash;
+            Records that the authenticated user liked the video.none &ndash; Removes
+            any rating that the authenticated user had previously set for the video.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - videos
+        security: []
+  definitions: []

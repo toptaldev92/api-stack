@@ -1,0 +1,59 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Twitter Friends API",
+		"description": "This is the friends API.",
+		"termsOfService": "http://dev.twitter.com/overview/terms",
+		"contact": {
+			"name": "Twitter",
+			"url": "https://dev.twitter.com/discussions"
+		},
+		"version": "1.1"
+	},
+	"host": "api.twitter.com",
+	"basePath": "/1.1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/friends/list/": {
+			"get": {
+				"summary": "friends/list",
+				"description": "Returns a cursored collection of user objects for every user the specified user is following (otherwise known as their &#8220;friends&#8221;).At this time, results are ordered with the most recent following first u2014 however, this ordering is subject to unannounced change and eventual consistency issues. Results are given in groups of 20 users and multiple &#8220;pages&#8221; of results can be navigated through using the next_cursor value in subsequent requests. See Using cursors to navigate collections for more information.",
+				"operationId": "friendsList",
+				"parameters": [{
+					"in": "query",
+					"name": "count"
+				},
+				{
+					"in": "query",
+					"name": "cursor"
+				},
+				{
+					"in": "query",
+					"name": "include_user_entities"
+				},
+				{
+					"in": "query",
+					"name": "screen_name"
+				},
+				{
+					"in": "query",
+					"name": "skip_status"
+				},
+				{
+					"in": "query",
+					"name": "user_id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

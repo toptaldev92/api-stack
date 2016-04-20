@@ -1,0 +1,225 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Instructure Canvas Audit API",
+		"description": "Canvas LMS includes a REST API for accessing and modifying data externally from the main application, in your own programs and scripts. ",
+		"termsOfService": "https://www.canvaslms.com/policies/api-policy",
+		"version": "v1"
+	},
+	"host": "canvas.instructure.com",
+	"basePath": "/api/v1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/audit/authentication/accounts/{account_id}": {
+			"get": {
+				"summary": "Query by account.",
+				"description": "",
+				"operationId": "query-by-account",
+				"parameters": [{
+					"in": "query",
+					"name": "end_time",
+					"description": "The end of the time range from which you want events.",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "start_time",
+					"description": "The beginning of the time range from which you want events.",
+					"type": "datetime"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["audit accounts"],
+				"security": []
+			}
+		},
+		"/audit/authentication/logins/{login_id}": {
+			"get": {
+				"summary": "Query by login.",
+				"description": "",
+				"operationId": "query-by-login",
+				"parameters": [{
+					"in": "query",
+					"name": "end_time",
+					"description": "The end of the time range from which you want events.",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "start_time",
+					"description": "The beginning of the time range from which you want events.",
+					"type": "datetime"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["audit logins"],
+				"security": []
+			}
+		},
+		"/audit/authentication/users/{user_id}": {
+			"get": {
+				"summary": "Query by user.",
+				"description": "",
+				"operationId": "query-by-user",
+				"parameters": [{
+					"in": "query",
+					"name": "end_time",
+					"description": "The end of the time range from which you want events.",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "start_time",
+					"description": "The beginning of the time range from which you want events.",
+					"type": "datetime"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["audit users"],
+				"security": []
+			}
+		},
+		"/audit/course/courses/{course_id}": {
+			"get": {
+				"summary": "Query by course.",
+				"description": "",
+				"operationId": "query-by-course",
+				"parameters": [{
+					"in": "query",
+					"name": "end_time",
+					"description": "The end of the time range from which you want events.",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "start_time",
+					"description": "The beginning of the time range from which you want events.",
+					"type": "datetime"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["audit courses"],
+				"security": []
+			}
+		},
+		"/audit/grade_change/assignments/{assignment_id}": {
+			"get": {
+				"summary": "Query by assignment.",
+				"description": "",
+				"operationId": "query-by-assignment",
+				"parameters": [{
+					"in": "query",
+					"name": "end_time",
+					"description": "The end of the time range from which you want events.",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "start_time",
+					"description": "The beginning of the time range from which you want events.",
+					"type": "datetime"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["audit assignments"],
+				"security": []
+			}
+		},
+		"/audit/grade_change/courses/{course_id}": {
+			"get": {
+				"summary": "Query by course.",
+				"description": "",
+				"operationId": "query-by-course",
+				"parameters": [{
+					"in": "query",
+					"name": "end_time",
+					"description": "The end of the time range from which you want events.",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "start_time",
+					"description": "The beginning of the time range from which you want events.",
+					"type": "datetime"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["audit courses"],
+				"security": []
+			}
+		},
+		"/audit/grade_change/graders/{grader_id}": {
+			"get": {
+				"summary": "Query by grader.",
+				"description": "",
+				"operationId": "query-by-grader",
+				"parameters": [{
+					"in": "query",
+					"name": "end_time",
+					"description": "The end of the time range from which you want events.",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "start_time",
+					"description": "The beginning of the time range from which you want events.",
+					"type": "datetime"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["audit graders"],
+				"security": []
+			}
+		},
+		"/audit/grade_change/students/{student_id}": {
+			"get": {
+				"summary": "Query by student.",
+				"description": "",
+				"operationId": "query-by-student",
+				"parameters": [{
+					"in": "query",
+					"name": "end_time",
+					"description": "The end of the time range from which you want events.",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "start_time",
+					"description": "The beginning of the time range from which you want events.",
+					"type": "datetime"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["audit students"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

@@ -1,0 +1,109 @@
+- swagger: "2.0"
+  info:
+    title: LinkedIn Posts API
+    version: ""
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /posts/{post-id}:
+      delete:
+        summary: Delete Post Or Flag As Inappropriate
+        description: Delete Post Or Flag As Inappropriate
+        operationId: delete-post-or-flag-as-inappropriate
+        parameters:
+        - in: path
+          name: post-id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: Get Post
+        description: Get Post
+        operationId: get-post
+        parameters:
+        - in: path
+          name: post-id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /posts/{post-id}/category/code:
+      put:
+        summary: Flag Post As Promotion
+        description: Flag Post As Promotion
+        operationId: flag-post-as-promotion
+        parameters:
+        - in: path
+          name: post-id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /posts/{post-id}/comments:
+      get:
+        summary: Get Post Comments
+        description: Get Post Comments
+        operationId: get-post-comments
+        parameters:
+        - in: path
+          name: post-id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Add Post Comment
+        description: Add Post Comment
+        operationId: add-post-comment
+        parameters:
+        - in: path
+          name: post-id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /posts/{post-id}/relation-to-viewer/is-following:
+      put:
+        summary: Follow Post
+        description: Follow Post
+        operationId: follow-post
+        parameters:
+        - in: path
+          name: post-id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /posts/{post-id}/relation-to-viewer/is-liked:
+      put:
+        summary: Like Post
+        description: Like Post
+        operationId: like-post
+        parameters:
+        - in: path
+          name: post-id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

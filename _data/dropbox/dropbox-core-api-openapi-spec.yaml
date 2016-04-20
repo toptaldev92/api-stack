@@ -1,0 +1,710 @@
+- swagger: "2.0"
+  info:
+    title: Dropbox
+    description: The Dropbox API allows you to build the power of Dropbox directly into
+      your app.
+    version: "1"
+  host: api.dropbox.com
+  basePath: /1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /chunked_upload:
+      put:
+        summary: Chunked Upload
+        description: /chunked_upload
+        operationId: chunked-upload
+        parameters:
+        - in: query
+          name: offset
+          description: The byte offset of this chunk, relative to the beginning of the
+            full file. The server will verify that this matches the offset it expects.
+            If it does not, the server will return an error with the expected offset.
+          type: string
+        - in: query
+          name: upload_id
+          description: The unique ID of the in-progress upload on the server. If left
+            blank, the server will create a new upload session.
+          type: string
+        responses:
+          "":
+            description: ""
+          400:
+            description: Bad input parameter. Error message should indicate which one
+              and why.
+          401:
+            description: Bad or expired token. This can happen if the user or Dropbox
+              revoked or expired an access token. To fix, you should re-authenticate
+              the user.
+          403:
+            description: Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...).
+              Unfortunately, re-authenticating the user wont help here.
+          404:
+            description: File or folder not found at the specified path.
+          405:
+            description: Request method not expected (generally should be GET or POST).
+          429:
+            description: Your app is making too many requests and is being rate limited.
+              429s can trigger on a per-app or per-user basis.
+          503:
+            description: If the response includes the Retry-After header, this means
+              your OAuth 1.0 app is being rate limited. Otherwise, this indicates a
+              transient server error, and your app should retry its request.
+          507:
+            description: User is over Dropbox storage quota.
+          5xx:
+            description: Server error. Check DropboxOps.
+        tags:
+        - upload
+        security: []
+    /delta/latest_cursor:
+      post:
+        summary: Latest Cursor
+        description: /delta/latest_cursor
+        operationId: deltalatest-cursor
+        parameters:
+        - in: query
+          name: include_media_info
+          description: If true, the returned cursor will be encoded with include_media_info
+            set to true for use with /delta.
+          type: string
+        - in: query
+          name: path_prefix
+          description: If present, the returned cursor will be encoded with a path_prefix
+            for the specified path for use with /delta.
+          type: string
+        responses:
+          "":
+            description: ""
+          400:
+            description: Bad input parameter. Error message should indicate which one
+              and why.
+          401:
+            description: Bad or expired token. This can happen if the user or Dropbox
+              revoked or expired an access token. To fix, you should re-authenticate
+              the user.
+          403:
+            description: Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...).
+              Unfortunately, re-authenticating the user wont help here.
+          404:
+            description: File or folder not found at the specified path.
+          405:
+            description: Request method not expected (generally should be GET or POST).
+          429:
+            description: Your app is making too many requests and is being rate limited.
+              429s can trigger on a per-app or per-user basis.
+          503:
+            description: If the response includes the Retry-After header, this means
+              your OAuth 1.0 app is being rate limited. Otherwise, this indicates a
+              transient server error, and your app should retry its request.
+          507:
+            description: User is over Dropbox storage quota.
+          5xx:
+            description: Server error. Check DropboxOps.
+        tags:
+        - delta
+        security: []
+    /disable_access_token:
+      post:
+        summary: Disable Access Token
+        description: /disable_access_token
+        operationId: disable-access-token
+        responses:
+          "":
+            description: ""
+          400:
+            description: Bad input parameter. Error message should indicate which one
+              and why.
+          401:
+            description: Bad or expired token. This can happen if the user or Dropbox
+              revoked or expired an access token. To fix, you should re-authenticate
+              the user.
+          403:
+            description: Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...).
+              Unfortunately, re-authenticating the user wont help here.
+          404:
+            description: File or folder not found at the specified path.
+          405:
+            description: Request method not expected (generally should be GET or POST).
+          429:
+            description: Your app is making too many requests and is being rate limited.
+              429s can trigger on a per-app or per-user basis.
+          503:
+            description: If the response includes the Retry-After header, this means
+              your OAuth 1.0 app is being rate limited. Otherwise, this indicates a
+              transient server error, and your app should retry its request.
+          507:
+            description: User is over Dropbox storage quota.
+          5xx:
+            description: Server error. Check DropboxOps.
+        tags:
+        - access token
+        security: []
+    /fileops/create_folder:
+      post:
+        summary: Create Folder
+        description: /fileops/create_folder
+        operationId: fileopscreate-folder
+        parameters:
+        - in: query
+          name: locale
+          description: The metadata returned will have its size field translated based
+            on the given locale. For more information see above.
+          type: string
+        - in: query
+          name: path
+          description: The path to the new folder to create relative to root.
+          type: string
+        - in: query
+          name: root
+          description: The root relative to which path is specified. Valid values are
+            auto (recommended), sandbox, and dropbox.
+          type: string
+        responses:
+          "":
+            description: ""
+          400:
+            description: Bad input parameter. Error message should indicate which one
+              and why.
+          401:
+            description: Bad or expired token. This can happen if the user or Dropbox
+              revoked or expired an access token. To fix, you should re-authenticate
+              the user.
+          403:
+            description: Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...).
+              Unfortunately, re-authenticating the user wont help here.
+          404:
+            description: File or folder not found at the specified path.
+          405:
+            description: Request method not expected (generally should be GET or POST).
+          429:
+            description: Your app is making too many requests and is being rate limited.
+              429s can trigger on a per-app or per-user basis.
+          503:
+            description: If the response includes the Retry-After header, this means
+              your OAuth 1.0 app is being rate limited. Otherwise, this indicates a
+              transient server error, and your app should retry its request.
+          507:
+            description: User is over Dropbox storage quota.
+          5xx:
+            description: Server error. Check DropboxOps.
+        tags:
+        - folders
+        security: []
+    /files:
+      get:
+        summary: Get File
+        description: /files (GET)
+        operationId: files-get
+        parameters:
+        - in: query
+          name: path
+          description: The path to the file you want to retrieve.
+          type: string
+        - in: query
+          name: rev
+          description: The revision of the file to retrieve. This defaults to the most
+            recent revision.
+          type: string
+        responses:
+          "":
+            description: ""
+          400:
+            description: Bad input parameter. Error message should indicate which one
+              and why.
+          401:
+            description: Bad or expired token. This can happen if the user or Dropbox
+              revoked or expired an access token. To fix, you should re-authenticate
+              the user.
+          403:
+            description: Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...).
+              Unfortunately, re-authenticating the user wont help here.
+          404:
+            description: File or folder not found at the specified path.
+          405:
+            description: Request method not expected (generally should be GET or POST).
+          429:
+            description: Your app is making too many requests and is being rate limited.
+              429s can trigger on a per-app or per-user basis.
+          503:
+            description: If the response includes the Retry-After header, this means
+              your OAuth 1.0 app is being rate limited. Otherwise, this indicates a
+              transient server error, and your app should retry its request.
+          507:
+            description: User is over Dropbox storage quota.
+          5xx:
+            description: Server error. Check DropboxOps.
+        tags:
+        - files
+        security: []
+    /media:
+      post:
+        summary: Add Media
+        description: /media
+        operationId: media
+        parameters:
+        - in: query
+          name: locale
+          description: Use to specify language settings for user error messages and
+            other language specific text. See the notes above for more information about
+            supported locales.
+          type: string
+        responses:
+          "":
+            description: ""
+          400:
+            description: Bad input parameter. Error message should indicate which one
+              and why.
+          401:
+            description: Bad or expired token. This can happen if the user or Dropbox
+              revoked or expired an access token. To fix, you should re-authenticate
+              the user.
+          403:
+            description: Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...).
+              Unfortunately, re-authenticating the user wont help here.
+          404:
+            description: File or folder not found at the specified path.
+          405:
+            description: Request method not expected (generally should be GET or POST).
+          429:
+            description: Your app is making too many requests and is being rate limited.
+              429s can trigger on a per-app or per-user basis.
+          503:
+            description: If the response includes the Retry-After header, this means
+              your OAuth 1.0 app is being rate limited. Otherwise, this indicates a
+              transient server error, and your app should retry its request.
+          507:
+            description: User is over Dropbox storage quota.
+          5xx:
+            description: Server error. Check DropboxOps.
+        tags:
+        - media
+        security: []
+    /metadata:
+      get:
+        summary: Get Meta Data
+        description: /metadata
+        operationId: metadata
+        parameters:
+        - in: query
+          name: file_limit
+          description: Default is 10,000 (max is 25,000). When listing a folder, the
+            service wont report listings containing more than the specified amount of
+            files and will instead respond with a 406 (Not Acceptable) status response.
+          type: string
+        - in: query
+          name: hash
+          description: Each call to /metadata on a folder will return a hash field,
+            generated by hashing all of the metadata contained in that response. On
+            later calls to /metadata, you should provide that value via this parameter
+            so that if nothing has changed, the response will be a 304 (Not Modified)
+            status code instead of the full, potentially very large, folder listing.
+            This parameter is ignored if the specified path is associated with a file
+            or if list=false.
+          type: string
+        - in: query
+          name: include_deleted
+          description: Only applicable when list is set. If this parameter is set to
+            true, then contents will include the metadata of deleted children. Note
+            that the target of the metadata call is always returned even when it has
+            been deleted (with is_deleted set to true) regardless of this flag.
+          type: string
+        - in: query
+          name: include_media_info
+          description: If true, each file will include a photo_info dictionary for photos
+            and a video_info dictionary for videos with additional media info. If the
+            data isnt available yet, the string pending will be returned instead of
+            a dictionary.
+          type: string
+        - in: query
+          name: include_membership
+          description: 'If true, metadata for a shared folder will include a list of
+            the members of the shared folder.Heads up: The include_membership parameter
+            is part of the Shared Folder extensions in production beta. Please complete
+            this form for access.'
+          type: string
+        - in: query
+          name: list
+          description: The strings true and false are valid values. true is the default.
+            If true, the folders metadata will include a contents field with a list
+            of metadata entries for the contents of the folder. If false, the contents
+            field will be omitted.
+          type: string
+        - in: query
+          name: locale
+          description: The metadata returned will have its size field translated based
+            on the given locale. For more information see above.
+          type: string
+        - in: query
+          name: rev
+          description: If you include a particular revision number, then only the metadata
+            for that revision will be returned.
+          type: string
+        responses:
+          "":
+            description: ""
+          400:
+            description: Bad input parameter. Error message should indicate which one
+              and why.
+          401:
+            description: Bad or expired token. This can happen if the user or Dropbox
+              revoked or expired an access token. To fix, you should re-authenticate
+              the user.
+          403:
+            description: Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...).
+              Unfortunately, re-authenticating the user wont help here.
+          404:
+            description: File or folder not found at the specified path.
+          405:
+            description: Request method not expected (generally should be GET or POST).
+          429:
+            description: Your app is making too many requests and is being rate limited.
+              429s can trigger on a per-app or per-user basis.
+          503:
+            description: If the response includes the Retry-After header, this means
+              your OAuth 1.0 app is being rate limited. Otherwise, this indicates a
+              transient server error, and your app should retry its request.
+          507:
+            description: User is over Dropbox storage quota.
+          5xx:
+            description: Server error. Check DropboxOps.
+        tags:
+        - metadata
+        security: []
+    /oauth/access_token:
+      post:
+        summary: OAuth Access Token
+        description: /oauth/access_token
+        operationId: oauthaccess-token
+        responses:
+          "":
+            description: ""
+          400:
+            description: Bad input parameter. Error message should indicate which one
+              and why.
+          401:
+            description: Bad or expired token. This can happen if the user or Dropbox
+              revoked or expired an access token. To fix, you should re-authenticate
+              the user.
+          403:
+            description: Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...).
+              Unfortunately, re-authenticating the user wont help here.
+          404:
+            description: File or folder not found at the specified path.
+          405:
+            description: Request method not expected (generally should be GET or POST).
+          429:
+            description: Your app is making too many requests and is being rate limited.
+              429s can trigger on a per-app or per-user basis.
+          503:
+            description: If the response includes the Retry-After header, this means
+              your OAuth 1.0 app is being rate limited. Otherwise, this indicates a
+              transient server error, and your app should retry its request.
+          507:
+            description: User is over Dropbox storage quota.
+          5xx:
+            description: Server error. Check DropboxOps.
+        tags:
+        - oauth
+        security: []
+    /oauth/request_token:
+      post:
+        summary: OAuth Request Token
+        description: /oauth/request_token
+        operationId: oauthrequest-token
+        responses:
+          "":
+            description: ""
+          400:
+            description: Bad input parameter. Error message should indicate which one
+              and why.
+          401:
+            description: Bad or expired token. This can happen if the user or Dropbox
+              revoked or expired an access token. To fix, you should re-authenticate
+              the user.
+          403:
+            description: Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...).
+              Unfortunately, re-authenticating the user wont help here.
+          404:
+            description: File or folder not found at the specified path.
+          405:
+            description: Request method not expected (generally should be GET or POST).
+          429:
+            description: Your app is making too many requests and is being rate limited.
+              429s can trigger on a per-app or per-user basis.
+          503:
+            description: If the response includes the Retry-After header, this means
+              your OAuth 1.0 app is being rate limited. Otherwise, this indicates a
+              transient server error, and your app should retry its request.
+          507:
+            description: User is over Dropbox storage quota.
+          5xx:
+            description: Server error. Check DropboxOps.
+        tags:
+        - oauth
+        security: []
+    /oauth2/token:
+      post:
+        summary: OAuth Token
+        description: /oauth2/token
+        operationId: oauth2token
+        parameters:
+        - in: query
+          name: client_id
+          description: If credentials are passed in POST parameters, this parameter
+            should be present and should be the apps key (found in the App Console).
+          type: string
+        - in: query
+          name: client_secret
+          description: If credentials are passed in POST parameters, this parameter
+            should be present and should be the apps secret.
+          type: string
+        - in: query
+          name: code
+          description: The code acquired by directing users to /oauth2/authorize?response_type=code.
+          type: string
+        - in: query
+          name: grant_type
+          description: The grant type, which must be authorization_code.
+          type: string
+        - in: query
+          name: redirect_uri
+          description: Only used to validate that it matches the original /oauth2/authorize,
+            not used to redirect again.
+          type: string
+        responses:
+          "":
+            description: ""
+          400:
+            description: Bad input parameter. Error message should indicate which one
+              and why.
+          401:
+            description: Bad or expired token. This can happen if the user or Dropbox
+              revoked or expired an access token. To fix, you should re-authenticate
+              the user.
+          403:
+            description: Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...).
+              Unfortunately, re-authenticating the user wont help here.
+          404:
+            description: File or folder not found at the specified path.
+          405:
+            description: Request method not expected (generally should be GET or POST).
+          429:
+            description: Your app is making too many requests and is being rate limited.
+              429s can trigger on a per-app or per-user basis.
+          503:
+            description: If the response includes the Retry-After header, this means
+              your OAuth 1.0 app is being rate limited. Otherwise, this indicates a
+              transient server error, and your app should retry its request.
+          507:
+            description: User is over Dropbox storage quota.
+          5xx:
+            description: Server error. Check DropboxOps.
+        tags:
+        - oauth
+        security: []
+    /revisions:
+      get:
+        summary: Get Revisions
+        description: /revisions
+        operationId: revisions
+        parameters:
+        - in: query
+          name: locale
+          description: The metadata returned will have its size field translated based
+            on the given locale. For more information see above.
+          type: string
+        - in: query
+          name: rev_limit
+          description: Default is 10. Max is 1,000. Up to this number of recent revisions
+            will be returned.
+          type: string
+        responses:
+          "":
+            description: ""
+          400:
+            description: Bad input parameter. Error message should indicate which one
+              and why.
+          401:
+            description: Bad or expired token. This can happen if the user or Dropbox
+              revoked or expired an access token. To fix, you should re-authenticate
+              the user.
+          403:
+            description: Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...).
+              Unfortunately, re-authenticating the user wont help here.
+          404:
+            description: File or folder not found at the specified path.
+          405:
+            description: Request method not expected (generally should be GET or POST).
+          429:
+            description: Your app is making too many requests and is being rate limited.
+              429s can trigger on a per-app or per-user basis.
+          503:
+            description: If the response includes the Retry-After header, this means
+              your OAuth 1.0 app is being rate limited. Otherwise, this indicates a
+              transient server error, and your app should retry its request.
+          507:
+            description: User is over Dropbox storage quota.
+          5xx:
+            description: Server error. Check DropboxOps.
+        tags:
+        - revisions
+        security: []
+    /search:
+      get:
+        summary: Search
+        description: /search
+        operationId: search
+        parameters:
+        - in: query
+          name: file_limit
+          description: The maximum and default value is 1,000. No more than file_limit
+            search results will be returned.
+          type: string
+        - in: query
+          name: include_deleted
+          description: If this parameter is set to true, then files and folders that
+            have been deleted will also be included in the search.
+          type: string
+        - in: query
+          name: include_membership
+          description: 'If true, metadata for a shared folder will include a list of
+            the members of the shared folder.Heads up: The include_membership is in
+            production beta. Please complete this form for access.'
+          type: string
+        - in: query
+          name: locale
+          description: The metadata returned will have its size field translated based
+            on the given locale. For more information see above.
+          type: string
+        - in: query
+          name: query
+          description: The search string. This string is split (on spaces) into individual
+            words. Files and folders will be returned if they contain all words in the
+            search string.
+          type: string
+        responses:
+          "":
+            description: ""
+          400:
+            description: Bad input parameter. Error message should indicate which one
+              and why.
+          401:
+            description: Bad or expired token. This can happen if the user or Dropbox
+              revoked or expired an access token. To fix, you should re-authenticate
+              the user.
+          403:
+            description: Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...).
+              Unfortunately, re-authenticating the user wont help here.
+          404:
+            description: File or folder not found at the specified path.
+          405:
+            description: Request method not expected (generally should be GET or POST).
+          429:
+            description: Your app is making too many requests and is being rate limited.
+              429s can trigger on a per-app or per-user basis.
+          503:
+            description: If the response includes the Retry-After header, this means
+              your OAuth 1.0 app is being rate limited. Otherwise, this indicates a
+              transient server error, and your app should retry its request.
+          507:
+            description: User is over Dropbox storage quota.
+          5xx:
+            description: Server error. Check DropboxOps.
+          200:
+            description: OK
+        tags:
+        - search
+        security: []
+    /shared_folders:
+      get:
+        summary: Shared Folders
+        description: /shared_folders
+        operationId: shared-folders
+        parameters:
+        - in: query
+          name: id
+          description: The ID of a specific shared folder.
+          type: string
+        responses:
+          "":
+            description: ""
+          400:
+            description: Bad input parameter. Error message should indicate which one
+              and why.
+          401:
+            description: Bad or expired token. This can happen if the user or Dropbox
+              revoked or expired an access token. To fix, you should re-authenticate
+              the user.
+          403:
+            description: Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...).
+              Unfortunately, re-authenticating the user wont help here.
+          404:
+            description: File or folder not found at the specified path.
+          405:
+            description: Request method not expected (generally should be GET or POST).
+          429:
+            description: Your app is making too many requests and is being rate limited.
+              429s can trigger on a per-app or per-user basis.
+          503:
+            description: If the response includes the Retry-After header, this means
+              your OAuth 1.0 app is being rate limited. Otherwise, this indicates a
+              transient server error, and your app should retry its request.
+          507:
+            description: User is over Dropbox storage quota.
+          5xx:
+            description: Server error. Check DropboxOps.
+        tags:
+        - folders
+        security: []
+    /thumbnails:
+      get:
+        summary: Get Thumbnails
+        description: /thumbnails
+        operationId: thumbnails
+        parameters:
+        - in: query
+          name: format
+          description: jpeg (default) or png. For images that are photos, jpeg should
+            be preferred, while png is better for screenshots and digital art.
+          type: string
+        - in: query
+          name: size
+          description: 'One of the following values (default: s):valuedimensions (px)xs32x32s64x64m128x128l640x480xl1024x768'
+          type: string
+        responses:
+          "":
+            description: ""
+          400:
+            description: Bad input parameter. Error message should indicate which one
+              and why.
+          401:
+            description: Bad or expired token. This can happen if the user or Dropbox
+              revoked or expired an access token. To fix, you should re-authenticate
+              the user.
+          403:
+            description: Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...).
+              Unfortunately, re-authenticating the user wont help here.
+          404:
+            description: File or folder not found at the specified path.
+          405:
+            description: Request method not expected (generally should be GET or POST).
+          429:
+            description: Your app is making too many requests and is being rate limited.
+              429s can trigger on a per-app or per-user basis.
+          503:
+            description: If the response includes the Retry-After header, this means
+              your OAuth 1.0 app is being rate limited. Otherwise, this indicates a
+              transient server error, and your app should retry its request.
+          507:
+            description: User is over Dropbox storage quota.
+          5xx:
+            description: Server error. Check DropboxOps.
+        tags:
+        - thumbnails
+        security: []
+  definitions: []

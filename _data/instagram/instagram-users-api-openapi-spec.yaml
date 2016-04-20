@@ -1,0 +1,239 @@
+- swagger: "2.0"
+  info:
+    title: Instagram Users API
+    version: ""
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /users/search:
+      get:
+        summary: User Search
+        description: Search for a user by name.n                n            nn            n            n                Parametersn                n                    n                    n                        qn                        A
+          query string.n                    n                    n                    n                        countn                        Number
+          of users to return.
+        operationId: users
+        parameters:
+        - in: query
+          name: count
+          description: Number of users to return.
+          type: string
+        - in: query
+          name: q
+          description: A query string.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+    /users/self/feed:
+      get:
+        summary: Get User Feed
+        description: See the authenticated users feed. May return a mix of both image
+          and video types.n                n            nn            n            n                Parametersn                n                    n                    n                        access_tokenn                        A
+          valid access token.n                    n                    n                    n                        countn                        Count
+          of media to return.n                    n                    n                    n                        min_idn                        Return
+          media later than this min_id.n                    n                    n                    n                        max_idn                        Return
+          media earlier than this max_id.s
+        operationId: users
+        parameters:
+        - in: query
+          name: access_token
+          description: A valid access token.
+          type: string
+        - in: query
+          name: count
+          description: Count of media to return.
+          type: string
+        - in: query
+          name: max_id
+          description: Return media earlier than this max_id.s
+          type: string
+        - in: query
+          name: min_id
+          description: Return media later than this min_id.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+    /users/self/media/liked:
+      get:
+        summary: Get Users Media Liked
+        description: 'See the authenticated users list of media theyve liked. May return
+          a mix of both image and video types. Note: This list is ordered by the order
+          in which the user liked the media. Private media is returned as long as the
+          authenticated user has permission to view that media. Liked media lists are
+          only available for the currently authenticated user.n                n            nn            n            n                Parametersn                n                    n                    n                        access_tokenn                        A
+          valid access token.n                    n                    n                    n                        countn                        Count
+          of media to return.n                    n                    n                    n                        max_like_idn                        Return
+          media liked before this id.'
+        operationId: users
+        parameters:
+        - in: query
+          name: access_token
+          description: A valid access token.
+          type: string
+        - in: query
+          name: count
+          description: Count of media to return.
+          type: string
+        - in: query
+          name: max_like_id
+          description: Return media liked before this id.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+    /users/self/requested-by:
+      get:
+        summary: Get Users Relationship Requests
+        description: 'List the users who have requested this users permission to follow.n                n                Required
+          scope: relationshipsn                n            nn            n            n                Parametersn                n                    n                    n                        access_tokenn                        A
+          valid access token.'
+        operationId: relationships
+        parameters:
+        - in: query
+          name: access_token
+          description: A valid access token.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+    /users/{user-id}:
+      get:
+        summary: Get User
+        description: Get basic information about a user.
+        operationId: users
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+    /users/{user-id}/followed-by:
+      get:
+        summary: Get Users Followed By
+        description: 'Get the list of users this user is followed by.n                n                Required
+          scope: relationships'
+        operationId: relationships
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+    /users/{user-id}/follows:
+      get:
+        summary: Get Who A User Follow
+        description: 'Get the list of users this user follows.n                n                Required
+          scope: relationships'
+        operationId: relationships
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+    /users/{user-id}/media/recent:
+      get:
+        summary: Get Users Recent Media
+        description: Get the most recent media published by a user. May return a mix
+          of both image and video types.n                n            nn            n            n                Parametersn                n                    n                    n                        countn                        Count
+          of media to return.n                    n                    n                    n                        max_timestampn                        Return
+          media before this UNIX timestamp.n                    n                    n                    n                        access_tokenn                        A
+          valid access token.n                    n                    n                    n                        min_timestampn                        Return
+          media after this UNIX timestamp.n                    n                    n                    n                        min_idn                        Return
+          media later than this min_id.n                    n                    n                    n                        max_idn                        Return
+          media earlier than this max_id.
+        operationId: users
+        parameters:
+        - in: query
+          name: access_token
+          description: A valid access token.
+          type: string
+        - in: query
+          name: client_id
+          description: A valid client id.
+          type: string
+        - in: query
+          name: count
+          description: Count of media to return.
+          type: string
+        - in: query
+          name: max_id
+          description: Return media earlier than this max_id.
+          type: string
+        - in: query
+          name: max_timestamp
+          description: Return media before this UNIX timestamp.
+          type: string
+        - in: query
+          name: min_id
+          description: Return media later than this min_id.
+          type: string
+        - in: query
+          name: min_timestamp
+          description: Return media after this UNIX timestamp.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+    /users/{user-id}/relationship:
+      get:
+        summary: Get Users RElationships
+        description: 'Get information about a relationship to another user.n                n                Required
+          scope: relationshipsn                n            nn            n            n                Parametersn                n                    n                    n                        access_tokenn                        A
+          valid access token.'
+        operationId: relationships
+        parameters:
+        - in: query
+          name: access_token
+          description: A valid access token.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+      post:
+        summary: Add User Relationship
+        description: 'Modify the relationship between the current user and the target
+          user.n                n                Required scope: relationshipsn                n            nn            n            n                Parametersn                n                    n                    n                        access_tokenn                        A
+          valid access token.n                    n                    n                    n                        actionn                        One
+          of follow/unfollow/block/unblock/approve/ignore.'
+        operationId: relationships
+        parameters:
+        - in: query
+          name: access_token
+          description: A valid access token.
+          type: string
+        - in: query
+          name: action
+          description: One of follow/unfollow/block/unblock/approve/ignore.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+  definitions: []

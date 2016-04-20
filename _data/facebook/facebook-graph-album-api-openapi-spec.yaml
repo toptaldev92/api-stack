@@ -1,0 +1,137 @@
+- swagger: "2.0"
+  info:
+    title: Facebook Graph (Album) API
+    description: API for managing Facebook Albums
+    termsOfService: https://www.facebook.com/policies/
+    version: ~
+  host: graph.facebook.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /v2.5/{album-id}:
+      get:
+        summary: Get Album
+        description: Represents a photo album
+        operationId: album
+        parameters:
+        - in: query
+          name: can_upload
+          description: Whether the viewer can upload photos to this album.
+          type: string
+        - in: query
+          name: count
+          description: Number of photos in this album.
+          type: string
+        - in: query
+          name: cover_photo
+          description: The ID of the album&#039;s cover photo.
+          type: string
+        - in: query
+          name: created_time
+          description: The time the album was initially created.
+          type: string
+        - in: query
+          name: description
+          description: The description of the album.
+          type: string
+        - in: query
+          name: event
+          description: The event associated with this album.
+          type: string
+        - in: query
+          name: from
+          description: The profile that created the album.
+          type: string
+        - in: query
+          name: id
+          description: The album ID.
+          type: string
+        - in: query
+          name: link
+          description: A link to this album on Facebook.
+          type: string
+        - in: query
+          name: location
+          description: The textual location of the album.
+          type: string
+        - in: query
+          name: name
+          description: The title of the album.
+          type: string
+        - in: query
+          name: place
+          description: The place associated with this album.
+          type: string
+        - in: query
+          name: privacy
+          description: The privacy settings for the album.
+          type: string
+        - in: query
+          name: type
+          description: The type of the album.
+          type: string
+        - in: query
+          name: updated_time
+          description: The last time the album was updated.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - albums
+        security: []
+    /v2.5/{album-id}/photos:
+      get:
+        summary: Get Album Photos
+        description: The photos in an album on Facebook
+        operationId: album
+        responses:
+          200:
+            description: OK
+        tags:
+        - albums
+        security: []
+    /v2.5/{album-id}/picture:
+      get:
+        summary: Get Album Cover Photo
+        description: The cover photo of a photo album
+        operationId: album
+        parameters:
+        - in: query
+          name: type
+          description: You use this to get a pre-specified size of picture.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - albums
+        security: []
+    /v2.5/{object-id}/sharedposts:
+      get:
+        summary: Get Object Shared Posts
+        description: The /sharedposts edge that is common to multiple Graph API nodes
+        operationId: album
+        responses:
+          200:
+            description: OK
+        tags:
+        - albums
+        security: []
+    /{user-id}/albums:
+      get:
+        summary: Get Album
+        description: Represents a photo album
+        operationId: album
+        responses:
+          200:
+            description: OK
+        tags:
+        - albums
+        security: []
+  definitions: []

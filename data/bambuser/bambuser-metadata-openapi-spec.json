@@ -1,0 +1,162 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Bambuser Metadata",
+		"description": "The Metadata API allows external services to access parts of the Bambuser database via HTTP.",
+		"termsOfService": "http://bambuser.com/tou",
+		"version": "v1"
+	},
+	"host": "api.bambuser.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/broadcast": {
+			"get": {
+				"summary": "Returns broadcasts.",
+				"description": "Returns metadata for a set of broadcasts matching the query parameters. This endpoint replaces getVideos.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API key. ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "geo_distance",
+					"description": "Limit the search geographically, by setting geo_distance to a radius in meters. You also need to specify the center point by setting lat and lon.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "lat",
+					"description": "Latitude of the center point, when limiting search to a geographic area.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "Limit the number of search results. Should be a positive numeric value. ",
+					"type": "integer",
+					"format": "integer"
+				},
+				{
+					"in": "query",
+					"name": "long",
+					"description": "Longitude of the center point, when limiting search to a geographic area.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "max_age",
+					"description": "Limit the search to broadcasts created within x seconds. Should be a positive numeric value. ",
+					"type": "integer",
+					"format": "integer"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Access older results by specifying which results page you want returned. ",
+					"type": "integer",
+					"format": "integer"
+				},
+				{
+					"in": "query",
+					"name": "tag",
+					"description": "Filter search by a single tag or a set of tags separated by a comma (,). ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "Filter by type.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Limit search to a single user or a set of users separated by comma (,). ",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"broadcast_not_found": {
+						"description": "The specified broadcast id is not valid."
+					},
+					"broadcast_removed": {
+						"description": "The owner of this broadcast chose to remove the specified broadcast."
+					},
+					"broadcast_not_archived": {
+						"description": "The owner of the specified broadcast chose to disable archiving, hence it only existed as a live stream."
+					},
+					"broadcast_not_available": {
+						"description": "The specified broadcast is currently unavailable for some unspecified reason."
+					},
+					"broadcast_no_access": {
+						"description": "You do not have permission to access to the specified broadcast. This error is returned if you try to access a private broadcast."
+					},
+					"user_not_available": {
+						"description": "he user account that the selected broadcast was produced with is not available anymore. "
+					}
+				},
+				"tags": ["Broadcasts"],
+				"security": []
+			}
+		},
+		"/broadcast/<vid>": {
+			"get": {
+				"summary": "Get Broadcast",
+				"description": "Returns metadata for a single broadcast. This endpoint replaces getVideo.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API Key.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "vid",
+					"description": "the id of the requested broadcast.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"broadcast_not_found": {
+						"description": "The specified broadcast id is not valid."
+					},
+					"broadcast_removed": {
+						"description": "The owner of this broadcast chose to remove the specified broadcast."
+					},
+					"broadcast_not_archived": {
+						"description": "The owner of the specified broadcast chose to disable archiving, hence it only existed as a live stream."
+					},
+					"broadcast_not_available": {
+						"description": "The specified broadcast is currently unavailable for some unspecified reason."
+					},
+					"broadcast_no_access": {
+						"description": "You do not have permission to access to the specified broadcast. This error is returned if you try to access a private broadcast."
+					},
+					"user_not_available": {
+						"description": "he user account that the selected broadcast was produced with is not available anymore. "
+					},
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Broadcast"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

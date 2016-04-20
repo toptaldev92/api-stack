@@ -1,0 +1,103 @@
+- swagger: "2.0"
+  info:
+    title: API Evangelist Curation API
+    description: This is an API that provides access to the links I curate as part of
+      monitoring the API space.
+    termsOfService: http://developer.apievangelist.com/index.html
+    contact:
+      name: Kin Lane
+      url: http://kinlane.com
+      email: info@apievangelist.com
+    license:
+      name: MIT
+      url: http://opensource.org/licenses/MIT
+    version: "1.0"
+  basePath: /v1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /curated/:
+      get:
+        summary: Pull curated
+        description: Returns a list of all curated items filtered by keyword.
+        operationId: getCurated
+        parameters:
+        - in: query
+          name: appid
+          description: application id for application making calls
+          type: string
+        - in: query
+          name: appkey
+          description: application key for application making calls
+          type: string
+        - in: query
+          name: query
+          description: a text query to search across curated items
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /curated/{id}:
+      get:
+        summary: Retrieve a curated item using its ID
+        description: Returns a curated item detail
+        operationId: getCurated
+        parameters:
+        - in: query
+          name: appid
+          description: application id for application making calls
+          type: string
+        - in: query
+          name: appkey
+          description: application key for application making calls
+          type: string
+        - in: path
+          name: id
+          description: id of the curated item to be returned
+          type: integer
+        responses:
+          200:
+            description: Successful Curated REsponse
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/curated'
+        tags:
+        - ""
+        security: []
+  definitions:
+    curated:
+      properties:
+        Curated_ID:
+          description: This is a default description.
+          type: string
+        Item_Date:
+          description: This is a default description.
+          type: string
+        Title:
+          description: This is a default description.
+          type: string
+        Details:
+          description: This is a default description.
+          type: string
+        Link:
+          description: This is a default description.
+          type: string
+    Error:
+      properties:
+        code:
+          description: This is a default description.
+          type: integer
+        message:
+          description: This is a default description.
+          type: string
+        fields:
+          description: This is a default description.
+          type: string

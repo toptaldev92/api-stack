@@ -1,0 +1,572 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "MailChimp",
+		"description": "The MailChimp API is a way for you to "sync" your customer database, CRM, CMS, or e-commerce shopping cart with MailChimp. It's really powerful stuff.",
+		"termsOfService": "http://mailchimp.com/legal/terms",
+		"version": "2"
+	},
+	"host": "{dc}.api.mailchimp.com",
+	"basePath": "/2.0",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/campaignSubscriberActivity/": {
+			"get": {
+				"summary": "Exports/Dumps Members Of A List",
+				"description": "Exports/Dumps Members Of A List",
+				"operationId": "exportsdumps-members-of-a-list",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"description": "A valid API Key for your user account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "dc",
+					"description": "The portion after the dash in your API Key. e.g. us1, us2, uk1, etc.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The campaign id to retrieve stats.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "include_empty",
+					"description": "If set to true a record for every email address sent to will be returned even if there is no activity data.",
+					"type": "boolean"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/DeleteVerifiedEmailAddress.{output_format}/": {
+			"get": {
+				"summary": "Exports/Dumps All Subscriber Activity",
+				"description": "Exports/Dumps All Subscriber Activity",
+				"operationId": "exportsdumps-all-subscriber-activity",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"description": "A valid API Key for your user account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "dc",
+					"description": "The portion after the dash in your API Key. e.g. us1, us2, uk1, etc.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "email",
+					"description": "The campaign id to get content.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "output_format",
+					"description": "The response data be encoded in the specified format.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "output_format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/GetBounces.{output_format}/": {
+			"get": {
+				"summary": "Verify Email Address",
+				"description": "Verify Email Address",
+				"operationId": "verify-email-address",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"description": "A valid API Key for your user account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "dc",
+					"description": "The portion after the dash in your API Key. e.g. us1, us2, uk1, etc.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "output_format",
+					"description": "The response data be encoded in the specified format.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "output_format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "since",
+					"description": "If a time is provided, retrieve bounce messages since that time. Y-m-d H:i:s format.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/GetSendQuota.{output_format}/": {
+			"get": {
+				"summary": "Send Email",
+				"description": "Send Email",
+				"operationId": "send-email",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"description": "A valid API Key for your user account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "dc",
+					"description": "The portion after the dash in your API Key. e.g. us1, us2, uk1, etc.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "output_format",
+					"description": "The response data be encoded in the specified format.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "output_format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/GetSendStatistics.{output_format}/": {
+			"get": {
+				"summary": "Get Send Quota",
+				"description": "Get Send Quota",
+				"operationId": "get-send-quota",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"description": "A valid API Key for your user account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "dc",
+					"description": "The portion after the dash in your API Key. e.g. us1, us2, uk1, etc.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "output_format",
+					"description": "The response data be encoded in the specified format.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "output_format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/GetSendStats.{output_format}/": {
+			"get": {
+				"summary": "Get Bounces",
+				"description": "Get Bounces",
+				"operationId": "get-bounces",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"description": "A valid API Key for your user account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "dc",
+					"description": "The portion after the dash in your API Key. e.g. us1, us2, uk1, etc.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "output_format",
+					"description": "The response data be encoded in the specified format.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "output_format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "since",
+					"description": "Limit data returned since this data/hour combo. This is a string comparison, not a date comparison, and we are not attempting to strictly validate this, so if you pass in something silly, expect silly results. It expects the same format as the returned data: YYYY-MM-DD HH.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "tag_id",
+					"description": "Whether to limit to a single tag.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/GetTags.{output_format}/": {
+			"get": {
+				"summary": "Get Send Stats",
+				"description": "Get Send Stats",
+				"operationId": "get-send-stats",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"description": "A valid API Key for your user account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "dc",
+					"description": "The portion after the dash in your API Key. e.g. us1, us2, uk1, etc.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "output_format",
+					"description": "The response data be encoded in the specified format.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "output_format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/GetUrls.{output_format}/": {
+			"get": {
+				"summary": "Get Url Stats",
+				"description": "Get Url Stats",
+				"operationId": "get-url-stats",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"description": "A valid API Key for your user account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "dc",
+					"description": "The portion after the dash in your API Key. e.g. us1, us2, uk1, etc.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "output_format",
+					"description": "The response data be encoded in the specified format.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "output_format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/GetUrlStats.{output_format}/": {
+			"get": {
+				"summary": "Get Tags",
+				"description": "Get Tags",
+				"operationId": "get-tags",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"description": "A valid API Key for your user account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "dc",
+					"description": "The portion after the dash in your API Key. e.g. us1, us2, uk1, etc.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "output_format",
+					"description": "The response data be encoded in the specified format.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "output_format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "since",
+					"description": "Limit data returned since this data/hour combo. This is a string comparison, not a date comparison, and we are not attempting to strictly validate this, so if you pass in something silly, expect silly results.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "url_id",
+					"description": "Whether to limit to a single url.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/list/": {
+			"get": {
+				"summary": "List Templates",
+				"description": "List Templates",
+				"operationId": "list-templates",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"description": "A valid API Key for your user account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "dc",
+					"description": "The portion after the dash in your API Key. e.g. us1, us2, uk1, etc.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The list id to get members.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "segment",
+					"description": "Pull only a certain Segment of your list.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "since",
+					"description": "Only return member whose data has changed since a GMT timestamp u2013 in YYYY-MM-DD HH:mm:ss format.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "status",
+					"description": "The status to get members.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/ListVerifiedEmailAddresses.{output_format}/": {
+			"get": {
+				"summary": "Delete Verified Email Address",
+				"description": "Delete Verified Email Address",
+				"operationId": "delete-verified-email-address",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"description": "A valid API Key for your user account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "dc",
+					"description": "The portion after the dash in your API Key. e.g. us1, us2, uk1, etc.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "output_format",
+					"description": "The response data be encoded in the specified format.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "output_format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/SendEmail.{output_format}/": {
+			"get": {
+				"summary": "Get Urls",
+				"description": "Get Urls",
+				"operationId": "get-urls",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"description": "A valid API Key for your user account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "dc",
+					"description": "The portion after the dash in your API Key. e.g. us1, us2, uk1, etc.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "message",
+					"description": "The message data. See keys: http://apidocs.mailchimp.com/sts/1.0/sendemail.func.php",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "output_format",
+					"description": "The response data be encoded in the specified format.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "output_format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "tags",
+					"description": "An array of strings to tag the message with. Stats can be accumulated using tags, though we only store the first 100 we see, so this should not be unique or change frequently. Tags should be 50 characters or less - any starting with an underscore are reserved and will cause errors.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "track_opens",
+					"description": "Whether or not to turn on MailChimp-specific opens tracking.",
+					"type": "boolean"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/VerifyEmailAddress.{output_format}/": {
+			"get": {
+				"summary": "List Verified Email Addresses",
+				"description": "List Verified Email Addresses",
+				"operationId": "list-verified-email-addresses",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"description": "A valid API Key for your user account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "dc",
+					"description": "The portion after the dash in your API Key. e.g. us1, us2, uk1, etc.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "email",
+					"description": "The email address to verify.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "output_format",
+					"description": "The response data be encoded in the specified format.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "output_format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

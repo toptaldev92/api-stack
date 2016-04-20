@@ -1,0 +1,126 @@
+- swagger: "2.0"
+  info:
+    title: Disqus Categories API
+    version: ""
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /categories/details.json:
+      n    get:
+        summary: Categories Details
+        description: 'n     Categories Details '
+        operationId: categories-details
+        parameters:
+        - in: query
+          name: category
+          description: Looks up a category by ID
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /categories/list.json:
+      n    get:
+        summary: Categories List
+        description: 'n     Categories List '
+        operationId: categories-list
+        parameters:
+        - in: query
+          name: cursor
+          description: Defaults to null
+        - in: query
+          name: forum
+          description: Looks up a forum by ID (aka short name)
+        - in: query
+          name: limit
+          description: Defaults to 25                         Maximum value of 100
+        - in: query
+          name: order
+          description: 'Defaults to asc                         Choices: asc, desc'
+        - in: query
+          name: since_id
+          description: Defaults to null
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /categories/listPosts.json:
+      n    get:
+        summary: Categories ListPosts
+        description: 'n     Categories ListPosts '
+        operationId: categories-listposts
+        parameters:
+        - in: query
+          name: category
+          description: Looks up a category by ID
+        - in: query
+          name: cursor
+          description: Defaults to null
+        - in: query
+          name: include
+          description: 'Defaults to [  approved]                         Choices: unapproved,
+            approved, spam, deleted, flagged, highlighted'
+        - in: query
+          name: limit
+          description: Defaults to 25                         Maximum value of 100
+        - in: query
+          name: order
+          description: 'Defaults to desc                         Choices: asc, desc'
+        - in: query
+          name: query
+          description: Defaults to null
+        - in: query
+          name: related
+          description: 'Defaults to []                         You may specify relations
+            to include with your response. Choices: forum, thread'
+        - in: query
+          name: since
+          description: Defaults to null                         Unix timestamp (or ISO
+            datetime standard)
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /categories/listThreads.json:
+      n    get:
+        summary: Categories ListThreads
+        description: 'n     Categories ListThreads '
+        operationId: categories-listthreads
+        parameters:
+        - in: query
+          name: category
+          description: Looks up a category by ID
+        - in: query
+          name: cursor
+          description: Defaults to null
+        - in: query
+          name: limit
+          description: Defaults to 25                         Maximum value of 100
+        - in: query
+          name: order
+          description: 'Defaults to desc                         Choices: asc, desc'
+        - in: query
+          name: related
+          description: 'Defaults to []                         You may specify relations
+            to include with your response. Choices: forum, author'
+        - in: query
+          name: since
+          description: Defaults to null                         Unix timestamp (or ISO
+            datetime standard)
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

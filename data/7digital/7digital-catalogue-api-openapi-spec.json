@@ -1,0 +1,300 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "7digital Catalogue API",
+		"description": "Access to the 7digital catalogue API",
+		"termsOfService": "http://developer.7digital.com/db/Attachments/Legal/Terms_of_Use/7digital%20Public%20API%20Terms.pdf",
+		"version": "1.2"
+	},
+	"host": "api.7digital.com",
+	"basePath": "1.2/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"artist/browse": {
+			"get ": {
+				"summary": "artist/browse",
+				"description": "This method returns a list of artists from the 7digital catalogue whose names match the start letter(s) supplied.",
+				"operationId": "artistbrowse",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "artistId",
+					"description": "unique identifier of the artist",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "nttttttt 2 letter ISO country code of the country whose releases you would like to searchntttttt ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "imageSize",
+					"description": "nttttttt The requested width of the image in pixelsntttttt ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "letter",
+					"description": "The first letter(s) of the artist name to browse.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Page number of the result set. If not supplied, defaults to 1",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageSize",
+					"description": "Number of items to be returned per page. If not supplied this defaults to 10. Maximum page size is 50",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "period",
+					"description": "The time period for which the chart is generated. Default value is a week.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "streamable",
+					"description": "If provided search results will contain only releases that can/cannot be streamed",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "toDate",
+					"description": "The last day the chart should include data for. If not provided, by default the most recent chart for requested period will be returned.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "Releases can be of type album, single or video. If specified, results are filtered by release type.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"release/chart": {
+			"get ": {
+				"summary": "release/chart",
+				"description": "This endpoint returns a chart of the most purchased releases for given week. Only albums are included in this chart. To retrieve the most recent charts as published on 7digital.com the toDate parameter should be omitted.",
+				"operationId": "releasechart",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "nttttttt 2 letter ISO country code of the country whose releases you would like to viewntttttt ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "imageSize",
+					"description": "nttttttt The requested width of the image in pixelsntttttt ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Page number of the result set. If not supplied, defaults to 1",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageSize",
+					"description": "Number of items to be returned per page. If not supplied this defaults to 10. Maximum page size is 50",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "streamable",
+					"description": "If provided search results will contain only releases that can/cannot be streamed",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "toDate",
+					"description": "The last day the chart should include data for. If not provided, it defaults to the most recent chart week.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"tag": {
+			"get ": {
+				"summary": "tag",
+				"description": "This method returns a list of all available tags.",
+				"operationId": "tag",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "artistId",
+					"description": "The unique identifier of the artist.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "nttttttt2 letter ISO country code of the country whose artists you would like to searchntttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "imageSize",
+					"description": "ntttttttThe requested width of the image in pixelsntttttt",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Page number of the result set. If not supplied, defaults to 1",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageSize",
+					"description": "Number of items to be returned per page. If not supplied this defaults to 10. Maximum page size is 50",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "streamable",
+					"description": "If provided search results will contain only artists that can/cannot be streamed",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "tags",
+					"description": "A single or comma separated list of tags.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"track/chart": {
+			"get ": {
+				"summary": "track/chart",
+				"description": "This endpoint returns a chart of the most purchased tracks for given week. To retrieve the most recent charts as published on 7digital.com the toDate parameter should be omitted.",
+				"operationId": "trackchart",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "2 letter ISO country code of the country whose tracks you would like to search",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "imageSize",
+					"description": "The requested width of the image in pixels",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Page number of the result set. If not supplied, defaults to 1",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageSize",
+					"description": "Number of items to be returned per page. If not supplied this defaults to 10. Maximum page size is 50",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "streamable",
+					"description": "If provided search results will contain only tracks that can/cannot be streamed",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "toDate",
+					"description": "The last day the chart should include data for. If not provided, it defaults to the most recent chart week.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

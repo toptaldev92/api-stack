@@ -1,0 +1,102 @@
+- swagger: "2.0"
+  info:
+    title: Facebook Graph (Conversation) API
+    description: API for managing Facebook Conversations
+    termsOfService: https://www.facebook.com/policies/
+    version: ~
+  host: graph.facebook.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /{conversation-id}:
+      get:
+        summary: Get Conversation
+        description: A Facebook Messages conversation between a person and a Facebook
+          Page
+        operationId: conversation
+        parameters:
+        - in: query
+          name: can_reply
+          description: Whether the Page is able to reply.
+          type: string
+        - in: query
+          name: is_subscribed
+          description: Whether the Page is subscribed to the conversation
+          type: string
+        - in: query
+          name: message_count
+          description: The number of messages.
+          type: string
+        - in: query
+          name: participants
+          description: People and Pages who are on this conversation.
+          type: string
+        - in: query
+          name: senders
+          description: People who have sent a message.
+          type: string
+        - in: query
+          name: snippet
+          description: The snippet of the most recent message in a conversation.
+          type: string
+        - in: query
+          name: tags
+          description: A set of tags indicating the message folder and source of the
+            conversation.
+          type: string
+        - in: query
+          name: unread_count
+          description: The number of unread messages.
+          type: string
+        - in: query
+          name: updated_time
+          description: Last update time.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - conversation
+        security: []
+    /{conversation-id}/messages:
+      get:
+        summary: Get Conversation Messages
+        description: The messages in a conversation between a person and a page
+        operationId: conversation
+        parameters:
+        - in: query
+          name: tags
+          description: A set of tags indicating the message folder and source of the
+            message.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - conversation
+        security: []
+      post:
+        summary: Add Conversation Message
+        description: The messages in a conversation between a person and a page
+        operationId: conversation
+        parameters:
+        - in: query
+          name: id
+          description: The ID of the newly created message.
+          type: string
+        - in: query
+          name: message
+          description: The text of reply. This field is required.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - conversation
+        security: []
+  definitions: []

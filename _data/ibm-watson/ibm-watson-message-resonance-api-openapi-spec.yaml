@@ -1,0 +1,109 @@
+- swagger: "2.0"
+  info:
+    title: IBM Watson Message Resonance API
+    description: REST methods for Message Resonance
+    version: v1
+  host: service.platform.watson.ibm.com
+  basePath: /messageresonance/service/api
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /feedback/service/v1/api/messageresonance:
+      put:
+        summary: Submit feedback on the Message Resonance service
+        description: The feedback API allows you to provide information on how well
+          the service performed.  The feedback is used to further improve the service
+          and future results.
+        operationId: profile
+        parameters:
+        - in: Header
+          name: Basic Authorization
+          description: Base64 Basic Auth
+          type: string
+          format: string
+        - in: body
+          name: Feedback information
+          description: JSON Data
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /messageresonance/service/v1/datasets:
+      get:
+        summary: Retrieves all ringscore communities
+        description: ""
+        operationId: datasets
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /messageresonance/service/v1/ringscore:
+      get:
+        summary: Retrieves the ringscore for terms within a community
+        description: The ringscore has the range 0 - 99. The larger the ringscore, the
+          more effective the term.
+        operationId: ringscore
+        parameters:
+        - in: query
+          name: dataset
+          description: The ID of the community to which the ringscore applies. Use GET
+            /v1/datasets to retrieve the communities. If dataset is not included, the
+            service returns an aggregate ring score.
+          type: integer
+        - in: query
+          name: text
+          description: The term to use for the ringscore
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions:
+    ringscore:
+      properties:
+        overall:
+          description: This is a default description.
+          type: string
+        prevalence:
+          description: This is a default description.
+          type: string
+        volume:
+          description: This is a default description.
+          type: string
+        duration:
+          description: This is a default description.
+          type: string
+    datasets:
+      properties:
+        id:
+          description: This is a default description.
+          type: string
+        name:
+          description: This is a default description.
+          type: string
+    Feedback:
+      properties:
+        service_request:
+          description: This is a default description.
+          type: string
+        service_response:
+          description: This is a default description.
+          type: string
+        score:
+          description: This is a default description.
+          type: string
+        text:
+          description: This is a default description.
+          type: string

@@ -1,0 +1,79 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Clearbit Company Logo API",
+		"description": "http://blog.clearbit.com/logo",
+		"termsOfService": "The API is incredibly simple, taking a companyu2019s domain and returning an image.",
+		"contact": {
+			"name": "Clearbit",
+			"url": "https://dashboard.clearbit.com/support",
+			"email": "support@clearbit.com"
+		},
+		"version": "v1"
+	},
+	"host": "logo.clearbit.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"{domain}": {
+			"get": {
+				"summary": "Get Logo",
+				"description": "Gets a logo for the requested domain.",
+				"operationId": "getLogo",
+				"parameters": [{
+					"in": "path",
+					"name": "domain",
+					"description": "the domain the url is being requested for",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"description": "Format of the default - either png or jpg",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "greyscale",
+					"description": "Enables greyscaling",
+					"type": "boolean",
+					"format": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "size",
+					"description": "Size of the image returned",
+					"type": "integer",
+					"format": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/image"
+							}
+						}
+					}
+				},
+				"tags": ["Logo"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"image": {
+			"properties": {
+				"image": {
+					"description": "Image returned",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

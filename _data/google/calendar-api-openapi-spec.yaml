@@ -1,0 +1,1964 @@
+- swagger: "2.0"
+  info:
+    title: Calendar API
+    description: Lets you manipulate events and other calendar data.
+    contact:
+      name: Google
+      url: https://google.com
+    version: v3
+  host: www.googleapis.com
+  basePath: /calendar/v3
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /calendars:
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: ""
+        description: Creates a secondary calendar.
+        operationId: calendar.calendars.insert
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /calendars/{calendarId}:
+      delete:
+        summary: ""
+        description: Deletes a secondary calendar. Use calendars.clear for clearing
+          all events on primary calendars.
+        operationId: calendar.calendars.delete
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: ""
+        description: Returns metadata for a calendar.
+        operationId: calendar.calendars.get
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      patch:
+        summary: ""
+        description: Updates metadata for a calendar. This method supports patch semantics.
+        operationId: calendar.calendars.patch
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: ""
+        description: Updates metadata for a calendar.
+        operationId: calendar.calendars.update
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /calendars/{calendarId}/acl:
+      get:
+        summary: ""
+        description: Returns the rules in the access control list for the calendar.
+        operationId: calendar.acl.list
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        - in: query
+          name: maxResults
+          description: Maximum number of entries returned on one result page. By default
+            the value is 100 entries. The page size can never be larger than 250 entries.
+            Optional.
+          type: string
+          format: string
+        - in: query
+          name: pageToken
+          description: Token specifying which result page to return. Optional.
+          type: string
+          format: string
+        - in: query
+          name: showDeleted
+          description: Whether to include deleted ACLs in the result. Deleted ACLs are
+            represented by role equal to none. Deleted ACLs will always be included
+            if syncToken is provided. Optional. The default is False.
+          type: string
+          format: string
+        - in: query
+          name: syncToken
+          description: Token obtained from the nextSyncToken field returned on the last
+            page of results from the previous list request. It makes the result of this
+            list request contain only entries that have changed since then. All entries
+            deleted since the previous list request will always be in the result set
+            and it is not allowed to set showDeleted to False.nIf the syncToken expires,
+            the server will respond with a 410 GONE response code and the client should
+            clear its storage and perform a full synchronization with
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: ""
+        description: Creates an access control rule.
+        operationId: calendar.acl.insert
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /calendars/{calendarId}/acl/watch:
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: ""
+        description: Watch for changes to ACL resources.
+        operationId: calendar.acl.watch
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        - in: query
+          name: maxResults
+          description: Maximum number of entries returned on one result page. By default
+            the value is 100 entries. The page size can never be larger than 250 entries.
+            Optional.
+          type: string
+          format: string
+        - in: query
+          name: pageToken
+          description: Token specifying which result page to return. Optional.
+          type: string
+          format: string
+        - in: query
+          name: showDeleted
+          description: Whether to include deleted ACLs in the result. Deleted ACLs are
+            represented by role equal to none. Deleted ACLs will always be included
+            if syncToken is provided. Optional. The default is False.
+          type: string
+          format: string
+        - in: query
+          name: syncToken
+          description: Token obtained from the nextSyncToken field returned on the last
+            page of results from the previous list request. It makes the result of this
+            list request contain only entries that have changed since then. All entries
+            deleted since the previous list request will always be in the result set
+            and it is not allowed to set showDeleted to False.nIf the syncToken expires,
+            the server will respond with a 410 GONE response code and the client should
+            clear its storage and perform a full synchronization with
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /calendars/{calendarId}/acl/{ruleId}:
+      delete:
+        summary: ""
+        description: Deletes an access control rule.
+        operationId: calendar.acl.delete
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        - in: path
+          name: ruleId
+          description: ACL rule identifier.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: ""
+        description: Returns an access control rule.
+        operationId: calendar.acl.get
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        - in: path
+          name: ruleId
+          description: ACL rule identifier.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      patch:
+        summary: ""
+        description: Updates an access control rule. This method supports patch semantics.
+        operationId: calendar.acl.patch
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        - in: path
+          name: ruleId
+          description: ACL rule identifier.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: ""
+        description: Updates an access control rule.
+        operationId: calendar.acl.update
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        - in: path
+          name: ruleId
+          description: ACL rule identifier.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /calendars/{calendarId}/clear:
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: ""
+        description: Clears a primary calendar. This operation deletes all events associated
+          with the primary calendar of an account.
+        operationId: calendar.calendars.clear
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /calendars/{calendarId}/events:
+      get:
+        summary: ""
+        description: Returns events on the specified calendar.
+        operationId: calendar.events.list
+        parameters:
+        - in: query
+          name: alwaysIncludeEmail
+          description: Whether to always include a value in the email field for the
+            organizer, creator and attendees, even if no real email is available (i.e.
+            a generated, non-working value will be provided). The use of this option
+            is discouraged and should only be used by clients which cannot handle the
+            absence of an email address value in the mentioned places. Optional. The
+            default is False.
+          type: string
+          format: string
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        - in: query
+          name: iCalUID
+          description: Specifies event ID in the iCalendar format to be included in
+            the response. Optional.
+          type: string
+          format: string
+        - in: query
+          name: maxAttendees
+          description: The maximum number of attendees to include in the response. If
+            there are more than the specified number of attendees, only the participant
+            is returned. Optional.
+          type: string
+          format: string
+        - in: query
+          name: maxResults
+          description: Maximum number of events returned on one result page. By default
+            the value is 250 events. The page size can never be larger than 2500 events.
+            Optional.
+          type: string
+          format: string
+        - in: query
+          name: orderBy
+          description: The order of the events returned in the result. Optional. The
+            default is an unspecified, stable order.
+          type: string
+          format: string
+        - in: query
+          name: pageToken
+          description: Token specifying which result page to return. Optional.
+          type: string
+          format: string
+        - in: query
+          name: privateExtendedProperty
+          description: Extended properties constraint specified as propertyName=value.
+            Matches only private properties. This parameter might be repeated multiple
+            times to return events that match all given constraints.
+          type: string
+          format: string
+        - in: query
+          name: q
+          description: Free text search terms to find events that match these terms
+            in any field, except for extended properties. Optional.
+          type: string
+          format: string
+        - in: query
+          name: sharedExtendedProperty
+          description: Extended properties constraint specified as propertyName=value.
+            Matches only shared properties. This parameter might be repeated multiple
+            times to return events that match all given constraints.
+          type: string
+          format: string
+        - in: query
+          name: showDeleted
+          description: Whether to include deleted events (with status equals cancelled)
+            in the result. Cancelled instances of recurring events (but not the underlying
+            recurring event) will still be included if showDeleted and singleEvents
+            are both False. If showDeleted and singleEvents are both True, only single
+            instances of deleted events (but not the underlying recurring events) are
+            returned. Optional. The default is False.
+          type: string
+          format: string
+        - in: query
+          name: showHiddenInvitations
+          description: Whether to include hidden invitations in the result. Optional.
+            The default is False.
+          type: string
+          format: string
+        - in: query
+          name: singleEvents
+          description: Whether to expand recurring events into instances and only return
+            single one-off events and instances of recurring events, but not the underlying
+            recurring events themselves. Optional. The default is False.
+          type: string
+          format: string
+        - in: query
+          name: syncToken
+          description: 'Token obtained from the nextSyncToken field returned on the
+            last page of results from the previous list request. It makes the result
+            of this list request contain only entries that have changed since then.
+            All events deleted since the previous list request will always be in the
+            result set and it is not allowed to set showDeleted to False.nThere are
+            several query parameters that cannot be specified together with nextSyncToken
+            to ensure consistency of the client state.nnThese are: n- iCalUID n- ord'
+          type: string
+          format: string
+        - in: query
+          name: timeMax
+          description: Upper bound (exclusive) for an events start time to filter by.
+            Optional. The default is not to filter by start time.
+          type: string
+          format: string
+        - in: query
+          name: timeMin
+          description: Lower bound (inclusive) for an events end time to filter by.
+            Optional. The default is not to filter by end time.
+          type: string
+          format: string
+        - in: query
+          name: timeZone
+          description: Time zone used in the response. Optional. The default is the
+            time zone of the calendar.
+          type: string
+          format: string
+        - in: query
+          name: updatedMin
+          description: Lower bound for an events last modification time (as a RFC 3339
+            timestamp) to filter by. When specified, entries deleted since this time
+            will always be included regardless of showDeleted. Optional. The default
+            is not to filter by last modification time.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: ""
+        description: Creates an event.
+        operationId: calendar.events.insert
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        - in: query
+          name: maxAttendees
+          description: The maximum number of attendees to include in the response. If
+            there are more than the specified number of attendees, only the participant
+            is returned. Optional.
+          type: string
+          format: string
+        - in: query
+          name: sendNotifications
+          description: Whether to send notifications about the creation of the new event.
+            Optional. The default is False.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /calendars/{calendarId}/events/import:
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: ""
+        description: Imports an event. This operation is used to add a private copy
+          of an existing event to a calendar.
+        operationId: calendar.events.import
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /calendars/{calendarId}/events/quickAdd:
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: ""
+        description: Creates an event based on a simple text string.
+        operationId: calendar.events.quickAdd
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        - in: query
+          name: sendNotifications
+          description: Whether to send notifications about the creation of the event.
+            Optional. The default is False.
+          type: string
+          format: string
+        - in: query
+          name: text
+          description: The text describing the event to be created.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /calendars/{calendarId}/events/watch:
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: ""
+        description: Watch for changes to Events resources.
+        operationId: calendar.events.watch
+        parameters:
+        - in: query
+          name: alwaysIncludeEmail
+          description: Whether to always include a value in the email field for the
+            organizer, creator and attendees, even if no real email is available (i.e.
+            a generated, non-working value will be provided). The use of this option
+            is discouraged and should only be used by clients which cannot handle the
+            absence of an email address value in the mentioned places. Optional. The
+            default is False.
+          type: string
+          format: string
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        - in: query
+          name: iCalUID
+          description: Specifies event ID in the iCalendar format to be included in
+            the response. Optional.
+          type: string
+          format: string
+        - in: query
+          name: maxAttendees
+          description: The maximum number of attendees to include in the response. If
+            there are more than the specified number of attendees, only the participant
+            is returned. Optional.
+          type: string
+          format: string
+        - in: query
+          name: maxResults
+          description: Maximum number of events returned on one result page. By default
+            the value is 250 events. The page size can never be larger than 2500 events.
+            Optional.
+          type: string
+          format: string
+        - in: query
+          name: orderBy
+          description: The order of the events returned in the result. Optional. The
+            default is an unspecified, stable order.
+          type: string
+          format: string
+        - in: query
+          name: pageToken
+          description: Token specifying which result page to return. Optional.
+          type: string
+          format: string
+        - in: query
+          name: privateExtendedProperty
+          description: Extended properties constraint specified as propertyName=value.
+            Matches only private properties. This parameter might be repeated multiple
+            times to return events that match all given constraints.
+          type: string
+          format: string
+        - in: query
+          name: q
+          description: Free text search terms to find events that match these terms
+            in any field, except for extended properties. Optional.
+          type: string
+          format: string
+        - in: query
+          name: sharedExtendedProperty
+          description: Extended properties constraint specified as propertyName=value.
+            Matches only shared properties. This parameter might be repeated multiple
+            times to return events that match all given constraints.
+          type: string
+          format: string
+        - in: query
+          name: showDeleted
+          description: Whether to include deleted events (with status equals cancelled)
+            in the result. Cancelled instances of recurring events (but not the underlying
+            recurring event) will still be included if showDeleted and singleEvents
+            are both False. If showDeleted and singleEvents are both True, only single
+            instances of deleted events (but not the underlying recurring events) are
+            returned. Optional. The default is False.
+          type: string
+          format: string
+        - in: query
+          name: showHiddenInvitations
+          description: Whether to include hidden invitations in the result. Optional.
+            The default is False.
+          type: string
+          format: string
+        - in: query
+          name: singleEvents
+          description: Whether to expand recurring events into instances and only return
+            single one-off events and instances of recurring events, but not the underlying
+            recurring events themselves. Optional. The default is False.
+          type: string
+          format: string
+        - in: query
+          name: syncToken
+          description: 'Token obtained from the nextSyncToken field returned on the
+            last page of results from the previous list request. It makes the result
+            of this list request contain only entries that have changed since then.
+            All events deleted since the previous list request will always be in the
+            result set and it is not allowed to set showDeleted to False.nThere are
+            several query parameters that cannot be specified together with nextSyncToken
+            to ensure consistency of the client state.nnThese are: n- iCalUID n- ord'
+          type: string
+          format: string
+        - in: query
+          name: timeMax
+          description: Upper bound (exclusive) for an events start time to filter by.
+            Optional. The default is not to filter by start time.
+          type: string
+          format: string
+        - in: query
+          name: timeMin
+          description: Lower bound (inclusive) for an events end time to filter by.
+            Optional. The default is not to filter by end time.
+          type: string
+          format: string
+        - in: query
+          name: timeZone
+          description: Time zone used in the response. Optional. The default is the
+            time zone of the calendar.
+          type: string
+          format: string
+        - in: query
+          name: updatedMin
+          description: Lower bound for an events last modification time (as a RFC 3339
+            timestamp) to filter by. When specified, entries deleted since this time
+            will always be included regardless of showDeleted. Optional. The default
+            is not to filter by last modification time.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /calendars/{calendarId}/events/{eventId}:
+      delete:
+        summary: ""
+        description: Deletes an event.
+        operationId: calendar.events.delete
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        - in: path
+          name: eventId
+          description: Event identifier.
+          type: string
+          format: string
+        - in: query
+          name: sendNotifications
+          description: Whether to send notifications about the deletion of the event.
+            Optional. The default is False.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: ""
+        description: Returns an event.
+        operationId: calendar.events.get
+        parameters:
+        - in: query
+          name: alwaysIncludeEmail
+          description: Whether to always include a value in the email field for the
+            organizer, creator and attendees, even if no real email is available (i.e.
+            a generated, non-working value will be provided). The use of this option
+            is discouraged and should only be used by clients which cannot handle the
+            absence of an email address value in the mentioned places. Optional. The
+            default is False.
+          type: string
+          format: string
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        - in: path
+          name: eventId
+          description: Event identifier.
+          type: string
+          format: string
+        - in: query
+          name: maxAttendees
+          description: The maximum number of attendees to include in the response. If
+            there are more than the specified number of attendees, only the participant
+            is returned. Optional.
+          type: string
+          format: string
+        - in: query
+          name: timeZone
+          description: Time zone used in the response. Optional. The default is the
+            time zone of the calendar.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      patch:
+        summary: ""
+        description: Updates an event. This method supports patch semantics.
+        operationId: calendar.events.patch
+        parameters:
+        - in: query
+          name: alwaysIncludeEmail
+          description: Whether to always include a value in the email field for the
+            organizer, creator and attendees, even if no real email is available (i.e.
+            a generated, non-working value will be provided). The use of this option
+            is discouraged and should only be used by clients which cannot handle the
+            absence of an email address value in the mentioned places. Optional. The
+            default is False.
+          type: string
+          format: string
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        - in: path
+          name: eventId
+          description: Event identifier.
+          type: string
+          format: string
+        - in: query
+          name: maxAttendees
+          description: The maximum number of attendees to include in the response. If
+            there are more than the specified number of attendees, only the participant
+            is returned. Optional.
+          type: string
+          format: string
+        - in: query
+          name: sendNotifications
+          description: Whether to send notifications about the event update (e.g. attendees
+            responses, title changes, etc.). Optional. The default is False.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: ""
+        description: Updates an event.
+        operationId: calendar.events.update
+        parameters:
+        - in: query
+          name: alwaysIncludeEmail
+          description: Whether to always include a value in the email field for the
+            organizer, creator and attendees, even if no real email is available (i.e.
+            a generated, non-working value will be provided). The use of this option
+            is discouraged and should only be used by clients which cannot handle the
+            absence of an email address value in the mentioned places. Optional. The
+            default is False.
+          type: string
+          format: string
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        - in: path
+          name: eventId
+          description: Event identifier.
+          type: string
+          format: string
+        - in: query
+          name: maxAttendees
+          description: The maximum number of attendees to include in the response. If
+            there are more than the specified number of attendees, only the participant
+            is returned. Optional.
+          type: string
+          format: string
+        - in: query
+          name: sendNotifications
+          description: Whether to send notifications about the event update (e.g. attendees
+            responses, title changes, etc.). Optional. The default is False.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /calendars/{calendarId}/events/{eventId}/instances:
+      get:
+        summary: ""
+        description: Returns instances of the specified recurring event.
+        operationId: calendar.events.instances
+        parameters:
+        - in: query
+          name: alwaysIncludeEmail
+          description: Whether to always include a value in the email field for the
+            organizer, creator and attendees, even if no real email is available (i.e.
+            a generated, non-working value will be provided). The use of this option
+            is discouraged and should only be used by clients which cannot handle the
+            absence of an email address value in the mentioned places. Optional. The
+            default is False.
+          type: string
+          format: string
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        - in: path
+          name: eventId
+          description: Recurring event identifier.
+          type: string
+          format: string
+        - in: query
+          name: maxAttendees
+          description: The maximum number of attendees to include in the response. If
+            there are more than the specified number of attendees, only the participant
+            is returned. Optional.
+          type: string
+          format: string
+        - in: query
+          name: maxResults
+          description: Maximum number of events returned on one result page. By default
+            the value is 250 events. The page size can never be larger than 2500 events.
+            Optional.
+          type: string
+          format: string
+        - in: query
+          name: originalStart
+          description: The original start time of the instance in the result. Optional.
+          type: string
+          format: string
+        - in: query
+          name: pageToken
+          description: Token specifying which result page to return. Optional.
+          type: string
+          format: string
+        - in: query
+          name: showDeleted
+          description: Whether to include deleted events (with status equals cancelled)
+            in the result. Cancelled instances of recurring events will still be included
+            if singleEvents is False. Optional. The default is False.
+          type: string
+          format: string
+        - in: query
+          name: timeMax
+          description: Upper bound (exclusive) for an events start time to filter by.
+            Optional. The default is not to filter by start time.
+          type: string
+          format: string
+        - in: query
+          name: timeMin
+          description: Lower bound (inclusive) for an events end time to filter by.
+            Optional. The default is not to filter by end time.
+          type: string
+          format: string
+        - in: query
+          name: timeZone
+          description: Time zone used in the response. Optional. The default is the
+            time zone of the calendar.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /calendars/{calendarId}/events/{eventId}/move:
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: ""
+        description: Moves an event to another calendar, i.e. changes an events organizer.
+        operationId: calendar.events.move
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier of the source calendar where the event currently
+            is on.
+          type: string
+          format: string
+        - in: query
+          name: destination
+          description: Calendar identifier of the target calendar where the event is
+            to be moved to.
+          type: string
+          format: string
+        - in: path
+          name: eventId
+          description: Event identifier.
+          type: string
+          format: string
+        - in: query
+          name: sendNotifications
+          description: Whether to send notifications about the change of the events
+            organizer. Optional. The default is False.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /channels/stop:
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: ""
+        description: Stop watching resources through this channel
+        operationId: calendar.channels.stop
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /colors:
+      get:
+        summary: ""
+        description: Returns the color definitions for calendars and events.
+        operationId: calendar.colors.get
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /freeBusy:
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: ""
+        description: Returns free/busy information for a set of calendars.
+        operationId: calendar.freebusy.query
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /users/me/calendarList:
+      get:
+        summary: ""
+        description: Returns entries on the users calendar list.
+        operationId: calendar.calendarList.list
+        parameters:
+        - in: query
+          name: maxResults
+          description: Maximum number of entries returned on one result page. By default
+            the value is 100 entries. The page size can never be larger than 250 entries.
+            Optional.
+          type: string
+          format: string
+        - in: query
+          name: minAccessRole
+          description: The minimum access role for the user in the returned entries.
+            Optional. The default is no restriction.
+          type: string
+          format: string
+        - in: query
+          name: pageToken
+          description: Token specifying which result page to return. Optional.
+          type: string
+          format: string
+        - in: query
+          name: showDeleted
+          description: Whether to include deleted calendar list entries in the result.
+            Optional. The default is False.
+          type: string
+          format: string
+        - in: query
+          name: showHidden
+          description: Whether to show hidden entries. Optional. The default is False.
+          type: string
+          format: string
+        - in: query
+          name: syncToken
+          description: Token obtained from the nextSyncToken field returned on the last
+            page of results from the previous list request. It makes the result of this
+            list request contain only entries that have changed since then. If only
+            read-only fields such as calendar properties or ACLs have changed, the entry
+            wont be returned. All entries deleted and hidden since the previous list
+            request will always be in the result set and it is not allowed to set showDeleted
+            neither showHidden to False.nTo ensure client state co
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: ""
+        description: Adds an entry to the users calendar list.
+        operationId: calendar.calendarList.insert
+        parameters:
+        - in: query
+          name: colorRgbFormat
+          description: Whether to use the foregroundColor and backgroundColor fields
+            to write the calendar colors (RGB). If this feature is used, the index-based
+            colorId field will be set to the best matching option automatically. Optional.
+            The default is False.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /users/me/calendarList/watch:
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: ""
+        description: Watch for changes to CalendarList resources.
+        operationId: calendar.calendarList.watch
+        parameters:
+        - in: query
+          name: maxResults
+          description: Maximum number of entries returned on one result page. By default
+            the value is 100 entries. The page size can never be larger than 250 entries.
+            Optional.
+          type: string
+          format: string
+        - in: query
+          name: minAccessRole
+          description: The minimum access role for the user in the returned entries.
+            Optional. The default is no restriction.
+          type: string
+          format: string
+        - in: query
+          name: pageToken
+          description: Token specifying which result page to return. Optional.
+          type: string
+          format: string
+        - in: query
+          name: showDeleted
+          description: Whether to include deleted calendar list entries in the result.
+            Optional. The default is False.
+          type: string
+          format: string
+        - in: query
+          name: showHidden
+          description: Whether to show hidden entries. Optional. The default is False.
+          type: string
+          format: string
+        - in: query
+          name: syncToken
+          description: Token obtained from the nextSyncToken field returned on the last
+            page of results from the previous list request. It makes the result of this
+            list request contain only entries that have changed since then. If only
+            read-only fields such as calendar properties or ACLs have changed, the entry
+            wont be returned. All entries deleted and hidden since the previous list
+            request will always be in the result set and it is not allowed to set showDeleted
+            neither showHidden to False.nTo ensure client state co
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /users/me/calendarList/{calendarId}:
+      delete:
+        summary: ""
+        description: Deletes an entry on the users calendar list.
+        operationId: calendar.calendarList.delete
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: ""
+        description: Returns an entry on the users calendar list.
+        operationId: calendar.calendarList.get
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      patch:
+        summary: ""
+        description: Updates an entry on the users calendar list. This method supports
+          patch semantics.
+        operationId: calendar.calendarList.patch
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        - in: query
+          name: colorRgbFormat
+          description: Whether to use the foregroundColor and backgroundColor fields
+            to write the calendar colors (RGB). If this feature is used, the index-based
+            colorId field will be set to the best matching option automatically. Optional.
+            The default is False.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: ""
+        description: Updates an entry on the users calendar list.
+        operationId: calendar.calendarList.update
+        parameters:
+        - in: path
+          name: calendarId
+          description: Calendar identifier.
+          type: string
+          format: string
+        - in: query
+          name: colorRgbFormat
+          description: Whether to use the foregroundColor and backgroundColor fields
+            to write the calendar colors (RGB). If this feature is used, the index-based
+            colorId field will be set to the best matching option automatically. Optional.
+            The default is False.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /users/me/settings:
+      get:
+        summary: ""
+        description: Returns all user settings for the authenticated user.
+        operationId: calendar.settings.list
+        parameters:
+        - in: query
+          name: maxResults
+          description: Maximum number of entries returned on one result page. By default
+            the value is 100 entries. The page size can never be larger than 250 entries.
+            Optional.
+          type: string
+          format: string
+        - in: query
+          name: pageToken
+          description: Token specifying which result page to return. Optional.
+          type: string
+          format: string
+        - in: query
+          name: syncToken
+          description: Token obtained from the nextSyncToken field returned on the last
+            page of results from the previous list request. It makes the result of this
+            list request contain only entries that have changed since then.nIf the syncToken
+            expires, the server will respond with a 410 GONE response code and the client
+            should clear its storage and perform a full synchronization without any
+            syncToken.nLearn more about incremental synchronization.nOptional. The default
+            is to return all entries.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /users/me/settings/watch:
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: ""
+        description: Watch for changes to Settings resources.
+        operationId: calendar.settings.watch
+        parameters:
+        - in: query
+          name: maxResults
+          description: Maximum number of entries returned on one result page. By default
+            the value is 100 entries. The page size can never be larger than 250 entries.
+            Optional.
+          type: string
+          format: string
+        - in: query
+          name: pageToken
+          description: Token specifying which result page to return. Optional.
+          type: string
+          format: string
+        - in: query
+          name: syncToken
+          description: Token obtained from the nextSyncToken field returned on the last
+            page of results from the previous list request. It makes the result of this
+            list request contain only entries that have changed since then.nIf the syncToken
+            expires, the server will respond with a 410 GONE response code and the client
+            should clear its storage and perform a full synchronization without any
+            syncToken.nLearn more about incremental synchronization.nOptional. The default
+            is to return all entries.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /users/me/settings/{setting}:
+      get:
+        summary: ""
+        description: Returns a single user setting.
+        operationId: calendar.settings.get
+        parameters:
+        - in: path
+          name: setting
+          description: The id of the user setting.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions:
+    Acl:
+      properties:
+        etag:
+          description: This is a default description.
+          type: parameters
+        items:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        nextPageToken:
+          description: This is a default description.
+          type: parameters
+        nextSyncToken:
+          description: This is a default description.
+          type: parameters
+    AclRule:
+      properties:
+        etag:
+          description: This is a default description.
+          type: parameters
+        id:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        role:
+          description: This is a default description.
+          type: parameters
+        scope:
+          description: This is a default description.
+          type: parameters
+    Calendar:
+      properties:
+        description:
+          description: This is a default description.
+          type: parameters
+        etag:
+          description: This is a default description.
+          type: parameters
+        id:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        location:
+          description: This is a default description.
+          type: parameters
+        summary:
+          description: This is a default description.
+          type: parameters
+        timeZone:
+          description: This is a default description.
+          type: parameters
+    CalendarList:
+      properties:
+        etag:
+          description: This is a default description.
+          type: parameters
+        items:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        nextPageToken:
+          description: This is a default description.
+          type: parameters
+        nextSyncToken:
+          description: This is a default description.
+          type: parameters
+    CalendarListEntry:
+      properties:
+        accessRole:
+          description: This is a default description.
+          type: parameters
+        backgroundColor:
+          description: This is a default description.
+          type: parameters
+        colorId:
+          description: This is a default description.
+          type: parameters
+        defaultReminders:
+          description: This is a default description.
+          type: parameters
+        deleted:
+          description: This is a default description.
+          type: parameters
+        description:
+          description: This is a default description.
+          type: parameters
+        etag:
+          description: This is a default description.
+          type: parameters
+        foregroundColor:
+          description: This is a default description.
+          type: parameters
+        hidden:
+          description: This is a default description.
+          type: parameters
+        id:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        location:
+          description: This is a default description.
+          type: parameters
+        notificationSettings:
+          description: This is a default description.
+          type: parameters
+        primary:
+          description: This is a default description.
+          type: parameters
+        selected:
+          description: This is a default description.
+          type: parameters
+        summary:
+          description: This is a default description.
+          type: parameters
+        summaryOverride:
+          description: This is a default description.
+          type: parameters
+        timeZone:
+          description: This is a default description.
+          type: parameters
+    CalendarNotification:
+      properties:
+        method:
+          description: This is a default description.
+          type: parameters
+        type:
+          description: This is a default description.
+          type: parameters
+    Channel:
+      properties:
+        address:
+          description: This is a default description.
+          type: parameters
+        expiration:
+          description: This is a default description.
+          type: parameters
+        id:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        params:
+          description: This is a default description.
+          type: parameters
+        payload:
+          description: This is a default description.
+          type: parameters
+        resourceId:
+          description: This is a default description.
+          type: parameters
+        resourceUri:
+          description: This is a default description.
+          type: parameters
+        token:
+          description: This is a default description.
+          type: parameters
+        type:
+          description: This is a default description.
+          type: parameters
+    ColorDefinition:
+      properties:
+        background:
+          description: This is a default description.
+          type: parameters
+        foreground:
+          description: This is a default description.
+          type: parameters
+    Colors:
+      properties:
+        calendar:
+          description: This is a default description.
+          type: parameters
+        event:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        updated:
+          description: This is a default description.
+          type: parameters
+    Error:
+      properties:
+        domain:
+          description: This is a default description.
+          type: parameters
+        reason:
+          description: This is a default description.
+          type: parameters
+    Event:
+      properties:
+        anyoneCanAddSelf:
+          description: This is a default description.
+          type: parameters
+        attendees:
+          description: This is a default description.
+          type: parameters
+        attendeesOmitted:
+          description: This is a default description.
+          type: parameters
+        colorId:
+          description: This is a default description.
+          type: parameters
+        created:
+          description: This is a default description.
+          type: parameters
+        creator:
+          description: This is a default description.
+          type: parameters
+        description:
+          description: This is a default description.
+          type: parameters
+        endTimeUnspecified:
+          description: This is a default description.
+          type: parameters
+        etag:
+          description: This is a default description.
+          type: parameters
+        extendedProperties:
+          description: This is a default description.
+          type: parameters
+        gadget:
+          description: This is a default description.
+          type: parameters
+        guestsCanInviteOthers:
+          description: This is a default description.
+          type: parameters
+        guestsCanModify:
+          description: This is a default description.
+          type: parameters
+        guestsCanSeeOtherGuests:
+          description: This is a default description.
+          type: parameters
+        hangoutLink:
+          description: This is a default description.
+          type: parameters
+        htmlLink:
+          description: This is a default description.
+          type: parameters
+        iCalUID:
+          description: This is a default description.
+          type: parameters
+        id:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        location:
+          description: This is a default description.
+          type: parameters
+        locked:
+          description: This is a default description.
+          type: parameters
+        organizer:
+          description: This is a default description.
+          type: parameters
+        privateCopy:
+          description: This is a default description.
+          type: parameters
+        recurrence:
+          description: This is a default description.
+          type: parameters
+        recurringEventId:
+          description: This is a default description.
+          type: parameters
+        reminders:
+          description: This is a default description.
+          type: parameters
+        sequence:
+          description: This is a default description.
+          type: parameters
+        source:
+          description: This is a default description.
+          type: parameters
+        status:
+          description: This is a default description.
+          type: parameters
+        summary:
+          description: This is a default description.
+          type: parameters
+        transparency:
+          description: This is a default description.
+          type: parameters
+        updated:
+          description: This is a default description.
+          type: parameters
+        visibility:
+          description: This is a default description.
+          type: parameters
+    EventAttendee:
+      properties:
+        additionalGuests:
+          description: This is a default description.
+          type: parameters
+        comment:
+          description: This is a default description.
+          type: parameters
+        displayName:
+          description: This is a default description.
+          type: parameters
+        email:
+          description: This is a default description.
+          type: parameters
+        id:
+          description: This is a default description.
+          type: parameters
+        optional:
+          description: This is a default description.
+          type: parameters
+        organizer:
+          description: This is a default description.
+          type: parameters
+        resource:
+          description: This is a default description.
+          type: parameters
+        responseStatus:
+          description: This is a default description.
+          type: parameters
+        self:
+          description: This is a default description.
+          type: parameters
+    EventDateTime:
+      properties:
+        date:
+          description: This is a default description.
+          type: parameters
+        dateTime:
+          description: This is a default description.
+          type: parameters
+        timeZone:
+          description: This is a default description.
+          type: parameters
+    EventReminder:
+      properties:
+        method:
+          description: This is a default description.
+          type: parameters
+        minutes:
+          description: This is a default description.
+          type: parameters
+    Events:
+      properties:
+        accessRole:
+          description: This is a default description.
+          type: parameters
+        defaultReminders:
+          description: This is a default description.
+          type: parameters
+        description:
+          description: This is a default description.
+          type: parameters
+        etag:
+          description: This is a default description.
+          type: parameters
+        items:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        nextPageToken:
+          description: This is a default description.
+          type: parameters
+        nextSyncToken:
+          description: This is a default description.
+          type: parameters
+        summary:
+          description: This is a default description.
+          type: parameters
+        timeZone:
+          description: This is a default description.
+          type: parameters
+        updated:
+          description: This is a default description.
+          type: parameters
+    FreeBusyCalendar:
+      properties:
+        busy:
+          description: This is a default description.
+          type: parameters
+        errors:
+          description: This is a default description.
+          type: parameters
+    FreeBusyGroup:
+      properties:
+        calendars:
+          description: This is a default description.
+          type: parameters
+        errors:
+          description: This is a default description.
+          type: parameters
+    FreeBusyRequest:
+      properties:
+        calendarExpansionMax:
+          description: This is a default description.
+          type: parameters
+        groupExpansionMax:
+          description: This is a default description.
+          type: parameters
+        items:
+          description: This is a default description.
+          type: parameters
+        timeMax:
+          description: This is a default description.
+          type: parameters
+        timeMin:
+          description: This is a default description.
+          type: parameters
+        timeZone:
+          description: This is a default description.
+          type: parameters
+    FreeBusyRequestItem:
+      properties:
+        id:
+          description: This is a default description.
+          type: parameters
+    FreeBusyResponse:
+      properties:
+        calendars:
+          description: This is a default description.
+          type: parameters
+        groups:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        timeMax:
+          description: This is a default description.
+          type: parameters
+        timeMin:
+          description: This is a default description.
+          type: parameters
+    Setting:
+      properties:
+        etag:
+          description: This is a default description.
+          type: parameters
+        id:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        value:
+          description: This is a default description.
+          type: parameters
+    Settings:
+      properties:
+        etag:
+          description: This is a default description.
+          type: parameters
+        items:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        nextPageToken:
+          description: This is a default description.
+          type: parameters
+        nextSyncToken:
+          description: This is a default description.
+          type: parameters
+    TimePeriod:
+      properties:
+        end:
+          description: This is a default description.
+          type: parameters
+        start:
+          description: This is a default description.
+          type: parameters

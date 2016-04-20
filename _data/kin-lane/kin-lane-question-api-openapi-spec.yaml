@@ -1,0 +1,329 @@
+- swagger: "2.0"
+  info:
+    title: Question
+    description: This is an API question, allowing me to add detailss for key questions
+      and phrases used in the API space.
+    termsOfService: http://stack.network/questions-of-service.html
+    version: ~
+  host: question.api.kinlane.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /questions/:
+      get:
+        summary: get questions
+        description: get questions
+        operationId: getQuestionTerms
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+        - in: query
+          name: query
+          description: a text query to search across question
+        responses:
+          200:
+            description: OK
+        tags:
+        - Questions
+        security: []
+      post:
+        summary: add question
+        description: add question
+        operationId: addQuestion
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the API
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the API
+        - in: formData
+          name: details
+          description: description of the question
+        - in: formData
+          name: title
+          description: name of the question
+        responses:
+          200:
+            description: OK
+        tags:
+        - Questions
+        security: []
+    /questions/ask/organization/:
+      get:
+        summary: 'ask question: organization'
+        description: 'ask question: organization'
+        operationId: askOrganization
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+        - in: query
+          name: organization_id
+          description: organization id to ask of
+        responses:
+          200:
+            description: OK
+        tags:
+        - Questions
+        security: []
+    /questions/ask/organization/{organization_id}/:
+      get:
+        summary: 'ask question: organization'
+        description: 'ask question: organization'
+        operationId: askQuestionsofOrganization
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+        - in: path
+          name: organization_id
+          description: the id of the organization to ask
+        - in: query
+          name: organization_id
+          description: organization id to ask of
+        responses:
+          200:
+            description: OK
+        tags:
+        - Questions
+        security: []
+    /questions/tags/:
+      get:
+        summary: question tags
+        description: question tags
+        operationId: getQuestionTags
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the question
+        - in: query
+          name: appkey
+          description: your appkey for accessing the question
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /questions/tags/{tag}/:
+      delete:
+        summary: question tags
+        description: question tags
+        operationId: getquestionTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the question
+        - in: query
+          name: appkey
+          description: your appkey for accessing the question
+        - in: path
+          name: tag
+          description: tag to delete
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /questions/{question_id}/:
+      delete:
+        summary: delete question question
+        description: delete question question
+        operationId: deleteQuestionTerm
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+        - in: path
+          name: question_id
+          description: id for the question question
+        responses:
+          200:
+            description: OK
+        tags:
+        - Questions
+        security: []
+      get:
+        summary: get question
+        description: get question
+        operationId: getQuestionTerm
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+        - in: path
+          name: question_id
+          description: id for the question question
+        responses:
+          200:
+            description: OK
+        tags:
+        - Questions
+        security: []
+      put:
+        summary: update question
+        description: update question
+        operationId: updateQuestionTerm
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the API
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the API
+        - in: formData
+          name: details
+          description: description of the question
+        - in: path
+          name: question_id
+          description: id for the question question
+        - in: formData
+          name: title
+          description: name of the question
+        responses:
+          200:
+            description: OK
+        tags:
+        - Questions
+        security: []
+    /questions/{question_id}/ask/organization/{organization_id}:
+      get:
+        summary: 'ask question: organization'
+        description: 'ask question: organization'
+        operationId: askQuestionOrganization
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+        - in: path
+          name: organization_id
+          description: the id of the organization to ask of
+        - in: query
+          name: organization_id
+          description: organization id to ask of
+        - in: path
+          name: question_id
+          description: the id of the question to ask
+        responses:
+          200:
+            description: OK
+        tags:
+        - Questions
+        security: []
+    /questions/{question_id}/tags/:
+      get:
+        summary: question tags
+        description: question tags
+        operationId: getquestionTags
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the question
+        - in: query
+          name: appkey
+          description: your appkey for accessing the question
+        - in: path
+          name: question_id
+          description: id for question
+        responses:
+          200:
+            description: OK
+        tags:
+        - Questions
+        security: []
+      post:
+        summary: add question question
+        description: add question question
+        operationId: addQuestionTag
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the question
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the question
+        - in: path
+          name: question_id
+          description: id for the question
+        - in: formData
+          name: tag
+          description: tag name
+        responses:
+          200:
+            description: OK
+        tags:
+        - Questions
+        security: []
+    /questions/{question_id}/tags/{tag}:
+      delete:
+        summary: delete question tag
+        description: delete question tag
+        operationId: deletequestionTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the question
+        - in: query
+          name: appkey
+          description: your appkey for accessing the question
+        - in: path
+          name: question_id
+          description: id for the question
+        - in: path
+          name: tag
+          description: tag to remove from question
+        responses:
+          200:
+            description: OK
+        tags:
+        - Questions
+        security: []
+  definitions:
+    question:
+      properties:
+        question_id:
+          description: This is a default description.
+          type: delete
+        title:
+          description: This is a default description.
+          type: delete
+        details:
+          description: This is a default description.
+          type: delete
+    tag:
+      properties:
+        tag_id:
+          description: This is a default description.
+          type: delete
+        tag:
+          description: This is a default description.
+          type: delete
+        api_count:
+          description: This is a default description.
+          type: delete

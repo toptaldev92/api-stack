@@ -1,0 +1,90 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "AngelList Jobs API",
+		"description": "Manage jobs on the AngelList platform.",
+		"termsOfService": "https://angel.co/terms",
+		"contact": {
+			"name": "AngelList",
+			"url": "https://angel.co/api",
+			"email": "api@angel.co"
+		},
+		"version": "v1"
+	},
+	"host": "api.angel.co",
+	"basePath": "/1/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/jobs": {
+			"get": {
+				"summary": "Get Jobs",
+				"description": "Get jobs.",
+				"operationId": "jobs",
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/jobs"
+							}
+						}
+					}
+				},
+				"tags": ["Jobs"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		},
+		"/jobs/{job_id}": {
+			"get": {
+				"summary": "Get Job",
+				"description": "Get job.",
+				"operationId": "job",
+				"parameters": [{
+					"in": "path",
+					"name": "job_id",
+					"description": "The id for the job.",
+					"type": "integer",
+					"format": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/jobs"
+							}
+						}
+					}
+				},
+				"tags": ["Jobs"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
+		}
+	},
+	"definitions": {
+		"jobs": {
+			"properties": {
+				"job_id": {
+					"description": "The Id of the job.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

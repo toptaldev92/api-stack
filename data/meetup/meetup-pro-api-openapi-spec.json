@@ -1,0 +1,381 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Meetup Pro API",
+		"description": "The API for managing Meetup pro.",
+		"termsOfService": "http://www.meetup.com/terms/",
+		"version": null
+	},
+	"host": "api.meetup.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/pro/:urlname/groups": {
+			"get": {
+				"summary": "Search Pro Groups",
+				"description": "Name and statistics range search for the meetup groups belonging to Pro organization.",
+				"operationId": "pro",
+				"parameters": [{
+					"in": "query",
+					"name": "active_within_days",
+					"description": "Positive Integer: including only those groups that had event in the last specified days",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "average_age_max",
+					"description": "Positive Integer: Maximum range of the average age of the members",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "average_age_min",
+					"description": "Positive Integer: Minumum range of the average age of the members",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "category",
+					"description": "List of Integers: the ids of the category of the group",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "String: Country",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "desc",
+					"description": "List of Boolean: whether to sort ascending or decending on each attributes in `order`",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "founded_date_max",
+					"description": "Milliseconds since epoch: Maximum range of the founded dates of the groups",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "founded_date_min",
+					"description": "Milliseconds since epoch: Minumum range of the founded dates of the groups",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "inactive_within_days",
+					"description": "Positive Integer: including only those groups that did not have event in the last specified days",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "last_event_max",
+					"description": "Milliseconds since epoch: Maximum range of the date that the last meetup happened",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "last_event_min",
+					"description": "Milliseconds since epoch: Minumum range of the date that the last meetup happened",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "lat",
+					"description": "Float: Latitude",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "location",
+					"description": "String: Raw location",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "lon",
+					"description": "Float: Longitude",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "member_count_max",
+					"description": "Positive Integer: Maximum range of the number of members",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "member_count_min",
+					"description": "Positive Integer: Minimum range of the number of members",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "String: Name of the group looking for",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "next_event_max",
+					"description": "Milliseconds since epoch: Maximum range of the date that the next meetup is scheduled",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "next_event_min",
+					"description": "Milliseconds since epoch: Minumum range of the date that the next meetup is scheduled",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "Positive Integer: the page offset",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "List of String: attributes to sort on",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Positive Integer: the size of page window",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "past_events_max",
+					"description": "Positive Integer: Maximum range of the number of the past events held",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "past_events_min",
+					"description": "Positive Integer: Minumum range of the number of the past events held",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "past_rsvps_max",
+					"description": "Positive Integer: Maximum range of the total number of past RSVPs",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "past_rsvps_min",
+					"description": "Positive Integer: Minumum range of the total number of past RSVPs",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "pro_join_date_max",
+					"description": "Milliseconds since epoch: Maximum range of the dates the groups joined Pro organization",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "pro_join_date_min",
+					"description": "Milliseconds since epoch: Minumum range of the dates the groups joined Pro organization",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "radius",
+					"description": "String: `global`, `smart`, or search radius in Float",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "repeat_rsvpers_max",
+					"description": "Positive Integer: Maximum range of the average number of repeat rsvpers",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "repeat_rsvpers_min",
+					"description": "Positive Integer: Minumum range of the average number of repeat rsvpers",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "rsvps_per_event_max",
+					"description": "Positive Integer: Maximum range of the average number of RSVPs per event",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "rsvps_per_event_min",
+					"description": "Positive Integer: Minumum range of the average number of RSVPs per event",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "topics",
+					"description": "List of Integers: the ids of topic of the group",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "upcoming_events_max",
+					"description": "Positive Integer: Maximum range of the number of the upcoming events",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "upcoming_events_min",
+					"description": "Positive Integer: Minumum range of the number of the upcoming events",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "zip",
+					"description": "String: Zip code",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/pro/:urlname/members": {
+			"get": {
+				"summary": "Search Pro Members",
+				"description": "Name, location, and time based search for the members of the meetups belonging to Pro organization.",
+				"operationId": "pro",
+				"parameters": [{
+					"in": "query",
+					"name": "active_within_days",
+					"description": "Positive Integer: The range of date from the past until today, for the recent activity",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "chapters",
+					"description": "List of Integers: The chapters which the member belongs to",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "country",
+					"description": "String: Country",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "desc",
+					"description": "Boolean: whether to sort ascending or decending",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "email_received",
+					"description": "Integers: The id of a previous emails that the member received",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "events_attended_max",
+					"description": "Positive Integer: Maximum number of attended events",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "events_attended_min",
+					"description": "Positive Integer: Minimum number of attended events",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "is_organizer",
+					"description": "Boolean: To limit to only organizers or non-organizers",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "join_time_max",
+					"description": "Milliseconds since epoch: The latest time limit for member join",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "join_time_min",
+					"description": "Milliseconds since epoch: The oldest time limit for member join",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "lat",
+					"description": "Float: Latitude",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "location",
+					"description": "String: Raw location",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "lon",
+					"description": "Float: Longitude",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "member_name",
+					"description": "String: Name of the member",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "Positive Integer: the page offset",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "order",
+					"description": "String: attribute to sort on",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Positive Integer: the size of page window",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "radius",
+					"description": "String: `global`, `smart`, or search radius in Float",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "zip",
+					"description": "String: Zip code",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

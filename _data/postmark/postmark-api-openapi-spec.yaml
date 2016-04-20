@@ -1,0 +1,989 @@
+- swagger: "2.0"
+  info:
+    title: Postmark API
+    description: Postmark helps deliver and track transactional emails for web applications.
+      In a nutshell, the service replaces SMTP (or Sendmail) with a far more reliable,
+      scalable and care-free environment.
+    version: ~
+  host: api.postmarkapp.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    bounce/{bounceid}:
+      get:
+        summary: Get a single bounce
+        description: Get a single bounce
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    bounces/:
+      get:
+        summary: Get bounces
+        description: Get bounces
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: query
+          name: count
+          description: Requiredn                    Number of bounces to skip
+          type: string
+        - in: query
+          name: emailFilter
+          description: Requiredn                    Number of bounces to skip
+          type: string
+        - in: query
+          name: inactive
+          description: Requiredn                    Number of bounces to skip
+          type: string
+        - in: query
+          name: messageID
+          description: Requiredn                    Number of bounces to skip
+          type: string
+        - in: query
+          name: offset
+          description: Requiredn                    Number of bounces to skip
+          type: string
+        - in: query
+          name: tag
+          description: Requiredn                    Number of bounces to skip
+          type: string
+        - in: query
+          name: type
+          description: Requiredn                    Number of bounces to skip
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    bounces/{bounceid}/activate:
+      get:
+        summary: Activate a bounce
+        description: Activate a bounce
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: header
+          name: Content-Type
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    bounces/{bounceid}/dump:
+      get:
+        summary: Get bounce dump
+        description: Get bounce dump
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    deliverystats/:
+      get:
+        summary: Get delivery stats
+        description: Get delivery stats
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    email/:
+      post:
+        summary: Send Email
+        description: Send a single email
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: body
+          name: Attachments
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: Bcc
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: Cc
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: header
+          name: Content-Type
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: body
+          name: From
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: Headers
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: HtmlBody
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: ReplyTo
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: Subject
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: Tag
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: TextBody
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: To
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: TrackOpens
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    email/batch/:
+      post:
+        summary: Send batch emails
+        description: Send batch emails
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: body
+          name: Attachments
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: Bcc
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: Cc
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: header
+          name: Content-Type
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: body
+          name: From
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: Headers
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: HtmlBody
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: ReplyTo
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: Subject
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: Tag
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: TextBody
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: To
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: body
+          name: TrackOpens
+          description: List of attachments
+          schema:
+            $ref: '#/definitions/holder'
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messages/inbound/:
+      get:
+        summary: Inbound message search
+        description: Inbound message search
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: query
+          name: count
+          description: Filter by status (blocked or processed)
+          type: string
+        - in: query
+          name: fromemail
+          description: Filter by status (blocked or processed)
+          type: string
+        - in: query
+          name: mailboxhash
+          description: Filter by status (blocked or processed)
+          type: string
+        - in: query
+          name: offset
+          description: Filter by status (blocked or processed)
+          type: string
+        - in: query
+          name: recipient
+          description: Filter by status (blocked or processed)
+          type: string
+        - in: query
+          name: status
+          description: Filter by status (blocked or processed)
+          type: string
+        - in: query
+          name: subject
+          description: Filter by status (blocked or processed)
+          type: string
+        - in: query
+          name: tag
+          description: Filter by status (blocked or processed)
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messages/inbound/{messageid}/bypass:
+      get:
+        summary: Bypass rules for a blocked inbound message
+        description: Bypass rules for a blocked inbound message
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level priveledges. This
+            token can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level priveledges. This
+            token can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messages/inbound/{messageid}/details:
+      get:
+        summary: Inbound message details
+        description: Inbound message details
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: path
+          name: messageid
+          description: The message ID.
+          type: string
+          format: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messages/outbound/:
+      get:
+        summary: Outbound message search
+        description: Outbound message search
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: query
+          name: count
+          description: Filter by email subject
+          type: string
+        - in: query
+          name: fromemail
+          description: Filter by email subject
+          type: string
+        - in: query
+          name: offset
+          description: Filter by email subject
+          type: string
+        - in: query
+          name: recipient
+          description: Filter by email subject
+          type: string
+        - in: query
+          name: subject
+          description: Filter by email subject
+          type: string
+        - in: query
+          name: tag
+          description: Filter by email subject
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messages/outbound/opens:
+      get:
+        summary: Message opens
+        description: Message opens
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: query
+          name: city
+          description: Filter by full name of city messages were opened in, i.e. Minneapolis,
+            Philadelphia
+          type: string
+        - in: query
+          name: client_company
+          description: Filter by full name of city messages were opened in, i.e. Minneapolis,
+            Philadelphia
+          type: string
+        - in: query
+          name: client_family
+          description: Filter by full name of city messages were opened in, i.e. Minneapolis,
+            Philadelphia
+          type: string
+        - in: query
+          name: client_name
+          description: Filter by full name of city messages were opened in, i.e. Minneapolis,
+            Philadelphia
+          type: string
+        - in: query
+          name: count
+          description: Filter by full name of city messages were opened in, i.e. Minneapolis,
+            Philadelphia
+          type: string
+        - in: query
+          name: country
+          description: Filter by full name of city messages were opened in, i.e. Minneapolis,
+            Philadelphia
+          type: string
+        - in: query
+          name: offset
+          description: Filter by full name of city messages were opened in, i.e. Minneapolis,
+            Philadelphia
+          type: string
+        - in: query
+          name: os_company
+          description: Filter by full name of city messages were opened in, i.e. Minneapolis,
+            Philadelphia
+          type: string
+        - in: query
+          name: os_family
+          description: Filter by full name of city messages were opened in, i.e. Minneapolis,
+            Philadelphia
+          type: string
+        - in: query
+          name: os_name
+          description: Filter by full name of city messages were opened in, i.e. Minneapolis,
+            Philadelphia
+          type: string
+        - in: query
+          name: platform
+          description: Filter by full name of city messages were opened in, i.e. Minneapolis,
+            Philadelphia
+          type: string
+        - in: query
+          name: recipient
+          description: Filter by full name of city messages were opened in, i.e. Minneapolis,
+            Philadelphia
+          type: string
+        - in: query
+          name: region
+          description: Filter by full name of city messages were opened in, i.e. Minneapolis,
+            Philadelphia
+          type: string
+        - in: query
+          name: tag
+          description: Filter by full name of city messages were opened in, i.e. Minneapolis,
+            Philadelphia
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messages/outbound/opens/{messageid}/:
+      get:
+        summary: Opens for a single message
+        description: Opens for a single message
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: query
+          name: count
+          description: Requiredn                    Number of messages to skip
+          type: string
+        - in: path
+          name: messageid
+          description: The message ID.
+          type: string
+          format: string
+        - in: query
+          name: offset
+          description: Requiredn                    Number of messages to skip
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messages/outbound/{messageid}/details:
+      get:
+        summary: Outbound message details
+        description: Outbound message details
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: path
+          name: messageid
+          description: The message ID.
+          type: string
+          format: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    messages/outbound/{messageid}/dump:
+      get:
+        summary: Outbound message dump
+        description: Outbound message dump
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    stats/outbound/:
+      get:
+        summary: Get outbound overview
+        description: Get outbound overview
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: query
+          name: fromdate
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: query
+          name: tag
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: query
+          name: todate
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    stats/outbound/bounces/:
+      get:
+        summary: Get bounce counts
+        description: Get bounce counts
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: query
+          name: fromdate
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: query
+          name: tag
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: query
+          name: todate
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    stats/outbound/opens/:
+      get:
+        summary: Get email open counts
+        description: Get email open counts
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: query
+          name: fromdate
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: query
+          name: tag
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: query
+          name: todate
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    stats/outbound/opens/emailclients/:
+      get:
+        summary: Get email client usage
+        description: Get email client usage
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: query
+          name: fromdate
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: query
+          name: tag
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: query
+          name: todate
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    stats/outbound/opens/platforms/:
+      get:
+        summary: Get email platform usage
+        description: Get email platform usage
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: query
+          name: fromdate
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: query
+          name: tag
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: query
+          name: todate
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    stats/outbound/opens/readtimes/:
+      get:
+        summary: Get email read times
+        description: Get email read times
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: query
+          name: fromdate
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: query
+          name: tag
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: query
+          name: todate
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    stats/outbound/sends/:
+      get:
+        summary: Get sent counts
+        description: Get sent counts
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: query
+          name: fromdate
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: query
+          name: tag
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: query
+          name: todate
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    stats/outbound/spam/:
+      get:
+        summary: Get spam complaints
+        description: Get spam complaints
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: query
+          name: fromdate
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: query
+          name: tag
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: query
+          name: todate
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+    stats/outbound/tracked/:
+      get:
+        summary: Get tracked email counts
+        description: Get tracked email counts
+        operationId: ""
+        parameters:
+        - in: header
+          name: Accept
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        - in: query
+          name: fromdate
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: query
+          name: tag
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: query
+          name: todate
+          description: Filter stats up to the date specified. e.g. 2014-02-01
+          type: string
+        - in: header
+          name: X-Postmark-Server-Token
+          description: requiredThis request requires server level privileges. This token
+            can be found on the Credentials tab under your Postmark server.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Messaging
+        - ' Email'
+        security: []
+  definitions: []

@@ -1,0 +1,103 @@
+- swagger: "2.0"
+  info:
+    title: Eventbrite Venue API
+    description: The API for managing Eventbrite venues.
+    version: v3
+  host: www.eventbriteapi.com
+  basePath: /v3
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /venues/:
+      'post ':
+        summary: Creates a new venue and returns it as an object.
+        description: Creates a new venue and returns it as an object.
+        operationId: creates-a-new-venue-and-returns-it-as-an-object
+        parameters:
+        - in: query
+          name: venue.address.address_1
+          description: The first line of the address
+        - in: query
+          name: venue.address.address_2
+          description: The second line of the address
+        - in: query
+          name: venue.address.city
+          description: The city where the venue is
+        - in: query
+          name: venue.address.country
+          description: The country where the venue is
+        - in: query
+          name: venue.address.latitude
+          description: The latitude of the coordinates for the venue
+        - in: query
+          name: venue.address.longitude
+          description: The longitude of the coordinates for the venue
+        - in: query
+          name: venue.address.postal_code
+          description: The postal_code where the venue is
+        - in: query
+          name: venue.address.region
+          description: The region where the venue is
+        - in: query
+          name: venue.name
+          description: The name of the venue
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /venues/{id}/:
+      'get ':
+        summary: Returns a venue object.
+        description: Returns a venue object.
+        operationId: returns-a-venue-object
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      'post ':
+        summary: Updates a venue and returns it as an object.
+        description: Updates a venue and returns it as an object.
+        operationId: updates-a-venue-and-returns-it-as-an-object
+        parameters:
+        - in: query
+          name: venue.address.address_1
+          description: The first line of the address
+        - in: query
+          name: venue.address.address_2
+          description: The second line of the address
+        - in: query
+          name: venue.address.city
+          description: The city where the venue is
+        - in: query
+          name: venue.address.country
+          description: The country where the venue is
+        - in: query
+          name: venue.address.latitude
+          description: The latitude of the coordinates for the venue
+        - in: query
+          name: venue.address.longitude
+          description: The longitude of the coordinates for the venue
+        - in: query
+          name: venue.address.postal_code
+          description: The postal_code where the venue is
+        - in: query
+          name: venue.address.region
+          description: The region where the venue is
+        - in: query
+          name: venue.name
+          description: The name of the venue
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

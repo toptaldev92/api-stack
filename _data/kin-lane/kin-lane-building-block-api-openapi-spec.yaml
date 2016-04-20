@@ -1,0 +1,849 @@
+- swagger: "2.0"
+  info:
+    title: Building Block API
+    description: When I started API Evangelist, I began tracking on the elements that
+      other leading API providers use to operate their API programs, and eventually
+      I started calling these building blocks. I keep a running list of building blocks,
+      broken down into groups. I think use these to keep track of which building blocks
+      companies are using. This is the API I use to manage these elements of everyday
+      API operation.
+    contact:
+      name: Kin Lane
+      url: http://kinlane.com
+      email: info@kinlane.com
+    version: v1
+  host: buildingblock.api.kinlane.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /buildingblocks/:
+      get:
+        summary: Get All Building Blocks
+        description: all building blocks
+        operationId: getBuildingBlocks
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: query
+          name: count
+          description: how many to show on page
+        - in: query
+          name: page
+          description: which page of results to show
+        - in: query
+          name: query
+          description: a text query to search across building block
+        - in: query
+          name: sort
+          description: which field to sort by
+        responses:
+          200:
+            description: OK
+        tags:
+        - Building Block
+        security: []
+      post:
+        summary: Add Building Block
+        description: add a building block post
+        operationId: addBuildingBlock
+        parameters:
+        - in: query
+          name: about
+          description: details about the building block
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: query
+          name: building_block_category_id
+          description: the category for the building block
+        - in: query
+          name: name
+          description: name of the building block
+        - in: query
+          name: sort_order
+          description: sort_order for the building block
+        responses:
+          200:
+            description: OK
+        tags:
+        - Building Block
+        security: []
+    /buildingblocks/bycategory/{category}:
+      get:
+        summary: Get Building Blocks by Category
+        description: building blocks by category
+        operationId: getBuildingBlocksByCategory
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: category
+          description: the building block category to filter by
+        responses:
+          200:
+            description: OK
+        tags:
+        - Building Block
+        security: []
+    /buildingblocks/bytype/{type}:
+      get:
+        summary: Get Building Blocks by Type
+        description: building blocks by type
+        operationId: getBuildingBlocksByType
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: type
+          description: the building block type to filter by
+        responses:
+          200:
+            description: OK
+        tags:
+        - Building Block
+        security: []
+    /buildingblocks/categories/:
+      get:
+        summary: Get Categories for Building Block
+        description: retrieve building block categories
+        operationId: getBuildingBlockCategories
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        responses:
+          200:
+            description: OK
+        tags:
+        - Building Block
+        security: []
+      post:
+        summary: Add Category for Building Block
+        description: add building block category
+        operationId: addBuildingBlockCategory
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the building block
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: formData
+          name: name
+          description: a name for the url
+        - in: formData
+          name: type
+          description: type of url
+        - in: formData
+          name: url
+          description: the url
+        responses:
+          200:
+            description: OK
+        tags:
+        - Building Block
+        security: []
+    /buildingblocks/categories/{category_id}:
+      delete:
+        summary: Delete Category for Building Block
+        description: delete a building block category
+        operationId: deleteBuildingBlockCategory
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: category_id
+          description: id for the building block
+        responses:
+          200:
+            description: OK
+        tags:
+        - Building Block
+        security: []
+    /buildingblocks/{building_block_id}/:
+      delete:
+        summary: Delete Building Block
+        description: delete building block
+        operationId: deleteBuildingBlock
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: the unique id for buildingblock entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Building Block
+        security: []
+      get:
+        summary: Get Building Block
+        description: Returns the building block detail
+        operationId: getBuildingBlock
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: the unique id for buildingblock entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Building Block
+        security: []
+      put:
+        summary: Update Building Block
+        description: update building block
+        operationId: updateBuildingBlock
+        parameters:
+        - in: query
+          name: about
+          description: details about the building block
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: query
+          name: building_block_category_id
+          description: the category for the building block
+        - in: path
+          name: building_block_id
+          description: the unique id for buildingblock entry
+        - in: query
+          name: name
+          description: name of the building block
+        - in: query
+          name: sort_order
+          description: sort_order for the building block
+        responses:
+          200:
+            description: OK
+        tags:
+        - Building Block
+        security: []
+    /buildingblocks/{building_block_id}/images/:
+      get:
+        summary: Get Images for Building Block
+        description: get building block images
+        operationId: getBuildingBlockImages
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: id for building block
+        responses:
+          200:
+            description: OK
+        tags:
+        - Images
+        security: []
+      post:
+        summary: Add Image for Building Block
+        description: add building block image
+        operationId: addBuildingBlockImage
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the building block
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: id for the building block
+        - in: formData
+          name: name
+          description: image name
+        - in: formData
+          name: path
+          description: image path
+        - in: formData
+          name: type
+          description: image type
+        responses:
+          200:
+            description: OK
+        tags:
+        - Images
+        security: []
+    /buildingblocks/{building_block_id}/images/{image_id}:
+      delete:
+        summary: Delete Image for Building Block
+        description: delete a building block image
+        operationId: deleteBuildingBlockImage
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: id for the building block
+        - in: path
+          name: image_id
+          description: id for the image to remove from building block
+        responses:
+          200:
+            description: OK
+        tags:
+        - Images
+        security: []
+    /buildingblocks/{building_block_id}/logs/:
+      get:
+        summary: Get Logs for Building Block
+        description: get building block logs
+        operationId: getBuildingBlockLogs
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: id for building block
+        responses:
+          200:
+            description: OK
+        tags:
+        - Logs
+        security: []
+      post:
+        summary: Add Log for Building Block
+        description: add building block log
+        operationId: addBuildingBlockLog
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the building block
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: id for the building block
+        - in: formData
+          name: details
+          description: log details
+        - in: formData
+          name: type
+          description: type of log entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Logs
+        security: []
+    /buildingblocks/{building_block_id}/logs/{log_id}:
+      delete:
+        summary: Delete Log for Building Block
+        description: delete a building block log
+        operationId: deleteBuildingBlockLog
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: id for the building block
+        - in: path
+          name: log_id
+          description: id for the log
+        responses:
+          200:
+            description: OK
+        tags:
+        - Logs
+        security: []
+    /buildingblocks/{building_block_id}/organization/:
+      get:
+        summary: Get Organizations for Building Block
+        description: retrieve building block companies
+        operationId: getBuildingBlockOrganizations
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: id for building block
+        responses:
+          200:
+            description: OK
+        tags:
+        - Organizations
+        security: []
+      post:
+        summary: Add Organization for Building Block
+        description: add organization to building block
+        operationId: addBuildingBlockOrganization
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the building block
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: id for the building block
+        - in: formData
+          name: organization_id
+          description: the unique organization id
+        - in: formData
+          name: url
+          description: url for the tool
+        responses:
+          200:
+            description: OK
+        tags:
+        - Organizations
+        security: []
+    /buildingblocks/{building_block_id}/organization/{organization_id}:
+      delete:
+        summary: Delete Organization for Building Block
+        description: delete a building block organization
+        operationId: getBuildingBlockOrganization
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: id for the building block
+        - in: path
+          name: organization_id
+          description: organization to remove from building block
+        responses:
+          200:
+            description: OK
+        tags:
+        - Organizations
+        security: []
+    /buildingblocks/{building_block_id}/tags/:
+      get:
+        summary: Get Tags for Building Block
+        description: building block tags
+        operationId: getbuildingblockTags
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: id for building block
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+      post:
+        summary: Add Tag for Building Block
+        description: add tag to building block
+        operationId: addBuildingBlockTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: id for the building block
+        - in: query
+          name: tag
+          description: tag name
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /buildingblocks/{building_block_id}/tags/{tag}:
+      delete:
+        summary: Delete Tag for Building Block
+        description: delete buildingblock tag
+        operationId: deletebuildingblockTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: id for the building block
+        - in: path
+          name: tag
+          description: tag to remove from building block
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /buildingblocks/{building_block_id}/tools/:
+      get:
+        summary: Get Tools for Building Block
+        description: retrieve building block tools
+        operationId: getBuildingBlockTools
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: id for building block
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tools
+        security: []
+      post:
+        summary: Add Tool for Building Block
+        description: add tool to building block
+        operationId: addBuildingBlockTool
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the building block
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: id for the building block
+        - in: formData
+          name: tool_id
+          description: the unique tool id
+        - in: formData
+          name: url
+          description: url for the tool
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tools
+        security: []
+    /buildingblocks/{building_block_id}/tools/{tool_id}:
+      delete:
+        summary: Delete Tool for Building Block
+        description: delete a building block tool
+        operationId: getBuildingBlockTool
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: id for the building block
+        - in: path
+          name: tool_id
+          description: tool to remove from building block
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tools
+        security: []
+    /buildingblocks/{building_block_id}/urls/:
+      get:
+        summary: Get URLs for Building Block
+        description: retrieve building block url
+        operationId: getbuildingblockURLs
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: id for building block
+        responses:
+          200:
+            description: OK
+        tags:
+        - URLs
+        security: []
+      post:
+        summary: Add URL for Building Block
+        description: add buildingblock URL
+        operationId: addBuildingBlockURL
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the building block
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: id for the building block
+        - in: formData
+          name: name
+          description: a name for the url
+        - in: formData
+          name: type
+          description: type of url
+        - in: formData
+          name: url
+          description: the url
+        responses:
+          200:
+            description: OK
+        tags:
+        - URLs
+        security: []
+    /buildingblocks/{building_block_id}/urls/{url_id}:
+      delete:
+        summary: Delete URL for Building Block
+        description: delete a building block url
+        operationId: deleteBuildingBlockURL
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the building block
+        - in: query
+          name: appkey
+          description: your appkey for accessing the building block
+        - in: path
+          name: building_block_id
+          description: id for the building block
+        - in: path
+          name: url_id
+          description: id for the url
+        responses:
+          200:
+            description: OK
+        tags:
+        - URLs
+        security: []
+  definitions:
+    buildingblock:
+      properties:
+        building_block_id:
+          description: This is a default description.
+          type: delete
+        building_block_category_id:
+          description: This is a default description.
+          type: delete
+        name:
+          description: This is a default description.
+          type: delete
+        about:
+          description: This is a default description.
+          type: delete
+        sort_order:
+          description: This is a default description.
+          type: delete
+    log:
+      properties:
+        api_id:
+          description: This is a default description.
+          type: delete
+        type:
+          description: This is a default description.
+          type: delete
+        note:
+          description: This is a default description.
+          type: delete
+        details:
+          description: This is a default description.
+          type: delete
+        log_date:
+          description: This is a default description.
+          type: delete
+    tool:
+      properties:
+        tool_id:
+          description: This is a default description.
+          type: delete
+        name:
+          description: This is a default description.
+          type: delete
+        details:
+          description: This is a default description.
+          type: delete
+        post_date:
+          description: This is a default description.
+          type: delete
+        url:
+          description: This is a default description.
+          type: delete
+    url:
+      properties:
+        note_id:
+          description: This is a default description.
+          type: delete
+        type:
+          description: This is a default description.
+          type: delete
+        url:
+          description: This is a default description.
+          type: delete
+        name:
+          description: This is a default description.
+          type: delete
+    image:
+      properties:
+        api_id:
+          description: This is a default description.
+          type: delete
+        image_id:
+          description: This is a default description.
+          type: delete
+        name:
+          description: This is a default description.
+          type: delete
+        path:
+          description: This is a default description.
+          type: delete
+        type:
+          description: This is a default description.
+          type: delete
+    organization:
+      properties:
+        organization_id:
+          description: This is a default description.
+          type: delete
+        name:
+          description: This is a default description.
+          type: delete
+        details:
+          description: This is a default description.
+          type: delete
+        summary:
+          description: This is a default description.
+          type: delete
+        post_date:
+          description: This is a default description.
+          type: delete
+        url:
+          description: This is a default description.
+          type: delete
+        phone:
+          description: This is a default description.
+          type: delete
+        email:
+          description: This is a default description.
+          type: delete
+        address:
+          description: This is a default description.
+          type: delete
+        city:
+          description: This is a default description.
+          type: delete
+        state:
+          description: This is a default description.
+          type: delete
+        postal_code:
+          description: This is a default description.
+          type: delete
+        country:
+          description: This is a default description.
+          type: delete
+        rank:
+          description: This is a default description.
+          type: delete
+        location:
+          description: This is a default description.
+          type: delete
+        photo:
+          description: This is a default description.
+          type: delete
+    tag:
+      properties:
+        tag_id:
+          description: This is a default description.
+          type: delete
+        tag:
+          description: This is a default description.
+          type: delete
+        api_count:
+          description: This is a default description.
+          type: delete
+    category:
+      properties:
+        category_id:
+          description: This is a default description.
+          type: delete
+        name:
+          description: This is a default description.
+          type: delete
+        sort_order:
+          description: This is a default description.
+          type: delete
+        type:
+          description: This is a default description.
+          type: delete

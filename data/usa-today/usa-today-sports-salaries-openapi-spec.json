@@ -1,0 +1,107 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "USA Today Sports Salaries",
+		"description": "The USA TODAY Salaries API allows developers to programmatically access the USA TODAY Sports Salaries database. Extensive information for the MLB, NFL, NBA and NHL is available for multiple seasons, including player, position and team data. All salaries information is available in a custom handler. ",
+		"version": "v1"
+	},
+	"host": "api.usatoday.com",
+	"basePath": "open/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"salaries/": {
+			"get": {
+				"summary": "Salaries",
+				"description": "The USA TODAY Salaries API allows developers to programmatically access the USA TODAY Sports Salaries database. Extensive information for the MLB, NFL, NBA and NHL is available for multiple seasons, including player, position and team data. All salaries information is available in a custom handler. ",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "The API key used for the query",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxsalary",
+					"description": "Use either of these parameters to define a minimum or maximum salary, or use both to establish a salary range.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxseason",
+					"description": "Alternatively, a programmer may use minseason and maxseason to retrieve a range of seasons. To retrieve data from all available seasons, append seasons=all to the API call.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "minsalary",
+					"description": "Use either of these parameters to define a minimum or maximum salary, or use both to establish a salary range.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "minseason",
+					"description": "Alternatively, a programmer may use minseason and maxseason to retrieve a range of seasons. To retrieve data from all available seasons, append seasons=all to the API call.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "players",
+					"description": "Use this parameter to retrieve salary information for a specific player. Player requests should be formatted using dashes in place of spaces. For example, a request to retrieve information for Derek Jeter should be formatted as players=derek-jeter.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "positions",
+					"description": "Use this parameter to retrieve salary information for a specific position. Position requests should be formatted using the",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "seasons",
+					"description": "Alternatively, a programmer may use minseason and maxseason to retrieve a range of seasons. To retrieve data from all available seasons, append seasons=all to the API call.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "teams",
+					"description": "Use this parameter to retrieve salary information for a specific team. Team requests should be formatted as the teams name (not including the hometown) and spaces should be eliminated. For example, a request to retrieve information for the Boston Red Sox should be formatted as teams=redsox.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "top",
+					"description": "Use this parameter to limit your results to the X highest salaries in your query, where X equals the value of top. By default, all available information is returned.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "year",
+					"description": "Use to year to define which salary years you would like returned (by default, returns the current season).",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["salaries"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

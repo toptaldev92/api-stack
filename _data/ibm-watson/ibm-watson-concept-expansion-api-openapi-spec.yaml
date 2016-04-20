@@ -1,0 +1,127 @@
+- swagger: "2.0"
+  info:
+    title: IBM Watson Concept Expansion API
+    description: REST methods for Concept Expansion
+    version: ~
+  host: service.platform.watson.ibm.com
+  basePath: /proxy/glimpse/v1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /conceptexpansion/service/ping:
+      get:
+        summary: Ping the service to verify that that it is available
+        description: ""
+        operationId: ping
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /conceptexpansion/service/result:
+      put:
+        summary: Retrieves the seed list and deletes the results
+        description: Step 3. Retrieve the concept-expanded seed list and delete the
+          results.
+        operationId: result
+        parameters:
+        - in: query
+          name: jobid
+          description: ID returned from the upload path.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /conceptexpansion/service/status:
+      get:
+        summary: Get the status of a job
+        description: Step 2. Query the status of the job created with the POST /upload
+          operation.
+        operationId: getStatus
+        parameters:
+        - in: query
+          name: jobid
+          description: The jobid returned from the POST /upload operation.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /conceptexpansion/service/upload:
+      post:
+        summary: Uploads the seeds list
+        description: Step 1. Upload the seed list.
+        operationId: upload
+        parameters:
+        - in: query
+          name: dataset
+          description: Dataset to run against.
+          type: string
+          format: string
+        - in: query
+          name: label
+          description: A conceptual classification of the seed terms.
+          type: string
+          format: string
+        - in: body
+          name: seeds
+          description: List of terms to seed the concept expansion.
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /feedback/service/v1/api/conceptexpansion:
+      put:
+        summary: Submit feedback on the Concept Expansion service
+        description: The feedback API allows you to provide information on how well
+          the service performed.  The feedback is used to further improve the service
+          and future results.
+        operationId: profile
+        parameters:
+        - in: Header
+          name: Basic Authorization
+          description: Base64 Basic Auth
+          type: string
+          format: string
+        - in: body
+          name: Feedback information
+          description: JSON Data
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions:
+    Feedback:
+      properties:
+        service_request:
+          description: This is a default description.
+          type: string
+        service_response:
+          description: This is a default description.
+          type: string
+        score:
+          description: This is a default description.
+          type: string
+        text:
+          description: This is a default description.
+          type: string

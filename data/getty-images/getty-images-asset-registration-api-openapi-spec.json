@@ -1,0 +1,67 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Getty Images Asset Registration API",
+		"version": "v3"
+	},
+	"host": "connect.gettyimages.com",
+	"basePath": "/v3/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/v3/asset-registrations": {
+			"post": {
+				"summary": "Registers a list of assets that a customer has stored in their system.",
+				"description": "",
+				"operationId": "AssetRegistration_Register",
+				"parameters": [{
+					"in": "header",
+					"name": "Accept-Language",
+					"description": "Accept-Language parameter optional. Used to restrict the set of natural languages that are preferred as a response to the request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "header",
+					"name": "Api-Key",
+					"description": "Api-Key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "header",
+					"name": "Authorization",
+					"description": "Authorization token required. Used for applying content access restrictions. Use one of the OAuth2 grants to auto-populate this value.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "body",
+					"name": "request",
+					"description": "JSON model containing comma-separated list of asset ids to register with Getty.  Limited to 500 asset ids per call.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"RegisterAssetsRequest": {
+			"properties": {
+				"asset_ids": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

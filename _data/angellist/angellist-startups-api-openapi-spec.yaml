@@ -1,0 +1,277 @@
+- swagger: "2.0"
+  info:
+    title: AngelList Startups API
+    description: Explore and manage the startups on AngelList.
+    termsOfService: https://angel.co/terms
+    contact:
+      name: AngelList
+      url: https://angel.co/api
+      email: api@angel.co
+    version: v1
+  host: api.angel.co
+  basePath: /1/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /startups:
+      get:
+        summary: Get Startups
+        description: Get Startups
+        operationId: startups
+        parameters:
+        - in: query
+          name: filter
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/startup'
+        tags:
+        - Startups
+        security:
+        - AngelListAuth: []
+    /startups/{startup_id}:
+      get:
+        summary: Get Startup
+        description: Get Startup
+        operationId: startups
+        parameters:
+        - in: path
+          name: startup_id
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/startup'
+        tags:
+        - Startups
+        security:
+        - AngelListAuth: []
+    /startups/{startup_id}/comments:
+      get:
+        summary: Get Startup Comments
+        description: Get Startup Comments
+        operationId: startupComments
+        parameters:
+        - in: path
+          name: startup_id
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/startups_comments'
+        tags:
+        - Startups
+        security:
+        - AngelListAuth: []
+    /startups/{startup_id}/followers:
+      get:
+        summary: Get Startup Followers
+        description: Get Startup Followers
+        operationId: startupFollowers
+        parameters:
+        - in: path
+          name: startup_id
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/startup'
+        tags:
+        - Startups
+        security:
+        - AngelListAuth: []
+    /startups/{startup_id}/followers/ids:
+      get:
+        summary: Get Startup Followers IDs
+        description: Get Startup Followers IDs
+        operationId: startupFollowersIDs
+        parameters:
+        - in: path
+          name: startup_id
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/startup'
+        tags:
+        - Startups
+        security:
+        - AngelListAuth: []
+    /startups/{startup_id}/roles:
+      get:
+        summary: Get Startup Roles
+        description: Get Startup Roles
+        operationId: startupRoles
+        parameters:
+        - in: path
+          name: startup_id
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/startup'
+        tags:
+        - Startups
+        security:
+        - AngelListAuth: []
+    /startup_roles:
+      get:
+        summary: Get Startup Roles
+        description: Get Startup Roles
+        operationId: 1Startup_roles
+        parameters:
+        - in: query
+          name: startup_id
+          type: string
+          format: string
+        - in: query
+          name: v
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/startup'
+        tags:
+        - Startups
+        security:
+        - AngelListAuth: []
+  securityDefinitions:
+    AngelListAuth:
+      type: oauth2
+      flow: accessCode
+      authorizationUrl: https://angel.co/api/oauth/authorize
+      tokenUrl: https://angel.co/api/oauth/token
+  definitions:
+    abilities:
+      properties:
+        intro:
+          description: This is a default description.
+          type: string
+    startups_comments:
+      properties:
+        Comments:
+          description: This is a default description.
+          type: string
+    users:
+      properties:
+        angellist_url:
+          description: This is a default description.
+          type: string
+        bio:
+          description: This is a default description.
+          type: string
+        follower_count:
+          description: This is a default description.
+          type: string
+        id:
+          description: This is a default description.
+          type: string
+        image:
+          description: This is a default description.
+          type: string
+        name:
+          description: This is a default description.
+          type: string
+        users:
+          description: This is a default description.
+          type: string
+    ids:
+      properties:
+        ids:
+          description: This is a default description.
+          type: string
+    startup:
+      properties:
+        angellist_url:
+          description: This is a default description.
+          type: string
+        community_profile:
+          description: This is a default description.
+          type: string
+        company_url:
+          description: This is a default description.
+          type: string
+        confirmed:
+          description: This is a default description.
+          type: string
+        created_at:
+          description: This is a default description.
+          type: string
+        ended_at:
+          description: This is a default description.
+          type: string
+        follower_count:
+          description: This is a default description.
+          type: string
+        hidden:
+          description: This is a default description.
+          type: string
+        high_concept:
+          description: This is a default description.
+          type: string
+        id:
+          description: This is a default description.
+          type: string
+        logo_url:
+          description: This is a default description.
+          type: string
+        name:
+          description: This is a default description.
+          type: string
+        product_desc:
+          description: This is a default description.
+          type: string
+        quality:
+          description: This is a default description.
+          type: string
+        role:
+          description: This is a default description.
+          type: string
+        started_at:
+          description: This is a default description.
+          type: string
+        startup:
+          description: This is a default description.
+          type: string
+        thumb_url:
+          description: This is a default description.
+          type: string
+        title:
+          description: This is a default description.
+          type: string
+        updated_at:
+          description: This is a default description.
+          type: string

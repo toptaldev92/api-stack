@@ -1,0 +1,94 @@
+- swagger: "2.0"
+  info:
+    title: The Noun Project Collection API
+    description: Operations on collection endpoints.
+    termsOfService: https://thenounproject.com/legal/#!terms-of-us
+    version: ~
+  host: api.thenounproject.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /collection/{id}:
+      get:
+        summary: Get collection by id
+        description: Returns a single collection
+        operationId: getCollectionById
+        parameters:
+        - in: path
+          name: id
+          description: Collection id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /collection/{id}/icons:
+      get:
+        summary: Get collection icons by id
+        description: Returns a list of icons associated with a collection
+        operationId: getCollectionIconsById
+        parameters:
+        - in: path
+          name: id
+          description: Collection id
+        - in: query
+          name: limit
+          description: Maximum number of results
+        - in: query
+          name: offset
+          description: Number of results to displace or skip over
+        - in: query
+          name: page
+          description: Number of results of limit length to displace or skip over
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /collection/{slug}:
+      get:
+        summary: Get collection by slug
+        description: Returns a single collection
+        operationId: getCollectionBySlug
+        parameters:
+        - in: path
+          name: slug
+          description: Collection slug
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /collection/{slug}/icons:
+      get:
+        summary: Get collection icons by slug
+        description: Returns a list of icons associated with a collection
+        operationId: getCollectionIconsBySlug
+        parameters:
+        - in: query
+          name: limit
+          description: Maximum number of results
+        - in: query
+          name: offset
+          description: Number of results to displace or skip over
+        - in: query
+          name: page
+          description: Number of results of limit length to displace or skip over
+        - in: path
+          name: slug
+          description: Collection slug
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

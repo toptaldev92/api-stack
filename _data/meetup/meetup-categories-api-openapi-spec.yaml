@@ -1,0 +1,32 @@
+- swagger: "2.0"
+  info:
+    title: Meetup Categories API
+    description: The API for managing Meetup categories.
+    termsOfService: http://www.meetup.com/terms/
+    version: ~
+  host: api.meetup.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /2/categories:
+      get:
+        summary: Categories
+        description: Returns a list of Meetup group categories
+        operationId: categories
+        parameters:
+        - in: query
+          name: fields
+          description: Parameter for requesting optional response properties
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

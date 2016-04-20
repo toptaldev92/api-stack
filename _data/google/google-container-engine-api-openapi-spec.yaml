@@ -1,0 +1,399 @@
+- swagger: "2.0"
+  info:
+    title: Google Container Engine API
+    description: The Google Container Engine API is used for building and managing container
+      based applications, powered by the open source Kubernetes technology.
+    contact:
+      name: Google
+      url: https://google.com
+    version: v1beta1
+  host: www.googleapis.com
+  basePath: /container/v1beta1/projects
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /{projectId}/clusters:
+      get:
+        summary: ""
+        description: Lists all clusters owned by a project across all zones.
+        operationId: container.projects.clusters.list
+        parameters:
+        - in: path
+          name: projectId
+          description: The Google Developers Console project ID or  project number.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /{projectId}/operations:
+      get:
+        summary: ""
+        description: Lists all operations in a project, across all zones.
+        operationId: container.projects.operations.list
+        parameters:
+        - in: path
+          name: projectId
+          description: The Google Developers Console project ID or  project number.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /{projectId}/zones/{zoneId}/clusters:
+      get:
+        summary: ""
+        description: Lists all clusters owned by a project in the specified zone.
+        operationId: container.projects.zones.clusters.list
+        parameters:
+        - in: path
+          name: projectId
+          description: The Google Developers Console project ID or  project number.
+          type: string
+          format: string
+        - in: path
+          name: zoneId
+          description: The name of the Google Compute Engine zone in which the cluster
+            resides.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: ""
+        description: Creates a cluster, consisting of the specified number and type
+          of Google Compute Engine instances, plus a Kubernetes master instance.nnThe
+          cluster is created in the projects default network.nnA firewall is added that
+          allows traffic into port 443 on the master, which enables HTTPS. A firewall
+          and a route is added for each node to allow the containers on that node to
+          communicate with all other instances in the cluster.nnFinally, an entry is
+          added to the projects global metadata indicating which CIDR range is being
+          used by the cluster.
+        operationId: container.projects.zones.clusters.create
+        parameters:
+        - in: path
+          name: projectId
+          description: The Google Developers Console project ID or  project number.
+          type: string
+          format: string
+        - in: path
+          name: zoneId
+          description: The name of the Google Compute Engine zone in which the cluster
+            resides.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /{projectId}/zones/{zoneId}/clusters/{clusterId}:
+      delete:
+        summary: ""
+        description: Deletes the cluster, including the Kubernetes master and all worker
+          nodes.nnFirewalls and routes that were configured at cluster creation are
+          also deleted.
+        operationId: container.projects.zones.clusters.delete
+        parameters:
+        - in: path
+          name: clusterId
+          description: The name of the cluster to delete.
+          type: string
+          format: string
+        - in: path
+          name: projectId
+          description: The Google Developers Console project ID or  project number.
+          type: string
+          format: string
+        - in: path
+          name: zoneId
+          description: The name of the Google Compute Engine zone in which the cluster
+            resides.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: ""
+        description: Gets a specific cluster.
+        operationId: container.projects.zones.clusters.get
+        parameters:
+        - in: path
+          name: clusterId
+          description: The name of the cluster to retrieve.
+          type: string
+          format: string
+        - in: path
+          name: projectId
+          description: The Google Developers Console project ID or  project number.
+          type: string
+          format: string
+        - in: path
+          name: zoneId
+          description: The name of the Google Compute Engine zone in which the cluster
+            resides.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /{projectId}/zones/{zoneId}/operations:
+      get:
+        summary: ""
+        description: Lists all operations in a project in a specific zone.
+        operationId: container.projects.zones.operations.list
+        parameters:
+        - in: path
+          name: projectId
+          description: The Google Developers Console project ID or  project number.
+          type: string
+          format: string
+        - in: path
+          name: zoneId
+          description: The name of the Google Compute Engine zone to return operations
+            for.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /{projectId}/zones/{zoneId}/operations/{operationId}:
+      get:
+        summary: ""
+        description: Gets the specified operation.
+        operationId: container.projects.zones.operations.get
+        parameters:
+        - in: path
+          name: operationId
+          description: The server-assigned name of the operation.
+          type: string
+          format: string
+        - in: path
+          name: projectId
+          description: The Google Developers Console project ID or  project number.
+          type: string
+          format: string
+        - in: path
+          name: zoneId
+          description: The name of the Google Compute Engine zone in which the operation
+            resides. This is always the same zone as the cluster with which the operation
+            is associated.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      parameters:
+        summary: ""
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions:
+    Cluster:
+      properties:
+        clusterApiVersion:
+          description: This is a default description.
+          type: parameters
+        containerIpv4Cidr:
+          description: This is a default description.
+          type: parameters
+        creationTimestamp:
+          description: This is a default description.
+          type: parameters
+        description:
+          description: This is a default description.
+          type: parameters
+        enableCloudLogging:
+          description: This is a default description.
+          type: parameters
+        endpoint:
+          description: This is a default description.
+          type: parameters
+        name:
+          description: This is a default description.
+          type: parameters
+        network:
+          description: This is a default description.
+          type: parameters
+        nodeRoutingPrefixSize:
+          description: This is a default description.
+          type: parameters
+        numNodes:
+          description: This is a default description.
+          type: parameters
+        selfLink:
+          description: This is a default description.
+          type: parameters
+        servicesIpv4Cidr:
+          description: This is a default description.
+          type: parameters
+        status:
+          description: This is a default description.
+          type: parameters
+        statusMessage:
+          description: This is a default description.
+          type: parameters
+        zone:
+          description: This is a default description.
+          type: parameters
+    CreateClusterRequest:
+      properties: []
+    ListAggregatedClustersResponse:
+      properties:
+        clusters:
+          description: This is a default description.
+          type: parameters
+    ListAggregatedOperationsResponse:
+      properties:
+        operations:
+          description: This is a default description.
+          type: parameters
+    ListClustersResponse:
+      properties:
+        clusters:
+          description: This is a default description.
+          type: parameters
+    ListOperationsResponse:
+      properties:
+        operations:
+          description: This is a default description.
+          type: parameters
+    MasterAuth:
+      properties:
+        bearerToken:
+          description: This is a default description.
+          type: parameters
+        password:
+          description: This is a default description.
+          type: parameters
+        user:
+          description: This is a default description.
+          type: parameters
+    NodeConfig:
+      properties:
+        machineType:
+          description: This is a default description.
+          type: parameters
+        serviceAccounts:
+          description: This is a default description.
+          type: parameters
+        sourceImage:
+          description: This is a default description.
+          type: parameters
+    Operation:
+      properties:
+        errorMessage:
+          description: This is a default description.
+          type: parameters
+        name:
+          description: This is a default description.
+          type: parameters
+        operationType:
+          description: This is a default description.
+          type: parameters
+        selfLink:
+          description: This is a default description.
+          type: parameters
+        status:
+          description: This is a default description.
+          type: parameters
+        target:
+          description: This is a default description.
+          type: parameters
+        targetLink:
+          description: This is a default description.
+          type: parameters
+        zone:
+          description: This is a default description.
+          type: parameters
+    ServiceAccount:
+      properties:
+        email:
+          description: This is a default description.
+          type: parameters
+        scopes:
+          description: This is a default description.
+          type: parameters

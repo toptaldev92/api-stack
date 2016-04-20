@@ -1,0 +1,387 @@
+- swagger: "2.0"
+  info:
+    title: Project
+    description: This is an project for all my projects. I use a single project system
+      to manage all my sites. Based upon tagging, I then publish each post out to its
+      respective Github Page based repo.
+    termsOfService: http://stack.network/terms-of-service.html
+    version: ~
+  host: project.api.kinlane.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /project/:
+      get:
+        summary: all projects
+        description: all projects
+        operationId: getProjects
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the project
+        - in: query
+          name: appkey
+          description: your appkey for accessing the project
+        - in: query
+          name: count
+          description: how many to show on page
+        - in: query
+          name: page
+          description: which page of results to show
+        - in: query
+          name: query
+          description: a text query to search across project
+        - in: query
+          name: sort
+          description: which field to sort by
+        responses:
+          200:
+            description: OK
+        tags:
+        - Projects
+        security: []
+      post:
+        summary: add a project post
+        description: add a project post
+        operationId: addProject
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the project
+        - in: query
+          name: appkey
+          description: your appkey for accessing the project
+        - in: query
+          name: github_repo
+          description: github repo for the project
+        - in: query
+          name: image
+          description: image for the project
+        - in: query
+          name: image_width
+          description: width of the project image
+        - in: query
+          name: subdomain
+          description: subdomain for the project
+        - in: query
+          name: summary
+          description: summary of the project
+        - in: query
+          name: title
+          description: ttle for the project
+        - in: query
+          name: type
+          description: type of the project
+        responses:
+          200:
+            description: OK
+        tags:
+        - Projects
+        security: []
+    /project/byweek/:
+      get:
+        summary: projects by week
+        description: projects by week
+        operationId: getProjectsByWeek
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the project
+        - in: query
+          name: appkey
+          description: your appkey for accessing the project
+        responses:
+          200:
+            description: OK
+        tags:
+        - Projects
+        security: []
+    /project/draft/:
+      get:
+        summary: draft projects
+        description: draft projects
+        operationId: getDraftProjects
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the project
+        - in: query
+          name: appkey
+          description: your appkey for accessing the project
+        - in: query
+          name: count
+          description: how many to show on page
+        - in: query
+          name: page
+          description: which page of results to show
+        - in: query
+          name: sort
+          description: which field to sort by
+        responses:
+          200:
+            description: OK
+        tags:
+        - Projects
+        security: []
+    /project/published/:
+      get:
+        summary: published projects
+        description: published projects
+        operationId: getPublishedProjects
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the project
+        - in: query
+          name: appkey
+          description: your appkey for accessing the project
+        - in: query
+          name: count
+          description: how many to show on page
+        - in: query
+          name: page
+          description: which page of results to show
+        - in: query
+          name: sort
+          description: which field to sort by
+        responses:
+          200:
+            description: OK
+        tags:
+        - Projects
+        security: []
+    /project/tags/byweek/:
+      get:
+        summary: project tags by week
+        description: project tags by week
+        operationId: getProjectTagsByWeek
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the project
+        - in: query
+          name: appkey
+          description: your appkey for accessing the project
+        - in: query
+          name: week
+          description: the week to retrieve tags by
+        - in: query
+          name: year
+          description: the year to retrieve tags by
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /project/tags/byweek/{tag}/project/:
+      get:
+        summary: project tags by week projects
+        description: project tags by week projects
+        operationId: getProjectTagCProject
+        parameters:
+        - in: path
+          name: tag
+          description: the tag to filter by
+        - in: query
+          name: week
+          description: the week to filter by, defaults to this week
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /project/{project_id}/:
+      delete:
+        summary: delete project
+        description: delete project
+        operationId: deleteProject
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the project
+        - in: query
+          name: appkey
+          description: your appkey for accessing the project
+        - in: path
+          name: project_id
+          description: the unique id for project entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Projects
+        security: []
+      get:
+        summary: Retrieve a project using its slug
+        description: Returns the project detail
+        operationId: getProject
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the project
+        - in: query
+          name: appkey
+          description: your appkey for accessing the project
+        - in: path
+          name: project_id
+          description: the unique id for project entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Projects
+        security: []
+      put:
+        summary: update project
+        description: update project
+        operationId: updateProject
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the project
+        - in: query
+          name: appkey
+          description: your appkey for accessing the project
+        - in: query
+          name: github_repo
+          description: github repo for the project
+        - in: query
+          name: image
+          description: image for the project
+        - in: query
+          name: image_width
+          description: width of the project image
+        - in: path
+          name: project_id
+          description: the unique id for project entry
+        - in: query
+          name: subdomain
+          description: subdomain for the project
+        - in: query
+          name: summary
+          description: summary of the project
+        - in: query
+          name: title
+          description: ttle for the project
+        - in: query
+          name: type
+          description: type of the project
+        responses:
+          200:
+            description: OK
+        tags:
+        - Projects
+        security: []
+    /project/{project_id}/tags/:
+      get:
+        summary: project tags
+        description: project tags
+        operationId: getprojectTags
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the project
+        - in: query
+          name: appkey
+          description: your appkey for accessing the project
+        - in: path
+          name: project_id
+          description: id for project
+        responses:
+          200:
+            description: OK
+        tags:
+        - Projects
+        security: []
+      post:
+        summary: add tag to project
+        description: add tag to project
+        operationId: addProjectTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the project
+        - in: query
+          name: appkey
+          description: your appkey for accessing the project
+        - in: path
+          name: project_id
+          description: id for the project
+        - in: query
+          name: tag
+          description: tag name
+        responses:
+          200:
+            description: OK
+        tags:
+        - Projects
+        security: []
+    /project/{project_id}/tags/{tag}:
+      delete:
+        summary: delete project tag
+        description: delete project tag
+        operationId: deleteprojectTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the project
+        - in: query
+          name: appkey
+          description: your appkey for accessing the project
+        - in: path
+          name: project_id
+          description: id for the project
+        - in: path
+          name: tag
+          description: tag to remove from project
+        responses:
+          200:
+            description: OK
+        tags:
+        - Projects
+        security: []
+  definitions:
+    project:
+      properties:
+        project_id:
+          description: This is a default description.
+          type: get
+        title:
+          description: This is a default description.
+          type: get
+        summary:
+          description: This is a default description.
+          type: get
+        github_repo:
+          description: This is a default description.
+          type: get
+        subdomain:
+          description: This is a default description.
+          type: get
+        type:
+          description: This is a default description.
+          type: get
+        image:
+          description: This is a default description.
+          type: get
+        image_width:
+          description: This is a default description.
+          type: get
+    tag:
+      properties:
+        tag_id:
+          description: This is a default description.
+          type: get
+        tag:
+          description: This is a default description.
+          type: get
+        api_count:
+          description: This is a default description.
+          type: get

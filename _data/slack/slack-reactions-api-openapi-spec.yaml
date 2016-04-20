@@ -1,0 +1,156 @@
+- swagger: "2.0"
+  info:
+    title: Slack Reactions API
+    description: The API for management Slack Reactionss
+    termsOfService: https://slack.com/terms-of-service/api
+    version: ~
+  host: slack.com
+  basePath: /api
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /methods/reactions.add:
+      get:
+        summary: Adds a reaction to an item.
+        description: <td width=70%>Adds a reaction to an item.</td>
+        operationId: reactionsadd
+        parameters:
+        - in: query
+          name: channel
+          description: Channel where the message to add reaction to was posted.
+          type: string
+        - in: query
+          name: file
+          description: File to add reaction to.
+          type: string
+        - in: query
+          name: file_comment
+          description: File comment to add reaction to.
+          type: string
+        - in: query
+          name: name
+          description: Reaction (emoji) name.
+          type: string
+        - in: query
+          name: timestamp
+          description: Timestamp of the message to add reaction to.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: reactions:write)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - reactions
+        security: []
+    /methods/reactions.get:
+      get:
+        summary: Gets reactions for an item.
+        description: <td width=70%>Gets reactions for an item.</td>
+        operationId: reactionsget
+        parameters:
+        - in: query
+          name: channel
+          description: Channel where the message to get reactions for was posted.
+          type: string
+        - in: query
+          name: file
+          description: File to get reactions for.
+          type: string
+        - in: query
+          name: file_comment
+          description: File comment to get reactions for.
+          type: string
+        - in: query
+          name: full
+          description: If true always return the complete reaction list.
+          type: string
+        - in: query
+          name: timestamp
+          description: Timestamp of the message to get reactions for.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: reactions:read)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - reactions
+        security: []
+    /methods/reactions.list:
+      get:
+        summary: Lists reactions made by a user.
+        description: <td width=70%>Lists reactions made by a user.</td>
+        operationId: reactionslist
+        parameters:
+        - in: query
+          name: count
+          description: Number of items to return per page.
+          type: string
+        - in: query
+          name: full
+          description: If true always return the complete reaction list.
+          type: string
+        - in: query
+          name: page
+          description: Page number of results to return.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: reactions:read)'
+          type: string
+        - in: query
+          name: user
+          description: Show reactions made by this user. Defaults to the authed user.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - reactions
+        security: []
+    /methods/reactions.remove:
+      get:
+        summary: Removes a reaction from an item.
+        description: <td width=70%>Removes a reaction from an item.</td>
+        operationId: reactionsremove
+        parameters:
+        - in: query
+          name: channel
+          description: Channel where the message to remove reaction from was posted.
+          type: string
+        - in: query
+          name: file
+          description: File to remove reaction from.
+          type: string
+        - in: query
+          name: file_comment
+          description: File comment to remove reaction from.
+          type: string
+        - in: query
+          name: name
+          description: Reaction (emoji) name.
+          type: string
+        - in: query
+          name: timestamp
+          description: Timestamp of the message to remove reaction from.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: reactions:write)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - reactions
+        security: []
+  definitions: []

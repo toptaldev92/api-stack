@@ -1,0 +1,46 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "YouTube Thumbnail API",
+		"description": "Programmatic access to YouTube features.",
+		"termsOfService": "https://developers.google.com/youtube/terms",
+		"contact": {
+			"name": "Google"
+		},
+		"version": "v3"
+	},
+	"host": "www.googleapis.com",
+	"basePath": "/youtube/v3",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/thumbnails/set": {
+			"post": {
+				"summary": "Set Thumbnails",
+				"description": "Uploads a custom video thumbnail to YouTube and sets it for a video.",
+				"operationId": "set-thumbnails",
+				"parameters": [{
+					"in": "query",
+					"name": "onBehalfOfContentOwner",
+					"description": "Note: This parameter is intended exclusively for YouTube content partners.The onBehalfOfContentOwner parameter indicates that the requests authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to pr",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "videoId",
+					"description": "The videoId parameter specifies a YouTube video ID for which the custom video thumbnail is being provided.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["videos"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

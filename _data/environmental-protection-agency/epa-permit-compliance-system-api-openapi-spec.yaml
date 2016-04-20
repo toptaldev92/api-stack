@@ -1,0 +1,1552 @@
+- swagger: "2.0"
+  info:
+    title: EPA Permit Compliance System API
+    description: The Permit Compliance System provides information about facilities
+      that discharge pollutants into the waterway
+    contact:
+      name: EP Envirofacts
+      url: http://www.epa.gov/enviro/index.html
+    version: v1
+  host: iaspub.epa.gov
+  basePath: /enviro/efservice/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /PCS_ADMIN_PENALTY_ORDER/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_ADMIN_PENALTY_ORDER
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_admin_penalty_order'
+        tags:
+        - Permits
+        security: []
+    /PCS_CMPL_SCHD/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_CMPL_SCHD
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_cmpl_schd'
+        tags:
+        - Permits
+        security: []
+    /PCS_CMPL_SCHD_VIOL/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_CMPL_SCHD_VIOL
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_cmpl_schd_viol'
+        tags:
+        - Permits
+        security: []
+    /PCS_CODE_DESC/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_CODE_DESC
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_code_desc'
+        tags:
+        - Permits
+        security: []
+    /PCS_DMR_MEASUREMENT/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_DMR_MEASUREMENT
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_dmr_measurement'
+        tags:
+        - Permits
+        security: []
+    /PCS_EFFL_LIM/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_EFFL_LIM
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_effl_lim'
+        tags:
+        - Permits
+        security: []
+    /PCS_EFFL_LIM_CONCENTR/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_EFFL_LIM_CONCENTR
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_effl_lim_concentr'
+        tags:
+        - Permits
+        security: []
+    /PCS_EFFL_LIM_QTY/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_EFFL_LIM_QTY
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_effl_lim_qty'
+        tags:
+        - Permits
+        security: []
+    /PCS_ENFOR_ACTION/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_ENFOR_ACTION
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_enfor_action'
+        tags:
+        - Permits
+        security: []
+    /PCS_EVIDENTIARY_HEARING_EVENT/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_EVIDENTIARY_HEARING_EVENT
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_evidentiary_hearing_event'
+        tags:
+        - Permits
+        security: []
+    /PCS_INDUSTRIAL_USER_INFO/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_INDUSTRIAL_USER_INFO
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_industrial_user_info'
+        tags:
+        - Permits
+        security: []
+    /PCS_INSPECTION/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_INSPECTION
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_inspection'
+        tags:
+        - Permits
+        security: []
+    /PCS_PCI_AUDIT/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_PCI_AUDIT
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_pci_audit'
+        tags:
+        - Permits
+        security: []
+    /PCS_PERMIT_EVENT/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_PERMIT_EVENT
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_permit_event'
+        tags:
+        - Permits
+        security: []
+    /PCS_PERMIT_FACILITY/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_PERMIT_FACILITY
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_permit_facility'
+        tags:
+        - Permits
+        security: []
+    /PCS_PERMIT_NPID/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_PERMIT_NPID
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_permit_npid'
+        tags:
+        - Permits
+        security: []
+    /PCS_PIPE_SCHED/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_PIPE_SCHED
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_pipe_sched'
+        tags:
+        - Permits
+        security: []
+    /PCS_PIPE_SCHED_LAT_LOG/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_PIPE_SCHED_LAT_LOG
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_pipe_sched_lat_log'
+        tags:
+        - Permits
+        security: []
+    /PCS_PRETREATMENT_PERF_SUMMARY/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_PRETREATMENT_PERF_SUMMARY
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_pretreatment_perf_summary'
+        tags:
+        - Permits
+        security: []
+    /PCS_SINGLE_EVENT_VIOL/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_SINGLE_EVENT_VIOL
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_single_event_viol'
+        tags:
+        - Permits
+        security: []
+    /PCS_SLUDGE/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_PCS_SLUDGE
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/pcs_sludge'
+        tags:
+        - Permits
+        security: []
+  definitions:
+    pcs_permit_facility:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        APPL_RECEIVED_DATE:
+          description: This is a default description.
+          type: string
+        CITY_CODE:
+          description: This is a default description.
+          type: string
+        CITY_NAME:
+          description: This is a default description.
+          type: string
+        CODE_OF_ACCURACY:
+          description: This is a default description.
+          type: string
+        COGN_OFFICIAL:
+          description: This is a default description.
+          type: string
+        COGN_OFFICIAL_TELE_NUMBER:
+          description: This is a default description.
+          type: string
+        COUNTY_CODE:
+          description: This is a default description.
+          type: string
+        COUNTY_NAME:
+          description: This is a default description.
+          type: string
+        CURR_YEAR_AUTO_QNCR_STAT:
+          description: This is a default description.
+          type: string
+        CURR_YEAR_MANL_QNCR_STAT:
+          description: This is a default description.
+          type: string
+        DATUM:
+          description: This is a default description.
+          type: string
+        DESCRIPT:
+          description: This is a default description.
+          type: string
+        DRAFT_PERM_PUB_NOTIF_DATE:
+          description: This is a default description.
+          type: string
+        FEDERAL_GRANT_IND:
+          description: This is a default description.
+          type: string
+        FINAL_LIMITS_IND:
+          description: This is a default description.
+          type: string
+        FLOW_RATE:
+          description: This is a default description.
+          type: string
+        INACTIVE_CODE:
+          description: This is a default description.
+          type: string
+        INACTIVE_DATE:
+          description: This is a default description.
+          type: string
+        INDUSTRY_CLASS:
+          description: This is a default description.
+          type: string
+        LATITUDE:
+          description: This is a default description.
+          type: string
+        LOCATION_CITY:
+          description: This is a default description.
+          type: string
+        LOCATION_NAME:
+          description: This is a default description.
+          type: string
+        LOCATION_STATE:
+          description: This is a default description.
+          type: string
+        LOCATION_STREET_1:
+          description: This is a default description.
+          type: string
+        LOCATION_STREET_2:
+          description: This is a default description.
+          type: string
+        LOCATION_TELEPHONE_NUMBER:
+          description: This is a default description.
+          type: string
+        LOCATION_ZIP_CODE:
+          description: This is a default description.
+          type: string
+        LONGITUDE:
+          description: This is a default description.
+          type: string
+        MAILING_CITY:
+          description: This is a default description.
+          type: string
+        MAILING_NAME:
+          description: This is a default description.
+          type: string
+        MAILING_STATE:
+          description: This is a default description.
+          type: string
+        MAILING_STREET_1:
+          description: This is a default description.
+          type: string
+        MAILING_STREET_2:
+          description: This is a default description.
+          type: string
+        MAILING_ZIP_CODE:
+          description: This is a default description.
+          type: string
+        MAJOR_DISCHARGE_INDICATOR:
+          description: This is a default description.
+          type: string
+        METHOD:
+          description: This is a default description.
+          type: string
+        MILEAGE_IND:
+          description: This is a default description.
+          type: string
+        NAME_1:
+          description: This is a default description.
+          type: string
+        NAME_2:
+          description: This is a default description.
+          type: string
+        NMP_FINAL_SCHED:
+          description: This is a default description.
+          type: string
+        NMP_FINAN_STAT_CODE:
+          description: This is a default description.
+          type: string
+        NMP_QUARTER:
+          description: This is a default description.
+          type: string
+        NPDES:
+          description: This is a default description.
+          type: string
+        ORIGINL_PERMIT_ISSUE_DATE:
+          description: This is a default description.
+          type: string
+        PERMIT_EXPIRED_DATE:
+          description: This is a default description.
+          type: string
+        PERMIT_ISSUED_DATE:
+          description: This is a default description.
+          type: string
+        PRETREATMENT_CODE:
+          description: This is a default description.
+          type: string
+        PREV_YEAR_AUTO_QNCR_STAT:
+          description: This is a default description.
+          type: string
+        PREV_YEAR_MANL_QNCR_STAT:
+          description: This is a default description.
+          type: string
+        RECEIVING_WATERS:
+          description: This is a default description.
+          type: string
+        RECVNG_STREAM_CLASS_CODE:
+          description: This is a default description.
+          type: string
+        REGION:
+          description: This is a default description.
+          type: string
+        RIVER_BASIN:
+          description: This is a default description.
+          type: string
+        SCALE:
+          description: This is a default description.
+          type: string
+        SIC_CODE:
+          description: This is a default description.
+          type: string
+        STREAM_SEGMENT:
+          description: This is a default description.
+          type: string
+        TYPE_OF_OWNERSHIP:
+          description: This is a default description.
+          type: string
+        TYPE_OF_PERMIT_ISSUED:
+          description: This is a default description.
+          type: string
+        USGS_HYDRO_BASIN_CODE:
+          description: This is a default description.
+          type: string
+    pcs_code_desc:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        CODE:
+          description: This is a default description.
+          type: string
+        DESCRIPT:
+          description: This is a default description.
+          type: string
+        TABLE_ID:
+          description: This is a default description.
+          type: string
+    pcs_permit_event:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        EVENT_ACTUAL_DATE:
+          description: This is a default description.
+          type: string
+        NPDES:
+          description: This is a default description.
+          type: string
+        TRACKING_EVENT_CODE:
+          description: This is a default description.
+          type: string
+    pcs_pretreatment_perf_summary:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        CIVIL_OR_CRIM_JUDICIAL_ACTS:
+          description: This is a default description.
+          type: string
+        IUS_THAT_PAID_PENALTIES:
+          description: This is a default description.
+          type: string
+        NOVS_AND_AOS_AGAINST_SIUS:
+          description: This is a default description.
+          type: string
+        NPDES:
+          description: This is a default description.
+          type: string
+        REPORT_END_DATE:
+          description: This is a default description.
+          type: string
+        REPORT_START_DATE:
+          description: This is a default description.
+          type: string
+        SIUS_IN_SNC_COMPL_SCHED:
+          description: This is a default description.
+          type: string
+        SIUS_WITH_PUBLISHED_VIOLS:
+          description: This is a default description.
+          type: string
+    pcs_evidentiary_hearing_event:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        EVENT_CODE:
+          description: This is a default description.
+          type: string
+        EVENT_DATE:
+          description: This is a default description.
+          type: string
+        NPDES:
+          description: This is a default description.
+          type: string
+    pcs_inspection:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        INSP_CODE:
+          description: This is a default description.
+          type: string
+        INSP_DATE:
+          description: This is a default description.
+          type: string
+        INSP_TYPE:
+          description: This is a default description.
+          type: string
+        NPDES:
+          description: This is a default description.
+          type: string
+    pcs_pci_audit:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        ADOPT_LOCAL_LIMITS:
+          description: This is a default description.
+          type: string
+        INSP_DATE:
+          description: This is a default description.
+          type: string
+        INSP_TYPE:
+          description: This is a default description.
+          type: string
+        NPDES:
+          description: This is a default description.
+          type: string
+        PERMIT_MOD_FOR_PRETR_DATE:
+          description: This is a default description.
+          type: string
+        SLUDGE_DISPOSAL_METHOD:
+          description: This is a default description.
+          type: string
+        TECH_EVAL_LOCAL_LIMIT:
+          description: This is a default description.
+          type: string
+    pcs_industrial_user_info:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        CATEGORICAL_INDUSTRIAL_USERS:
+          description: This is a default description.
+          type: string
+        INSP_DATE:
+          description: This is a default description.
+          type: string
+        INSP_TYPE:
+          description: This is a default description.
+          type: string
+        NPDES:
+          description: This is a default description.
+          type: string
+        SIGNIFICANT_INDUSTRIAL_USERS:
+          description: This is a default description.
+          type: string
+        SIUS_IN_SNC_WITH_PRETR_STDS:
+          description: This is a default description.
+          type: string
+        SIUS_NOT_INSP_SAMPLED:
+          description: This is a default description.
+          type: string
+        SIUS_SNC_SELF_MONITOR:
+          description: This is a default description.
+          type: string
+        SIUS_SNC_SELF_NOT_INSP:
+          description: This is a default description.
+          type: string
+        SIUS_WITHOUT_CTL_MECHANISM:
+          description: This is a default description.
+          type: string
+    pcs_cmpl_schd:
+      properties:
+        filler:
+          description: until we have model
+          type: string
+    pcs_cmpl_schd_viol:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        CMPL_SCHD_DATA_SRC_CODE:
+          description: This is a default description.
+          type: string
+        CMPL_SCHD_EVT:
+          description: This is a default description.
+          type: string
+        CMPL_SCHD_NUM:
+          description: This is a default description.
+          type: string
+        CMPL_SCHD_VIOL_CODE:
+          description: This is a default description.
+          type: string
+        CMPL_SCHD_VIOL_DATE:
+          description: This is a default description.
+          type: string
+        CS_RNC_DETECT_CODE:
+          description: This is a default description.
+          type: string
+        CS_RNC_DETECT_DATE:
+          description: This is a default description.
+          type: string
+        CS_RNC_RESOL_CODE:
+          description: This is a default description.
+          type: string
+        CS_RNC_RESOL_DATE:
+          description: This is a default description.
+          type: string
+        NPDES:
+          description: This is a default description.
+          type: string
+    pcs_sludge:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        ANNUAL_DRY_SLUDGE_PROD:
+          description: This is a default description.
+          type: string
+        HANDLER_CITY:
+          description: This is a default description.
+          type: string
+        HANDLER_STATE:
+          description: This is a default description.
+          type: string
+        HANDLER_STREET_1:
+          description: This is a default description.
+          type: string
+        HANDLER_STREET_2:
+          description: This is a default description.
+          type: string
+        HANDLER_ZIP_CODE:
+          description: This is a default description.
+          type: string
+        NPDES:
+          description: This is a default description.
+          type: string
+        SLUDGE_CLASS_FACILITY_IND:
+          description: This is a default description.
+          type: string
+        SLUDGE_COMMERCIAL_HANDLER:
+          description: This is a default description.
+          type: string
+        SLUDGE_FACILITY_IND:
+          description: This is a default description.
+          type: string
+        SLUDGE_RELATED_PERMIT_NUM:
+          description: This is a default description.
+          type: string
+    pcs_single_event_viol:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        NPDES:
+          description: This is a default description.
+          type: string
+        QNCR_RNC_DET_CODE:
+          description: This is a default description.
+          type: string
+        QNCR_RNC_DET_DATE:
+          description: This is a default description.
+          type: string
+        QNCR_RNC_RESOL_CODE:
+          description: This is a default description.
+          type: string
+        QNCR_RNC_RESOL_DATE:
+          description: This is a default description.
+          type: string
+        SINGLE_EVENT_VIOL_CODE:
+          description: This is a default description.
+          type: string
+        SINGLE_EVENT_VIOL_DATE:
+          description: This is a default description.
+          type: string
+    pcs_enfor_action:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        EA_CODE:
+          description: This is a default description.
+          type: string
+        EA_DATA_SRC_CODE:
+          description: This is a default description.
+          type: string
+        EA_DATE:
+          description: This is a default description.
+          type: string
+        EA_DOCKET_NUMBER:
+          description: This is a default description.
+          type: string
+        EA_RESP_DUE_DATE:
+          description: This is a default description.
+          type: string
+        EA_STAT_CODE:
+          description: This is a default description.
+          type: string
+        EA_STAT_DATE:
+          description: This is a default description.
+          type: string
+        EA_TYPE:
+          description: This is a default description.
+          type: string
+        NPDES:
+          description: This is a default description.
+          type: string
+    pcs_admin_penalty_order:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        ADMINISTRATIVE_PENALTY_CLASS:
+          description: This is a default description.
+          type: string
+        CLASS_II_APPEAL_FILED:
+          description: This is a default description.
+          type: string
+        ENFOR_ACTION_CODE:
+          description: This is a default description.
+          type: string
+        ENFOR_ACTION_DATE:
+          description: This is a default description.
+          type: string
+        ENFOR_ACTION_TYPE:
+          description: This is a default description.
+          type: string
+        FINAL_ORDER_DATE:
+          description: This is a default description.
+          type: string
+        HEARING_REQUEST:
+          description: This is a default description.
+          type: string
+        JUDICIAL_APPEAL_FILED_DATE:
+          description: This is a default description.
+          type: string
+        NPDES:
+          description: This is a default description.
+          type: string
+        PENALTY_AMOUNT_ASSESSED:
+          description: This is a default description.
+          type: string
+        PENALTY_COLLECTED_DATE:
+          description: This is a default description.
+          type: string
+        PROPOSED_ORDER_ISSUED_DATE:
+          description: This is a default description.
+          type: string
+    pcs_pipe_sched:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        DISCHARGE_NUM:
+          description: This is a default description.
+          type: string
+        EPA_SUBMISSION_UNITS:
+          description: This is a default description.
+          type: string
+        FINAL_LIMITS_END_DATE:
+          description: This is a default description.
+          type: string
+        FINAL_LIMITS_START_DATE:
+          description: This is a default description.
+          type: string
+        INIT_EPA_SUBMISSION_DATE:
+          description: This is a default description.
+          type: string
+        INIT_LIMITS_END_DATE:
+          description: This is a default description.
+          type: string
+        INIT_LIMITS_START_DATE:
+          description: This is a default description.
+          type: string
+        INIT_RPT_DATE:
+          description: This is a default description.
+          type: string
+        INIT_STATE_SUBMISSION_DATE:
+          description: This is a default description.
+          type: string
+        INTERIM_LIMITS_END_DATE:
+          description: This is a default description.
+          type: string
+        INTERIM_LIMITS_START_DATE:
+          description: This is a default description.
+          type: string
+        NPDES:
+          description: This is a default description.
+          type: string
+        OUTFALL_TYPE_CODE:
+          description: This is a default description.
+          type: string
+        PIPE_DESC:
+          description: This is a default description.
+          type: string
+        PIPE_INACTIVE_CODE:
+          description: This is a default description.
+          type: string
+        PIPE_INACTIVE_DATE:
+          description: This is a default description.
+          type: string
+        PIPE_SET_QUALIFIER:
+          description: This is a default description.
+          type: string
+        REPORTING_UNITS:
+          description: This is a default description.
+          type: string
+        REPORT_DESIG:
+          description: This is a default description.
+          type: string
+        STATE_SUBMISSION_UNITS:
+          description: This is a default description.
+          type: string
+        UNITS_IN_EPA_SUBM_PERIOD:
+          description: This is a default description.
+          type: string
+        UNITS_IN_RPT_PERIOD:
+          description: This is a default description.
+          type: string
+        UNITS_IN_STATE_SUBM_PERIOD:
+          description: This is a default description.
+          type: string
+    pcs_effl_lim:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        CHANGE_OF_LIMIT_STAT:
+          description: This is a default description.
+          type: string
+        CONTESTED_PARAM_IND:
+          description: This is a default description.
+          type: string
+        DISCHARGE_NUM:
+          description: This is a default description.
+          type: string
+        DOCKET_NUMBER:
+          description: This is a default description.
+          type: string
+        LIMIT_TYPE:
+          description: This is a default description.
+          type: string
+        MODIF_NUM:
+          description: This is a default description.
+          type: string
+        MODIF_PERIOD_END_DATE:
+          description: This is a default description.
+          type: string
+        MODIF_PERIOD_START_DATE:
+          description: This is a default description.
+          type: string
+        MONITORING_LOC:
+          description: This is a default description.
+          type: string
+        NPDES:
+          description: This is a default description.
+          type: string
+        PARAM_CODE:
+          description: This is a default description.
+          type: string
+        PIPE_SET_QUALIFIER:
+          description: This is a default description.
+          type: string
+        REPORT_DESIG:
+          description: This is a default description.
+          type: string
+        SEASON_NUM:
+          description: This is a default description.
+          type: string
+    pcs_effl_lim_concentr:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        CONC_AVG_LIMIT:
+          description: This is a default description.
+          type: string
+        CONC_AVG_LIM_STAT_BASE:
+          description: This is a default description.
+          type: string
+        CONC_MAX_LIMIT:
+          description: This is a default description.
+          type: string
+        CONC_MAX_LIM_STAT_BASE:
+          description: This is a default description.
+          type: string
+        CONC_MIN_LIMIT:
+          description: This is a default description.
+          type: string
+        CONC_MIN_LIM_STAT_BASE:
+          description: This is a default description.
+          type: string
+        CONC_UNIT_CODE:
+          description: This is a default description.
+          type: string
+        DISCHARGE_NUM:
+          description: This is a default description.
+          type: string
+        LIMIT_TYPE:
+          description: This is a default description.
+          type: string
+        MODIF_NUM:
+          description: This is a default description.
+          type: string
+        MONITORING_LOC:
+          description: This is a default description.
+          type: string
+        NPDES:
+          description: This is a default description.
+          type: string
+        PARAM_CODE:
+          description: This is a default description.
+          type: string
+        PIPE_SET_QUALIFIER:
+          description: This is a default description.
+          type: string
+        REPORT_DESIG:
+          description: This is a default description.
+          type: string
+        SEASON_NUM:
+          description: This is a default description.
+          type: string
+        STAT_LIM_AVG_OVERRIDE:
+          description: This is a default description.
+          type: string
+        STAT_LIM_MIN_OVERRIDE:
+          description: This is a default description.
+          type: string
+    pcs_dmr_measurement:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        CONCENTRATION_UNIT_CODE:
+          description: This is a default description.
+          type: string
+        CONCENTR_AVG:
+          description: This is a default description.
+          type: string
+        CONCENTR_MAX:
+          description: This is a default description.
+          type: string
+        CONCENTR_MIN:
+          description: This is a default description.
+          type: string
+        DISCHARGE_NUM:
+          description: This is a default description.
+          type: string
+        LIMIT_TYPE:
+          description: This is a default description.
+          type: string
+        MEAS_VIOL_CODE:
+          description: This is a default description.
+          type: string
+        MODIF_NUM:
+          description: This is a default description.
+          type: string
+        MONITORING_LOC:
+          description: This is a default description.
+          type: string
+        MONITORING_PERIOD_END_DATE:
+          description: This is a default description.
+          type: string
+        NO_DISCHARGE_IND:
+          description: This is a default description.
+          type: string
+        NPDES:
+          description: This is a default description.
+          type: string
+        PARAM_CODE:
+          description: This is a default description.
+          type: string
+        PIPE_SET_QUALIFIER:
+          description: This is a default description.
+          type: string
+        QNCR_MV_DET_CODE:
+          description: This is a default description.
+          type: string
+        QNCR_MV_DET_DATE:
+          description: This is a default description.
+          type: string
+        QNCR_MV_RESOL_CODE:
+          description: This is a default description.
+          type: string
+        QNCR_MV_RESOL_DATE:
+          description: This is a default description.
+          type: string
+        QTY_AVG:
+          description: This is a default description.
+          type: string
+        QTY_MAX:
+          description: This is a default description.
+          type: string
+        QUANTITY_UNIT_CODE:
+          description: This is a default description.
+          type: string
+        REPORT_DESIG:
+          description: This is a default description.
+          type: string
+        SEASON_NUM:
+          description: This is a default description.
+          type: string
+    pcs_effl_lim_qty:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        DISCHARGE_NUM:
+          description: This is a default description.
+          type: string
+        LIMIT_TYPE:
+          description: This is a default description.
+          type: string
+        MODIF_NUM:
+          description: This is a default description.
+          type: string
+        MONITORING_LOC:
+          description: This is a default description.
+          type: string
+        NPDES:
+          description: This is a default description.
+          type: string
+        PARAM_CODE:
+          description: This is a default description.
+          type: string
+        PIPE_SET_QUALIFIER:
+          description: This is a default description.
+          type: string
+        QTY_AVG_LIMIT:
+          description: This is a default description.
+          type: string
+        QTY_AVG_LIM_STAT_BASE:
+          description: This is a default description.
+          type: string
+        QTY_MAX_LIMIT:
+          description: This is a default description.
+          type: string
+        QTY_MAX_LIM_STAT_BASE:
+          description: This is a default description.
+          type: string
+        QTY_UNIT_CODE:
+          description: This is a default description.
+          type: string
+        REPORT_DESIG:
+          description: This is a default description.
+          type: string
+        SEASON_NUM:
+          description: This is a default description.
+          type: string
+    pcs_permit_npid:
+      properties:
+        filler:
+          description: until we have model
+          type: string
+    pcs_pipe_sched_lat_log:
+      properties:
+        filler:
+          description: until we have model
+          type: string

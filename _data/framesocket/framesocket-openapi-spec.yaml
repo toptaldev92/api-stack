@@ -1,0 +1,332 @@
+- swagger: "2.0"
+  info:
+    title: Framesocket
+    description: framesocket is the best way for developers and content owners to tackle
+      video projects of any size.
+    version: ~
+  host: www.framesocket.com
+  basePath: /api
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /media/activate.php:
+      get:
+        summary: Activate Media
+        description: Activate Media
+        operationId: ""
+        parameters:
+        - in: query
+          name: customid
+          description: Custom ID
+          type: string
+          format: string
+        - in: query
+          name: hash
+          description: Video Hash
+          type: string
+          format: string
+        - in: query
+          name: key
+          description: Your account username.
+          type: string
+          format: string
+        - in: query
+          name: secret
+          description: Your account API secret.
+          type: string
+          format: string
+        - in: query
+          name: sig
+          description: This is an md5 hash of your gatekeeper concatenated with your
+            request action.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Media
+        security: []
+    /media/deactivate.php:
+      get:
+        summary: Deactive Media
+        description: Deactive Media
+        operationId: ""
+        parameters:
+        - in: query
+          name: customid
+          description: Custom ID
+          type: string
+          format: string
+        - in: query
+          name: hash
+          description: Video Hash
+          type: string
+          format: string
+        - in: query
+          name: key
+          description: Your account username.
+          type: string
+          format: string
+        - in: query
+          name: secret
+          description: Your account API secret.
+          type: string
+          format: string
+        - in: query
+          name: sig
+          description: This is an md5 hash of your gatekeeper concatenated with your
+            request action.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Media
+        security: []
+    /media/images.php:
+      get:
+        summary: Query Images
+        description: Query Images
+        operationId: ""
+        parameters:
+        - in: query
+          name: customid
+          description: Custom ID
+          type: string
+          format: string
+        - in: query
+          name: hash
+          description: Video Hash
+          type: string
+          format: string
+        - in: query
+          name: key
+          description: Your account username.
+          type: string
+          format: string
+        - in: query
+          name: secret
+          description: Your account API secret.
+          type: string
+          format: string
+        - in: query
+          name: sig
+          description: This is an md5 hash of your gatekeeper concatenated with your
+            request action.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Media
+        - ' Images'
+        security: []
+    /media/query.php:
+      get:
+        summary: Query Media
+        description: Query Media
+        operationId: ""
+        parameters:
+        - in: query
+          name: andkeywords
+          description: Comma separated list of title words.
+          type: string
+          format: string
+        - in: query
+          name: andtitlewords
+          description: Comma separated list of title words.
+          type: string
+          format: string
+        - in: query
+          name: customid
+          description: Custom ID
+          type: string
+          format: string
+        - in: query
+          name: hash
+          description: Media Hash Code
+          type: string
+          format: string
+        - in: query
+          name: key
+          description: Your account username.
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: Must be a valid integer.
+          type: string
+          format: string
+        - in: query
+          name: orkeywords
+          description: Comma separated list of title words.
+          type: string
+          format: string
+        - in: query
+          name: ortitlewords
+          description: Comma separated list of title words.
+          type: string
+          format: string
+        - in: query
+          name: secret
+          description: Your account API secret.
+          type: string
+          format: string
+        - in: query
+          name: sig
+          description: This is an md5 hash of your gatekeeper concatenated with your
+            request action.
+          type: string
+          format: string
+        - in: query
+          name: sort
+          description: Must be a valid sorting option, either newest or oldest firs
+          type: string
+          format: string
+        - in: query
+          name: status
+          description: Must be a valid status code.
+          type: string
+          format: string
+        - in: query
+          name: type
+          description: Must be a valid type, either image or video.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Media
+        security: []
+    /media/update.php:
+      get:
+        summary: Update Media
+        description: Update Media
+        operationId: ""
+        parameters:
+        - in: query
+          name: customid
+          description: Custom ID
+          type: string
+          format: string
+        - in: query
+          name: description
+          description: Text String - Limit 1000 characters
+          type: string
+          format: string
+        - in: query
+          name: hash
+          description: Video Hash
+          type: string
+          format: string
+        - in: query
+          name: imagehash
+          description: This needs to refer to an image already assigned to this media.
+          type: string
+          format: string
+        - in: query
+          name: key
+          description: Your account username.
+          type: string
+          format: string
+        - in: query
+          name: keywords
+          description: Text String - Comma separated by keyword or phrase
+          type: string
+          format: string
+        - in: query
+          name: secret
+          description: Your account API secret.
+          type: string
+          format: string
+        - in: query
+          name: sig
+          description: This is an md5 hash of your gatekeeper concatenated with your
+            request action.
+          type: string
+          format: string
+        - in: query
+          name: title
+          description: Text String - Limit 100 characters
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Media
+        security: []
+    /media/upload.php:
+      post:
+        summary: Upload Media
+        description: Upload Media
+        operationId: ""
+        parameters:
+        - in: query
+          name: callback
+          type: string
+          format: string
+        - in: query
+          name: customid
+          description: Text String - Max Length 32 Characters
+          type: string
+          format: string
+        - in: query
+          name: description
+          description: Text String - Limit 1000 Characters
+          type: string
+          format: string
+        - in: query
+          name: key
+          description: Your account username.
+          type: string
+          format: string
+        - in: query
+          name: keywords
+          description: Text String - Comma separated by keyword or phrase
+          type: string
+          format: string
+        - in: query
+          name: media
+          description: Must be properly formatted POST data - either an image or a video.
+          type: string
+          format: string
+        - in: query
+          name: secret
+          description: Your account API secret.
+          type: string
+          format: string
+        - in: query
+          name: sig
+          description: This is an md5 hash of your gatekeeper concatenated with your
+            request action.
+          type: string
+          format: string
+        - in: query
+          name: title
+          description: Text String - Limit 100 Characters
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Media
+        security: []
+  definitions:
+    media:
+      properties:
+        hash:
+          description: Video Hash
+          type: string
+        title:
+          description: Title of video
+          type: string

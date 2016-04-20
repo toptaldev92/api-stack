@@ -1,0 +1,135 @@
+- swagger: "2.0"
+  info:
+    title: AngelList Status Updates API
+    description: Manage status updates for users and startups.
+    termsOfService: https://angel.co/terms
+    contact:
+      name: AngelList
+      url: https://angel.co/api
+      email: api@angel.co
+    version: v1
+  host: api.angel.co
+  basePath: /1/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /status_updates:
+      get:
+        summary: Get Status Updates
+        description: Get Status Updates
+        operationId: 1Status_updates
+        parameters:
+        - in: query
+          name: startup_id
+          type: string
+          format: string
+        - in: query
+          name: user_id
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/status_updates'
+        tags:
+        - Status Updates
+        security:
+        - AngelListAuth: []
+      post:
+        summary: Add Status Update
+        description: Add Status Update
+        operationId: statusUpdate
+        parameters:
+        - in: query
+          name: message
+          type: string
+          format: string
+        - in: query
+          name: startup_id
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/status_updates'
+        tags:
+        - Status Updates
+        security:
+        - AngelListAuth: []
+    /status_updates/{status_update_id}:
+      delete:
+        summary: Delete Status Update
+        description: Delete Status Update
+        operationId: statusUpdate
+        parameters:
+        - in: query
+          name: message
+          type: string
+          format: string
+        - in: query
+          name: startup_id
+          type: string
+          format: string
+        - in: path
+          name: status_update_id
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/status_updates'
+          500:
+            description: Error
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/error'
+        tags:
+        - Status Updates
+        security:
+        - AngelListAuth: []
+  securityDefinitions:
+    AngelListAuth:
+      type: oauth2
+      flow: accessCode
+      authorizationUrl: https://angel.co/api/oauth/authorize
+      tokenUrl: https://angel.co/api/oauth/token
+  definitions:
+    status_updates:
+      properties:
+        created_at:
+          description: This is a default description.
+          type: string
+        id:
+          description: This is a default description.
+          type: string
+        message:
+          description: This is a default description.
+          type: string
+        status_updates:
+          description: This is a default description.
+          type: string
+    error:
+      properties:
+        error:
+          description: This is a default description.
+          type: string
+        message:
+          description: This is a default description.
+          type: string
+        type:
+          description: This is a default description.
+          type: string

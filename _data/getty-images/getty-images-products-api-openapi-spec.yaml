@@ -1,0 +1,86 @@
+- swagger: "2.0"
+  info:
+    title: Getty Images Products API
+    version: v3
+  host: connect.gettyimages.com
+  basePath: /v3/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /v3/products:
+      get:
+        summary: <b>*** BETA ***</b> Get Products
+        description: ""
+        operationId: Products_GetProducts
+        parameters:
+        - in: header
+          name: Accept-Language
+          description: Accept-Language parameter optional. Used to restrict the set
+            of natural languages that are preferred as a response to the request.
+          type: string
+          format: string
+        - in: header
+          name: Api-Key
+          description: Api-Key
+          type: string
+          format: string
+        - in: header
+          name: Authorization
+          description: Authorization token required. Used for applying content access
+            restrictions. Use one of the OAuth2 grants to auto-populate this value.
+          type: string
+          format: string
+        - in: query
+          name: product_status
+          description: Filter results based on the product status.  If not set, this
+            filter defaults to Active.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions:
+    GetProductsResult:
+      properties:
+        products:
+          description: This is a default description.
+          type: string
+    product:
+      properties:
+        product_id:
+          description: This is a default description.
+          type: string
+        application_website:
+          description: This is a default description.
+          type: string
+        product_type:
+          description: This is a default description.
+          type: string
+        name:
+          description: This is a default description.
+          type: string
+        download_limit:
+          description: This is a default description.
+          type: string
+        download_limit_duration:
+          description: This is a default description.
+          type: string
+        status:
+          description: This is a default description.
+          type: string
+        expiration_utc_date:
+          description: This is a default description.
+          type: string
+        downloads_remaining:
+          description: This is a default description.
+          type: string
+        download_limit_reset_utc_date:
+          description: This is a default description.
+          type: string

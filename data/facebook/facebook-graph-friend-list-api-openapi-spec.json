@@ -1,0 +1,49 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Facebook Graph (Friend List) API",
+		"description": "API for managing Facebook Friend Lists",
+		"termsOfService": "https://www.facebook.com/policies/",
+		"version": null
+	},
+	"host": "graph.facebook.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/{friendlist-id}": {
+			"get": {
+				"summary": "Get Friend List",
+				"description": "A friend list - an object which refers to a grouping of friends created by someone or generated automatically for someone (such as the &quot;Close Friends&quot; or &quot;Acquaintances&quot; lists)",
+				"operationId": "friendlist",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "The friend list ID",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "list_type",
+					"description": "The type of the friend list",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "The name of the friend list",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["friends"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

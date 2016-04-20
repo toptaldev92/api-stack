@@ -1,0 +1,81 @@
+- swagger: "2.0"
+  info:
+    title: IBM Watson Relationship Extraction API
+    description: REST methods for Relationship Extraction
+    version: ~
+  host: service.platform.watson.ibm.com
+  basePath: /laser/v1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /feedback/service/v1/api/relationshipextract:
+      put:
+        summary: Submit feedback on the Relationship Extraction service
+        description: The feedback API allows you to provide information on how well
+          the service performed.  The feedback is used to further improve the service
+          and future results.
+        operationId: profile
+        parameters:
+        - in: Header
+          name: Basic Authorization
+          description: Base64 Basic Auth
+          type: string
+          format: string
+        - in: body
+          name: Feedback information
+          description: JSON Data
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /laser/service/sire:
+      post:
+        summary: Sends text to the server
+        description: You can extract useful information from text by using the IBM Watson
+          Relationship Extractor service.
+        operationId: postSire
+        parameters:
+        - in: query
+          name: rt
+          description: Return type. The content type to accept.
+          type: string
+          format: string
+        - in: query
+          name: sid
+          description: Language identifier. es refers to Spanish, and en refers to English.
+          type: string
+          format: string
+        - in: query
+          name: txt
+          description: The text that you want to process. Must be encoded as UTF-8.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions:
+    Feedback:
+      properties:
+        service_request:
+          description: This is a default description.
+          type: string
+        service_response:
+          description: This is a default description.
+          type: string
+        score:
+          description: This is a default description.
+          type: string
+        text:
+          description: This is a default description.
+          type: string

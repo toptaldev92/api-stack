@@ -1,0 +1,382 @@
+- swagger: "2.0"
+  info:
+    title: Flickr Push API
+    description: The API for managing Flickr Push
+    termsOfService: https://www.flickr.com/services/api/tos/
+    version: ~
+  host: www.flickr.com
+  basePath: /services/rest/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /?method=flickr.push.getSubscriptions:
+      get:
+        summary: flickr.push.getSubscriptions
+        description: <div class=MethodDescription>Returns a list of the subscriptions
+          for the logged-in user.rn<br><br>rn<i>(this method is experimental and may
+          change)</i></div>
+        operationId: methodflickrpushgetsubscriptions
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        responses:
+          5:
+            description: Service currently available only to pro accounts - PuSH subscriptions
+              are currently restricted to Pro account holders.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.push.getTopics:
+      get:
+        summary: flickr.push.getTopics
+        description: <div class=MethodDescription>All the different flavours of anteater.rn<br><br>rn<i>(this
+          method is experimental and may change)</i></div>
+        operationId: methodflickrpushgettopics
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        responses:
+          5:
+            description: Service currently available only to pro accounts - PuSH subscriptions
+              are currently restricted to Pro account holders.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.push.subscribe:
+      get:
+        summary: flickr.push.subscribe
+        description: <div class=MethodDescription>In ur pandas, tickling ur unicornrn<br><br>rn<i>(this
+          method is experimental and may change)</i></div>
+        operationId: methodflickrpushsubscribe
+        parameters:
+        - in: query
+          name: accuracy
+          description: Defines the minimum accuracy required for photos to be included
+            in a subscription. Only valid if topic is geo Legal values are 1-16, default
+            is 1 (i.e. any accuracy level).World level is 1Country is ~3Region is ~6City
+            is ~11Street is ~16
+          type: string
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: callback
+          description: The url for the subscription endpoint. Limited to 255 bytes,
+            and must be unique for this user, i.e. no two subscriptions for a given
+            user may use the same callback url.
+          type: string
+        - in: query
+          name: lat
+          description: 'A latitude value, in decimal format. Only valid if topic is
+            geo. Defines the latitude for a radial query centered around (lat, lon).The
+            order of precedence for geo subscriptions is : woe ids, place ids, radial
+            i.e. the lat, lon parameters will be ignored if place_ids is present, which
+            will be ignored if woe_ids is present.'
+          type: string
+        - in: query
+          name: lease_seconds
+          description: Number of seconds for which the subscription will be valid. Legal
+            values are 60 to 86400 (1 minute to 1 day). If not present, the subscription
+            will be auto-renewing.
+          type: string
+        - in: query
+          name: lon
+          description: 'A longitude value, in decimal format. Only valid if topic is
+            geo. Defines the longitude for a radial query centered around (lat, lon).The
+            order of precedence for geo subscriptions is : woe ids, place ids, radial
+            i.e. the lat, lon parameters will be ignored if place_ids is present, which
+            will be ignored if woe_ids is present.'
+          type: string
+        - in: query
+          name: nsids
+          description: A comma-separated list of nsids representing Flickr Commons institutions
+            (see flickr.commons.getInstitutions). Only valid if topic is commons. If
+            not present this argument defaults to all Flickr Commons institutions.
+          type: string
+        - in: query
+          name: place_ids
+          description: 'A comma-separated list of Flickr place IDs. Only valid if topic
+            is geo.The order of precedence for geo subscriptions is : woe ids, place
+            ids, radial i.e. the lat, lon parameters will be ignored if place_ids is
+            present, which will be ignored if woe_ids is present.'
+          type: string
+        - in: query
+          name: radius
+          description: 'A radius value, in the units defined by radius_units. Only valid
+            if topic is geo. Defines the radius of a circle for a radial query centered
+            around (lat, lon). Default is 5 km.The order of precedence for geo subscriptions
+            is : woe ids, place ids, radial i.e. the lat, lon parameters will be ignored
+            if place_ids is present, which will be ignored if woe_ids is present.'
+          type: string
+        - in: query
+          name: radius_units
+          description: 'Defines the units for the radius parameter. Only valid if topic
+            is geo. Options are mi and km. Default is km.The order of precedence for
+            geo subscriptions is : woe ids, place ids, radial i.e. the lat, lon parameters
+            will be ignored if place_ids is present, which will be ignored if woe_ids
+            is present.'
+          type: string
+        - in: query
+          name: tags
+          description: A comma-separated list of strings to be used for tag subscriptions.
+            Photos with one or more of the tags listed will be included in the subscription.
+            Only valid if the topic is tags.
+          type: string
+        - in: query
+          name: topic
+          description: The type of subscription. See flickr.push.getTopics.
+          type: string
+        - in: query
+          name: verify
+          description: The verification mode, either sync or async. See the Google PubSubHubbub
+            spec for details.
+          type: string
+        - in: query
+          name: verify_token
+          description: The verification token to be echoed back to the subscriber during
+            the verification callback, as per the Google PubSubHubbub spec. Limited
+            to 200 bytes.
+          type: string
+        - in: query
+          name: woe_ids
+          description: 'A 32-bit integer for a Where on Earth ID. Only valid if topic
+            is geo.The order of precedence for geo subscriptions is : woe ids, place
+            ids, radial i.e. the lat, lon parameters will be ignored if place_ids is
+            present, which will be ignored if woe_ids is present.'
+          type: string
+        responses:
+          5:
+            description: Service currently available only to pro accounts - PuSH subscriptions
+              are currently restricted to Pro account holders.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          1:
+            description: Required parameter missing - One of the required arguments
+              for the method was not provided.
+          2:
+            description: Invalid parameter value - One of the arguments was specified
+              with an illegal value.
+          3:
+            description: Callback URL already in use for a different subscription -
+              A different subscription already exists that uses the same callback URL.
+          4:
+            description: Callback failed or invalid response - The verification callback
+              failed, or failed to return the expected response to confirm the subscription.
+          6:
+            description: Subscription awaiting verification callback response - try
+              again later - A subscription with those details exists already, but it
+              is in a pending (non-verified) state. Please wait a bit for the verification
+              callback to complete before attempting to update the subscription.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.push.unsubscribe:
+      get:
+        summary: flickr.push.unsubscribe
+        description: <div class=MethodDescription>Why would you want to do this?rn<br><br>rn<i>(this
+          method is experimental and may change)</i></div>
+        operationId: methodflickrpushunsubscribe
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: callback
+          description: The url for the subscription endpoint (must be the same url as
+            was used when creating the subscription).
+          type: string
+        - in: query
+          name: topic
+          description: The type of subscription. See flickr.push.getTopics.
+          type: string
+        - in: query
+          name: verify
+          description: The verification mode, either sync or async. See the Google PubSubHubbub
+            spec for details.
+          type: string
+        - in: query
+          name: verify_token
+          description: The verification token to be echoed back to the subscriber during
+            the verification callback, as per the Google PubSubHubbub spec. Limited
+            to 200 bytes.
+          type: string
+        responses:
+          5:
+            description: Service currently available only to pro accounts - PuSH subscriptions
+              are currently restricted to Pro account holders.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          1:
+            description: Required parameter missing - One of the required arguments
+              for the method was not provided.
+          2:
+            description: Invalid parameter value - One of the arguments was specified
+              with an illegal value.
+          3:
+            description: Callback URL already in use for a different subscription -
+              A different subscription already exists that uses the same callback URL.
+          4:
+            description: Callback failed or invalid response - The verification callback
+              failed, or failed to return the expected response to confirm the un-subscription.
+          6:
+            description: Subscription awaiting verification callback response - try
+              again later - A subscription with those details exists already, but it
+              is in a pending (non-verified) state. Please wait a bit for the verification
+              callback to complete before attempting to update the subscription.
+          7:
+            description: Subscription not found - No subscription matching the provided
+              details for this user could be found.
+        tags:
+        - ""
+        security: []
+  definitions: []

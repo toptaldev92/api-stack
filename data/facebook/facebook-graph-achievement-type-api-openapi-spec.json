@@ -1,0 +1,117 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Facebook Graph (Achievement Type) API",
+		"description": "API for managing Facebook Achievement Types",
+		"termsOfService": "https://www.facebook.com/policies/",
+		"version": null
+	},
+	"host": "graph.facebook.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/v2.5/{achievement-type-id}": {
+			"get": {
+				"summary": "Get Games Achievement Type",
+				"description": "A games achievement type created by a Facebook App",
+				"operationId": "achievement-type",
+				"parameters": [{
+					"in": "query",
+					"name": "application",
+					"description": "The app that created the achievement.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "context",
+					"description": "Context of the achievement for the associated app",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "created_time",
+					"description": "Time when the achievement was created",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "data",
+					"description": "An object containing the points this achievement is worth.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "Description of the achievement",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "ID of the achievement type",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "image",
+					"description": "Image for the achievement",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "is_scraped",
+					"description": "Whether the URL containing the achievement metadata has been scraped by Facebook servers.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "Title of achievement",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "The value will be games.achievement",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "updated_time",
+					"description": "Time when the achievement was last updated",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "Unique URL of the achievement",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["achievements"],
+				"security": []
+			}
+		},
+		"/{app-id}/achievements": {
+			"get": {
+				"summary": "Get Games Achievement Types",
+				"description": "A games achievement type created by a Facebook App",
+				"operationId": "achievement-type",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["achievements"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

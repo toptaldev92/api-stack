@@ -1,0 +1,113 @@
+- swagger: "2.0"
+  info:
+    title: API Evangelist Analysis API
+    description: This is an API that provides access to blog posts across the API Evangelist
+      network.
+    termsOfService: http://developer.apievangelist.com/index.html
+    contact:
+      name: Kin Lane
+      url: http://kinlane.com
+      email: info@apievangelist.com
+    license:
+      name: MIT
+      url: http://opensource.org/licenses/MIT
+    version: "1.0"
+  host: api.apievangelist.com
+  basePath: /v1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /analyses/d:
+      get:
+        summary: Pull analysis
+        description: Returns a list of all blog posts filtered by keyword.
+        operationId: getAnalysis
+        parameters:
+        - in: query
+          name: appid
+          description: application id for application making calls
+          type: string
+        - in: query
+          name: appkey
+          description: application key for application making calls
+          type: string
+        - in: query
+          name: query
+          description: a text query to search across posts
+          type: string
+        responses:
+          200:
+            description: Successful Analysis Response
+        tags:
+        - API
+        - ' Analysis'
+        - ' Blog'
+        - ' Analyst'
+        security: []
+    /analysis/{id}:
+      get:
+        summary: Retrieve a blog post using its ID
+        description: Returns a blog post detail
+        operationId: getAnalysis
+        parameters:
+        - in: query
+          name: appid
+          description: application id for application making calls
+          type: string
+        - in: query
+          name: appkey
+          description: application key for application making calls
+          type: string
+        - in: path
+          name: id
+          description: id of the blog post to be returned
+          type: integer
+        responses:
+          200:
+            description: Successful Analysis Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/analysis'
+        tags:
+        - ""
+        security: []
+  definitions:
+    Analysis:
+      properties:
+        Blog_ID:
+          description: This is a default description.
+          type: string
+        Post_Date:
+          description: This is a default description.
+          type: string
+        Title:
+          description: This is a default description.
+          type: string
+        Author:
+          description: This is a default description.
+          type: string
+        Body:
+          description: This is a default description.
+          type: string
+        Summary:
+          description: This is a default description.
+          type: string
+        URL:
+          description: This is a default description.
+          type: string
+    Error:
+      properties:
+        code:
+          description: This is a default description.
+          type: integer
+        message:
+          description: This is a default description.
+          type: string
+        fields:
+          description: This is a default description.
+          type: string

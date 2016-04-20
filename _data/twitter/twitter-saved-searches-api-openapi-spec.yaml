@@ -1,0 +1,61 @@
+- swagger: "2.0"
+  info:
+    title: Twitter Saved Searches API
+    description: The saved searches API for Twitter.
+    termsOfService: http://dev.twitter.com/overview/terms
+    contact:
+      name: Twitter
+      url: https://dev.twitter.com/discussions
+    version: "1.1"
+  host: api.twitter.com
+  basePath: /1.1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /saved_searches/destroy/:id/:
+      post:
+        summary: saved_searches/destroy/:id
+        description: Destroys a saved search for the authenticating user. The authenticating
+          user must be the owner of saved search id being destroyed.
+        operationId: savedSearchesDestroyid
+        parameters:
+        - in: query
+          name: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /saved_searches/list/:
+      get:
+        summary: saved_searches/list
+        description: Returns the authenticated user&#8217;s saved search queries.
+        operationId: savedSearchesList
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /saved_searches/show/:id/:
+      get:
+        summary: saved_searches/show/:id
+        description: Retrieve the information for the saved search represented by the
+          given id. The authenticating user must be the owner of saved search ID being
+          requested.
+        operationId: savedSearchesShowid
+        parameters:
+        - in: query
+          name: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

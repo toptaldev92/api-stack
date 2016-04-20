@@ -1,0 +1,724 @@
+- swagger: "2.0"
+  info:
+    title: SendGrid Web API
+    description: SendGrid offers a Web API that allows customers to retrieve information
+      about their account such as statistics, bounces, spam reports, unsubscribes, and
+      other information. This API is not RESTful since for most calls both GET and POST
+      HTTP verbs can be used interchangeably, and other verbs are not supported.
+    version: v1
+  host: api.sendgrid.com
+  basePath: api/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    blocks.count.json:
+      get:
+        summary: Block Count
+        description: Gets the block count.
+        operationId: ""
+        parameters:
+        - in: query
+          name: api_key
+          description: Your SendGrid Password
+          type: string
+          format: string
+        - in: query
+          name: api_user
+          description: Your SendGrid Username
+          type: string
+          format: string
+        - in: query
+          name: end_date
+          description: Optional date to start counting from.
+          type: string
+          format: string
+        - in: query
+          name: start_date
+          description: Optional date to start counting from.
+          type: string
+          format: string
+        - in: query
+          name: type
+          description: The type of bounce to count.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Email
+        - ' Messaging'
+        - ' Blocks'
+        security: []
+    blocks.delete.json:
+      get:
+        summary: Delete Blocks
+        description: Delete an address from the Block list.
+        operationId: ""
+        parameters:
+        - in: query
+          name: api_key
+          description: Your SendGrid Password
+          type: string
+          format: string
+        - in: query
+          name: api_user
+          description: Your SendGrid Username
+          type: string
+          format: string
+        - in: query
+          name: email
+          description: Blocked email address to remove.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Email
+        - ' Messaging'
+        - ' Bocks'
+        security: []
+    blocks.get.json:
+      get:
+        summary: Get Blocks
+        description: Retrieve a list of Blocks with addresses and response codes, optionally
+          with dates.
+        operationId: ""
+        parameters:
+        - in: query
+          name: api_key
+          description: Your SendGrid Password
+          type: string
+          format: string
+        - in: query
+          name: api_user
+          description: Your SendGrid Username
+          type: string
+          format: string
+        - in: query
+          name: date
+          description: Retrieve the timestamp of the Block records. It will return a
+            date in a MySQL timestamp format - YYYY-MM-DD HH:MM:SS
+          type: string
+          format: string
+        - in: query
+          name: days
+          description: Number of days in the past for which to retrieve blocks (includes
+            today)
+          type: string
+          format: string
+        - in: query
+          name: end_date
+          description: The end of the date range for which to retrieve blocks
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: Optional field to limit the number of results returned.
+          type: string
+          format: string
+        - in: query
+          name: start_date
+          description: The start of the date range for which to retrieve blocks.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Email
+        - ' Messaging'
+        - ' Blocks'
+        security: []
+    bounces.count.json:
+      get:
+        summary: Bounces Count
+        description: Returns the count of bounces.
+        operationId: ""
+        parameters:
+        - in: query
+          name: api_key
+          description: Your SendGrid Password
+          type: string
+          format: string
+        - in: query
+          name: api_user
+          description: Your SendGrid Username
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Email
+        - ' Messaging'
+        - ' Bounces'
+        security: []
+    bounces.delete.json:
+      get:
+        summary: Delete Bounce
+        description: Delete an address from the Bounce list.
+        operationId: ""
+        parameters:
+        - in: query
+          name: api_key
+          description: Your SendGrid Password
+          type: string
+          format: string
+        - in: query
+          name: api_user
+          description: Your SendGrid Username
+          type: string
+          format: string
+        - in: query
+          name: delete_all
+          description: This will delete the bounce list and will not be retrievable.
+          type: string
+          format: string
+        - in: query
+          name: email
+          description: Email bounce address to remove.
+          type: string
+          format: string
+        - in: query
+          name: end_date
+          description: Optional date to end deleting from.
+          type: string
+          format: string
+        - in: query
+          name: start_date
+          description: Optional date to start deleting from.
+          type: string
+          format: string
+        - in: query
+          name: type
+          description: Choose the type of bounce to be removed.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Email
+        - ' Messaging'
+        - ' Bounces'
+        security: []
+    bounces.get:
+      get:
+        summary: Get Bounces
+        description: Retrieve a list of bounces with addresses and response codes, optionally
+          with dates.
+        operationId: ""
+        parameters:
+        - in: query
+          name: api_key
+          description: Your SendGrid Password
+          type: string
+          format: string
+        - in: query
+          name: api_user
+          description: Your SendGrid Username
+          type: string
+          format: string
+        - in: query
+          name: date
+          description: Retrieve the timestamp of the bounce records. It will return
+            a date in a MySQL timestamp format - YYYY-MM-DD HH:MM:SS.
+          type: string
+          format: string
+        - in: query
+          name: days
+          description: Number of days in the past for which to retrieve bounces (includes
+            today).
+          type: string
+          format: string
+        - in: query
+          name: email
+          description: Optional email addresses to search for.
+          type: string
+          format: string
+        - in: query
+          name: end_date
+          description: The end of the date range for which to retrieve bounces.
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: Optional field to limit the number of results returned.
+          type: string
+          format: string
+        - in: query
+          name: offset
+          description: Optional beginning point in the list to retrieve from.
+          type: string
+          format: string
+        - in: query
+          name: start_date
+          description: The start of the date range for which to retrieve bounces.
+          type: string
+          format: string
+        - in: query
+          name: type_of_media
+          description: Choose the type of bounce to search for.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Email
+        - ' Messaging'
+        - ' Bounces'
+        security: []
+    invalidemails.count.json:
+      get:
+        summary: Count Invalid Emails
+        description: Retrieve the count of invalid emails.
+        operationId: ""
+        parameters:
+        - in: query
+          name: api_key
+          description: Your SendGrid Password
+          type: string
+          format: string
+        - in: query
+          name: api_user
+          description: Your SendGrid Username
+          type: string
+          format: string
+        - in: query
+          name: end_date
+          description: The end of the date range for which to retrieve invalid emails.
+          type: string
+          format: string
+        - in: query
+          name: start_date
+          description: The start of the date range for which to retrieve invalid emails.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Email
+        - ' Messaging'
+        - ' Invalid'
+        security: []
+    invalidemails.delete.json:
+      get:
+        summary: Delete Invalid Emails
+        description: Delete an address from the Invalid Email list.
+        operationId: ""
+        parameters:
+        - in: query
+          name: api_key
+          description: Your SendGrid Password
+          type: string
+          format: string
+        - in: query
+          name: api_user
+          description: Your SendGrid Username
+          type: string
+          format: string
+        - in: query
+          name: email
+          description: Email Invalid Email address to remove
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Email
+        - ' Messaging'
+        - ' Invalid'
+        security: []
+    invalidemails.get.json:
+      get:
+        summary: Get Invalid Emails
+        description: Retrieve a list of invalid emails with addresses and response codes,
+          optionally with dates.
+        operationId: ""
+        parameters:
+        - in: query
+          name: api_key
+          description: Your SendGrid Password
+          type: string
+          format: string
+        - in: query
+          name: api_user
+          description: Your SendGrid Username
+          type: string
+          format: string
+        - in: query
+          name: date
+          description: Retrieve the timestamp of the invalid email records. It will
+            return a date in a MySQL timestamp format - YYYY-MM-DD HH:MM:SS
+          type: string
+          format: string
+        - in: query
+          name: days
+          description: Number of days in the past for which to retrieve invalid emails
+            (includes today)
+          type: string
+          format: string
+        - in: query
+          name: email
+          description: Optional email addresses to search for.
+          type: string
+          format: string
+        - in: query
+          name: end_date
+          description: The end of the date range for which to retrieve invalid emails.
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: Optional field to limit the number of results returned.
+          type: string
+          format: string
+        - in: query
+          name: offset
+          description: Optional beginning point in the list to retrieve from.
+          type: string
+          format: string
+        - in: query
+          name: start_date
+          description: The start of the date range for which to retrieve invalid emails.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Email
+        - ' Messaging'
+        - ' Invalid'
+        security: []
+    mail.send.json:
+      post:
+        summary: Web API
+        description: SendGrid offers a Web API that allows customers to retrieve information
+          about their account such as statistics, bounces, spam reports, unsubscribes,
+          and other information. This API is not RESTful since for most calls both GET
+          and POST HTTP verbs can be used interchangeably, and other verbs are not supported.
+        operationId: ""
+        parameters:
+        - in: query
+          name: api_key
+          description: Your SendGrid Password
+          type: string
+          format: string
+        - in: query
+          name: api_user
+          description: Your SendGrid Username
+          type: string
+          format: string
+        - in: query
+          name: bcc
+          description: This can also be passed in as an array of email addresses for
+            multiple recipients.
+          type: string
+          format: string
+        - in: query
+          name: cc
+          description: This can also be passed in as an array of email addresses for
+            multiple recipients
+          type: string
+          format: string
+        - in: query
+          name: content
+          description: 'Content IDs of the files to be used as inline images. Content
+            IDs should match the cids used in the HTML markup. Ex: content[file1.jpg]=ii_139db99fdb5c3704
+            would correspond with the HTML.'
+          type: string
+          format: string
+        - in: query
+          name: date_on
+          description: 'Specify the date header of your email. One example: u201cThu,
+            21 Dec 2000 16:01:07 +0200u201d.'
+          type: string
+          format: string
+        - in: query
+          name: files
+          description: Files to be attached. The file contents must be part of the multipart
+            HTTP POST.
+          type: string
+          format: string
+        - in: query
+          name: fromdate
+          description: This is where the email will appear to originate from for your
+            recipient
+          type: string
+          format: string
+        - in: query
+          name: fromname
+          description: This is name appended to the from email field. IE - Your name
+            or company name
+          type: string
+          format: string
+        - in: query
+          name: headers
+          description: 'A collection of key/value pairs in JSON format. Each key represents
+            a header name and the value the header value. '
+          type: string
+          format: string
+        - in: query
+          name: html
+          description: The HTML content of your email message.
+          type: string
+          format: string
+        - in: query
+          name: replyto
+          description: Append a reply-to field to your email message
+          type: string
+          format: string
+        - in: query
+          name: subject
+          description: The subject of your email
+          type: string
+          format: string
+        - in: query
+          name: text
+          description: The plain text content of your email message.
+          type: string
+          format: string
+        - in: query
+          name: to
+          description: 'This can also be passed in as an array, to send to multiple
+            locations. Example: to[]=a@mail.com[]=b@mail.com. Note that recipients passed
+            in this parameter will be visible as part of the message. If you wish to
+            hide the recipients, use the TO parameter in the x-smtpapi header.'
+          type: string
+          format: string
+        - in: query
+          name: toname
+          description: 'Give a name to the recipient. This can also be passed as an
+            array if the to above is an array. Example: toname[]=Alpha[]=Beta.'
+          type: string
+          format: string
+        - in: query
+          name: x-smtpapi
+          description: Please review the SMTP API to view documentation on what you
+            can do with the JSON headers
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Email
+        - ' Messaging'
+        security: []
+    spamreports.count.json:
+      get:
+        summary: Spam Reports Count
+        description: Retrieve the count of Spam Reports.
+        operationId: ""
+        parameters:
+        - in: query
+          name: api_key
+          description: Your SendGrid Password
+          type: string
+          format: string
+        - in: query
+          name: api_user
+          description: Your SendGrid Username
+          type: string
+          format: string
+        - in: query
+          name: end_date
+          description: The end of the date range for which to retrieve spam reports.
+          type: string
+          format: string
+        - in: query
+          name: start_date
+          description: The start of the date range for which to retrieve spam reports.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Email
+        - ' Messaging'
+        - ' Spam'
+        security: []
+    spamreports.get.json:
+      get:
+        summary: Spam Reports
+        description: Retrieve and delete entries in the Spam Reports list.
+        operationId: ""
+        parameters:
+        - in: query
+          name: api_key
+          description: Your SendGrid Password
+          type: string
+          format: string
+        - in: query
+          name: api_user
+          description: Your SendGrid Username
+          type: string
+          format: string
+        - in: query
+          name: date
+          description: Retrieve the timestamp of the spam report records. It will return
+            a date in a MySQL timestamp format - YYYY-MM-DD HH:MM:SS
+          type: string
+          format: string
+        - in: query
+          name: days
+          description: Number of days in the past for which to retrieve spam reports
+            (includes today)
+          type: string
+          format: string
+        - in: query
+          name: email
+          description: Optional email addresses to search for.
+          type: string
+          format: string
+        - in: query
+          name: end_date
+          description: The end of the date range for which to retrieve spam reports.
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: Optional field to limit the number of results returned.
+          type: string
+          format: string
+        - in: query
+          name: offset
+          description: Optional beginning point in the list to retrieve from.
+          type: string
+          format: string
+        - in: query
+          name: start_date
+          description: The start of the date range for which to retrieve spam reports.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Email
+        - ' Messaging'
+        - ' Spam'
+        security: []
+    stats.get.json:
+      get:
+        summary: Retrieve Statistics
+        description: Get email statistics.
+        operationId: ""
+        parameters:
+        - in: query
+          name: aggregate
+          description: This is used to indicate you are interested in all-time totals
+          type: string
+          format: string
+        - in: query
+          name: api_key
+          description: Your SendGrid Password
+          type: string
+          format: string
+        - in: query
+          name: api_user
+          description: Your SendGrid Username
+          type: string
+          format: string
+        - in: query
+          name: category
+          description: The category for which to retrieve detailed stats
+          type: string
+          format: string
+        - in: query
+          name: days
+          description: Number of days in the past to include statistics (Includes today)
+          type: string
+          format: string
+        - in: query
+          name: end_date
+          description: The end date to look up statistics
+          type: string
+          format: string
+        - in: query
+          name: list
+          description: Retrieve a list of all the categories used in your account.
+          type: string
+          format: string
+        - in: query
+          name: start_date
+          description: The start date to look up statistics
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Email
+        - ' Messaging'
+        - ' Statistics'
+        security: []
+    stats.getAdvanced.json:
+      get:
+        summary: Advanced Statistics
+        description: Advanced Statistics methods provide metrics on the browsers and
+          devices that are opening emails, as well as providing statistics based on
+          geographic location or ISP.
+        operationId: ""
+        parameters:
+        - in: query
+          name: aggregated_by
+          description: Aggregate the data by the given period
+          type: string
+          format: string
+        - in: query
+          name: api_key
+          description: Your SendGrid Password
+          type: string
+          format: string
+        - in: query
+          name: api_user
+          description: Your SendGrid Username
+          type: string
+          format: string
+        - in: query
+          name: category
+          description: Return stats for the given category
+          type: string
+          format: string
+        - in: query
+          name: country
+          description: 'Get stats for each region/state for the given country. '
+          type: string
+          format: string
+        - in: query
+          name: data_type
+          type: string
+          format: string
+        - in: query
+          name: end_date
+          type: string
+          format: string
+        - in: query
+          name: metric
+          type: string
+          format: string
+        - in: query
+          name: start_date
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Email
+        - ' Messaging'
+        - ' Statistics'
+        security: []
+  definitions: []

@@ -1,0 +1,251 @@
+- swagger: "2.0"
+  info:
+    title: Getty Images API
+    termsOfService: http://api.gettyimages.com/terms_use
+    version: v3
+  host: https://connect.gettyimages.com
+  basePath: /v3/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /images/{ids}:
+      get:
+        summary: Get image metadata
+        description: ""
+        operationId: Images_GetImagesByIds
+        parameters:
+        - in: header
+          name: Accept-Language
+          description: Accept-Language parameter optional. Used to restrict the set
+            of natural languages that are preferred as a response to the request.
+          type: string
+          format: string
+        - in: header
+          name: Api-Key
+          description: Api-Key
+          type: string
+          format: string
+        - in: header
+          name: Authorization
+          description: Authorization token optional. Used for applying content access
+            restrictions. Use one of the OAuth2 grants to auto-populate this value.
+          type: string
+          format: string
+        - in: query
+          name: fields
+          description: Comma separated list of fields. Allows restricting which fields
+            are returned. If no fields arern                selected, the summary_set
+            of fields are returned.
+          type: string
+          format: string
+        - in: path
+          name: ids
+          description: Comma separated list of image ids.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions:
+    images_detail:
+      properties:
+        images:
+          description: This is a default description.
+          type: string
+        images_not_found:
+          description: This is a default description.
+          type: string
+    image_detail:
+      properties:
+        allowed_use:
+          description: This is a default description.
+          type: string
+        artist:
+          description: This is a default description.
+          type: string
+        artist_title:
+          description: This is a default description.
+          type: string
+        asset_family:
+          description: This is a default description.
+          type: string
+        call_for_image:
+          description: This is a default description.
+          type: string
+        caption:
+          description: This is a default description.
+          type: string
+        city:
+          description: This is a default description.
+          type: string
+        collection_code:
+          description: This is a default description.
+          type: string
+        collection_id:
+          description: This is a default description.
+          type: string
+        collection_name:
+          description: This is a default description.
+          type: string
+        color_type:
+          description: This is a default description.
+          type: string
+        copyright:
+          description: This is a default description.
+          type: string
+        country:
+          description: This is a default description.
+          type: string
+        credit_line:
+          description: This is a default description.
+          type: string
+        date_created:
+          description: This is a default description.
+          type: string
+        date_submitted:
+          description: This is a default description.
+          type: string
+        display_sizes:
+          description: This is a default description.
+          type: string
+        download_sizes:
+          description: This is a default description.
+          type: string
+        editorial_segments:
+          description: This is a default description.
+          type: string
+        editorial_source_name:
+          description: This is a default description.
+          type: string
+        event_ids:
+          description: This is a default description.
+          type: string
+        graphical_style:
+          description: This is a default description.
+          type: string
+        id:
+          description: This is a default description.
+          type: string
+        keywords:
+          description: This is a default description.
+          type: string
+        largest_downloads:
+          description: This is a default description.
+          type: string
+        license_model:
+          description: This is a default description.
+          type: string
+        max_dimensions:
+          description: This is a default description.
+          type: string
+        orientation:
+          description: This is a default description.
+          type: string
+        people:
+          description: This is a default description.
+          type: string
+        quality_rank:
+          description: This is a default description.
+          type: string
+        referral_destinations:
+          description: This is a default description.
+          type: string
+        state_province:
+          description: This is a default description.
+          type: string
+        title:
+          description: This is a default description.
+          type: string
+        uri_oembed:
+          description: This is a default description.
+          type: string
+    allowed_use:
+      properties:
+        how_can_i_use_it:
+          description: This is a default description.
+          type: string
+        release_info:
+          description: This is a default description.
+          type: string
+        usage_restrictions:
+          description: This is a default description.
+          type: string
+    display_size:
+      properties:
+        height:
+          description: This is a default description.
+          type: string
+        is_watermarked:
+          description: This is a default description.
+          type: string
+        name:
+          description: This is a default description.
+          type: string
+        uri:
+          description: This is a default description.
+          type: string
+        width:
+          description: This is a default description.
+          type: string
+    download_size:
+      properties:
+        bytes:
+          description: This is a default description.
+          type: string
+        downloads:
+          description: This is a default description.
+          type: string
+        height:
+          description: This is a default description.
+          type: string
+        media_type:
+          description: This is a default description.
+          type: string
+        width:
+          description: This is a default description.
+          type: string
+    keywords:
+      properties:
+        keyword_id:
+          description: This is a default description.
+          type: string
+        text:
+          description: This is a default description.
+          type: string
+        type:
+          description: This is a default description.
+          type: string
+    max_dimensions:
+      properties:
+        height:
+          description: This is a default description.
+          type: string
+        width:
+          description: This is a default description.
+          type: string
+    referral_destination:
+      properties:
+        site_name:
+          description: This is a default description.
+          type: string
+        uri:
+          description: This is a default description.
+          type: string
+    download:
+      properties:
+        product_id:
+          description: This is a default description.
+          type: string
+        product_type:
+          description: This is a default description.
+          type: string
+        uri:
+          description: This is a default description.
+          type: string

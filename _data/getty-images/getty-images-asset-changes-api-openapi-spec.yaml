@@ -1,0 +1,121 @@
+- swagger: "2.0"
+  info:
+    title: Getty Images Asset Changes API
+    version: v3
+  host: connect.gettyimages.com
+  basePath: /v3/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /v3/asset-changes/change-sets:
+      put:
+        summary: Generates asset changes.
+        description: ""
+        operationId: AssetChanges_PutAssetChanges
+        parameters:
+        - in: header
+          name: Accept-Language
+          description: Accept-Language parameter optional. Used to restrict the set
+            of natural languages that are preferred as a response to the request.
+          type: string
+          format: string
+        - in: header
+          name: Api-Key
+          description: Api-Key
+          type: string
+          format: string
+        - in: header
+          name: Authorization
+          description: Authorization token required. Used for applying content access
+            restrictions. Use one of the OAuth2 grants to auto-populate this value.
+          type: string
+          format: string
+        - in: query
+          name: batch_size
+          description: Number of assets to return in the response. Default is 10; maximum
+            is 500.
+          type: string
+          format: string
+        - in: query
+          name: channel_id
+          description: Specify the channel of content for the GetAssetChanges request.
+            rn             Each channel contains changed assets based on criteria such
+            as asset family,rn             changed asset metadata, or the type of change
+            to the asset (i.e. new, deleted, updated)
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /v3/asset-changes/change-sets/{change-set-id}:
+      delete:
+        summary: Confirm asset changes acknowledges receipt of asset changes.
+        description: ""
+        operationId: AssetChanges_DeleteAssetChanges
+        parameters:
+        - in: header
+          name: Accept-Language
+          description: Accept-Language parameter optional. Used to restrict the set
+            of natural languages that are preferred as a response to the request.
+          type: string
+          format: string
+        - in: header
+          name: Api-Key
+          description: Api-Key
+          type: string
+          format: string
+        - in: header
+          name: Authorization
+          description: Authorization token required. Used for applying content access
+            restrictions. Use one of the OAuth2 grants to auto-populate this value.
+          type: string
+          format: string
+        - in: path
+          name: change-set-id
+          description: Specify the TransactionId associated with a transaction resource
+            whose receipt you want to confirm.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /v3/asset-changes/channels:
+      get:
+        summary: Gets the partners channel data
+        description: ""
+        operationId: AssetChanges_GetPartnerChannel
+        parameters:
+        - in: header
+          name: Accept-Language
+          description: Accept-Language parameter optional. Used to restrict the set
+            of natural languages that are preferred as a response to the request.
+          type: string
+          format: string
+        - in: header
+          name: Api-Key
+          description: Api-Key
+          type: string
+          format: string
+        - in: header
+          name: Authorization
+          description: Authorization token required. Used for applying content access
+            restrictions. Use one of the OAuth2 grants to auto-populate this value.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

@@ -1,0 +1,291 @@
+- swagger: "2.0"
+  info:
+    title: Slide
+    description: This is an slide for all my slide entries. I use a single slide system
+      to manage all my sites. Based upon tagging, I then publish each post out to its
+      respective Github Page based repo.
+    termsOfService: http://stack.network/terms-of-service.html
+    version: ~
+  host: slide.api.kinlane.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /slide/:
+      get:
+        summary: all slides
+        description: all slides
+        operationId: getSlides
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the slide
+        - in: query
+          name: appkey
+          description: your appkey for accessing the slide
+        - in: query
+          name: query
+          description: a text query to search across slide
+        responses:
+          200:
+            description: OK
+        tags:
+        - Slides
+        security: []
+      post:
+        summary: add a slide post
+        description: add a slide post
+        operationId: addSlide
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the slide
+        - in: query
+          name: appkey
+          description: your appkey for accessing the slide
+        - in: query
+          name: author
+          description: author of the slide
+        - in: query
+          name: body
+          description: full text for the slide
+        - in: query
+          name: curated_id
+          description: full text for the slide
+        - in: query
+          name: footer
+          description: curated id the slide originated from
+        - in: query
+          name: post_date
+          description: date the slide was posted
+        - in: query
+          name: status
+          description: status of the slide
+        - in: query
+          name: summary
+          description: summary for the slide
+        - in: query
+          name: title
+          description: ttle for the slide
+        responses:
+          200:
+            description: OK
+        tags:
+        - Slides
+        security: []
+    /slide/tags/{tag}/slide/:
+      get:
+        summary: slide tags by week slides
+        description: slide tags by week slides
+        operationId: getSlideTagCSlide
+        parameters:
+        - in: path
+          name: tag
+          description: the tag to filter by
+        - in: query
+          name: week
+          description: the week to filter by, defaults to this week
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /slide/{slide_id}/:
+      delete:
+        summary: delete slide
+        description: delete slide
+        operationId: deleteSlide
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the slide
+        - in: query
+          name: appkey
+          description: your appkey for accessing the slide
+        - in: path
+          name: slide_id
+          description: the unique id for slide entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Slides
+        security: []
+      get:
+        summary: get slide using id
+        description: Returns the slide detail
+        operationId: getSlide
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the slide
+        - in: query
+          name: appkey
+          description: your appkey for accessing the slide
+        - in: path
+          name: slide_id
+          description: the unique id for slide entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Slides
+        security: []
+      put:
+        summary: update slide
+        description: update slide
+        operationId: updateSlide
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the slide
+        - in: query
+          name: appkey
+          description: your appkey for accessing the slide
+        - in: query
+          name: author
+          description: author of the slide
+        - in: query
+          name: body
+          description: full text for the slide
+        - in: query
+          name: curated_id
+          description: full text for the slide
+        - in: query
+          name: footer
+          description: curated id the slide originated from
+        - in: query
+          name: post_date
+          description: date the slide was posted
+        - in: path
+          name: slide_id
+          description: the unique id for slide entry
+        - in: query
+          name: status
+          description: status of the slide
+        - in: query
+          name: summary
+          description: summary for the slide
+        - in: query
+          name: title
+          description: ttle for the slide
+        responses:
+          200:
+            description: OK
+        tags:
+        - Slides
+        security: []
+    /slide/{slide_id}/tags/:
+      get:
+        summary: slide tags
+        description: slide tags
+        operationId: getslideTags
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the slide
+        - in: query
+          name: appkey
+          description: your appkey for accessing the slide
+        - in: path
+          name: slide_id
+          description: id for slide
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+      post:
+        summary: add tag to slide
+        description: add tag to slide
+        operationId: addSlideTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the slide
+        - in: query
+          name: appkey
+          description: your appkey for accessing the slide
+        - in: path
+          name: slide_id
+          description: id for the slide
+        - in: query
+          name: tag
+          description: tag name
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /slide/{slide_id}/tags/{tag}:
+      delete:
+        summary: delete slide tag
+        description: delete slide tag
+        operationId: deleteslideTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the slide
+        - in: query
+          name: appkey
+          description: your appkey for accessing the slide
+        - in: path
+          name: slide_id
+          description: id for the slide
+        - in: path
+          name: tag
+          description: tag to remove from slide
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+  definitions:
+    slide:
+      properties:
+        slide_id:
+          description: This is a default description.
+          type: get
+        post_date:
+          description: This is a default description.
+          type: get
+        title:
+          description: This is a default description.
+          type: get
+        author:
+          description: This is a default description.
+          type: get
+        summary:
+          description: This is a default description.
+          type: get
+        body:
+          description: This is a default description.
+          type: get
+        footer:
+          description: This is a default description.
+          type: get
+        status:
+          description: This is a default description.
+          type: get
+        curated_id:
+          description: This is a default description.
+          type: get
+    tag:
+      properties:
+        tag_id:
+          description: This is a default description.
+          type: get
+        tag:
+          description: This is a default description.
+          type: get
+        api_count:
+          description: This is a default description.
+          type: get

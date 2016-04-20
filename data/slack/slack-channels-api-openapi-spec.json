@@ -1,0 +1,421 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Slack Channels API",
+		"description": "The API for management Slack Channelss",
+		"termsOfService": "https://slack.com/terms-of-service/api",
+		"version": null
+	},
+	"host": "slack.com",
+	"basePath": "/api",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/methods/channels.archive": {
+			"get": {
+				"summary": "Archive Channel",
+				"description": "<td width=70%>Archives a channel.</td>",
+				"operationId": "channelsarchive",
+				"parameters": [{
+					"in": "query",
+					"name": "channel",
+					"description": "Channel to archive",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: channels:write)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["channels"],
+				"security": []
+			}
+		},
+		"/methods/channels.create": {
+			"get": {
+				"summary": "Add Channel",
+				"description": "<td width=70%>Creates a channel.</td>",
+				"operationId": "channelscreate",
+				"parameters": [{
+					"in": "query",
+					"name": "name",
+					"description": "Name of channel to create",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: channels:write)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["channels"],
+				"security": []
+			}
+		},
+		"/methods/channels.history": {
+			"get": {
+				"summary": "Get Channel History",
+				"description": "<td width=70%>Fetches history of messages and events from a channel.</td>",
+				"operationId": "channelshistory",
+				"parameters": [{
+					"in": "query",
+					"name": "channel",
+					"description": "Channel to fetch history for.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "count",
+					"description": "Number of messages to return, between 1 and 1000.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "inclusive",
+					"description": "Include messages with latest or oldest timestamp in results.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "latest",
+					"description": "End of time range of messages to include in results.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "oldest",
+					"description": "Start of time range of messages to include in results.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: channels:history)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "unreads",
+					"description": "Include unread_count_display in the output?",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["channels"],
+				"security": []
+			}
+		},
+		"/methods/channels.info": {
+			"get": {
+				"summary": "Get Channel Information",
+				"description": "<td width=70%>Gets information about a channel.</td>",
+				"operationId": "channelsinfo",
+				"parameters": [{
+					"in": "query",
+					"name": "channel",
+					"description": "Channel to get info on",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: channels:read)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["channels"],
+				"security": []
+			}
+		},
+		"/methods/channels.invite": {
+			"get": {
+				"summary": "Invite Channel User",
+				"description": "<td width=70%>Invites a user to a channel.</td>",
+				"operationId": "channelsinvite",
+				"parameters": [{
+					"in": "query",
+					"name": "channel",
+					"description": "Channel to invite user to.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: channels:write)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "User to invite to channel.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["channels"],
+				"security": []
+			}
+		},
+		"/methods/channels.join": {
+			"get": {
+				"summary": "Join Channel",
+				"description": "<td width=70%>Joins a channel, creating it if needed.</td>",
+				"operationId": "channelsjoin",
+				"parameters": [{
+					"in": "query",
+					"name": "name",
+					"description": "Name of channel to join",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: channels:write)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["channels"],
+				"security": []
+			}
+		},
+		"/methods/channels.kick": {
+			"get": {
+				"summary": "Remove Channel User",
+				"description": "<td width=70%>Removes a user from a channel.</td>",
+				"operationId": "channelskick",
+				"parameters": [{
+					"in": "query",
+					"name": "channel",
+					"description": "Channel to remove user from.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: channels:write)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "User to remove from channel.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["channels"],
+				"security": []
+			}
+		},
+		"/methods/channels.list": {
+			"get": {
+				"summary": "Get All Channels",
+				"description": "<td width=70%>Lists all channels in a Slack team.</td>",
+				"operationId": "channelslist",
+				"parameters": [{
+					"in": "query",
+					"name": "exclude_archived",
+					"description": "Dont return archived channels.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: channels:read)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["channels"],
+				"security": []
+			}
+		},
+		"/methods/channels.mark": {
+			"get": {
+				"summary": "Mark Channel",
+				"description": "<td width=70%>Sets the read cursor in a channel.</td>",
+				"operationId": "channelsmark",
+				"parameters": [{
+					"in": "query",
+					"name": "channel",
+					"description": "Channel to set reading cursor in.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: channels:write)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "ts",
+					"description": "Timestamp of the most recently seen message.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["channels"],
+				"security": []
+			}
+		},
+		"/methods/channels.rename": {
+			"get": {
+				"summary": "Rename Channel",
+				"description": "<td width=70%>Renames a channel.</td>",
+				"operationId": "channelsrename",
+				"parameters": [{
+					"in": "query",
+					"name": "channel",
+					"description": "Channel to rename",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "New name for channel.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: channels:write)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["channels"],
+				"security": []
+			}
+		},
+		"/methods/channels.setPurpose": {
+			"get": {
+				"summary": "Set Channel Purpose",
+				"description": "<td width=70%>Sets the purpose for a channel.</td>",
+				"operationId": "channelssetpurpose",
+				"parameters": [{
+					"in": "query",
+					"name": "channel",
+					"description": "Channel to set the purpose of",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "purpose",
+					"description": "The new purpose",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: channels:write)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["channels"],
+				"security": []
+			}
+		},
+		"/methods/channels.setTopic": {
+			"get": {
+				"summary": "Set Channel Topic",
+				"description": "<td width=70%>Sets the topic for a channel.</td>",
+				"operationId": "channelssettopic",
+				"parameters": [{
+					"in": "query",
+					"name": "channel",
+					"description": "Channel to set the topic of",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: channels:write)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "topic",
+					"description": "The new topic",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["channels"],
+				"security": []
+			}
+		},
+		"/methods/channels.unarchive": {
+			"get": {
+				"summary": "Unarchive Channel",
+				"description": "<td width=70%>Unarchives a channel.</td>",
+				"operationId": "channelsunarchive",
+				"parameters": [{
+					"in": "query",
+					"name": "channel",
+					"description": "Channel to unarchive",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: channels:write)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["channels"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

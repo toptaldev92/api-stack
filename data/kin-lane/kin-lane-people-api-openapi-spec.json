@@ -1,0 +1,1807 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "People",
+		"description": "This is an people for all my people entries. I use a single people system to manage all my sites. Based upon tagging, I then publish each post out to its respective Github Page based repo.",
+		"termsOfService": "http://stack.network/terms-of-service.html",
+		"version": "v2"
+	},
+	"host": "people.api.kinlane.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/people/": {
+			"get": {
+				"summary": "get people",
+				"description": "get people",
+				"operationId": "getPeople",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "query",
+					"description": "a text query to search across people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["People"],
+				"security": []
+			},
+			"post": {
+				"summary": "add new person",
+				"description": "add new person",
+				"operationId": "addPeople",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "bio",
+					"description": "bio for person",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "company",
+					"description": "primary company for person",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "email",
+					"description": "email for person",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "first_name",
+					"description": "first name of person",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "full_name",
+					"description": "full name o fperson",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "last_name",
+					"description": "last name of person",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "location",
+					"description": "location for person",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "photo",
+					"description": "primary photo for person",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "ranking",
+					"description": "ranking for person",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["People"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/": {
+			"delete": {
+				"summary": "delete person",
+				"description": "delete person",
+				"operationId": "deletePerson",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "the unique id for the people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["People"],
+				"security": []
+			},
+			"get": {
+				"summary": "get person",
+				"description": "get person",
+				"operationId": "getPerson",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "the unique id for people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["People"],
+				"security": []
+			},
+			"put": {
+				"summary": "update person",
+				"description": "update person",
+				"operationId": "updatePerson",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "bio",
+					"description": "bio for person",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "company",
+					"description": "primary company for person",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "email",
+					"description": "email for person",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "first_name",
+					"description": "first name of person",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "full_name",
+					"description": "full name o fperson",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "last_name",
+					"description": "last name of person",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "location",
+					"description": "location for person",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "the unique id for the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "photo",
+					"description": "primary photo for person",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "ranking",
+					"description": "ranking for person",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["People"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/apis/": {
+			"get": {
+				"summary": "retrieve people APIs",
+				"description": "retrieve people APIs",
+				"operationId": "getPeopleAPIs",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["People"],
+				"security": []
+			},
+			"post": {
+				"summary": "add people API",
+				"description": "add people API",
+				"operationId": "addPeopleAPI",
+				"parameters": [{
+					"in": "formData",
+					"name": "api_id",
+					"description": "API unique ID",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["People"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/apis/{api_id}": {
+			"delete": {
+				"summary": "delete a people API",
+				"description": "delete a people API",
+				"operationId": "deletePeopleAPI",
+				"parameters": [{
+					"in": "path",
+					"name": "api_id",
+					"description": "unique ID for API to remove from people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["People"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/buildingblocks/": {
+			"get": {
+				"summary": "get people building blocks",
+				"description": "get people building blocks",
+				"operationId": "getPeopleBuildingBlocks",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Building Blocks"],
+				"security": []
+			},
+			"post": {
+				"summary": "add building block to people",
+				"description": "add building block to people",
+				"operationId": "addPeopleBuildingBlock",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "building_block_id",
+					"description": "building block unique id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "tools_id",
+					"description": "tool id for the building block",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "url",
+					"description": "url for the building block",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Building Blocks"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/buildingblocks/{building_block_id}": {
+			"delete": {
+				"summary": "delete a people building block",
+				"description": "delete a people building block",
+				"operationId": "deletePeopleBuildingBlock",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "building_block_id",
+					"description": "building block to remove from people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Building Blocks"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/images/": {
+			"get": {
+				"summary": "get people images",
+				"description": "get people images",
+				"operationId": "getPeopleImages",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Images"],
+				"security": []
+			},
+			"post": {
+				"summary": "add people image",
+				"description": "add people image",
+				"operationId": "addPeopleImage",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "name",
+					"description": "image name",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "path",
+					"description": "image path",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "type",
+					"description": "image type",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Images"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/images/{image_id}": {
+			"delete": {
+				"summary": "delete a people image",
+				"description": "delete a people image",
+				"operationId": "deletePeopleImage",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "image_id",
+					"description": "id for the image to remove from people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Images"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/locations/": {
+			"get": {
+				"summary": "get people locations",
+				"description": "get people locations",
+				"operationId": "getPeopleLocations",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			},
+			"post": {
+				"summary": "add people locations",
+				"description": "add people locations",
+				"operationId": "addPeopleLocation",
+				"parameters": [{
+					"in": "formData",
+					"name": "address1",
+					"description": "location address 1",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "address2",
+					"description": "location address 2",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "city",
+					"description": "location city",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "country_code",
+					"description": "location country code",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "description",
+					"description": "location description",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "latitude",
+					"description": "location latitude",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "longitude",
+					"description": "location longitude",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "state_code",
+					"description": "location state code",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "zip_code",
+					"description": "location zip code",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/locations/{location_id}": {
+			"delete": {
+				"summary": "delete a people location",
+				"description": "delete a people location",
+				"operationId": "deletePeopleLocation",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "location_id",
+					"description": "id of location to remove from people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Locations"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/logs/": {
+			"get": {
+				"summary": "get people logs",
+				"description": "get people logs",
+				"operationId": "getPeopleLogs",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Logs"],
+				"security": []
+			},
+			"post": {
+				"summary": "add people log",
+				"description": "add people log",
+				"operationId": "addPeopleLog",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "details",
+					"description": "log details",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "type",
+					"description": "type of log entry",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Logs"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/logs/{log_id}": {
+			"delete": {
+				"summary": "delete a people log",
+				"description": "delete a people log",
+				"operationId": "deletePeopleLog",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "log_id",
+					"description": "id for the log",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Logs"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/notes/": {
+			"get": {
+				"summary": "retrieve an persons notes",
+				"description": "retrieve an persons notes",
+				"operationId": "getPeopelNotes",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the API",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Notes"],
+				"security": []
+			},
+			"post": {
+				"summary": "add an people note",
+				"description": "add an people note",
+				"operationId": "addPeopleNote",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the API",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the API",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "note",
+					"description": "the full text of note",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the api item",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "type",
+					"description": "type of the note",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Notes"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/notes/{note_id}": {
+			"delete": {
+				"summary": "delete an people note",
+				"description": "delete an people note",
+				"operationId": "deletePeopleNote",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "note_id",
+					"description": "id for the note",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the API",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Notes"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/screenshots/": {
+			"get": {
+				"summary": "get people screenshots",
+				"description": "get people screenshots",
+				"operationId": "getPeopleScreenshots",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Screenshots"],
+				"security": []
+			},
+			"post": {
+				"summary": "add people screenshots",
+				"description": "add people screenshots",
+				"operationId": "addPeopleScreenshot",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "name",
+					"description": "image name",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "path",
+					"description": "image path",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "type",
+					"description": "image type",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Screenshots"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/screenshots/{screenshot_id}": {
+			"delete": {
+				"summary": "delete a people screenshot",
+				"description": "delete a people screenshot",
+				"operationId": "deletePeopleScreenshot",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "screenshot_id",
+					"description": "id of the screenshot to remove from people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Screenshots"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/tags/": {
+			"get": {
+				"summary": "retrieve people tags",
+				"description": "retrieve people tags",
+				"operationId": "getPeopleTags",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			},
+			"post": {
+				"summary": "add tag to person",
+				"description": "add tag to person",
+				"operationId": "addPeopleTag",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "tag",
+					"description": "tag name",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/tags/{tag}": {
+			"delete": {
+				"summary": "delete a people tag",
+				"description": "delete a people tag",
+				"operationId": "deletePeopleTag",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "tag",
+					"description": "tag to remove from people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/tools/": {
+			"get": {
+				"summary": "retrieve people tools",
+				"description": "retrieve people tools",
+				"operationId": "getPeopleTools",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tools"],
+				"security": []
+			},
+			"post": {
+				"summary": "add tool to people",
+				"description": "add tool to people",
+				"operationId": "addPeopleTool",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "tool_id",
+					"description": "the unique tool id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "url",
+					"description": "url for the tool",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tools"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/tools/{tool_id}": {
+			"delete": {
+				"summary": "delete a people tool",
+				"description": "delete a people tool",
+				"operationId": "getPeopleTool",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "tool_id",
+					"description": "tool to remove from people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tools"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/urls/": {
+			"get": {
+				"summary": "retrieve people url",
+				"description": "retrieve people url",
+				"operationId": "getpeopleURLs",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for people",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["URLs"],
+				"security": []
+			},
+			"post": {
+				"summary": "add people URL",
+				"description": "add people URL",
+				"operationId": "addPeopleURL",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "name",
+					"description": "a name for the url",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "type",
+					"description": "type of url",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "formData",
+					"name": "url",
+					"description": "the url",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["URLs"],
+				"security": []
+			}
+		},
+		"/people/{people_id}/urls/{url_id}": {
+			"delete": {
+				"summary": "delete a people url",
+				"description": "delete a people url",
+				"operationId": "deletePeopleURL",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "people_id",
+					"description": "id for the people",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "url_id",
+					"description": "id for the url",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["URLs"],
+				"security": []
+			}
+		}
+	},
+	"definitions": [{
+		"properties": {
+			"people_id": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"name": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"details": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"summary": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"post_date": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"url": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"phone": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"email": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"address": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"city": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"state": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"postal_code": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"country": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"rank": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"location": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"photo": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"api_id": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"title": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"link": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"item_date": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"status": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"public_comment": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"original_date": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"author": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"processed": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"domain": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"screenshot_url": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"resolved_url": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"weekly_summary": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"weekly_roundup": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"tag_id": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"tag": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"api_count": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"note_id": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"type": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"note": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"image_id": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"path": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"screenshot_id": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"building_block_api": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"tool_id": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"log_date": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"location_id": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"description": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"address1": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"address2": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"post_code": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"latitude": {
+				"description": "This is a default description.",
+				"type": "delete"
+			},
+			"longitude": {
+				"description": "This is a default description.",
+				"type": "delete"
+			}
+		}
+	}]
+}

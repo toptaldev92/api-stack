@@ -1,0 +1,57 @@
+- swagger: "2.0"
+  info:
+    title: Auth0 Blacklists API
+    version: v1
+  host: login.auth0.com
+  basePath: /blacklists
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /api/v2/blacklists/tokens:
+      get:
+        summary: Retrieves the <code>jti</code> and <code>aud</code> of all tokens in
+          the blacklist.
+        description: ""
+        operationId: get_tokens
+        parameters:
+        - in: query
+          name: aud
+          description: The JWTs aud claim. The client_id of the client for which it
+            was issued
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Adds the token identified by the <code>jti</code> to a blacklist for
+          the tenant.
+        description: ""
+        operationId: post_tokens
+        parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions:
+    "":
+      properties:
+        aud:
+          description: This is a default description.
+          type: string
+        jti:
+          description: This is a default description.
+          type: string

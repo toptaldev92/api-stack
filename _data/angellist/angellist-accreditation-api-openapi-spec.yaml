@@ -1,0 +1,64 @@
+- swagger: "2.0"
+  info:
+    title: AngelList Accreditation API
+    description: Access startup and user accreditation for AngelList.
+    termsOfService: https://angel.co/terms
+    contact:
+      name: AngelList
+      url: https://angel.co/api
+      email: api@angel.co
+    version: v1
+  host: api.angel.co
+  basePath: /1/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /accreditation:
+      get:
+        summary: Get Accreditation
+        description: Pulls the accreditation for a startup and users.
+        operationId: accreditation
+        responses:
+          500:
+            description: No results
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/error'
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/accreditation'
+        tags:
+        - Accreditation
+        security:
+        - AngelListAuth: []
+  securityDefinitions:
+    AngelListAuth:
+      type: oauth2
+      flow: accessCode
+      authorizationUrl: https://angel.co/api/oauth/authorize
+      tokenUrl: https://angel.co/api/oauth/token
+  definitions:
+    error:
+      properties:
+        error:
+          description: This is the error.
+          type: string
+        message:
+          description: This is the error message.
+          type: string
+        type:
+          description: The type of error.
+          type: string
+    accreditation:
+      properties:
+        id:
+          description: This is a default description.
+          type: integer

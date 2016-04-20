@@ -1,0 +1,291 @@
+- swagger: "2.0"
+  info:
+    title: Task
+    description: This is an task for all my task entries. I use a single task system
+      to manage all my sites. Based upon tagging, I then publish each post out to its
+      respective Github Page based repo.
+    termsOfService: http://stack.network/terms-of-service.html
+    version: ~
+  host: task.api.kinlane.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /task/:
+      get:
+        summary: all tasks
+        description: all tasks
+        operationId: getTasks
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the task
+        - in: query
+          name: appkey
+          description: your appkey for accessing the task
+        - in: query
+          name: query
+          description: a text query to search across task
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tasks
+        security: []
+      post:
+        summary: add a task post
+        description: add a task post
+        operationId: addTask
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the task
+        - in: query
+          name: appkey
+          description: your appkey for accessing the task
+        - in: query
+          name: author
+          description: author of the task
+        - in: query
+          name: body
+          description: full text for the task
+        - in: query
+          name: curated_id
+          description: full text for the task
+        - in: query
+          name: footer
+          description: curated id the task originated from
+        - in: query
+          name: post_date
+          description: date the task was posted
+        - in: query
+          name: status
+          description: status of the task
+        - in: query
+          name: summary
+          description: summary for the task
+        - in: query
+          name: title
+          description: ttle for the task
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tasks
+        security: []
+    /task/tags/{tag}/task/:
+      get:
+        summary: task tags by week tasks
+        description: task tags by week tasks
+        operationId: getTaskTagCTask
+        parameters:
+        - in: path
+          name: tag
+          description: the tag to filter by
+        - in: query
+          name: week
+          description: the week to filter by, defaults to this week
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /task/{task_id}/:
+      delete:
+        summary: delete task
+        description: delete task
+        operationId: deleteTask
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the task
+        - in: query
+          name: appkey
+          description: your appkey for accessing the task
+        - in: path
+          name: task_id
+          description: the unique id for task entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tasks
+        security: []
+      get:
+        summary: get task using id
+        description: Returns the task detail
+        operationId: getTask
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the task
+        - in: query
+          name: appkey
+          description: your appkey for accessing the task
+        - in: path
+          name: task_id
+          description: the unique id for task entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tasks
+        security: []
+      put:
+        summary: update task
+        description: update task
+        operationId: updateTask
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the task
+        - in: query
+          name: appkey
+          description: your appkey for accessing the task
+        - in: query
+          name: author
+          description: author of the task
+        - in: query
+          name: body
+          description: full text for the task
+        - in: query
+          name: curated_id
+          description: full text for the task
+        - in: query
+          name: footer
+          description: curated id the task originated from
+        - in: query
+          name: post_date
+          description: date the task was posted
+        - in: query
+          name: status
+          description: status of the task
+        - in: query
+          name: summary
+          description: summary for the task
+        - in: path
+          name: task_id
+          description: the unique id for task entry
+        - in: query
+          name: title
+          description: ttle for the task
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tasks
+        security: []
+    /task/{task_id}/tags/:
+      get:
+        summary: task tags
+        description: task tags
+        operationId: gettaskTags
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the task
+        - in: query
+          name: appkey
+          description: your appkey for accessing the task
+        - in: path
+          name: task_id
+          description: id for task
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tasks
+        security: []
+      post:
+        summary: add tag to task
+        description: add tag to task
+        operationId: addTaskTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the task
+        - in: query
+          name: appkey
+          description: your appkey for accessing the task
+        - in: query
+          name: tag
+          description: tag name
+        - in: path
+          name: task_id
+          description: id for the task
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tasks
+        security: []
+    /task/{task_id}/tags/{tag}:
+      delete:
+        summary: delete task tag
+        description: delete task tag
+        operationId: deletetaskTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the task
+        - in: query
+          name: appkey
+          description: your appkey for accessing the task
+        - in: path
+          name: tag
+          description: tag to remove from task
+        - in: path
+          name: task_id
+          description: id for the task
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tasks
+        security: []
+  definitions:
+    task:
+      properties:
+        task_id:
+          description: This is a default description.
+          type: get
+        post_date:
+          description: This is a default description.
+          type: get
+        title:
+          description: This is a default description.
+          type: get
+        author:
+          description: This is a default description.
+          type: get
+        summary:
+          description: This is a default description.
+          type: get
+        body:
+          description: This is a default description.
+          type: get
+        footer:
+          description: This is a default description.
+          type: get
+        status:
+          description: This is a default description.
+          type: get
+        curated_id:
+          description: This is a default description.
+          type: get
+    tag:
+      properties:
+        tag_id:
+          description: This is a default description.
+          type: get
+        tag:
+          description: This is a default description.
+          type: get
+        api_count:
+          description: This is a default description.
+          type: get

@@ -1,0 +1,332 @@
+- swagger: "2.0"
+  info:
+    title: Reddit Multis API
+    description: API for manageming Reddit multis.
+    termsOfService: https://github.com/reddit/reddit/wiki/API
+    version: ~
+  host: www.reddit.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /api/multi/copy:
+      post:
+        summary: Copy a multi.
+        description: Copy a multi.
+        operationId: multis
+        parameters:
+        - in: query
+          name: display_name
+          description: a string no longer than 50 characters
+          type: string
+        - in: query
+          name: from
+          description: multireddit url path
+          type: string
+        - in: query
+          name: to
+          description: destination multireddit url path
+          type: string
+        - in: query
+          name: uh / X-Modhash header
+          description: a modhash
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /api/multi/mine:
+      get:
+        summary: Fetch a list of multis belonging to the current user.
+        description: Fetch a list of multis belonging to the current user.
+        operationId: multis
+        parameters:
+        - in: query
+          name: expand_srs
+          description: boolean value
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /api/multi/multipath:
+      delete:
+        summary: Delete a multi.
+        description: Delete a multi.
+        operationId: multis
+        parameters:
+        - in: query
+          name: expand_srs
+          description: boolean value
+          type: string
+        - in: query
+          name: multipath
+          description: multireddit url path
+          type: string
+        - in: query
+          name: uh / X-Modhash header
+          description: a modhash
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: Fetch a multi&#39;s data and subreddit list by name.
+        description: Fetch a multi&#39;s data and subreddit list by name.
+        operationId: multis
+        parameters:
+        - in: query
+          name: expand_srs
+          description: boolean value
+          type: string
+        - in: query
+          name: multipath
+          description: multireddit url path
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Create a multi. Responds with 409 Conflict if it already exists.
+        description: Create a multi. Responds with 409 Conflict if it already exists.
+        operationId: multis
+        parameters:
+        - in: query
+          name: expand_srs
+          description: boolean value
+          type: string
+        - in: query
+          name: model
+          description: 'json data:{  &quot;description_md&quot;: raw markdown text,  &quot;display_name&quot;:
+            a string no longer than 50 characters,  &quot;icon_name&quot;: one of (`art
+            and design`, `ask`, `books`, `business`, `cars`, `comics`, `cute animals`,
+            `diy`, `entertainment`, `food and drink`, `funny`, `games`, `grooming`,
+            `health`, `life advice`, `military`, `models pinup`, `music`, `news`, `philosophy`,
+            `pictures and gifs`, `science`, `shopping`, `sports`, `style`, `tech`, `travel`,
+            `unusual stories`, `video`, ``, `None`),  &quot;key_color&quot;: a 6-digit
+            rgb hex color, e.g. `#AABBCC`,  &quot;subreddits&quot;: [    {      &quot;name&quot;:
+            subreddit name,    },    ...  ],  &quot;visibility&quot;: one of (`private`,
+            `public`, `hidden`),  &quot;weighting_scheme&quot;: one of (`classic`, `fresh`),}'
+          type: string
+        - in: query
+          name: multipath
+          description: multireddit url path
+          type: string
+        - in: query
+          name: uh / X-Modhash header
+          description: a modhash
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: Create or update a multi.
+        description: Create or update a multi.
+        operationId: multis
+        parameters:
+        - in: query
+          name: expand_srs
+          description: boolean value
+          type: string
+        - in: query
+          name: model
+          description: 'json data:{  &quot;description_md&quot;: raw markdown text,  &quot;display_name&quot;:
+            a string no longer than 50 characters,  &quot;icon_name&quot;: one of (`art
+            and design`, `ask`, `books`, `business`, `cars`, `comics`, `cute animals`,
+            `diy`, `entertainment`, `food and drink`, `funny`, `games`, `grooming`,
+            `health`, `life advice`, `military`, `models pinup`, `music`, `news`, `philosophy`,
+            `pictures and gifs`, `science`, `shopping`, `sports`, `style`, `tech`, `travel`,
+            `unusual stories`, `video`, ``, `None`),  &quot;key_color&quot;: a 6-digit
+            rgb hex color, e.g. `#AABBCC`,  &quot;subreddits&quot;: [    {      &quot;name&quot;:
+            subreddit name,    },    ...  ],  &quot;visibility&quot;: one of (`private`,
+            `public`, `hidden`),  &quot;weighting_scheme&quot;: one of (`classic`, `fresh`),}'
+          type: string
+        - in: query
+          name: multipath
+          description: multireddit url path
+          type: string
+        - in: query
+          name: uh / X-Modhash header
+          description: a modhash
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /api/multi/multipath/description:
+      get:
+        summary: Get a multi&#39;s description.
+        description: Get a multi&#39;s description.
+        operationId: multis
+        parameters:
+        - in: query
+          name: multipath
+          description: multireddit url path
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: Change a multi&#39;s markdown description.
+        description: Change a multi&#39;s markdown description.
+        operationId: multis
+        parameters:
+        - in: query
+          name: model
+          description: 'json data:{  &quot;body_md&quot;: raw markdown text,}'
+          type: string
+        - in: query
+          name: multipath
+          description: multireddit url path
+          type: string
+        - in: query
+          name: uh / X-Modhash header
+          description: a modhash
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /api/multi/multipath/r/srname:
+      delete:
+        summary: Remove a subreddit from a multi.
+        description: Remove a subreddit from a multi.
+        operationId: multis
+        parameters:
+        - in: query
+          name: multipath
+          description: multireddit url path
+          type: string
+        - in: query
+          name: srname
+          description: subreddit name
+          type: string
+        - in: query
+          name: uh / X-Modhash header
+          description: a modhash
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: Get data about a subreddit in a multi.
+        description: Get data about a subreddit in a multi.
+        operationId: multis
+        parameters:
+        - in: query
+          name: multipath
+          description: multireddit url path
+          type: string
+        - in: query
+          name: srname
+          description: subreddit name
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: Add a subreddit to a multi.
+        description: Add a subreddit to a multi.
+        operationId: multis
+        parameters:
+        - in: query
+          name: model
+          description: 'json data:{  &quot;name&quot;: subreddit name,}'
+          type: string
+        - in: query
+          name: multipath
+          description: multireddit url path
+          type: string
+        - in: query
+          name: srname
+          description: subreddit name
+          type: string
+        - in: query
+          name: uh / X-Modhash header
+          description: a modhash
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /api/multi/rename:
+      post:
+        summary: Rename a multi.
+        description: Rename a multi.
+        operationId: multis
+        parameters:
+        - in: query
+          name: display_name
+          description: a string no longer than 50 characters
+          type: string
+        - in: query
+          name: from
+          description: multireddit url path
+          type: string
+        - in: query
+          name: to
+          description: destination multireddit url path
+          type: string
+        - in: query
+          name: uh / X-Modhash header
+          description: a modhash
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /api/multi/user/username:
+      get:
+        summary: Fetch a list of public multis belonging to username
+        description: Fetch a list of public multis belonging to username
+        operationId: multis
+        parameters:
+        - in: query
+          name: expand_srs
+          description: boolean value
+          type: string
+        - in: query
+          name: username
+          description: A valid, existing reddit username
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

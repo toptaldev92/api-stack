@@ -1,0 +1,1328 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Google Spreadsheets",
+		"description": "The Google Sheets API enables developers to create applications that read and modify the data in Google Sheets.",
+		"termsOfService": "https://developers.google.com/google-apps/spreadsheets/terms",
+		"version": null
+	},
+	"host": "spreadsheets.google.com",
+	"basePath": "/feeds",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/cells/{key}/{worksheetId}/{visibility}/{projection}": {
+			"get": {
+				"summary": "Delete Row List-based Feed",
+				"description": "Delete Row List-based Feed",
+				"operationId": "delete-row-listbased-feed",
+				"parameters": [{
+					"in": "query",
+					"name": "alt",
+					"description": "Alternative representation type.atom: If you dont specify an alt parameter, the service returns an Atom feed.rss: Returns an RSS 2.0 result feed (for reads only). When you request data from a service in RSS format, the service supplies a feed (or other representation of the resource) in RSS format. If theres no equivalent RSS property for a given Data API property, the service uses the Atom property, labeling it with an appropriate namespace to indicate that its an extension to RSS.json: Retu",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "GData-Version",
+					"description": "Specifies a version number.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"description": "Specifies spreadsheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "key",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "max-col",
+					"description": "Positional number of maximum column returned in query. Queries indicate an inclusive range.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "max-results",
+					"description": "Maximum number of results to be retrieved.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "max-row",
+					"description": "Positional number of maximum row returned in query. Queries indicate an inclusive range.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "min-col",
+					"description": "Positional number of minimum column returned in query. Queries indicate an inclusive range.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "min-row",
+					"description": "Positional number of minimum row returned in query. Queries indicate an inclusive range.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Indicates what information is included in the representation.full: Full-fidelity feed; contains all spreadsheet data including formulas. Full read/write access.values:Feed includes all data except for formulas. Formulas are replaced with their evaluations. Includes Data API extension elements.Read-only access.basic: Feed includes all data except for formulas. Formulas are replaced with their evaluations. This feed uses only Atom elements, leaving out all Data API extension elements. Read-only ac",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "projection",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "Full-text query string. When creating a query, list search terms separated by spaces, in the form q=term1 term2 term3. (As with all of the query parameter values, the spaces must be URL encoded.) The service returns all entries that match all of the search terms (like using AND between terms). Like Googles web search, a service searches on complete words (and related words with the same stem), not substrings.To search for an exact phrase, enclose the phrase in quotation marks: q=exact phrase.To",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "range",
+					"description": "A single cell or a range of cells.Use standard spreadsheet cell-range notations, using a colon to separate start and end of range. Examples: range=A1 and range=R1C1 both specify only cell A1. range=D1:F3 and range=R1C4:R3C6 both specify the rectangle of cells with corners at D1 and F3.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "return-empty",
+					"description": "If true then empty cells will be returned in the feed. The default is false.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "start-index",
+					"description": "1-based index of the first result to be retrieved. Note that this isnt a general cursoring mechanism. If you first send a query with ?start-index=1&max-results=10 and then send another query with ?start-index=11&max-results=10, the service cannot guarantee that the results are equivalent to ?start-index=1&max-results=20, because insertions and deletions could have taken place in between the two queries.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "visibility",
+					"description": "private: For use whenever you can authenticate the request. Read/write access if the authenticated user has edit privileges; otherwise, read-only.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "visibility",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "worksheetId",
+					"description": "Specifies worksheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "worksheetId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["spreadsheets"],
+				"security": []
+			}
+		},
+		"/cells/{key}/{worksheetId}/{visibility}/{projection}/batch": {
+			"put": {
+				"summary": "Clear a Cell",
+				"description": "Clear a Cell",
+				"operationId": "clear-a-cell",
+				"parameters": [{
+					"in": "query",
+					"name": "Content-Type",
+					"description": "Specifies Content Type.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "GData-Version",
+					"description": "Specifies a version number.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"description": "Specifies spreadsheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "key",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Indicates what information is included in the representation.full: Full-fidelity feed; contains all spreadsheet data including formulas. Full read/write access.values:Feed includes all data except for formulas. Formulas are replaced with their evaluations. Includes Data API extension elements.Read-only access.basic: Feed includes all data except for formulas. Formulas are replaced with their evaluations. This feed uses only Atom elements, leaving out all Data API extension elements. Read-only ac",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "projection",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "visibility",
+					"description": "private: For use whenever you can authenticate the request. Read/write access if the authenticated user has edit privileges; otherwise, read-only.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "visibility",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "worksheetId",
+					"description": "Specifies worksheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "worksheetId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["spreadsheets"],
+				"security": []
+			}
+		},
+		"/cells/{key}/{worksheetId}/{visibility}/{projection}/{cellId}": {
+			"get": {
+				"summary": "Retrieve Cell-based feed",
+				"description": "Retrieve Cell-based feed",
+				"operationId": "retrieve-cellbased-feed",
+				"parameters": [{
+					"in": "query",
+					"name": "cellId",
+					"description": "Specifies cell ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "cellId",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "GData-Version",
+					"description": "Specifies a version number.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"description": "Specifies spreadsheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "key",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Indicates what information is included in the representation.full: Full-fidelity feed; contains all spreadsheet data including formulas. Full read/write access.values:Feed includes all data except for formulas. Formulas are replaced with their evaluations. Includes Data API extension elements.Read-only access.basic: Feed includes all data except for formulas. Formulas are replaced with their evaluations. This feed uses only Atom elements, leaving out all Data API extension elements. Read-only ac",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "projection",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "visibility",
+					"description": "private: For use whenever you can authenticate the request. Read/write access if the authenticated user has edit privileges; otherwise, read-only.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "visibility",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "worksheetId",
+					"description": "Specifies worksheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "worksheetId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["spreadsheets"],
+				"security": []
+			},
+			"put": {
+				"summary": "Retrieve a Cell",
+				"description": "Retrieve a Cell",
+				"operationId": "retrieve-a-cell",
+				"parameters": [{
+					"in": "query",
+					"name": "cellId",
+					"description": "Specifies cell ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "cellId",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "Content-Type",
+					"description": "Specifies Content Type.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "GData-Version",
+					"description": "Specifies a version number.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"description": "Specifies spreadsheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "key",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Indicates what information is included in the representation.full: Full-fidelity feed; contains all spreadsheet data including formulas. Full read/write access.values:Feed includes all data except for formulas. Formulas are replaced with their evaluations. Includes Data API extension elements.Read-only access.basic: Feed includes all data except for formulas. Formulas are replaced with their evaluations. This feed uses only Atom elements, leaving out all Data API extension elements. Read-only ac",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "projection",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "visibility",
+					"description": "private: For use whenever you can authenticate the request. Read/write access if the authenticated user has edit privileges; otherwise, read-only.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "visibility",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "worksheetId",
+					"description": "Specifies worksheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "worksheetId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["spreadsheets"],
+				"security": []
+			}
+		},
+		"/list/{key}/{worksheetId}/{visibility}/{projection}": {
+			"get": {
+				"summary": "Delete a Worksheet",
+				"description": "Delete a Worksheet",
+				"operationId": "delete-a-worksheet",
+				"parameters": [{
+					"in": "query",
+					"name": "alt",
+					"description": "Alternative representation type.atom: If you dont specify an alt parameter, the service returns an Atom feed.rss: Returns an RSS 2.0 result feed (for reads only). When you request data from a service in RSS format, the service supplies a feed (or other representation of the resource) in RSS format. If theres no equivalent RSS property for a given Data API property, the service uses the Atom property, labeling it with an appropriate namespace to indicate that its an extension to RSS.json: Retu",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "GData-Version",
+					"description": "Specifies a version number.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"description": "Specifies spreadsheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "key",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "max-results",
+					"description": "Maximum number of results to be retrieved.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "orderby",
+					"description": "Specifies what column to use in ordering the entries in the feed.- By position (the default): orderby=position returns rows in the order in which they appear in the GUI. Row 1, then row 2, then row 3, and so on.- By column: orderby=column:columnName sorts rows in ascending order based on the values in the column with the given columnName, where columnName is the value in the header row for that column.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Indicates what information is included in the representation.full: Full-fidelity feed; contains all spreadsheet data including formulas. Full read/write access.values:Feed includes all data except for formulas. Formulas are replaced with their evaluations. Includes Data API extension elements.Read-only access.basic: Feed includes all data except for formulas. Formulas are replaced with their evaluations. This feed uses only Atom elements, leaving out all Data API extension elements. Read-only ac",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "projection",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "Full-text query string. When creating a query, list search terms separated by spaces, in the form q=term1 term2 term3. (As with all of the query parameter values, the spaces must be URL encoded.) The service returns all entries that match all of the search terms (like using AND between terms). Like Googles web search, a service searches on complete words (and related words with the same stem), not substrings.To search for an exact phrase, enclose the phrase in quotation marks: q=exact phrase.To",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "reverse",
+					"description": "Specifies whether to sort in descending or ascending order. Reverses default sort order: reverse=true results in a descending sort; reverse=false (the default) results in an ascending sort.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "sq",
+					"description": "Structured query on the full text in the worksheet. [columnName][binaryOperator][value]Supported binaryOperators are: o () for overriding order of operations o = or == for strict equality o  or != for strict inequality o and or && for boolean and o or or || for boolean orNote that the binaryOperators need to be URL-encoded. Example: https://spreadsheets.google.com/feeds/list/key/worksheetId/private/full?sq=ipm40",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "start-index",
+					"description": "1-based index of the first result to be retrieved. Note that this isnt a general cursoring mechanism. If you first send a query with ?start-index=1&max-results=10 and then send another query with ?start-index=11&max-results=10, the service cannot guarantee that the results are equivalent to ?start-index=1&max-results=20, because insertions and deletions could have taken place in between the two queries.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "visibility",
+					"description": "private: For use whenever you can authenticate the request. Read/write access if the authenticated user has edit privileges; otherwise, read-only.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "visibility",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "worksheetId",
+					"description": "Specifies worksheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "worksheetId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["spreadsheets"],
+				"security": []
+			},
+			"post": {
+				"summary": "Retrieve List-based feed",
+				"description": "Retrieve List-based feed",
+				"operationId": "retrieve-listbased-feed",
+				"parameters": [{
+					"in": "query",
+					"name": "alt",
+					"description": "Alternative representation type.atom: If you dont specify an alt parameter, the service returns an Atom feed.rss: Returns an RSS 2.0 result feed (for reads only). When you request data from a service in RSS format, the service supplies a feed (or other representation of the resource) in RSS format. If theres no equivalent RSS property for a given Data API property, the service uses the Atom property, labeling it with an appropriate namespace to indicate that its an extension to RSS.json: Retu",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "Content-Type",
+					"description": "Specifies Content Type.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "GData-Version",
+					"description": "Specifies a version number.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"description": "Specifies spreadsheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "key",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "max-results",
+					"description": "Maximum number of results to be retrieved.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "orderby",
+					"description": "Specifies what column to use in ordering the entries in the feed.- By position (the default): orderby=position returns rows in the order in which they appear in the GUI. Row 1, then row 2, then row 3, and so on.- By column: orderby=column:columnName sorts rows in ascending order based on the values in the column with the given columnName, where columnName is the value in the header row for that column.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Indicates what information is included in the representation.full: Full-fidelity feed; contains all spreadsheet data including formulas. Full read/write access.values:Feed includes all data except for formulas. Formulas are replaced with their evaluations. Includes Data API extension elements.Read-only access.basic: Feed includes all data except for formulas. Formulas are replaced with their evaluations. This feed uses only Atom elements, leaving out all Data API extension elements. Read-only ac",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "projection",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "Full-text query string. When creating a query, list search terms separated by spaces, in the form q=term1 term2 term3. (As with all of the query parameter values, the spaces must be URL encoded.) The service returns all entries that match all of the search terms (like using AND between terms). Like Googles web search, a service searches on complete words (and related words with the same stem), not substrings.To search for an exact phrase, enclose the phrase in quotation marks: q=exact phrase.To",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "reverse",
+					"description": "Specifies whether to sort in descending or ascending order. Reverses default sort order: reverse=true results in a descending sort; reverse=false (the default) results in an ascending sort.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "sq",
+					"description": "Structured query on the full text in the worksheet. [columnName][binaryOperator][value]Supported binaryOperators are: o () for overriding order of operations o = or == for strict equality o  or != for strict inequality o and or && for boolean and o or or || for boolean orNote that the binaryOperators need to be URL-encoded. Example: https://spreadsheets.google.com/feeds/list/key/worksheetId/private/full?sq=ipm40",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "start-index",
+					"description": "1-based index of the first result to be retrieved. Note that this isnt a general cursoring mechanism. If you first send a query with ?start-index=1&max-results=10 and then send another query with ?start-index=11&max-results=10, the service cannot guarantee that the results are equivalent to ?start-index=1&max-results=20, because insertions and deletions could have taken place in between the two queries.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "visibility",
+					"description": "private: For use whenever you can authenticate the request. Read/write access if the authenticated user has edit privileges; otherwise, read-only.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "visibility",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "worksheetId",
+					"description": "Specifies worksheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "worksheetId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["spreadsheets"],
+				"security": []
+			}
+		},
+		"/list/{key}/{worksheetId}/{visibility}/{projection}/{rowId}": {
+			"delete": {
+				"summary": "Update Row List-based Feed",
+				"description": "Update Row List-based Feed",
+				"operationId": "update-row-listbased-feed",
+				"parameters": [{
+					"in": "query",
+					"name": "GData-Version",
+					"description": "Specifies a version number.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"description": "Specifies spreadsheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "key",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Indicates what information is included in the representation.full: Full-fidelity feed; contains all spreadsheet data including formulas. Full read/write access.values:Feed includes all data except for formulas. Formulas are replaced with their evaluations. Includes Data API extension elements.Read-only access.basic: Feed includes all data except for formulas. Formulas are replaced with their evaluations. This feed uses only Atom elements, leaving out all Data API extension elements. Read-only ac",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "projection",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "rowId",
+					"description": "Specifies row ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "rowId",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "visibility",
+					"description": "private: For use whenever you can authenticate the request. Read/write access if the authenticated user has edit privileges; otherwise, read-only.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "visibility",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "worksheetId",
+					"description": "Specifies worksheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "worksheetId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["spreadsheets"],
+				"security": []
+			},
+			"get": {
+				"summary": "Add a Row List-based feed",
+				"description": "Add a Row List-based feed",
+				"operationId": "add-a-row-listbased-feed",
+				"parameters": [{
+					"in": "query",
+					"name": "GData-Version",
+					"description": "Specifies a version number.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"description": "Specifies spreadsheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "key",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Indicates what information is included in the representation.full: Full-fidelity feed; contains all spreadsheet data including formulas. Full read/write access.values:Feed includes all data except for formulas. Formulas are replaced with their evaluations. Includes Data API extension elements.Read-only access.basic: Feed includes all data except for formulas. Formulas are replaced with their evaluations. This feed uses only Atom elements, leaving out all Data API extension elements. Read-only ac",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "projection",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "rowId",
+					"description": "Specifies row ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "rowId",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "visibility",
+					"description": "private: For use whenever you can authenticate the request. Read/write access if the authenticated user has edit privileges; otherwise, read-only.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "visibility",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "worksheetId",
+					"description": "Specifies worksheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "worksheetId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["spreadsheets"],
+				"security": []
+			},
+			"put": {
+				"summary": "Retrieve Row List-based Feed",
+				"description": "Retrieve Row List-based Feed",
+				"operationId": "retrieve-row-listbased-feed",
+				"parameters": [{
+					"in": "query",
+					"name": "Content-Type",
+					"description": "Specifies Content Type.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "GData-Version",
+					"description": "Specifies a version number.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"description": "Specifies spreadsheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "key",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Indicates what information is included in the representation.full: Full-fidelity feed; contains all spreadsheet data including formulas. Full read/write access.values:Feed includes all data except for formulas. Formulas are replaced with their evaluations. Includes Data API extension elements.Read-only access.basic: Feed includes all data except for formulas. Formulas are replaced with their evaluations. This feed uses only Atom elements, leaving out all Data API extension elements. Read-only ac",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "projection",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "rowId",
+					"description": "Specifies row ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "rowId",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "visibility",
+					"description": "private: For use whenever you can authenticate the request. Read/write access if the authenticated user has edit privileges; otherwise, read-only.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "visibility",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "worksheetId",
+					"description": "Specifies worksheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "worksheetId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["spreadsheets"],
+				"security": []
+			}
+		},
+		"/spreadsheets/{visibility}/{projection}": {
+			"get": {
+				"summary": "Get Spreadsheet Visibility",
+				"description": "",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "alt",
+					"description": "Alternative representation type.atom: If you dont specify an alt parameter, the service returns an Atom feed.rss: Returns an RSS 2.0 result feed (for reads only). When you request data from a service in RSS format, the service supplies a feed (or other representation of the resource) in RSS format. If theres no equivalent RSS property for a given Data API property, the service uses the Atom property, labeling it with an appropriate namespace to indicate that its an extension to RSS.json: Retu",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "author",
+					"description": "Entry author. The service returns entries where the author name and/or email address match your query string.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "GData-Version",
+					"description": "Specifies a version number.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "max-results",
+					"description": "Maximum number of results to be retrieved.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Indicates what information is included in the representation.full: Full-fidelity feed; contains all spreadsheet data including formulas. Full read/write access.values:Feed includes all data except for formulas. Formulas are replaced with their evaluations. Includes Data API extension elements.Read-only access.basic: Feed includes all data except for formulas. Formulas are replaced with their evaluations. This feed uses only Atom elements, leaving out all Data API extension elements. Read-only ac",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "projection",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "start-index",
+					"description": "1-based index of the first result to be retrieved. Note that this isnt a general cursoring mechanism. If you first send a query with ?start-index=1&max-results=10 and then send another query with ?start-index=11&max-results=10, the service cannot guarantee that the results are equivalent to ?start-index=1&max-results=20, because insertions and deletions could have taken place in between the two queries.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "Specifies the search terms for the title of a document. This parameter used without title-exact will only submit partial queries, not exact queries.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "title-exact",
+					"description": "Specifies whether the title query should be taken as an exact string. Meaningless without title. Possible values are true and false. Note: Matches are case-insensitive.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "updated-max",
+					"description": "Bounds on the entry update date. Use the RFC 3339 timestamp format. For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive, whereas the upper bound is exclusive. In some cases (such as when using v2.1 or newer of the Calendar Data API), specifying an updated-min that is too far in the past will cause an HTTP 410 (Gone) status to be returned.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "updated-min",
+					"description": "Bounds on the entry update date. Use the RFC 3339 timestamp format. For example: 2005-08-09T10:57:00-08:00. The lower bound is inclusive, whereas the upper bound is exclusive. In some cases (such as when using v2.1 or newer of the Calendar Data API), specifying an updated-min that is too far in the past will cause an HTTP 410 (Gone) status to be returned.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "visibility",
+					"description": "private: For use whenever you can authenticate the request. Read/write access if the authenticated user has edit privileges; otherwise, read-only.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "visibility",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["spreadsheets"],
+				"security": []
+			}
+		},
+		"/spreadsheets/{visibility}/{projection}/{key}": {
+			"get": {
+				"summary": "Get Spreadsheets",
+				"description": "Get Spreadsheets",
+				"operationId": "get-spreadsheets",
+				"parameters": [{
+					"in": "query",
+					"name": "GData-Version",
+					"description": "Specifies a version number.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"description": "Specifies spreadsheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "key",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Indicates what information is included in the representation.full: Full-fidelity feed; contains all spreadsheet data including formulas. Full read/write access.values:Feed includes all data except for formulas. Formulas are replaced with their evaluations. Includes Data API extension elements.Read-only access.basic: Feed includes all data except for formulas. Formulas are replaced with their evaluations. This feed uses only Atom elements, leaving out all Data API extension elements. Read-only ac",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "projection",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "visibility",
+					"description": "private: For use whenever you can authenticate the request. Read/write access if the authenticated user has edit privileges; otherwise, read-only.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "visibility",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["spreadsheets"],
+				"security": []
+			}
+		},
+		"/worksheets/{key}/{visibility}/{projection} ": {
+			"get": {
+				"summary": "Get a Spreadsheet",
+				"description": "Get a Spreadsheet",
+				"operationId": "get-a-spreadsheet",
+				"parameters": [{
+					"in": "query",
+					"name": "alt",
+					"description": "Alternative representation type.atom: If you dont specify an alt parameter, the service returns an Atom feed.rss: Returns an RSS 2.0 result feed (for reads only). When you request data from a service in RSS format, the service supplies a feed (or other representation of the resource) in RSS format. If theres no equivalent RSS property for a given Data API property, the service uses the Atom property, labeling it with an appropriate namespace to indicate that its an extension to RSS.json: Retu",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "GData-Version",
+					"description": "Specifies a version number.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"description": "Specifies spreadsheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "key",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "max-results",
+					"description": "Maximum number of results to be retrieved.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "projection",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Indicates what information is included in the representation.full: Full-fidelity feed; contains all spreadsheet data including formulas. Full read/write access.values:Feed includes all data except for formulas. Formulas are replaced with their evaluations. Includes Data API extension elements.Read-only access.basic: Feed includes all data except for formulas. Formulas are replaced with their evaluations. This feed uses only Atom elements, leaving out all Data API extension elements. Read-only ac",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "start-index",
+					"description": "1-based index of the first result to be retrieved. Note that this isnt a general cursoring mechanism. If you first send a query with ?start-index=1&max-results=10 and then send another query with ?start-index=11&max-results=10, the service cannot guarantee that the results are equivalent to ?start-index=1&max-results=20, because insertions and deletions could have taken place in between the two queries.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "Specifies the search terms for the title of a document. This parameter used without title-exact will only submit partial queries, not exact queries.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "title-exact",
+					"description": "Specifies whether the title query should be taken as an exact string. Meaningless without title. Possible values are true and false. Note: Matches are case-insensitive.",
+					"type": "boolean"
+				},
+				{
+					"in": "path",
+					"name": "visibility",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "visibility",
+					"description": "private: For use whenever you can authenticate the request. Read/write access if the authenticated user has edit privileges; otherwise, read-only.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["spreadsheets"],
+				"security": []
+			},
+			"post": {
+				"summary": "Get Worksheets",
+				"description": "Get Worksheets",
+				"operationId": "get-worksheets",
+				"parameters": [{
+					"in": "query",
+					"name": "alt",
+					"description": "Alternative representation type.atom: If you dont specify an alt parameter, the service returns an Atom feed.rss: Returns an RSS 2.0 result feed (for reads only). When you request data from a service in RSS format, the service supplies a feed (or other representation of the resource) in RSS format. If theres no equivalent RSS property for a given Data API property, the service uses the Atom property, labeling it with an appropriate namespace to indicate that its an extension to RSS.json: Retu",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "Content-Type",
+					"description": "Specifies Content Type.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "GData-Version",
+					"description": "Specifies a version number.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"description": "Specifies spreadsheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "key",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "max-results",
+					"description": "Maximum number of results to be retrieved.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Indicates what information is included in the representation.full: Full-fidelity feed; contains all spreadsheet data including formulas. Full read/write access.values:Feed includes all data except for formulas. Formulas are replaced with their evaluations. Includes Data API extension elements.Read-only access.basic: Feed includes all data except for formulas. Formulas are replaced with their evaluations. This feed uses only Atom elements, leaving out all Data API extension elements. Read-only ac",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "projection",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "start-index",
+					"description": "1-based index of the first result to be retrieved. Note that this isnt a general cursoring mechanism. If you first send a query with ?start-index=1&max-results=10 and then send another query with ?start-index=11&max-results=10, the service cannot guarantee that the results are equivalent to ?start-index=1&max-results=20, because insertions and deletions could have taken place in between the two queries.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "Specifies the search terms for the title of a document. This parameter used without title-exact will only submit partial queries, not exact queries.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "title-exact",
+					"description": "Specifies whether the title query should be taken as an exact string. Meaningless without title. Possible values are true and false. Note: Matches are case-insensitive.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "visibility",
+					"description": "private: For use whenever you can authenticate the request. Read/write access if the authenticated user has edit privileges; otherwise, read-only.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "visibility",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["spreadsheets"],
+				"security": []
+			}
+		},
+		"/worksheets/{key}/{visibility}/{projection}/{worksheetId}": {
+			"get": {
+				"summary": "Add a Worksheet",
+				"description": "Add a Worksheet",
+				"operationId": "add-a-worksheet",
+				"parameters": [{
+					"in": "query",
+					"name": "GData-Version",
+					"description": "Specifies a version number.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"description": "Specifies spreadsheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "key",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Indicates what information is included in the representation.full: Full-fidelity feed; contains all spreadsheet data including formulas. Full read/write access.values:Feed includes all data except for formulas. Formulas are replaced with their evaluations. Includes Data API extension elements.Read-only access.basic: Feed includes all data except for formulas. Formulas are replaced with their evaluations. This feed uses only Atom elements, leaving out all Data API extension elements. Read-only ac",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "projection",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "visibility",
+					"description": "private: For use whenever you can authenticate the request. Read/write access if the authenticated user has edit privileges; otherwise, read-only.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "visibility",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "worksheetId",
+					"description": "Specifies worksheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "worksheetId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["spreadsheets"],
+				"security": []
+			},
+			"put": {
+				"summary": "Get a Worksheet",
+				"description": "Get a Worksheet",
+				"operationId": "get-a-worksheet",
+				"parameters": [{
+					"in": "query",
+					"name": "Content-Type",
+					"description": "Specifies Content Type.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "GData-Version",
+					"description": "Specifies a version number.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"description": "Specifies spreadsheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "key",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Indicates what information is included in the representation.full: Full-fidelity feed; contains all spreadsheet data including formulas. Full read/write access.values:Feed includes all data except for formulas. Formulas are replaced with their evaluations. Includes Data API extension elements.Read-only access.basic: Feed includes all data except for formulas. Formulas are replaced with their evaluations. This feed uses only Atom elements, leaving out all Data API extension elements. Read-only ac",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "projection",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "visibility",
+					"description": "private: For use whenever you can authenticate the request. Read/write access if the authenticated user has edit privileges; otherwise, read-only.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "visibility",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "worksheetId",
+					"description": "Specifies worksheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "worksheetId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["spreadsheets"],
+				"security": []
+			}
+		},
+		"/worksheets/{key}/{visibility}/{projection}/{worksheetId}/{version}": {
+			"delete": {
+				"summary": "Update a Worksheet",
+				"description": "Update a Worksheet",
+				"operationId": "update-a-worksheet",
+				"parameters": [{
+					"in": "query",
+					"name": "GData-Version",
+					"description": "Specifies a version number.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"description": "Specifies spreadsheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "key",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Indicates what information is included in the representation.full: Full-fidelity feed; contains all spreadsheet data including formulas. Full read/write access.values:Feed includes all data except for formulas. Formulas are replaced with their evaluations. Includes Data API extension elements.Read-only access.basic: Feed includes all data except for formulas. Formulas are replaced with their evaluations. This feed uses only Atom elements, leaving out all Data API extension elements. Read-only ac",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "projection",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "version",
+					"description": "Specifies the version of worksheet.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "version",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "visibility",
+					"description": "private: For use whenever you can authenticate the request. Read/write access if the authenticated user has edit privileges; otherwise, read-only.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "visibility",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "worksheetId",
+					"description": "Specifies worksheet ID.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "worksheetId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["spreadsheets"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

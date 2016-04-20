@@ -1,0 +1,88 @@
+- swagger: "2.0"
+  info:
+    title: FullContact Location API
+    description: The API for managing FullContact Locations
+    termsOfService: https://www.fullcontact.com/terms/
+    version: v2
+  host: api.fullcontact.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /address/locationNormalizer.json:
+      get:
+        summary: Location Normalization
+        description: The Location Normalization method takes semi-structured location
+          data via the place parameter, provided as a string, and returns structured
+          location data in either JSON or XML format.
+        operationId: normalizeLocation
+        parameters:
+        - in: query
+          name: apiKey
+          description: This API key is assigned to you by FullContact. It is used to
+            identify and authorize your request. Your API key should be kept private,
+            and should never be displayed publicly.
+          type: string
+          format: string
+        - in: query
+          name: casing
+          description: Uppercase, lowercase, title case
+          type: string
+          format: string
+        - in: query
+          name: includeZeroPopulation
+          description: Appending includeZeroPopulation=true, will display 0 population
+            census locations.
+          type: string
+          format: string
+        - in: query
+          name: place
+          description: The place parameter allows you to pass a semi-structured location
+            string which can include continent, country, state, city, or county. County
+            names must always be followed by the word County in your input string (ie.
+            Collier County, Denver County, etc).
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful Address Normalization
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/Address'
+        tags:
+        - Location
+        - ' Normalization'
+        - ' Address'
+        security: []
+  definitions:
+    Address:
+      properties:
+        status:
+          description: This is a default description.
+          type: string
+        city:
+          description: This is a default description.
+          type: string
+        state:
+          description: This is a default description.
+          type: string
+        county:
+          description: This is a default description.
+          type: string
+        country:
+          description: This is a default description.
+          type: string
+        continent:
+          description: This is a default description.
+          type: string
+        likelihood:
+          description: This is a default description.
+          type: string
+        normalizedLocation:
+          description: This is a default description.
+          type: string

@@ -1,0 +1,90 @@
+- swagger: "2.0"
+  info:
+    title: Hearst Author Search
+    description: A read-only service for the retrieval of Author content from the Hearst
+      Magazines Content Management System. Contains a list of parameters and sample
+      responses.
+    termsOfService: Whether or not to return a total number of records in the response
+      or not. Values are 1 or 0.
+    version: v1
+  host: api.hearstdigital.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    Author/search:
+      get:
+        summary: Author Search
+        description: A read-only service for the retrieval of Author content from the
+          Hearst Magazines Content Management System. Contains a list of parameters
+          and sample responses.
+        operationId: ""
+        parameters:
+        - in: query
+          name: email
+          type: string
+          format: string
+        - in: query
+          name: first_name
+          type: string
+          format: string
+        - in: query
+          name: id
+          type: integer
+          format: string
+        - in: query
+          name: last_name
+          type: string
+          format: string
+        - in: query
+          name: limit
+          type: integer
+          format: string
+        - in: query
+          name: nick_name
+          type: string
+          format: string
+        - in: query
+          name: organization_id
+          type: integer
+          format: string
+        - in: query
+          name: site_id
+          type: integer
+          format: string
+        - in: query
+          name: sort
+          type: string
+          format: string
+        - in: query
+          name: start
+          type: integer
+          format: string
+        - in: query
+          name: title
+          type: string
+          format: string
+        - in: query
+          name: total
+          type: integer
+          format: string
+        - in: query
+          name: _callback
+          type: string
+          format: string
+        - in: query
+          name: _pretty
+          type: integer
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' author'
+        security: []
+  definitions: []

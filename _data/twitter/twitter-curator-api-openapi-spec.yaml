@@ -1,0 +1,372 @@
+- swagger: "2.0"
+  info:
+    title: Curator API
+    description: The Curator Broadcaster API is a private API that provides broadcasters
+      their Curator-created streams for on-air graphics systems (or other digital displays).
+    termsOfService: http://dev.twitter.com/overview/terms
+    contact:
+      name: Twitter
+      url: https://dev.twitter.com/discussions
+    version: "1"
+  host: curator.twitter.com
+  basePath: /broadcast/1/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /collections/:id/content/:
+      get:
+        summary: Collections Content
+        description: Returns the latest content in a collection.
+        operationId: collectionsContent
+        parameters:
+        - in: query
+          name: auth
+          description: Auth token for user.
+          type: string
+          format: string
+        - in: query
+          name: format
+          description: The output format request. This param can be either json or xml.
+          type: string
+          format: string
+        - in: query
+          name: id
+          description: The id of the collection.
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: The number of elements to return. Defaults to 25 if not specified.
+          type: integer
+          format: integer
+        - in: query
+          name: page
+          description: Used for pagination. Use the next_page or prev_page value obtained
+            from a previous request.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Curator
+        security: []
+    /projects/:
+      get:
+        summary: Get Projects
+        description: Returns a list of existing projects available to the user.
+        operationId: getProjects
+        parameters:
+        - in: query
+          name: auth
+          description: Auth token for user.
+          type: string
+          format: string
+        - in: query
+          name: format
+          description: The output format request. This param can be either json or xml.
+            It will default to json.
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: The number of elements to return. Defaults to 500 if not specified.
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: OK
+        tags:
+        - Curator
+        security: []
+    /projects/:id/:
+      get:
+        summary: Get Project
+        description: Returns info about a specific project. This will list the project,
+          its streams, and any associated collections.
+        operationId: getProject
+        parameters:
+        - in: query
+          name: auth
+          description: auth
+          type: string
+          format: string
+        - in: query
+          name: format
+          description: The output format request. This param can be either json or xml.
+            It will default to json.
+          type: string
+          format: string
+        - in: path
+          name: id
+          description: The id of the project to look up.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Curator
+        security: []
+    /streams/:id/content/:
+      get:
+        summary: Stream Content
+        description: 'Returns the latest content for a stream. '
+        operationId: streamContent
+        parameters:
+        - in: query
+          name: auth
+          description: Auth token for user.
+          type: string
+          format: string
+        - in: query
+          name: format
+          description: The output format request. This param can be either json or xml.
+          type: string
+          format: string
+        - in: query
+          name: id
+          description: The id of the stream to get content for.
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: The number of elements to return. Defaults to 50 if not specified.
+          type: string
+          format: string
+        - in: query
+          name: page
+          description: Used for pagination. Use the next_page or prev_page value obtained
+            from a previous request.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Curator
+        security: []
+    /streams/:id/metrics/:
+      get:
+        summary: Stream Metrics
+        description: Returns tweet and author counts, gender breakdown, top terms, and
+          top locales for a stream over a time range.
+        operationId: streamMetrics
+        parameters:
+        - in: query
+          name: auth
+          description: Auth token for user.
+          type: string
+          format: string
+        - in: query
+          name: end_time
+          description: The ending unix timestamp in milliseconds. If time range is less
+            than 2 hours will be rounded up to nearest minute, less than 5 days will
+            be rounded up to nearest hour, otherwise will be rounded up to nearest day.
+            Range cannot be greater than 30 days. Defaults to now if not specified.
+          type: string
+          format: string
+        - in: query
+          name: format
+          type: string
+          format: string
+          default: The output format request. This param can be either json or xml.
+            It will default to json.
+        - in: query
+          name: id
+          description: The id of the stream to get content for.
+          type: string
+          format: string
+        - in: query
+          name: start_time
+          description: The starting unix timestamp in milliseconds. If time range is
+            less than 2 hours will be rounded down to nearest minute, less than 5 days
+            will be rounded down to nearest hour, otherwise will be rounded down to
+            nearest day. Cannot be greater than 30 days in the past. Defaults to end_time
+            - 1 hour if not specified.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Curator
+        security: []
+    /streams/:id/trendline/:
+      get:
+        summary: Streams Trendline
+        description: Returns tweet and author counts, and gender breakdown for a stream
+          in minutely, hourly, or daily buckets over a time range. This is similar to
+          metrics except that each value is list of timestamped values instead of a
+          single value.
+        operationId: streamsTrendline
+        parameters:
+        - in: query
+          name: auth
+          description: Auth token for user.
+          type: string
+          format: string
+        - in: query
+          name: end_time
+          description: The ending unix timestamp in milliseconds. Will be rounded up
+            to the nearest multiple of granularity. Range cannot be greater than 2 hours
+            for minute granularity, 5 days for hour granularity, or 30 days for day
+            granularity. Defaults to now if not specified.
+          type: string
+          format: string
+        - in: query
+          name: format
+          description: The output format request. This param can be either json or xml.
+            It will default to json.
+          type: string
+          format: string
+        - in: query
+          name: granularity
+          description: One of MINUTE, HOUR, or DAY. This specifies the size of the time
+            buckets. When not specified, defaults to MINUTE.
+          type: string
+          format: string
+        - in: query
+          name: id
+          description: The id of the stream to get content for.
+          type: string
+          format: string
+        - in: query
+          name: start_time
+          description: The starting unix timestamp in milliseconds. Will be rounded
+            down to the nearest multiple of granularity. Cannot be greater than 30 days
+            in the past. Defaults to end_time - 1 hour if not specified.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Curator
+        security: []
+    /streams/compare/:
+      get:
+        summary: Compare Streams
+        description: Returns the number of tweets and unique authors for a collection
+          of streams over a specified time range. Specify either stream_ids to compare
+          a fixed set of streams or project_id to compare all streams within a project.
+          Also calculates the percentage of tweets and unique authors in each stream
+          relative to the total of all streams requested.
+        operationId: compareStreams
+        parameters:
+        - in: query
+          name: auth
+          description: Auth token for user.
+          type: string
+          format: string
+        - in: query
+          name: end_time
+          description: The ending unix timestamp in milliseconds. If time range is less
+            than or equal to 2 hours will be rounded up to nearest minute, less than
+            or equal to 5 days will be rounded up to nearest hour, otherwise will be
+            rounded up to nearest day. Range cannot be greater than 30 days. Defaults
+            to now if not specified.
+          type: string
+          format: string
+        - in: query
+          name: format
+          description: The output format request. This param can be either json or xml.
+            It will default to json.
+          type: string
+          format: string
+        - in: query
+          name: project_id
+          description: Instead of specifying a list of stream IDs, you can instead specify
+            a single project ID and all streams in that project will be included.
+          type: string
+          format: string
+        - in: query
+          name: start_time
+          description: The starting unix timestamp in milliseconds. If time range is
+            less than or equal to 2 hours will be rounded down to nearest minute, less
+            than or equal to 5 days will be rounded down to nearest hour, otherwise
+            will be rounded down to nearest day. Cannot be greater than 180 days in
+            the past. Defaults to end_time - 1 hour if not specified.
+          type: string
+          format: string
+        - in: query
+          name: stream_ids
+          description: A comma separated list of stream IDs.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Curator
+        security: []
+    /streams/compare_to_target/:
+      get:
+        summary: Compare Streams to Target
+        description: Compares the number of tweets or unique authors for a collection
+          of streams to a target value, returning the tweet or author count as percentage
+          of the target value.
+        operationId: compareStreamsToTarget
+        parameters:
+        - in: query
+          name: auth
+          description: Auth token for user.
+          type: string
+          format: string
+        - in: query
+          name: end_time
+          description: The ending unix timestamp in milliseconds. If time range is less
+            than 2 hours will be rounded up to nearest minute, less than 5 days will
+            be rounded up to nearest hour, otherwise will be rounded up to nearest day.
+            Range cannot be greater than 30 days. Defaults to now if not specified.
+          type: string
+          format: string
+        - in: query
+          name: format
+          description: The output format request. This param can be either json or xml.
+            It will default to json.
+          type: string
+          format: string
+        - in: query
+          name: mode
+          description: Either TWEETS or AUTHORS. When tweets specified, will compare
+            number of tweets to the target. When authors specified, will compare number
+            of unique authors to the target.
+          type: string
+          format: string
+        - in: query
+          name: project_id
+          description: Instead of specifying a list of stream IDs, you can instead specify
+            a single project ID and all streams in that project will be included.
+          type: string
+          format: string
+        - in: query
+          name: start_time
+          description: The starting unix timestamp in milliseconds. If time range is
+            less than or equal to 2 hours will be rounded down to nearest minute, less
+            than or equal to 5 days will be rounded down to nearest hour, otherwise
+            will be rounded down to nearest day. Cannot be greater than 180 days in
+            the past. Defaults to end_time - 1 hour if not specified.
+          type: string
+          format: string
+        - in: query
+          name: stream_ids
+          description: A comma separated list of stream IDs.
+          type: string
+          format: string
+        - in: query
+          name: target
+          description: The target value for tweets or unique authors.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Curator
+        security: []
+  definitions: []

@@ -1,0 +1,38 @@
+- swagger: "2.0"
+  info:
+    title: CloudFlare Zone Plan API
+    description: The API for managing CloudFlare Zone Plan
+    termsOfService: https://www.cloudflare.com/terms/
+    version: ~
+  host: api.cloudflare.com
+  basePath: /client/v4
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /zones/:zone_identifier/available_plans:
+      get:
+        summary: List all plans the zone can subscribe to
+        description: List all plans the zone can subscribe to
+        operationId: cloudflare-zone-plan-api
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /zones/:zone_identifier/available_plans/:identifier:
+      get:
+        summary: 'Plan details permission needed: #billing:read'
+        description: ' Plan details permission needed: #billing:readntt  '
+        operationId: cloudflare-zone-plan-api
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

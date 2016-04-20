@@ -1,0 +1,80 @@
+- swagger: "2.0"
+  info:
+    title: Alchemy Microformats Parsing API
+    description: AlchemyAPI understands Microformats data standards and is capable of
+      extracting hCard, adr, geo, and rel-* formatted content from any web page. Leverage
+      this structured data to enhance web page categorization and indexing, and perform
+      content discovery tasks.
+    termsOfService: http://www.alchemyapi.com/company/terms.html
+    contact:
+      name: AlchemyAPI
+      url: http://www.alchemyapi.com/company/contact
+      email: questions@alchemyapi.com
+    license:
+      name: v
+      url: ~
+    version: v1
+  host: access.alchemyapi.com
+  basePath: /calls/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /url/URLGetMicroformatData:
+      get:
+        summary: Get Microformat Data
+        description: AlchemyAPI understands Microformats data standards and is capable
+          of extracting hCard, adr, geo, and rel-* formatted content from any web page.
+          Leverage this structured data to enhance web page categorization and indexing,
+          and perform content discovery tasks.
+        operationId: callsUrlURLGetMicroformatData
+        parameters:
+        - in: query
+          name: apikey
+          type: string
+          format: string
+        - in: query
+          name: url
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/results'
+        tags:
+        - Microformats
+        security:
+        - apikey: []
+  securityDefinitions:
+    apikey:
+      type: apiKey
+      name: apikey
+  definitions:
+    results:
+      properties:
+        status:
+          description: This is a default description.
+          type: string
+        usage:
+          description: This is a default description.
+          type: string
+        url:
+          description: This is a default description.
+          type: string
+        microformats:
+          description: This is a default description.
+          type: string
+    microformat:
+      properties:
+        field:
+          description: This is a default description.
+          type: string
+        data:
+          description: This is a default description.
+          type: string

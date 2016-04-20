@@ -1,0 +1,57 @@
+- swagger: "2.0"
+  info:
+    title: Facebook Graph (Object Insights) API
+    description: API for managing Facebook Object Insightss
+    termsOfService: https://www.facebook.com/policies/
+    version: ~
+  host: graph.facebook.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /v2.5/{object-id}/insights/{metric-name}:
+      get:
+        summary: Facebook Insights is a product available to all Pages and Apps on Facebook,
+          and any domains claimed by a site developer using the Insights dashboard
+        description: Facebook Insights is a product available to all Pages and Apps
+          on Facebook, and any domains claimed by a site developer using the Insights
+          dashboard
+        operationId: object-insights
+        parameters:
+        - in: query
+          name: breakdown
+          description: Usuable only with the application_mobile_app_installs metric
+            to show a breakdown of installs by a specific grouping.
+          type: string
+        - in: query
+          name: description
+          description: The full description of the metric.
+          type: string
+        - in: query
+          name: id
+          description: ID of the insight.
+          type: string
+        - in: query
+          name: name
+          description: Name of the metric.
+          type: string
+        - in: query
+          name: period
+          description: Length of the period during which the insights were collected.
+          type: string
+        - in: query
+          name: values
+          description: Individual data points for the insight grouped by different time
+            periods (determined by period).
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - insights
+        security: []
+  definitions: []

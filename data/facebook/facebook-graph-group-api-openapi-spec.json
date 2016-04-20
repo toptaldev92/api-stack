@@ -1,0 +1,447 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Facebook Graph (Group) API",
+		"description": "API for managing Facebook Groups",
+		"termsOfService": "https://www.facebook.com/policies/",
+		"version": null
+	},
+	"host": "graph.facebook.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/(user-id||event-id||page-id)||group)/videos/": {
+			"get": {
+				"summary": "Videos for a Facebook Group",
+				"description": "Videos for a Facebook Group",
+				"operationId": "group",
+				"parameters": [{
+					"in": "query",
+					"name": "description",
+					"description": "The description of the video, used as the accompanying status message in any feed story. This parameter can contain mentions of other Facebook Pages using the following syntax:&#064;[page-id]For example the following description would mention the Facebook Developers page inline:Test message &#064;[19292868552] tagUsage of this feature is subject to review but by using Pages you are an admin of (both to make the API call, and to be used in a mention), and an app you are a developer of, you can test it for yourself before review.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "file_size",
+					"description": "The size of the entire video file in bytes.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "file_url",
+					"description": "Accessible URL of a video file. Cannot be used with upload_phase.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "The video, encoded as form data. This field is required.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "start_offset",
+					"description": "Start byte position of the file chunk.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "thumb",
+					"description": "The video thumbnail raw data to be uploaded and associated with a video.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "The title of the video.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "upload_phase",
+					"description": "Type of chunked upload request.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "upload_session_id",
+					"description": "ID of the chunked upload session.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "video_file_chunk",
+					"description": "The video file chunk, encoded as form data. This field is required during transfer upload phase.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			}
+		},
+		"/v2.5/me/albums": {
+			"post": {
+				"summary": "The photo albums created for a group",
+				"description": "The photo albums created for a group",
+				"operationId": "group",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "The ID of the newly created album.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "message",
+					"description": "The description of the album, which will show up in news feed stories as the status message.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "The name given to the album. This field is required.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "privacy",
+					"description": "Privacy settings for the album. If not supplied, this defaults to the privacy level granted to the app in the Login Dialog. This field cannot be used to set a more open privacy setting than the one granted.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			}
+		},
+		"/v2.5/{group-id}": {
+			"get": {
+				"summary": "Represents a Facebook group",
+				"description": "Represents a Facebook group",
+				"operationId": "group",
+				"parameters": [{
+					"in": "query",
+					"name": "cover",
+					"description": "Information about the group&#039;s cover photo.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "A brief description of the group.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "email",
+					"description": "The email address to upload content to the group. Only current members of the group can use this.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "icon",
+					"description": "The URL for the group&#039;s icon.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The group ID",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "link",
+					"description": "The group&#039;s website.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "member_request_count",
+					"description": "The number of pending member requests. If the token is for an administrator, this is the total number of outstanding requests.  If the token is for a group member, this will return the number of friends who have requested membership and also use the same app that is making the request.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "The name of the group.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "owner",
+					"description": "The profile that created this group.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "parent",
+					"description": "The parent of this group, if it exists.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "privacy",
+					"description": "The privacy setting of the group. Possible values:CLOSEDOPENSECRET",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "updated_time",
+					"description": "The last time the group was updated (this includes changes in the group&#039;s properties and changes in posts and comments if the session user can see them).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			},
+			"post": {
+				"summary": "Represents a Facebook group",
+				"description": "Represents a Facebook group",
+				"operationId": "group",
+				"parameters": [{
+					"in": "query",
+					"name": "cover_url",
+					"description": "The url for the cover photo. The image will be downloaded and added to the group&#039;s album and then used as a cover photo. This field is required.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			}
+		},
+		"/v2.5/{group-id}/admins": {
+			"delete": {
+				"summary": "The admins of a group",
+				"description": "The admins of a group",
+				"operationId": "group",
+				"parameters": [{
+					"in": "query",
+					"name": "uid",
+					"description": "The admin to remove. This is required.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			},
+			"post": {
+				"summary": "The admins of a group",
+				"description": "The admins of a group",
+				"operationId": "group",
+				"parameters": [{
+					"in": "query",
+					"name": "member",
+					"description": "The user to make an admin. They must be a member of the group and user of the app. This is required.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			}
+		},
+		"/v2.5/{group-id}/albums": {
+			"get": {
+				"summary": "The photo albums created for a group",
+				"description": "The photo albums created for a group",
+				"operationId": "group",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			}
+		},
+		"/v2.5/{group-id}/docs": {
+			"get": {
+				"summary": "The docs in a group",
+				"description": "The docs in a group",
+				"operationId": "group",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			}
+		},
+		"/v2.5/{group-id}/events": {
+			"get": {
+				"summary": "All events that belong to a group",
+				"description": "All events that belong to a group",
+				"operationId": "group",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			}
+		},
+		"/v2.5/{group-id}/feed": {
+			"get": {
+				"summary": "Get Group Feed",
+				"description": "The feed of posts including status updates and links published to this group",
+				"operationId": "group",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			},
+			"post": {
+				"summary": "Add To Group Feed",
+				"description": "The feed of posts including status updates and links published to this group",
+				"operationId": "group",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			}
+		},
+		"/v2.5/{group-id}/files": {
+			"get": {
+				"summary": "The files uploaded to this group",
+				"description": "The files uploaded to this group",
+				"operationId": "group",
+				"parameters": [{
+					"in": "query",
+					"name": "download_link",
+					"description": "URL to download the file.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "from",
+					"description": "The person who uploaded the file.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "group",
+					"description": "The group the file is uploaded to (the same group as in the request).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "updated_time",
+					"description": "The last time the file was changed.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			}
+		},
+		"/v2.5/{group-id}/members": {
+			"delete": {
+				"summary": "The members of a group",
+				"description": "The members of a group",
+				"operationId": "group",
+				"parameters": [{
+					"in": "query",
+					"name": "member",
+					"description": "The user to remove. They must be a user of the app. This is required.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			},
+			"get": {
+				"summary": "The members of a group",
+				"description": "The members of a group",
+				"operationId": "group",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			},
+			"post": {
+				"summary": "The members of a group",
+				"description": "The members of a group",
+				"operationId": "group",
+				"parameters": [{
+					"in": "query",
+					"name": "from",
+					"description": "The user ID of someone that can appear as the sender of the group invite. If this field is used, the two people must be friends on Facebook for the invite to send. This field is optional.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "member",
+					"description": "The user to invite. They must have a role in the app such as admin, developer, or tester. This is required.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			}
+		},
+		"/v2.5/{group-id}/videos": {
+			"get": {
+				"summary": "Videos for a Facebook Group",
+				"description": "Videos for a Facebook Group",
+				"operationId": "group",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["groups"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

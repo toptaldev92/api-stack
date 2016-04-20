@@ -1,0 +1,75 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Datumbox Information Retrieval API",
+		"description": "An information retrieval API.",
+		"termsOfService": "http://www.datumbox.com/terms-of-use/",
+		"version": null
+	},
+	"host": "api.datumbox.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/1.0/KeywordExtraction.json": {
+			"post": {
+				"summary": "Extracts the Keywords of the Document",
+				"description": "The Keyword Extraction function enables you to extract from an arbitrary document all the keywords and word-combinations along with their occurrences in the text.",
+				"operationId": "KeywordExtraction",
+				"parameters": [{
+					"in": "form",
+					"name": "api_key",
+					"description": "Your API Key",
+					"type": "string"
+				},
+				{
+					"in": "form",
+					"name": "n",
+					"description": "The number of keyword combinations (n-grams) that you wish to extract.",
+					"type": "integer"
+				},
+				{
+					"in": "form",
+					"name": "text",
+					"description": "The text that you want to analyze. It should not contain HTML tags.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/1.0/TextExtraction.json": {
+			"post": {
+				"summary": "Extracts the clear text from Webpage",
+				"description": "The Text Extraction function enables you to extract the important information from a given webpage. Extracting the clear text of the documents is an important step before any other analysis.",
+				"operationId": "TextExtraction",
+				"parameters": [{
+					"in": "form",
+					"name": "api_key",
+					"description": "Your API Key",
+					"type": "string"
+				},
+				{
+					"in": "form",
+					"name": "text",
+					"description": "The HTML source of the webpage.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

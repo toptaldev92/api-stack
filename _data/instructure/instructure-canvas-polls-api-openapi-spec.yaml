@@ -1,0 +1,318 @@
+- swagger: "2.0"
+  info:
+    title: Instructure Canvas Polls API
+    description: 'Canvas LMS includes a REST API for accessing and modifying data externally
+      from the main application, in your own programs and scripts. '
+    termsOfService: https://www.canvaslms.com/policies/api-policy
+    version: v1
+  host: canvas.instructure.com
+  basePath: /api/v1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /polls:
+      get:
+        summary: List polls
+        description: ""
+        operationId: list-polls
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+      post:
+        summary: Create a single poll
+        description: ""
+        operationId: create-a-single-poll
+        parameters:
+        - in: query
+          name: polls[][description]
+          description: A brief description or instructions for the poll.
+          type: string
+        - in: query
+          name: polls[][question]
+          description: The title of the poll.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+    /polls/{id}:
+      delete:
+        summary: Delete a poll
+        description: ""
+        operationId: delete-a-poll
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+      get:
+        summary: Get a single poll
+        description: ""
+        operationId: get-a-single-poll
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+      put:
+        summary: Update a single poll
+        description: ""
+        operationId: update-a-single-poll
+        parameters:
+        - in: query
+          name: polls[][description]
+          description: A brief description or instructions for the poll.
+          type: string
+        - in: query
+          name: polls[][question]
+          description: The title of the poll.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+    /polls/{poll_id}/poll_choices:
+      get:
+        summary: List poll choices in a poll
+        description: ""
+        operationId: list-poll-choices-in-a-poll
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+      post:
+        summary: Create a single poll choice
+        description: ""
+        operationId: create-a-single-poll-choice
+        parameters:
+        - in: query
+          name: poll_choices[][is_correct]
+          description: Whether this poll choice is considered correct or not. Defaults
+            to false.
+          type: boolean
+        - in: query
+          name: poll_choices[][position]
+          description: The order this poll choice should be returned in the context
+            it&#39;snsibling poll choices.
+          type: integer
+        - in: query
+          name: poll_choices[][text]
+          description: The descriptive text of the poll choice.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+    /polls/{poll_id}/poll_choices/id:
+      delete:
+        summary: Delete a poll choice
+        description: ""
+        operationId: delete-a-poll-choice
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+      get:
+        summary: Get a single poll choice
+        description: ""
+        operationId: get-a-single-poll-choice
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+      put:
+        summary: Update a single poll choice
+        description: ""
+        operationId: update-a-single-poll-choice
+        parameters:
+        - in: query
+          name: poll_choices[][is_correct]
+          description: Whether this poll choice is considered correct or not.  Defaults
+            to false.
+          type: boolean
+        - in: query
+          name: poll_choices[][position]
+          description: The order this poll choice should be returned in the context
+            it&#39;snsibling poll choices.
+          type: integer
+        - in: query
+          name: poll_choices[][text]
+          description: The descriptive text of the poll choice.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+    /polls/{poll_id}/poll_sessions:
+      get:
+        summary: List poll sessions for a poll
+        description: ""
+        operationId: list-poll-sessions-for-a-poll
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+      post:
+        summary: Create a single poll session
+        description: ""
+        operationId: create-a-single-poll-session
+        parameters:
+        - in: query
+          name: poll_sessions[][course_id]
+          description: The id of the course this session is associated with.
+          type: integer
+        - in: query
+          name: poll_sessions[][course_section_id]
+          description: The id of the course section this session is associated with.
+          type: integer
+        - in: query
+          name: poll_sessions[][has_public_results]
+          description: Whether or not results are viewable by students.
+          type: boolean
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+    /polls/{poll_id}/poll_sessions/id:
+      delete:
+        summary: Delete a poll session
+        description: ""
+        operationId: delete-a-poll-session
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+      get:
+        summary: Get the results for a single poll session
+        description: ""
+        operationId: get-the-results-for-a-single-poll-session
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+      put:
+        summary: Update a single poll session
+        description: ""
+        operationId: update-a-single-poll-session
+        parameters:
+        - in: query
+          name: poll_sessions[][course_id]
+          description: The id of the course this session is associated with.
+          type: integer
+        - in: query
+          name: poll_sessions[][course_section_id]
+          description: The id of the course section this session is associated with.
+          type: integer
+        - in: query
+          name: poll_sessions[][has_public_results]
+          description: Whether or not results are viewable by students.
+          type: boolean
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+    /polls/{poll_id}/poll_sessions/id/close:
+      get:
+        summary: Close an opened poll session
+        description: ""
+        operationId: close-an-opened-poll-session
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+    /polls/{poll_id}/poll_sessions/id/open:
+      get:
+        summary: Open a poll session
+        description: ""
+        operationId: open-a-poll-session
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+    /polls/{poll_id}/poll_sessions/poll_session_id/poll_submissions:
+      post:
+        summary: Create a single poll submission
+        description: ""
+        operationId: create-a-single-poll-submission
+        parameters:
+        - in: query
+          name: poll_submissions[][poll_choice_id]
+          description: The chosen poll choice for this submission.
+          type: integer
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+    /polls/{poll_id}/poll_sessions/poll_session_id/poll_submissions/{id}:
+      get:
+        summary: Get a single poll submission
+        description: ""
+        operationId: get-a-single-poll-submission
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+    /poll_sessions/closed:
+      get:
+        summary: List closed poll sessions
+        description: ""
+        operationId: list-closed-poll-sessions
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+    /poll_sessions/opened:
+      get:
+        summary: List opened poll sessions
+        description: ""
+        operationId: list-opened-poll-sessions
+        responses:
+          200:
+            description: OK
+        tags:
+        - polls
+        security: []
+  definitions: []

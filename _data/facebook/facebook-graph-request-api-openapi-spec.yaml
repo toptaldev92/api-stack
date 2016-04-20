@@ -1,0 +1,80 @@
+- swagger: "2.0"
+  info:
+    title: Facebook Graph (Request) API
+    description: API for managing Facebook Requests
+    termsOfService: https://www.facebook.com/policies/
+    version: ~
+  host: graph.facebook.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /v2.5/{request-id}:
+      delete:
+        summary: An individual game request received by someone, sent by an app or by
+          another person
+        description: An individual game request received by someone, sent by an app
+          or by another person
+        operationId: request
+        responses:
+          200:
+            description: OK
+        tags:
+        - requests
+        security: []
+      get:
+        summary: An individual game request received by someone, sent by an app or by
+          another person
+        description: An individual game request received by someone, sent by an app
+          or by another person
+        operationId: request
+        parameters:
+        - in: query
+          name: application
+          description: App associated with the request.
+          type: string
+        - in: query
+          name: created_time
+          description: Timestamp when the request was created.
+          type: string
+        - in: query
+          name: from
+          description: The sender associated with the request. This is only included
+            for user to user requests.
+          type: string
+        - in: query
+          name: id
+          description: The request object ID.
+          type: string
+        - in: query
+          name: message
+          description: A string describing the request.
+          type: string
+        - in: query
+          name: to
+          description: The recipient of the request.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - requests
+        security: []
+    /{user-id}/apprequests:
+      get:
+        summary: An individual game request received by someone, sent by an app or by
+          another person
+        description: An individual game request received by someone, sent by an app
+          or by another person
+        operationId: request
+        responses:
+          200:
+            description: OK
+        tags:
+        - requests
+        security: []
+  definitions: []

@@ -1,0 +1,46 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "FullContact Batch Process API",
+		"description": "The API for managing FullContact batch processes.",
+		"termsOfService": "https://www.fullcontact.com/terms/",
+		"version": "v2"
+	},
+	"host": "api.fullcontact.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/batch.json": {
+			"get": {
+				"summary": "Batch Process",
+				"description": "Batch Process",
+				"operationId": "batchProcess",
+				"parameters": [{
+					"in": "query",
+					"name": "apiKey",
+					"description": "This API key is assigned to you by FullContact. It is used to identify and authorize your request. Your API key should be kept private, and should never be displayed publicly.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "body",
+					"name": "Body",
+					"description": "{     requests : [         https://api.fullcontact.com/v2/name/normalizer.json?q=dan+lynn,         https://api.fullcontact.com/v2/name/normalizer.json?q=kyle+hansen,         https://api.fullcontact.com/v2/person.json?email=bart@fullcontact.com     ] }",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Batch Process"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

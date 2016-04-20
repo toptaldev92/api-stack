@@ -1,0 +1,129 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "TigerConnect User API",
+		"description": "The user system for TigerConnect messaging platform.",
+		"termsOfService": "http://www.tigertext.com/developer-terms-of-use",
+		"contact": {
+			"name": "TigerText",
+			"url": "http://www.tigertext.com/supportform/",
+			"email": "info@tigertext.com"
+		},
+		"version": "v2"
+	},
+	"host": "developer.tigertext.me",
+	"basePath": "/v2/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/user/{user_address}/": {
+			"get": {
+				"summary": "Get information about users using their user address encoding.",
+				"description": "Get information about users using their user address encoding.",
+				"operationId": "getUser",
+				"parameters": [{
+					"in": "query",
+					"name": "TT-X-Organization-Key",
+					"description": "The organization for which to show the users organization-bound fields (i.e. time_to_live, delete_on_read, distinguished_name). ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "user_address",
+					"description": "The user address.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "200 OK with a JSON response as described in response formats",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/User"
+							}
+						}
+					}
+				},
+				"tags": ["User"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"User": {
+			"properties": {
+				"token": {
+					"description": "Unique user token identifier for the user in TigerText",
+					"type": "string"
+				},
+				"status": {
+					"description": "A status message string set by the user",
+					"type": "string"
+				},
+				"first_name": {
+					"description": "First name string",
+					"type": "string"
+				},
+				"last_name": {
+					"description": "Last name string",
+					"type": "string"
+				},
+				"display_name": {
+					"description": "Display name string which typically first name ",
+					"type": "string"
+				},
+				"username": {
+					"description": "Unique id for the user",
+					"type": "string"
+				},
+				"avatar": {
+					"description": "Avatar image url, u201c u201c if no avatar is set",
+					"type": "string"
+				},
+				"push_sound": {
+					"description": "Desired sound for push notifications",
+					"type": "string"
+				},
+				"dnd": {
+					"description": "Boolean if the user is on do not disturb",
+					"type": "boolean"
+				},
+				"dnd_text": {
+					"description": "Dnd message string when the user is on do not disturb",
+					"type": "string"
+				},
+				"time_to_live": {
+					"description": "Time to live for useru2019s messages in minutes",
+					"type": "string"
+				},
+				"delete_on_read": {
+					"description": "Boolean flag indicating messages should be deleted on read",
+					"type": "string"
+				},
+				"distinguished_name": {
+					"description": "Distinguished name string, mainly used for LDAP purposes",
+					"type": "string"
+				},
+				"title": {
+					"description": "Company title string",
+					"type": "string"
+				},
+				"department": {
+					"description": "Company department string",
+					"type": "string"
+				},
+				"emails": {
+					"description": " list of the user emails",
+					"type": "string"
+				},
+				"phones": {
+					"description": "A list of the user phones. ",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

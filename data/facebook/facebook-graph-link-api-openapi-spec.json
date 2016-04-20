@@ -1,0 +1,111 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Facebook Graph (Link) API",
+		"description": "API for managing Facebook Links",
+		"termsOfService": "https://www.facebook.com/policies/",
+		"version": null
+	},
+	"host": "graph.facebook.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/v2.5/{link-id}": {
+			"delete": {
+				"summary": "A link shared on Facebook",
+				"description": "A link shared on Facebook",
+				"operationId": "link",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["links"],
+				"security": []
+			},
+			"get": {
+				"summary": "A link shared on Facebook",
+				"description": "A link shared on Facebook",
+				"operationId": "link",
+				"parameters": [{
+					"in": "query",
+					"name": "created_time",
+					"description": "The time the message was published.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "A description of the link (appears beneath the link caption).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "from",
+					"description": "The user that created the link.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "icon",
+					"description": "A URL to the link icon that Facebook displays in the news feed.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The link ID.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "link",
+					"description": "The URL that was shared.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "message",
+					"description": "The optional message from the user about this link.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "The name of the link.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "picture",
+					"description": "A URL to the thumbnail image used in the link post",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["links"],
+				"security": []
+			}
+		},
+		"/{user-id}/feed": {
+			"get": {
+				"summary": "A link shared on Facebook",
+				"description": "A link shared on Facebook",
+				"operationId": "link",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["links"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

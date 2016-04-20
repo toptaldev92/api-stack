@@ -1,0 +1,73 @@
+- swagger: "2.0"
+  info:
+    title: Facebook Graph (Status) API
+    description: API for managing Facebook Statuss
+    termsOfService: https://www.facebook.com/policies/
+    version: ~
+  host: graph.facebook.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /v2.5/{from.id}_{status-id}:
+      delete:
+        summary: A status message in a profile&#039;s feed
+        description: A status message in a profile&#039;s feed
+        operationId: status
+        responses:
+          200:
+            description: OK
+        tags:
+        - status
+        security: []
+      post:
+        summary: A status message in a profile&#039;s feed
+        description: A status message in a profile&#039;s feed
+        operationId: status
+        responses:
+          200:
+            description: OK
+        tags:
+        - status
+        security: []
+    /v2.5/{status-id}:
+      get:
+        summary: A status message in a profile&#039;s feed
+        description: A status message in a profile&#039;s feed
+        operationId: status
+        parameters:
+        - in: query
+          name: event
+          description: Event associated with this status, if any.
+          type: string
+        - in: query
+          name: from
+          description: The user who posted the message.
+          type: string
+        - in: query
+          name: id
+          description: The status message ID.
+          type: string
+        - in: query
+          name: message
+          description: The status message content.
+          type: string
+        - in: query
+          name: place
+          description: Location associated with this status, if any.
+          type: string
+        - in: query
+          name: updated_time
+          description: The time the message was published.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - status
+        security: []
+  definitions: []

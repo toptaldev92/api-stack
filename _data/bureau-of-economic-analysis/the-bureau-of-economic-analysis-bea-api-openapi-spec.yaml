@@ -1,0 +1,52 @@
+- swagger: "2.0"
+  info:
+    title: The Bureau of Economic Analysis (BEA) API
+    description: he data API provides programmatic access to BEA published economic
+      statistics using industry-standard methods and procedures. BEA's data API includes
+      methods for retrieving a subset of our statistical data and the meta-data that
+      describes it.
+    version: v1
+  host: www.bea.gov/api/data?&UserID=Your-36CharacterKey&method=getparameterlist&datasetname=RegionalData&
+  basePath: /api/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    data/:
+      get:
+        summary: Economic Statistics
+        description: Economic Statistics
+        operationId: ""
+        parameters:
+        - in: query
+          name: datasetname
+          type: string
+          format: string
+        - in: query
+          name: method
+          type: string
+          format: string
+        - in: query
+          name: ParameterName
+          type: string
+          format: string
+        - in: query
+          name: ResultFormat
+          type: string
+          format: string
+        - in: query
+          name: UserID
+          description: Your user id.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - economic data
+        - ' data'
+        security: []
+  definitions: []

@@ -1,0 +1,1471 @@
+- swagger: "2.0"
+  info:
+    title: Flickr Photosets API
+    description: The API for managing Flickr Photosets
+    termsOfService: https://www.flickr.com/services/api/tos/
+    version: ~
+  host: www.flickr.com
+  basePath: /services/rest/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /?method=flickr.photosets.addPhoto:
+      get:
+        summary: flickr.photosets.addPhoto
+        description: <div class=MethodDescription>Add a photo to the end of an existing
+          photoset.</div>
+        operationId: methodflickrphotosetsaddphoto
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: photoset_id
+          description: The id of the photoset to add a photo to.
+          type: string
+        - in: query
+          name: photo_id
+          description: The id of the photo to add to the set.
+          type: string
+        responses:
+          1:
+            description: Photoset not found - The photoset id passed was not the id
+              of avalid photoset owned by the calling user.
+          2:
+            description: Photo not found - The photo id passed was not the id of a valid
+              photo owned by the calling user.
+          3:
+            description: Photo already in set - The photo is already a member of the
+              photoset.
+          10:
+            description: Maximum number of photos in set - A set has reached the upper
+              limit for the number of photos allowed.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.photosets.comments.addComment:
+      get:
+        summary: flickr.photosets.comments.addComment
+        description: <div class=MethodDescription>Add a comment to a photoset.</div>
+        operationId: methodflickrphotosetscommentsaddcomment
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: comment_text
+          description: Text of the comment
+          type: string
+        - in: query
+          name: photoset_id
+          description: The id of the photoset to add a comment to.
+          type: string
+        responses:
+          1:
+            description: 'Photoset not found - '
+          2:
+            description: Photo not found - The photo id passed was not the id of a valid
+              photo owned by the calling user.
+          3:
+            description: Photo already in set - The photo is already a member of the
+              photoset.
+          10:
+            description: Maximum number of photos in set - A set has reached the upper
+              limit for the number of photos allowed.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          8:
+            description: 'Blank comment - '
+          9:
+            description: User is posting comments too fast. - The user has reached the
+              limit for number of comments posted during a specific time period. Wait
+              a bit and try again.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.photosets.comments.deleteComment:
+      get:
+        summary: flickr.photosets.comments.deleteComment
+        description: <div class=MethodDescription>Delete a photoset comment as the currently
+          authenticated user.</div>
+        operationId: methodflickrphotosetscommentsdeletecomment
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: comment_id
+          description: The id of the comment to delete from a photoset.
+          type: string
+        responses:
+          1:
+            description: 'Photoset not found - '
+          2:
+            description: Comment not found. - The comment id passed was not a valid
+              comment id
+          3:
+            description: Photo already in set - The photo is already a member of the
+              photoset.
+          10:
+            description: Maximum number of photos in set - A set has reached the upper
+              limit for the number of photos allowed.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          8:
+            description: 'Blank comment - '
+          9:
+            description: User is posting comments too fast. - The user has reached the
+              limit for number of comments posted during a specific time period. Wait
+              a bit and try again.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.photosets.comments.editComment:
+      get:
+        summary: flickr.photosets.comments.editComment
+        description: <div class=MethodDescription>Edit the text of a comment as the
+          currently authenticated user.</div>
+        operationId: methodflickrphotosetscommentseditcomment
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: comment_id
+          description: The id of the comment to edit.
+          type: string
+        - in: query
+          name: comment_text
+          description: Update the comment to this text.
+          type: string
+        responses:
+          1:
+            description: 'Photoset not found - '
+          2:
+            description: Comment not found. - The comment id passed was not a valid
+              comment id.
+          3:
+            description: Photo already in set - The photo is already a member of the
+              photoset.
+          10:
+            description: Maximum number of photos in set - A set has reached the upper
+              limit for the number of photos allowed.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          8:
+            description: Blank comment. - Comment text cant be blank.
+          9:
+            description: User is posting comments too fast. - The user has reached the
+              limit for number of comments posted during a specific time period. Wait
+              a bit and try again.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.photosets.comments.getList:
+      get:
+        summary: flickr.photosets.comments.getList
+        description: <div class=MethodDescription>Returns the comments for a photoset.</div>
+        operationId: methodflickrphotosetscommentsgetlist
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: photoset_id
+          description: The id of the photoset to fetch comments for.
+          type: string
+        responses:
+          1:
+            description: Photoset not found. - The photoset id was invalid.
+          2:
+            description: Comment not found. - The comment id passed was not a valid
+              comment id.
+          3:
+            description: Photo already in set - The photo is already a member of the
+              photoset.
+          10:
+            description: Maximum number of photos in set - A set has reached the upper
+              limit for the number of photos allowed.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          8:
+            description: Blank comment. - Comment text cant be blank.
+          9:
+            description: User is posting comments too fast. - The user has reached the
+              limit for number of comments posted during a specific time period. Wait
+              a bit and try again.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.photosets.create:
+      get:
+        summary: flickr.photosets.create
+        description: <div class=MethodDescription>Create a new photoset for the calling
+          user.</div>
+        operationId: methodflickrphotosetscreate
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: description
+          description: A description of the photoset. May contain limited html.
+          type: string
+        - in: query
+          name: primary_photo_id
+          description: The id of the photo to represent this set. The photo must belong
+            to the calling user.
+          type: string
+        - in: query
+          name: title
+          description: A title for the photoset.
+          type: string
+        responses:
+          1:
+            description: No title specified - No title parameter was passed in the request.
+          2:
+            description: Photo not found - The primary photo id passed was not a valid
+              photo id or does not belong to the calling user.
+          3:
+            description: Cant create any more sets - The user has reached their maximum
+              number of photosets limit.
+          10:
+            description: Maximum number of photos in set - A set has reached the upper
+              limit for the number of photos allowed.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          8:
+            description: Blank comment. - Comment text cant be blank.
+          9:
+            description: User is posting comments too fast. - The user has reached the
+              limit for number of comments posted during a specific time period. Wait
+              a bit and try again.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.photosets.delete:
+      get:
+        summary: flickr.photosets.delete
+        description: <div class=MethodDescription>Delete a photoset.</div>
+        operationId: methodflickrphotosetsdelete
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: photoset_id
+          description: The id of the photoset to delete. It must be owned by the calling
+            user.
+          type: string
+        responses:
+          1:
+            description: Photoset not found - The photoset id passed was not a valid
+              photoset id or did not belong to the calling user.
+          2:
+            description: Photo not found - The primary photo id passed was not a valid
+              photo id or does not belong to the calling user.
+          3:
+            description: Cant create any more sets - The user has reached their maximum
+              number of photosets limit.
+          10:
+            description: Maximum number of photos in set - A set has reached the upper
+              limit for the number of photos allowed.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          8:
+            description: Blank comment. - Comment text cant be blank.
+          9:
+            description: User is posting comments too fast. - The user has reached the
+              limit for number of comments posted during a specific time period. Wait
+              a bit and try again.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.photosets.editMeta:
+      get:
+        summary: flickr.photosets.editMeta
+        description: <div class=MethodDescription>Modify the meta-data for a photoset.</div>
+        operationId: methodflickrphotosetseditmeta
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: description
+          description: A description of the photoset. May contain limited html.
+          type: string
+        - in: query
+          name: photoset_id
+          description: The id of the photoset to modify.
+          type: string
+        - in: query
+          name: title
+          description: The new title for the photoset.
+          type: string
+        responses:
+          1:
+            description: Photoset not found - The photoset id passed was not a valid
+              photoset id or did not belong to the calling user.
+          2:
+            description: 'No title specified - No title parameter was passed in the
+              request. '
+          3:
+            description: Cant create any more sets - The user has reached their maximum
+              number of photosets limit.
+          10:
+            description: Maximum number of photos in set - A set has reached the upper
+              limit for the number of photos allowed.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          8:
+            description: Blank comment. - Comment text cant be blank.
+          9:
+            description: User is posting comments too fast. - The user has reached the
+              limit for number of comments posted during a specific time period. Wait
+              a bit and try again.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.photosets.editPhotos:
+      get:
+        summary: flickr.photosets.editPhotos
+        description: <div class=MethodDescription>Modify the photos in a photoset. Use
+          this method to add, remove and re-order photos.</div>
+        operationId: methodflickrphotosetseditphotos
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: photoset_id
+          description: The id of the photoset to modify. The photoset must belong to
+            the calling user.
+          type: string
+        - in: query
+          name: photo_ids
+          description: A comma-delimited list of photo ids to include in the set. They
+            will appear in the set in the order sent. This list must contain the primary
+            photo id. All photos must belong to the owner of the set. This list of photos
+            replaces the existing list. Call flickr.photosets.addPhoto to append a photo
+            to a set.
+          type: string
+        - in: query
+          name: primary_photo_id
+          description: The id of the photo to use as the primary photo for the set.
+            This id must also be passed along in photo_ids list argument.
+          type: string
+        responses:
+          1:
+            description: Photoset not found - The photoset id passed was not a valid
+              photoset id or did not belong to the calling user.
+          2:
+            description: Photo not found - One or more of the photo ids passed was not
+              a valid photo id or does not belong to the calling user.
+          3:
+            description: Primary photo not found - The primary photo id passed was not
+              a valid photo id or does not belong to the calling user.
+          10:
+            description: Maximum number of photos in set - A set has reached the upper
+              limit for the number of photos allowed.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          8:
+            description: Blank comment. - Comment text cant be blank.
+          9:
+            description: User is posting comments too fast. - The user has reached the
+              limit for number of comments posted during a specific time period. Wait
+              a bit and try again.
+          4:
+            description: Primary photo not in list - The primary photo id passed did
+              not appear in the photo id list.
+          5:
+            description: Empty photos list - No photo ids were passed.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.photosets.getContext:
+      get:
+        summary: flickr.photosets.getContext
+        description: <div class=MethodDescription>Returns next and previous photos for
+          a photo in a set.</div>
+        operationId: methodflickrphotosetsgetcontext
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: photoset_id
+          description: The id of the photoset for which to fetch the photos context.
+          type: string
+        - in: query
+          name: photo_id
+          description: The id of the photo to fetch the context for.
+          type: string
+        responses:
+          1:
+            description: Photo not found - The photo id passed was not a valid photo
+              id, or was the id of a photo that the calling user does not have permission
+              to view.
+          2:
+            description: Photo not in set - The specified photo is not in the specified
+              set.
+          3:
+            description: Primary photo not found - The primary photo id passed was not
+              a valid photo id or does not belong to the calling user.
+          10:
+            description: Maximum number of photos in set - A set has reached the upper
+              limit for the number of photos allowed.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          8:
+            description: Blank comment. - Comment text cant be blank.
+          9:
+            description: User is posting comments too fast. - The user has reached the
+              limit for number of comments posted during a specific time period. Wait
+              a bit and try again.
+          4:
+            description: Primary photo not in list - The primary photo id passed did
+              not appear in the photo id list.
+          5:
+            description: Empty photos list - No photo ids were passed.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.photosets.getInfo:
+      get:
+        summary: flickr.photosets.getInfo
+        description: <div class=MethodDescription>Gets information about a photoset.</div>
+        operationId: methodflickrphotosetsgetinfo
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: photoset_id
+          description: The ID of the photoset to fetch information for.
+          type: string
+        responses:
+          1:
+            description: Photoset not found - The photoset id was not valid.
+          2:
+            description: Photo not in set - The specified photo is not in the specified
+              set.
+          3:
+            description: Primary photo not found - The primary photo id passed was not
+              a valid photo id or does not belong to the calling user.
+          10:
+            description: Maximum number of photos in set - A set has reached the upper
+              limit for the number of photos allowed.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          8:
+            description: Blank comment. - Comment text cant be blank.
+          9:
+            description: User is posting comments too fast. - The user has reached the
+              limit for number of comments posted during a specific time period. Wait
+              a bit and try again.
+          4:
+            description: Primary photo not in list - The primary photo id passed did
+              not appear in the photo id list.
+          5:
+            description: Empty photos list - No photo ids were passed.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.photosets.getList:
+      get:
+        summary: flickr.photosets.getList
+        description: <div class=MethodDescription>Returns the photosets belonging to
+          the specified user.</div>
+        operationId: methodflickrphotosetsgetlist
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: page
+          description: The page of results to get. Currently, if this is not provided,
+            all sets are returned, but this behaviour may change in future.
+          type: string
+        - in: query
+          name: per_page
+          description: The number of sets to get per page. If paging is enabled, the
+            maximum number of sets per page is 500.
+          type: string
+        - in: query
+          name: primary_photo_extras
+          description: 'A comma-delimited list of extra information to fetch for the
+            primary photo. Currently supported fields are: license, date_upload, date_taken,
+            owner_name, icon_server, original_format, last_update, geo, tags, machine_tags,
+            o_dims, views, media, path_alias, url_sq, url_t, url_s, url_m, url_o'
+          type: string
+        - in: query
+          name: user_id
+          description: The NSID of the user to get a photoset list for. If none is specified,
+            the calling user is assumed.
+          type: string
+        responses:
+          1:
+            description: User not found - The user NSID passed was not a valid user
+              NSID and the calling user was not logged in.rn
+          2:
+            description: Photo not in set - The specified photo is not in the specified
+              set.
+          3:
+            description: Primary photo not found - The primary photo id passed was not
+              a valid photo id or does not belong to the calling user.
+          10:
+            description: Maximum number of photos in set - A set has reached the upper
+              limit for the number of photos allowed.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          8:
+            description: Blank comment. - Comment text cant be blank.
+          9:
+            description: User is posting comments too fast. - The user has reached the
+              limit for number of comments posted during a specific time period. Wait
+              a bit and try again.
+          4:
+            description: Primary photo not in list - The primary photo id passed did
+              not appear in the photo id list.
+          5:
+            description: Empty photos list - No photo ids were passed.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.photosets.getPhotos:
+      get:
+        summary: flickr.photosets.getPhotos
+        description: <div class=MethodDescription>Get the list of photos in a set.</div>
+        operationId: methodflickrphotosetsgetphotos
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: extras
+          description: 'A comma-delimited list of extra information to fetch for each
+            returned record. Currently supported fields are: license, date_upload, date_taken,
+            owner_name, icon_server, original_format, last_update, geo, tags, machine_tags,
+            o_dims, views, media, path_alias, url_sq, url_t, url_s, url_m, url_o'
+          type: string
+        - in: query
+          name: media
+          description: Filter results by media type. Possible values are all (default),
+            photos or videos
+          type: string
+        - in: query
+          name: page
+          description: The page of results to return. If this argument is omitted, it
+            defaults to 1.
+          type: string
+        - in: query
+          name: per_page
+          description: Number of photos to return per page. If this argument is omitted,
+            it defaults to 500. The maximum allowed value is 500.
+          type: string
+        - in: query
+          name: photoset_id
+          description: The id of the photoset to return the photos for.
+          type: string
+        - in: query
+          name: privacy_filter
+          description: Return photos only matching a certain privacy level. This only
+            applies when making an authenticated call to view a photoset you own. Valid
+            values are:1 public photos2 private photos visible to friends3 private photos
+            visible to family4 private photos visible to friends &amp; family5 completely
+            private photos
+          type: string
+        responses:
+          1:
+            description: Photoset not found - The photoset id passed was not a valid
+              photoset id.
+          2:
+            description: Photo not in set - The specified photo is not in the specified
+              set.
+          3:
+            description: Primary photo not found - The primary photo id passed was not
+              a valid photo id or does not belong to the calling user.
+          10:
+            description: Maximum number of photos in set - A set has reached the upper
+              limit for the number of photos allowed.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          8:
+            description: Blank comment. - Comment text cant be blank.
+          9:
+            description: User is posting comments too fast. - The user has reached the
+              limit for number of comments posted during a specific time period. Wait
+              a bit and try again.
+          4:
+            description: Primary photo not in list - The primary photo id passed did
+              not appear in the photo id list.
+          5:
+            description: Empty photos list - No photo ids were passed.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.photosets.orderSets:
+      get:
+        summary: flickr.photosets.orderSets
+        description: <div class=MethodDescription>Set the order of photosets for the
+          calling user.</div>
+        operationId: methodflickrphotosetsordersets
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: photoset_ids
+          description: A comma delimited list of photoset IDs, ordered with the set
+            to show first, first in the list. Any set IDs not given in the list will
+            be set to appear at the end of the list, ordered by their IDs.
+          type: string
+        responses:
+          1:
+            description: Set not found - One of the photoset ids passed was not the
+              id of a valid photoset belonging to the calling user.
+          2:
+            description: Photo not in set - The specified photo is not in the specified
+              set.
+          3:
+            description: Primary photo not found - The primary photo id passed was not
+              a valid photo id or does not belong to the calling user.
+          10:
+            description: Maximum number of photos in set - A set has reached the upper
+              limit for the number of photos allowed.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          8:
+            description: Blank comment. - Comment text cant be blank.
+          9:
+            description: User is posting comments too fast. - The user has reached the
+              limit for number of comments posted during a specific time period. Wait
+              a bit and try again.
+          4:
+            description: Primary photo not in list - The primary photo id passed did
+              not appear in the photo id list.
+          5:
+            description: Empty photos list - No photo ids were passed.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.photosets.removePhoto:
+      get:
+        summary: flickr.photosets.removePhoto
+        description: <div class=MethodDescription>Remove a photo from a photoset.</div>
+        operationId: methodflickrphotosetsremovephoto
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: photoset_id
+          description: The id of the photoset to remove a photo from.
+          type: string
+        - in: query
+          name: photo_id
+          description: The id of the photo to remove from the set.
+          type: string
+        responses:
+          1:
+            description: Photoset not found - The photoset id passed was not the id
+              of avalid photoset owned by the calling user.
+          2:
+            description: Photo not found - The photo id passed was not the id of a valid
+              photo belonging to the calling user.
+          3:
+            description: Photo not in set - The photo is not a member of the photoset.
+          10:
+            description: Maximum number of photos in set - A set has reached the upper
+              limit for the number of photos allowed.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          8:
+            description: Blank comment. - Comment text cant be blank.
+          9:
+            description: User is posting comments too fast. - The user has reached the
+              limit for number of comments posted during a specific time period. Wait
+              a bit and try again.
+          4:
+            description: Primary photo not in list - The primary photo id passed did
+              not appear in the photo id list.
+          5:
+            description: Empty photos list - No photo ids were passed.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.photosets.removePhotos:
+      get:
+        summary: flickr.photosets.removePhotos
+        description: <div class=MethodDescription>Remove multiple photos from a photoset.</div>
+        operationId: methodflickrphotosetsremovephotos
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: photoset_id
+          description: The id of the photoset to remove photos from.
+          type: string
+        - in: query
+          name: photo_ids
+          description: Comma-delimited list of photo ids to remove from the photoset.
+          type: string
+        responses:
+          1:
+            description: Photoset not found - The photoset id passed was not the id
+              of available photosets owned by the calling user.
+          2:
+            description: Photo not found - The photo id passed was not the id of a valid
+              photo belonging to the calling user.
+          3:
+            description: Photo not in set - The photo is not a member of the photoset.
+          10:
+            description: Maximum number of photos in set - A set has reached the upper
+              limit for the number of photos allowed.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          8:
+            description: Blank comment. - Comment text cant be blank.
+          9:
+            description: User is posting comments too fast. - The user has reached the
+              limit for number of comments posted during a specific time period. Wait
+              a bit and try again.
+          4:
+            description: Primary photo not in list - The primary photo id passed did
+              not appear in the photo id list.
+          5:
+            description: Empty photos list - No photo ids were passed.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.photosets.reorderPhotos:
+      get:
+        summary: flickr.photosets.reorderPhotos
+        description: <div class=MethodDescription></div>
+        operationId: methodflickrphotosetsreorderphotos
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: photoset_id
+          description: The id of the photoset to reorder. The photoset must belong to
+            the calling user.
+          type: string
+        - in: query
+          name: photo_ids
+          description: Ordered, comma-delimited list of photo ids. Photos that are not
+            in the list will keep their original order
+          type: string
+        responses:
+          1:
+            description: Photoset not found - The photoset id passed was not a valid
+              photoset id or did not belong to the calling user.
+          2:
+            description: Photo not found - One or more of the photo ids passed was not
+              a valid photo id or does not belong to the calling user.
+          3:
+            description: Photo not in set - The photo is not a member of the photoset.
+          10:
+            description: Maximum number of photos in set - A set has reached the upper
+              limit for the number of photos allowed.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          8:
+            description: Blank comment. - Comment text cant be blank.
+          9:
+            description: User is posting comments too fast. - The user has reached the
+              limit for number of comments posted during a specific time period. Wait
+              a bit and try again.
+          4:
+            description: Primary photo not in list - The primary photo id passed did
+              not appear in the photo id list.
+          5:
+            description: Empty photos list - No photo ids were passed.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.photosets.setPrimaryPhoto:
+      get:
+        summary: flickr.photosets.setPrimaryPhoto
+        description: <div class=MethodDescription>Set photoset primary photo</div>
+        operationId: methodflickrphotosetssetprimaryphoto
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: photoset_id
+          description: The id of the photoset to set primary photo to.
+          type: string
+        - in: query
+          name: photo_id
+          description: The id of the photo to set as primary.
+          type: string
+        responses:
+          1:
+            description: Photoset not found - The photoset id passed was not the id
+              of avalid photoset owned by the calling user.
+          2:
+            description: Photo not found - The photo id passed was not the id of a valid
+              photo owned by the calling user.
+          3:
+            description: Photo not in set - The photo is not a member of the photoset.
+          10:
+            description: Maximum number of photos in set - A set has reached the upper
+              limit for the number of photos allowed.
+          95:
+            description: SSL is required - SSL is required to access the Flickr API.
+          96:
+            description: Invalid signature - The passed signature was invalid.
+          97:
+            description: Missing signature - The call required signing but no signature
+              was sent.
+          98:
+            description: Login failed / Invalid auth token - The login details or auth
+              token passed were invalid.
+          99:
+            description: User not logged in / Insufficient permissions - The method
+              requires user authentication but the user was not logged in, or the authenticated
+              method call did not have the required permissions.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          8:
+            description: Blank comment. - Comment text cant be blank.
+          9:
+            description: User is posting comments too fast. - The user has reached the
+              limit for number of comments posted during a specific time period. Wait
+              a bit and try again.
+          4:
+            description: Primary photo not in list - The primary photo id passed did
+              not appear in the photo id list.
+          5:
+            description: Empty photos list - No photo ids were passed.
+        tags:
+        - ""
+        security: []
+  definitions: []

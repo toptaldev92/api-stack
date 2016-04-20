@@ -1,0 +1,659 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Bluemix News Aggregation API",
+		"description": "Bluemix.info is a news aggregator for IBM Bluemix developers and professionals covering news about everything related to IBM's platform as a service, including runtimes, services, events and much more.",
+		"termsOfService": "https://developer.ibm.com/terms-of-use/",
+		"version": "v1"
+	},
+	"host": "www.bluemix.info",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/api/addorupdateauthor": {
+			"post": {
+				"summary": "Add or update an author",
+				"description": "Adds a new author. If the author exists, the picture URL and the Twitter name are overwritten. Note: You have to be a curator to invoke this API.",
+				"operationId": "Add or update an author",
+				"parameters": [{
+					"in": "form",
+					"name": "displayName",
+					"description": "Display Name",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "form",
+					"name": "pictureUrl",
+					"description": "Picture URL",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "form",
+					"name": "twitter",
+					"description": "Twitter Name (with @)",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/addorupdateauthorjson": {
+			"post": {
+				"summary": "Add or update an author",
+				"description": "Adds a new author. If the author exists, the picture URL and the Twitter name are overwritten. Note: You have to be a curator to invoke this API.",
+				"operationId": "Add or update an author",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "{displayName:Test User,pictureUrl:http://www.bluemix.info/head.png,twitter:@twittername}",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/addorupdatefeed": {
+			"post": {
+				"summary": "Add or update feed",
+				"description": "Add a new or update an existing feed. Note: You have to be a curator to invoke this API.",
+				"operationId": "Add or update feed",
+				"parameters": [{
+					"in": "form",
+					"name": "authorDisplayName",
+					"description": "Author Display Name",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "form",
+					"name": "displayName",
+					"description": "Feed Name",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "form",
+					"name": "url",
+					"description": "http://heidloff.net/nh/home.nsf/feed.rss",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/addorupdatenewsentry": {
+			"post": {
+				"summary": "Add or update news entry",
+				"description": "Add a new news entry and approve it. Or update an existing approved news entry. Note: You have to be a curator to invoke this API.",
+				"operationId": "Add or update news entry",
+				"parameters": [{
+					"in": "form",
+					"name": "authorDisplayName",
+					"description": "Author Display Name",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "form",
+					"name": "firstSentences",
+					"description": "First Sentences.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "form",
+					"name": "link",
+					"description": "News Entry URL",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "form",
+					"name": "title",
+					"description": "My Title",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "form",
+					"name": "topStory",
+					"description": "true or false",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "form",
+					"name": "topStoryPosition",
+					"description": "1 - 10",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "form",
+					"name": "tweet",
+					"description": "true or false",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/addorupdatenewsentryjson": {
+			"post": {
+				"summary": "Add or update news entry",
+				"description": "Add a new news entry and approve it. Or update an existing approved news entry. Note: You have to be a curator to invoke this API.",
+				"operationId": "Add or update news entry",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "{authorDisplayName:Test User,title:My Title,link:http://bluemix.info,firstSentences:First sentences.,tweet:false,topStory:false,topStoryPosition:1}",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/approvenewsentry": {
+			"post": {
+				"summary": "Approve news entry",
+				"description": "Approve a new news entry. Note: You have to be a curator to invoke this API.",
+				"operationId": "Approve news entry",
+				"parameters": [{
+					"in": "form",
+					"name": "newsEntryId",
+					"description": "News Entry Id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "form",
+					"name": "tweet",
+					"description": "true or false",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/authors": {
+			"get": {
+				"summary": "Get authors",
+				"description": "Get all authors. Note: You have to be a curator to invoke this API.",
+				"operationId": "Get authors",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/curatednews": {
+			"get": {
+				"summary": "Get curated news",
+				"description": "Get curated news entries. Can be invoked cross domain (CORS).",
+				"operationId": "Get curated news",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"description": "json or jsonp",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/deletenewsentry": {
+			"post": {
+				"summary": "Delete a news entry",
+				"description": "Delete a new news entry. Note: You have to be a curator to invoke this API.",
+				"operationId": "Delete a news entry",
+				"parameters": [{
+					"in": "form",
+					"name": "newsEntryId",
+					"description": "News Entry Id",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/getentry": {
+			"get": {
+				"summary": "Get entry",
+				"description": "Get one news entry and author. Note: You have to be a curator to invoke this API.",
+				"operationId": "Get entry",
+				"parameters": [{
+					"in": "query",
+					"name": "newsEntryId",
+					"description": "News Entry Id",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/news": {
+			"get": {
+				"summary": "Get news",
+				"description": "Get curated and incoming news entries and top stories",
+				"operationId": "Get news",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/readfeeds": {
+			"get": {
+				"summary": "Read feeds",
+				"description": "Read new news entries from registered feeds (and updates in memory cache). Note: You have to be a curator to invoke this API.",
+				"operationId": "Read feeds",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/readfeedsscheduler": {
+			"get": {
+				"summary": "Read feeds on scheduled basis",
+				"description": "Read new news entries from registered feeds (and update in memory cache). Invoked by the workload scheduler. Note: You need application credentials and to use basic authentication.",
+				"operationId": "Read feeds on scheduled basis",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/scheduler": {
+			"post": {
+				"summary": "Turn scheduler on or off",
+				"description": "Turn scheduler on or off. Note: You need to be curator.",
+				"operationId": "Turn scheduler on or off",
+				"parameters": [{
+					"in": "form",
+					"name": "state",
+					"description": "on or off",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/tweetnewsentry": {
+			"post": {
+				"summary": "Tweet a news entry",
+				"description": "Tweet a new news entry. Note: You have to be a curator to invoke this API.",
+				"operationId": "Tweet a news entry",
+				"parameters": [{
+					"in": "form",
+					"name": "newsEntryId",
+					"description": "News Entry Id",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/updatenewsentry": {
+			"post": {
+				"summary": "Update news entry",
+				"description": "Update an existing news entry. Works for both curated and incoming entries. Note: You have to be a curator to invoke this API.",
+				"operationId": "Update news entry",
+				"parameters": [{
+					"in": "form",
+					"name": "authorDisplayName",
+					"description": "Author Display Name",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "form",
+					"name": "firstSentences",
+					"description": "First Sentences.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "form",
+					"name": "link",
+					"description": "News Entry URL",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "form",
+					"name": "newsEntryId",
+					"description": "News Entry Id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "form",
+					"name": "title",
+					"description": "My Title",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "form",
+					"name": "topStory",
+					"description": "true or false",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "form",
+					"name": "topStoryPosition",
+					"description": "1 - 10",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"ResponseSchedulerDTO": {
+			"properties": {
+				"message": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ResponseNewsDTO": {
+			"properties": {
+				"incomingEntries": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"topStories": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"curatedEntries": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"currentUserCurator": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ResponseDeleteNewsEntryDTO": {
+			"properties": {
+				"deletedNewsEntryId": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ResponseAddOrUpdateAuthorDTO": {
+			"properties": {
+				"authorId": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ResponseAddOrUpdateFeedDTO": {
+			"properties": {
+				"feedId": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ResponseTweetNewsEntryDTO": {
+			"properties": {
+				"tweetUrl": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"NewsEntryDTO": {
+			"properties": {
+				"tweet": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"authorDisplayName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"link": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"firstSentences": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"topStory": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"topStoryPosition": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ResponseApproveNewsEntryDTO": {
+			"properties": {
+				"newsEntryId": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"tweetUrl": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ResponseReadFeedsDTO": {
+			"properties": {
+				"message": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ResponseCuratedNewsDTO": {
+			"properties": {
+				"curatedEntries": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"EntryDTO": {
+			"properties": {
+				"authorDisplayName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"authorPictureURL": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"authorTwitter": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"newsEntryLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"newsEntryFirstSentences": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"newsEntryCurationDate": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"newsEntryPublicationDate": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"newsEntryIsTopStory": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"newsEntryTopStoryPosition": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"newsEntryState": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"newsEntryCurator": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"newsEntryTitle": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"newsEntryId": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"AuthorDTO": {
+			"properties": {
+				"twitter": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"displayName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"pictureUrl": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ResponseAddOrUpdateNewsEntryDTO": {
+			"properties": {
+				"newsEntryId": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"tweetUrl": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ResponseAuthorsDTO": {
+			"properties": {
+				"authorDisplayNames": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

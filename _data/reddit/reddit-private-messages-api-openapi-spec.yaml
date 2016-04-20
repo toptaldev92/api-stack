@@ -1,0 +1,239 @@
+- swagger: "2.0"
+  info:
+    title: Reddit Private Messages API
+    description: API for manageming Reddit messages.
+    termsOfService: https://github.com/reddit/reddit/wiki/API
+    version: ~
+  host: www.reddit.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /api/block:
+      post:
+        summary: For blocking via inbox.
+        description: For blocking via inbox.
+        operationId: private-messages
+        parameters:
+        - in: query
+          name: id
+          description: fullname of a thing
+          type: string
+        - in: query
+          name: uh / X-Modhash header
+          description: a modhash
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /api/collapse_message:
+      post:
+        summary: Collapse a message
+        description: Collapse a message
+        operationId: private-messages
+        parameters:
+        - in: query
+          name: id
+          description: A comma-separated list of thing fullnames
+          type: string
+        - in: query
+          name: uh / X-Modhash header
+          description: a modhash
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /api/compose:
+      post:
+        summary: Handles message composition under /message/compose.
+        description: Handles message composition under /message/compose.
+        operationId: private-messages
+        parameters:
+        - in: query
+          name: api_type
+          description: the string json
+          type: string
+        - in: query
+          name: captcha
+          description: the user&#39;s response to the CAPTCHA challenge
+          type: string
+        - in: query
+          name: from_sr
+          description: subreddit name
+          type: string
+        - in: query
+          name: iden
+          description: the identifier of the CAPTCHA challenge
+          type: string
+        - in: query
+          name: subject
+          description: a string no longer than 100 characters
+          type: string
+        - in: query
+          name: text
+          description: raw markdown text
+          type: string
+        - in: query
+          name: to
+          description: the name of an existing user
+          type: string
+        - in: query
+          name: uh / X-Modhash header
+          description: a modhash
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /api/read_all_messages:
+      post:
+        summary: Queue up marking all messages for a user as read.
+        description: Queue up marking all messages for a user as read.
+        operationId: private-messages
+        parameters:
+        - in: query
+          name: uh / X-Modhash header
+          description: a modhash
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /api/read_message:
+      post:
+        summary: A comma-separated list of thing fullnames
+        description: A comma-separated list of thing fullnames
+        operationId: private-messages
+        parameters:
+        - in: query
+          name: id
+          description: A comma-separated list of thing fullnames
+          type: string
+        - in: query
+          name: uh / X-Modhash header
+          description: a modhash
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /api/unblock_subreddit:
+      post:
+        summary: fullname of a thing
+        description: fullname of a thing
+        operationId: private-messages
+        parameters:
+        - in: query
+          name: id
+          description: fullname of a thing
+          type: string
+        - in: query
+          name: uh / X-Modhash header
+          description: a modhash
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /api/uncollapse_message:
+      post:
+        summary: Uncollapse a message
+        description: Uncollapse a message
+        operationId: private-messages
+        parameters:
+        - in: query
+          name: id
+          description: A comma-separated list of thing fullnames
+          type: string
+        - in: query
+          name: uh / X-Modhash header
+          description: a modhash
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /api/unread_message:
+      post:
+        summary: A comma-separated list of thing fullnames
+        description: A comma-separated list of thing fullnames
+        operationId: private-messages
+        parameters:
+        - in: query
+          name: id
+          description: A comma-separated list of thing fullnames
+          type: string
+        - in: query
+          name: uh / X-Modhash header
+          description: a modhash
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /message/where:
+      get:
+        summary: This endpoint is a listing.
+        description: This endpoint is a listing.
+        operationId: private-messages
+        parameters:
+        - in: query
+          name: after
+          description: fullname of a thing
+          type: string
+        - in: query
+          name: before
+          description: fullname of a thing
+          type: string
+        - in: query
+          name: count
+          description: 'a positive integer (default: 0)'
+          type: string
+        - in: query
+          name: limit
+          description: 'the maximum number of items desired (default: 25, maximum: 100)'
+          type: string
+        - in: query
+          name: mark
+          description: one of (true, false)
+          type: string
+        - in: query
+          name: mid
+          type: string
+        - in: query
+          name: show
+          description: (optional) the string all
+          type: string
+        - in: query
+          name: sr_detail
+          description: (optional) expand subreddits
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

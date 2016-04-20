@@ -1,0 +1,2109 @@
+- swagger: "2.0"
+  info:
+    title: EhrScape Electronic Health Record APIs
+    description: A simple yet powerful services to store, retrieve and query health
+      data
+    version: ~
+  host: rest.ehrscape.com
+  basePath: /rest/v1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /composition:
+      post:
+        summary: Creates a new OpenEhr composition.
+        description: '<p>Saves a new OpenEhr composition to the specified, or the currently
+          active EHR.<p> <p>The composition can be in one of the supported formats (FLAT,
+          STRUCTURED, RAW). Unless the format is RAW, then the templateId parameter
+          is required. The composition data is sent in the request body. An example
+          for the structured format: <pre><code>{n    ctx: {n      language: en,n      territory:
+          SI,n      composer_name: matijak_test  n    },tn    vitals: {n      vitals:
+          [n        {n          body_temperature: [n            {n              any_event:
+          [n                {n                  description_of_thermal_stress: [n                    Test
+          description of symptomsn                  ],n                  temperature:
+          [n                    {n                      |magnitude: 37.2,n                      |unit:
+          u00b0Cn                    }n                  ],n                  symptoms:
+          [n                    {n                      |code: at0.64,n                      |value:
+          Chills / rigor / shivering,n                      |terminology: localn                    }n                  ],n                  time:
+          [n                    2014-01-22T15:18:07.339+01:00n                  ]n                }n              ]n            }n          ]n        }n      ],n      context:
+          [n        {n          setting: [n            {n              |code: 238,n              |value:
+          other care,n              |terminology: openehrn            }n          ],n          start_time:
+          [n            2014-01-22T15:18:07.339+01:00n          ]n        }n      ]n    }n  }</code></pre></p><p>EHR
+          id: The EHR to save the composition into, needs to be specified via the ehrId
+          parameter, if it has not already been set on your session by a previous call.</p><p>A
+          note on the ctx/ properties inside the composition data: In the FLAT and STRUCTURED
+          format, the language (ctx/language) and the territory properties (ctx/territory)
+          are required, as they specify the composition locale and language, which is
+          then checked against the templates languages to see if it is supported. Other
+          context-related properties, such as composer_name or start_time may also be
+          specified in this fashion.</p><p>An example of a successful response body:<pre><code>{n  meta:
+          {n    href: http://example.domain.com:8082/rest/v1/composition/bddcedc8-46cc-4df6-8b1a-b05534235f17::example.domain.com::1n  },n  action:
+          CREATEn}</pre></code></p>'
+        operationId: createComposition
+        parameters:
+        - in: body
+          name: body
+          description: The composition to create, in one of the supported formats.
+          schema:
+            $ref: '#/definitions/holder'
+        - in: query
+          name: committerId
+          description: The external id of the committer user. If omitted, the current
+            sessions logged in users external id will be used, if the user has one.
+          type: string
+          format: string
+        - in: query
+          name: committerName
+          description: The name of the committer user. If omitted, the current sessions
+            logged in users name will be used.
+          type: string
+          format: string
+        - in: query
+          name: ehrId
+          description: The EHR id to save the composition into. Required if not already
+            set on the current session by a preceding call.
+          type: string
+          format: string
+        - in: query
+          name: format
+          description: 'The format of the composition. Default: FLAT.'
+          type: string
+          format: string
+        - in: query
+          name: templateId
+          description: OpenEhr template id for the composition. Required, unless the
+            composition is in the RAW format, which has this information embedded.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /composition/{uid}:
+      delete:
+        summary: Deletes an existing OpenEhr composition.
+        description: <p>Deletes an existing OpenEhr composition.<p>
+        operationId: deleteComposition
+        parameters:
+        - in: query
+          name: committerId
+          description: The external id of the committer user. If omitted, the current
+            sessions logged in users external id will be used, if the user has one.
+          type: string
+          format: string
+        - in: query
+          name: committerName
+          description: The name of the committer user. If omitted, the current sessions
+            logged in users name will be used.
+          type: string
+          format: string
+        - in: path
+          name: uid
+          description: Composition UID to be deleted.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: Loads an OpenEhr composition.
+        description: '<p>Returns an OpenEhr composition denoted by the specified id
+          in one of the supported formats, along with some metadata.<p> <p>The ID can
+          be specified as a complete unique ID with the domain and version part (8849182c-82ad-4088-a07f-48ead4180515::example.domain.com::1),
+          or just the identifier part (8849182c-82ad-4088-a07f-48ead4180515), in which
+          case the last version of the composition will be returned.</p><p>Example of
+          data returned on successful call, using FLAT format:</p><pre><code>{n    meta:
+          {n        href: http://example.domain.com:8082/rest/v1/composition/8849182c-82ad-4088-a07f-48ead4180515::example.domain.com::1n    },n    format:
+          FLAT,n    templateId: ISPEK - ZN - Vital Functions Encounter,n    composition:
+          {n        vital_functions/context/context_detail:0/departmental_period_of_care_identifier:
+          244135,n        vital_functions/context/context_detail:0/period_of_care_identifier:
+          30650812,n        vital_functions/vital_signs/body_temperature:0/any_event:0/time:
+          2014-01-22T14:18:07.339Z,n        vital_functions/context/setting|code: 238,n        vital_functions/vital_signs/body_temperature:0/any_event:0/body_temperature|unit:
+          u00b0C,n        vital_functions/context/start_time: 2014-01-22T14:18:07.339Z,n        vital_functions/context/setting|238:
+          true,n        vital_functions/context/context_detail:0/portlet_id: NURSING,n        vital_functions/context/setting|terminology:
+          openehr,n        vital_functions/vital_signs/body_temperature:0/any_event:0/body_temperature|magnitude:
+          38.2,n        vital_functions/context/setting|value: other caren    },n    deleted:
+          false,n    lastVersion: truen}</code></pre>'
+        operationId: getComposition
+        parameters:
+        - in: query
+          name: format
+          description: 'The format of the composition. Default: FLAT.'
+          type: string
+          format: string
+        - in: path
+          name: uid
+          description: The unique ID of the composition, with or without the domain
+            and version part.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: Updates an existing OpenEhr composition.
+        description: '<p>The composition can be in one of the supported formats (FLAT,
+          STRUCTURED, RAW). Unless the format is RAW, then the templateId parameter
+          is required. The composition data is sent in the request body. An example
+          for the structured format: <pre><code>{n    ctx: {n      language: en,n      territory:
+          SI,n      composer_name: matijak_test  n    },tn    vitals: {n      vitals:
+          [n        {n          body_temperature: [n            {n              any_event:
+          [n                {n                  description_of_thermal_stress: [n                    Test
+          description of symptomsn                  ],n                  temperature:
+          [n                    {n                      |magnitude: 37.2,n                      |unit:
+          u00b0Cn                    }n                  ],n                  symptoms:
+          [n                    {n                      |code: at0.64,n                      |value:
+          Chills / rigor / shivering,n                      |terminology: localn                    }n                  ],n                  time:
+          [n                    2014-01-22T15:18:07.339+01:00n                  ]n                }n              ]n            }n          ]n        }n      ],n      context:
+          [n        {n          setting: [n            {n              |code: 238,n              |value:
+          other care,n              |terminology: openehrn            }n          ],n          start_time:
+          [n            2014-01-22T15:18:07.339+01:00n          ]n        }n      ]n    }n  }</code></pre></p><p>A
+          note on the ctx/ properties inside the composition data: In the FLAT and STRUCTURED
+          format, the language (ctx/language) and the territory properties (ctx/territory)
+          are required, as they specify the composition locale and language, which is
+          then checked against the templates languages to see if it is supported. Other
+          context-related properties, such as composer_name or start_time may also be
+          specified in this fashion.</p><p>An example of a successful response body:<pre><code>{n  meta:
+          {n    href: http://example.domain.com:8082/rest/v1/composition/bddcedc8-46cc-4df6-8b1a-b05534235f17::example.domain.com::2n  },n  action:
+          UPDATEn}</pre></code></p>'
+        operationId: updateComposition
+        parameters:
+        - in: body
+          name: body
+          description: The composition to create, in one of the supported formats.
+          schema:
+            $ref: '#/definitions/holder'
+        - in: query
+          name: committerId
+          description: The external id of the committer user. If omitted, the current
+            sessions logged in users external id will be used, if the user has one.
+          type: string
+          format: string
+        - in: query
+          name: committerName
+          description: The name of the committer user. If omitted, the current sessions
+            logged in users name will be used.
+          type: string
+          format: string
+        - in: query
+          name: format
+          description: 'The format of the composition. Default: FLAT.'
+          type: string
+          format: string
+        - in: query
+          name: templateId
+          description: OpenEhr template id for the composition. Required, unless the
+            composition data is in the RAW format, which has this information embedded.
+          type: string
+          format: string
+        - in: path
+          name: uid
+          description: UID of an existing composition to be updated.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /demographics/ehr/{ehrId}/party:
+      get:
+        summary: Retrieves the demographics info for the specified party.
+        description: '<p>This method contacts the remote demographics service and returns
+          a JSON description of the party (specified by the partyId path parameter)
+          in whichever format the service provides, along with some meta-data.</p><p>A
+          note about domains: all demographics operations take place within the requesting
+          users default domain. This means that the user can only query for and add
+          parties that are in his default domain. If the user has no default domain
+          set, a 400 Bad Request (DEMO-6088) error will be thrown.</p><p>Example of
+          a successful response:</p><p><pre style=overflow-y: auto><code>{n  meta: {n    href:
+          http://localhost:8082/rest/v1/demographics/ehr/89e610ee-aed2-41fb-9a70-8d30631bdaec/partyn  },n  action:
+          RETRIEVE,n  party: {n    id: 1,n    version: 0,n    firstNames: Bruce,n    lastNames:
+          Wayne,n    gender: MALE,n    dateOfBirth: 2014-03-03T15:04:24.456Z,n    address:
+          {n      id: 1,n      version: 0,n      address: Fake Street 15, Gotham Cityn    },n    partyAdditionalInfo:
+          [n      {n        id: 5,n        version: 0,n        key: contact_info_hidden,n        value:
+          yesn      },n      {n        id: 6,n        version: 0,n        key: title,n        value:
+          Mrn      },n      {n        id: 7,n        version: 0,n        key: insurance_level,n        value:
+          9n      }n    ]n  }n}</pre></code></p>'
+        operationId: getPartyByEhrId
+        parameters:
+        - in: path
+          name: ehrId
+          description: EHR ID of the party to retrieve.
+          type: string
+          format: string
+        - in: query
+          name: when
+          description: The instant of time for which to return the information about
+            the party in the ISO-8601 format (2014-03-03T15:05:43.992Z).
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /demographics/party:
+      post:
+        summary: Creates a new party record in the remote demographics store.
+        description: '<p>This method saves a new party, specified in the JSON request
+          body, to the remote demographics service.</p>The JSON request body has to
+          be in the format that the remote demographics service understands. <p>Quick
+          specification of what the default party object looks like:</p><pre style=overflow-y:
+          auto><code>{n    firstNames: string,n    lastNames: string,n    gender: MALE|FEMALE|UNKNOWN|OTHER,n    dateOfBirth:
+          ISO-8601 timestamp (including time portion),n    timeOfDeath: ISO-8601 timestamp
+          (including time portion),n    address: {      n      address: stringn    },n    partyAdditionalInfo
+          (arbitrary collection of key-value pairs): [n            {n        key: key1,n        value:
+          value1n      },n      {n        key: key1,n        value: value1n      }      n    ]n  }</pre></code></p><p>None
+          of the properties are required, but if you do specify any partyAdditionalInfo
+          elements, the key has to be set. The return JSON format looks the same, but
+          it will have the identity properties set for elements (id and version). If
+          you send these in this method call, they are ignored.</p><p>A request body
+          should look something like this:</p><pre style=overflow-y: auto><code>{n    firstNames:
+          Jordan,n    lastNames: Nolan,n    gender: MALE,n    dateOfBirth: 1990-03-09T00:00:00.000Z,n    address:
+          {      n      address: Toronto, Canadan    },n    partyAdditionalInfo: [n      {n        key:
+          pet,n        value: dogn      },n      {n        key: title,n        value:
+          Mrn      }      n    ]n  }</pre></code></p><p>Successful response:</p><pre
+          style=overflow-y: auto><code>{n  meta: {n    href: http://localhost:8082/rest/v1/demographics/party/16n  },n  action:
+          CREATEn}</pre></code></p><p>A note about domains: all demographics operations
+          take place within the requesting users default domain. This means that the
+          user can only query for and add parties that are in his default domain. If
+          the user has no default domain set, a 400 Bad Request (DEMO-6088) error will
+          be thrown.</p>'
+        operationId: addParty
+        parameters:
+        - in: body
+          name: body
+          description: The party to create in whatever format the demographics service
+            supports.
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: Updates a party record in the remote demographics store.
+        description: '<div class=ehr-rest-summary><p>This method updates a party, specified
+          in the JSON request body.</p></div><p>The JSON request body has to be in the
+          format that the remote demographics service understands. See the documentation
+          for party POST to see a description of the format.</p><p>Successful response:</p><pre
+          style=overflow-y: auto><code>{n  meta: {n    href: http://localhost:8082/rest/v1/demographics/party/16n  },n  action:
+          UPDATEn}</pre></code></p><p>A note about domains: all demographics operations
+          take place within the requesting users default domain. This means that the
+          user can only query for and add parties that are in his default domain. If
+          the user has no default domain set, a 400 Bad Request (DEMO-6088) error will
+          be thrown.</p>'
+        operationId: updateParty
+        parameters:
+        - in: body
+          name: body
+          description: The party to update.
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /demographics/party/query:
+      get:
+        summary: Queries the demographics store for matching parties, with the query
+          parameters specified in the URL.
+        description: '<div class=ehr-rest-summary><p>This method queries the demographics
+          store for matching parties, with key1=value1&key2=value2 URL parameters serving
+          as the query parameters.</p></div><p>The special query parameter <code>search</code>
+          will perform an OR-search on both the firstNames and the lastNames property
+          of the party.</p><p>A case-insensitive search will be performed for matching
+          keys and values.</p><p>Please note that all properties whose key names start
+          with date or time are considered to be ISO-8601 timestamps (1980-04-12T00:00:00.000Z)
+          and will be attempted to be parsed as such. Failure to parse such criteria
+          will result in a 400 Bad Request error.</p><p>An example of complex search
+          criteria:</p><pre style=overflow-y: auto><code>.../demographics/party/query/?firstNames=*Bruce*&dateOfBirth=1980-04-12T00:00:00.000Z&gender=MALE&insuranceLevel=5</pre></code></p><p>This
+          will find all parties whose first names include Bruce that have been born
+          on the 12th of April, 1980, are male and have the additional property insuranceLevel
+          set to 9.</p><p>For string based values, the * character can be used to indicate
+          wildcard-matching behavior.</p><p>An example of a successful response body:</p><pre
+          style=overflow-y: auto><code>{n  meta: {n    href: http://localhost:8082/rest/v1/demographics/party/query/?lastNames=*Way*n  },n  action:
+          RETRIEVE,n  parties: [n    {n      id: 1,n      version: 0,n      firstNames:
+          Bruce,n      lastNames: Wayne,n      gender: MALE,n      dateOfBirth: 2014-03-03T15:04:24.456Z,n      address:
+          {n        id: 1,n        version: 0,n        address: Fake Street 15, Gotham
+          Cityn      },n      partyAdditionalInfo: [n        {n          id: 7,n          version:
+          0,n          key: insurance_level,n          value: 9n        },n        {n          id:
+          6,n          version: 0,n          key: title,n          value: Mrn        },n        {n          id:
+          5,n          version: 0,n          key: contact_info_hidden,n          value:
+          yesn        }n      ]n    },n    {n      id: 9,n      version: 0,n      firstNames:
+          Selina,n      lastNames: Wayne,n      gender: FEMALE,n      dateOfBirth: 1980-03-03T15:04:24.456Z,n      address:
+          {n        id: 9,n        version: 0,n        address: Fake Street 19, Gotham
+          Cityn      },n      partyAdditionalInfo: [n        {n          id: 15,n          version:
+          0,n          key: title,n          value: Mrsn        },n        {n          id:
+          16,n          version: 0,n          key: insurance_level,n          value:
+          10n        },n        {n          id: 10,n          version: 0,n          key:
+          contact_info_hidden,n          value: non        }n      ]n    }n  ]n}</pre></code></p><p>A
+          note about domains: all demographics operations take place within the requesting
+          users default domain. This means that the user can only query for and add
+          parties that are in his default domain. If the user has no default domain
+          set, a 400 Bad Request (DEMO-6088) error will be thrown.</p>'
+        operationId: queryParties
+        parameters:
+        - in: query
+          name: maxHits
+          description: Limit the query results to this many hits.
+          type: string
+          format: string
+        - in: query
+          name: parameters
+          description: Query parameters in the key1=value1&key2=value2 format
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Queries the demographics store for matching parties.
+        description: '<div class=ehr-rest-summary><p>This method queries the demographics
+          store for matching parties, using a JSON array of key-value arguments as the
+          search criteria.</p></div><p>The JSON request body is an array of key-value
+          search criteria that are then used as the WHERE clause of the SQL query (a
+          conjunction (AND) of the individual key-value pairs will be used to produce
+          the WHERE clause).</p><p>The format of the restriction clause:</p><pre style=overflow-y:
+          auto><code>{n    key: string,n    value: stringn}</pre></code></p><p>The special
+          key <code>search</code> will perform an OR-search on both the firstNames and
+          the lastNames property of the party.</p><p>A case-insensitive search will
+          be performed for matching keys and values.</p><p>Please note that all properties
+          whose key names start with date or time are considered to be ISO-8601 timestamps
+          (1980-04-12T00:00:00.000Z) and will be attempted to be parsed as such. Failure
+          to parse such criteria will result in a 400 Bad Request error.</p><p>An example
+          of complex search criteria:</p><pre style=overflow-y: auto><code>[n   {n    key:
+          firstNames,n    value: *Bruce*n   },n   {n    key: dateOfBirth,n    value:
+          1980-04-12T00:00:00.000Zn   },n   {n    key: gender,n    value: MALEn   },n   {n    key:
+          insuranceLevel,n    value: 5n   }n]</pre></code></p><p>This will find all
+          parties whose first names include Bruce that have been born on the 12th of
+          April, 1980, are male and have the additional property insuranceLevel set
+          to 9.</p><p>For string based values, the * character can be used to indicate
+          wildcard-matching behavior.</p><p>An example of a successful response body:</p><pre
+          style=overflow-y: auto><code>{n  meta: {n    href: http://localhost:8082/rest/v1/demographics/party/query/?lastNames=*Way*n  },n  action:
+          RETRIEVE,n  parties: [n    {n      id: 1,n      version: 0,n      firstNames:
+          Bruce,n      lastNames: Wayne,n      gender: MALE,n      dateOfBirth: 2014-03-03T15:04:24.456Z,n      address:
+          {n        id: 1,n        version: 0,n        address: Fake Street 15, Gotham
+          Cityn      },n      partyAdditionalInfo: [n        {n          id: 7,n          version:
+          0,n          key: insurance_level,n          value: 9n        },n        {n          id:
+          6,n          version: 0,n          key: title,n          value: Mrn        },n        {n          id:
+          5,n          version: 0,n          key: contact_info_hidden,n          value:
+          yesn        }n      ]n    },n    {n      id: 9,n      version: 0,n      firstNames:
+          Selina,n      lastNames: Wayne,n      gender: FEMALE,n      dateOfBirth: 1980-03-03T15:04:24.456Z,n      address:
+          {n        id: 9,n        version: 0,n        address: Fake Street 19, Gotham
+          Cityn      },n      partyAdditionalInfo: [n        {n          id: 15,n          version:
+          0,n          key: title,n          value: Mrsn        },n        {n          id:
+          16,n          version: 0,n          key: insurance_level,n          value:
+          10n        },n        {n          id: 10,n          version: 0,n          key:
+          contact_info_hidden,n          value: non        }n      ]n    }n  ]n}</pre></code></p><p>A
+          note about domains: all demographics operations take place within the requesting
+          users default domain. This means that the user can only query for and add
+          parties that are in his default domain. If the user has no default domain
+          set, a 400 Bad Request (DEMO-6088) error will be thrown.</p>'
+        operationId: queryParties
+        parameters:
+        - in: body
+          name: body
+          description: An array of key-value query criteria.
+          schema:
+            $ref: '#/definitions/holder'
+        - in: query
+          name: maxHits
+          description: Limit the query results to this many hits.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /demographics/party/{partyId}:
+      delete:
+        summary: Deletes a party record from the remote demographics store.
+        description: '<div class=ehr-rest-summary><p>This method deletes a party denoted
+          by its id from the remote demographics store, along with all its sub-entities
+          (such as additional info).</p></div><p>Successful response:</p><pre style=overflow-y:
+          auto><code>{n  action: DELETEn}</pre></code></p><p>A note about domains: all
+          demographics operations take place within the requesting users default domain.
+          This means that the user can only query for and add parties that are in his
+          default domain. If the user has no default domain set, a 400 Bad Request (DEMO-6088)
+          error will be thrown.</p>'
+        operationId: deleteParty
+        parameters:
+        - in: path
+          name: partyId
+          description: The id of the party to delete.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: Retrieves the demographics info for the specified party.
+        description: '<p>This method contacts the remote demographics service and returns
+          a JSON description of the party (specified by the partyId path parameter)
+          in whichever format the service provides, along with some meta-data.</p><p>A
+          note about domains: all demographics operations take place within the requesting
+          users default domain. This means that the user can only query for and add
+          parties that are in his default domain. If the user has no default domain
+          set, a 400 Bad Request (DEMO-6088) error will be thrown.</p><p>Example of
+          a successful response:</p><p><pre style=overflow-y: auto><code>{n  meta: {n    href:
+          http://localhost:8082/rest/v1/demographics/party/1n  },n  action: RETRIEVE,n  party:
+          {n    id: 1,n    version: 0,n    firstNames: Bruce,n    lastNames: Wayne,n    gender:
+          MALE,n    dateOfBirth: 2014-03-03T15:04:24.456Z,n    address: {n      id:
+          1,n      version: 0,n      address: Fake Street 15, Gotham Cityn    },n    partyAdditionalInfo:
+          [n      {n        id: 5,n        version: 0,n        key: contact_info_hidden,n        value:
+          yesn      },n      {n        id: 6,n        version: 0,n        key: title,n        value:
+          Mrn      },n      {n        id: 7,n        version: 0,n        key: insurance_level,n        value:
+          9n      }n    ]n  }n}</pre></code></p>'
+        operationId: getParty
+        parameters:
+        - in: path
+          name: partyId
+          description: The external ID of the party to retrieve.
+          type: string
+          format: string
+        - in: query
+          name: when
+          description: The instant of time for which to return the information about
+            the party in the ISO-8601 format (2014-03-03T15:05:43.992Z).
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /ehr:
+      get:
+        summary: Returns the EHR for the specified subject ID and namespace.
+        description: '<p>Returns a JSON representation of the state of the EHR, or 204
+          No Content if no such EHR exists.</p><p>An example of a successful response
+          body:</p><p><pre><code>{n  meta: {n    href: http://localhost:8082/rest/v1/ehr/f77f9b4a-cfda-414d-aa6c-4f78bcac7601n  },n  action:
+          RETRIEVE,n  ehrStatus: {n    subjectId: 90470912,n    subjectNamespace: ExternalDB,n    queryable:
+          true,n    modifiable: truen  },n  ehrId: f77f9b4a-cfda-414d-aa6c-4f78bcac7601n}</pre></code></p>'
+        operationId: getEhr
+        parameters:
+        - in: query
+          name: subjectId
+          description: The subject ID whose EHR needs to be located
+          type: string
+          format: string
+        - in: query
+          name: subjectNamespace
+          description: The namespace that the subject belongs to.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Creates a new EHR.
+        description: '<p>Creates a new EHR and returns its ID.</p><p>The caller can
+          specify an external subject ID and namespace to whom the new EHR will belong.</p><p>An
+          example of a successful response body:</p><p><pre><code>{n  meta: {n    href:
+          http://localhost:8082/rest/v1/ehr/f77f9b4a-cfda-414d-aa6c-4f78bcac7601n  },n  action:
+          CREATE,n  ehrId: f77f9b4a-cfda-414d-aa6c-4f78bcac7601n}</pre></code></p>'
+        operationId: createEhr
+        parameters:
+        - in: query
+          name: committerName
+          description: The name of the committer user. If omitted, the current sessions
+            logged in users name will be used.
+          type: string
+          format: string
+        - in: query
+          name: subjectId
+          description: The external ID of the user who will own this EHR.
+          type: string
+          format: string
+        - in: query
+          name: subjectNamespace
+          description: The namespace the subjectId belongs to.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /ehr/status/{ehrId}:
+      put:
+        summary: Update EHR_STATUS of an EHR.
+        description: '<p>Updates EHR_STATUS of an EHR.</p><p>An example of a request
+          body:</p><p><pre><code>{n    subjectId: 90470912,n    subjectNamespace: ExternalDB,n    queryable:
+          true,n    modifiable: truen}</pre></code></p><p>An example of a successful
+          response body:</p><pre style=overflow-y: auto><code>{n  meta: {n    href:
+          http://localhost:8082/rest/v1/ehr/649eb8dd-787d-4669-bcc9-185903c6ddcbn  },n  action:
+          UPDATEn}</pre></code></p>'
+        operationId: updateEhrStatus
+        parameters:
+        - in: body
+          name: body
+          description: EHR status.
+          schema:
+            $ref: '#/definitions/holder'
+        - in: path
+          name: ehrId
+          description: EHR ID.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /ehr/{ehrId}:
+      get:
+        summary: Returns information about the specified EHR.
+        description: '<p>Returns a JSON representation of the state of the specified
+          EHR.</p><p>An example of a successful response body:</p><p><pre><code>{n  meta:
+          {n    href: http://localhost:8082/rest/v1/ehr/f77f9b4a-cfda-414d-aa6c-4f78bcac7601n  },n  action:
+          RETRIEVE,n  ehrStatus: {n    subjectId: 90470912,n    subjectNamespace: ExternalDB,n    queryable:
+          true,n    modifiable: truen  },n  ehrId: f77f9b4a-cfda-414d-aa6c-4f78bcac7601n}</pre></code></p>'
+        operationId: getEhr
+        parameters:
+        - in: path
+          name: ehrId
+          description: The ID of the EHR to return.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /form:
+      get:
+        summary: Lists Think!Ehr forms.
+        description: '<p>Returns a list of Think!Ehr form definitions.</p><p>This call
+          only returns form meta-data and no form resources.</p><p>Example of a successful
+          call:<pre><code>{n  forms: [n    {n      templateId: Vital Signs,n      name:
+          Basic,n      version: 1.0.0,n      createdTimestamp: 2014-03-03T09:46:54.272+01:00,n      status:
+          active,n      category: Default,n      creator: ehrscape,n      type: JSONn    },n    {n      templateId:
+          Vital Signs,n      name: Extended,n      version: 1.0.1,n      createdTimestamp:
+          2014-03-03T10:02:13.135+01:00,n      status: active,n      category: Default,n      creator:
+          ehrscape,n      type: JSONn    }n  ]n}</code></pre></p>'
+        operationId: getForms
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /form/{name}/{version}:
+      get:
+        summary: Loads a Think!Ehr form.
+        description: '<p>Returns a Think!Ehr form denoted by its name and version.</p><p>This
+          call can return only the form and form resource meta-data (the default), or
+          it can already expand the specified (or all) form  resources. See the description
+          of the resources parameter for details.</p><p>In case of resource expansion,
+          for resources that are of the source type (text, JSON etc.), this method will
+          do its best to transform the resource content into the correct JSON type (for
+          example, a JSON object, or a JSON text node). For binary resources, the content
+          resource property will contain raw bytes.</p><p>Example of a successful call,
+          with the form-layout property expanded (?resources=form-layout):<pre><code>{n  meta:
+          {n    href: http://localhost:8082/rest/v1/form/TM_Simple_Vital_Functions/1.5.1n  },n  form:
+          {n    templateId: TM - Simple Vital Functions,n    name: TM_Simple_Vital_Functions,n    version:
+          1.5.1,n    createdTimestamp: 2013-12-10T16:27:41.277+01:00,n    status: active,n    category:
+          Default,n    creator: admin,n    type: JSON,n    resources: [n      {n        name:
+          form-description,n        mimetype: application/json,n        type: source,n        href:
+          http://localhost:8082/rest/v1/form/TM_Simple_Vital_Functions/1.5.1/resource/form-descriptionn      },n      {n        name:
+          form-language,n        mimetype: text/plain,n        type: source,n        href:
+          http://localhost:8082/rest/v1/form/TM_Simple_Vital_Functions/1.5.1/resource/form-languagen      },n      {n        name:
+          form-layout,n        mimetype: application/json,n        type: source,n        href:
+          http://localhost:8082/rest/v1/form/TM_Simple_Vital_Functions/1.5.1/resource/form-layout,n        content:
+          [n          {n            id: row0,n            idx: 0,n            cols:
+          [n              {n                id: row0-col0,n                children:
+          [],n                rows: [n                  {n                    id: row0-col0-row0,n                    idx:
+          0,n                    cols: [n                      {n                        id:
+          row0-col0-row0-col0,n                        children: [n                          {n                            id:
+          simple_vital_functions/body_weight/any_event/weight,n                            idx:
+          0n                          }n                        ]n                      },n                      {n                        id:
+          row0-col0-row0-col1,n                        children: [n                          {n                            id:
+          simple_vital_functions/height_length/any_event/height_length,n                            idx:
+          0n                          }n                        ]n                      },n                      {n                        id:
+          row0-col0-row0-col2,n                        children: [n                          {n                            id:
+          simple_vital_functions/body_mass_index/any_event/body_mass_index,n                            idx:
+          0n                          }n                        ]n                      }n                    ]n                  },n                  {n                    id:
+          row0-col0-row1,n                    idx: 1,n                    cols: [n                      {n                        id:
+          row0-col0-row1-col0,n                        children: [n                          {n                            id:
+          simple_vital_functions/body_temperature/any_event/temperature,n                            idx:
+          0n                          }n                        ]n                      },n                      {n                        id:
+          row0-col0-row1-col1,n                        children: [n                          {n                            id:
+          simple_vital_functions/pulse/any_event/rate,n                            idx:
+          0n                          },n                          {n                            id:
+          simple_vital_functions/respirations/any_event/rate,n                            idx:
+          1n                          }n                        ]n                      },n                      {n                        id:
+          row0-col0-row1-col2,n                        children: [n                          {n                            id:
+          simple_vital_functions/blood_pressure/any_event/systolic,n                            idx:
+          0n                          },n                          {n                            id:
+          simple_vital_functions/blood_pressure/any_event/diastolic,n                            idx:
+          1n                          }n                        ]n                      },n                      {n                        id:
+          row0-col0-row1-col3,n                        children: [n                          {n                            id:
+          simple_vital_functions/indirect_oximetry/spo2,n                            idx:
+          0n                          }n                        ]n                      }n                    ]n                  },n                  {n                    id:
+          row0-col0-row2,n                    idx: 2,n                    cols: [n                      {n                        id:
+          row0-col0-row2-col0,n                        children: [n                          {n                            id:
+          simple_vital_functions/story_or_history/pain/nil_significant,n                            idx:
+          0n                          }n                        ]n                      },n                      {n                        id:
+          row0-col0-row2-col1,n                        children: [n                          {n                            id:
+          simple_vital_functions/story_or_history/pain/observed_current_intensity/degree,n                            idx:
+          0n                          }n                        ]n                      }n                    ]n                  }n                ]n              }n            ]n          }n        ]n      },n      {n        name:
+          form-title,n        mimetype: text/plain,n        type: source,n        href:
+          http://localhost:8082/rest/v1/form/TM_Simple_Vital_Functions/1.5.1/resource/form-titlen      }n    ]n  }n}</code></pre></p>'
+        operationId: getForm
+        parameters:
+        - in: path
+          name: name
+          description: The name of the form.
+          type: string
+          format: string
+        - in: query
+          name: resources
+          description: 'Which, if any, resources to expand. Possible values are NONE,
+            ALL, SOURCE, BINARY or a comma-separated list of names of resources to load.
+            Default: NONE.'
+          type: string
+          format: string
+        - in: path
+          name: version
+          description: The version of the form, such as 1.0.0.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /form/{name}/{version}/resource/{resource}:
+      get:
+        summary: Loads a Think!Ehr form resource content.
+        description: '<p>Returns a Think!Ehr form resource content, optionally enveloped
+          with meta-data.</p><p>Unless the envelope parameter is true, this method will
+          return the actual contents of the resource as a response, with the  Content-Type
+          HTTP header set to the correct media type for the resource (such as application/json,
+          text/plain or image/jpeg). For example, if the resource is actually a JPEG
+          image, the actual image will be returned in the HTTP response, with the Content-Type
+          header set to image/jpeg.</p><p>If, however, the envelope parameter is set
+          to true, then the usual envelope response will be returned, with all the meta-data
+          about the resource, as explained in the model. Example: </p><p><pre><code>{n  meta:
+          {n    href: http://localhost:8082/rest/v1/form/UnitTestDemoForm/1.0.0/resource/form-languagen  },n  formName:
+          UnitTestDemoForm,n  formVersion: 1.0.0,n  resource: {n    name: form-language,n    mimetype:
+          text/plain,n    type: source,n    href: http://localhost:8082/rest/v1/form/UnitTestDemoForm/1.0.0/resource/form-language,n    content:
+          enn  }n}</pre></code></p><p>As usual, non-binary resources will be converted
+          from bytes to their appropriate representation (text or JSON) within the envelope.
+          Binary resources content property will contain a raw byte representation of
+          the resource.</p>'
+        operationId: getFormResource
+        parameters:
+        - in: query
+          name: envelope
+          description: Whether or not to wrap a response in a JSON object that includes
+            meta-data, or just return the resource content (default).
+          type: string
+          format: string
+        - in: path
+          name: name
+          description: The name of the form.
+          type: string
+          format: string
+        - in: path
+          name: resource
+          description: The name of the form resource.
+          type: string
+          format: string
+        - in: path
+          name: version
+          description: The version of the form, such as 1.0.0.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /import/csv:
+      post:
+        summary: Import CSV data.
+        description: '<p>Data needs to be properly formatted as CSV. The first row needs
+          to contain column names which must match ids (paths) from web template - specified
+          by query parameter templateId.</p><p>EHR matching is possible in 2 ways:</p><ul><li>-
+          a column ehrId is present in which case data is added to existing EHRs</li><li>-
+          a column subjectId is present in which case new EHRs will be created as required
+          (in this case query parameter subjectNamespace is mandatory)</li></ul><p/><p>Example
+          of a correct CSV file:<pre style=overflow-y: auto; overflow-x: auto><code>subjectId,ctx/language,ctx/territory,vital_signs/body_temperature:0/any_event:0/temperature|magnitude,vital_signs/body_temperature:0/any_event:0/temperature|unitn1001,en,SI,37.1,u00b0Cn1002,en,SI,37.2,u00b0Cn1003,en,SI,37.3,u00b0Cn1004,en,SI,37.4,u00b0Cn1005,en,SI,37.5,u00b0Cn</code></pre></p><p>Result
+          will be returned as a CSV file as well with 2 additional columns:</p><ul><li>-
+          composition uid for successfully imported rows</li><li>- error message(s)
+          for those rows where import failed</li></ul><p/><p>Example response file:<pre
+          style=overflow-y: auto; overflow-x: auto><code>subjectId,ctx/language,ctx/territory,vital_signs/body_temperature:0/any_event:0/temperature|magnitude,vital_signs/body_temperature:0/any_event:0/temperature|unit,compositionUid,errorsn1001,en,SI,37.1,u00b0C,326d42ff-fbcb-4c5c-9f59-dab03c035c2d::demo::1,n1002,en,SI,37.2,u00b0C,513e2bd8-cefc-4423-b84a-97f1436d726f::demo::1,n1003,en,SI,37.3,u00b0C,e0dcb42f-48c4-4fbe-9843-e45d552720b5::demo::1,n1004,en,SI,37.4,u00b0C,17663474-0512-4144-a6c2-b531f4073687::demo::1,n1005,en,SI,37.5,u00b0C,f044855d-5fd4-4106-95e2-9acff6b372c0::demo::1,n</code></pre></p>'
+        operationId: importData
+        parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/holder'
+        - in: query
+          name: committerName
+          description: Committer name (if not specified username is used instead).
+          type: string
+          format: string
+        - in: query
+          name: composerName
+          description: Composer name (if not specified username is used instead).
+          type: string
+          format: string
+        - in: query
+          name: converterLocale
+          description: Converter locale - specify when numeric values are formatted
+            in a specific locale.
+          type: string
+          format: string
+        - in: query
+          name: subjectNamespace
+          description: Subject namespace (required when using subjectIds to identify
+            EHRs).
+          type: string
+          format: string
+        - in: query
+          name: templateId
+          description: Template ID
+          type: string
+          format: string
+        - in: query
+          name: templateLanguage
+          description: Template language
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /presentation:
+      post:
+        summary: Returns presentation documents for a specified AQL query.
+        description: '<p>Returns presentation documents returned by the AQL query. Their
+          content can be filtered by forms specified in request body.</p><p>Query should
+          only return COMPOSITIONs, all other values will be ignored.</p> Several forms
+          can be specified for filtering - they will be matched to the template of each
+          composition. Compositions without a matching form for filtering will be returned
+          with basic reference model filtering.</p><p>Here is how parameters (AQL query
+          and its parameters as well as forms) are specified in the JSON body: </p><p><pre
+          style=overflow-y: auto><code>{n  queryRequestData: {n    aql: SELECT c FROM
+          Composition c CONTAINS OBSERVATION o[openEHR-EHR-OBSERVATION.body_temperature-zn.v1]
+          WHERE o/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude
+          < :temp FETCH 1,n    aqlParameters: {n      temp: 40n    }n  },n  formData:
+          [n    {n      formName: Demo Vitals,n      versionString: 1.0.0n    }n  ]n}</code></pre></p><p>The
+          returned result-set is a collection of presentation documents.</p><p>An example
+          of a successful response body:</p><p><pre style=overflow-y: auto><code>[n    {n      metadata:
+          {n        startTime: 2014-03-11T10:27:09.933+01:00,n        composer: restTest,n        name:
+          Vitals,n        templateId: Demo Vitalsn      },n      composition: {n        rmType:
+          COMPOSITION,n        label: Vitals,n        children: [n          {n            rmType:
+          SECTION,n            label: Vitals,n            children: [n              {n                rmType:
+          OBSERVATION,n                label: Body temperature,n                children:
+          [n                  {n                    rmType: DV_QUANTITY,n                    label:
+          Temperature,n                    displayValue: 37.2 u00b0C,n                    rawValue:
+          {n                      magnitude: 37.2,n                      units: u00b0C,n                      other_reference_ranges:
+          []n                    },n                    aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1]/data[at0002]/events[at0003]/data[at0001]/items[at0004]/valuen                  }n                ],n                aqlPath:
+          /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1]n              }n            ],n            aqlPath:
+          /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]n          }n        ]n      }n    }n]</pre></code></p>'
+        operationId: getPresentationDocuments
+        parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /query:
+      get:
+        summary: Returns the results of the specified AQL query.
+        description: '<p>Returns the data produced by the specified query, along with
+          some meta-data.</p><p>The AQL to execute is specified as a query parameter
+          to this call. Example: <p><pre style=overflow-y: auto>http://localhost:8082/rest/v1/query/?aql=select%20c%20from%20Composition%20c%20where%20c/uid/value=uid=0da4b8bc-1fb8-4e2e-be27-f63934a60fc2::default::1</pre></p><p>This
+          method does not support named parameters and their expansion inside the AQL
+          query string. For parameter expansion support, see the POST query method.</p><p>Note
+          that even though parameter expansion is not supported, the $ehrUid placeholder
+          will be replaced with the sessions currently active EHR id, if there is one.</p><p>The
+          returned result-set is an array of rows as returned by the query. Each row
+          is a JSON object whose properties correspond to columns returned by the AQL
+          query. These column properties have the same name as aliases in the SELECT
+          clause of the query. In absence of these aliases, numeric marking of columns
+          in the format #0, #1 ... is used.</p><p>An example of a successful response
+          body, querying for the three highest temperatures greater than 38.5 u00b0C
+          inside an EHR, with the unit and temperature SELECT aliases: </p><p><pre style=overflow-y:
+          auto><code>{n  meta: {n    href: http://localhost:8082/rest/v1/query/?aql=select%20o/data%5Bat0002%5D/events%5Bat0003%20and%20name/value%3DAny%20event%5D/data%5Bat0001%5D/items%5Bat0004%5D/value/magnitude%20as%20temperature,%20o/data%5Bat0002%5D/events%5Bat0003%20and%20name/value%3DAny%20event%5D/data%5Bat0001%5D/items%5Bat0004%5D/value/units%20as%20unit%20from%20EHR%5Behr_id/value%3D554f896d-faca-4513-bddf-664541146308d%5D%20CONTAINS%20Observation%20o%5BopenEHR-EHR-OBSERVATION.body_temperature-zn.v1%5D%20WHERE%20o/data%5Bat0002%5D/events%5Bat0003%20and%20name/value%3DAny%20event%5D/data%5Bat0001%5D/items%5Bat0004%5D/value/magnitude%20%3E%2038.5%20order%20by%20temperature%20desc%20fetch%203n  },n  resultSet:
+          [n    {n      unit: u00b0C,n      temperature: 40.2n    },n    {n      unit:
+          u00b0C,n      temperature: 39.8n    },n    {n      unit: u00b0C,n      temperature:
+          38.6n    }n  ],n  aql: select o/data[at0002]/events[at0003 and name/value=Any
+          event]/data[at0001]/items[at0004]/value/magnitude as temperature, o/data[at0002]/events[at0003
+          and name/value=Any event]/data[at0001]/items[at0004]/value/units as unit from
+          EHR[ehr_id/value=$ehrUid] CONTAINS Observation o[openEHR-EHR-OBSERVATION.body_temperature-zn.v1]
+          WHERE o/data[at0002]/events[at0003 and name/value=Any event]/data[at0001]/items[at0004]/value/magnitude
+          > 38.5 order by temperature desc fetch 3,n  executedAql: select o/data[at0002]/events[at0003
+          and name/value=Any event]/data[at0001]/items[at0004]/value/magnitude as temperature,
+          o/data[at0002]/events[at0003 and name/value=Any event]/data[at0001]/items[at0004]/value/units
+          as unit from EHR[ehr_id/value=554f896d-faca-4513-bddf-664541146308d] CONTAINS
+          Observation o[openEHR-EHR-OBSERVATION.body_temperature-zn.v1] WHERE o/data[at0002]/events[at0003
+          and name/value=Any event]/data[at0001]/items[at0004]/value/magnitude > 38.5
+          order by temperature desc fetch 3n}</pre></code></p>'
+        operationId: query
+        parameters:
+        - in: query
+          name: aql
+          description: The AQL query to execute
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Querying with named parameter support.
+        description: '<p>Returns the data produced by the specified query, supporting
+          named parameter expansion.</p><p>The query to execute is specified as a JSON
+          object, with one property describing the AQL and another describing a map
+          of named parameters whose values are expanded before querying. See the model
+          description below.<p>Here is how the AQL query and its parameters are specified
+          in the JSON body: </p><p><pre style=overflow-y: auto><code>{naql: select o/data[at0002]/events[at0003
+          and name/value=Any event]/data[at0001]/items[at0004]/value/magnitude as temperature,
+          o/data[at0002]/events[at0003 and name/value=Any event]/data[at0001]/items[at0004]/value/units
+          as unit from EHR[ehr_id/value=554f896d-faca-4513-bddf-664541146308d] CONTAINS
+          Observation o[openEHR-EHR-OBSERVATION.body_temperature-zn.v1] WHERE o/data[at0002]/events[at0003
+          and name/value=Any event]/data[at0001]/items[at0004]/value/magnitude > :temperature
+          and o/data[at0002]/events[at0003 and name/value=Any event]/data[at0001]/items[at0.63
+          and name/value=Symptoms]/value/defining_code/code_string=:chills order by
+          temperature desc fetch 3,nnaqlParameters: n{n   temperature: 38.5,n   chills:
+          at0.64n }n}</code></pre></p><p>The :parameterName syntax (in the above example,
+          :temperature and :chills) is used in the AQL string to mark the places where
+          parameters will be expanded.</p>Note that the parameter types of the JSON
+          request body are important. They need to roughly correspond to parameter types
+          in the OpenEHR reference model. This means that if, for example, the property
+          youre using in your query condition is a decimal value (like in the example
+          above), then the JSON property should be an unquoted decimal value as well.<p>The
+          $ehrUid placeholder will be replaced with the sessions currently active EHR
+          id, if there is one.</p><p>The returned result-set is an array of rows as
+          returned by the query. Each row is a JSON object whose properties correspond
+          to columns returned by the AQL query. These column properties have the same
+          name as aliases in the SELECT clause of the query. In absence of these aliases,
+          numeric marking of columns in the format #0, #1 ... is used.</p><p>This POST
+          method does not in any way alter the server state, its purpose is to facilitate
+          submission of queries in the HTTP body as JSON, supporting named parameter
+          expansion. This enables us to determine the type of parameters more easily.</p><p>An
+          example of a successful response body, querying for the three highest temperatures
+          greater than 38.5 u00b0C whose symptoms also include chills, inside an EHR,
+          with the unit and temperature SELECT aliases: </p><p><pre style=overflow-y:
+          auto><code>{n  meta: {n    href: http://localhost:8082/rest/v1/query/?aql=select%20o/data%5Bat0002%5D/events%5Bat0003%20and%20name/value%3DAny%20event%5D/data%5Bat0001%5D/items%5Bat0004%5D/value/magnitude%20as%20temperature,%20o/data%5Bat0002%5D/events%5Bat0003%20and%20name/value%3DAny%20event%5D/data%5Bat0001%5D/items%5Bat0004%5D/value/units%20as%20unit%20from%20EHR%5Behr_id/value%3D554f896d-faca-4513-bddf-664541146308d%5D%20CONTAINS%20Observation%20o%5BopenEHR-EHR-OBSERVATION.body_temperature-zn.v1%5D%20WHERE%20o/data%5Bat0002%5D/events%5Bat0003%20and%20name/value%3DAny%20event%5D/data%5Bat0001%5D/items%5Bat0004%5D/value/magnitude%20%3E%2038.5%20and%20o/data%5Bat0002%5D/events%5Bat0003%20and%20name/value%3DAny%20event%5D/data%5Bat0001%5D/items%5Bat0.63%20and%20name/value%3DSymptoms%5D/value/defining_code/code_string%3Dat0.64%20order%20by%20temperature%20desc%20fetch%203n  },n  resultSet:
+          [n    {n      unit: u00b0C,n      temperature: 38.8n    },n    {n      unit:
+          u00b0C,n      temperature: 38.8n    },n    {n      unit: u00b0C,n      temperature:
+          38.8n    }n  ],n  aql: select o/data[at0002]/events[at0003 and name/value=Any
+          event]/data[at0001]/items[at0004]/value/magnitude as temperature, o/data[at0002]/events[at0003
+          and name/value=Any event]/data[at0001]/items[at0004]/value/units as unit from
+          EHR[ehr_id/value=554f896d-faca-4513-bddf-664541146308d] CONTAINS Observation
+          o[openEHR-EHR-OBSERVATION.body_temperature-zn.v1] WHERE o/data[at0002]/events[at0003
+          and name/value=Any event]/data[at0001]/items[at0004]/value/magnitude > :temperature
+          and o/data[at0002]/events[at0003 and name/value=Any event]/data[at0001]/items[at0.63
+          and name/value=Symptoms]/value/defining_code/code_string=:chills order by
+          temperature desc fetch 3,n  executedAql: select o/data[at0002]/events[at0003
+          and name/value=Any event]/data[at0001]/items[at0004]/value/magnitude as temperature,
+          o/data[at0002]/events[at0003 and name/value=Any event]/data[at0001]/items[at0004]/value/units
+          as unit from EHR[ehr_id/value=554f896d-faca-4513-bddf-664541146308d] CONTAINS
+          Observation o[openEHR-EHR-OBSERVATION.body_temperature-zn.v1] WHERE o/data[at0002]/events[at0003
+          and name/value=Any event]/data[at0001]/items[at0004]/value/magnitude > 38.5
+          and o/data[at0002]/events[at0003 and name/value=Any event]/data[at0001]/items[at0.63
+          and name/value=Symptoms]/value/defining_code/code_string=at0.64 order by temperature
+          desc fetch 3,n  aqlParameters: {n    temperature: 38.5,n    chills: at0.64n  }n}</pre></code></p>'
+        operationId: query
+        parameters:
+        - in: body
+          name: body
+          description: A JSON object representing the AQL query and its parameters (see
+            model).
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /session:
+      delete:
+        summary: Closes an OpenEhr session.
+        description: '<p>Closes the OpenEhr session specified by its ID.</p><p>The ID
+          of the session to close can be specified either as the query parameter to
+          this call, or else via the Ehr-Session request header. If no session ID is
+          specified via either method, an error is thrown. An error is also thrown if
+          both are specified, but they do not match.</p><p>If a non-existing or already
+          closed session is provided, the response will be the same as if the session
+          was successfully closed, except that the action property of the response will
+          be set to NOOP instead of DELETE.</p><p>Example of a successful call response:<pre
+          style=overflow-y: auto;><code>{n  action: DELETE,n  sessionId: 2dcd6528-0471-4950-82fa-a018272f1339n}</code></pre></p>'
+        operationId: close
+        parameters:
+        - in: header
+          name: Ehr-Session
+          description: The ID of the session to close. Required if this is not specified
+            via the sessionId query parameter.
+          type: string
+          format: string
+        - in: query
+          name: sessionId
+          description: The ID of the session to close. Required if this is not specified
+            via the Ehr-Session HTTP header.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Creates a new OpenEhr session.
+        description: '<p>Logs in the specified user, creating a new session in the process.</p><p>A
+          successful call will create a new OpenEhr session for the specified user.
+          The session ID will be returned both as a JSON response to this call, as well
+          as in the Ehr-Session HTTP response header.</p><p>In order to ensure that
+          this newly created session is used on subsequent REST requests, the client
+          needs to make the calls with the HTTP request Ehr-Session headers value set
+          to the session ID.</p><p>Example of a successful call response:<pre style=overflow-y:
+          auto;><code>{n  action: CREATE,n  sessionId: 096c9d95-c434-4c97-a7ee-59e2c521ec33n}</code></pre></p><p>The
+          response header, with the Ehr-Session set, will look like this:<pre style=overflow-y:
+          auto;><code>{n  Server: Jetty(9.1.1.v20140108),n  Transfer-Encoding: chunked,n  Content-Language:
+          en-US,n  Content-Type: application/json;charset=UTF-8,n  Access-Control-Allow-Origin:
+          http://localhost:8082,n  Access-Control-Expose-Headers: ,n  Access-Control-Allow-Credentials:
+          true,n  Ehr-Session: 096c9d95-c434-4c97-a7ee-59e2c521ec33n}</code></pre></p>'
+        operationId: login
+        parameters:
+        - in: query
+          name: password
+          description: Password.
+          type: string
+          format: string
+        - in: query
+          name: username
+          description: Username.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: Pings an OpenEhr session.
+        description: <p>Pings the OpenEhr session specified by its ID, keeping it alive.</p><p>The
+          purpose of this method is to enable clients to provide heartbeat functionality
+          with regards to an OpenEhr session. Each session has a limited amount of time
+          before it expires (configured on OpenEhr server) - this method touches the
+          session and extends its lifespan for another such cycle.</p><p>This method
+          can also be used to determine whether or not a session is still alive - a
+          204 response indicates that it is and a 404 that it is not.</p>
+        operationId: ping
+        parameters:
+        - in: header
+          name: Ehr-Session
+          description: The ID of the session to ping. Required if this is not specified
+            via the sessionId query parameter.
+          type: string
+          format: string
+        - in: query
+          name: sessionId
+          description: The ID of the session to ping. Required if this is not specified
+            via the Ehr-Session HTTP header.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /session/ehr/{ehrId}:
+      put:
+        summary: Sets the EHR on the session.
+        description: '<p>Sets the specified EHR on the session.</p><p>This method will
+          set the specified EHR ID to the specified, currently open EHR session. This
+          EHR ID can then be used for query placeholder expansion (where it will replace
+          the $ehrUid placeholder) and other calls where an EHR is expected to be set.</p><p>Example
+          of a successful call response:<pre style=overflow-y: auto;><code>{n  meta:
+          {n    href: http://localhost:8082/rest/v1/session/?sessionId=336c21cc-b37a-45ca-924e-f53530d1bb1en  },n  action:
+          EXECUTE,n  sessionId: 336c21cc-b37a-45ca-924e-f53530d1bb1e,n  ehrId: 8846225a-daad-46ac-8ea3-ef866b019123n}</code></pre></p>'
+        operationId: useEhr
+        parameters:
+        - in: header
+          name: Ehr-Session
+          description: The ID of the session to set the EHR on. Required if this is
+            not specified via the sessionId query parameter.
+          type: string
+          format: string
+        - in: path
+          name: ehrId
+          description: The ID of the EHR to set on the session.
+          type: string
+          format: string
+        - in: query
+          name: sessionId
+          description: The ID of the session to set the EHR on. Required if this is
+            not specified via the Ehr-Session HTTP header.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /session/ehr/{subjectNamespace}/{subjectId}:
+      put:
+        summary: Sets the EHR on the session (via subject namespace and ID).
+        description: '<p>Sets the EHR on the session, first finding it via the specified
+          subject namespace and ID.</p><p>This method will set the EHR ID found via
+          the subject namespace and ID to the specified, currently open EHR session.
+          This EHR ID can then be used for query placeholder expansion (where it will
+          replace the $ehrUid placeholder) and other calls where an EHR is expected
+          to be set.</p><p>Example of a successful call response:<pre style=overflow-y:
+          auto;><code>{n  meta: {n    href: http://localhost:8082/rest/v1/session/?sessionId=336c21cc-b37a-45ca-924e-f53530d1bb1en  },n  action:
+          EXECUTE,n  sessionId: 336c21cc-b37a-45ca-924e-f53530d1bb1e,n  ehrId: 8846225a-daad-46ac-8ea3-ef866b019123n}</code></pre></p>'
+        operationId: findAndUseEhr
+        parameters:
+        - in: header
+          name: Ehr-Session
+          description: The ID of the session to set the EHR on. Required if this is
+            not specified via the sessionId query parameter.
+          type: string
+          format: string
+        - in: query
+          name: sessionId
+          description: The ID of the session to set the EHR on. Required if this is
+            not specified via the Ehr-Session HTTP header.
+          type: string
+          format: string
+        - in: path
+          name: subjectId
+          description: The subject ID.
+          type: string
+          format: string
+        - in: path
+          name: subjectNamespace
+          description: The namespace where the subject ID lives.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /smart/records/{ehrId}/{modelName}:
+      get:
+        summary: Returns SMART records for a patient.
+        description: ""
+        operationId: getRecords
+        parameters:
+        - in: path
+          name: ehrId
+          description: EHR id.
+          type: string
+          format: string
+        - in: path
+          name: modelName
+          description: SMART model name.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /smart/records/{ehrId}/{modelName}/{recordId}:
+      get:
+        summary: Returns specific SMART record for a patient.
+        description: ""
+        operationId: getRecord
+        parameters:
+        - in: path
+          name: ehrId
+          description: EHR id.
+          type: string
+          format: string
+        - in: path
+          name: modelName
+          description: SMART model name.
+          type: string
+          format: string
+        - in: path
+          name: recordId
+          description: Record id.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /tagging:
+      delete:
+        summary: Delete a composition's tags.
+        description: '<p>Delete the specified compositions tags, or the tags of an object
+          contained within that composition.</p><p>The request object contains the composition
+          ID of the composition whose tags to delete and a set of tag-AQL path pairs
+          that specify which tags to delete and for which objects within the composition.
+          If the AQL pathis missing then this signifies the removal of the composition
+          tag.</p><p>Example of a request:<pre><code>{n  compositionUid: 843cd28d-5aa7-43cc-b112-b7848a79aea7::default::1,n  tags:
+          [n    {n      tag: CAREn    },n    {n      tag: ENCOUNTER:1,n      aqlPath:
+          /content[openEHR-EHR-SECTION.section_a.v1]/items[at0001]/namen    }n  ]n}</code></pre></p>'
+        operationId: deleteTags
+        parameters:
+        - in: body
+          name: body
+          description: The tag request object specifies tags on what AQL paths to delete.
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: Returns objects matching the specified tags.
+        description: '<p>Returns a set of objects that are tagged with the specified
+          tags.</p><p>The tags query parameter represents a conjunction of tags - an
+          object MUST contain all of these tags to be returned by this call.</p><p>This
+          method supports filtering the result-set by the state of the containing compositions.
+          This is done via three optional parameters: </p><p>versionsToReturn - Controls
+          which composition versions to return. ALL_TAGGED_VERSIONS returns all versions
+          that are tagged, LAST_VERSION_ONLY only produces a match if the current (that
+          is, last) version of the composition is appropriately tagged and LAST_TAGGED_VERSION
+          returns only the last version of the composition that is tagged. LAST_VERSION_OF_ANY_TAGGED
+          returns the last version of an object whose ANY version of the composition
+          is tagged appropriately.</p><p>includeDeletedVersions - When false, will filter
+          out those specific compositions that are deleted (have a null serialized composition).</p><p>includeCurrentlyDeleted
+          - When false, will filter out all matches whose current (that is, last) version
+          of the composition is deleted.</p><p>Example of a successful call:<pre><code>{n  meta:
+          {n    href: http://localhost:8082/rest/v1/tagging/?tags=temperature&versionsToReturn=ALL_TAGGED_VERSIONS&includeDeletedVersions=false&includeCurrentlyDeleted=falsen  },n  action:
+          RETRIEVE,n  objects: [n    {n      value: {n        magnitude: 37.85083450722678,n        units:
+          u00b0C,n        precision: 1,n        other_reference_ranges: []n      },n      name:
+          {n        value: Temperaturen      },n      archetype_node_id: at0004n    },n    {n      value:
+          {n        magnitude: 37.68536907835939,n        units: u00b0C,n        precision:
+          1,n        other_reference_ranges: []n      },n      name: {n        value:
+          Temperaturen      },n      archetype_node_id: at0004n    },n    {n      value:
+          {n        magnitude: 37.50576666004852,n        units: u00b0C,n        precision:
+          1,n        other_reference_ranges: []n      },n      name: {n        value:
+          Temperaturen      },n      archetype_node_id: at0004n    }n  ]n}</code></pre></p>'
+        operationId: findObjectsWithTags
+        parameters:
+        - in: query
+          name: includeCurrentlyDeleted
+          description: 'Whether or not to include compositions whose current (last)
+            version is deleted. Default: true.'
+          type: string
+          format: string
+        - in: query
+          name: includeDeletedVersions
+          description: 'Whether or not to include deleted composition versions. Default:
+            true.'
+          type: string
+          format: string
+        - in: query
+          name: tags
+          description: A collection of tags that the returned objects need to be tagged
+            with (a conjunction). Separate them with ;
+          type: string
+          format: string
+        - in: query
+          name: versionsToReturn
+          description: 'Which composition versions to return. Default: ALL_TAGGED_VERSIONS.'
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Tags the specified composition and/or its sub-structures.
+        description: '<p>Tags something within the specified composition, or else the
+          composition itself.</p><p>What to tag and how is specified in the HTTP request
+          body. Please see the model description for the parameter. Basically, it consists
+          of the composition unique ID that we want to tag, then a set of tag-AQL path
+          pairs that specify the string tag and the path within the composition to tag.
+          If this path is null, then the entire composition is considered to be tagged.<p>Example
+          of a request:<pre><code>{n  compositionUid: 843cd28d-5aa7-43cc-b112-b7848a79aea7::default::1,n  tags:
+          [n    {n      tag: ENCOUNTER:1n    },n    {n      tag: CAREn    },n    {n      tag:
+          ENCOUNTER:1,n      aqlPath: /content[openEHR-EHR-SECTION.section_a.v1]/items[at0001]/namen    }n  ]n}</code></pre></p>'
+        operationId: tag
+        parameters:
+        - in: body
+          name: body
+          description: The tag request object specifies what to tag and how.
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /tagging/{compositionUid}:
+      get:
+        summary: Returns tags for the specified composition.
+        description: '<p>Returns a set of tag-AQL path pairs that show what and how
+          is tagged within the specified composition.</p><p>If the returned tag objects
+          AQL path is null, this signifies that the entire composition is tagged with
+          the returned tag. Otherwise, the AQL path points to the object (composition
+          sub-structure) that is tagged.</p><p>Example of a successful call:<pre><code>{n    meta:
+          {n        href: http://localhost:8082/rest/v1/tagging/843cd28d-5aa7-43cc-b112-b7848a79aea7/n    },n    action:
+          RETRIEVE,n    tags: [n        {n            tag: ENCOUNTER:1n        },n        {n            tag:
+          CAREn        },n        {n            tag: ENCOUNTER:1,n            aqlPath:
+          /content[openEHR-EHR-SECTION.section_a.v1]/items[at0001]/namen        },n        {n            tag:
+          SWAGGER4,n            aqlPath: /content[openEHR-EHR-SECTION.section_a.v1]/items[at0001]/namen        },n        {n            tag:
+          SWAGGER3n        },n        {n            tag: SWAGGER2n        },n        {n            tag:
+          SWAGGERn        }n    ]n}</code></pre></p>'
+        operationId: getTags
+        parameters:
+        - in: path
+          name: compositionUid
+          description: The ID of the composition whose tags to return.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /template:
+      get:
+        summary: Gets all template ids.
+        description: '<p>Returns a list of template ids (as a JSON object).</p><p>Example
+          of a successful call response:<pre style=overflow-y: auto; overflow-x: auto><code>{n  templates:
+          [n    {n      templateId: Allergies,n      createdOn: 2014-03-28T11:12:51.242Zn    },n    {n      templateId:
+          Vital Signs,n      createdOn: 2014-03-28T11:12:51.277Zn    }n  ]n}n</code></pre></p>'
+        operationId: getAllTemplates
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Uploads an operational template.
+        description: <p>This call allows uploading openEHR operational templates prepared
+          by the openEHR modelling tools.</p>
+        operationId: saveTemplate
+        parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /template/{templateId}:
+      delete:
+        summary: Deletes an existing OpenEHR template.
+        description: <p>This call allows deleting templates.</p>
+        operationId: deleteTemplate
+        parameters:
+        - in: path
+          name: templateId
+          description: The ID of the template to delete.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: Loads an OpenEhr web template.
+        description: |-
+          <p>Returns an OpenEhr template in its web-appropriate representation (as a JSON object).</p><p>A note on languages: the web template will be generated with localized names for all the languages that the underlying template supports, unless it is specified differently via the defaultLanguage and languages query parameters, both of which are optional. The defaultLanguage parameter determines the default name for each web template node (the localizedName property), whereas the languages parameter will generate additional localized names inside the localizedNames map for all the languages listed in this parameter (different languages should be separated by a comma: en,sl,no). See the example below.</p><p>Note that the underlying OpenEhr template needs to support these languages, or else a 400 error (bad request) will be returned (TMPL-3061).<p>Example of a successful call response:<pre style=overflow-y: auto; overflow-x: auto; height: 500px;><code>{n  meta: {n    href: http://localhost:8082/rest/v1/template/Demo%20Vitalsn  },n  webTemplate: {n    templateId: Demo Vitals,n    version: 1.1,n    defaultLanguage: en,n    languages: [n      en,n      sln    ],n    tree: {n      id: vitals,n      name: Vitals,n      localizedName: Vitals,n      rmType: COMPOSITION,n      nodeId: openEHR-EHR-COMPOSITION.encounter.v1,n      min: 1,n      max: 1,n      localizedNames: {n        sl: Encounter,n        en: Encountern      },n      aqlPath: ,n      children: [n        {n          id: vitals,n          name: Vitals,n          localizedName: Vitals,n          rmType: SECTION,n          nodeId: openEHR-EHR-SECTION.ispek_dialog.v1,n          min: 0,n          max: 1,n          localizedNames: {n            sl: Dialog,n            en: Dialogn          },n          aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals],n          children: [n            {n              id: haemoglobin_a1c,n              name: Haemoglobin A1c,n              localizedName: Haemoglobin A1c,n              rmType: OBSERVATION,n              nodeId: openEHR-EHR-OBSERVATION.lab_test-hba1c.v1,n              min: 0,n              max: -1,n              localizedNames: {n                sl: Hemoglobin A1c,n                en: Haemoglobin A1cn              },n              aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.lab_test-hba1c.v1],n              children: [n                {n                  id: requestor_order_identifier,n                  name: Requestor order identifier,n                  localizedName: Requestor order identifier,n                  rmType: DV_TEXT,n                  nodeId: at0062,n                  min: 0,n                  max: 1,n                  dependsOn: [n                    any_eventn                  ],n                  localizedNames: {n                    sl: ID narou010dnika,n                    en: Requestor order identifiern                  },n                  aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.lab_test-hba1c.v1]/protocol[at0004]/items[at0062]/value,n                  input: {n                    type: TEXTn                  }n                },n                {n                  id: receiver_order_identifier,n                  name: Receiver order Identifier,n                  localizedName: Receiver order Identifier,n                  rmType: DV_TEXT,n                  nodeId: at0063,n                  min: 0,n                  max: 1,n                  dependsOn: [n                    any_eventn                  ],n                  localizedNames: {n                    sl: ID prejemnika,n                    en: Receiver order Identifiern                  },n                  aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.lab_test-hba1c.v1]/protocol[at0004]/items[at0063]/value,n                  input: {n                    type: TEXTn                  }n                },n                {n                  id: laboratory_test_result_identifier,n                  name: Laboratory test result identifier,n                  localizedName: Laboratory test result identifier,n                  rmType: DV_TEXT,n                  nodeId: at0068,n                  min: 0,n                  max: 1,n                  dependsOn: [n                    any_eventn                  ],n                  localizedNames: {n                    sl: ID laboratorijskega testa,n                    en: Laboratory test result identifiern                  },n                  aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.lab_test-hba1c.v1]/protocol[at0004]/items[at0068]/value,n                  input: {n                    type: TEXTn                  }n                },n                {n                  id: datetime_result_issued,n                  name: Datetime result issued,n                  localizedName: Datetime result issued,n                  rmType: DV_DATE_TIME,n                  nodeId: at0075,n                  min: 0,n                  max: 1,n                  dependsOn: [n                    any_eventn                  ],n                  localizedNames: {n                    sl: Datum in u010das dobljenih rezultatov,n                    en: Datetime result issuedn                  },n                  annotations: {n                    comment: The date and time related to the results status is
+                                          useful for version control and cumulative results for the report.
+                                      n                  },n                  aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.lab_test-hba1c.v1]/protocol[at0004]/items[at0075]/value,n                  input: {n                    type: DATETIMEn                  }n                },n                {n                  id: any_event,n                  name: Any event,n                  localizedName: Any event,n                  rmType: EVENT,n                  nodeId: at0002,n                  min: 0,n                  max: -1,n                  localizedNames: {n                    sl: *Any event(en),n                    en: Any eventn                  },n                  aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.lab_test-hba1c.v1]/data[at0001]/events[at0002],n                  children: [n                    {n                      id: test_name,n                      name: Test name,n                      localizedName: Test name,n                      rmType: DV_TEXT,n                      nodeId: at0005,n                      min: 0,n                      max: 1,n                      localizedNames: {n                        sl: Naziv testa,n                        en: Test namen                      },n                      aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.lab_test-hba1c.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0005]/value,n                      input: {n                        type: TEXTn                      }n                    },n                    {n                      id: diagnostic_service,n                      name: Diagnostic service,n                      localizedName: Diagnostic service,n                      rmType: DV_TEXT,n                      nodeId: at0077,n                      min: 0,n                      max: 1,n                      localizedNames: {n                        sl: Naziv diagnostiu010dnega laboratorija,n                        en: Diagnostic servicen                      },n                      aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.lab_test-hba1c.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0077]/value,n                      input: {n                        type: TEXTn                      }n                    },n                    {n                      id: test_status,n                      name: Test status,n                      localizedName: Test status,n                      rmType: DV_CODED_TEXT,n                      nodeId: at0073,n                      min: 0,n                      max: 1,n                      localizedNames: {n                        sl: Status testa,n                        en: Test statusn                      },n                      aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.lab_test-hba1c.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0073]/value/defining_code,n                      input: {n                        type: CODED_TEXT,n                        list: [n                          {n                            value: at0037,n                            label: Interim,n                            localizedLabels: {n                              sl: Zau010dasen,n                              en: Interimn                            }n                          },n                          {n                            value: at0038,n                            label: Final,n                            localizedLabels: {n                              sl: Konu010dni,n                              en: Finaln                            }n                          },n                          {n                            value: at0039,n                            label: Supplementary,n                            localizedLabels: {n                              sl: Dodaten,n                              en: Supplementaryn                            }n                          },n                          {n                            value: at0040,n                            label: Corrected (amended),n                            localizedLabels: {n                              sl: Popravek,n                              en: Corrected (amended)n                            }n                          },n                          {n                            value: at0074,n                            label: Aborted,n                            localizedLabels: {n                              sl: Ni razvit,n                              en: Abortedn                            }n                          },n                          {n                            value: at0079,n                            label: Never performed,n                            localizedLabels: {n                              sl: Nikoli izveden,n                              en: Never performedn                            }n                          }n                        ]n                      }n                    },n                    {n                      id: hba1c,n                      name: HbA1c,n                      localizedName: HbA1c,n                      rmType: DV_PROPORTION,n                      nodeId: at0078.1,n                      min: 0,n                      max: 1,n                      localizedNames: {n                        sl: HbA1c,n                        en: HbA1cn                      },n                      aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.lab_test-hba1c.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0078.1]/value,n                      input: {n                        type: PROPORTION,n                        list: [n                          {n                            value: %,n                            label: %,n                            validation: {n                              range: {n                                minOp: >=,n                                min: 0,n                                maxOp: <=,n                                max: 100n                              }n                            }n                          }n                        ]n                      }n                    },n                    {n                      id: overall_interpretation,n                      name: Overall interpretation,n                      localizedName: Overall interpretation,n                      rmType: DV_TEXT,n                      nodeId: at0057,n                      min: 0,n                      max: 1,n                      localizedNames: {n                        sl: Dodatne opombe,n                        en: Overall interpretationn                      },n                      aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.lab_test-hba1c.v1]/data[at0001]/events[at0002]/data[at0003]/items[at0057]/value,n                      input: {n                        type: TEXTn                      }n                    },n                    {n                      id: time,n                      name: Time,n                      rmType: DV_DATE_TIME,n                      min: 1,n                      max: 1,n                      aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.lab_test-hba1c.v1]/data[at0001]/events[at0002]/time,n                      input: {n                        type: DATETIMEn                      },n                      inContext: truen                    }n                  ]n                },n                {n                  id: subject,n                  name: Subject,n                  rmType: PARTY_PROXY,n                  min: 1,n                  max: 1,n                  aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.lab_test-hba1c.v1]/subject,n                  inContext: truen                },n                {n                  id: encoding,n                  name: Encoding,n                  rmType: CODE_PHRASE,n                  min: 1,n                  max: 1,n                  aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.lab_test-hba1c.v1]/encoding,n                  input: {n                    type: CODED_TEXTn                  },n                  inContext: truen                },n                {n                  id: language,n                  name: Language,n                  rmType: CODE_PHRASE,n                  min: 1,n                  max: 1,n                  aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.lab_test-hba1c.v1]/language,n                  input: {n                    type: CODED_TEXTn                  },n                  inContext: truen                }n              ]n            },n            {n              id: body_temperature,n              name: Body temperature,n              localizedName: Body temperature,n              rmType: OBSERVATION,n              nodeId: openEHR-EHR-OBSERVATION.body_temperature-zn.v1,n              min: 0,n              max: -1,n              localizedNames: {n                sl: Telesna temperatura,n                en: Body temperaturen              },n              aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1],n              children: [n                {n                  id: site_of_measurement,n                  name: Site of measurement,n                  localizedName: Site of measurement,n                  rmType: DV_CODED_TEXT,n                  nodeId: at0021.1,n                  min: 0,n                  max: 1,n                  dependsOn: [n                    any_eventn                  ],n                  localizedNames: {n                    sl: Lokacija,n                    en: Site of measurementn                  },n                  aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1]/protocol[at0020]/items[at0021.1]/value/defining_code,n                  input: {n                    type: CODED_TEXT,n                    list: [n                      {n                        value: at0.60,n                        label: Buccal,n                        localizedLabels: {n                          sl: Notranja stran liu010dnice,n                          en: Buccaln                        }n                      },n                      {n                        value: at0.61,n                        label: Sublingual,n                        localizedLabels: {n                          sl: Pod jezikom,n                          en: Sublingualn                        }n                      },n                      {n                        value: at0022,n                        label: Mouth,n                        localizedLabels: {n                          sl: Usta,n                          en: Mouthn                        }n                      },n                      {n                        value: at0023,n                        label: Ear canal,n                        localizedLabels: {n                          sl: V uu0161esu,n                          en: Ear canaln                        }n                      },n                      {n                        value: at0024,n                        label: Axilla,n                        localizedLabels: {n                          sl: Pod pazduho,n                          en: Axillan                        }n                      },n                      {n                        value: at0025,n                        label: Rectum,n                        localizedLabels: {n                          sl: Rektalno,n                          en: Rectumn                        }n                      },n                      {n                        value: at0026,n                        label: Nasopharynx,n                        localizedLabels: {n                          sl: Nazofarinks,n                          en: Nasopharynxn                        }n                      },n                      {n                        value: at0027,n                        label: Urinary bladder,n                        localizedLabels: {n                          sl: Seu010dni mehur,n                          en: Urinary bladdern                        }n                      },n                      {n                        value: at0028,n                        label: Intravascular,n                        localizedLabels: {n                          sl: Intravaskularno,n                          en: Intravascularn                        }n                      },n                      {n                        value: at0043,n                        label: Skin,n                        localizedLabels: {n                          sl: Na kou017ei,n                          en: Skinn                        }n                      },n                      {n                        value: at0051,n                        label: Vagina,n                        localizedLabels: {n                          sl: Vaginalno,n                          en: Vaginan                        }n                      },n                      {n                        value: at0054,n                        label: Oesophagus,n                        localizedLabels: {n                          sl: V pou017eiralniku,n                          en: Oesophagusn                        }n                      },n                      {n                        value: at0055,n                        label: Inguinal skin crease,n                        localizedLabels: {n                          sl: V ustih,n                          en: Inguinal skin creasen                        }n                      }n                    ]n                  }n                },n                {n                  id: other_site_of_measurement,n                  name: Other site of measurement,n                  localizedName: Other site of measurement,n                  rmType: DV_TEXT,n                  nodeId: at0.62,n                  min: 0,n                  max: 1,n                  dependsOn: [n                    any_eventn                  ],n                  localizedNames: {n                    sl: Drugo,n                    en: Other site of measurementn                  },n                  aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1]/protocol[at0020]/items[at0.62]/value,n                  input: {n                    type: TEXTn                  }n                },n                {n                  id: any_event,n                  name: Any event,n                  localizedName: Any event,n                  rmType: EVENT,n                  nodeId: at0003,n                  min: 0,n                  max: -1,n                  localizedNames: {n                    sl: *Any event(en),n                    en: Any eventn                  },n                  aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1]/data[at0002]/events[at0003],n                  children: [n                    {n                      id: body_exposure,n                      name: Body exposure,n                      localizedName: Body exposure,n                      rmType: DV_CODED_TEXT,n                      nodeId: at0030,n                      min: 0,n                      max: 1,n                      dependsOn: [n                        symptoms,n                        temperaturen                      ],n                      localizedNames: {n                        sl: Obleka,n                        en: Body exposuren                      },n                      aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1]/data[at0002]/events[at0003]/state[at0029]/items[at0030]/value/defining_code,n                      input: {n                        type: CODED_TEXT,n                        list: [n                          {n                            value: at0031,n                            label: Naked,n                            localizedLabels: {n                              sl: Nag,n                              en: Nakedn                            }n                          },n                          {n                            value: at0032,n                            label: Reduced clothing/bedding,n                            localizedLabels: {n                              sl: Premalo obleu010den (zavit),n                              en: Reduced clothing/beddingn                            }n                          },n                          {n                            value: at0033,n                            label: Appropriate clothing/bedding,n                            localizedLabels: {n                              sl: Primerno obleu010den (zavit),n                              en: Appropriate clothing/beddingn                            }n                          },n                          {n                            value: at0034,n                            label: Increased clothing/bedding,n                            localizedLabels: {n                              sl: Preveu010d obleu010den (zavit),n                              en: Increased clothing/beddingn                            }n                          }n                        ],n                        defaultValue: {n                          value: at0033,n                          label: Appropriate clothing/bedding,n                          localizedLabels: {n                            sl: Primerno obleu010den (zavit),n                            en: Appropriate clothing/beddingn                          }n                        }n                      }n                    },n                    {n                      id: description_of_thermal_stress,n                      name: Description of thermal stress,n                      localizedName: Description of thermal stress,n                      rmType: DV_TEXT,n                      nodeId: at0041,n                      min: 0,n                      max: 1,n                      dependsOn: [n                        symptoms,n                        temperaturen                      ],n                      localizedNames: {n                        sl: Opis,n                        en: Description of thermal stressn                      },n                      aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1]/data[at0002]/events[at0003]/state[at0029]/items[at0041]/value,n                      input: {n                        type: TEXTn                      }n                    },n                    {n                      id: temperature,n                      name: Temperature,n                      localizedName: Temperature,n                      rmType: DV_QUANTITY,n                      nodeId: at0004,n                      min: 0,n                      max: 1,n                      localizedNames: {n                        sl: Telesna temperatura,n                        en: Temperaturen                      },n                      aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1]/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value,n                      input: {n                        type: QUANTITY,n                        list: [n                          {n                            value: u00b0C,n                            label: u00b0C,n                            validation: {n                              precision: {n                                min: 1,n                                max: 1n                              }n                            }n                          },n                          {n                            value: u00b0F,n                            label: u00b0F,n                            validation: {n                              precision: {n                                min: 1,n                                max: 1n                              }n                            }n                          }n                        ]n                      }n                    },n                    {n                      id: symptoms,n                      name: Symptoms,n                      localizedName: Symptoms,n                      rmType: DV_CODED_TEXT,n                      nodeId: at0.63,n                      min: 0,n                      max: 2,n                      localizedNames: {n                        sl: Ugotovitve,n                        en: Symptomsn                      },n                      aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1]/data[at0002]/events[at0003]/data[at0001]/items[at0.63]/value/defining_code,n                      input: {n                        type: CODED_TEXT,n                        list: [n                          {n                            value: at0.64,n                            label: Chills / rigor / shivering,n                            localizedLabels: {n                              sl: Mrazenje/mrzlica,n                              en: Chills / rigor / shiveringn                            }n                          },n                          {n                            value: at0.65,n                            label: Goose- bumps,n                            localizedLabels: {n                              sl: Kurja polt,n                              en: Goose- bumpsn                            }n                          }n                        ]n                      }n                    },n                    {n                      id: time,n                      name: Time,n                      rmType: DV_DATE_TIME,n                      min: 1,n                      max: 1,n                      aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1]/data[at0002]/events[at0003]/time,n                      input: {n                        type: DATETIMEn                      },n                      inContext: truen                    }n                  ]n                },n                {n                  id: subject,n                  name: Subject,n                  rmType: PARTY_PROXY,n                  min: 1,n                  max: 1,n                  aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1]/subject,n                  inContext: truen                },n                {n                  id: encoding,n                  name: Encoding,n                  rmType: CODE_PHRASE,n                  min: 1,n                  max: 1,n                  aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1]/encoding,n                  input: {n                    type: CODED_TEXTn                  },n                  inContext: truen                },n                {n                  id: language,n                  name: Language,n                  rmType: CODE_PHRASE,n                  min: 1,n                  max: 1,n                  aqlPath: /content[openEHR-EHR-SECTION.ispek_dialog.v1,Vitals]/items[openEHR-EHR-OBSERVATION.body_temperature-zn.v1]/language,n                  input: {n                    type: CODED_TEXTn                  },n                  inContext: truen                }n              ]n            }n          ]n        },n        {n          id: context,n          rmType: EVENT_CONTEXT,n          nodeId: ,n          min: 1,n          max: 1,n          aqlPath: /context,n          children: [n            {n              id: setting,n              name: Setting,n              rmType: DV_CODED_TEXT,n              min: 1,n              max: 1,n              aqlPath: /context/setting,n              input: {n                type: CODED_TEXTn              },n              inContext: truen            },n            {n              id: start_time,n              name: Start_time,n              rmType: DV_DATE_TIME,n              min: 1,n              max: 1,n              aqlPath: /context/start_time,n              input: {n                type: DATETIMEn              },n              inContext: truen            }n          ]n        },n        {n          id: composer,n          name: Composer,n          rmType: PARTY_PROXY,n          min: 1,n          max: 1,n          aqlPath: /composer,n          inContext: truen        }n      ]n    }n  }n}</code></pre></p>
+        operationId: getTemplate
+        parameters:
+        - in: query
+          name: defaultLanguage
+          description: The default language to generate the returned web template with.
+          type: string
+          format: string
+        - in: query
+          name: languages
+          description: Other languages to include in the returned web template, separated
+            by a comma.
+          type: string
+          format: string
+        - in: path
+          name: templateId
+          description: The ID of the template to load.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /template/{templateId}/example:
+      get:
+        summary: Returns an example of data values for a web template.
+        description: '<p>Returns an example of data values for a ThinkEhr web template.</p><p>This
+          method will show all the web template paths that can be filled out in order
+          to successfully save a composition in the web template format. It will do
+          its best to generate legal exampledata values for those paths, taking into
+          account the data type and validation constraints.</p><p>Two parameters control
+          the output of this call. The format parameter controls whether the produced
+          output will be the web template composition values in either the FLAT or the
+          STRUCTURED (hierarchical) JSON format. The exampleFilter parameter controls
+          whether the example will show the values as they would be submitted to the
+          server (INPUT) or received from the server (OUTPUT), since the latter one
+          is more detailed.</p><p>The two language parameters determine the languages
+          that the web template will be generated with before its example values will
+          be produced and returned. See the documentation for the {templateId} call
+          for more information on web template languages.</p><p>Example of a successful
+          call response (FLAT INPUT):<pre style=overflow-y: auto; overflow-x: auto;
+          height: 500px;><code>{n  ctx/language: en,n  ctx/territory: US,n  ctx/composer_name:
+          Silvia Blake,n  ctx/time: 2014-05-26T10:06:08.356+02:00,n  ctx/id_namespace:
+          HOSPITAL-NS,n  ctx/id_scheme: HOSPITAL-NS,n  ctx/participation_name: Dr. Marcus
+          Johnson,n  ctx/participation_function: requester,n  ctx/participation_mode:
+          face-to-face communication,n  ctx/participation_id: 199,n  ctx/participation_name:1:
+          Lara Markham,n  ctx/participation_function:1: performer,n  ctx/participation_id:1:
+          198,n  ctx/health_care_facility|name: Hospital,n  ctx/health_care_facility|id:
+          9091,n  vitals/vitals/haemoglobin_a1c:0/any_event:0/test_name: Test name 90,n  vitals/vitals/haemoglobin_a1c:0/any_event:0/diagnostic_service:
+          Diagnostic service 31,n  vitals/vitals/haemoglobin_a1c:0/any_event:0/test_status|at0037:
+          true,n  vitals/vitals/haemoglobin_a1c:0/any_event:0/test_status|code: at0037,n  vitals/vitals/haemoglobin_a1c:0/any_event:0/hba1c|numerator:
+          79.56,n  vitals/vitals/haemoglobin_a1c:0/any_event:0/hba1c|denominator: 100,n  vitals/vitals/haemoglobin_a1c:0/any_event:0/overall_interpretation:
+          Overall interpretation 53,n  vitals/vitals/haemoglobin_a1c:0/requestor_order_identifier:
+          Ident. 86,n  vitals/vitals/haemoglobin_a1c:0/receiver_order_identifier: Ident.
+          80,n  vitals/vitals/haemoglobin_a1c:0/laboratory_test_result_identifier: Ident.
+          40,n  vitals/vitals/haemoglobin_a1c:0/datetime_result_issued: 2014-05-26T08:06:08.360Z,n  vitals/vitals/body_temperature:0/any_event:0/temperature|magnitude:
+          31.8,n  vitals/vitals/body_temperature:0/any_event:0/temperature|unit: u00b0C,n  vitals/vitals/body_temperature:0/any_event:0/symptoms|at0.64:
+          true,n  vitals/vitals/body_temperature:0/any_event:0/symptoms:0|code: at0.64,n  vitals/vitals/body_temperature:0/any_event:0/body_exposure|at0033:
+          true,n  vitals/vitals/body_temperature:0/any_event:0/body_exposure|code: at0033,n  vitals/vitals/body_temperature:0/any_event:0/description_of_thermal_stress:
+          Description of thermal stress 91,n  vitals/vitals/body_temperature:0/site_of_measurement|at0054:
+          true,n  vitals/vitals/body_temperature:0/site_of_measurement|code: at0054,n  vitals/vitals/body_temperature:0/other_site_of_measurement:
+          Other site of measurement 30n}</code></pre></p>'
+        operationId: getTemplateExample
+        parameters:
+        - in: query
+          name: defaultLanguage
+          description: The default language to generate the web template with.
+          type: string
+          format: string
+        - in: query
+          name: exampleFilter
+          description: The type of example to produce - intended for input (sent to
+            the server), output (received back from the server) etc.
+          type: string
+          format: string
+        - in: query
+          name: format
+          description: 'The format of JSON representation of the example composition
+            to return. Default: FLAT.'
+          type: string
+          format: string
+        - in: query
+          name: languages
+          description: Other languages to include in the web template, separated by
+            a comma.
+          type: string
+          format: string
+        - in: path
+          name: templateId
+          description: The ID of the template to load.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /view/{ehrId}/allergy:
+      get:
+        summary: Gets allergies for a patient
+        description: ""
+        operationId: get_allergy
+        parameters:
+        - in: path
+          name: ehrId
+          description: EHR ID
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: Maximum number of results to return (default = 10, max = 100)
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /view/{ehrId}/blood_pressure:
+      get:
+        summary: Gets recorded blood pressures for a patient
+        description: ""
+        operationId: get_blood_pressure
+        parameters:
+        - in: path
+          name: ehrId
+          description: EHR ID
+          type: string
+          format: string
+        - in: query
+          name: from
+          description: Limit by date from
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: Maximum number of results to return (default = 10, max = 100)
+          type: string
+          format: string
+        - in: query
+          name: to
+          description: Limit by date to
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /view/{ehrId}/body_temperature:
+      get:
+        summary: Gets recorded body temperatures for a patient
+        description: ""
+        operationId: get_body_temperature
+        parameters:
+        - in: path
+          name: ehrId
+          description: EHR ID
+          type: string
+          format: string
+        - in: query
+          name: from
+          description: Limit by date from
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: Maximum number of results to return (default = 10, max = 100)
+          type: string
+          format: string
+        - in: query
+          name: to
+          description: Limit by date to
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /view/{ehrId}/height:
+      get:
+        summary: Gets recorded heights for a patient
+        description: ""
+        operationId: get_height
+        parameters:
+        - in: path
+          name: ehrId
+          description: EHR ID
+          type: string
+          format: string
+        - in: query
+          name: from
+          description: Limit by date from
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: Maximum number of results to return (default = 10, max = 100)
+          type: string
+          format: string
+        - in: query
+          name: to
+          description: Limit by date to
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /view/{ehrId}/labs:
+      get:
+        summary: Lab results
+        description: ""
+        operationId: get_labs
+        parameters:
+        - in: path
+          name: ehrId
+          description: EHR ID
+          type: string
+          format: string
+        - in: query
+          name: from
+          description: Limit by date from
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: Maximum number of results to return (default = 10, max = 100)
+          type: string
+          format: string
+        - in: query
+          name: to
+          description: Limit by date to
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /view/{ehrId}/medication:
+      get:
+        summary: Gets medications prescribed for a a patient
+        description: ""
+        operationId: get_medication
+        parameters:
+        - in: path
+          name: ehrId
+          description: EHR ID
+          type: string
+          format: string
+        - in: query
+          name: from
+          description: Limit by date from
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: Maximum number of results to return (default = 10, max = 100)
+          type: string
+          format: string
+        - in: query
+          name: to
+          description: Limit by date to
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /view/{ehrId}/problem:
+      get:
+        summary: Gets problems/diagnoses for a patient
+        description: ""
+        operationId: get_problem
+        parameters:
+        - in: path
+          name: ehrId
+          description: EHR ID
+          type: string
+          format: string
+        - in: query
+          name: from
+          description: Limit by date from
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: Maximum number of results to return (default = 10, max = 100)
+          type: string
+          format: string
+        - in: query
+          name: to
+          description: Limit by date to
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /view/{ehrId}/pulse:
+      get:
+        summary: Gets pulse measurements for a patient
+        description: ""
+        operationId: get_pulse
+        parameters:
+        - in: path
+          name: ehrId
+          description: EHR ID
+          type: string
+          format: string
+        - in: query
+          name: from
+          description: Limit by date from
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: Maximum number of results to return (default = 10, max = 100)
+          type: string
+          format: string
+        - in: query
+          name: to
+          description: Limit by date to
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /view/{ehrId}/spO2:
+      get:
+        summary: Gets SpO2 measurements for a patient
+        description: ""
+        operationId: get_spO2
+        parameters:
+        - in: path
+          name: ehrId
+          description: EHR ID
+          type: string
+          format: string
+        - in: query
+          name: from
+          description: Limit by date from
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: Maximum number of results to return (default = 10, max = 100)
+          type: string
+          format: string
+        - in: query
+          name: to
+          description: Limit by date to
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /view/{ehrId}/weight:
+      get:
+        summary: Gets recorded weights for a patient
+        description: ""
+        operationId: get_weight
+        parameters:
+        - in: path
+          name: ehrId
+          description: EHR ID
+          type: string
+          format: string
+        - in: query
+          name: from
+          description: Limit by date from
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: Maximum number of results to return (default = 10, max = 100)
+          type: string
+          format: string
+        - in: query
+          name: to
+          description: Limit by date to
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions:
+    CompositionResponseData:
+      properties:
+        meta:
+          description: This is a default description.
+          type: string
+        format:
+          description: This is a default description.
+          type: string
+        templateId:
+          description: This is a default description.
+          type: string
+        composition:
+          description: This is a default description.
+          type: string
+        deleted:
+          description: This is a default description.
+          type: string
+        lastVersion:
+          description: This is a default description.
+          type: string
+    Meta:
+      properties:
+        href:
+          description: This is a default description.
+          type: string
+        precedingHref:
+          description: This is a default description.
+          type: string
+        nextHref:
+          description: This is a default description.
+          type: string
+    ActionRestResponseData:
+      properties:
+        meta:
+          description: This is a default description.
+          type: string
+        action:
+          description: This is a default description.
+          type: string
+    DateTime:
+      properties:
+        value:
+          description: This is a default description.
+          type: string
+    SearchCriterion:
+      properties:
+        key:
+          description: This is a default description.
+          type: string
+        value:
+          description: This is a default description.
+          type: string
+    DemographicsResponseData:
+      properties:
+        meta:
+          description: This is a default description.
+          type: string
+        action:
+          description: This is a default description.
+          type: string
+    JsonNode:
+      properties:
+        value:
+          description: This is a default description.
+          type: string
+    PartiesResponseData:
+      properties:
+        dataEmpty:
+          description: This is a default description.
+          type: string
+        meta:
+          description: This is a default description.
+          type: string
+        action:
+          description: This is a default description.
+          type: string
+        parties:
+          description: This is a default description.
+          type: string
+    PartyResponseData:
+      properties:
+        meta:
+          description: This is a default description.
+          type: string
+        action:
+          description: This is a default description.
+          type: string
+        party:
+          description: This is a default description.
+          type: string
+    EhrResponseData:
+      properties:
+        meta:
+          description: This is a default description.
+          type: string
+        action:
+          description: This is a default description.
+          type: string
+        ehrId:
+          description: This is a default description.
+          type: string
+        ehrStatus:
+          description: This is a default description.
+          type: string
+    EhrStatusDto:
+      properties:
+        subjectId:
+          description: This is a default description.
+          type: string
+        subjectNamespace:
+          description: This is a default description.
+          type: string
+        queryable:
+          description: This is a default description.
+          type: string
+        modifiable:
+          description: This is a default description.
+          type: string
+    FormResponseData:
+      properties:
+        form:
+          description: This is a default description.
+          type: string
+        meta:
+          description: This is a default description.
+          type: string
+    FormsResponseData:
+      properties:
+        forms:
+          description: This is a default description.
+          type: string
+        meta:
+          description: This is a default description.
+          type: string
+    form:
+      properties:
+        templateId:
+          description: This is a default description.
+          type: string
+        name:
+          description: This is a default description.
+          type: string
+        version:
+          description: This is a default description.
+          type: string
+        createdTimestamp:
+          description: This is a default description.
+          type: string
+        status:
+          description: This is a default description.
+          type: string
+        category:
+          description: This is a default description.
+          type: string
+        creator:
+          description: This is a default description.
+          type: string
+        type:
+          description: This is a default description.
+          type: string
+        schemaVersion:
+          description: This is a default description.
+          type: string
+        resources:
+          description: This is a default description.
+          type: string
+    FormResourceResponseData:
+      properties:
+        formName:
+          description: This is a default description.
+          type: string
+        formVersion:
+          description: This is a default description.
+          type: string
+        resource:
+          description: This is a default description.
+          type: string
+        meta:
+          description: This is a default description.
+          type: string
+    PresentationRequestData:
+      properties:
+        queryRequestData:
+          description: This is a default description.
+          type: string
+        formData:
+          description: This is a default description.
+          type: string
+    QueryRequestData:
+      properties:
+        aql:
+          description: This is a default description.
+          type: string
+        aqlParameters:
+          description: This is a default description.
+          type: string
+    PresentationFormData:
+      properties:
+        formName:
+          description: This is a default description.
+          type: string
+        formVersion:
+          description: This is a default description.
+          type: string
+    QueryResponseData:
+      properties:
+        meta:
+          description: This is a default description.
+          type: string
+        aql:
+          description: This is a default description.
+          type: string
+        executedAql:
+          description: This is a default description.
+          type: string
+        aqlParameters:
+          description: This is a default description.
+          type: string
+        resultSet:
+          description: This is a default description.
+          type: string
+    SessionResponseData:
+      properties:
+        meta:
+          description: This is a default description.
+          type: string
+        action:
+          description: This is a default description.
+          type: string
+        sessionId:
+          description: This is a default description.
+          type: string
+    EhrIdSessionResponseData:
+      properties:
+        meta:
+          description: This is a default description.
+          type: string
+        action:
+          description: This is a default description.
+          type: string
+        sessionId:
+          description: This is a default description.
+          type: string
+        ehrId:
+          description: This is a default description.
+          type: string
+    TaggedObjectsResponseData:
+      properties:
+        objects:
+          description: This is a default description.
+          type: string
+        meta:
+          description: This is a default description.
+          type: string
+        action:
+          description: This is a default description.
+          type: string
+    tag:
+      properties:
+        tag:
+          description: This is a default description.
+          type: string
+        aqlPath:
+          description: This is a default description.
+          type: string
+    TaggingRequestData:
+      properties:
+        compositionUid:
+          description: This is a default description.
+          type: string
+        tags:
+          description: This is a default description.
+          type: string
+    TagsResponseData:
+      properties:
+        tags:
+          description: This is a default description.
+          type: string
+        meta:
+          description: This is a default description.
+          type: string
+        action:
+          description: This is a default description.
+          type: string
+    TemplateResponseData:
+      properties:
+        meta:
+          description: This is a default description.
+          type: string
+        webTemplate:
+          description: This is a default description.
+          type: string
+    TemplatesResponseData:
+      properties:
+        meta:
+          description: This is a default description.
+          type: string
+        templates:
+          description: This is a default description.
+          type: string
+    TemplateMetaData:
+      properties:
+        templateId:
+          description: This is a default description.
+          type: string
+        createdOn:
+          description: This is a default description.
+          type: string
+    WebTemplate:
+      properties:
+        tree:
+          description: This is a default description.
+          type: string
+        templateId:
+          description: This is a default description.
+          type: string
+        defaultLanguage:
+          description: This is a default description.
+          type: string
+        languages:
+          description: This is a default description.
+          type: string

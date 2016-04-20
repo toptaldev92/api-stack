@@ -1,0 +1,603 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Reddit Live Threads API",
+		"description": "API for manageming Reddit threads.",
+		"termsOfService": "https://github.com/reddit/reddit/wiki/API",
+		"version": null
+	},
+	"host": "www.reddit.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/api/live/create": {
+			"post": {
+				"summary": "Create a new live thread.",
+				"description": "Create a new live thread.",
+				"operationId": "live-threads",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "raw markdown text",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "nsfw",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "resources",
+					"description": "raw markdown text",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "a string no longer than 120 characters",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/live/thread/accept_contributor_invite": {
+			"post": {
+				"summary": "Accept a pending invitation to contribute to the thread.",
+				"description": "Accept a pending invitation to contribute to the thread.",
+				"operationId": "live-threads",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/live/thread/close_thread": {
+			"post": {
+				"summary": "Permanently close the thread, disallowing future updates.",
+				"description": "Permanently close the thread, disallowing future updates.",
+				"operationId": "live-threads",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/live/thread/delete_update": {
+			"post": {
+				"summary": "Delete an update from the thread.",
+				"description": "Delete an update from the thread.",
+				"operationId": "live-threads",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "the ID of a single update. e.g. LiveUpdate_ff87068e-a126-11e3-9f93-12313b0b3603",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/live/thread/edit": {
+			"post": {
+				"summary": "Configure the thread.",
+				"description": "Configure the thread.",
+				"operationId": "live-threads",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "raw markdown text",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "nsfw",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "resources",
+					"description": "raw markdown text",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "a string no longer than 120 characters",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/live/thread/invite_contributor": {
+			"post": {
+				"summary": "Invite another user to contribute to the thread.",
+				"description": "Invite another user to contribute to the thread.",
+				"operationId": "live-threads",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "the name of an existing user",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "permissions",
+					"description": "permission description e.g. +update,+edit,-manage",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "one of (liveupdate_contributor_invite, liveupdate_contributor)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/live/thread/leave_contributor": {
+			"post": {
+				"summary": "Abdicate contributorship of the thread.",
+				"description": "Abdicate contributorship of the thread.",
+				"operationId": "live-threads",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/live/thread/report": {
+			"post": {
+				"summary": "Report the thread for violating the rules of reddit.",
+				"description": "Report the thread for violating the rules of reddit.",
+				"operationId": "live-threads",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "one of (spam, vote-manipulation, personal-information, sexualizing-minors, site-breaking)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/live/thread/rm_contributor": {
+			"post": {
+				"summary": "Revoke another user&#39;s contributorship.",
+				"description": "Revoke another user&#39;s contributorship.",
+				"operationId": "live-threads",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "fullname of a account",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/live/thread/rm_contributor_invite": {
+			"post": {
+				"summary": "Revoke an outstanding contributor invite.",
+				"description": "Revoke an outstanding contributor invite.",
+				"operationId": "live-threads",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "fullname of a account",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/live/thread/set_contributor_permissions": {
+			"post": {
+				"summary": "Change a contributor or contributor invite&#39;s permissions.",
+				"description": "Change a contributor or contributor invite&#39;s permissions.",
+				"operationId": "live-threads",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "the name of an existing user",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "permissions",
+					"description": "permission description e.g. +update,+edit,-manage",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "one of (liveupdate_contributor_invite, liveupdate_contributor)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/live/thread/strike_update": {
+			"post": {
+				"summary": "Strike (mark incorrect and cross out) the content of an update.",
+				"description": "Strike (mark incorrect and cross out) the content of an update.",
+				"operationId": "live-threads",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "the ID of a single update. e.g. LiveUpdate_ff87068e-a126-11e3-9f93-12313b0b3603",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/live/thread/update": {
+			"post": {
+				"summary": "Post an update to the thread.",
+				"description": "Post an update to the thread.",
+				"operationId": "live-threads",
+				"parameters": [{
+					"in": "query",
+					"name": "api_type",
+					"description": "the string json",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"description": "raw markdown text",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "uh / X-Modhash header",
+					"description": "a modhash",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/live/thread": {
+			"get": {
+				"summary": "Get a list of updates posted in this thread.",
+				"description": "Get a list of updates posted in this thread.",
+				"operationId": "live-threads",
+				"parameters": [{
+					"in": "query",
+					"name": "after",
+					"description": "the ID of a single update. e.g. LiveUpdate_ff87068e-a126-11e3-9f93-12313b0b3603",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "before",
+					"description": "the ID of a single update. e.g. LiveUpdate_ff87068e-a126-11e3-9f93-12313b0b3603",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "count",
+					"description": "a positive integer (default: 0)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "is_embed",
+					"description": "(internal use only)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "the maximum number of items desired (default: 25, maximum: 100)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "stylesr",
+					"description": "subreddit name",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/live/thread/about": {
+			"get": {
+				"summary": "Get some basic information about the live thread.",
+				"description": "Get some basic information about the live thread.",
+				"operationId": "live-threads",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/live/thread/contributors": {
+			"get": {
+				"summary": "Get a list of users that contribute to this thread.",
+				"description": "Get a list of users that contribute to this thread.",
+				"operationId": "live-threads",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/live/thread/discussions": {
+			"get": {
+				"summary": "Get a list of reddit submissions linking to this thread.",
+				"description": "Get a list of reddit submissions linking to this thread.",
+				"operationId": "live-threads",
+				"parameters": [{
+					"in": "query",
+					"name": "after",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "before",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "count",
+					"description": "a positive integer (default: 0)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "the maximum number of items desired (default: 25, maximum: 100)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "show",
+					"description": "(optional) the string all",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sr_detail",
+					"description": "(optional) expand subreddits",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

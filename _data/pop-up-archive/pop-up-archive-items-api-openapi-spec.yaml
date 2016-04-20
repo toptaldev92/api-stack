@@ -1,0 +1,182 @@
+- swagger: "2.0"
+  info:
+    title: Pop Up Archive Items API
+    description: This is the Pop Up Archive Items API.
+    termsOfService: https://www.popuparchive.com/terms_of_use
+    version: ~
+  host: www.popuparchive.com/
+  basePath: /api/items/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    api/items/{item_id}/audio_files/:
+      post:
+        summary: ADD new AUDIO FILE to and ITEM
+        description: This endpoint adds an audio file to a given item
+        operationId: create_item_audio_file
+        parameters:
+        - in: path
+          name: item_id
+          description: Item ID
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    api/items/{item_id}/audio_files/{audio_file_id}:
+      delete:
+        summary: DELETE an AUDIO FILE by ID
+        description: This endpoint removes an audio file from an item
+        operationId: delete_api_item_audio_file
+        parameters:
+        - in: path
+          name: audio_file_id
+          description: ID of the AUDIO FILE to DELETE
+        - in: path
+          name: item_id
+          description: ID of the ITEM that the ITEM belongs to
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: GET an AUDIO FILE
+        description: 'Returns fully-formed HTML with embedded player and associated
+          audio file NOTE: Does not return JSON'
+        operationId: api_item_audio_file
+        parameters:
+        - in: path
+          name: audio_file_id
+          description: Audio File ID
+        - in: path
+          name: item_id
+          description: Item ID
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    api/items/{item_id}/audio_files/{audio_file_id}/transcript:
+      get:
+        summary: GET a TRANSCRIPT
+        description: ""
+        operationId: api_item_audio_file_transcript
+        parameters:
+        - in: path
+          name: audio_file_id
+          description: Audio File ID
+        - in: path
+          name: item
+          description: Item ID
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    api/items/{item_id}/contributions/{contributor_id}:
+      get:
+        summary: GET a CONTRIBUTOR
+        description: Get a specific contributor for a given item
+        operationId: api_item_contribution
+        parameters:
+        - in: path
+          name: contributor_id
+          description: Contributions ID
+        - in: path
+          name: item_id
+          description: Item ID
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    api/items/{item_id}/entities/{entities_id}:
+      get:
+        summary: GET an ENTITY
+        description: Get a specific entity for a given item
+        operationId: api_item_entity
+        parameters:
+        - in: path
+          name: entities_id
+          description: Entities ID
+        - in: path
+          name: item_id
+          description: Item ID
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions:
+    Parts:
+      properties:
+        text:
+          description: This is a default description.
+          type: GET
+        start:
+          description: This is a default description.
+          type: GET
+        end:
+          description: This is a default description.
+          type: GET
+    Transcript:
+      properties:
+        language:
+          description: This is a default description.
+          type: GET
+        parts:
+          description: This is a default description.
+          type: GET
+    Entity:
+      properties:
+        id:
+          description: This is a default description.
+          type: GET
+        name:
+          description: This is a default description.
+          type: GET
+        is_confirmed:
+          description: This is a default description.
+          type: GET
+        identifier:
+          description: This is a default description.
+          type: GET
+        score:
+          description: This is a default description.
+          type: GET
+        type:
+          description: This is a default description.
+          type: GET
+        category:
+          description: This is a default description.
+          type: GET
+    Person:
+      properties:
+        id:
+          description: This is a default description.
+          type: GET
+        name:
+          description: This is a default description.
+          type: GET
+    Contribution:
+      properties:
+        id:
+          description: This is a default description.
+          type: GET
+        role:
+          description: This is a default description.
+          type: GET
+        person:
+          description: This is a default description.
+          type: GET

@@ -1,0 +1,385 @@
+- swagger: "2.0"
+  info:
+    title: Paper
+    description: This is an paper for all my paper entries. I use a single paper system
+      to manage all my sites. Based upon tagging, I then publish each post out to its
+      respective Github Page based repo.
+    termsOfService: http://stack.network/terms-of-service.html
+    version: ~
+  host: paper.api.kinlane.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /paper/:
+      get:
+        summary: all papers
+        description: all papers
+        operationId: getPapers
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the paper
+        - in: query
+          name: appkey
+          description: your appkey for accessing the paper
+        - in: query
+          name: count
+          description: how many to show on page
+        - in: query
+          name: page
+          description: which page of results to show
+        - in: query
+          name: query
+          description: a text query to search across paper
+        - in: query
+          name: sort
+          description: which field to sort by
+        responses:
+          200:
+            description: OK
+        tags:
+        - Papers
+        security: []
+      post:
+        summary: add a paper post
+        description: add a paper post
+        operationId: addPaper
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the paper
+        - in: query
+          name: appkey
+          description: your appkey for accessing the paper
+        - in: query
+          name: author
+          description: author of the paper
+        - in: query
+          name: body
+          description: full text for the paper
+        - in: query
+          name: footer
+          description: curated id the paper originated from
+        - in: query
+          name: status
+          description: status of the paper
+        - in: query
+          name: summary
+          description: summary for the paper
+        - in: query
+          name: title
+          description: ttle for the paper
+        responses:
+          200:
+            description: OK
+        tags:
+        - Papers
+        security: []
+    /paper/component/:
+      post:
+        summary: add paper component
+        description: add paper component
+        operationId: addPaperComponent
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the paper
+        - in: query
+          name: appkey
+          description: your appkey for accessing the paper
+        - in: formData
+          name: name
+          description: name of the paper
+        - in: formData
+          name: paper_id
+          description: the id for the paper
+        - in: formData
+          name: sort_order
+          description: sort order for the paper
+        - in: formData
+          name: type
+          description: type of paper
+        responses:
+          200:
+            description: OK
+        tags:
+        - Papers
+        security: []
+    /paper/tags/:
+      delete:
+        summary: delete tag
+        description: delete tag
+        operationId: deleteTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the paper
+        - in: query
+          name: appkey
+          description: your appkey for accessing the paper
+        - in: query
+          name: tag
+          description: the tag to remove
+        responses:
+          200:
+            description: OK
+        tags:
+        - Papers
+        security: []
+      get:
+        summary: get tags
+        description: get tags
+        operationId: getTags
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the paper
+        - in: query
+          name: appkey
+          description: your appkey for accessing the paper
+        responses:
+          200:
+            description: OK
+        tags:
+        - Papers
+        security: []
+      put:
+        summary: update tag
+        description: update tag
+        operationId: updateTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the paper
+        - in: query
+          name: appkey
+          description: your appkey for accessing the paper
+        - in: formData
+          name: tag
+          description: tag to update
+        responses:
+          200:
+            description: OK
+        tags:
+        - Papers
+        security: []
+    /paper/{paper_id}/:
+      delete:
+        summary: delete paper
+        description: delete paper
+        operationId: deletePaper
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the paper
+        - in: query
+          name: appkey
+          description: your appkey for accessing the paper
+        - in: path
+          name: paper_id
+          description: the unique id for paper entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Papers
+        security: []
+      get:
+        summary: Retrieve a paper using its slug
+        description: Returns the paper detail
+        operationId: getPaper
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the paper
+        - in: query
+          name: appkey
+          description: your appkey for accessing the paper
+        - in: path
+          name: paper_id
+          description: the unique id for paper entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Papers
+        security: []
+      put:
+        summary: update paper
+        description: update paper
+        operationId: updatePaper
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the paper
+        - in: query
+          name: appkey
+          description: your appkey for accessing the paper
+        - in: query
+          name: author
+          description: author of the paper
+        - in: query
+          name: body
+          description: body of the paper
+        - in: query
+          name: build_page
+          description: whether or not this paper post needs page built
+        - in: query
+          name: footer
+          description: footer of the paper
+        - in: path
+          name: paper_id
+          description: the unique id for paper entry
+        - in: query
+          name: post_date
+          description: date the paper was posted
+        - in: query
+          name: show_on_site
+          description: Whether or not this paper post will show on any site
+        - in: query
+          name: status
+          description: status of the paper
+        - in: query
+          name: summary
+          description: summary for the paper
+        - in: query
+          name: title
+          description: ttle for the paper
+        responses:
+          200:
+            description: OK
+        tags:
+        - Papers
+        security: []
+    /paper/{paper_id}/components/:
+      get:
+        summary: get paper components
+        description: get paper components
+        operationId: getPaperComponent
+        parameters:
+        - in: path
+          name: paper_id
+          description: the id for the paper
+        responses:
+          200:
+            description: OK
+        tags:
+        - Papers
+        security: []
+    /paper/{paper_id}/tags/:
+      get:
+        summary: paper tags
+        description: paper tags
+        operationId: getpaperTags
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the paper
+        - in: query
+          name: appkey
+          description: your appkey for accessing the paper
+        - in: path
+          name: paper_id
+          description: id for paper
+        responses:
+          200:
+            description: OK
+        tags:
+        - Papers
+        security: []
+      post:
+        summary: add tag to paper
+        description: add tag to paper
+        operationId: addPaperTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the paper
+        - in: query
+          name: appkey
+          description: your appkey for accessing the paper
+        - in: path
+          name: paper_id
+          description: id for the paper
+        - in: query
+          name: tag
+          description: tag name
+        responses:
+          200:
+            description: OK
+        tags:
+        - Papers
+        security: []
+    /paper/{paper_id}/tags/{tag}:
+      delete:
+        summary: delete paper tag
+        description: delete paper tag
+        operationId: deletepaperTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the paper
+        - in: query
+          name: appkey
+          description: your appkey for accessing the paper
+        - in: path
+          name: paper_id
+          description: id for the paper
+        - in: path
+          name: tag
+          description: tag to remove from paper
+        responses:
+          200:
+            description: OK
+        tags:
+        - Papers
+        security: []
+  definitions:
+    paper:
+      properties:
+        paper_id:
+          description: This is a default description.
+          type: delete
+        post_date:
+          description: This is a default description.
+          type: delete
+        title:
+          description: This is a default description.
+          type: delete
+        author:
+          description: This is a default description.
+          type: delete
+        summary:
+          description: This is a default description.
+          type: delete
+        body:
+          description: This is a default description.
+          type: delete
+        footer:
+          description: This is a default description.
+          type: delete
+        status:
+          description: This is a default description.
+          type: delete
+        build_page:
+          description: This is a default description.
+          type: delete
+        show_on_site:
+          description: This is a default description.
+          type: delete
+    tag:
+      properties:
+        tag_id:
+          description: This is a default description.
+          type: delete
+        tag:
+          description: This is a default description.
+          type: delete
+        api_count:
+          description: This is a default description.
+          type: delete

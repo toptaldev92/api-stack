@@ -1,0 +1,948 @@
+- swagger: "2.0"
+  info:
+    title: Meetup Events API
+    description: The API for managing Meetup events.
+    termsOfService: http://www.meetup.com/terms/
+    version: ~
+  host: api.meetup.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /2/concierge:
+      get:
+        summary: Concierge
+        description: Recommends upcoming meetups for the authorized member in a given
+          location and in thier groups
+        operationId: events
+        parameters:
+        - in: query
+          name: category_id
+          description: Comma delimited list of category ids to limit recommendations
+            to
+          type: string
+        - in: query
+          name: city
+          description: A valid city
+          type: string
+        - in: query
+          name: country
+          description: A valid country code
+          type: string
+        - in: query
+          name: fields
+          description: Request that additional fields (separated by commas) be included
+            in the output
+          type: string
+        - in: query
+          name: lat
+          description: A valid latitude, limits the returned group events to those within
+            radius miles
+          type: string
+        - in: query
+          name: lon
+          description: A valid longitude, limits the returned group events to those
+            within radius miles
+          type: string
+        - in: query
+          name: page_token
+          description: An opaque string used to page through results. This can be found
+            appended to the next link in the meta section of the response.
+          type: string
+        - in: query
+          name: radius
+          description: Radius, in miles for geographic requests, defaults to the members
+            preferred radius or 0.5 -- maximum 100. May also be specified as smart,
+            a dynamic radius based on the number of active groups in the area
+          type: string
+        - in: query
+          name: self_groups
+          description: set to include or exclude groups the authorized member belongs
+            to. The default is include. This includes groups in locations that may differ
+            than the provided location
+          type: string
+        - in: query
+          name: state
+          description: If searching in a country with states, a valid 2 character state
+            code
+          type: string
+        - in: query
+          name: text_format
+          description: Format of the description text, html, plain, or simplehtml. Defaults
+            to html
+          type: string
+        - in: query
+          name: time
+          description: 'Return events scheduled within the given time range, defined
+            by two times separated with a single comma. Each end of the range may be
+            specified with relative dates, such as 1m for one month from now, or by
+            absolute time in milliseconds since the epoch. If an endpoint is omitted,
+            the range is unbounded on that end. The default value is unbounded on both
+            ends (though restricted to the search window described above). Note: to
+            retrieve past events you must also update status value'
+          type: string
+        - in: query
+          name: topic_id
+          description: Comma delimited list of topics to help inform recommendation
+          type: string
+        - in: query
+          name: with_friends
+          description: Boolean parameter. When set to true, events hosted by groups
+            you have friends in will be recommended
+          type: string
+        - in: query
+          name: zip
+          description: A valid US zip code, limits the returned groups to those within
+            radius miles
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /2/event:
+      post:
+        summary: Event Create
+        description: ""
+        operationId: events
+        parameters:
+        - in: query
+          name: '*group_id'
+          description: Group hosting the event
+          type: string
+        - in: query
+          name: '*group_urlname'
+          description: URL name of the Group hosting the event
+          type: string
+        - in: query
+          name: '*name'
+          description: Name of the event. May not be longer than 80 characters.
+          type: string
+        - in: query
+          name: description
+          description: Longer description of the event, in HTML. May not be longer than
+            50000 characters.
+          type: string
+        - in: query
+          name: duration
+          description: Event duration in milliseconds. When not specified, a default
+            of 3 hours may be assumed by applications. To clear event duration, set
+            this to 0
+          type: string
+        - in: query
+          name: guest_limit
+          description: Number of guests members may include in their RSVP, 0 or more
+          type: string
+        - in: query
+          name: hosts
+          description: Up to 5 comma-separated valid member ids to be hosts for the
+            event. If hosts is not provided, the authorized member is the default host
+          type: string
+        - in: query
+          name: how_to_find_us
+          description: The information provided by the event host for How will members
+            find you there?. Visible when location is visible to the authenticated member
+          type: string
+        - in: query
+          name: publish_status
+          description: If you are an organizer of the group, you may set this to draft
+            to save the event as a draft. Doing so will require a status=draft filter
+            on /2/event queries.
+          type: string
+        - in: query
+          name: question_{index}
+          description: Those with permission may include up to 6 survey questions for
+            the event with each being up to 250 characters. See the parameter notes
+            section for more information
+          type: string
+        - in: query
+          name: rsvp_close
+          description: Users with permission may set the RSVP close time for the event.
+            The time may be specified in milliseconds since the epoch, or relative to
+            the current time in the d/w/m format.
+          type: string
+        - in: query
+          name: rsvp_limit
+          description: Total number of RSVPs available for the event
+          type: string
+        - in: query
+          name: rsvp_open
+          description: Users with permission may set the RSVP open time for the event.
+            The time may be specified in milliseconds since the epoch, or relative to
+            the current time in the d/w/m format.
+          type: string
+        - in: query
+          name: simple_html_description
+          description: Description of the event, in simple HTML format. This value is
+            translated to HTML to update the description. May not be longer than 50000
+            characters.
+          type: string
+        - in: query
+          name: time
+          description: Event start time in milliseconds since the epoch, or relative
+            to the current time in the d/w/m format.
+          type: string
+        - in: query
+          name: venue_id
+          description: Numeric identifier of a venue
+          type: string
+        - in: query
+          name: venue_visibility
+          description: Controls the visibility of the event venue for non members of
+            the hosting group. May be one of public or members
+          type: string
+        - in: query
+          name: waitlisting
+          description: 'Waiting list status may be one of: auto, manual, off'
+          type: string
+        - in: query
+          name: why
+          description: We should do this because... May not be longer than 250 characters.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /2/event/:id:
+      delete:
+        summary: Event Delete
+        description: Deletes a specified meetup
+        operationId: events
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Event Edit
+        description: Update an existing Meetup
+        operationId: events
+        parameters:
+        - in: query
+          name: announce
+          description: Organizers and hosts may set this to true to announce a Meetup.
+          type: string
+        - in: query
+          name: description
+          description: Longer description of the event, in HTML. May not be longer than
+            50000 characters.
+          type: string
+        - in: query
+          name: duration
+          description: Event duration in milliseconds. When not specified, a default
+            of 3 hours may be assumed by applications. To clear event duration, set
+            this to 0
+          type: string
+        - in: query
+          name: group_id
+          description: Group to hold the event
+          type: string
+        - in: query
+          name: guest_limit
+          description: number of guests members may include in their RSVP, 0 or more
+          type: string
+        - in: query
+          name: hosts
+          description: Up to 5 valid member ids to be hosts for the event.
+          type: string
+        - in: query
+          name: how_to_find_us
+          description: The information provided by the event host for How will members
+            find you there?. Visible when location is visible to the authenticated member
+          type: string
+        - in: query
+          name: lat,lon
+          description: Updates to the venues latitude and longitude. When present, both
+            must be provided
+          type: string
+        - in: query
+          name: name
+          description: Event name. May not be longer than 80 characters.
+          type: string
+        - in: query
+          name: publish_status
+          description: If you are an organizer of the group, you may set this to draft
+            or published. Setting state to draft will require a status=draft filter
+            on /2/event queries.
+          type: string
+        - in: query
+          name: question_edit_{id}
+          description: Those with permission may include up to 6 survey questions with
+            each being up to 250 characters, including new questions. To delete a question
+            submit this parameter with an empty value
+          type: string
+        - in: query
+          name: question_{index}
+          description: Those with permission may include up to 6 survey questions with
+            each being up to 250 characters, including edited questions, for the event.
+            See the parameter notes section for more information
+          type: string
+        - in: query
+          name: rsvp_close
+          description: Users with permission may set the RSVP close time for the event.
+            The time may be specified in milliseconds since the epoch, or relative to
+            the current time in the d/w/m format. To unset rsvp_close, set this to 0
+          type: string
+        - in: query
+          name: rsvp_limit
+          description: Total number of RSVPs available for the event. To remove this
+            limit, set this to 0
+          type: string
+        - in: query
+          name: rsvp_open
+          description: Users with permission may set the RSVP open time for the event.
+            The time may be specified in milliseconds since the epoch, or relative to
+            the current time in the d/w/m format.
+          type: string
+        - in: query
+          name: simple_html_description
+          description: Description of the event, in simple HTML format. This value is
+            translated to HTML to update the description. May not be longer than 50000
+            characters.
+          type: string
+        - in: query
+          name: time
+          description: event start time in milliseconds since the epoch, or relative
+            to the current time in the d/w/m format.
+          type: string
+        - in: query
+          name: venue_id
+          description: Numeric identifier of a venue. To unset the events venue, set
+            this to 0
+          type: string
+        - in: query
+          name: venue_visibility
+          description: Controls the visibility of venue. May be one of public or members
+          type: string
+        - in: query
+          name: waitlisting
+          description: 'Waiting list status may be one of: auto, manual, off'
+          type: string
+        - in: query
+          name: why
+          description: We should do this because... May not be longer than 250 characters.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /2/events:
+      get:
+        summary: Events
+        description: Access Meetup events using a group, member, or event id. Events
+          in private groups are available only to authenticated members of those groups.
+          To search events by topic or location, see [Open Events](/meetup_api/docs/2/open_events).
+        operationId: events
+        parameters:
+        - in: query
+          name: '*event_id'
+          description: Multiple ids may be separated with commas
+          type: string
+        - in: query
+          name: '*group_domain'
+          description: Group custom domain
+          type: string
+        - in: query
+          name: '*group_id'
+          description: Multiple ids may be separated with commas
+          type: string
+        - in: query
+          name: '*group_urlname'
+          description: Path to group from meetup.com, no slashes
+          type: string
+        - in: query
+          name: '*member_id'
+          description: Single member id, to find events in this members groups
+          type: string
+        - in: query
+          name: '*rsvp'
+          description: Filters events by the currently authenticated members RSVP status.
+            May be a comma delimited list of yes, no, waitlist, maybe or none
+          type: string
+        - in: query
+          name: '*venue_id'
+          description: Multiple ids may be separated with commas
+          type: string
+        - in: query
+          name: fields
+          description: Request that additional fields (separated by commas) be included
+            in the output
+          type: string
+        - in: query
+          name: limited_events
+          description: 'Include limited event information for private groups that wish
+            to expose only a small amount of information about their events. This includes
+            just: id, name, utc_offset, time, duration, yes_rsvp_count, waitlist_count,
+            group, visibility, timezone. Value must be true or false.'
+          type: string
+        - in: query
+          name: status
+          description: Status may be upcoming, past, proposed, suggested, cancelled,
+            draft or multiple separated by a comma. The default is upcoming, which includes
+            Meetups that are happening now according to their **duration**. Meetups
+            that are proposed or suggested do not have a date assigned; the former are
+            listed on the site as <i>official</i> while the latter appear as <i>in the
+            making</i>. Drafts are only visible to organizers of groups hosting the
+            events.
+          type: string
+        - in: query
+          name: text_format
+          description: Format of the description text, html or plain. Defaults to html
+          type: string
+        - in: query
+          name: time
+          description: 'Return events scheduled within the given time range, defined
+            by two times separated with a single comma. Each end of the range may be
+            specified with relative dates, such as 1m for one month from now, or by
+            absolute time in milliseconds since the epoch. If an endpoint is omitted,
+            the range is unbounded on that end. The default value is unbounded on both
+            ends (though restricted to the search window described above). Note: to
+            retrieve past events you must also update status value'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /2/event_comment:
+      post:
+        summary: Event Comment v2
+        description: This method posts messages that appear under Talk about this Meetup.
+        operationId: events
+        parameters:
+        - in: query
+          name: '*comment'
+          description: The comment text
+          type: string
+        - in: query
+          name: '*event_id'
+          description: The event related to this comment.
+          type: string
+        - in: query
+          name: '*in_reply_to'
+          description: If this comment is a reply, the ID of the comment being replied
+            to
+          type: string
+        - in: query
+          name: notifications
+          description: Notification control for authorized member on this comment thread.
+            on will result in notifications being sent. off will opt the member out
+            of notifications for this comment thread. Defaults to on unless the member
+            previous opted out of notifications on the thread.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /2/event_comment/:id:
+      delete:
+        summary: Event Comment Delete
+        description: Delete a single event comment or reply
+        operationId: events
+        parameters:
+        - in: query
+          name: fields
+          description: comma-separate list of optional fields
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: Event Comment Get
+        description: Retrieve a single event comment or reply
+        operationId: events
+        parameters:
+        - in: query
+          name: fields
+          description: comma-separate list of optional fields
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /2/event_comments:
+      get:
+        summary: Comments v2
+        description: This method returns messages that appear under Talk about this
+          Meetup. To post messages, see the corresponding write method.
+        operationId: events
+        parameters:
+        - in: query
+          name: '*callback'
+          description: Name of a function to be called with an array of Event Comment
+            notification objects. If thisnparameter is not supplied, the chunked stream
+            is joined instead.
+          type: string
+        - in: query
+          name: '*comment_id'
+          description: Return comments for a given set of comment IDs, separated by
+            commas
+          type: string
+        - in: query
+          name: '*event_id'
+          description: Return comments on these events, separated by commas.
+          type: string
+        - in: query
+          name: '*group_id'
+          description: Return comments in groups with these ID numbers, separated by
+            commas
+          type: string
+        - in: query
+          name: '*member_id'
+          description: Return comments for the given member_ids, separated by commas
+          type: string
+        - in: query
+          name: api_version
+          description: "2"
+          type: string
+        - in: query
+          name: event_id
+          description: Limit notifications to a specific event id. Use alphanumeric
+            ids for repeating events.
+          type: string
+        - in: query
+          name: fields
+          description: Optionally accepts the value member_photo or notifications
+          type: string
+        - in: query
+          name: since_count
+          description: Request that some number of recent messages be sent immediately,
+            if available. May not be specified in the same request as since_mtime.
+          type: string
+        - in: query
+          name: since_mtime
+          description: Should be supplied for all but the first polling request, so
+            that any missed notifications are can be sent in an immediate response
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /2/event_comment_flag:
+      post:
+        summary: Event Comment Flag
+        description: This method creates a spam report for comment content
+        operationId: events
+        parameters:
+        - in: query
+          name: '*comment_id'
+          description: The id of the comment
+          type: string
+        - in: query
+          name: reason
+          description: Reason for flagging the comment. May be one of inappropriate,
+            spam
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /2/event_comment_like/:id:
+      delete:
+        summary: Event Comment Unlike
+        description: Unlike a given Event comment
+        operationId: events
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Event Comment Like
+        description: Like a given Event comment
+        operationId: events
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /2/event_comment_likes:
+      get:
+        summary: Comment Likes
+        description: Api for listing likes of a given event comment
+        operationId: events
+        parameters:
+        - in: query
+          name: '*comment_id'
+          description: Return likes for a given comment_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /2/event_comment_subscribe/:id:
+      delete:
+        summary: Event Comment Unsubscribe
+        description: Unsubscribe to notifications for updates to a given comment thread
+        operationId: events
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Event Comment Subscribe
+        description: Subscribe to notifications on updates to a given comment thread
+        operationId: events
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /2/event_rating:
+      post:
+        summary: Event Rating
+        description: This method allows members to posts rating for an event after its
+          occurred. Only permitted for members who rsvpd yes or maybe to the event
+        operationId: events
+        parameters:
+        - in: query
+          name: '*event_id'
+          description: The ID of the event to fetch ratings data for
+          type: string
+        - in: query
+          name: '*rating'
+          description: The members rating (either 1, 2, 3, 4, or 5)
+          type: string
+        - in: query
+          name: attendee_count
+          description: The number of attendees for the event (organizers/assistant organizers/co-organizers/event
+            organizers/event hosts only)
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /2/event_ratings:
+      get:
+        summary: Ratings v2
+        description: API method for accessing Meetup comments
+        operationId: events
+        parameters:
+        - in: query
+          name: '*event_id'
+          description: The ID of the event to fetch ratings data for
+          type: string
+        - in: query
+          name: member_id
+          description: The ID of a member to filter ratings on
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /2/open_events:
+      get:
+        summary: OpenEvents
+        description: Searches for recent and upcoming public events hosted by Meetup
+          groups. Its search window  is the past one month through the next three months,
+          and is subject to change. Open Events is optimized to search for current events
+          by location, category, topic, or text, and only lists Meetups that have **3
+          or more RSVPs**. The number or results returned with each request is not guaranteed
+          to be the same as the page size due to secondary filtering. If youre looking
+          for a particular event or events within a particular group, use the standard
+          [Events](/meetup_api/docs/2/events/) method.
+        operationId: events
+        parameters:
+        - in: query
+          name: '*category'
+          description: Return events in the specified category or categories specified
+            by commas. This is the category id returned by the Categories method.
+          type: string
+        - in: query
+          name: '*city'
+          description: A valid city
+          type: string
+        - in: query
+          name: '*country'
+          description: A valid country code
+          type: string
+        - in: query
+          name: '*lat'
+          description: A valid latitude, limits the returned group events to those within
+            radius miles
+          type: string
+        - in: query
+          name: '*lon'
+          description: A valid longitude, limits the returned group events to those
+            within radius miles
+          type: string
+        - in: query
+          name: '*state'
+          description: If searching in a country with states, a valid 2 character state
+            code
+          type: string
+        - in: query
+          name: '*text'
+          description: Events that contain the given term or terms somewhere in their
+            content. The terms are ORd by default. Separate terms with  AND  for events
+            that have combined terms. To have terms automatically ANDd, set the and_text
+            to true
+          type: string
+        - in: query
+          name: '*topic'
+          description: Return events in the specified topic or topics specified by commas.
+            This is the topic urlkey returned by the Topics method. If all supplied
+            topics are unknown, a 400 error response is returned with the code badtopic.
+          type: string
+        - in: query
+          name: '*zip'
+          description: A valid US zip code, limits the returned groups to those within
+            radius miles
+          type: string
+        - in: query
+          name: and_text
+          description: Changes the interpretation of the text field from ORd terms to
+            ANDd terms
+          type: string
+        - in: query
+          name: api_version
+          description: "2"
+          type: string
+        - in: query
+          name: fields
+          description: Request that additional fields (separated by commas) be included
+            in the output
+          type: string
+        - in: query
+          name: limited_events
+          description: 'Include limited event information for private groups that wish
+            to expose only a small amount of information about their events. This includes
+            just: id, name, utc_offset, time, duration, yes_rsvp_count, waitlist_count,
+            group, visibility, timezone. Value must be true or false.'
+          type: string
+        - in: query
+          name: radius
+          description: Radius, in miles for geographic requests, default 25.0 -- maximum
+            100. May also be specified as smart, a dynamic radius based on the number
+            of active groups in the area
+          type: string
+        - in: query
+          name: since_count
+          description: Request that some number of recent messages be sent immediately,
+            if available. May not be specified in the same request as since_mtime.
+          type: string
+        - in: query
+          name: since_mtime
+          description: Return events with an mtime greater than the supplied time, in
+            milliseconds since the epoch
+          type: string
+        - in: query
+          name: status
+          description: Status may be upcoming, past or both separated by a comma. The
+            default is upcoming only
+          type: string
+        - in: query
+          name: text_format
+          description: Format of the description text, html or plain. Defaults to html
+          type: string
+        - in: query
+          name: time
+          description: 'Return events scheduled within the given time range, defined
+            by two times separated with a single comma. Each end of the range may be
+            specified with relative dates, such as 1m for one month from now, or by
+            absolute time in milliseconds since the epoch. If an endpoint is omitted,
+            the range is unbounded on that end. The default value is unbounded on both
+            ends (though restricted to the search window described above). Note: to
+            retrieve past events you must also update status value'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /:urlname/events/:id:
+      get:
+        summary: Get Event
+        description: Fetches a Meetup Event by urlname and event_id
+        operationId: events
+        parameters:
+        - in: query
+          name: fields
+          description: A comma-delimited list of optional fields to append to the response
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /:urlname/events/:id/attendance:
+      get:
+        summary: Attendance
+        description: Lists attendance records for Meetup events. Limited for use by
+          administrative members.
+        operationId: events
+        parameters:
+        - in: query
+          name: filter
+          description: 'A named filter to apply to the attendance list. These are roughly
+            equivalent to the set of filters you will see in the attendance tool on
+            the site. These filters correspond with attendance records as well as each
+            members original RSVP status. The filter value be one of: maybe, waitlist,
+            yes, absent, all, attended, noshow, excused, no. The default is attended.
+            The absent filter represents all members not in attendance including members
+            with a noshow status. An excused absence is an absen'
+          type: string
+        - in: query
+          name: member
+          description: Raw text used to search for member by name. This may only be
+            applied when the filter parameter is set to all. The provided text must
+            consist of at least 2 characters.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Attendance Taking
+        description: Takes Member attendance for an Event. Limited for use by administrative
+          members.
+        operationId: events
+        parameters:
+        - in: query
+          name: '*member'
+          description: A comma-delimited list of valid ids associated with members RSVPd
+            to the event
+          type: string
+        - in: query
+          name: '*status'
+          description: 'An attendance status for the provided members. Must be one of:
+            noshow, absent, attended'
+          type: string
+        - in: query
+          name: guests
+          description: The number of guests accompanying member. Maximum of 99 is allowed.
+            When providing multiple values in the `member` field, this value is ignored
+          type: string
+        - in: query
+          name: headcount
+          description: Sets the overall headcount for the event. This may not necessarily
+            correlate with the list of attendees in this group if the event is part
+            of a joint Meetup event. When providing multiple values in the `member`
+            field, this value is ignored
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /:urlname/events/:id/payments:
+      post:
+        summary: Event Payments
+        description: Allows organizers of a group to note payments made by members for
+          an event. This is the Mark Paid feature seen in the RSVP listings on event
+          details pages and affects the pay_status response fields in [2/rsvps](/meetup_api/docs/2/rsvps/#response)
+          for paid events
+        operationId: events
+        parameters:
+        - in: query
+          name: '*amount'
+          description: The monetary amount of money the member submited
+          type: string
+        - in: query
+          name: '*member'
+          description: Member Id of member who made a payment
+          type: string
+        - in: query
+          name: paid_on
+          description: The time the payment was made in milliseconds from the epoc.
+            Defaults to now
+          type: string
+        - in: query
+          name: quantity
+          description: The number of payments made. Defaults to 1
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /:urlname/events/:id/watchlist:
+      delete:
+        summary: Watchlist remove
+        description: Remove yourself from an event watch list
+        operationId: events
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Watchlist add
+        description: Add yourself to an event watch list to get notified when a spot
+          becomes available
+        operationId: events
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /self/events:
+      get:
+        summary: Member Events
+        description: Gets a listing of all Meetup Events the authenticated member has
+          RSVPd for
+        operationId: events
+        parameters:
+        - in: query
+          name: fields
+          description: A comma-delimited list of optional fields names which may be
+            appended to the response
+          type: string
+        - in: query
+          name: scroll
+          description: 'A string representing a scroll target.nnSupported values are
+            as follows.nn__recent_past__: Scroll to the last RSVPd Meetup Event that
+            has passed.n If there is no recent RSVP, this defaults to __next_upcoming__nn__next_upcoming__:
+            Scroll to the next upcoming Meetup Event the authenticated membernRSVPd
+            to.nnAlternatively the server may generate a scroll value used for pagination
+            Link headers.nClients should treat the contents of those as a transparent
+            string. Itsncontents are subject to change i'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

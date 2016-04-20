@@ -1,0 +1,421 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Instructure Canvas Utility APIs",
+		"description": "Canvas LMS includes a REST API for accessing and modifying data externally from the main application, in your own programs and scripts. ",
+		"termsOfService": "https://www.canvaslms.com/policies/api-policy",
+		"version": "v1"
+	},
+	"host": "canvas.instructure.com",
+	"basePath": "/api/v1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/api/sis/accounts/{account_id}/assignments": {
+			"get": {
+				"summary": "Retrieve assignments enabled for grade export to SIS",
+				"description": "",
+				"operationId": "retrieve-assignments-enabled-for-grade-export-to-sis",
+				"parameters": [{
+					"in": "query",
+					"name": "account_id",
+					"description": "The ID of the account to query.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "course_id",
+					"description": "The ID of the course to query.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "ends_after",
+					"description": "When searching on an account, restricts to courses that end after this daten(if they have an end date)",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "starts_before",
+					"description": "When searching on an account, restricts to courses that start before thisndate (if they have a start date)",
+					"type": "datetime"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["utility"],
+				"security": []
+			}
+		},
+		"/api/sis/courses/{course_id}/assignments": {
+			"get": {
+				"summary": "Retrieve assignments enabled for grade export to SIS",
+				"description": "",
+				"operationId": "retrieve-assignments-enabled-for-grade-export-to-sis",
+				"parameters": [{
+					"in": "query",
+					"name": "account_id",
+					"description": "The ID of the account to query.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "course_id",
+					"description": "The ID of the course to query.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "ends_after",
+					"description": "When searching on an account, restricts to courses that end after this daten(if they have an end date)",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "starts_before",
+					"description": "When searching on an account, restricts to courses that start before thisndate (if they have a start date)",
+					"type": "datetime"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["utility"],
+				"security": []
+			}
+		},
+		"/collaborations/{id}/members": {
+			"get": {
+				"summary": "List members of a collaboration.",
+				"description": "",
+				"operationId": "list-members-of-a-collaboration",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["utility"],
+				"security": []
+			}
+		},
+		"/comm_messages": {
+			"get": {
+				"summary": "List of CommMessages for a user",
+				"description": "",
+				"operationId": "list-of-commmessages-for-a-user",
+				"parameters": [{
+					"in": "query",
+					"name": "end_time",
+					"description": "The end of the time range you want to retrieve messages for.",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "start_time",
+					"description": "The beginning of the time range you want to retrieve message from.",
+					"type": "datetime"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "The user id for whom you want to retrieve CommMessages",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["utility"],
+				"security": []
+			}
+		},
+		"/course_accounts": {
+			"get": {
+				"summary": "List accounts for course admins",
+				"description": "",
+				"operationId": "list-accounts-for-course-admins",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["utility"],
+				"security": []
+			}
+		},
+		"/error_reports": {
+			"post": {
+				"summary": "Create Error Report",
+				"description": "",
+				"operationId": "create-error-report",
+				"parameters": [{
+					"in": "query",
+					"name": "error[comments]",
+					"description": "The long version of the story from the user one what they experienced",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "error[email]",
+					"description": "Email address for the reporting user",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "error[http_env]",
+					"description": "A collection of metadata about the users&#39; environment.  If notnprovided, canvas will collect it based on information found in the request.n(Doesn&#39;t have to be HTTPENV info, could be anything JSON object thatncan be serialized as a hash, a mobile app might include relevant metadatanfor itself)",
+					"type": "serializedhash"
+				},
+				{
+					"in": "query",
+					"name": "error[subject]",
+					"description": "The summary of the problem",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "error[url]",
+					"description": "URL from which the report was issued",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["utility"],
+				"security": []
+			}
+		},
+		"/jwts": {
+			"post": {
+				"summary": "Create JWT",
+				"description": "",
+				"operationId": "create-jwt",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["utility"],
+				"security": []
+			}
+		},
+		"/outcomes/{id}": {
+			"get": {
+				"summary": "Show an outcome",
+				"description": "",
+				"operationId": "show-an-outcome",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["utility"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update an outcome",
+				"description": "",
+				"operationId": "update-an-outcome",
+				"parameters": [{
+					"in": "query",
+					"name": "calculation_int",
+					"description": "The new calculation int.  Only applies if the calculation_method isnu201cdecaying_averageu201d or u201cn_masteryu201d",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "calculation_method",
+					"description": "The new calculation method.nn        n        n          Allowed values: decaying_average, n_mastery, latest, highest",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "The new outcome description.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "display_name",
+					"description": "A friendly name shown in reports for outcomes with cryptic titles, such asncommon core standards names.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "mastery_points",
+					"description": "The new mastery threshold for the embedded rubric criterion.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "ratings[][description]",
+					"description": "The description of a new rating level for the embedded rubric criterion.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "ratings[][points]",
+					"description": "The points corresponding to a new rating level for the embedded rubricncriterion.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "The new outcome title.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "vendor_guid",
+					"description": "A custom GUID for the learning standard.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["utility"],
+				"security": []
+			}
+		},
+		"/progress/{id}": {
+			"get": {
+				"summary": "Query progress",
+				"description": "",
+				"operationId": "query-progress",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["utility"],
+				"security": []
+			}
+		},
+		"/search/all_courses": {
+			"get": {
+				"summary": "List all courses",
+				"description": "",
+				"operationId": "list-all-courses",
+				"parameters": [{
+					"in": "query",
+					"name": "open_enrollment_only",
+					"description": "Only return courses that allow self enrollment. Defaults to false.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "public_only",
+					"description": "Only return courses with public content. Defaults to false.",
+					"type": "boolean"
+				},
+				{
+					"in": "query",
+					"name": "search",
+					"description": "Search terms used for matching users/courses/groups (e.g. u201cbob smithu201d). Ifnmultiple terms are given (separated via whitespace), only results matchingnall terms will be returned.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["utility"],
+				"security": []
+			}
+		},
+		"/search/recipients": {
+			"get": {
+				"summary": "Find recipients",
+				"description": "",
+				"operationId": "find-recipients",
+				"parameters": [{
+					"in": "query",
+					"name": "context",
+					"description": "Limit the search to a particular course/group (e.g. u201ccourse_3u201d ornu201cgroup_4u201d).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "exclude[]",
+					"description": "Array of ids to exclude from the search. These may be user ids orncourse/group ids prefixed with u201ccourse_u201d or u201cgroup_u201d respectively, e.g. exclude[]=1&exclude=2&amp;exclude[]=course_3",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "from_conversation_id",
+					"description": "When searching by user_id, only users that could be normally messaged bynthis user will be returned. This parameter allows you to specify anconversation that will be referenced for a shared context u2013 if both thencurrent user and the searched user are in the conversation, the user willnbe returned. This is used to start new side conversations.",
+					"type": "integer"
+				},
+				{
+					"in": "query",
+					"name": "permissions[]",
+					"description": "Array of permission strings to be checked for each matched context (e.g.nu201csend_messagesu201d). This argument determines which permissions may benreturned in the response; it won&#39;t prevent contexts from being returnednif they don&#39;t grant the permission(s).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "search",
+					"description": "Search terms used for matching users/courses/groups (e.g. u201cbob smithu201d). Ifnmultiple terms are given (separated via whitespace), only results matchingnall terms will be returned.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "Limit the search just to users or contexts (groups/courses).nn        n        n          Allowed values: user, context",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "Search for a specific user id. This ignores the other above parameters, andnwill never return more than one result.",
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["utility"],
+				"security": []
+			}
+		},
+		"/services/kaltura": {
+			"get": {
+				"summary": "Get Kaltura config",
+				"description": "",
+				"operationId": "get-kaltura-config",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["utility"],
+				"security": []
+			}
+		},
+		"/services/kaltura_session": {
+			"post": {
+				"summary": "Start Kaltura session",
+				"description": "",
+				"operationId": "start-kaltura-session",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["utility"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

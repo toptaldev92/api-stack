@@ -1,0 +1,139 @@
+- swagger: "2.0"
+  info:
+    title: Bitly Domains API
+    description: The Bitly Domains API.
+    termsOfService: http://dev.bitly.com/best_practices.html
+    version: v3
+  host: api-ssl.bitly.com
+  basePath: /v3
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /v3/bitly_pro_domain:
+      get:
+        summary: Bitly Pro Domain
+        description: Query whether a given domain is a valid bitly pro domain. Keep
+          in mind that bitly custom short domains are restricted to less than 15 characters
+          in length
+        operationId: bitlyProDomain
+        parameters:
+        - in: query
+          name: domain
+          description: 'A short domain. ie: nyti.ms.'
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Domains
+        security: []
+    /v3/user/tracking_domain_clicks:
+      get:
+        summary: Tracking Domain Clicks
+        description: Returns the number of clicks on Bitlinks pointing to the specified
+          tracking domain that have occured in a given time period.
+        operationId: trackingDomainClicks
+        parameters:
+        - in: query
+          name: domain
+          description: a tracking domain as returned from /v3/user/tracking_domain_list.
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: 1 to 1000 (default=100).
+          type: integer
+          format: integer
+        - in: query
+          name: rollup
+          description: true or false. Return data for multiple units rolled up to a
+            single result instead of a separate value for each period of time.
+          type: string
+          format: string
+        - in: query
+          name: timezone
+          description: 'an integer hour offset from UTC (-14 to 14), or a timezone string
+            default: America/New_York.'
+          type: string
+          format: string
+        - in: query
+          name: unit
+          description: 'minute, hour, day, week or month, default: day '
+          type: string
+          format: string
+        - in: query
+          name: units
+          description: an integer representing the time units to query data for. Pass
+            -1 to return all units of time.
+          type: string
+          format: string
+        - in: query
+          name: unit_reference_ts
+          description: 'an epoch timestamp, indicating the most recent time for which
+            to pull metrics, default: now. '
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Domains
+        security: []
+    /v3/user/tracking_domain_shorten_counts:
+      get:
+        summary: User Tracking Domain Shortens Counts
+        description: Returns the number of links, pointing to a specified tracking domain,
+          shortened (encoded) in a given time period by all bitly users.
+        operationId: userTrackingDomainShortensCounts
+        parameters:
+        - in: query
+          name: domain
+          description: a tracking domain as returned from /v3/user/tracking_domain_list.
+          type: string
+          format: string
+        - in: query
+          name: limit
+          description: 1 to 1000 (default=100).
+          type: integer
+          format: integer
+        - in: query
+          name: rollup
+          description: Return data for multiple units rolled up to a single result instead
+            of a separate value for each period of time.
+          type: boolean
+          format: boolean
+        - in: query
+          name: timezone
+          description: 'an integer hour offset from UTC (-14 to 14), or a timezone string
+            default: America/New_York.'
+          type: string
+          format: string
+        - in: query
+          name: unit
+          description: 'minute, hour, day, week or month, default: day '
+          type: string
+          format: string
+        - in: query
+          name: units
+          description: an integer representing the time units to query data for. Pass
+            -1 to return all units of time.
+          type: string
+          format: string
+        - in: query
+          name: unit_reference_ts
+          description: 'an epoch timestamp, indicating the most recent time for which
+            to pull metrics, default: now. '
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Domains
+        security: []
+  definitions: []

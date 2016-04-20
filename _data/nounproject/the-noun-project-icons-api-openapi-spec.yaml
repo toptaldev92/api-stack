@@ -1,0 +1,78 @@
+- swagger: "2.0"
+  info:
+    title: The Noun Project Icons API
+    version: ~
+  host: http://api.thenounproject.com
+  basePath: /icons
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /icons/recent_uploads:
+      get:
+        summary: Get recent icons
+        description: Returns list of most recently uploaded icons
+        operationId: getRecentIcons
+        parameters:
+        - in: query
+          name: limit
+          description: Maximum number of results
+          type: string
+          format: string
+        - in: query
+          name: offset
+          description: Number of results to displace or skip over
+          type: string
+          format: string
+        - in: query
+          name: page
+          description: Number of results of limit length to displace or skip over
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /icons/{term}:
+      get:
+        summary: Get icons by term
+        description: Returns a list of icons
+        operationId: getIconsByTerm
+        parameters:
+        - in: query
+          name: limit
+          description: Maximum number of results
+          type: string
+          format: string
+        - in: query
+          name: limit_to_public_domain
+          description: Limit results to public domain icons only
+          type: string
+          format: string
+        - in: query
+          name: offset
+          description: Number of results to displace or skip over
+          type: string
+          format: string
+        - in: query
+          name: page
+          description: Number of results of limit length to displace or skip over
+          type: string
+          format: string
+        - in: path
+          name: term
+          description: Icon term
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

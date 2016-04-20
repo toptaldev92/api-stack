@@ -1,0 +1,408 @@
+- swagger: "2.0"
+  info:
+    title: Google Tasks
+    description: The Google Google Tasks API provides developers with a powerful set
+      of API endpoints for searching, reading, and updating Google Tasks content and
+      metadata.
+    termsOfService: https://developers.google.com/google-apps/tasks/terms
+    version: ~
+  host: www.googleapis.com
+  basePath: /tasks/v1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /lists/{tasklist}/clear:
+      post:
+        summary: Move Task
+        description: Move Task
+        operationId: move-task
+        parameters:
+        - in: query
+          name: tasklist
+          description: Task list identifier. To refer to the authenticated users default
+            task list, use the special value @default.
+          type: string
+        - in: path
+          name: tasklist
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - tasks
+        security: []
+    /lists/{tasklist}/tasks:
+      get:
+        summary: Get Tasks
+        description: ""
+        operationId: ""
+        parameters:
+        - in: query
+          name: completedMax
+          description: 'Upper bound for a tasks completion date (as an RFC 3339 timestamp)
+            to filter by. Default: completedMax=2031-01-01. Use the RFC 3339 timestamp
+            format. For example: 2010-08-09T10:57:00.000-08:00'
+          type: string
+        - in: query
+          name: completedMin
+          description: 'Lower bound for a tasks completion date (as an RFC 3339 timestamp)
+            to filter by. Default: completedMin=1970-01-01. Use the RFC 3339 timestamp
+            format. For example: 2010-08-09T10:57:00.000-08:00'
+          type: string
+        - in: query
+          name: dueMax
+          description: 'Upper bound for a tasks due date (as an RFC 3339 timestamp)
+            to filter by. Default: dueMax=2031-01-01. Use the RFC 3339 timestamp format.
+            For example: 2010-08-09T10:57:00.000-08:00'
+          type: string
+        - in: query
+          name: dueMin
+          description: 'Lower bound for a tasks due date (as an RFC 3339 timestamp)
+            to filter by. Default: dueMin=1970-01-01. Use the RFC 3339 timestamp format.
+            For example: 2010-08-09T10:57:00.000-08:00'
+          type: string
+        - in: query
+          name: fields
+          description: Selector specifying a subset of fields to include in the response.
+            Use for better performance.
+          type: string
+        - in: query
+          name: maxResults
+          description: 'The maximum number of elements to return with this request.
+            Default: maxResults=20. Maximum allowable value: maxResults=100.'
+          type: string
+        - in: query
+          name: pageToken
+          description: Token specifying the result page to return. The default is to
+            return the first page.
+          type: string
+        - in: query
+          name: showCompleted
+          description: 'Specify whether or not to show completed tasks. Default: showCompleted=true'
+          type: boolean
+        - in: query
+          name: showDeleted
+          description: 'Specify whether or not to show deleted tasks. Default: showDeleted=false'
+          type: boolean
+        - in: query
+          name: showHidden
+          description: 'Specify whether or not to show hidden tasks. Default: showHidden=true'
+          type: boolean
+        - in: query
+          name: tasklist
+          description: Task list identifier. To refer to the authenticated users default
+            task list, use the special value @default.
+          type: string
+        - in: path
+          name: tasklist
+          type: string
+        - in: query
+          name: updatedMin
+          description: 'Lower bound for a tasks last modification time (as an RFC 3339
+            timestamp) to filter by. Use the RFC 3339 timestamp format. For example:
+            2010-08-09T10:57:00.000-08:00Z. The default is not to filter by last modification
+            time.'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - tasks
+        security: []
+      post:
+        summary: List Tasks
+        description: List Tasks
+        operationId: list-tasks
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        - in: query
+          name: fields
+          description: Selector specifying a subset of fields to include in the response.
+            Use for better performance.
+          type: string
+        - in: query
+          name: parent
+          description: Specify the tasks parent task ID. No parameter indicates an insertion
+            or a move to the top level of the task list.
+          type: string
+        - in: query
+          name: previous
+          description: Specify the tasks previous task ID. No parameter indicates an
+            insertion or a move to the first position in the sublist.
+          type: string
+        - in: query
+          name: tasklist
+          description: Task list identifier. To refer to the authenticated users default
+            task list, use the special value @default.
+          type: string
+        - in: path
+          name: tasklist
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - tasks
+        security: []
+    /lists/{tasklist}/tasks/{task}:
+      delete:
+        summary: Update Task
+        description: Update Task
+        operationId: update-task
+        parameters:
+        - in: query
+          name: task
+          description: Task identifier.
+          type: string
+        - in: path
+          name: task
+          type: string
+        - in: query
+          name: tasklist
+          description: Task list identifier. To refer to the authenticated users default
+            task list, use the special value @default.
+          type: string
+        - in: path
+          name: tasklist
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - tasks
+        security: []
+      get:
+        summary: Create Task
+        description: Create Task
+        operationId: create-task
+        parameters:
+        - in: query
+          name: fields
+          description: Selector specifying a subset of fields to include in the response.
+            Use for better performance.
+          type: string
+        - in: query
+          name: task
+          description: Task identifier.
+          type: string
+        - in: path
+          name: task
+          type: string
+        - in: query
+          name: tasklist
+          description: Task list identifier. To refer to the authenticated users default
+            task list, use the special value @default.
+          type: string
+        - in: path
+          name: tasklist
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - tasks
+        security: []
+      put:
+        summary: Get Task
+        description: Get Task
+        operationId: get-task
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        - in: query
+          name: fields
+          description: Selector specifying a subset of fields to include in the response.
+            Use for better performance.
+          type: string
+        - in: query
+          name: task
+          description: Task identifier.
+          type: string
+        - in: path
+          name: task
+          type: string
+        - in: query
+          name: tasklist
+          description: Task list identifier. To refer to the authenticated users default
+            task list, use the special value @default.
+          type: string
+        - in: path
+          name: tasklist
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - tasks
+        security: []
+    /lists/{tasklist}/tasks/{task}/move:
+      post:
+        summary: Delete Task
+        description: Delete Task
+        operationId: delete-task
+        parameters:
+        - in: query
+          name: fields
+          description: Selector specifying a subset of fields to include in the response.
+            Use for better performance.
+          type: string
+        - in: query
+          name: parent
+          description: Specify the tasks parent task ID. No parameter indicates an insertion
+            or a move to the top level of the task list.
+          type: string
+        - in: query
+          name: previous
+          description: Specify the tasks previous task ID. No parameter indicates an
+            insertion or a move to the first position in the sublist.
+          type: string
+        - in: query
+          name: task
+          description: Task identifier.
+          type: string
+        - in: path
+          name: task
+          type: string
+        - in: query
+          name: tasklist
+          description: Task list identifier. To refer to the authenticated users default
+            task list, use the special value @default.
+          type: string
+        - in: path
+          name: tasklist
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - tasks
+        security: []
+    /users/@me/lists:
+      get:
+        summary: Clear Tasks
+        description: Clear Tasks
+        operationId: clear-tasks
+        parameters:
+        - in: query
+          name: fields
+          description: Selector specifying a subset of fields to include in the response.
+            Use for better performance.
+          type: string
+        - in: query
+          name: maxResults
+          description: 'The maximum number of elements to return with this request.
+            Default: maxResults=20. Maximum allowable value: maxResults=100.'
+          type: string
+        - in: query
+          name: pageToken
+          description: Token specifying the result page to return. The default is to
+            return the first page.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - tasks
+        security: []
+      post:
+        summary: List User Task Lists
+        description: List User Task Lists
+        operationId: list-user-task-lists
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        - in: query
+          name: fields
+          description: Selector specifying a subset of fields to include in the response.
+            Use for better performance.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - tasks
+        security: []
+    /users/@me/lists/{tasklist}:
+      delete:
+        summary: Update User Task List
+        description: Update User Task List
+        operationId: update-user-task-list
+        parameters:
+        - in: query
+          name: tasklist
+          description: Task list identifier. To refer to the authenticated users default
+            task list, use the special value @default.
+          type: string
+        - in: path
+          name: tasklist
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - tasks
+        security: []
+      get:
+        summary: Create User Task List
+        description: Create User Task List
+        operationId: create-user-task-list
+        parameters:
+        - in: query
+          name: fields
+          description: Selector specifying a subset of fields to include in the response.
+            Use for better performance.
+          type: string
+        - in: query
+          name: tasklist
+          description: Task list identifier. To refer to the authenticated users default
+            task list, use the special value @default.
+          type: string
+        - in: path
+          name: tasklist
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - tasks
+        security: []
+      put:
+        summary: Get User Task List
+        description: Get User Task List
+        operationId: get-user-task-list
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        - in: query
+          name: fields
+          description: Selector specifying a subset of fields to include in the response.
+            Use for better performance.
+          type: string
+        - in: query
+          name: tasklist
+          description: Task list identifier. To refer to the authenticated users default
+            task list, use the special value @default.
+          type: string
+        - in: path
+          name: tasklist
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - tasks
+        security: []
+  definitions: []

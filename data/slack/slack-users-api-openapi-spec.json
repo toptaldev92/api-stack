@@ -1,0 +1,141 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Slack Users API",
+		"description": "The API for management Slack Userss",
+		"termsOfService": "https://slack.com/terms-of-service/api",
+		"version": null
+	},
+	"host": "slack.com",
+	"basePath": "/api",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/methods/users.getPresence": {
+			"get": {
+				"summary": "Gets user presence information.",
+				"description": "<td width=70%>Gets user presence information.</td>",
+				"operationId": "usersgetpresence",
+				"parameters": [{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: users:read)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "User to get presence info on. Defaults to the authed user.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["users"],
+				"security": []
+			}
+		},
+		"/methods/users.info": {
+			"get": {
+				"summary": "Gets information about a user.",
+				"description": "<td width=70%>Gets information about a user.</td>",
+				"operationId": "usersinfo",
+				"parameters": [{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: users:read)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "User to get info on",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["users"],
+				"security": []
+			}
+		},
+		"/methods/users.list": {
+			"get": {
+				"summary": "Lists all users in a Slack team.",
+				"description": "<td width=70%>Lists all users in a Slack team.</td>",
+				"operationId": "userslist",
+				"parameters": [{
+					"in": "query",
+					"name": "presence",
+					"description": "Whether to include presence data in the output",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: users:read)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["users"],
+				"security": []
+			}
+		},
+		"/methods/users.setActive": {
+			"get": {
+				"summary": "Marks a user as active.",
+				"description": "<td width=70%>Marks a user as active.</td>",
+				"operationId": "userssetactive",
+				"parameters": [{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: users:write)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["users"],
+				"security": []
+			}
+		},
+		"/methods/users.setPresence": {
+			"get": {
+				"summary": "Manually sets user presence.",
+				"description": "<td width=70%>Manually sets user presence.</td>",
+				"operationId": "userssetpresence",
+				"parameters": [{
+					"in": "query",
+					"name": "presence",
+					"description": "Either auto or away",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: users:write)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["users"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

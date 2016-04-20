@@ -1,0 +1,74 @@
+- swagger: "2.0"
+  info:
+    title: Alchemy Feed Detection API
+    description: AlchemyAPI is capable of extracting RSS/ATOM feed links embedded within
+      any web page. Use the AlchemyAPI feed link extraction API calls to automatically
+      discover syndicated content feeds associated with specific web sites or individual
+      web pages.
+    termsOfService: http://www.alchemyapi.com/company/terms.html
+    contact:
+      name: AlchemyAPI
+      url: http://www.alchemyapi.com/company/contact
+      email: questions@alchemyapi.com
+    version: v1
+  host: access.alchemyapi.com
+  basePath: /calls/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /url/URLGetFeedLinks:
+      get:
+        summary: Get Feed Links Using URL
+        description: AlchemyAPI is capable of extracting RSS/ATOM feed links embedded
+          within any web page. Use the AlchemyAPI feed link extraction API calls to
+          automatically discover syndicated content feeds associated with specific web
+          sites or individual web pages.
+        operationId: callsUrlURLGetFeedLinks
+        parameters:
+        - in: query
+          name: apikey
+          type: string
+          format: string
+        - in: query
+          name: url
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/links'
+        tags:
+        - Feeds
+        security:
+        - apikey: []
+  securityDefinitions:
+    apikey:
+      type: apiKey
+      name: apikey
+  definitions:
+    results:
+      properties:
+        status:
+          description: This is a default description.
+          type: string
+        usage:
+          description: This is a default description.
+          type: string
+        url:
+          description: This is a default description.
+          type: string
+        feeds:
+          description: This is a default description.
+          type: string
+    feed:
+      properties:
+        feed:
+          description: The feed url.
+          type: string

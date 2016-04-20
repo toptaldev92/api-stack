@@ -1,0 +1,343 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Easycron API",
+		"description": "All registered users of EasyCron can utilize our API to manage their cron jobs without logging in easycron.com.",
+		"termsOfService": "https://www.easycron.com/terms",
+		"contact": {
+			"name": "EasyCron",
+			"url": "https://www.easycron.com/contact"
+		},
+		"version": null
+	},
+	"host": "www.easycron.com",
+	"basePath": "/rest",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/add": {
+			"get": {
+				"summary": "Add a cron job.",
+				"description": "Add a cron job.",
+				"operationId": "addCronJob",
+				"parameters": [{
+					"in": "query",
+					"name": "cookies",
+					"description": "Cookie variable-value pairs. e.g. cookie1=val1; cookie2=val2;. Please have the string URL encoded. Maximum length is 65535 chars.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "cron_expression",
+					"description": "Cron expression that following the syntax defined at our Cron Expression page.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "cron_job_name",
+					"description": "The name of your cron job. Maximum length is 100 chars.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "email_me",
+					"description": "Email notification setting of the cron job. Allowed values: 0: never send email notification. 1: send email if execution fails. 2: send email after each execution.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "log_output_length",
+					"description": "Length of execution log of the cron job. Allowed values: 0: dont log cron job output. 10240: log 10 KB of the cron job output.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "posts",
+					"description": "POST variable-value pairs. e.g. ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "testfirst",
+					"description": "If to test the cron job URL first before adding. Allowed values: 0: dont test. 1: test.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "You API token. Check authentication section for details.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "URL of the cron job. Maximum length is 255 chars.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Jobs"],
+				"security": []
+			}
+		},
+		"/delete": {
+			"get": {
+				"summary": "Delete a cron job.",
+				"description": "Delete a cron job.",
+				"operationId": "deleteCronJob",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "ID of the cron job you want to delete.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "You API token. Check authentication section for details.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Jobs"],
+				"security": []
+			}
+		},
+		"/detail": {
+			"get": {
+				"summary": "Get detail of a cron job.",
+				"description": "Get detail of a cron job.",
+				"operationId": "getDetailCronJob",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "ID of the cron job you want to get detail of.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "You API token. Check authentication section for details.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Jobs"],
+				"security": []
+			}
+		},
+		"/disable": {
+			"get": {
+				"summary": "Disable a cron job",
+				"description": "Disable a cron job",
+				"operationId": "disableCronJbo",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "ID of the cron job you want to disable.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "You API token. Check authentication section for details.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Jobs"],
+				"security": []
+			}
+		},
+		"/edit": {
+			"get": {
+				"summary": "Edit a cron job.",
+				"description": "Edit a cron job.",
+				"operationId": "editCronJob",
+				"parameters": [{
+					"in": "query",
+					"name": "cookies",
+					"description": "Cookie variable-value pairs. e.g. cookie1=val1; cookie2=val2;. Please have the string URL encoded. Maximum length is 65535 chars.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "cron_expression",
+					"description": "Cron expression that following the syntax defined at our Cron Expression page.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "cron_job_name",
+					"description": "The name of your cron job. Maximum length is 100 chars.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "email_me",
+					"description": "Email notification setting of the cron job. Allowed values: 0: never send email notification. 1: send email if execution fails. 2: send email after each execution.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": " ID of the cron job you want to edit.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "log_output_length",
+					"description": "Length of execution log of the cron job. Allowed values: 0: dont log cron job output. 10240: log 10 KB of the cron job output.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "posts",
+					"description": "POST variable-value pairs. e.g.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "testfirst",
+					"description": "If to test the cron job URL first before updating. Allowed values: 0: dont test. 1: test",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "You API token. Check authentication section for details.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "URL of the cron job. Maximum length is 255 chars.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Jobs"],
+				"security": []
+			}
+		},
+		"/enable": {
+			"get": {
+				"summary": "Enable a cron job.",
+				"description": "Enable a cron job.",
+				"operationId": "enableCronJob",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "ID of the cron job you want to enable.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "You API token. Check authentication section for details.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Jobs"],
+				"security": []
+			}
+		},
+		"/logs": {
+			"get": {
+				"summary": "View the latest 10 execution logs of a cron job.",
+				"description": "View the latest 10 execution logs of a cron job.",
+				"operationId": "viewLast10Logs",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "ID of the cron job you want to delete.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "You API token. Check authentication section for details.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Jobs"],
+				"security": []
+			}
+		},
+		"/timezone": {
+			"get": {
+				"summary": "Get the timezone of a user account.",
+				"description": "Get the timezone of a user account.",
+				"operationId": "getTimzone",
+				"parameters": [{
+					"in": "query",
+					"name": "token",
+					"description": "You API token. Check authentication section for details.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Jobs"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

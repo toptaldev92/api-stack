@@ -1,0 +1,37 @@
+- swagger: "2.0"
+  info:
+    title: Facebook Graph (Debug Token) API
+    description: API for managing Facebook Debug Tokens
+    termsOfService: https://www.facebook.com/policies/
+    version: ~
+  host: graph.facebook.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /debug_token?input_token={input-token}:
+      get:
+        summary: Get Debug Token
+        description: This endpoint returns metadata about a given access token
+        operationId: debug-token
+        parameters:
+        - in: query
+          name: data
+          description: Data wrapper around the result.
+          type: string
+        - in: query
+          name: input_token
+          description: The Access Token that is being inspected. This parameter must
+            be specified.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - tokens
+        security: []
+  definitions: []

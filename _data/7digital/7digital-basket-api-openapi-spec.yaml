@@ -1,0 +1,82 @@
+- swagger: "2.0"
+  info:
+    title: 7digital Basket API
+    description: The basket API allows creation of 7digital hosted baskets which can
+      be populated with items (tracks and releases) from the 7digital catalogue.
+    termsOfService: http://developer.7digital.com/db/Attachments/Legal/Terms_of_Use/7digital%20Public%20API%20Terms.pdf
+    version: "1.2"
+  host: api.7digital.com
+  basePath: 1.2/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    basket:
+      '<h4 ':
+        summary: basket
+        description: ""
+        operationId: basket
+        parameters:
+        - in: query
+          name: ""
+          type: string
+          format: string
+        - in: query
+          name: amountDue
+          type: amountdue
+        - in: query
+          name: artistName
+          type: string
+        - in: query
+          name: basket id
+          type: guid
+        - in: query
+          name: basketId
+          description: nttttttttThe unique identifier of the basket as acquired by basket/create
+            methodnttttttt
+          type: guid
+        - in: query
+          name: basketItem id
+          type: integer
+        - in: query
+          name: basketItems
+          type: basketitems list
+        - in: query
+          name: country
+          description: The code of the country the end user resides in. The country
+            will default to GB if not provided.ntttt
+          type: iso 2
+        - in: query
+          name: discount
+          type: string
+        - in: query
+          name: itemCount
+          type: integer
+        - in: query
+          name: itemName
+          type: string
+        - in: query
+          name: package
+          type: string
+        - in: query
+          name: price
+          type: price
+        - in: query
+          name: releaseId
+          type: integer
+        - in: query
+          name: trackId
+          type: integer
+        - in: query
+          name: type
+          type: track, release
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

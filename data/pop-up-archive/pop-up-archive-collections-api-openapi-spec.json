@@ -1,0 +1,969 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Pop Up Archive Collections API",
+		"description": "This is the Pop Up Archive Collections API.",
+		"termsOfService": "https://www.popuparchive.com/terms_of_use",
+		"version": null
+	},
+	"host": "www.popuparchive.com",
+	"basePath": "/api/collections",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"api/collections": {
+			"get": {
+				"summary": "GET authorized user's private COLLECTIONS",
+				"description": "This endpoint will return a list of private collections associated with the authenticated user. NOTE: Authentication is required for this endpoint.",
+				"operationId": "api_collections",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Create a new collection",
+				"description": "This endpoint creates a new collection",
+				"operationId": "create_api_collections",
+				"parameters": [{
+					"in": "header",
+					"name": "description",
+					"description": "description of the collection"
+				},
+				{
+					"in": "header",
+					"name": "items_visible_by_default",
+					"description": "private or public collection"
+				},
+				{
+					"in": "header",
+					"name": "storage",
+					"description": "storage location of the media associated with the collection"
+				},
+				{
+					"in": "header",
+					"name": "title",
+					"description": "title of the collection"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"api/collections/public": {
+			"get": {
+				"summary": "GET public COLLECTION",
+				"description": "This endpoint will return all Pop Up Archive public collections.",
+				"operationId": "api_public_collections",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"api/collections/{collection_id}": {
+			"delete": {
+				"summary": "DELETE a COLLECTION by ID",
+				"description": "This endpoint will delete a single collection",
+				"operationId": "delete_api_collection",
+				"parameters": [{
+					"in": "path",
+					"name": "collection_id",
+					"description": "ID of the collection that is being deleted"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "GET a COLLECTION by ID",
+				"description": "This endpoint will return the medatdata for a single collection. NOTE: Authentication is required for private collections",
+				"operationId": "api_collection",
+				"parameters": [{
+					"in": "path",
+					"name": "collection_id",
+					"description": "Collection ID"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"api/collections/{collection_id}/items/": {
+			"post": {
+				"summary": "CREATE a new ITEM within a given COLLECTION",
+				"description": "This endpoint creates a new item within a given collection",
+				"operationId": "create_api_collection_item",
+				"parameters": [{
+					"in": "path",
+					"name": "collection_id",
+					"description": "ID of the collection that the item will be added to"
+				},
+				{
+					"in": "header",
+					"name": "description",
+					"description": "description of the item being added to the collection"
+				},
+				{
+					"in": "header",
+					"name": "tags",
+					"description": "tags associated with the item"
+				},
+				{
+					"in": "header",
+					"name": "title",
+					"description": "title of the item being added to the collection"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"api/collections/{collection_id}/items/{item_id}": {
+			"delete": {
+				"summary": "DELETE an ITEM by ID",
+				"description": "This endpoint deletes a single item",
+				"operationId": "delete_api_collection_item",
+				"parameters": [{
+					"in": "path",
+					"name": "collection_id",
+					"description": "ID of the COLLECTION that contains the ITEM"
+				},
+				{
+					"in": "path",
+					"name": "item_id",
+					"description": "ID of the ITEM to DELETE"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "GET an ITEM by ID",
+				"description": "This endpoint will return the metadata for an individual audio asset",
+				"operationId": "api_collection_item",
+				"parameters": [{
+					"in": "path",
+					"name": "collection_id",
+					"description": "Collection ID"
+				},
+				{
+					"in": "path",
+					"name": "item_id",
+					"description": "Item ID"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "UPDATE (PUT) an ITEM by ID",
+				"description": "This endpoint will update an item within a collection.",
+				"operationId": "update_api_collection_item",
+				"parameters": [{
+					"in": "header",
+					"name": "adopt_to_collection",
+					"description": "if moving to a collection this is the new collection_id, otherwise is the existing collection_id"
+				},
+				{
+					"in": "path",
+					"name": "collection_id",
+					"description": "Collection ID"
+				},
+				{
+					"in": "header",
+					"name": "date_broadcast",
+					"description": "String"
+				},
+				{
+					"in": "header",
+					"name": "date_created",
+					"description": "date the item was created"
+				},
+				{
+					"in": "header",
+					"name": "date_peg",
+					"description": "user generated date string"
+				},
+				{
+					"in": "header",
+					"name": "description",
+					"description": "description of the item"
+				},
+				{
+					"in": "header",
+					"name": "digital_format",
+					"description": "digital format of the original media"
+				},
+				{
+					"in": "header",
+					"name": "digital_location",
+					"description": "location where the digital media is stored"
+				},
+				{
+					"in": "header",
+					"name": "episode_title",
+					"description": "title of the episode"
+				},
+				{
+					"in": "header",
+					"name": "id",
+					"description": "item_id"
+				},
+				{
+					"in": "header",
+					"name": "identifier",
+					"description": "unique identifier created by the user"
+				},
+				{
+					"in": "path",
+					"name": "item_id",
+					"description": "Item ID"
+				},
+				{
+					"in": "header",
+					"name": "language",
+					"description": "language of the audio (en-US)"
+				},
+				{
+					"in": "header",
+					"name": "music_sound_used",
+					"description": "name of any music that was used"
+				},
+				{
+					"in": "header",
+					"name": "notes",
+					"description": "notes associated with the item"
+				},
+				{
+					"in": "header",
+					"name": "physical_format",
+					"description": "physical format of the original media"
+				},
+				{
+					"in": "header",
+					"name": "physical_location",
+					"description": "String"
+				},
+				{
+					"in": "header",
+					"name": "rights",
+					"description": "rights associated with the media"
+				},
+				{
+					"in": "header",
+					"name": "series_title",
+					"description": "title of the series"
+				},
+				{
+					"in": "header",
+					"name": "tags",
+					"description": "tags associated with the item"
+				},
+				{
+					"in": "header",
+					"name": "title",
+					"description": "title of the item"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"api/collections/{collection_id}/people/{person_id}": {
+			"delete": {
+				"summary": "DELETE a PERSON by ID",
+				"description": "This endpoint removes a person from a collection",
+				"operationId": "delete_api_collection_person",
+				"parameters": [{
+					"in": "path",
+					"name": "collection_id",
+					"description": "ID of the COLLECTION that contains the ITEM"
+				},
+				{
+					"in": "path",
+					"name": "person_id",
+					"description": "ID of the PERSON to DELETE"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Get single contributor",
+				"description": "This endpoint will return the metadata for a single contributor",
+				"operationId": "api_collection_person",
+				"parameters": [{
+					"in": "path",
+					"name": "collection_id",
+					"description": "Collection ID"
+				},
+				{
+					"in": "path",
+					"name": "person_id",
+					"description": "Person ID"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"Collections": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"description": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"items_visible_by_default": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"urls": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"storage": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				}
+			}
+		},
+		"New Collection Request": {
+			"properties": {
+				"title": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"description": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"items_visible_by_default": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"storage": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				}
+			}
+		},
+		"New Collection Response": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"description": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"items_visible_by_default": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"urls": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"storage": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"created": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				}
+			}
+		},
+		"Public Collections": {
+			"properties": {
+				"copy_media": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"created_at": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"creator_id": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"default_storage_id": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"deleted_at": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"description": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"items_visible_by_default": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"updated_at": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"upload_storage_id": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				}
+			}
+		},
+		"Persons": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				}
+			}
+		},
+		"Contributions": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"role": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"person": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				}
+			}
+		},
+		"Items": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"description": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"date_created": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"identifier": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"collection_id": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"collection_title": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"episode_title": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"series_title": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"date_broadcast": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"physical_format": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"digital_format": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"digital_location": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"physical_location": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"music_sound_used": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"date_peg": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"rights": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"duration": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"tags": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"notes": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"token": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"language": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"updated_at": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"producers": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"interviewers": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"interviewees": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"creators": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"hosts": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"guests": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"date_added": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"storage": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"extra": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"urls": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"highlights": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"audio_files": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"entities": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"contributions": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				}
+			}
+		},
+		"New Item": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"description": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"date_created": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"identifier": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"collection_id": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"collection_title": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"episode_title": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"series_title": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"date_broadcast": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"physical_format": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"digital_format": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"digital_location": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"physical_location": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"music_sound_used": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"date_peg": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"rights": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"duration": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"tags": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"notes": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"token": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"language": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"updated_at": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"producers": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"interviewers": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"interviewees": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"creators": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"hosts": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"guests": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"date_added": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"storage": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"extra": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"urls": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"highlights": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"audio_files": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"images_files": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"entities": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"contributions": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"created": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				}
+			}
+		},
+		"URLs": {
+			"properties": {
+				"self": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				}
+			}
+		},
+		"Audio Files": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"filename": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"transcode_at": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"duration": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"transcript": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"tasks": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				}
+			}
+		},
+		"Transcript": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"start_time": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"text": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"end_time": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				}
+			}
+		},
+		"Tasks": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"transcript_url": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"edit_transcript_url": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				}
+			}
+		},
+		"Entities": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"is_confirmed": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"identifier": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"score": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"category": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"extra": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				}
+			}
+		},
+		"Highlights": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"filename": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				},
+				"transcript": {
+					"description": "This is a default description.",
+					"type": "DELETE"
+				}
+			}
+		}
+	}
+}

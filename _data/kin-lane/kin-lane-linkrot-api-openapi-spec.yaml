@@ -1,0 +1,150 @@
+- swagger: "2.0"
+  info:
+    title: Linkrot
+    description: I built this system to help me address linkrot across all of my sites.
+      It allows me to record external and internal sites I link to, and monitor their
+      availability, while taking screenshots to preserve a minimal integrity.
+    termsOfService: http://stack.network/terms-of-service.html
+    version: ~
+  host: linkrot.api.kinlane.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /linkrot/:
+      get:
+        summary: get links
+        description: get links
+        operationId: getLinks
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the linkrot
+        - in: query
+          name: appkey
+          description: your appkey for accessing the linkrot
+        - in: query
+          name: host
+          description: the host to apply linkrot to
+        responses:
+          200:
+            description: OK
+        tags:
+        - Linkrot
+        security: []
+      post:
+        summary: add linkrot
+        description: add linkrot
+        operationId: addLinkrot
+        parameters:
+        - in: body
+          name: body
+          description: a list of links from the DOM in the page (need more detail)
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - Linkrot
+        security: []
+    /linkrot/checkstatus/:
+      get:
+        summary: get links
+        description: get links
+        operationId: getLinks
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the linkrot
+        - in: query
+          name: appkey
+          description: your appkey for accessing the linkrot
+        - in: query
+          name: host
+          description: the host to check status of
+        responses:
+          200:
+            description: OK
+        tags:
+        - Linkrot
+        security: []
+    /linkrot/screencapture/:
+      get:
+        summary: get links
+        description: get links
+        operationId: getLinks
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the linkrot
+        - in: query
+          name: appkey
+          description: your appkey for accessing the linkrot
+        - in: query
+          name: host
+          description: the host to capture screenshots for
+        responses:
+          200:
+            description: OK
+        tags:
+        - Linkrot
+        security: []
+    /linkrot/shortenurls/:
+      get:
+        summary: get links
+        description: get links
+        operationId: getLinks
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the linkrot
+        - in: query
+          name: appkey
+          description: your appkey for accessing the linkrot
+        - in: query
+          name: host
+          description: the host to shorten urls for
+        responses:
+          200:
+            description: OK
+        tags:
+        - Linkrot
+        security: []
+  definitions:
+    link:
+      properties:
+        url:
+          description: This is a default description.
+          type: get
+        short_url:
+          description: This is a default description.
+          type: get
+        status:
+          description: This is a default description.
+          type: get
+    shortlink:
+      properties:
+        url:
+          description: This is a default description.
+          type: get
+        short_url:
+          description: This is a default description.
+          type: get
+    screenshot:
+      properties:
+        url:
+          description: This is a default description.
+          type: get
+        screenshot:
+          description: This is a default description.
+          type: get
+    status:
+      properties:
+        status:
+          description: This is a default description.
+          type: get

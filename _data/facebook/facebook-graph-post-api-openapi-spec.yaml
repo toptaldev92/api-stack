@@ -1,0 +1,239 @@
+- swagger: "2.0"
+  info:
+    title: Facebook Graph (Post) API
+    description: API for managing Facebook Posts
+    termsOfService: https://www.facebook.com/policies/
+    version: ~
+  host: graph.facebook.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /subattachments:
+      get:
+        summary: Get Post Sub Attachments
+        description: Media content associated with a story or comment
+        operationId: post
+        responses:
+          200:
+            description: OK
+        tags:
+        - posts
+        security: []
+    /v2.5/{post-id}:
+      delete:
+        summary: Delete Post Entry
+        description: An individual entry in a profile&#039;s feed
+        operationId: post
+        responses:
+          200:
+            description: OK
+        tags:
+        - posts
+        security: []
+      get:
+        summary: Get Post Entries
+        description: An individual entry in a profile&#039;s feed
+        operationId: post
+        parameters:
+        - in: query
+          name: admin_creator
+          description: ID of admin who created the post.  Applies to pages only
+          type: string
+        - in: query
+          name: application
+          description: Information about the app this post was published by.
+          type: string
+        - in: query
+          name: call_to_action
+          description: The call to action type used in any Page posts for mobile app
+            engagement ads.
+          type: string
+        - in: query
+          name: caption
+          description: The caption of a link in the post (appears beneath the name).
+          type: string
+        - in: query
+          name: created_time
+          description: The time the post was initially published. For a post about a
+            life event, this will be the date and time of the life event
+          type: string
+        - in: query
+          name: description
+          description: A description of a link in the post (appears beneath the caption).
+          type: string
+        - in: query
+          name: feed_targeting
+          description: Object that controls news feed targeting for this post. Anyone
+            in these groups will be more likely to see this post, others will be less
+            likely, but may still see it anyway. Any of the targeting fields shown here
+            can be used, none are required (applies to Pages only).
+          type: string
+        - in: query
+          name: from
+          description: Information about the profile that posted the message.
+          type: string
+        - in: query
+          name: icon
+          description: A link to an icon representing the type of this post.
+          type: string
+        - in: query
+          name: id
+          description: The post ID
+          type: string
+        - in: query
+          name: is_hidden
+          description: If this post is marked as hidden (applies to Pages only).
+          type: string
+        - in: query
+          name: is_published
+          description: Indicates whether a scheduled post was published (applies to
+            scheduled Page Post only, for users post and instanlty published posts this
+            value is always true)
+          type: string
+        - in: query
+          name: link
+          description: The link attached to this post.
+          type: string
+        - in: query
+          name: message
+          description: The status message in the post.
+          type: string
+        - in: query
+          name: message_tags
+          description: Profiles tagged in message. This is an object with a unique key
+            for each tag in the message
+          type: string
+        - in: query
+          name: name
+          description: The name of the link.
+          type: string
+        - in: query
+          name: object_id
+          description: The ID of any uploaded photo or video attached to the post.
+          type: string
+        - in: query
+          name: picture
+          description: The picture scraped from any link included with the post.
+          type: string
+        - in: query
+          name: place
+          description: Any location information attached to the post.
+          type: string
+        - in: query
+          name: privacy
+          description: The privacy settings of the post.
+          type: string
+        - in: query
+          name: properties
+          description: A list of properties for any attached video, for example, the
+            length of the video.
+          type: string
+        - in: query
+          name: shares
+          description: The shares count of this post.
+          type: string
+        - in: query
+          name: source
+          description: A URL to any Flash movie or video file attached to the post.
+          type: string
+        - in: query
+          name: status_type
+          description: Description of the type of a status update.
+          type: string
+        - in: query
+          name: story
+          description: Text from stories not intentionally generated by users, such
+            as those generated when two people become friends, or when someone else
+            posts on the person&#039;s wall.
+          type: string
+        - in: query
+          name: story_tags
+          description: Deprecated field, same as message_tags.
+          type: string
+        - in: query
+          name: targeting
+          description: Object that limited the audience for this content. Anyone not
+            in these demographics will not be able to view this content. This will not
+            override any Page-level demographic restrictions that may be in place.
+          type: string
+        - in: query
+          name: to
+          description: Profiles mentioned or targeted in this post.
+          type: string
+        - in: query
+          name: type
+          description: A string indicating the object type of this post.
+          type: string
+        - in: query
+          name: updated_time
+          description: The time of the last change to this post, or the comments on
+            it. For a post about a life event, this will be the date and time of the
+            life event
+          type: string
+        - in: query
+          name: with_tags
+          description: Profiles tagged as being &#039;with&#039; the publisher of the
+            post.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - posts
+        security: []
+      post:
+        summary: Add Post Entry
+        description: An individual entry in a profile&#039;s feed
+        operationId: post
+        responses:
+          200:
+            description: OK
+        tags:
+        - posts
+        security: []
+    /v2.5/{post-id}/attachments:
+      get:
+        summary: Get Post Attachments
+        description: Media content associated with a story or comment
+        operationId: post
+        parameters:
+        - in: query
+          name: description
+          description: Text accompanying the attachment
+          type: string
+        - in: query
+          name: description_tags
+          description: Profiles tagged in the text accompanying the attachment
+          type: string
+        - in: query
+          name: media
+          description: Media object (photo, link etc.) contained in the attachment
+          type: string
+        - in: query
+          name: target
+          description: Object that the attachment links to
+          type: string
+        - in: query
+          name: title
+          description: Title of the attachment
+          type: string
+        - in: query
+          name: type
+          description: Type of the attachment
+          type: string
+        - in: query
+          name: url
+          description: URL of the attachment
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - posts
+        security: []
+  definitions: []

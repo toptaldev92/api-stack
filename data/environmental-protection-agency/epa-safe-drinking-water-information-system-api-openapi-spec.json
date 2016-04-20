@@ -1,0 +1,909 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "EPA Safe Drinking Water Information System API",
+		"description": "Safe Drinking Water Information System provides information on water system violations of EPA's drinking water regulations.",
+		"contact": {
+			"name": "EP Envirofacts",
+			"url": "http://www.epa.gov/enviro/index.html"
+		},
+		"version": "v1"
+	},
+	"host": "iaspub.epa.gov",
+	"basePath": "/enviro/efservice/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/ENFORCEMENT_ACTION/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_ENFORCEMENT_ACTION",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/enforcement_action"
+							}
+						}
+					}
+				},
+				"tags": ["Drinking Water"],
+				"security": []
+			}
+		},
+		"/GEOGRAPHIC_AREA/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_GEOGRAPHIC_AREA",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/geographic_area"
+							}
+						}
+					}
+				},
+				"tags": ["Drinking Water"],
+				"security": []
+			}
+		},
+		"/SERVICE_AREA/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_SERVICE_AREA",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/service_area"
+							}
+						}
+					}
+				},
+				"tags": ["Drinking Water"],
+				"security": []
+			}
+		},
+		"/VIOLATION/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_VIOLATION",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/violation"
+							}
+						}
+					}
+				},
+				"tags": ["Drinking Water"],
+				"security": []
+			}
+		},
+		"/VIOLATION_ENF_ASSOC/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_VIOLATION_ENF_ASSOC",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/violation_enf_assoc"
+							}
+						}
+					}
+				},
+				"tags": ["Drinking Water"],
+				"security": []
+			}
+		},
+		"/WATER_SYSTEM/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_WATER_SYSTEM",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/water_system"
+							}
+						}
+					}
+				},
+				"tags": ["Drinking Water"],
+				"security": []
+			}
+		},
+		"/WATER_SYSTEM_FACILITY/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_WATER_SYSTEM_FACILITY",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/water_system_facility"
+							}
+						}
+					}
+				},
+				"tags": ["Drinking Water"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"water_system": {
+			"properties": {
+				"": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ADDRESS_LINE1": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ADDRESS_LINE2": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ADMIN_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ALT_PHONE_NUMBER": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CDS_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CITIES_SERVED": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CITY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"COUNTIES_SERVED": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"COUNTRY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"DBPR_SCHEDULE_CAT_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"EMAIL_ADDR": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"EPA_REGION": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FAX_NUMBER": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"GW_SW_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"IS_GRANT_ELIGIBLE_IND": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"IS_SCHOOL_OR_DAYCARE_IND": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"IS_WHOLESALER_IND": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LT2_SCHEDULE_CAT_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"NPM_CANDIDATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ORG_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"OUTSTANDING_PERFORMER": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"OUTSTANDING_PERFORM_BEGIN_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"OWNER_TYPE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PHONE_EXT_NUMBER": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PHONE_NUMBER": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"POPULATION_SERVED_COUNT": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"POP_CAT_11_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"POP_CAT_2_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"POP_CAT_3_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"POP_CAT_4_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"POP_CAT_5_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PRIMACY_AGENCY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PRIMACY_TYPE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PRIMARY_SOURCE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWSID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWS_ACTIVITY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWS_DEACTIVATION_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWS_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWS_TYPE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SEASON_BEGIN_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SEASON_END_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SERVICE_CONNECTIONS_COUNT": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SOURCE_PROTECTION_BEGIN_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SOURCE_WATER_PROTECTION_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STATE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SUBMISSION_STATUS_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ZIP_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"water_system_facility": {
+			"properties": {
+				"": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"AVAILABILITY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"EPA_REGION": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FACILITY_ACTIVITY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FACILITY_DEACTIVATION_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FACILITY_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FACILITY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FACILITY_TYPE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FILTRATION_STATUS_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"IS_SOURCE_IND": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"IS_SOURCE_TREATED_IND": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PRIMACY_AGENCY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWSID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWS_ACTIVITY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWS_DEACTIVATION_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWS_TYPE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SELLER_PWSID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SELLER_PWS_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SELLER_TREATMENT_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STATE_FACILITY_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SUBMISSION_STATUS_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"WATER_TYPE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"violation": {
+			"properties": {
+				"": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"COMPLIANCE_STATUS_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"COMPL_PER_BEGIN_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"COMPL_PER_END_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CONTAMINANT_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CORRECTIVE_ACTION_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"EPA_REGION": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FACILITY_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"IS_HEALTH_BASED_IND": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"IS_MAJOR_VIOL_IND": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LATEST_ENFORCEMENT_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"NPM_CANDIDATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ORIGINATOR_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"POPULATION_SERVED_COUNT": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"POP_CAT_5_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PRIMACY_AGENCY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PRIMARY_SOURCE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PUBLIC_NOTIFICATION_TIER": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWSID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWS_ACTIVITY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWS_DEACTIVATION_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWS_TYPE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RTC_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RTC_ENFORCEMENT_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RULE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RULE_FAMILY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RULE_GROUP_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SAMPLE_RESULT_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SEVERITY_IND_CNT": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STATE_MCL": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"UNIT_OF_MEASURE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"VIOLATION_CATEGORY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"VIOLATION_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"VIOLATION_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"VIOL_MEASURE": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"violation_enf_assoc": {
+			"properties": {
+				"": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ENFORCEMENT_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWSID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"VIOLATION_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"enforcement_action": {
+			"properties": {
+				"": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ENFORCEMENT_ACTION_TYPE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ENFORCEMENT_COMMENT_TEXT": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ENFORCEMENT_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ENFORCEMENT_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ORIGINATOR_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWSID": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"geographic_area": {
+			"properties": {
+				"": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ANSI_ENTITY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"AREA_TYPE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CITY_SERVED": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"COUNTY_SERVED": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"EPA_REGION": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"GEO_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PRIMACY_AGENCY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWSID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWS_ACTIVITY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWS_TYPE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STATE_SERVED": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"TRIBAL_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ZIP_CODE_SERVED": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"service_area": {
+			"properties": {
+				"": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"EPA_REGION": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"IS_PRIMARY_SERVICE_AREA_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PRIMACY_AGENCY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWSID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWS_ACTIVITY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PWS_TYPE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SERVICE_AREA_TYPE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

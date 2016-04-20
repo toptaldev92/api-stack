@@ -1,0 +1,522 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "VZaar API",
+		"description": "vzaar is an online video hosting service with fantastic features that are designed for business. Deliver to mobile or the web straight from your site.",
+		"termsOfService": "http://vzaar.com/policies",
+		"version": "v1"
+	},
+	"host": "vzaar.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"nn/api/accounts/{account}.{format}nn": {
+			"get": {
+				"summary": "Accounts",
+				"description": "nnThis API call returns the details and rights for each vzaar subscription account type along with its relevant metadata. This will show the details of the packages available here: http://vzaar.com/pricingnn",
+				"operationId": "accounts",
+				"parameters": [{
+					"in": "query",
+					"name": "account is the vzaar account type. This is an integer.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"nn/api/upload/link.xmln": {
+			"post": {
+				"summary": "Upload",
+				"description": "nnThis API call allows a user to upload &amp; process video file from given url.nn",
+				"operationId": "upload",
+				"parameters": [{
+					"in": "query",
+					"name": "bitrate",
+					"description": "Specifies videos bitrate",
+					"type": "integer "
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "Specifies the description for the video",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "encoding_params",
+					"description": "Includes optional parameters",
+					"type": "node "
+				},
+				{
+					"in": "query",
+					"name": "guid",
+					"description": "Specifies the guid to operate on",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"description": "A name for the S3 object that stores the uploaded file",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "size_id",
+					"description": "Specifies the size for the video to be encoded in",
+					"type": "integer "
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "Specifies the title for the video",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "transcoding",
+					"description": "True forces vzaar to transcode the video, false makes vzaar use the original source file",
+					"type": "boolean "
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "Specifies the url to video file",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "width",
+					"description": "Specifies videos width",
+					"type": "integer "
+				},
+				{
+					"in": "query",
+					"name": "XML/JSON",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "success"
+					},
+					"422": {
+						"description": "failure"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"nn/api/users/{username}.{format}nn": {
+			"get": {
+				"summary": "Users",
+				"description": "nnThis API call returns the users public details along with its relevant metadata.nn",
+				"operationId": "users",
+				"parameters": [{
+					"in": "query",
+					"name": "username is the vzaar login name for the user. Note: This must be the actual username and not the email address",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					},
+					"422": {
+						"description": "failure"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"nn/api/videosnn": {
+			"post": {
+				"summary": "Videos",
+				"description": "nnThis API call tells the vzaar system to process a newly uploaded video. This will encode it if necessary and then provide a vzaar video idea back.nn",
+				"operationId": "videos",
+				"parameters": [{
+					"in": "query",
+					"name": "description",
+					"description": "Specifies the description for the video",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "guid",
+					"description": "Specifies the guid to operate on",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "labels",
+					"description": "Comma separated list of labels to be assigned to the video",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "profile",
+					"description": "Specifies the size for the video to be encoded in. If not specified, this will use the vzaar default or the user default (if set)",
+					"type": "integer "
+				},
+				{
+					"in": "query",
+					"name": "replace_id",
+					"description": "Specifies the video ID of an existing video that you wish to replace with the new video.",
+					"type": "integer "
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "Specifies the title for the video",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "transcoding",
+					"description": "True forces vzaar to transcode the video, false makes vzaar use the original source file (available only for mp4 and flv files)",
+					"type": "boolean "
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"nn/api/videos/signaturenn": {
+			"get": {
+				"summary": "Videos",
+				"description": "nnThis API call allows a user to request a GUID and an AWS S3 signature. With these credentials the user will then be able upload a file into vzaar video storage area.nnThe response for this must be parsed and used in the Upload step. The upload will fail if any of these details are incorrect.nn",
+				"operationId": "videos",
+				"parameters": [{
+					"in": "query",
+					"name": "flash_request",
+					"description": "Allows you to use a flash uploader",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "max_file_size",
+					"description": "Specifies the maximum file size (in bytes) to limit the upload too. This gets written into the policy document",
+					"type": "integer "
+				},
+				{
+					"in": "query",
+					"name": "success_action_redirect",
+					"description": "Specifies if to redirect to a URL after a successful post instead of issuing a 201. See the upload documentation for more details on this.",
+					"type": "string "
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"nn/api/videos/{video}.{format}nn": {
+			"get": {
+				"summary": "Videos",
+				"description": "nnvzaar uses the oEmbed open standard for allowing 3rd parties to integrated with the vzaar. You can use the vzaar video URL to easily obtain the appropriate embed code for that video. To find out more about oEmbed view the specification here: http://oembed.com/nn",
+				"operationId": "videos",
+				"parameters": [{
+					"in": "query",
+					"name": "borderless,",
+					"description": "If set to true and the user has sufficient privileges, the size and embeded code returned will be be for a borderless player. Else ignored",
+					"type": "boolean "
+				},
+				{
+					"in": "query",
+					"name": "embed_only,",
+					"description": "When returning data, only include the minimum fields and embed code possible. Use this if you want the quickest and smallest return code for embedding in it",
+					"type": "boolean "
+				},
+				{
+					"in": "query",
+					"name": "videos is the vzaar video number for that video.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"nnhttps://{bucket}.s3.amazonaws.com/nn": {
+			"post": {
+				"summary": "{bucket}.s3.amazonaws.com",
+				"description": "nnThis API call allows a user to save a file to vzaars storage space on AWS S3, so that it can then be processed.nnThe arguments used to submit the upload HTTP POST must be obtained from the sign call.nnThe sign call includes an expiration time. It is suggest the upload is done immediately after requesting the arguments to keep within this expiration window.nn",
+				"operationId": "buckets3amazonawscom",
+				"parameters": [{
+					"in": "query",
+					"name": "acl",
+					"description": "The access control policy to apply to the uploaded file",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "AWSAccessKeyId",
+					"description": "The vzaar AWS Access Key Identifier credential",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "bucket",
+					"description": "The vzaar bucket that has been allocated for this file",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "content",
+					"description": "type string",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "Filename",
+					"description": "The name of the file passed through from the flash. Flash does this automatically.",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"description": "A name for the S3 object that will store the uploaded files data",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "policy",
+					"description": "A Base64",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "signature",
+					"description": "A signature value that authorizes the form and proves that only vzaar could have created it. This value is calculated by signing the policy document",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "success_action_redirect",
+					"description": "Specifies if to redirect to a URL after a successful post instead of issuing a 201. If set this must be the same as specified in the sign call",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "success_action_status",
+					"description": "The status code returned to the client upon successful upload if success_action_redirect is not specified. This must be set to 201 to match the policy document we create",
+					"type": "integer "
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/{username}/videos.xml": {
+			"get": {
+				"summary": "{username}",
+				"description": "nnThis API call returns a list of the users active videos along with its relevant metadata. 20 videos are returned by default but this is customisable.nn",
+				"operationId": "username",
+				"parameters": [{
+					"in": "query",
+					"name": "count,",
+					"description": "Specifies the number of videos to retrieve per page. Default is 20. Maximum is 100",
+					"type": "integer "
+				},
+				{
+					"in": "query",
+					"name": "page,",
+					"description": "Specifies the page number to retrieve. Default is 1",
+					"type": "integer "
+				},
+				{
+					"in": "query",
+					"name": "sort,",
+					"description": "Values can be asc (least_recent) or desc (most_recent). Defaults to desc",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "status,",
+					"description": "Values can be processing, active, replaced, deleted and failed",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "title,",
+					"description": "Return only videos with title containing given string",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "username is the vzaar login name for the user. Note: This must be the actual username and not the email address",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"SummarynnThis API call allows a user to edit or change details about a video in the system.nnEndpoint / urlnn/api/videos/{video}.xmlnn": {
+			"put": {
+				"summary": "Api",
+				"description": "nn",
+				"operationId": "api",
+				"parameters": [{
+					"in": "query",
+					"name": "description",
+					"description": "Specifies the new description for the video",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "method",
+					"description": "Specifies to use the HTTP PUT method if submitting the call via HTTP POST",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "private",
+					"description": "Marks the video as private or public",
+					"type": "boolean "
+				},
+				{
+					"in": "query",
+					"name": "seo_url",
+					"description": "Specifies the SEO url for the video",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "Specifies the new title for the video",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "videos is the vzaar video number for that video.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"SummarynnThis API call deletes a video from an users account.nnEndpoint / urlnn/api/videos/{video}.xmlnn": {
+			"post  delete": {
+				"summary": "Api",
+				"description": "nn",
+				"operationId": "api",
+				"parameters": [{
+					"in": "query",
+					"name": "method",
+					"description": "Specifies to use the HTTP DELETE method if submitting the call via HTTP POST",
+					"type": "string "
+				},
+				{
+					"in": "query",
+					"name": "videos is the vzaar video number for that video.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"SummarynThis API call allows a user to generate new thumbnail for given video.nn /api/videos/{video}/generate_thumb.xmlnn": {
+			"summarythis api c": {
+				"summary": "Videos",
+				"description": "n",
+				"operationId": "videos",
+				"parameters": [{
+					"in": "query",
+					"name": "thumb_time",
+					"description": "Specifies time for the frame",
+					"type": "integer "
+				}],
+				"responses": {
+					"202": {
+						"description": "success"
+					},
+					"422": {
+						"description": "failure"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"SummarynThis API call allows a user to upload new thumbnail for given video id.nn /api/videos/{video_id}/upload_thumb.xmlnn": {
+			"summarythis api call allows a user to upload ": {
+				"summary": "Videos",
+				"description": "n",
+				"operationId": "videos",
+				"responses": {
+					"202": {
+						"description": "success"
+					},
+					"422": {
+						"description": "failure"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"SummarynThis API call allows a user to upload subtitle for given video.nn /api/subtitle/upload.xmlnn": {
+			"summarythis api c": {
+				"summary": "Subtitle",
+				"description": "n",
+				"operationId": "subtitle",
+				"responses": {
+					"202": {
+						"description": "success"
+					},
+					"422": {
+						"description": "failure"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

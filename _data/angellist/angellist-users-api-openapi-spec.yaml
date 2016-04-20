@@ -1,0 +1,200 @@
+- swagger: "2.0"
+  info:
+    title: AngelList Users API
+    description: Access and manage users on the AngelList platform.
+    termsOfService: https://angel.co/terms
+    contact:
+      name: AngelList
+      url: https://angel.co/api
+      email: api@angel.co
+    version: v1
+  host: api.angel.co
+  basePath: /1/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /users/search:
+      get:
+        summary: User Search
+        description: User Search
+        operationId: users
+        parameters:
+        - in: query
+          name: slug
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/users'
+        tags:
+        - Users
+        security:
+        - AngelListAuth: []
+    /users/{user_id}:
+      get:
+        summary: Get User
+        description: Get User
+        operationId: user
+        parameters:
+        - in: path
+          name: user_id
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/users'
+        tags:
+        - Users
+        security:
+        - AngelListAuth: []
+    /users/{user_id}/followers:
+      get:
+        summary: Get User Followers
+        description: Get User Followers
+        operationId: userFollowers
+        parameters:
+        - in: path
+          name: user_id
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/users'
+        tags:
+        - Users
+        security:
+        - AngelListAuth: []
+    /users/{user_id}/followers/ids:
+      get:
+        summary: Get User Follower IDs
+        description: Get User Follower IDs
+        operationId: users
+        parameters:
+        - in: path
+          name: user_id
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/users'
+        tags:
+        - Users
+        security:
+        - AngelListAuth: []
+    /users/{user_id}/following:
+      get:
+        summary: Get Users Following
+        description: Get Users Following
+        operationId: usersFollowing
+        parameters:
+        - in: path
+          name: user_id
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/users'
+        tags:
+        - Users
+        security:
+        - AngelListAuth: []
+    /users/{user_id}/following/ids:
+      get:
+        summary: Get User Following IDs
+        description: Get User Following IDs
+        operationId: userFollowingIDs
+        parameters:
+        - in: path
+          name: user_id
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/users'
+        tags:
+        - Users
+        security:
+        - AngelListAuth: []
+  securityDefinitions:
+    AngelListAuth:
+      type: oauth2
+      flow: accessCode
+      authorizationUrl: https://angel.co/api/oauth/authorize
+      tokenUrl: https://angel.co/api/oauth/token
+  definitions:
+    ids:
+      properties:
+        ids:
+          description: This is a default description.
+          type: string
+    locations:
+      properties:
+        locations:
+          description: This is a default description.
+          type: string
+        angellist_url:
+          description: This is a default description.
+          type: string
+        display_name:
+          description: This is a default description.
+          type: string
+        id:
+          description: This is a default description.
+          type: string
+        name:
+          description: This is a default description.
+          type: string
+        tag_type:
+          description: This is a default description.
+          type: string
+    users:
+      properties:
+        angellist_url:
+          description: This is a default description.
+          type: string
+        bio:
+          description: This is a default description.
+          type: string
+        follower_count:
+          description: This is a default description.
+          type: string
+        id:
+          description: This is a default description.
+          type: string
+        image:
+          description: This is a default description.
+          type: string
+        name:
+          description: This is a default description.
+          type: string
+        users:
+          description: This is a default description.
+          type: string

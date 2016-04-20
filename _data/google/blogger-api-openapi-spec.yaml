@@ -1,0 +1,1707 @@
+- swagger: "2.0"
+  info:
+    title: Blogger API
+    description: API for access to the data within Blogger.
+    contact:
+      name: Google
+      url: https://google.com
+    version: v3
+  host: www.googleapis.com
+  basePath: /blogger/v3
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /blogs/byurl:
+      get:
+        summary: Get Blog by URL
+        description: Retrieve a Blog by URL.
+        operationId: blogger.blogs.getByUrl
+        parameters:
+        - in: query
+          name: url
+          description: The URL of the blog to retrieve.
+          type: string
+          format: string
+        - in: query
+          name: view
+          description: Access level with which to view the blog. Note that some fields
+            require elevated access.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      parameters:
+        summary: Get Blog by URL Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+    /blogs/{blogId}:
+      get:
+        summary: Get Blog
+        description: Gets one blog by ID.
+        operationId: blogger.blogs.get
+        parameters:
+        - in: path
+          name: blogId
+          description: The ID of the blog to get.
+          type: string
+          format: string
+        - in: query
+          name: maxPosts
+          description: Maximum number of posts to pull back with the blog.
+          type: string
+          format: string
+        - in: query
+          name: view
+          description: Access level with which to view the blog. Note that some fields
+            require elevated access.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      parameters:
+        summary: Get Blog Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+    /blogs/{blogId}/comments:
+      get:
+        summary: Get Blog Comments
+        description: Retrieves the comments for a blog, across all posts, possibly filtered.
+        operationId: blogger.comments.listByBlog
+        parameters:
+        - in: path
+          name: blogId
+          description: ID of the blog to fetch comments from.
+          type: string
+          format: string
+        - in: query
+          name: endDate
+          description: Latest date of comment to fetch, a date-time with RFC 3339 formatting.
+          type: string
+          format: string
+        - in: query
+          name: fetchBodies
+          description: Whether the body content of the comments is included.
+          type: string
+          format: string
+        - in: query
+          name: maxResults
+          description: Maximum number of comments to include in the result.
+          type: string
+          format: string
+        - in: query
+          name: pageToken
+          description: Continuation token if request is paged.
+          type: string
+          format: string
+        - in: query
+          name: startDate
+          description: Earliest date of comment to fetch, a date-time with RFC 3339
+            formatting.
+          type: string
+          format: string
+        - in: query
+          name: status
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      parameters:
+        summary: Get Blog Comment Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+    /blogs/{blogId}/pages:
+      get:
+        summary: Get Pages
+        description: Retrieves the pages for a blog, optionally including non-LIVE statuses.
+        operationId: blogger.pages.list
+        parameters:
+        - in: path
+          name: blogId
+          description: ID of the blog to fetch Pages from.
+          type: string
+          format: string
+        - in: query
+          name: fetchBodies
+          description: Whether to retrieve the Page bodies.
+          type: string
+          format: string
+        - in: query
+          name: maxResults
+          description: Maximum number of Pages to fetch.
+          type: string
+          format: string
+        - in: query
+          name: pageToken
+          description: Continuation token if the request is paged.
+          type: string
+          format: string
+        - in: query
+          name: status
+          type: string
+          format: string
+        - in: query
+          name: view
+          description: Access level with which to view the returned result. Note that
+            some fields require elevated access.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - pages
+        security: []
+      parameters:
+        summary: Get Pages Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - pages
+        security: []
+      post:
+        summary: Add Page
+        description: Add a page.
+        operationId: blogger.pages.insert
+        parameters:
+        - in: path
+          name: blogId
+          description: ID of the blog to add the page to.
+          type: string
+          format: string
+        - in: query
+          name: isDraft
+          description: 'Whether to create the page as a draft (default: false).'
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - pages
+        security: []
+    /blogs/{blogId}/pages/{pageId}:
+      delete:
+        summary: Delete Page
+        description: Delete a page by ID.
+        operationId: blogger.pages.delete
+        parameters:
+        - in: path
+          name: blogId
+          description: The ID of the Blog.
+          type: string
+          format: string
+        - in: path
+          name: pageId
+          description: The ID of the Page.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - pages
+        security: []
+      get:
+        summary: Get Page
+        description: Gets one blog page by ID.
+        operationId: blogger.pages.get
+        parameters:
+        - in: path
+          name: blogId
+          description: ID of the blog containing the page.
+          type: string
+          format: string
+        - in: path
+          name: pageId
+          description: The ID of the page to get.
+          type: string
+          format: string
+        - in: query
+          name: view
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - pages
+        security: []
+      parameters:
+        summary: Get Page Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - pages
+        security: []
+      patch:
+        summary: Update Page
+        description: Update a page. This method supports patch semantics.
+        operationId: blogger.pages.patch
+        parameters:
+        - in: path
+          name: blogId
+          description: The ID of the Blog.
+          type: string
+          format: string
+        - in: path
+          name: pageId
+          description: The ID of the Page.
+          type: string
+          format: string
+        - in: query
+          name: publish
+          description: 'Whether a publish action should be performed when the page is
+            updated (default: false).'
+          type: string
+          format: string
+        - in: query
+          name: revert
+          description: 'Whether a revert action should be performed when the page is
+            updated (default: false).'
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - pages
+        security: []
+      put:
+        summary: Get Page
+        description: Update a page.
+        operationId: blogger.pages.update
+        parameters:
+        - in: path
+          name: blogId
+          description: The ID of the Blog.
+          type: string
+          format: string
+        - in: path
+          name: pageId
+          description: The ID of the Page.
+          type: string
+          format: string
+        - in: query
+          name: publish
+          description: 'Whether a publish action should be performed when the page is
+            updated (default: false).'
+          type: string
+          format: string
+        - in: query
+          name: revert
+          description: 'Whether a revert action should be performed when the page is
+            updated (default: false).'
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - pages
+        security: []
+    /blogs/{blogId}/pages/{pageId}/publish:
+      parameters:
+        summary: Publish Page Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - pages
+        security: []
+      post:
+        summary: Publish Page
+        description: Publishes a draft page.
+        operationId: blogger.pages.publish
+        parameters:
+        - in: path
+          name: blogId
+          description: The ID of the blog.
+          type: string
+          format: string
+        - in: path
+          name: pageId
+          description: The ID of the page.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - pages
+        security: []
+    /blogs/{blogId}/pages/{pageId}/revert:
+      parameters:
+        summary: Revert Page Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - pages
+        security: []
+      post:
+        summary: Revert Page
+        description: Revert a published or scheduled page to draft state.
+        operationId: blogger.pages.revert
+        parameters:
+        - in: path
+          name: blogId
+          description: The ID of the blog.
+          type: string
+          format: string
+        - in: path
+          name: pageId
+          description: The ID of the page.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - pages
+        security: []
+    /blogs/{blogId}/pageviews:
+      get:
+        summary: Get Blog Page Views
+        description: Retrieve pageview stats for a Blog.
+        operationId: blogger.pageViews.get
+        parameters:
+        - in: path
+          name: blogId
+          description: The ID of the blog to get.
+          type: string
+          format: string
+        - in: query
+          name: range
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      parameters:
+        summary: Get Blog Page View Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+    /blogs/{blogId}/posts:
+      get:
+        summary: Get Blog Posts
+        description: Retrieves a list of posts, possibly filtered.
+        operationId: blogger.posts.list
+        parameters:
+        - in: path
+          name: blogId
+          description: ID of the blog to fetch posts from.
+          type: string
+          format: string
+        - in: query
+          name: endDate
+          description: Latest post date to fetch, a date-time with RFC 3339 formatting.
+          type: string
+          format: string
+        - in: query
+          name: fetchBodies
+          description: 'Whether the body content of posts is included (default: true).
+            This should be set to false when the post bodies are not required, to help
+            minimize traffic.'
+          type: string
+          format: string
+        - in: query
+          name: fetchImages
+          description: Whether image URL metadata for each post is included.
+          type: string
+          format: string
+        - in: query
+          name: labels
+          description: Comma-separated list of labels to search for.
+          type: string
+          format: string
+        - in: query
+          name: maxResults
+          description: Maximum number of posts to fetch.
+          type: string
+          format: string
+        - in: query
+          name: orderBy
+          description: Sort search results
+          type: string
+          format: string
+        - in: query
+          name: pageToken
+          description: Continuation token if the request is paged.
+          type: string
+          format: string
+        - in: query
+          name: startDate
+          description: Earliest post date to fetch, a date-time with RFC 3339 formatting.
+          type: string
+          format: string
+        - in: query
+          name: status
+          description: Statuses to include in the results.
+          type: string
+          format: string
+        - in: query
+          name: view
+          description: Access level with which to view the returned result. Note that
+            some fields require escalated access.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      parameters:
+        summary: Get Blog Post Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      post:
+        summary: Update Blog Post
+        description: Add a post.
+        operationId: blogger.posts.insert
+        parameters:
+        - in: path
+          name: blogId
+          description: ID of the blog to add the post to.
+          type: string
+          format: string
+        - in: query
+          name: fetchBody
+          description: 'Whether the body content of the post is included with the result
+            (default: true).'
+          type: string
+          format: string
+        - in: query
+          name: fetchImages
+          description: 'Whether image URL metadata for each post is included in the
+            returned result (default: false).'
+          type: string
+          format: string
+        - in: query
+          name: isDraft
+          description: 'Whether to create the post as a draft (default: false).'
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+    /blogs/{blogId}/posts/bypath:
+      get:
+        summary: Get Blog Post By Path
+        description: Retrieve a Post by Path.
+        operationId: blogger.posts.getByPath
+        parameters:
+        - in: path
+          name: blogId
+          description: ID of the blog to fetch the post from.
+          type: string
+          format: string
+        - in: query
+          name: maxComments
+          description: Maximum number of comments to pull back on a post.
+          type: string
+          format: string
+        - in: query
+          name: path
+          description: Path of the Post to retrieve.
+          type: string
+          format: string
+        - in: query
+          name: view
+          description: Access level with which to view the returned result. Note that
+            some fields require elevated access.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      parameters:
+        summary: Get Blog Post By Path Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+    /blogs/{blogId}/posts/search:
+      get:
+        summary: Search Blog Posts
+        description: Search for a post.
+        operationId: blogger.posts.search
+        parameters:
+        - in: path
+          name: blogId
+          description: ID of the blog to fetch the post from.
+          type: string
+          format: string
+        - in: query
+          name: fetchBodies
+          description: 'Whether the body content of posts is included (default: true).
+            This should be set to false when the post bodies are not required, to help
+            minimize traffic.'
+          type: string
+          format: string
+        - in: query
+          name: orderBy
+          description: Sort search results
+          type: string
+          format: string
+        - in: query
+          name: q
+          description: Query terms to search this blog for matching posts.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      parameters:
+        summary: Search Blog Post Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+    /blogs/{blogId}/posts/{postId}:
+      delete:
+        summary: Delete Blog Post
+        description: Delete a post by ID.
+        operationId: blogger.posts.delete
+        parameters:
+        - in: path
+          name: blogId
+          description: The ID of the Blog.
+          type: string
+          format: string
+        - in: path
+          name: postId
+          description: The ID of the Post.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      get:
+        summary: Get Blog Post
+        description: Get a post by ID.
+        operationId: blogger.posts.get
+        parameters:
+        - in: path
+          name: blogId
+          description: ID of the blog to fetch the post from.
+          type: string
+          format: string
+        - in: query
+          name: fetchBody
+          description: 'Whether the body content of the post is included (default: true).
+            This should be set to false when the post bodies are not required, to help
+            minimize traffic.'
+          type: string
+          format: string
+        - in: query
+          name: fetchImages
+          description: 'Whether image URL metadata for each post is included (default:
+            false).'
+          type: string
+          format: string
+        - in: query
+          name: maxComments
+          description: Maximum number of comments to pull back on a post.
+          type: string
+          format: string
+        - in: path
+          name: postId
+          description: The ID of the post
+          type: string
+          format: string
+        - in: query
+          name: view
+          description: Access level with which to view the returned result. Note that
+            some fields require elevated access.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      parameters:
+        summary: blog Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      patch:
+        summary: Update Blog Post
+        description: Update a post. This method supports patch semantics.
+        operationId: blogger.posts.patch
+        parameters:
+        - in: path
+          name: blogId
+          description: The ID of the Blog.
+          type: string
+          format: string
+        - in: query
+          name: fetchBody
+          description: 'Whether the body content of the post is included with the result
+            (default: true).'
+          type: string
+          format: string
+        - in: query
+          name: fetchImages
+          description: 'Whether image URL metadata for each post is included in the
+            returned result (default: false).'
+          type: string
+          format: string
+        - in: query
+          name: maxComments
+          description: Maximum number of comments to retrieve with the returned post.
+          type: string
+          format: string
+        - in: path
+          name: postId
+          description: The ID of the Post.
+          type: string
+          format: string
+        - in: query
+          name: publish
+          description: 'Whether a publish action should be performed when the post is
+            updated (default: false).'
+          type: string
+          format: string
+        - in: query
+          name: revert
+          description: 'Whether a revert action should be performed when the post is
+            updated (default: false).'
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      put:
+        summary: Update Blog Post
+        description: Update a post.
+        operationId: blogger.posts.update
+        parameters:
+        - in: path
+          name: blogId
+          description: The ID of the Blog.
+          type: string
+          format: string
+        - in: query
+          name: fetchBody
+          description: 'Whether the body content of the post is included with the result
+            (default: true).'
+          type: string
+          format: string
+        - in: query
+          name: fetchImages
+          description: 'Whether image URL metadata for each post is included in the
+            returned result (default: false).'
+          type: string
+          format: string
+        - in: query
+          name: maxComments
+          description: Maximum number of comments to retrieve with the returned post.
+          type: string
+          format: string
+        - in: path
+          name: postId
+          description: The ID of the Post.
+          type: string
+          format: string
+        - in: query
+          name: publish
+          description: 'Whether a publish action should be performed when the post is
+            updated (default: false).'
+          type: string
+          format: string
+        - in: query
+          name: revert
+          description: 'Whether a revert action should be performed when the post is
+            updated (default: false).'
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+    /blogs/{blogId}/posts/{postId}/comments:
+      get:
+        summary: Get Blog Post Comments
+        description: Retrieves the comments for a post, possibly filtered.
+        operationId: blogger.comments.list
+        parameters:
+        - in: path
+          name: blogId
+          description: ID of the blog to fetch comments from.
+          type: string
+          format: string
+        - in: query
+          name: endDate
+          description: Latest date of comment to fetch, a date-time with RFC 3339 formatting.
+          type: string
+          format: string
+        - in: query
+          name: fetchBodies
+          description: Whether the body content of the comments is included.
+          type: string
+          format: string
+        - in: query
+          name: maxResults
+          description: Maximum number of comments to include in the result.
+          type: string
+          format: string
+        - in: query
+          name: pageToken
+          description: Continuation token if request is paged.
+          type: string
+          format: string
+        - in: path
+          name: postId
+          description: ID of the post to fetch posts from.
+          type: string
+          format: string
+        - in: query
+          name: startDate
+          description: Earliest date of comment to fetch, a date-time with RFC 3339
+            formatting.
+          type: string
+          format: string
+        - in: query
+          name: status
+          type: string
+          format: string
+        - in: query
+          name: view
+          description: Access level with which to view the returned result. Note that
+            some fields require elevated access.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      parameters:
+        summary: Get Blog Post Comments Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+    /blogs/{blogId}/posts/{postId}/comments/{commentId}:
+      delete:
+        summary: Delete Blog Post Comment
+        description: Delete a comment by ID.
+        operationId: blogger.comments.delete
+        parameters:
+        - in: path
+          name: blogId
+          description: The ID of the Blog.
+          type: string
+          format: string
+        - in: path
+          name: commentId
+          description: The ID of the comment to delete.
+          type: string
+          format: string
+        - in: path
+          name: postId
+          description: The ID of the Post.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      get:
+        summary: 'Get Blog Post Comment '
+        description: Gets one comment by ID.
+        operationId: blogger.comments.get
+        parameters:
+        - in: path
+          name: blogId
+          description: ID of the blog to containing the comment.
+          type: string
+          format: string
+        - in: path
+          name: commentId
+          description: The ID of the comment to get.
+          type: string
+          format: string
+        - in: path
+          name: postId
+          description: ID of the post to fetch posts from.
+          type: string
+          format: string
+        - in: query
+          name: view
+          description: 'Access level for the requested comment (default: READER). Note
+            that some comments will require elevated permissions, for example comments
+            where the parent posts which is in a draft state, or comments that are pending
+            moderation.'
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      parameters:
+        summary: Get Blog Post Comment Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+    /blogs/{blogId}/posts/{postId}/comments/{commentId}/approve:
+      parameters:
+        summary: Approve Blog Post Comments Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      post:
+        summary: Approve Blog Post Comments
+        description: Marks a comment as not spam.
+        operationId: blogger.comments.approve
+        parameters:
+        - in: path
+          name: blogId
+          description: The ID of the Blog.
+          type: string
+          format: string
+        - in: path
+          name: commentId
+          description: The ID of the comment to mark as not spam.
+          type: string
+          format: string
+        - in: path
+          name: postId
+          description: The ID of the Post.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+    /blogs/{blogId}/posts/{postId}/comments/{commentId}/removecontent:
+      parameters:
+        summary: Remove Blog Post Comment Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      post:
+        summary: Remove Blog Post Comment
+        description: Removes the content of a comment.
+        operationId: blogger.comments.removeContent
+        parameters:
+        - in: path
+          name: blogId
+          description: The ID of the Blog.
+          type: string
+          format: string
+        - in: path
+          name: commentId
+          description: The ID of the comment to delete content from.
+          type: string
+          format: string
+        - in: path
+          name: postId
+          description: The ID of the Post.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+    /blogs/{blogId}/posts/{postId}/comments/{commentId}/spam:
+      parameters:
+        summary: Mark Blog Post Comment As Spam Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      post:
+        summary: Mark Blog Post Comment As Spam
+        description: Marks a comment as spam.
+        operationId: blogger.comments.markAsSpam
+        parameters:
+        - in: path
+          name: blogId
+          description: The ID of the Blog.
+          type: string
+          format: string
+        - in: path
+          name: commentId
+          description: The ID of the comment to mark as spam.
+          type: string
+          format: string
+        - in: path
+          name: postId
+          description: The ID of the Post.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+    /blogs/{blogId}/posts/{postId}/publish:
+      parameters:
+        summary: Publish Blog Post Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      post:
+        summary: Publish Blog Post
+        description: Publishes a draft post, optionally at the specific time of the
+          given publishDate parameter.
+        operationId: blogger.posts.publish
+        parameters:
+        - in: path
+          name: blogId
+          description: The ID of the Blog.
+          type: string
+          format: string
+        - in: path
+          name: postId
+          description: The ID of the Post.
+          type: string
+          format: string
+        - in: query
+          name: publishDate
+          description: Optional date and time to schedule the publishing of the Blog.
+            If no publishDate parameter is given, the post is either published at the
+            a previously saved schedule date (if present), or the current time. If a
+            future date is given, the post will be scheduled to be published.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+    /blogs/{blogId}/posts/{postId}/revert:
+      parameters:
+        summary: Revert Blog Post Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+      post:
+        summary: Revert Blog Post
+        description: Revert a published or scheduled post to draft state.
+        operationId: blogger.posts.revert
+        parameters:
+        - in: path
+          name: blogId
+          description: The ID of the Blog.
+          type: string
+          format: string
+        - in: path
+          name: postId
+          description: The ID of the Post.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - blog
+        security: []
+    /users/{userId}:
+      get:
+        summary: Get User
+        description: Gets one user by ID.
+        operationId: blogger.users.get
+        parameters:
+        - in: path
+          name: userId
+          description: The ID of the user to get.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+      parameters:
+        summary: Get User Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+    /users/{userId}/blogs:
+      get:
+        summary: Get User Blogs
+        description: Retrieves a list of blogs, possibly filtered.
+        operationId: blogger.blogs.listByUser
+        parameters:
+        - in: query
+          name: fetchUserInfo
+          description: Whether the response is a list of blogs with per-user information
+            instead of just blogs.
+          type: string
+          format: string
+        - in: query
+          name: role
+          description: User access types for blogs to include in the results, e.g. AUTHOR
+            will return blogs where the user has author level access. If no roles are
+            specified, defaults to ADMIN and AUTHOR roles.
+          type: string
+          format: string
+        - in: query
+          name: status
+          description: 'Blog statuses to include in the result (default: Live blogs
+            only). Note that ADMIN access is required to view deleted blogs.'
+          type: string
+          format: string
+        - in: path
+          name: userId
+          description: ID of the user whose blogs are to be fetched. Either the word
+            self (sans quote marks) or the users profile identifier.
+          type: string
+          format: string
+        - in: query
+          name: view
+          description: Access level with which to view the blogs. Note that some fields
+            require elevated access.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+      parameters:
+        summary: Get User Blogs Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+    /users/{userId}/blogs/{blogId}:
+      get:
+        summary: Get User Blog
+        description: Gets one blog and user info pair by blogId and userId.
+        operationId: blogger.blogUserInfos.get
+        parameters:
+        - in: path
+          name: blogId
+          description: The ID of the blog to get.
+          type: string
+          format: string
+        - in: query
+          name: maxPosts
+          description: Maximum number of posts to pull back with the blog.
+          type: string
+          format: string
+        - in: path
+          name: userId
+          description: ID of the user whose blogs are to be fetched. Either the word
+            self (sans quote marks) or the users profile identifier.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+      parameters:
+        summary: Get User Blog Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+    /users/{userId}/blogs/{blogId}/posts:
+      get:
+        summary: Get User Blog Posts
+        description: Retrieves a list of post and post user info pairs, possibly filtered.
+          The post user info contains per-user information about the post, such as access
+          rights, specific to the user.
+        operationId: blogger.postUserInfos.list
+        parameters:
+        - in: path
+          name: blogId
+          description: ID of the blog to fetch posts from.
+          type: string
+          format: string
+        - in: query
+          name: endDate
+          description: Latest post date to fetch, a date-time with RFC 3339 formatting.
+          type: string
+          format: string
+        - in: query
+          name: fetchBodies
+          description: Whether the body content of posts is included. Default is false.
+          type: string
+          format: string
+        - in: query
+          name: labels
+          description: Comma-separated list of labels to search for.
+          type: string
+          format: string
+        - in: query
+          name: maxResults
+          description: Maximum number of posts to fetch.
+          type: string
+          format: string
+        - in: query
+          name: orderBy
+          description: Sort order applied to search results. Default is published.
+          type: string
+          format: string
+        - in: query
+          name: pageToken
+          description: Continuation token if the request is paged.
+          type: string
+          format: string
+        - in: query
+          name: startDate
+          description: Earliest post date to fetch, a date-time with RFC 3339 formatting.
+          type: string
+          format: string
+        - in: query
+          name: status
+          type: string
+          format: string
+        - in: path
+          name: userId
+          description: ID of the user for the per-user information to be fetched. Either
+            the word self (sans quote marks) or the users profile identifier.
+          type: string
+          format: string
+        - in: query
+          name: view
+          description: Access level with which to view the returned result. Note that
+            some fields require elevated access.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+      parameters:
+        summary: Get User Blog Posts Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+    /users/{userId}/blogs/{blogId}/posts/{postId}:
+      get:
+        summary: Get Blog Post
+        description: Gets one post and user info pair, by post ID and user ID. The post
+          user info contains per-user information about the post, such as access rights,
+          specific to the user.
+        operationId: blogger.postUserInfos.get
+        parameters:
+        - in: path
+          name: blogId
+          description: The ID of the blog.
+          type: string
+          format: string
+        - in: query
+          name: maxComments
+          description: Maximum number of comments to pull back on a post.
+          type: string
+          format: string
+        - in: path
+          name: postId
+          description: The ID of the post to get.
+          type: string
+          format: string
+        - in: path
+          name: userId
+          description: ID of the user for the per-user information to be fetched. Either
+            the word self (sans quote marks) or the users profile identifier.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+      parameters:
+        summary: Get Blog Post Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - users
+        security: []
+  definitions:
+    Blog:
+      properties:
+        customMetaData:
+          description: This is a default description.
+          type: parameters
+        description:
+          description: This is a default description.
+          type: parameters
+        id:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        locale:
+          description: This is a default description.
+          type: parameters
+        name:
+          description: This is a default description.
+          type: parameters
+        pages:
+          description: This is a default description.
+          type: parameters
+        posts:
+          description: This is a default description.
+          type: parameters
+        published:
+          description: This is a default description.
+          type: parameters
+        selfLink:
+          description: This is a default description.
+          type: parameters
+        status:
+          description: This is a default description.
+          type: parameters
+        updated:
+          description: This is a default description.
+          type: parameters
+        url:
+          description: This is a default description.
+          type: parameters
+    BlogList:
+      properties:
+        blogUserInfos:
+          description: This is a default description.
+          type: parameters
+        items:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+    BlogPerUserInfo:
+      properties:
+        blogId:
+          description: This is a default description.
+          type: parameters
+        hasAdminAccess:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        photosAlbumKey:
+          description: This is a default description.
+          type: parameters
+        role:
+          description: This is a default description.
+          type: parameters
+        userId:
+          description: This is a default description.
+          type: parameters
+    BlogUserInfo:
+      properties:
+        kind:
+          description: This is a default description.
+          type: parameters
+    Comment:
+      properties:
+        author:
+          description: This is a default description.
+          type: parameters
+        blog:
+          description: This is a default description.
+          type: parameters
+        content:
+          description: This is a default description.
+          type: parameters
+        id:
+          description: This is a default description.
+          type: parameters
+        inReplyTo:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        post:
+          description: This is a default description.
+          type: parameters
+        published:
+          description: This is a default description.
+          type: parameters
+        selfLink:
+          description: This is a default description.
+          type: parameters
+        status:
+          description: This is a default description.
+          type: parameters
+        updated:
+          description: This is a default description.
+          type: parameters
+    CommentList:
+      properties:
+        etag:
+          description: This is a default description.
+          type: parameters
+        items:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        nextPageToken:
+          description: This is a default description.
+          type: parameters
+        prevPageToken:
+          description: This is a default description.
+          type: parameters
+    Page:
+      properties:
+        author:
+          description: This is a default description.
+          type: parameters
+        blog:
+          description: This is a default description.
+          type: parameters
+        content:
+          description: This is a default description.
+          type: parameters
+        etag:
+          description: This is a default description.
+          type: parameters
+        id:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        published:
+          description: This is a default description.
+          type: parameters
+        selfLink:
+          description: This is a default description.
+          type: parameters
+        status:
+          description: This is a default description.
+          type: parameters
+        title:
+          description: This is a default description.
+          type: parameters
+        updated:
+          description: This is a default description.
+          type: parameters
+        url:
+          description: This is a default description.
+          type: parameters
+    PageList:
+      properties:
+        etag:
+          description: This is a default description.
+          type: parameters
+        items:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        nextPageToken:
+          description: This is a default description.
+          type: parameters
+    Pageviews:
+      properties:
+        blogId:
+          description: This is a default description.
+          type: parameters
+        counts:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+    Post:
+      properties:
+        author:
+          description: This is a default description.
+          type: parameters
+        blog:
+          description: This is a default description.
+          type: parameters
+        content:
+          description: This is a default description.
+          type: parameters
+        customMetaData:
+          description: This is a default description.
+          type: parameters
+        etag:
+          description: This is a default description.
+          type: parameters
+        id:
+          description: This is a default description.
+          type: parameters
+        images:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        labels:
+          description: This is a default description.
+          type: parameters
+        location:
+          description: This is a default description.
+          type: parameters
+        published:
+          description: This is a default description.
+          type: parameters
+        readerComments:
+          description: This is a default description.
+          type: parameters
+        replies:
+          description: This is a default description.
+          type: parameters
+        selfLink:
+          description: This is a default description.
+          type: parameters
+        status:
+          description: This is a default description.
+          type: parameters
+        title:
+          description: This is a default description.
+          type: parameters
+        titleLink:
+          description: This is a default description.
+          type: parameters
+        updated:
+          description: This is a default description.
+          type: parameters
+        url:
+          description: This is a default description.
+          type: parameters
+    PostList:
+      properties:
+        etag:
+          description: This is a default description.
+          type: parameters
+        items:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        nextPageToken:
+          description: This is a default description.
+          type: parameters
+    PostPerUserInfo:
+      properties:
+        blogId:
+          description: This is a default description.
+          type: parameters
+        hasEditAccess:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        postId:
+          description: This is a default description.
+          type: parameters
+        userId:
+          description: This is a default description.
+          type: parameters
+    PostUserInfo:
+      properties:
+        kind:
+          description: This is a default description.
+          type: parameters
+    PostUserInfosList:
+      properties:
+        items:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        nextPageToken:
+          description: This is a default description.
+          type: parameters
+    User:
+      properties:
+        about:
+          description: This is a default description.
+          type: parameters
+        blogs:
+          description: This is a default description.
+          type: parameters
+        created:
+          description: This is a default description.
+          type: parameters
+        displayName:
+          description: This is a default description.
+          type: parameters
+        id:
+          description: This is a default description.
+          type: parameters
+        kind:
+          description: This is a default description.
+          type: parameters
+        locale:
+          description: This is a default description.
+          type: parameters
+        selfLink:
+          description: This is a default description.
+          type: parameters
+        url:
+          description: This is a default description.
+          type: parameters

@@ -1,0 +1,155 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Mogreet Messaging API",
+		"description": "The Mogreet API lets you send and receive text or multimedia messages in minutes. ",
+		"version": null
+	},
+	"host": "api.mogreet.com",
+	"basePath": "/moms/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"system.ping": {
+			"get": {
+				"summary": "System Ping",
+				"description": "Pings the Mogreet system",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "client_id",
+					"description": "Your client id. Log onto the Campaign Manager to access your client id.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "token",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" SMS",
+				" MMS"],
+				"security": []
+			}
+		},
+		"transaction.send": {
+			"get": {
+				"summary": "Transaction Send",
+				"description": "Sends a message.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "callback",
+					"description": "If provided with a valid URL, any errors with the transaction will be sent to this URL via XML over HTTP. See description below.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "campaign_id",
+					"description": "An ID connected to a specific campaign setup in the Campaign Manager or provided by your account representative.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "client_id",
+					"description": "Your client id. Log onto the Campaign Manager to access your client id.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "content_id",
+					"description": "An integer value associated to a piece of content ingested through the Campaign Manager. Youu2019ll find all your content ids under the media section. (Optional, used for SMS and MMS delivering audio, image or video)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "content_url",
+					"description": "A publicly accessible URL of an image, audio or video. MOMS will automagically ingest the content and deliver it as specified by the campaign flow. (Optional, used for SMS and MMS delivering audio, image or video)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "message",
+					"description": "Depending on your campaign set up, the message presented to the u201ctou201d user.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "to",
+					"description": "The mobile number (MSISDN) of the handset you would like to send to.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Your token. Log onto the Campaign Manager to access your token.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" SMS",
+				" MMS"],
+				"security": []
+			}
+		},
+		"user.lookup": {
+			"get": {
+				"summary": "User Lookup",
+				"description": "Looks up a user",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "client_id",
+					"description": "Your client id. Log onto the Campaign Manager to access your client id.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "number",
+					"description": "A mobile number (MSISDN).",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Your token. Log onto the Campaign Manager to access your token.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" SMS",
+				" MMS"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

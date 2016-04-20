@@ -1,0 +1,437 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Twitter Status API",
+		"description": "This is the status API for Twitter.",
+		"termsOfService": "http://dev.twitter.com/overview/terms",
+		"contact": {
+			"name": "Twitter",
+			"url": "https://dev.twitter.com/discussions"
+		},
+		"version": "1.1"
+	},
+	"host": "api.twitter.com",
+	"basePath": "/1.1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/statuses/home_timeline/": {
+			"get": {
+				"summary": "statuses/home_timeline",
+				"description": "Returns a collection of the most recent Tweets and retweets posted by the authenticating user and the users they follow. The home timeline is central to how most users interact with the Twitter service.Up to 800 Tweets are obtainable on the home timeline. It is more volatile for users that follow many users or follow users who tweet frequently.See Working with Timelines for instructions on traversing timelines efficiently.",
+				"operationId": "statusesHomeTimeline",
+				"parameters": [{
+					"in": "query",
+					"name": "contributor_details"
+				},
+				{
+					"in": "query",
+					"name": "count"
+				},
+				{
+					"in": "query",
+					"name": "exclude_replies"
+				},
+				{
+					"in": "query",
+					"name": "include_entities"
+				},
+				{
+					"in": "query",
+					"name": "max_id"
+				},
+				{
+					"in": "query",
+					"name": "since_id"
+				},
+				{
+					"in": "query",
+					"name": "trim_user"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/statuses/lookup/": {
+			"get": {
+				"summary": "statuses/lookup",
+				"description": "Returns fully-hydrated tweet objects for up to 100 tweets per request, as specified by comma-separated values passed to the id parameter.This method is especially useful to get the details (hydrate) a collection of Tweet IDs.GET statuses / show / :id is used to retrieve a single tweet object.There are a few things to note when using this method.You must be following a protected user to be able to see their most recent tweets. If you don&#8217;t follow a protected user their status will be removed.The order of tweet IDs may not match the order of tweets in the returned array.If a requested tweet is unknown or deleted, then that tweet will not be returned in the results list, unless the map parameter is set to true, in which case it will be returned with a value of null.If none of your lookup criteria matches valid tweet IDs an empty array will be returned for map=false.You are strongly encouraged to use a POST for larger requests.",
+				"operationId": "statusesLookup",
+				"parameters": [{
+					"in": "query",
+					"name": "id"
+				},
+				{
+					"in": "query",
+					"name": "include_entities"
+				},
+				{
+					"in": "query",
+					"name": "map"
+				},
+				{
+					"in": "query",
+					"name": "trim_user"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/statuses/mentions_timeline/": {
+			"get": {
+				"summary": "statuses/mentions_timeline",
+				"description": "Returns the 20 most recent mentions (tweets containing a users&#8217;s @screen_name) for the authenticating user.The timeline returned is the equivalent of the one seen when you view your mentions on twitter.com.This method can only return up to 800 tweets.See Working with Timelines for instructions on traversing timelines.",
+				"operationId": "statusesMentionsTimeline",
+				"parameters": [{
+					"in": "query",
+					"name": "contributor_details"
+				},
+				{
+					"in": "query",
+					"name": "count"
+				},
+				{
+					"in": "query",
+					"name": "include_entities"
+				},
+				{
+					"in": "query",
+					"name": "max_id"
+				},
+				{
+					"in": "query",
+					"name": "since_id"
+				},
+				{
+					"in": "query",
+					"name": "trim_user"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/statuses/oembed/": {
+			"get": {
+				"summary": "statuses/oembed",
+				"description": "Returns a single Tweet, specified by either a Tweet web URL or the Tweet ID, in an oEmbed-compatible format. The returned HTML snippet will be automatically recognized as an Embedded Tweet when Twitter&#8217;s widget JavaScript is included on the page.The oEmbed endpoint allows customization of the final appearance of an Embedded Tweet by setting the corresponding properties in HTML markup to be interpreted by Twitter&#8217;s JavaScript bundled with the HTML response by default. The format of the returned markup may change over time as Twitter adds new features or adjusts its Tweet representation.The Tweet fallback markup is meant to be cached on your servers for up to the suggested cache lifetime specified in the cache_age.The oEmbed endpoint supports unauthenticated requests at api.twitter.com/1/statuses/oembed.{format} suitable for distributed software and general discovery. Individual sites should request oEmbed data using an application token.",
+				"operationId": "statusesOembed",
+				"parameters": [{
+					"in": "query",
+					"name": ""
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/statuses/retweet/:id/": {
+			"post": {
+				"summary": "statuses/retweet/:id",
+				"description": "Retweets a tweet. Returns the original tweet with retweet details embedded.Usage Notes:This method is subject to update limits. A HTTP 403 will be returned if this limit as been hit.Twitter will ignore attempts to perform duplicate retweets.The retweet_count will be current as of when the payload is generated and may not reflect the exact count. It is intended as an approximation.",
+				"operationId": "statusesRetweetid",
+				"parameters": [{
+					"in": "query",
+					"name": "id"
+				},
+				{
+					"in": "query",
+					"name": "trim_user"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/statuses/retweeters/ids/": {
+			"get": {
+				"summary": "statuses/retweeters/ids",
+				"description": "Returns a collection of up to 100 user IDs belonging to users who have retweeted the tweet specified by the id parameter.This method offers similar data to GET statuses / retweets / :id.",
+				"operationId": "statusesRetweetersIds",
+				"parameters": [{
+					"in": "query",
+					"name": "cursor"
+				},
+				{
+					"in": "query",
+					"name": "id"
+				},
+				{
+					"in": "query",
+					"name": "stringify_ids"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/statuses/retweets/:id/": {
+			"get": {
+				"summary": "statuses/retweets/:id",
+				"description": "Returns a collection of the 100 most recent retweets of the tweet specified by the id parameter.",
+				"operationId": "statusesRetweetsid",
+				"parameters": [{
+					"in": "query",
+					"name": "count"
+				},
+				{
+					"in": "query",
+					"name": "id"
+				},
+				{
+					"in": "query",
+					"name": "trim_user"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/statuses/retweets_of_me/": {
+			"get": {
+				"summary": "statuses/retweets_of_me",
+				"description": "Returns the most recent tweets authored by the authenticating user that have been retweeted by others. This timeline is a subset of the user&#8217;s GET statuses / user_timeline.See Working with Timelines for instructions on traversing timelines.",
+				"operationId": "statusesRetweetsOfMe",
+				"parameters": [{
+					"in": "query",
+					"name": "count"
+				},
+				{
+					"in": "query",
+					"name": "include_entities"
+				},
+				{
+					"in": "query",
+					"name": "include_user_entities"
+				},
+				{
+					"in": "query",
+					"name": "max_id"
+				},
+				{
+					"in": "query",
+					"name": "since_id"
+				},
+				{
+					"in": "query",
+					"name": "trim_user"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/statuses/show/:id/": {
+			"get": {
+				"summary": "statuses/show/:id",
+				"description": "Returns a single Tweet, specified by the id parameter. The Tweet&#8217;s author will also be embedded within the tweet.See GET statuses / lookup for getting Tweets in bulk (up to 100 per call). See also Embeddable Timelines, Embeddable Tweets, and GET statuses/oembed for tools to render Tweets according to Display Requirements.About GeoIf there is no geotag for a status, then there will be an empty &lt;geo/&gt; or geo : {}. This can only be populated if the user has used the Geotagging API to send a statuses/update.The JSON response mostly uses conventions laid out in GeoJSON. Unfortunately, the coordinates that Twitter renders are reversed from the GeoJSON specification (GeoJSON specifies a longitude then a latitude, whereas we are currently representing it as a latitude then a longitude). Our JSON renders as: geo: { type:Point, coordinates:[37.78029, -122.39697] }ContributorsIf there are no contributors for a Tweet, then there will be an empty  or contributors : {}. This field will only be populated if the user has contributors enabled on his or her account &#8212; this is a beta feature that is not yet generally available to all.This object contains an array of user IDs for users who have contributed to this status (an example of a status that has been contributed to is this one). In practice, there is usually only one ID in this array. The JSON renders as such contributors:[8285392].",
+				"operationId": "statusesShowid",
+				"parameters": [{
+					"in": "query",
+					"name": ""
+				},
+				{
+					"in": "query",
+					"name": "id"
+				},
+				{
+					"in": "query",
+					"name": "include_entities"
+				},
+				{
+					"in": "query",
+					"name": "trim_user"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/statuses/update/": {
+			"post": {
+				"summary": "statuses/update",
+				"description": "Updates the authenticating user&#8217;s current status, also known as tweeting.For each update attempt, the update text is compared with the authenticating user&#8217;s recent tweets. Any attempt that would result in duplication will be blocked, resulting in a 403 error. Therefore, a user cannot submit the same status twice in a row.While not rate limited by the API a user is limited in the number of tweets they can create at a time. If the number of updates posted by the user reaches the current allowed limit this method will return an HTTP 403 error.About GeoAny geo-tagging parameters in the update will be ignored if geo_enabled for the user is false (this is the default setting for all users unless the user has enabled geolocation in their settings)The number of digits passed the decimal separator passed to lat, up to 8, will be tracked so that the lat is returned in a status object it will have the same number of digits after the decimal separator.Please make sure to use to use a decimal point as the separator (and not the decimal comma) for the latitude and the longitude - usage of the decimal comma will cause the geo-tagged portion of the status update to be dropped.For JSON, the response mostly uses conventions described in GeoJSON. Unfortunately, the geo object has coordinates that Twitter renderers are reversed from the GeoJSON specification (GeoJSON specifies a longitude then a latitude, whereas we are currently representing it as a latitude then a longitude. Our JSON renders as: geo: { type:Point, coordinates:[37.78217, -122.40062] }The coordinates object is replacing the geo object (no deprecation date has been set for the geo object yet) &#8212; the difference is that the coordinates object, in JSON, is now rendered correctly in GeoJSON.If a place_id is passed into the status update, then that place will be attached to the status. If no place_id was explicitly provided, but latitude and longitude are, we attempt to implicitly provide a place by calling geo/reverse_geocode.Users will have the ability, from their settings page, to remove all the geotags from all their tweets en masse. Currently we are not doing any automatic scrubbing nor providing a method to remove geotags from individual tweets.",
+				"operationId": "statusesUpdate",
+				"parameters": [{
+					"in": "query",
+					"name": "display_coordinates"
+				},
+				{
+					"in": "query",
+					"name": "in_reply_to_status_id"
+				},
+				{
+					"in": "query",
+					"name": "lat"
+				},
+				{
+					"in": "query",
+					"name": "long"
+				},
+				{
+					"in": "query",
+					"name": "media_ids"
+				},
+				{
+					"in": "query",
+					"name": "place_id"
+				},
+				{
+					"in": "query",
+					"name": "possibly_sensitive"
+				},
+				{
+					"in": "query",
+					"name": "status"
+				},
+				{
+					"in": "query",
+					"name": "trim_user"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/statuses/update_with_media/": {
+			"post": {
+				"summary": "statuses/update_with_media",
+				"description": "This endpoint has been deprecated. Please refer to Uploading Media: Multiple Photos for uploading one or more media entities.Updates the authenticating user&#8217;s current status and attaches media for upload. In other words, it creates a Tweet with a picture attached.Unlike POST statuses/update, this method expects raw multipart data. Your POST request&#8217;s Content-Type should be set to multipart/form-data with the media[] parameter .See Uploading Media for a guide to using this method.The Tweet text will be rewritten to include the media URL(s), which will reduce the number of characters allowed in the Tweet text. If the URL(s) cannot be appended without text truncation, the tweet will be rejected and this method will return an HTTP 403 error.Important: In API v1.1, you now use api.twitter.com as the domain instead of upload.twitter.com. Use of SSL is required with this method.Important: In API v1.1, you now use api.twitter.com as the domain instead of upload.twitter.com.Users are limited to a specific daily media upload limit.. Requests to this endpoint will return the following headers with information regarding the user&#8217;s current media upload limits:X-MediaRateLimit-Limit - Indicates the total pieces of media the current user may upload before the time indicated in X-MediaRateLimit-Reset.X-MediaRateLimit-Remaining - The remaining pieces of media the current user may upload before the time indicated in X-MediaRateLimit-Reset.X-MediaRateLimit-Reset - A UTC-based timestamp (in seconds) indicating when X-MediaRateLimit-Remaining will reset to the value in X-MediaRateLimit-Limit and the user can resume uploading media.If the user is over the daily media limit, this method will return an HTTP 403 error. In addition to media upload limits, the user is still limited in the number of statuses they can publish daily. If the user tries to exceed the number of updates allowed, this method will also return an HTTP 403 error, similar to POST statuses / update.OAuth is handled differently for POST messages. See Uploading Media for more details on this.Example RequestNote: The OAuth tool does not support multipart requests, so you will not be able to use it to generate an example request to this endpoint. An example request has been included to demonstrate the multipart request format.POST /1.1/statuses/update_with_media.json HTTP/1.1nHost: api.twitter.comnUser-Agent: Go http packagenContent-Length: 15532nAuthorization: OAuth oauth_consumer_key=..., oauth_nonce=..., oauth_signature=..., oauth_signature_method=HMAC-SHA1, oauth_timestamp=1347058301, oauth_token=..., oauth_version=1.0nContent-Type: multipart/form-data;boundary=cce6735153bf14e47e999e68bb183e70a1fa7fc89722fc1efdf03a917340nAccept-Encoding: gzipnn--cce6735153bf14e47e999e68bb183e70a1fa7fc89722fc1efdf03a917340nContent-Disposition: form-data; name=status Hello 2012-09-07 15:51:41.375247 -0700 PDT!n--cce6735153bf14e47e999e68bb183e70a1fa7fc89722fc1efdf03a917340nnContent-Type: application/octet-streamnContent-Disposition: form-data; name=media[]; filename=media.png ...n--cce6735153bf14e47e999e68bb183e70a1fa7fc89722fc1efdf03a917340-- {n  contributors: null, n  coordinates: null, n  created_at: Fri Sep 07 22:46:18 +0000 2012, n  entities: {n    hashtags: [], n    media: [n      {n        display_url: pic.twitter.com/lX5LVZO, n        expanded_url: http://twitter.com/fakekurrik/status/244204973972410368/photo/1, n        id: 244204973989187584, n        id_str: 244204973989187584, n        indices: [n          44, n          63n        ], n        media_url: http://pbs.twimg.com/media/A2OXIUcCUAAXj9k.png, n        media_url_https: https://pbs.twimg.com/media/A2OXIUcCUAAXj9k.png, n        sizes: {n          large: {n            h: 175, n            resize: fit, n            w: 333n          }, n          medium: {n            h: 175, n            resize: fit, n            w: 333n          }, n          small: {n            h: 175, n            resize: fit, n            w: 333n          }, n          thumb: {n            h: 150, n            resize: crop, n            w: 150n          }n        }, n        type: photo, n        url: http://t.co/lX5LVZOn      }n    ], n    urls: [], n    user_mentions: []n  }, n  favorited: false, n  geo: null, n  id: 244204973972410368, n  id_str: 244204973972410368, n  in_reply_to_screen_name: null, n  in_reply_to_status_id: null, n  in_reply_to_status_id_str: null, n  in_reply_to_user_id: null, n  in_reply_to_user_id_str: null, n  place: null, n  possibly_sensitive: false, n  retweet_count: 0, n  retweeted: false, n  source: Fakekurriks Test Application, n  text: Hello 2012-09-07 15:48:27.889593 -0700 PDT! http://t.co/lX5LVZO, n  truncated: false, n  user: {n    contributors_enabled: false, n    created_at: Fri Sep 09 16:13:20 +0000 2011, n    default_profile: false, n    default_profile_image: false, n    description: I am just a testing account, following me probably wont gain you very much, n    entities: {n      description: {n        urls: []n      }, n      url: {n        urls: [n          {n            display_url: null, n            expanded_url: null, n            indices: [n              0, n              24n            ], n            url: http://blog.roomanna.comn          }n        ]n      }n    }, n    favourites_count: 1, n    follow_request_sent: false, n    followers_count: 2, n    following: false, n    friends_count: 5, n    geo_enabled: true, n    id: 370773112, n    id_str: 370773112, n    is_translator: false, n    lang: en, n    listed_count: 0, n    location: Trapped in factory, n    name: fakekurrik, n    notifications: false, n    profile_background_color: C0DEED, n    profile_background_image_url: http://a0.twimg.com/profile_background_images/616512781/iarz5lvj7lg7zpg3zv8j.jpeg, n    profile_background_image_url_https: https://si0.twimg.com/profile_background_images/616512781/iarz5lvj7lg7zpg3zv8j.jpeg, n    profile_background_tile: true, n    profile_image_url: http://a0.twimg.com/profile_images/2440719659/x47xdzkguqxr1w1gg5un_normal.png, n    profile_image_url_https: https://si0.twimg.com/profile_images/2440719659/x47xdzkguqxr1w1gg5un_normal.png, n    profile_link_color: 0084B4, n    profile_sidebar_border_color: C0DEED, n    profile_sidebar_fill_color: FFFFFF, n    profile_text_color: 333333, n    profile_use_background_image: true, n    protected: true, n    screen_name: fakekurrik, n    show_all_inline_media: false, n    statuses_count: 546, n    time_zone: Pacific Time (US &amp; Canada), n    url: http://blog.roomanna.com, n    utc_offset: -28800, n    verified: falsen  }n}",
+				"operationId": "statusesUpdateWithMedia",
+				"parameters": [{
+					"in": "query",
+					"name": "display_coordinates"
+				},
+				{
+					"in": "query",
+					"name": "in_reply_to_status_id"
+				},
+				{
+					"in": "query",
+					"name": "lat"
+				},
+				{
+					"in": "query",
+					"name": "long"
+				},
+				{
+					"in": "query",
+					"name": "media[]"
+				},
+				{
+					"in": "query",
+					"name": "place_id"
+				},
+				{
+					"in": "query",
+					"name": "possibly_sensitive"
+				},
+				{
+					"in": "query",
+					"name": "status"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/statuses/user_timeline/": {
+			"get": {
+				"summary": "statuses/user_timeline",
+				"description": "Returns a collection of the most recent Tweets posted by the user indicated by the screen_name or user_id parameters.User timelines belonging to protected users may only be requested when the authenticated user either &#8220;owns&#8221; the timeline or is an approved follower of the owner.The timeline returned is the equivalent of the one seen when you view a user&#8217;s profile on twitter.com.This method can only return up to 3,200 of a user&#8217;s most recent Tweets. Native retweets of other statuses by the user is included in this total, regardless of whether include_rts is set to false when requesting this resource.See Working with Timelines for instructions on traversing timelines.See Embeddable Timelines, Embeddable Tweets, and GET statuses/oembed for tools to render Tweets according to Display Requirements.",
+				"operationId": "statusesUserTimeline",
+				"parameters": [{
+					"in": "query",
+					"name": "contributor_details"
+				},
+				{
+					"in": "query",
+					"name": "count"
+				},
+				{
+					"in": "query",
+					"name": "exclude_replies"
+				},
+				{
+					"in": "query",
+					"name": "include_rts"
+				},
+				{
+					"in": "query",
+					"name": "max_id"
+				},
+				{
+					"in": "query",
+					"name": "screen_name"
+				},
+				{
+					"in": "query",
+					"name": "since_id"
+				},
+				{
+					"in": "query",
+					"name": "trim_user"
+				},
+				{
+					"in": "query",
+					"name": "user_id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

@@ -1,0 +1,180 @@
+- swagger: "2.0"
+  info:
+    title: EhrScape Clinical Decision Support APIs
+    description: Lightweight CDS Services to support execution of clinical guidelines
+    version: ~
+  host: rest.ehrscape.com
+  basePath: /ThinkCDS/services/CDSResources
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /guide:
+      get:
+        summary: List available guides.
+        description: ""
+        operationId: getGuides
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /guide/execute/{guideId}/{ehrIds}:
+      get:
+        summary: Execute guide on given EHR IDs
+        description: ""
+        operationId: executeGuide
+        parameters:
+        - in: header
+          name: Authorization
+          description: ThinkEhr credentials as HTTP Basic Authorization.
+          type: string
+          format: string
+        - in: header
+          name: Ehr-Session
+          description: Active Ehr Session token.
+          type: string
+          format: string
+        - in: path
+          name: ehrIds
+          description: Comma separated list of EHR ids, * for all.
+          type: string
+          format: string
+        - in: path
+          name: guideId
+          description: Guide ID.
+          type: string
+          format: string
+        - in: query
+          name: persist
+          description: Should save result of execution into EHR?
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /guide/upload:
+      post:
+        summary: Uploads new guide definition.
+        description: ""
+        operationId: uploadGuide
+        parameters:
+        - in: form
+          name: guide
+          description: Base64 encoded guide definition.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /guide/{guideId}:
+      delete:
+        summary: Deletes guide.
+        description: ""
+        operationId: deleteGuide
+        parameters:
+        - in: path
+          name: guideId
+          description: Guide ID.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /guide/{guideId}/gdl:
+      get:
+        summary: Returns guide definition.
+        description: Guideline is defined in GDL. <a href=https://github.com/openEHR/gdl-tools/blob/master/cds/docs/specs/gdl-specs.pdf?raw=true
+          target=_blank>GDL Specification</a>
+        operationId: getGuideGDL
+        parameters:
+        - in: path
+          name: guideId
+          description: Guide ID.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /guide/{guideId}/toggleGuidePersistence:
+      put:
+        summary: Toggles default behaviour of persisting guide execution result.
+        description: ""
+        operationId: toggleGuidePersistence
+        parameters:
+        - in: path
+          name: guideId
+          description: Guide ID.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions:
+    GuideExecutionResults:
+      properties:
+        ehrId:
+          description: This is a default description.
+          type: string
+        results:
+          description: This is a default description.
+          type: string
+    Guide:
+      properties:
+        references:
+          description: This is a default description.
+          type: string
+        purpose:
+          description: This is a default description.
+          type: string
+        use:
+          description: This is a default description.
+          type: string
+        misuse:
+          description: This is a default description.
+          type: string
+        persistResult:
+          description: This is a default description.
+          type: string
+        description:
+          description: This is a default description.
+          type: string
+        name:
+          description: This is a default description.
+          type: string
+        id:
+          description: This is a default description.
+          type: string
+    GuideExecutionResult:
+      properties:
+        archetypeElementReference:
+          description: This is a default description.
+          type: string
+        archetypeId:
+          description: This is a default description.
+          type: string
+        name:
+          description: This is a default description.
+          type: string
+        value:
+          description: This is a default description.
+          type: string

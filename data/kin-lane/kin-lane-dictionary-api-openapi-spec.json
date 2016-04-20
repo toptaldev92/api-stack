@@ -1,0 +1,431 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Dictionary",
+		"description": "This is an Dictionary for all my Dictionary entries. I use a single Dictionary system to manage all my sites. Based upon tagging, I then publish each post out to its respective Github Page based repo.",
+		"termsOfService": "http://stack.network/terms-of-service.html",
+		"version": null
+	},
+	"host": "dictionary.api.kinlane.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/dictionary/": {
+			"get": {
+				"summary": "all Dictionaries",
+				"description": "all Dictionaries",
+				"operationId": "getDictionaries",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "query",
+					"description": "a text query to search across Dictionary"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Dictionary"],
+				"security": []
+			},
+			"post": {
+				"summary": "add a Dictionary post",
+				"description": "add a Dictionary post",
+				"operationId": "addDictionary",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "author",
+					"description": "author of the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"description": "full text for the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "curated_id",
+					"description": "full text for the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "footer",
+					"description": "curated id the Dictionary originated from"
+				},
+				{
+					"in": "query",
+					"name": "post_date",
+					"description": "date the Dictionary was posted"
+				},
+				{
+					"in": "query",
+					"name": "status",
+					"description": "status of the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "summary",
+					"description": "summary for the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "ttle for the Dictionary"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Dictionary"],
+				"security": []
+			}
+		},
+		"/dictionary/published/": {
+			"get": {
+				"summary": "published Dictionaries",
+				"description": "published Dictionaries",
+				"operationId": "getPublishedDictionaries",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the Dictionary"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Dictionary"],
+				"security": []
+			}
+		},
+		"/dictionary/tags/{tag}/dictionary/": {
+			"get": {
+				"summary": "Dictionary tags by week Dictionaries",
+				"description": "Dictionary tags by week Dictionaries",
+				"operationId": "getDictionaryTagCDictionary",
+				"parameters": [{
+					"in": "path",
+					"name": "tag",
+					"description": "the tag to filter by"
+				},
+				{
+					"in": "query",
+					"name": "week",
+					"description": "the week to filter by, defaults to this week"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			}
+		},
+		"/dictionary/{Dictionary_id}/": {
+			"delete": {
+				"summary": "delete Dictionary",
+				"description": "delete Dictionary",
+				"operationId": "deleteDictionary",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the Dictionary"
+				},
+				{
+					"in": "path",
+					"name": "Dictionary_id",
+					"description": "the unique id for Dictionary entry"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Dictionary"],
+				"security": []
+			},
+			"get": {
+				"summary": "Retrieve a Dictionary using its slug",
+				"description": "Returns the Dictionary detail",
+				"operationId": "getDictionary",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the Dictionary"
+				},
+				{
+					"in": "path",
+					"name": "Dictionary_id",
+					"description": "the unique id for Dictionary entry"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Dictionary"],
+				"security": []
+			},
+			"put": {
+				"summary": "update Dictionary",
+				"description": "update Dictionary",
+				"operationId": "updateDictionary",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "author",
+					"description": "author of the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"description": "full text for the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "curated_id",
+					"description": "full text for the Dictionary"
+				},
+				{
+					"in": "path",
+					"name": "Dictionary_id",
+					"description": "the unique id for Dictionary entry"
+				},
+				{
+					"in": "query",
+					"name": "footer",
+					"description": "curated id the Dictionary originated from"
+				},
+				{
+					"in": "query",
+					"name": "post_date",
+					"description": "date the Dictionary was posted"
+				},
+				{
+					"in": "query",
+					"name": "status",
+					"description": "status of the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "summary",
+					"description": "summary for the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "title",
+					"description": "ttle for the Dictionary"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Dictionary"],
+				"security": []
+			}
+		},
+		"/dictionary/{Dictionary_id}/tags/": {
+			"get": {
+				"summary": "Dictionary tags",
+				"description": "Dictionary tags",
+				"operationId": "getDictionaryTags",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the Dictionary"
+				},
+				{
+					"in": "path",
+					"name": "Dictionary_id",
+					"description": "id for Dictionary"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			},
+			"post": {
+				"summary": "add tag to Dictionary",
+				"description": "add tag to Dictionary",
+				"operationId": "addDictionaryTag",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the Dictionary"
+				},
+				{
+					"in": "path",
+					"name": "Dictionary_id",
+					"description": "id for the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "tag",
+					"description": "tag name"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			}
+		},
+		"/dictionary/{Dictionary_id}/tags/{tag}": {
+			"delete": {
+				"summary": "delete Dictionary tag",
+				"description": "delete Dictionary tag",
+				"operationId": "deleteDictionaryTag",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the Dictionary"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the Dictionary"
+				},
+				{
+					"in": "path",
+					"name": "Dictionary_id",
+					"description": "id for the Dictionary"
+				},
+				{
+					"in": "path",
+					"name": "tag",
+					"description": "tag to remove from Dictionary"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"Dictionary": {
+			"properties": {
+				"Dictionary_id": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"post_date": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"author": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"summary": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"body": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"footer": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"curated_id": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"tag": {
+			"properties": {
+				"tag_id": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"tag": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"api_count": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		}
+	}
+}

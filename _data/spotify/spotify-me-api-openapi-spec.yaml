@@ -1,0 +1,169 @@
+- swagger: "2.0"
+  info:
+    title: Spotify Me API
+    version: ~
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /me:
+      get:
+        summary: ""
+        description: '[Get Current Users Profile](https://developer.spotify.com/web-api/get-current-users-profile/)n'
+        operationId: get-current-users-profilehttpsdeveloperspotifycomwebapigetcurrentusersprofile
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /me/following:
+      delete:
+        summary: ""
+        description: '[Unfollow Artists or Users](https://developer.spotify.com/web-api/unfollow-artists-users/)n'
+        operationId: unfollow-artists-or-usershttpsdeveloperspotifycomwebapiunfollowartistsusers
+        parameters:
+        - in: query
+          name: ids
+          description: A comma-separated list of the artists or users ids
+        - in: query
+          name: type
+          description: The type to unfollow.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: ""
+        description: '[Get Users Followed Artists](https://developer.spotify.com/web-api/get-followed-artists/)n'
+        operationId: get-users-followed-artistshttpsdeveloperspotifycomwebapigetfollowedartists
+        parameters:
+        - in: query
+          name: after
+          description: The last artist ID retrieved from the previous request.
+        - in: query
+          name: limit
+          description: The maximum number of items to return
+        - in: query
+          name: type
+          description: The ID type, currently only artist is supported.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: ""
+        description: '[Follow Artists or Users](https://developer.spotify.com/web-api/follow-artists-users/)n'
+        operationId: follow-artists-or-usershttpsdeveloperspotifycomwebapifollowartistsusers
+        parameters:
+        - in: query
+          name: ids
+          description: A comma-separated list of the artists or users ids
+        - in: query
+          name: type
+          description: The type to follow.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /me/following/contains:
+      get:
+        summary: ""
+        description: '[Check if Current User Follows Artists or Users](https://developer.spotify.com/web-api/check-current-user-follows/)n'
+        operationId: check-if-current-user-follows-artists-or-usershttpsdeveloperspotifycomwebapicheckcurrentuserfollows
+        parameters:
+        - in: query
+          name: ids
+          description: A comma-separated string of the artists or users ids.
+        - in: query
+          name: type
+          description: The type to follow.
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /me/tracks:
+      delete:
+        summary: ""
+        description: '[Remove Tracks for Current User](https://developer.spotify.com/web-api/remove-tracks-user/)n'
+        operationId: remove-tracks-for-current-userhttpsdeveloperspotifycomwebapiremovetracksuser
+        parameters:
+        - in: header
+          name: Accept
+          description: It is used to set specified media type.
+        - in: query
+          name: ids
+          description: A comma-separated list of IDs
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: ""
+        description: '[Get Current Users Saved Tracks](https://developer.spotify.com/web-api/get-users-saved-tracks/)n'
+        operationId: get-current-users-saved-trackshttpsdeveloperspotifycomwebapigetuserssavedtracks
+        parameters:
+        - in: header
+          name: Accept
+          description: It is used to set specified media type.
+        - in: query
+          name: limit
+          description: The maximum number of items to return
+        - in: query
+          name: market
+          description: The market (an ISO 3166-1 alpha-2 country code)
+        - in: query
+          name: offset
+          description: The index of the first item to return
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: ""
+        description: '[Save Tracks for Current User](https://developer.spotify.com/web-api/save-tracks-user/)n'
+        operationId: save-tracks-for-current-userhttpsdeveloperspotifycomwebapisavetracksuser
+        parameters:
+        - in: header
+          name: Accept
+          description: It is used to set specified media type.
+        - in: query
+          name: ids
+          description: A comma-separated list of IDs
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /me/tracks/contains:
+      get:
+        summary: ""
+        description: '[Check Current Users Saved Tracks](https://developer.spotify.com/web-api/check-users-saved-tracks/)n'
+        operationId: check-current-users-saved-trackshttpsdeveloperspotifycomwebapicheckuserssavedtracks
+        parameters:
+        - in: query
+          name: ids
+          description: A comma-separated list of IDs
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

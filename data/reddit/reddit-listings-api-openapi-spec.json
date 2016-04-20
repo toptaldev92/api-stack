@@ -1,0 +1,387 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Reddit Listings API",
+		"description": "API for manageming Reddit listings.",
+		"termsOfService": "https://github.com/reddit/reddit/wiki/API",
+		"version": null
+	},
+	"host": "www.reddit.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/by_id/names": {
+			"get": {
+				"summary": "Get a listing of links by fullname.",
+				"description": "Get a listing of links by fullname.",
+				"operationId": "listings",
+				"parameters": [{
+					"in": "query",
+					"name": "names",
+					"description": "A comma-separated list of link fullnames",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/duplicates/article": {
+			"get": {
+				"summary": "Return a list of other submissions of the same URL",
+				"description": "Return a list of other submissions of the same URL",
+				"operationId": "listings",
+				"parameters": [{
+					"in": "query",
+					"name": "after",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "article",
+					"description": "The base 36 ID of a Link",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "before",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "count",
+					"description": "a positive integer (default: 0)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "the maximum number of items desired (default: 25, maximum: 100)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "show",
+					"description": "(optional) the string all",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sr_detail",
+					"description": "(optional) expand subreddits",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/related/article": {
+			"get": {
+				"summary": "Related page: performs a search using title of article asnthe search query.",
+				"description": "Related page: performs a search using title of article asnthe search query.",
+				"operationId": "listings",
+				"parameters": [{
+					"in": "query",
+					"name": "after",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "article",
+					"description": "The base 36 ID of a Link",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "before",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "count",
+					"description": "a positive integer (default: 0)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "the maximum number of items desired (default: 25, maximum: 100)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "show",
+					"description": "(optional) the string all",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sr_detail",
+					"description": "(optional) expand subreddits",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/comments/article": {
+			"get": {
+				"summary": "Get the comment tree for a given Link article.",
+				"description": "Get the comment tree for a given Link article.",
+				"operationId": "listings",
+				"parameters": [{
+					"in": "query",
+					"name": "article",
+					"description": "ID36 of a link",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "comment",
+					"description": "(optional) ID36 of a comment",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "context",
+					"description": "an integer between 0 and 8",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "depth",
+					"description": "(optional) an integer",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "(optional) an integer",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "showedits",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "showmore",
+					"description": "boolean value",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "one of (confidence, top, new, hot, controversial, old, random, qa)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sr_detail",
+					"description": "(optional) expand subreddits",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/hot": {
+			"get": {
+				"summary": "This endpoint is a listing.",
+				"description": "This endpoint is a listing.",
+				"operationId": "listings",
+				"parameters": [{
+					"in": "query",
+					"name": "after",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "before",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "count",
+					"description": "a positive integer (default: 0)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "the maximum number of items desired (default: 25, maximum: 100)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "show",
+					"description": "(optional) the string all",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sr_detail",
+					"description": "(optional) expand subreddits",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/new": {
+			"get": {
+				"summary": "This endpoint is a listing.",
+				"description": "This endpoint is a listing.",
+				"operationId": "listings",
+				"parameters": [{
+					"in": "query",
+					"name": "after",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "before",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "count",
+					"description": "a positive integer (default: 0)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "the maximum number of items desired (default: 25, maximum: 100)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "show",
+					"description": "(optional) the string all",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sr_detail",
+					"description": "(optional) expand subreddits",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/random": {
+			"get": {
+				"summary": "The Serendipity button",
+				"description": "The Serendipity button",
+				"operationId": "listings",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"{/r/subreddit}/sort": {
+			"get": {
+				"summary": "This endpoint is a listing.",
+				"description": "This endpoint is a listing.",
+				"operationId": "listings",
+				"parameters": [{
+					"in": "query",
+					"name": "after",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "before",
+					"description": "fullname of a thing",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "count",
+					"description": "a positive integer (default: 0)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "the maximum number of items desired (default: 25, maximum: 100)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "show",
+					"description": "(optional) the string all",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "sr_detail",
+					"description": "(optional) expand subreddits",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "t",
+					"description": "one of (hour, day, week, month, year, all)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

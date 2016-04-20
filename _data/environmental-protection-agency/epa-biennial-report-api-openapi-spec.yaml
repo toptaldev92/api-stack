@@ -1,0 +1,1012 @@
+- swagger: "2.0"
+  info:
+    title: EPA Biennial Report API
+    description: The Biennial Report is a national system that collects data on the
+      generation, management, and minimization of hazardous waste.
+    contact:
+      name: EP Envirofacts
+      url: http://www.epa.gov/enviro/index.html
+    version: v1
+  host: iaspub.epa.gov
+  basePath: /enviro/efservice/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /BGM_OFFSITE_SHIPMENT/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_BGM_Offsite_Shipment
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/bgm_offsite_shipment'
+        tags:
+        - Hazardous Waste
+        security: []
+    /BGM_ONSITE_TREATMENT/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_BGM_Onsite_Shipment
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/bgm_onsite_shipment'
+        tags:
+        - Hazardous Waste
+        security: []
+    /BGM_WASTE_CODE/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_BGM_WASTE_CODE
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/bgm_waste_code'
+        tags:
+        - Hazardous Waste
+        security: []
+    /BREPORT_CYCLE/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_BREPORT_CYCLE
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/breport_cycle'
+        tags:
+        - Hazardous Waste
+        security: []
+    /BWR_BASIC/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_BWR_BASIC
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/bwr_basic'
+        tags:
+        - Hazardous Waste
+        security: []
+    /RCR_BGM_BASIC/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_RCR_BGM_BASIC
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/rcr_bgm_basic'
+        tags:
+        - Hazardous Waste
+        security: []
+    /RCR_BWR_WASTE_CODE/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_RCR_BWR_WASTE_CODE
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/rcr_bwr_waste_code'
+        tags:
+        - Hazardous Waste
+        security: []
+    /RCR_HHANDLER/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_RCR_HHANDLER
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/rcr_hhandler'
+        tags:
+        - Hazardous Waste
+        security: []
+    /RCR_LU_FORM_CODE2/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_RCR_LU_FORM_CODE2
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/rcr_lu_form_code2'
+        tags:
+        - Hazardous Waste
+        security: []
+    /RCR_LU_MANAGEMENT_METHOD/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_RCR_LU_MANAGEMENT_METHOD
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/rcr_lu_management_method'
+        tags:
+        - Hazardous Waste
+        security: []
+    /RCR_LU_SOURCE_CODE2/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_RCR_LU_SOURCE_CODE2
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/rcr_lu_source_code2'
+        tags:
+        - Hazardous Waste
+        security: []
+    /RCR_LU_WASTE_CODE/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_RCR_LU_WASTE_CODE
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/rcr_lu_waste_code'
+        tags:
+        - Hazardous Waste
+        security: []
+  definitions:
+    breport_cycle:
+      properties:
+        LAST_CHANGE:
+          description: This is a default description.
+          type: string
+        USERID:
+          description: This is a default description.
+          type: string
+        YEAR:
+          description: This is a default description.
+          type: string
+    rcr_hhandler:
+      properties:
+        ACCESSIBILITY:
+          description: This is a default description.
+          type: string
+        ACKNOWLEDGE_DATE:
+          description: This is a default description.
+          type: string
+        ACKNOWLEDGE_FLAG:
+          description: This is a default description.
+          type: string
+        ACTIVITY_LOCATION:
+          description: This is a default description.
+          type: string
+        CDX_TRANSACTION_ID:
+          description: This is a default description.
+          type: string
+        CONTACT_CITY:
+          description: This is a default description.
+          type: string
+        CONTACT_COUNTRY:
+          description: This is a default description.
+          type: string
+        CONTACT_EMAIL_ADDRESS:
+          description: This is a default description.
+          type: string
+        CONTACT_FAX:
+          description: This is a default description.
+          type: string
+        CONTACT_FIRST_NAME:
+          description: This is a default description.
+          type: string
+        CONTACT_LAST_NAME:
+          description: This is a default description.
+          type: string
+        CONTACT_MIDDLE_INITIAL:
+          description: This is a default description.
+          type: string
+        CONTACT_PHONE:
+          description: This is a default description.
+          type: string
+        CONTACT_PHONE_EXT:
+          description: This is a default description.
+          type: string
+        CONTACT_STATE:
+          description: This is a default description.
+          type: string
+        CONTACT_STREET1:
+          description: This is a default description.
+          type: string
+        CONTACT_STREET2:
+          description: This is a default description.
+          type: string
+        CONTACT_STREET_NO:
+          description: This is a default description.
+          type: string
+        CONTACT_TITLE:
+          description: This is a default description.
+          type: string
+        CONTACT_ZIP:
+          description: This is a default description.
+          type: string
+        COUNTY_CODE:
+          description: This is a default description.
+          type: string
+        FED_WASTE_GENERATOR:
+          description: This is a default description.
+          type: string
+        FED_WASTE_GENERATOR_OWNER:
+          description: This is a default description.
+          type: string
+        FURNACE_EXEMPTION:
+          description: This is a default description.
+          type: string
+        HANDLER_ID:
+          description: This is a default description.
+          type: string
+        HANDLER_NAME:
+          description: This is a default description.
+          type: string
+        IMPORTER_ACTIVITY:
+          description: This is a default description.
+          type: string
+        INCLUDE_IN_NATIONAL_REPORT:
+          description: This is a default description.
+          type: string
+        LAND_TYPE:
+          description: This is a default description.
+          type: string
+        LOCATION_CITY:
+          description: This is a default description.
+          type: string
+        LOCATION_STATE:
+          description: This is a default description.
+          type: string
+        LOCATION_STREET1:
+          description: This is a default description.
+          type: string
+        LOCATION_STREET2:
+          description: This is a default description.
+          type: string
+        LOCATION_STREET_NO:
+          description: This is a default description.
+          type: string
+        LOCATION_ZIP:
+          description: This is a default description.
+          type: string
+        MAIL_CITY:
+          description: This is a default description.
+          type: string
+        MAIL_COUNTRY:
+          description: This is a default description.
+          type: string
+        MAIL_STATE:
+          description: This is a default description.
+          type: string
+        MAIL_STREET1:
+          description: This is a default description.
+          type: string
+        MAIL_STREET2:
+          description: This is a default description.
+          type: string
+        MAIL_STREET_NO:
+          description: This is a default description.
+          type: string
+        MAIL_ZIP:
+          description: This is a default description.
+          type: string
+        MIXED_WASTE_GENERATOR:
+          description: This is a default description.
+          type: string
+        NON_NOTIFIER:
+          description: This is a default description.
+          type: string
+        OFF_SITE_RECEIPT:
+          description: This is a default description.
+          type: string
+        ONSITE_BURNER_EXEMPTION:
+          description: This is a default description.
+          type: string
+        RECEIVE_DATE:
+          description: This is a default description.
+          type: string
+        RECYCLER_ACTIVITY:
+          description: This is a default description.
+          type: string
+        REPORT_CYCLE:
+          description: This is a default description.
+          type: string
+        SEQ_NUMBER:
+          description: This is a default description.
+          type: string
+        SHORT_TERM_GENERATOR:
+          description: This is a default description.
+          type: string
+        SOURCE_TYPE:
+          description: This is a default description.
+          type: string
+        STATE_DISTRICT:
+          description: This is a default description.
+          type: string
+        STATE_WASTE_GENERATOR:
+          description: This is a default description.
+          type: string
+        STATE_WASTE_GENERATOR_OWNER:
+          description: This is a default description.
+          type: string
+        SUBPART_K_COLLEGE:
+          description: This is a default description.
+          type: string
+        SUBPART_K_HOSPITAL:
+          description: This is a default description.
+          type: string
+        SUBPART_K_NONPROFIT:
+          description: This is a default description.
+          type: string
+        SUBPART_K_WITHDRAWAL:
+          description: This is a default description.
+          type: string
+        TRANSFER_FACILITY:
+          description: This is a default description.
+          type: string
+        TRANSPORTER:
+          description: This is a default description.
+          type: string
+        TSD_ACTIVITY:
+          description: This is a default description.
+          type: string
+        UNDERGROUND_INJECTION_ACTIVITY:
+          description: This is a default description.
+          type: string
+        UNIVERSAL_WASTE_DEST_FACILITY:
+          description: This is a default description.
+          type: string
+        USED_OIL_BURNER:
+          description: This is a default description.
+          type: string
+        USED_OIL_MARKET_BURNER:
+          description: This is a default description.
+          type: string
+        USED_OIL_PROCESSOR:
+          description: This is a default description.
+          type: string
+        USED_OIL_REFINER:
+          description: This is a default description.
+          type: string
+        USED_OIL_SPEC_MARKETER:
+          description: This is a default description.
+          type: string
+        USED_OIL_TRANSFER_FACILITY:
+          description: This is a default description.
+          type: string
+        USED_OIL_TRANSPORTER:
+          description: This is a default description.
+          type: string
+    rcr_bgm_basic:
+      properties:
+        ACTIVITY_LOCATION:
+          description: This is a default description.
+          type: string
+        DENSITY_UNIT_OF_MEASURE:
+          description: This is a default description.
+          type: string
+        DENSITY_UOM_OWNER:
+          description: This is a default description.
+          type: string
+        DESCRIPTION:
+          description: This is a default description.
+          type: string
+        FORM_CODE:
+          description: This is a default description.
+          type: string
+        FORM_CODE_OWNER:
+          description: This is a default description.
+          type: string
+        GENERATION_TONS_CALC:
+          description: This is a default description.
+          type: string
+        GEN_QTY:
+          description: This is a default description.
+          type: string
+        HANDLER_ID:
+          description: This is a default description.
+          type: string
+        HZ_PG:
+          description: This is a default description.
+          type: string
+        INCLUDE_IN_NATIONAL_REPORT:
+          description: This is a default description.
+          type: string
+        LAST_CHANGE:
+          description: This is a default description.
+          type: string
+        MANAGEMENT_METHOD:
+          description: This is a default description.
+          type: string
+        MANAGEMENT_METHOD_OWNER:
+          description: This is a default description.
+          type: string
+        NOTES:
+          description: This is a default description.
+          type: string
+        RADIOACTIVE_MIX:
+          description: This is a default description.
+          type: string
+        RADIOACTIVE_OWNER:
+          description: This is a default description.
+          type: string
+        REPORT_CYCLE:
+          description: This is a default description.
+          type: string
+        SEQ_NUMBER:
+          description: This is a default description.
+          type: string
+        SOURCE_CODE:
+          description: This is a default description.
+          type: string
+        SOURCE_CODE_OWNER:
+          description: This is a default description.
+          type: string
+        SOURCE_TYPE:
+          description: This is a default description.
+          type: string
+        UNIT_OF_MEASURE:
+          description: This is a default description.
+          type: string
+        UOM_OWNER:
+          description: This is a default description.
+          type: string
+        USERID:
+          description: This is a default description.
+          type: string
+        WST_DENSITY:
+          description: This is a default description.
+          type: string
+    bwr_basic:
+      properties:
+        ACTIVITY_LOCATION:
+          description: This is a default description.
+          type: string
+        DENSITY_UNIT_OF_MEASURE:
+          description: This is a default description.
+          type: string
+        DENSITY_UOM_OWNER:
+          description: This is a default description.
+          type: string
+        DESCRIPTION:
+          description: This is a default description.
+          type: string
+        FORM_CODE:
+          description: This is a default description.
+          type: string
+        FORM_CODE_OWNER:
+          description: This is a default description.
+          type: string
+        HANDLER_ID:
+          description: This is a default description.
+          type: string
+        HZ_PG:
+          description: This is a default description.
+          type: string
+        INCLUDE_IN_NATIONAL_REPORT:
+          description: This is a default description.
+          type: string
+        IO_TDR_ID:
+          description: This is a default description.
+          type: string
+        IO_TDR_QTY:
+          description: This is a default description.
+          type: string
+        LAST_CHANGE:
+          description: This is a default description.
+          type: string
+        MANAGEMENT_METHOD:
+          description: This is a default description.
+          type: string
+        MANAGEMENT_METHOD_OWNER:
+          description: This is a default description.
+          type: string
+        NOTES:
+          description: This is a default description.
+          type: string
+        RADIOACTIVE_MIX:
+          description: This is a default description.
+          type: string
+        RADIOACTIVE_OWNER:
+          description: This is a default description.
+          type: string
+        RECEIVED_TONS_CALC:
+          description: This is a default description.
+          type: string
+        REPORT_CYCLE:
+          description: This is a default description.
+          type: string
+        SEQ_NUMBER:
+          description: This is a default description.
+          type: string
+        SOURCE_TYPE:
+          description: This is a default description.
+          type: string
+        SUB_PG_NUM:
+          description: This is a default description.
+          type: string
+        UNIT_OF_MEASURE:
+          description: This is a default description.
+          type: string
+        UOM_OWNER:
+          description: This is a default description.
+          type: string
+        USERID:
+          description: This is a default description.
+          type: string
+        WST_DENSITY:
+          description: This is a default description.
+          type: string
+    bgm_onsite_shipment:
+      properties:
+        ACTIVITY_LOCATION:
+          description: This is a default description.
+          type: string
+        HANDLER_ID:
+          description: This is a default description.
+          type: string
+        HZ_PG:
+          description: This is a default description.
+          type: string
+        LAST_CHANGE:
+          description: This is a default description.
+          type: string
+        MANAGED_TONS_CALC:
+          description: This is a default description.
+          type: string
+        MANAGEMENT_METHOD:
+          description: This is a default description.
+          type: string
+        MANAGEMENT_METHOD_OWNER:
+          description: This is a default description.
+          type: string
+        SEQ_NUMBER:
+          description: This is a default description.
+          type: string
+        SOURCE_TYPE:
+          description: This is a default description.
+          type: string
+        SYS_PG_NUM_SEQ:
+          description: This is a default description.
+          type: string
+        SYS_TDR_QTY:
+          description: This is a default description.
+          type: string
+        USERID:
+          description: This is a default description.
+          type: string
+    rcr_lu_management_method:
+      properties:
+        Filler:
+          description: This did not work.
+          type: string
+    bgm_offsite_shipment:
+      properties:
+        ACTIVITY_LOCATION:
+          description: This is a default description.
+          type: string
+        HANDLER_ID:
+          description: This is a default description.
+          type: string
+        HZ_PG:
+          description: This is a default description.
+          type: string
+        IO_PG_NUM_SEQ:
+          description: This is a default description.
+          type: string
+        IO_TDR_ID:
+          description: This is a default description.
+          type: string
+        IO_TDR_QTY:
+          description: This is a default description.
+          type: string
+        LAST_CHANGE:
+          description: This is a default description.
+          type: string
+        MANAGEMENT_METHOD:
+          description: This is a default description.
+          type: string
+        MANAGEMENT_METHOD_OWNER:
+          description: This is a default description.
+          type: string
+        SEQ_NUMBER:
+          description: This is a default description.
+          type: string
+        SHIPPED_TONS_CALC:
+          description: This is a default description.
+          type: string
+        SOURCE_TYPE:
+          description: This is a default description.
+          type: string
+        USERID:
+          description: This is a default description.
+          type: string
+    bgm_waste_code:
+      properties:
+        ACTIVITY_LOCATION:
+          description: This is a default description.
+          type: string
+        HANDLER_ID:
+          description: This is a default description.
+          type: string
+        HZ_PG:
+          description: This is a default description.
+          type: string
+        LAST_CHANGE:
+          description: This is a default description.
+          type: string
+        SEQ_NUMBER:
+          description: This is a default description.
+          type: string
+        SOURCE_TYPE:
+          description: This is a default description.
+          type: string
+        USERID:
+          description: This is a default description.
+          type: string
+        WASTE_CODE:
+          description: This is a default description.
+          type: string
+        WASTE_CODE_OWNER:
+          description: This is a default description.
+          type: string
+    rcr_lu_waste_code:
+      properties:
+        ACTIVE_STATUS:
+          description: This is a default description.
+          type: string
+        BR_LOAD_ACTIVE_STATUS:
+          description: This is a default description.
+          type: string
+        CODE_TYPE:
+          description: This is a default description.
+          type: string
+        OWNER:
+          description: This is a default description.
+          type: string
+        WASTE_CODE:
+          description: This is a default description.
+          type: string
+        WASTE_CODE_DESC:
+          description: This is a default description.
+          type: string
+    rcr_bwr_waste_code:
+      properties:
+        ACTIVITY_LOCATION:
+          description: This is a default description.
+          type: string
+        HANDLER_ID:
+          description: This is a default description.
+          type: string
+        HZ_PG:
+          description: This is a default description.
+          type: string
+        SEQ_NUMBER:
+          description: This is a default description.
+          type: string
+        SOURCE_TYPE:
+          description: This is a default description.
+          type: string
+        SUB_PAGE_NUM:
+          description: This is a default description.
+          type: string
+        WASTE_CODE:
+          description: This is a default description.
+          type: string
+        WASTE_CODE_OWNER:
+          description: This is a default description.
+          type: string
+    rcr_lu_source_code2:
+      properties:
+        ACTIVE_STATUS:
+          description: This is a default description.
+          type: string
+        OWNER:
+          description: This is a default description.
+          type: string
+        SOURCE_CODE:
+          description: This is a default description.
+          type: string
+        SOURCE_CODE_DESC:
+          description: This is a default description.
+          type: string
+        SOURCE_CODE_NAME:
+          description: This is a default description.
+          type: string
+        USAGE:
+          description: This is a default description.
+          type: string
+    rcr_lu_form_code2:
+      properties:
+        ACTIVE_STATUS:
+          description: This is a default description.
+          type: string
+        FORM_CODE:
+          description: This is a default description.
+          type: string
+        FORM_CODE_DESC:
+          description: This is a default description.
+          type: string
+        FORM_CODE_NAME:
+          description: This is a default description.
+          type: string
+        OWNER:
+          description: This is a default description.
+          type: string
+        USAGE:
+          description: This is a default description.
+          type: string

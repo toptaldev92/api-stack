@@ -1,0 +1,301 @@
+- swagger: "2.0"
+  info:
+    title: Flickr Machine Tags API
+    description: The API for managing Flickr Machine Tags
+    termsOfService: https://www.flickr.com/services/api/tos/
+    version: ~
+  host: www.flickr.com
+  basePath: /services/rest/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /?method=flickr.machinetags.getNamespaces:
+      get:
+        summary: flickr.machinetags.getNamespaces
+        description: <div class=MethodDescription>Return a list of unique namespaces,
+          optionally limited by a given predicate, in alphabetical order.</div>
+        operationId: methodflickrmachinetagsgetnamespaces
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: page
+          description: The page of results to return. If this argument is omitted, it
+            defaults to 1.
+          type: string
+        - in: query
+          name: per_page
+          description: Number of photos to return per page. If this argument is omitted,
+            it defaults to 100. The maximum allowed value is 500.
+          type: string
+        - in: query
+          name: predicate
+          description: Limit the list of namespaces returned to those that have the
+            following predicate.
+          type: string
+        responses:
+          1:
+            description: Not a valid predicate. - Missing or invalid predicate argument.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.machinetags.getPairs:
+      get:
+        summary: flickr.machinetags.getPairs
+        description: <div class=MethodDescription>Return a list of unique namespace
+          and predicate pairs, optionally limited by predicate or namespace, in alphabetical
+          order.</div>
+        operationId: methodflickrmachinetagsgetpairs
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: namespace
+          description: Limit the list of pairs returned to those that have the following
+            namespace.
+          type: string
+        - in: query
+          name: page
+          description: The page of results to return. If this argument is omitted, it
+            defaults to 1.
+          type: string
+        - in: query
+          name: per_page
+          description: Number of photos to return per page. If this argument is omitted,
+            it defaults to 100. The maximum allowed value is 500.
+          type: string
+        - in: query
+          name: predicate
+          description: Limit the list of pairs returned to those that have the following
+            predicate.
+          type: string
+        responses:
+          1:
+            description: Not a valid namespace - Missing or invalid namespace argument.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          2:
+            description: Not a valid predicate - Missing or invalid predicate argument.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.machinetags.getPredicates:
+      get:
+        summary: flickr.machinetags.getPredicates
+        description: <div class=MethodDescription>Return a list of unique predicates,
+          optionally limited by a given namespace.</div>
+        operationId: methodflickrmachinetagsgetpredicates
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: namespace
+          description: Limit the list of predicates returned to those that have the
+            following namespace.
+          type: string
+        - in: query
+          name: page
+          description: The page of results to return. If this argument is omitted, it
+            defaults to 1.
+          type: string
+        - in: query
+          name: per_page
+          description: Number of photos to return per page. If this argument is omitted,
+            it defaults to 100. The maximum allowed value is 500.
+          type: string
+        responses:
+          1:
+            description: Not a valid namespace - Missing or invalid namespace argument.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          2:
+            description: Not a valid predicate - Missing or invalid predicate argument.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.machinetags.getRecentValues:
+      get:
+        summary: flickr.machinetags.getRecentValues
+        description: <div class=MethodDescription>Fetch recently used (or created) machine
+          tags values.</div>
+        operationId: methodflickrmachinetagsgetrecentvalues
+        parameters:
+        - in: query
+          name: added_since
+          description: Only return machine tags values that have been added since this
+            timestamp, in epoch seconds.
+          type: string
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: namespace
+          description: A namespace that all values should be restricted to.
+          type: string
+        - in: query
+          name: predicate
+          description: A predicate that all values should be restricted to.
+          type: string
+        responses:
+          1:
+            description: Not a valid namespace - Missing or invalid namespace argument.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          2:
+            description: Not a valid predicate - Missing or invalid predicate argument.
+        tags:
+        - ""
+        security: []
+    /?method=flickr.machinetags.getValues:
+      get:
+        summary: flickr.machinetags.getValues
+        description: <div class=MethodDescription>Return a list of unique values for
+          a namespace and predicate.</div>
+        operationId: methodflickrmachinetagsgetvalues
+        parameters:
+        - in: query
+          name: api_key
+          description: Your API application key. See here for more details.
+          type: string
+        - in: query
+          name: namespace
+          description: The namespace that all values should be restricted to.
+          type: string
+        - in: query
+          name: page
+          description: The page of results to return. If this argument is omitted, it
+            defaults to 1.
+          type: string
+        - in: query
+          name: per_page
+          description: Number of photos to return per page. If this argument is omitted,
+            it defaults to 100. The maximum allowed value is 500.
+          type: string
+        - in: query
+          name: predicate
+          description: The predicate that all values should be restricted to.
+          type: string
+        responses:
+          1:
+            description: Not a valid namespace - Missing or invalid namespace argument.
+          100:
+            description: Invalid API Key - The API key passed was not valid or has expired.
+          105:
+            description: Service currently unavailable - The requested service is temporarily
+              unavailable.
+          106:
+            description: Write operation failed - The requested operation failed due
+              to a temporary issue.
+          111:
+            description: Format xxx not found - The requested response format was not
+              found.
+          112:
+            description: Method xxx not found - The requested method was not found.
+          114:
+            description: Invalid SOAP envelope - The SOAP envelope send in the request
+              could not be parsed.
+          115:
+            description: Invalid XML-RPC Method Call - The XML-RPC request document
+              could not be parsed.
+          116:
+            description: Bad URL found - One or more arguments contained a URL that
+              has been used for abuse on Flickr.
+          2:
+            description: Not a valid predicate - Missing or invalid predicate argument.
+        tags:
+        - ""
+        security: []
+  definitions: []

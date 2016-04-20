@@ -1,0 +1,361 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Eventbrite Users API",
+		"description": "The API for managing Eventbrite users.",
+		"version": "v3"
+	},
+	"host": "www.eventbriteapi.com",
+	"basePath": "/v3",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/users/{id}/": {
+			"get ": {
+				"summary": "Returns a user for the specified user as user. If you want to get details about the currently authenticated user, use /users/me/.",
+				"description": "Returns a user for the specified user as user. If you want to get details about the currently authenticated user, use /users/me/.",
+				"operationId": "returns-a-user-for-the-specified-user-as-user-if-you-want-to-get-details-about-the-currently-authent",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{id}/bookmarks/": {
+			"get ": {
+				"summary": "Gets all the user&#8217;s saved events.",
+				"description": "Gets all the user&#8217;s saved events.",
+				"operationId": "gets-all-the-user8217s-saved-events",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{id}/bookmarks/save/": {
+			"post ": {
+				"summary": "Adds a new bookmark for the user. Returns {&quot;created&quot;: true}.",
+				"description": "Adds a new bookmark for the user. Returns {&quot;created&quot;: true}.",
+				"operationId": "adds-a-new-bookmark-for-the-user-returns-quotcreatedquot-true",
+				"parameters": [{
+					"in": "query",
+					"name": "event_id",
+					"description": "Event id to bookmark for the user"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{id}/bookmarks/unsave/": {
+			"post ": {
+				"summary": "Removes the specified bookmark from the event for the user. Returns {&quot;deleted&quot;: true}.",
+				"description": "Removes the specified bookmark from the event for the user. Returns {&quot;deleted&quot;: true}.",
+				"operationId": "removes-the-specified-bookmark-from-the-event-for-the-user-returns-quotdeletedquot-true",
+				"parameters": [{
+					"in": "query",
+					"name": "event_id",
+					"description": "Event id to bookmark for the user"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{id}/contact_lists/": {
+			"get ": {
+				"summary": "Returns a list of contact_list that the user owns as the keyncontact_lists.",
+				"description": "Returns a list of contact_list that the user owns as the keyncontact_lists.",
+				"operationId": "returns-a-list-of-contact-list-that-the-user-owns-as-the-keycontact-lists",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post ": {
+				"summary": "Makes a new contact_list for the user and returns it asncontact_list.",
+				"description": "Makes a new contact_list for the user and returns it asncontact_list.",
+				"operationId": "makes-a-new-contact-list-for-the-user-and-returns-it-ascontact-list",
+				"parameters": [{
+					"in": "query",
+					"name": "contact_list.name",
+					"description": "Name of the new contact list"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{id}/contact_lists/:contact_list_id/": {
+			"delete ": {
+				"summary": "Deletes the contact list. Returns {&quot;deleted&quot;: true}.",
+				"description": "Deletes the contact list. Returns {&quot;deleted&quot;: true}.",
+				"operationId": "deletes-the-contact-list-returns-quotdeletedquot-true",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get ": {
+				"summary": "Gets a user&#8217;s contact_list by ID as contact_list.",
+				"description": "Gets a user&#8217;s contact_list by ID as contact_list.",
+				"operationId": "gets-a-user8217s-contact-list-by-id-as-contact-list",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post ": {
+				"summary": "Updates the contact_list and returns it as contact_list.",
+				"description": "Updates the contact_list and returns it as contact_list.",
+				"operationId": "updates-the-contact-list-and-returns-it-as-contact-list",
+				"parameters": [{
+					"in": "query",
+					"name": "contact_list.name",
+					"description": "New name of the contact list"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{id}/contact_lists/:contact_list_id/contacts/": {
+			"delete ": {
+				"summary": "Deletes the specified contact from the contact list.nReturns {&quot;deleted&quot;: true}.",
+				"description": "Deletes the specified contact from the contact list.nReturns {&quot;deleted&quot;: true}.",
+				"operationId": "deletes-the-specified-contact-from-the-contact-listreturns-quotdeletedquot-true",
+				"parameters": [{
+					"in": "query",
+					"name": "email",
+					"description": "Email address to remove"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get ": {
+				"summary": "Returns the contacts on the contact listnas contacts.",
+				"description": "Returns the contacts on the contact listnas contacts.",
+				"operationId": "returns-the-contacts-on-the-contact-listas-contacts",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post ": {
+				"summary": "Adds a new contact to the contact list. Returns {&quot;created&quot;: true}.",
+				"description": "Adds a new contact to the contact list. Returns {&quot;created&quot;: true}.",
+				"operationId": "adds-a-new-contact-to-the-contact-list-returns-quotcreatedquot-true",
+				"parameters": [{
+					"in": "query",
+					"name": "contact.email",
+					"description": "Contact&#8217;s email address"
+				},
+				{
+					"in": "query",
+					"name": "contact.first_name",
+					"description": "Contact&#8217;s first name (or full name)"
+				},
+				{
+					"in": "query",
+					"name": "contact.last_name",
+					"description": "Contact&#8217;s last name"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{id}/events/": {
+			"get ": {
+				"summary": "Returns a paginated response of events, under the key events, of all events the user has access to",
+				"description": "Returns a paginated response of events, under the key events, of all events the user has access to",
+				"operationId": "returns-a-paginated-response-of-events-under-the-key-events-of-all-events-the-user-has-access-to",
+				"parameters": [{
+					"in": "query",
+					"name": "name_filter",
+					"description": "Filter event results by name"
+				},
+				{
+					"in": "query",
+					"name": "order_by",
+					"description": "How to order the results (Valid choices are: start_asc, start_desc, created_asc, or created_desc)"
+				},
+				{
+					"in": "query",
+					"name": "status",
+					"description": "Only return events with a specific status set. This should be a comma    delimited string of status.    Valid status: all, draft, live, canceled, started, ended."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{id}/orders/": {
+			"get ": {
+				"summary": "Returns a paginated response of orders, under the key orders, of all orders the user has placed (i.e. where the user was the person buying the tickets).",
+				"description": "Returns a paginated response of orders, under the key orders, of all orders the user has placed (i.e. where the user was the person buying the tickets).",
+				"operationId": "returns-a-paginated-response-of-orders-under-the-key-orders-of-all-orders-the-user-has-placed-ie-whe",
+				"parameters": [{
+					"in": "query",
+					"name": "&nbsp;"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{id}/organizers/": {
+			"get ": {
+				"summary": "Returns a paginated response of organizer objects that are owned by the user.",
+				"description": "Returns a paginated response of organizer objects that are owned by the user.",
+				"operationId": "returns-a-paginated-response-of-organizer-objects-that-are-owned-by-the-user",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{id}/owned_events/": {
+			"get ": {
+				"summary": "Returns a paginated response of events, undernthe key events, of all events the user owns (i.e. events they are organising)",
+				"description": "Returns a paginated response of events, undernthe key events, of all events the user owns (i.e. events they are organising)",
+				"operationId": "returns-a-paginated-response-of-events-underthe-key-events-of-all-events-the-user-owns-ie-events-the",
+				"parameters": [{
+					"in": "query",
+					"name": "order_by",
+					"description": "How to order the results (Valid choices are: start_asc, start_desc, created_asc, or created_desc)"
+				},
+				{
+					"in": "query",
+					"name": "status",
+					"description": "Only return events with a specific status set. This should be a comma    delimited string of status.    Valid status: all, draft, live, canceled, started, ended."
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{id}/owned_event_attendees/": {
+			"get ": {
+				"summary": "Returns a paginated response of attendees,nunder the key attendees, of attendees visiting any of the events the user ownsn(events that would be returned from /users/:id/owned_events/)",
+				"description": "Returns a paginated response of attendees,nunder the key attendees, of attendees visiting any of the events the user ownsn(events that would be returned from /users/:id/owned_events/)",
+				"operationId": "returns-a-paginated-response-of-attendeesunder-the-key-attendees-of-attendees-visiting-any-of-the-ev",
+				"parameters": [{
+					"in": "query",
+					"name": "changed_since",
+					"description": "Only return attendees changed on or after the time given"
+				},
+				{
+					"in": "query",
+					"name": "status",
+					"description": "Limits results to either confirmed attendees or cancelled/refunded/etc. attendees (Valid choices are: attending, or not_attending)"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{id}/owned_event_orders/": {
+			"get ": {
+				"summary": "Returns a paginated response of orders,nunder the key orders, of orders placed against any of the events the user ownsn(events that would be returned from /users/:id/owned_events/)",
+				"description": "Returns a paginated response of orders,nunder the key orders, of orders placed against any of the events the user ownsn(events that would be returned from /users/:id/owned_events/)",
+				"operationId": "returns-a-paginated-response-of-ordersunder-the-key-orders-of-orders-placed-against-any-of-the-event",
+				"parameters": [{
+					"in": "query",
+					"name": "changed_since",
+					"description": "Only return orders changed on or after the time given"
+				},
+				{
+					"in": "query",
+					"name": "status",
+					"description": "Filter to active (attending) or inactive (not attending) orders (Valid choices are: active, or inactive)"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/users/{id}/venues/": {
+			"get ": {
+				"summary": "Returns a paginated response of venue objects that are owned by the user.",
+				"description": "Returns a paginated response of venue objects that are owned by the user.",
+				"operationId": "returns-a-paginated-response-of-venue-objects-that-are-owned-by-the-user",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

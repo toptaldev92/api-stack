@@ -1,0 +1,91 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Alchemy Publication Date Extraction API",
+		"description": "The Pub Date API is capable of extracting publication date information when it is specified in web pages. A web page's Pub Date can be very different from when the page is first discovered by crawlers.",
+		"termsOfService": "http://www.alchemyapi.com/company/terms.html",
+		"contact": {
+			"name": "AlchemyAPI",
+			"url": "http://www.alchemyapi.com/company/contact",
+			"email": "questions@alchemyapi.com"
+		},
+		"version": "v1"
+	},
+	"host": "access.alchemyapi.com",
+	"basePath": "/calls/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/url/URLGetPubDate": {
+			"get": {
+				"summary": "Get Publication Date Using URL",
+				"description": "The Pub Date API is capable of extracting publication date information when it is specified in web pages. A web pages Pub Date can be very different from when the page is first discovered by crawlers.",
+				"operationId": "callsUrlURLGetPubDate",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/results"
+							}
+						}
+					}
+				},
+				"tags": ["Publication Date"],
+				"security": [{
+					"apikey": []
+				}]
+			}
+		}
+	},
+	"securityDefinitions": {
+		"apikey": {
+			"type": "apiKey",
+			"name": "apikey"
+		}
+	},
+	"definitions": {
+		"results": {
+			"properties": {
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"usage": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"totalTransactions": {
+					"description": "This is a default description.",
+					"type": "integer"
+				},
+				"language": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"publicationDate": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

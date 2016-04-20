@@ -1,0 +1,61 @@
+- swagger: "2.0"
+  info:
+    title: Twitter Trends API
+    description: This is the trends API for Twitter.
+    termsOfService: http://dev.twitter.com/overview/terms
+    contact:
+      name: Twitter
+      url: https://dev.twitter.com/discussions
+    version: "1.1"
+  host: api.twitter.com
+  basePath: /1.1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /trends/closest/:
+      get:
+        summary: trends/closest
+        description: Returns the locations that Twitter has trending topic information
+          for, closest to a specified location.The response is an array of &#8220;locations&#8221;
+          that encode the location&#8217;s WOEID and some other human-readable information
+          such as a canonical name and country the location belongs in.A WOEID is a
+          Yahoo! Where On Earth ID.
+        operationId: trendsClosest
+        parameters:
+        - in: query
+          name: lat
+        - in: query
+          name: long
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /trends/place/:
+      get:
+        summary: trends/place
+        description: Returns the top 10 trending topics for a specific WOEID, if trending
+          information is available for it.The response is an array of &#8220;trend&#8221;
+          objects that encode the name of the trending topic, the query parameter that
+          can be used to search for the topic on Twitter Search, and the Twitter Search
+          URL.This information is cached for 5 minutes. Requesting more frequently than
+          that will not return any more data, and will count against your rate limit
+          usage.
+        operationId: trendsPlace
+        parameters:
+        - in: query
+          name: ""
+        - in: query
+          name: exclude
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

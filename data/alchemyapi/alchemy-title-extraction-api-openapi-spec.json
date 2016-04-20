@@ -1,0 +1,84 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Alchemy Title Extraction API",
+		"description": "The URLGetTitle call is utilized to extract title information from a web page. The requested URL is downloaded, and the retrieved HTML document is processed, extracting any title information.",
+		"termsOfService": "http://www.alchemyapi.com/company/terms.html",
+		"contact": {
+			"name": "AlchemyAPI",
+			"url": "http://www.alchemyapi.com/company/contact",
+			"email": "questions@alchemyapi.com"
+		},
+		"version": "v1"
+	},
+	"host": "access.alchemyapi.com",
+	"basePath": "/calls/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/calls/url/URLGetTitle": {
+			"get": {
+				"summary": "/calls/url/URLGetTitle",
+				"description": "The URLGetTitle call is utilized to extract title information from a web page. The requested URL is downloaded, and the retrieved HTML document is processed, extracting any title information.",
+				"operationId": "callsUrlURLGetTitle",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/results"
+							}
+						}
+					}
+				},
+				"tags": ["Content"],
+				"security": [{
+					"apikey": []
+				}]
+			}
+		}
+	},
+	"securityDefinitions": {
+		"apikey": {
+			"type": "apiKey",
+			"name": "apikey",
+			"in": "query"
+		}
+	},
+	"definitions": {
+		"results": {
+			"properties": {
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"usage": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,196 @@
+- swagger: "2.0"
+  info:
+    title: IBM Watson User Modeling API
+    description: REST methods for User Modeling
+    version: v1
+  host: service.platform.watson.ibm.com
+  basePath: /proxy
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /feedback/service/v1/api/usermodeling:
+      put:
+        summary: Submit feedback on the User Modeling service
+        description: The feedback API allows you to provide information on how well
+          the service performed.  The feedback is used to further improve the service
+          and future results.
+        operationId: profile
+        parameters:
+        - in: Header
+          name: Basic Authorization
+          description: Base64 Basic Auth
+          type: string
+          format: string
+        - in: body
+          name: Feedback information
+          description: JSON Data
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /systemu/service/api/v2/profile:
+      post:
+        summary: POST JSON formatted content to be analyzed.
+        description: Accepts a list of content items and analyzes the text. The response
+          is a tree of characteristics that include personality, needs, and values.
+          If you include either created or updated timestamps, the response also includes
+          a summary of the authors writing habits with respect to time of day.
+        operationId: profile
+        parameters:
+        - in: body
+          name: body
+          description: Content items to be analyzed
+          schema:
+            $ref: '#/definitions/holder'
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /systemu/service/api/v2/visualize:
+      post:
+        summary: Visualize a JSON profile
+        description: Accepts a User Modeling portrait that is generated from the response
+          of the POST profile operation. The response is a visualization of the portrait
+          generated in HTML and SVG.
+        operationId: visualize
+        parameters:
+        - in: body
+          name: body
+          description: Portrait to be visualized.
+          schema:
+            $ref: '#/definitions/holder'
+        - in: query
+          name: d3
+          description: If true, inline d3 js library.  If false, do not. Specify true
+            for the first widget you place in your page, false for the rest, to avoid
+            having multiple copies of d3.
+          type: string
+          format: string
+        - in: query
+          name: h
+          description: Height of the visualization, in pixels.
+          type: string
+          format: string
+        - in: query
+          name: id
+          description: The id of the result div element containing the visualization.
+          type: string
+          format: string
+        - in: query
+          name: imgurl
+          description: The url to an image to place at the center of the visualization.
+            Typically this would be a picture of the person who created the text that
+            was analyzed. For example, a URL to the users portrait from Twitter.
+          type: string
+          format: string
+        - in: query
+          name: useorignames
+          description: The visualization uses some names that are more meaningful to
+            a lay person, set this to true to see the original names for these characteristics
+            in the visualization.
+          type: string
+          format: string
+        - in: query
+          name: w
+          description: Width of the visualization, in pixels.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions:
+    Profile:
+      properties:
+        tree:
+          description: This is a default description.
+          type: string
+        id:
+          description: This is a default description.
+          type: string
+        source:
+          description: This is a default description.
+          type: string
+    TraitTreeNode:
+      properties:
+        id:
+          description: This is a default description.
+          type: string
+        name:
+          description: This is a default description.
+          type: string
+        percentage:
+          description: This is a default description.
+          type: string
+        children:
+          description: This is a default description.
+          type: string
+    ContentListContainer:
+      properties:
+        contentItems:
+          description: This is a default description.
+          type: string
+    ContentItem:
+      properties:
+        id:
+          description: This is a default description.
+          type: string
+        userid:
+          description: This is a default description.
+          type: string
+        sourceid:
+          description: This is a default description.
+          type: string
+        created:
+          description: This is a default description.
+          type: string
+        updated:
+          description: This is a default description.
+          type: string
+        contenttype:
+          description: This is a default description.
+          type: string
+        charset:
+          description: This is a default description.
+          type: string
+        language:
+          description: This is a default description.
+          type: string
+        content:
+          description: This is a default description.
+          type: string
+        parentid:
+          description: This is a default description.
+          type: string
+        reply:
+          description: This is a default description.
+          type: string
+        forward:
+          description: This is a default description.
+          type: string
+    Feedback:
+      properties:
+        service_request:
+          description: This is a default description.
+          type: string
+        service_response:
+          description: This is a default description.
+          type: string
+        score:
+          description: This is a default description.
+          type: string
+        text:
+          description: This is a default description.
+          type: string

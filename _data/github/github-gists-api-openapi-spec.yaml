@@ -1,0 +1,173 @@
+- swagger: "2.0"
+  info:
+    title: Github Gists API
+    version: ""
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /gists:
+      get:
+        summary: ListUserGist
+        description: ListUserGist
+        operationId: listusergist
+        parameters:
+        - in: query
+          name: User-Agent
+        - in: query
+          name: username
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /gists/comments/{id}:
+      delete:
+        summary: CreateGistComment
+        description: CreateGistComment
+        operationId: creategistcomment
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: User-Agent
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /gists/public:
+      get:
+        summary: ListAuthUserGist
+        description: ListAuthUserGist
+        operationId: listauthusergist
+        parameters:
+        - in: query
+          name: User-Agent
+        - in: query
+          name: username
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /gists/starred:
+      get:
+        summary: ListPublicGist
+        description: ListPublicGist
+        operationId: listpublicgist
+        parameters:
+        - in: query
+          name: User-Agent
+        - in: query
+          name: username
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /gists/{gistId}/comments:
+      post:
+        summary: GetGistComment
+        description: GetGistComment
+        operationId: getgistcomment
+        parameters:
+        - in: query
+          name: gistId
+        - in: path
+          name: gistId
+        - in: query
+          name: User-Agent
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /gists/{gistId}/comments/{id}:
+      get:
+        summary: GetGistComments
+        description: GetGistComments
+        operationId: getgistcomments
+        parameters:
+        - in: query
+          name: gistId
+        - in: path
+          name: gistId
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: User-Agent
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /gists/{id}:
+      get:
+        summary: ListStarredGist
+        description: ListStarredGist
+        operationId: liststarredgist
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: User-Agent
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /gists/{id}/fork:
+      post:
+        summary: CheckGistStarred
+        description: CheckGistStarred
+        operationId: checkgiststarred
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: User-Agent
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /gists/{id}/star:
+      put:
+        summary: CreateGist
+        description: CreateGist
+        operationId: creategist
+        parameters:
+        - in: query
+          name: id
+        - in: path
+          name: id
+        - in: query
+          name: User-Agent
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

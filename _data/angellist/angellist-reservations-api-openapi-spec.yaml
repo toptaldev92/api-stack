@@ -1,0 +1,138 @@
+- swagger: "2.0"
+  info:
+    title: AngelList Reservations API
+    description: Manage reservations on startup investments.
+    termsOfService: https://angel.co/terms
+    contact:
+      name: AngelList
+      url: https://angel.co/api
+      email: api@angel.co
+    version: v1
+  host: api.angel.co
+  basePath: /1/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /reservations:
+      get:
+        summary: Get Reservations
+        description: Get Reservations
+        operationId: reservations
+        parameters:
+        - in: query
+          name: startup_id
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/reservations'
+        tags:
+        - Reservations
+        security:
+        - AngelListAuth: []
+      post:
+        summary: Add Reservation
+        description: Add Reservation
+        operationId: reservations
+        parameters:
+        - in: query
+          name: amount
+          type: string
+          format: string
+        - in: query
+          name: startup_id
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/reservations'
+        tags:
+        - Reservations
+        security:
+        - AngelListAuth: []
+    /reservations/{reservation_id}:
+      get:
+        summary: Get Reservation
+        description: Get Reservation
+        operationId: reservation
+        parameters:
+        - in: path
+          name: reservation_id
+          type: integer
+          format: integer
+        - in: query
+          name: startup_id
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/reservations'
+        tags:
+        - Reservations
+        security:
+        - AngelListAuth: []
+      put:
+        summary: Update Reservation
+        description: Update Reservation
+        operationId: reservation
+        parameters:
+        - in: path
+          name: reservation_id
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/reservations'
+          500:
+            description: Error
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/error'
+        tags:
+        - Reservations
+        security:
+        - AngelListAuth: []
+  securityDefinitions:
+    AngelListAuth:
+      type: oauth2
+      flow: accessCode
+      authorizationUrl: https://angel.co/api/oauth/authorize
+      tokenUrl: https://angel.co/api/oauth/token
+  definitions:
+    reservations:
+      properties:
+        reservation_id:
+          description: This is a default description.
+          type: integer
+    error:
+      properties:
+        error:
+          description: This is a default description.
+          type: string
+        message:
+          description: This is a default description.
+          type: string
+        type:
+          description: This is a default description.
+          type: string

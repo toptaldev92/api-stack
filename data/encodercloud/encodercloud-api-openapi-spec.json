@@ -1,0 +1,87 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "EncoderCloud API",
+		"description": "EncoderCloud offers a flexible API for seamlessly integrating our cloud based transcoding services directly into your own applications.",
+		"termsOfService": "http://www.encodercloud.com/terms",
+		"version": "v1"
+	},
+	"host": "www.encodercloud.com",
+	"basePath": "/api",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/action": {
+			"get": {
+				"summary": "Encoding",
+				"description": "Executes video api encoding jobs",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "action",
+					"description": "The action to be performed. Action values will be listed below next to the available requests.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your assigned API key.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "custom_id",
+					"description": "Your custom file ID.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "formats[destination]",
+					"description": "Destination URL to upload encoded file",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "formats[profile_id]",
+					"description": "Profile ID to use for encoding.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "job_id",
+					"description": "Job ID assigned by EncoderCloud at the time new video request was made.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "postback",
+					"description": "HTTP(S) URL of the script the result would be posted to.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "Path to media source file.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Video Encoding"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

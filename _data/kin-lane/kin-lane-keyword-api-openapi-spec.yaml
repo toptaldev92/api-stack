@@ -1,0 +1,246 @@
+- swagger: "2.0"
+  info:
+    title: Keyword
+    description: This is an keyword for all my keyword entries. I use a single keyword
+      system to manage all my sites. Based upon tagging, I then publish each post out
+      to its respective Github Page based repo.
+    termsOfService: http://stack.network/terms-of-service.html
+    version: ~
+  host: keyword.api.kinlane.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /keyword/:
+      get:
+        summary: all keywords
+        description: all keywords
+        operationId: getKeywords
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the keyword
+        - in: query
+          name: appkey
+          description: your appkey for accessing the keyword
+        - in: query
+          name: query
+          description: a text query to search across keyword
+        responses:
+          200:
+            description: OK
+        tags:
+        - Keywords
+        security: []
+      post:
+        summary: add a keyword post
+        description: add a keyword post
+        operationId: addKeyword
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the keyword
+        - in: query
+          name: appkey
+          description: your appkey for accessing the keyword
+        - in: query
+          name: description
+          description: description for the keyword
+        - in: query
+          name: keyword
+          description: the keyword
+        - in: query
+          name: url
+          description: url for the keyword
+        responses:
+          200:
+            description: OK
+        tags:
+        - Keywords
+        security: []
+    /keyword/tags/{tag}/keyword/:
+      get:
+        summary: keyword tags by week keywords
+        description: keyword tags by week keywords
+        operationId: getKeywordTagCKeyword
+        parameters:
+        - in: path
+          name: tag
+          description: the tag to filter by
+        - in: query
+          name: week
+          description: the week to filter by, defaults to this week
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /keyword/{keyword_id}/:
+      delete:
+        summary: delete keyword
+        description: delete keyword
+        operationId: deleteKeyword
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the keyword
+        - in: query
+          name: appkey
+          description: your appkey for accessing the keyword
+        - in: path
+          name: keyword_id
+          description: the unique id for keyword entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Keywords
+        security: []
+      get:
+        summary: get keyword using id
+        description: Returns the keyword detail
+        operationId: getKeyword
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the keyword
+        - in: query
+          name: appkey
+          description: your appkey for accessing the keyword
+        - in: path
+          name: keyword_id
+          description: the unique id for keyword entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Keywords
+        security: []
+      put:
+        summary: update keyword
+        description: update keyword
+        operationId: updateKeyword
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the keyword
+        - in: query
+          name: appkey
+          description: your appkey for accessing the keyword
+        - in: query
+          name: description
+          description: description for the keyword
+        - in: query
+          name: keyword
+          description: the keyword
+        - in: path
+          name: keyword_id
+          description: the unique id for keyword entry
+        - in: query
+          name: url
+          description: url for the keyword
+        responses:
+          200:
+            description: OK
+        tags:
+        - Keywords
+        security: []
+    /keyword/{keyword_id}/tags/:
+      get:
+        summary: keyword tags
+        description: keyword tags
+        operationId: getkeywordTags
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the keyword
+        - in: query
+          name: appkey
+          description: your appkey for accessing the keyword
+        - in: path
+          name: keyword_id
+          description: id for keyword
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+      post:
+        summary: add tag to keyword
+        description: add tag to keyword
+        operationId: addKeywordTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the keyword
+        - in: query
+          name: appkey
+          description: your appkey for accessing the keyword
+        - in: path
+          name: keyword_id
+          description: id for the keyword
+        - in: query
+          name: tag
+          description: tag name
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /keyword/{keyword_id}/tags/{tag}:
+      delete:
+        summary: delete keyword tag
+        description: delete keyword tag
+        operationId: deletekeywordTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the keyword
+        - in: query
+          name: appkey
+          description: your appkey for accessing the keyword
+        - in: path
+          name: keyword_id
+          description: id for the keyword
+        - in: path
+          name: tag
+          description: tag to remove from keyword
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+  definitions:
+    keyword:
+      properties:
+        keyword_id:
+          description: This is a default description.
+          type: get
+        keyword:
+          description: This is a default description.
+          type: get
+        description:
+          description: This is a default description.
+          type: get
+        url:
+          description: This is a default description.
+          type: get
+    tag:
+      properties:
+        tag_id:
+          description: This is a default description.
+          type: get
+        tag:
+          description: This is a default description.
+          type: get
+        api_count:
+          description: This is a default description.
+          type: get

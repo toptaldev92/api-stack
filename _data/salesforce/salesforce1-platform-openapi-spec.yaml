@@ -1,0 +1,397 @@
+- swagger: "2.0"
+  info:
+    title: Salesforce1 Platform
+    description: The Salesforce1 Platform brings together Force.com, Heroku, and ExactTarget
+      into one family of cloud services u2014 all built API first u2014 to help deliver
+      apps that connect products, users, and next generation experiences. Designed for
+      scale and speed, it provides a fast way to build apps with open APIs, back-end
+      services, integration tools, starter templates as well as powerful developer environments;
+      thereu2019s no limit to what you can build.
+    termsOfService: https://developer.salesforce.com/files/tos/Developerforce_TOU_20101119.pdf
+    version: ~
+  host: '{region}.salesforce.com'
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /{version}:
+      get:
+        summary: Get Versions
+        description: Get Versions
+        operationId: get-versions
+        parameters:
+        - in: query
+          name: version
+          description: An API version.
+          type: string
+        - in: path
+          name: version
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /{version}/query:
+      get:
+        summary: Reset User Password
+        description: Reset User Password
+        operationId: reset-user-password
+        parameters:
+        - in: query
+          name: q
+          description: A SOQL query.
+          type: string
+        - in: query
+          name: version
+          description: An API version.
+          type: string
+        - in: path
+          name: version
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /{version}/query/{id}:
+      get:
+        summary: Execute SOQL Query
+        description: Execute SOQL Query
+        operationId: execute-soql-query
+        parameters:
+        - in: query
+          name: id
+          description: An identifier used to retrieve the remaining results.
+          type: string
+        - in: path
+          name: id
+          type: string
+        - in: query
+          name: version
+          description: An API version.
+          type: string
+        - in: path
+          name: version
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /{version}/search:
+      get:
+        summary: Get Query Result Batch
+        description: Get Query Result Batch
+        operationId: get-query-result-batch
+        parameters:
+        - in: query
+          name: q
+          description: A SOSL statement.
+          type: string
+        - in: query
+          name: version
+          description: An API version.
+          type: string
+        - in: path
+          name: version
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /{version}/sobjects:
+      get:
+        summary: Get Resources
+        description: Get Resources
+        operationId: get-resources
+        parameters:
+        - in: query
+          name: version
+          description: An API version.
+          type: string
+        - in: path
+          name: version
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /{version}/sobjects/User/{id}/password:
+      delete:
+        summary: Set User Password
+        description: Set User Password
+        operationId: set-user-password
+        parameters:
+        - in: query
+          name: id
+          description: A Salesforces user ID.
+          type: string
+        - in: path
+          name: id
+          type: string
+        - in: query
+          name: version
+          description: An API version.
+          type: string
+        - in: path
+          name: version
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: Get Object Blob Field
+        description: Get Object Blob Field
+        operationId: get-object-blob-field
+        parameters:
+        - in: query
+          name: id
+          description: A Salesforces user ID.
+          type: string
+        - in: path
+          name: id
+          type: string
+        - in: query
+          name: version
+          description: An API version.
+          type: string
+        - in: path
+          name: version
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Get User Password Expiration Status
+        description: Get User Password Expiration Status
+        operationId: get-user-password-expiration-status
+        parameters:
+        - in: query
+          name: id
+          description: A Salesforces user ID.
+          type: string
+        - in: path
+          name: id
+          type: string
+        - in: query
+          name: version
+          description: An API version.
+          type: string
+        - in: path
+          name: version
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /{version}/sobjects/{sobject}:
+      get:
+        summary: Get Objects
+        description: Get Objects
+        operationId: get-objects
+        parameters:
+        - in: query
+          name: sobject
+          description: A Salesforces object.
+          type: string
+        - in: path
+          name: sobject
+          type: string
+        - in: query
+          name: version
+          description: An API version.
+          type: string
+        - in: path
+          name: version
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Get Basic Object Metadata
+        description: Get Basic Object Metadata
+        operationId: get-basic-object-metadata
+        parameters:
+        - in: query
+          name: sobject
+          description: A Salesforces object.
+          type: string
+        - in: path
+          name: sobject
+          type: string
+        - in: query
+          name: version
+          description: An API version.
+          type: string
+        - in: path
+          name: version
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /{version}/sobjects/{sobject}/describe:
+      get:
+        summary: Create Object
+        description: Create Object
+        operationId: create-object
+        parameters:
+        - in: query
+          name: sobject
+          description: A Salesforces object.
+          type: string
+        - in: path
+          name: sobject
+          type: string
+        - in: query
+          name: version
+          description: An API version.
+          type: string
+        - in: path
+          name: version
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /{version}/sobjects/{sobject}/{id}:
+      delete:
+        summary: Get Object
+        description: Get Object
+        operationId: get-object
+        parameters:
+        - in: query
+          name: id
+          description: A Salesforces object ID.
+          type: string
+        - in: path
+          name: id
+          type: string
+        - in: query
+          name: sobject
+          description: A Salesforces object.
+          type: string
+        - in: path
+          name: sobject
+          type: string
+        - in: query
+          name: version
+          description: An API version.
+          type: string
+        - in: path
+          name: version
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: Get All Object Metadata
+        description: Get All Object Metadata
+        operationId: get-all-object-metadata
+        parameters:
+        - in: query
+          name: fields
+          description: Optional list of fields used to return values for.
+          type: string
+        - in: query
+          name: id
+          description: A Salesforces object ID.
+          type: string
+        - in: path
+          name: id
+          type: string
+        - in: query
+          name: sobject
+          description: A Salesforces object.
+          type: string
+        - in: path
+          name: sobject
+          type: string
+        - in: query
+          name: version
+          description: An API version.
+          type: string
+        - in: path
+          name: version
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /{version}/sobjects/{sobject}/{id}/{blobField}:
+      get:
+        summary: Delete Object
+        description: Delete Object
+        operationId: delete-object
+        parameters:
+        - in: query
+          name: blobField
+          description: A Salesforces object blob field.
+          type: string
+        - in: path
+          name: blobField
+          type: string
+        - in: query
+          name: fields
+          description: Optional list of fields used to return values for.
+          type: string
+        - in: query
+          name: id
+          description: A Salesforces object ID.
+          type: string
+        - in: path
+          name: id
+          type: string
+        - in: query
+          name: sobject
+          description: A Salesforces object.
+          type: string
+        - in: path
+          name: sobject
+          type: string
+        - in: query
+          name: version
+          description: An API version.
+          type: string
+        - in: path
+          name: version
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

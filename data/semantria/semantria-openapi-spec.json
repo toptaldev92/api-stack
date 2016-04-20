@@ -1,0 +1,2291 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Semantria",
+		"description": "Semantria uses text and sentiment analysis tools to analyze tweets, Facebook posts, surveys, reviews, or enterprise content. Semantria has features like queries and categories to help you sift through large amounts of data to find what you need. ",
+		"version": "1"
+	},
+	"host": "api35.semantria.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/blacklist.{content_type}": {
+			"delete": {
+				"summary": "Remove items from blacklist",
+				"description": "This method removes certain blacklisted items by their values on Semantria side.",
+				"operationId": "deleteBlacklistItems",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "body",
+					"name": "Blacklisted items",
+					"description": "List of unique blacklisted items (strings).",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Retrieve blacklisted items",
+				"description": "This method retrieves all backlisted items available on Semantria side.",
+				"operationId": "getBlacklist",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration blacklist linked to.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Add items to blacklist",
+				"description": "This method adds new unique items to the backlist on Semantria side.",
+				"operationId": "updateBlacklist",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "body",
+					"name": "Blacklisted items",
+					"description": "List of parametrized JSON or XML objects.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration blacklist linked to.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/categories.{content_type}": {
+			"delete": {
+				"summary": "Remove user categories",
+				"description": "This method removes certain user categories by their names on Semantria side.",
+				"operationId": "deleteCategories",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "body",
+					"name": "Category names",
+					"description": "List of user category names (strings).",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration user categories linked to.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Retrieve user categories",
+				"description": "This method retrieves list of user categories available on Semantria side.",
+				"operationId": "getCategories",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration user categories linked to.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Add or update user categories",
+				"description": "This method adds or updates user categories by unique names on Semantria side.",
+				"operationId": "updateCategories",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "body",
+					"name": "Categories",
+					"description": "List of parametrized JSON or XML objects.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration user categories linked to.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/collection.{content_type}": {
+			"post": {
+				"summary": "Queue collection for analysis",
+				"description": "This method queues collection of documents onto the server for analysis. Queued collection of documents analyzes in common context as entire thing. If unique configuration ID provided, Semantria uses settings of that configuration during analysis, in opposite the primary configuration uses. Collection IDs are unique in scope of configuration. If the same ID appears twice, Semantria overrides existing collection with the new Data",
+				"operationId": "queueCollection",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "body",
+					"name": "Collection",
+					"description": "Parametrized JSON or XML object.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration used for analysis.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/collection/processed.{content_type}": {
+			"get": {
+				"summary": "Retrieve collections analysis",
+				"description": "This method retrieves analysis results for processed collections from Semantria. FAILED collections will have FAILED status in response. Semantria responds with limited amount of results per API call. If configuration ID provided, Semantria responds with the collections, which were queued using the same configuration ID, in opposite Primary configuration uses.",
+				"operationId": "retrieveProcessedCollections",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration used for analysis.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/collection/{collection_id}.{content_type}": {
+			"delete": {
+				"summary": "Cancel collection analysis",
+				"description": "This method cancels collection analysis by unique ID on Semantria side if it is waiting for analysis in queue.",
+				"operationId": "cancelCollection",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "collection_id",
+					"description": "Collection ID",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration used for analysis.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Retrieve collection analysis or its status in queue",
+				"description": "This method retrieves analysis results for documents collection by its unique ID or the collectionu2019s status in queue if it did not analyzed yet. Semantria guarantees delivering of all collections back to the client even if they FAILED on Semantria side due to some reason.",
+				"operationId": "receiveCollectionAnalyticData",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "collection_id",
+					"description": "Collection ID",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration used for analysis.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/configurations.{content_type}": {
+			"delete": {
+				"summary": "Remove user configurations",
+				"description": "This method removes certain configuration by unique ID on Semantria side.",
+				"operationId": "deleteConfigurations",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "body",
+					"name": "Configuration IDs",
+					"description": "List of configuration identifiers (strings).",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Retrieve user configurations",
+				"description": "This method retrieves all user configurations available on Semantria side.",
+				"operationId": "getConfigurations",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Create or update user configurations",
+				"description": "This method creates or updates specific configurations on Semantria side. If unique ID of configuration provided, Semantria updates certain configuration is exists. If unique ID not passed, Semantria creates new configuration with provided settings.",
+				"operationId": "updateConfigurations",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "body",
+					"name": "Configurations",
+					"description": "List of parametrized JSON or XML objects.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/document.{content_type}": {
+			"post": {
+				"summary": "Queue document for analysis",
+				"description": "This method queues document onto the server for analysis. Queued document analyzes individually and will have its own set of results. If unique configuration ID provided, Semantria uses settings of that configuration during analysis, in opposite the primary configuration uses. Document IDs are unique in scope of configuration. If the same ID appears twice, Semantria overrides existing document with the new Data.",
+				"operationId": "queueDocument",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration used for analysis.",
+					"type": "string"
+				},
+				{
+					"in": "body",
+					"name": "Document",
+					"description": "Parametrized JSON or XML object.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/document/batch.{content_type}": {
+			"post": {
+				"summary": "Queue batch of documents for analysis",
+				"description": "This method queues batch of documents for analysis. The rules are the same as for single document mode but here the documents ordered into the batch.",
+				"operationId": "queueBatchOfDocuments",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "body",
+					"name": "Batch of Documents",
+					"description": "List of parametrized JSON or XML objects.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration used for analysis.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/document/processed.{content_type}": {
+			"get": {
+				"summary": "Retrieve documents analysis",
+				"description": "This method retrieves analysis results for processed documents from Semantria. FAILED documents will have FAILED status in response. Semantria responds with limited amount of results per API call. If configuration ID provided, Semantria responds with the document, which were queued using the same configuration ID, in opposite Primary.",
+				"operationId": "retrieveProcessedDocuments",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration used for analysis.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/document/{document_id}.{content_type}": {
+			"delete": {
+				"summary": "Cancel document analysis",
+				"description": "This method cancels document analysis by unique ID on Semantria side if it is waiting for analysis in queue.",
+				"operationId": "cancelDocument",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration used for analysis.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "document_id",
+					"description": "Document ID",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Retrieve document analysis or its status in queue",
+				"description": "This method retrieves analysis results for the single document by its unique ID or the documentu2019s status in queue if it did not analyzed yet. Semantria guarantees delivering of all documents back to the client even if they FAILED on Semantria side due to some reason.",
+				"operationId": "receiveDocumentAnalyticData",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration used for analysis.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "document_id",
+					"description": "Document ID",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/entities.{content_type}": {
+			"delete": {
+				"summary": "Remove user entities",
+				"description": "This method removes certain user entities by their names on Semantria side.",
+				"operationId": "deleteEntities",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "body",
+					"name": "User entity names",
+					"description": "List of user entity names (strings)",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Retrieve user entities",
+				"description": "This method retrieves list of user entities available on Semantria side.",
+				"operationId": "getEntities",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration user entities linked to.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Add or update user entities",
+				"description": "This method adds or updates user entities by unique names on Semantria side.",
+				"operationId": "updateEntities",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration user entities linked to.",
+					"type": "string"
+				},
+				{
+					"in": "body",
+					"name": "User entities",
+					"description": "List of parametrized JSON or XML objects.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/phrases.{content_type}": {
+			"delete": {
+				"summary": "Remove sentiment-bearing phrases",
+				"description": "This method removes certain sentiment-bearing phrases by their names on Semantria side.",
+				"operationId": "deletePhrases",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "body",
+					"name": "Sentiment phrases",
+					"description": "List of sentiment-bearing phrases (strings).",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Retrieve sentiment-bearing phrases",
+				"description": "This method retrieves list of sentiment-bearing phrases available on Semantria side.",
+				"operationId": "getPhrases",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration phrases linked to.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Add or update sentiment-bearing phrases",
+				"description": "This method adds or updates sentiment-bearing phrases by unique names on Semantria side.",
+				"operationId": "updatePhrases",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration phrases linked to.",
+					"type": "string"
+				},
+				{
+					"in": "body",
+					"name": "Sentiment phrases",
+					"description": "List of parametrized JSON or XML objects.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/queries.{content_type}": {
+			"delete": {
+				"summary": "Remove queries",
+				"description": "This method removes certain queries by their names on Semantria side.",
+				"operationId": "deleteQueries",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration queries linked to.",
+					"type": "string"
+				},
+				{
+					"in": "body",
+					"name": "Query names",
+					"description": "List of query names (strings).",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Retrieve queries",
+				"description": "This method retrieves list of queries available on Semantria side.",
+				"operationId": "getQueries",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration queries linked to.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Add or update queries",
+				"description": "This method adds or updates queries by unique names on Semantria side.",
+				"operationId": "updateQueries",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Identifier of configuration queries linked to.",
+					"type": "string"
+				},
+				{
+					"in": "body",
+					"name": "Queries",
+					"description": "List of parametrized JSON or XML objects.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/statistics.{content_type}": {
+			"get": {
+				"summary": "Retrieve usage statistics",
+				"description": "This method retrieves overall and per configuration usage statistics for specific timeframe. Statistics ordered per available configurations. Available interval values are current <b>hour</b>, <b>day</b>, <b>week</b>, <b>month</b> and <b>year</b>.",
+				"operationId": "getStatistic",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "config_id",
+					"description": "Configuration identifier for usage statistics retrieving.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "interval",
+					"description": "Hour, Day, Week, Month, Year values are supported.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/status.{content_type}": {
+			"get": {
+				"summary": "Retrieve API status",
+				"description": "This method retrieves API status information such as the app version, current API version, supported languages and encodings, the overall service status, etc.",
+				"operationId": "getStatus",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/subscription.{content_type}": {
+			"get": {
+				"summary": "Retrieve subscription details",
+				"description": "This method retrieves users subscription details that consist of the list of allowed features, configured limits and options on Semantria side.",
+				"operationId": "getSubscription",
+				"parameters": [{
+					"in": "path",
+					"name": "API key",
+					"description": "Semantria API key",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "API secret",
+					"description": "Semantria API secret",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"Status": {
+			"properties": {
+				"service_status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"api_version": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"service_version": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"supported_encoding": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"supported_compression": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"supported_languages": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Subscription": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"billing_settings": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"basic_settings": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"feature_settings": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"SubscriptionBillingSection": {
+			"properties": {
+				"priority": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"expiration_date": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"limit_type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"calls_balance": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"calls_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"calls_limit_interval": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"docs_balance": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"docs_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"docs_limit_interval": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"docs_suggested": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"docs_suggested_interval": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"app_seats_permitted": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"app_seats_allocated": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"SubscriptionBasicSection": {
+			"properties": {
+				"configurations_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"output_data_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"blacklist_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"categories_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"category_samples_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"queries_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"entities_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sentiment_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"characters_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"batch_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"collection_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"auto_response_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"processed_batch_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"callback_batch_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"return_source_text": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"SubscriptionFeatureSection": {
+			"properties": {
+				"supported_languages": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"html_processing": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"document": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"collection": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"SubscriptionFeatureSectionDocument": {
+			"properties": {
+				"summary": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"themes": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"named_entities": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"user_entities": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"intentions": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"entity_themes": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"mentions": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"opinions": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"named_relations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"user_relations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"query_topics": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"concept_topics": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sentiment_phrases": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"phrases_detection": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"pos_tagging": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"language_detection": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"auto_categories": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"SubscriptionFeatureSectionCollection": {
+			"properties": {
+				"facets": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"mentions": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"themes": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"named_entities": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"query_topics": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"concept_topics": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Statistic": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"overall_texts": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"overall_batches": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"overall_calls": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"overall_exceeded": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"calls_system": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"calls_data": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"overall_docs": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"docs_processed": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"docs_failed": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"docs_responded": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"overcall_colls": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"colls_processed": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"colls_failed": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"colls_responded": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"colls_documents": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"latest_used_app": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"used_app": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"configurations": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"StatisticConfiguration": {
+			"properties": {
+				"config_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"overall_texts": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"overall_batches": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"overall_calls": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"overall_exceeded": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"calls_system": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"calls_data": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"overall_docs": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"docs_processed": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"docs_failed": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"docs_responded": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"overcall_colls": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"colls_processed": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"colls_failed": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"colls_responded": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"latest_used_app": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"used_app": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Configuration": {
+			"properties": {
+				"config_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"is_primary": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"auto_response": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"chars_threshold": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"categories_threshold": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"one_sentence": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"process_html": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"language": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"callback": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"document": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"collection": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ConfigurationDocumentSection": {
+			"properties": {
+				"intentions": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"concept_topics_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"query_topics_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"auto_categories_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"named_entities_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"user_entities_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"entity_themes_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"named_mentions_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"user_mentions_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"themes_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"theme_mentions_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"named_relations_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"user_relations_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"named_opinions_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"user_opinions_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"phrases_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"possible_phrases_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"pos_types": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"summary_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"detect_language": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ConfigurationCollectionSection": {
+			"properties": {
+				"facets_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"facet_atts_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"facet_mentions_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"attribute_mentions_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"concept_topics_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"query_topics_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"named_entities_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"named_mentions_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"themes_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"theme_mentions_limit": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Category": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"weight": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"samples": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Query": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"query": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Entity": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"label": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"normalized": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"evidence": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"confident": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"is_about": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"entity_type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sentiment_score": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sentiment_polarity": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"mentions": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"themes": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"negative_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"positive_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"neutral_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Phrase": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"weight": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sentiment_score": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sentiment_polarity": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"is_negated": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"negating_phrase": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"is_intensified": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"intensifying_phrase": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Document": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"text": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"tag": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"DocumentAnalyticData": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"config_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"source_text": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"summary": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"language": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"language_score": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sentiment_score": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sentiment_polarity": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"details": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"auto_categories": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"phrases": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"themes": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"entities": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"relations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"opinions": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"topics": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"intentions": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Details": {
+			"properties": {
+				"is_imperative": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"is_polar": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"words": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Word": {
+			"properties": {
+				"tag": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"stemmed": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"is_negated": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sentiment_score": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"AutoCategory": {
+			"properties": {
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"strength_score": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"categories": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"SubCategory": {
+			"properties": {
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sentiment_score": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Theme": {
+			"properties": {
+				"evidence": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"is_about": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"strength_score": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sentiment_score": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sentiment_polarity": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"mentions": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"themes_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"phrases_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Mention": {
+			"properties": {
+				"label": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"is_negated": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"negating_phrase": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"locations": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Location": {
+			"properties": {
+				"offset": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"length": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"index": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Relation": {
+			"properties": {
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"relation_type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"confidence_score": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"extra": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"entities": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"RelationEntity": {
+			"properties": {
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"entity_type": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Opinion": {
+			"properties": {
+				"quotation": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"speaker": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"topic": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sentiment_score": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sentiment_polarity": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Topic": {
+			"properties": {
+				"title": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"hitcount": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"strength_score": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sentiment_score": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sentiment_polarity": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"topics": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Intention": {
+			"properties": {
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"evidence_phrase": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"who": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"what": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Collection": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"tag": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"documents": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"CollectionAnalyticData": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"config_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"tag": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"facets": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"themes": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"entities": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"topics": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Facet": {
+			"properties": {
+				"label": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"negative_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"positive_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"neutral_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"attributes": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"mentions": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Attribute": {
+			"properties": {
+				"label": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"mentions": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

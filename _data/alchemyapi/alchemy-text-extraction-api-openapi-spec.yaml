@@ -1,0 +1,93 @@
+- swagger: "2.0"
+  info:
+    title: Alchemy Text Extraction API
+    description: The URLGetText call is utilized to extract the primary page / article
+      text from a web page. AlchemyAPI will download the requested URL, extract text
+      from the HTML document structure, and ignore page navigation, advertisements,
+      and other undesirable page content.
+    termsOfService: http://www.alchemyapi.com/company/terms.html
+    contact:
+      name: AlchemyAPI
+      url: http://www.alchemyapi.com/company/contact
+      email: questions@alchemyapi.com
+    version: v1
+  host: access.alchemyapi.com
+  basePath: /calls/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /url/URLGetText:
+      get:
+        summary: Get Web Page Text
+        description: The URLGetText call is utilized to extract the primary page / article
+          text from a web page.
+        operationId: getURLGetText
+        parameters:
+        - in: query
+          name: apikey
+          type: string
+          format: string
+        - in: query
+          name: apikey
+          description: 'your private api key '
+          type: string
+          format: string
+        - in: query
+          name: extractLinks
+          description: whether to include hyperlinks in the extracted web page text
+          type: boolean
+          format: boolean
+        - in: query
+          name: jsonp
+          description: desired JSONP callback
+          type: string
+          format: string
+        - in: query
+          name: outputMode
+          description: desired API output format
+          type: string
+          format: string
+        - in: query
+          name: url
+          type: string
+          format: string
+        - in: query
+          name: url
+          description: 'http url (must be uri-argument encoded) '
+          type: string
+          format: string
+        - in: query
+          name: useMetadata
+          description: whether to use description information embedded in web page meta-data
+          type: string
+          format: string
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/results'
+        tags:
+        - Text
+        security: []
+  securityDefinitions:
+    apikey:
+      type: apiKey
+      name: apikey
+  definitions:
+    results:
+      properties:
+        status:
+          description: This is a default description.
+          type: string
+        url:
+          description: This is a default description.
+          type: string
+        text:
+          description: This is a default description.
+          type: string

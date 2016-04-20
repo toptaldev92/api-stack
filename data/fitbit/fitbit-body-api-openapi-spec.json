@@ -1,0 +1,479 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Fitbit Body API",
+		"description": "The Fitbit API allows developers to interact with Fitbit data in their own applications, products and services.",
+		"version": "1"
+	},
+	"host": "api.fitbit.com",
+	"basePath": "/1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/user/-/body.{format}": {
+			"post": {
+				"summary": "Get Time Series",
+				"description": "Get Time Series",
+				"operationId": "get-time-series",
+				"parameters": [{
+					"in": "query",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "fat",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "weight",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["body"],
+				"security": []
+			}
+		},
+		"/user/-/body/log/fat.{format}": {
+			"post": {
+				"summary": "Log Body Weight",
+				"description": "Log Body Weight",
+				"operationId": "log-body-weight",
+				"parameters": [{
+					"in": "query",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "fat",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "time",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["body"],
+				"security": []
+			}
+		},
+		"/user/-/body/log/fat/date/{date}.{format}": {
+			"get": {
+				"summary": "Get Body Weight",
+				"description": "Get Body Weight",
+				"operationId": "get-body-weight",
+				"parameters": [{
+					"in": "query",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["body"],
+				"security": []
+			}
+		},
+		"/user/-/body/log/fat/goal.{format}": {
+			"get": {
+				"summary": "Update Weight Goal",
+				"description": "Update Weight Goal",
+				"operationId": "update-weight-goal",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["body"],
+				"security": []
+			},
+			"post": {
+				"summary": "Get Body Fat Goal",
+				"description": "Get Body Fat Goal",
+				"operationId": "get-body-fat-goal",
+				"parameters": [{
+					"in": "query",
+					"name": "fat",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["body"],
+				"security": []
+			}
+		},
+		"/user/-/body/log/fat/{body-fat-log-id}.{format}": {
+			"delete": {
+				"summary": "Delete Body Weight Log",
+				"description": "Delete Body Weight Log",
+				"operationId": "delete-body-weight-log",
+				"parameters": [{
+					"in": "query",
+					"name": "body-fat-log-id",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "body-fat-log-id",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["body"],
+				"security": []
+			}
+		},
+		"/user/-/body/log/fat/{body-weight-log-id}.{format}": {
+			"delete": {
+				"summary": "Log Body Fat",
+				"description": "Log Body Fat",
+				"operationId": "log-body-fat",
+				"parameters": [{
+					"in": "query",
+					"name": "body-weight-log-id",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "body-weight-log-id",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["body"],
+				"security": []
+			}
+		},
+		"/user/-/body/log/weight.{format}": {
+			"post": {
+				"summary": "Log Body Measurements",
+				"description": "Log Body Measurements",
+				"operationId": "log-body-measurements",
+				"parameters": [{
+					"in": "query",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "time",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "weight",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["body"],
+				"security": []
+			}
+		},
+		"/user/-/body/log/weight/date/{date}.{format}": {
+			"get": {
+				"summary": "Get Body Measurements",
+				"description": "Get Body Measurements",
+				"operationId": "get-body-measurements",
+				"parameters": [{
+					"in": "query",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["body"],
+				"security": []
+			}
+		},
+		"/user/-/body/log/weight/goal.{format}": {
+			"get": {
+				"summary": "Delete Body Fat Log",
+				"description": "Delete Body Fat Log",
+				"operationId": "delete-body-fat-log",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["body"],
+				"security": []
+			},
+			"post": {
+				"summary": "Get Body Weight Goal",
+				"description": "Get Body Weight Goal",
+				"operationId": "get-body-weight-goal",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "startDate",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "startWeight",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "weight",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["body"],
+				"security": []
+			}
+		},
+		"/user/{user-id}/body/date/{date}.{format}": {
+			"get": {
+				"summary": "Update User Info",
+				"description": "Update User Info",
+				"operationId": "update-user-info",
+				"parameters": [{
+					"in": "query",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user-id",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "user-id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["body"],
+				"security": []
+			}
+		},
+		"/user/{user-id}/body/weight/date/{start-date-or-end-date}/{end-date-or-period}.{format}": {
+			"get": {
+				"summary": "Get Badges",
+				"description": "Get Badges",
+				"operationId": "get-badges",
+				"parameters": [{
+					"in": "query",
+					"name": "end-date-or-period",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "end-date-or-period",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "start-date-or-end-date",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "start-date-or-end-date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user-id",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "user-id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["body"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

@@ -1,0 +1,401 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "EPA Integrated Grants Management System API",
+		"description": "Integrated Grants Management System provides information used to track, award, administer, and monitor grants.",
+		"contact": {
+			"name": "EP Envirofacts",
+			"url": "http://www.epa.gov/enviro/index.html"
+		},
+		"version": "v1"
+	},
+	"host": "iaspub.epa.gov",
+	"basePath": "/enviro/efservice/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/OGD_CFDA/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_OGD_CFDA",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ogd_cfda"
+							}
+						}
+					}
+				},
+				"tags": ["Grants"],
+				"security": []
+			}
+		},
+		"/OGD_EF_GRANT_DRPT_CFDA/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_OGD_EF_GRANT_DRPT_CFDA",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ogd_ef_grant_drpt_cfda"
+							}
+						}
+					}
+				},
+				"tags": ["Grants"],
+				"security": []
+			}
+		},
+		"/OGD_EF_GRANT_DRPT_SA/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_OGD_EF_GRANT_DRPT_SA",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ogd_ef_grant_drpt_sa"
+							}
+						}
+					}
+				},
+				"tags": ["Grants"],
+				"security": []
+			}
+		},
+		"/OGD_EF_GRANT_DTL_RPT/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_OGD_EF_GRANT_DTL_RPT",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ogd_ef_grant_dt"
+							}
+						}
+					}
+				},
+				"tags": ["Grants"],
+				"security": []
+			}
+		},
+		"/OGD_EF_GRANT_SUM_RPT/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_OGD_EF_GRANT_SUM_RPT",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ogd_ef_grant_sum_rpt"
+							}
+						}
+					}
+				},
+				"tags": ["Grants"],
+				"security": []
+			}
+		},
+		"/OGD_STAT_AUTHORITY/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_OGD_STAT_AUTHORITY",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/ogd_stat_authority"
+							}
+						}
+					}
+				},
+				"tags": ["Grants"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"ogd_ef_grant_sum_rpt": {
+			"properties": {
+				"": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"AWARD_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CUMULATIVE_AWARD": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"GRANT_FAMILY": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"GRANT_FAMILY_SEQ": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"NUMBER_OF_AMENDMENTS": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PROJ_BEG_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PROJ_END_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ogd_ef_grant_drpt_cfda": {
+			"properties": {
+				"": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FK_CFDA_SEQ": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FK_GRANT_SEQ": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ogd_cfda": {
+			"properties": {
+				"": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CFDA_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CFDA_DESCRIPTION": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CFDA_SEQ": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ogd_ef_grant_drpt_sa": {
+			"properties": {
+				"": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FK_GRANT_SEQ": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FK_STAT_AUTH_SEQ": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ogd_stat_authority": {
+			"properties": {
+				"": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STAT_AUTH_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STAT_AUTH_DESCRIPTION": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STAT_AUTH_SEQ": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ogd_ef_grant_dt": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

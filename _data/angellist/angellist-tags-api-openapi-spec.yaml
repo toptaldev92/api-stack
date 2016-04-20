@@ -1,0 +1,205 @@
+- swagger: "2.0"
+  info:
+    title: AngelList Tags API
+    description: Access and manage tags for startups and users on AngelList.
+    termsOfService: https://angel.co/terms
+    contact:
+      name: AngelList
+      url: https://angel.co/api
+      email: api@angel.co
+    version: v1
+  host: api.angel.co
+  basePath: /1/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /tags/{tag_id}:
+      get:
+        summary: Get Tag
+        description: Get Tag
+        operationId: tags
+        parameters:
+        - in: path
+          name: tag_id
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/all'
+        tags:
+        - Tags
+        security:
+        - AngelListAuth: []
+    /tags/{tag_id}/children:
+      get:
+        summary: Get Tags Children
+        description: Get Tags Children
+        operationId: tagsChildren
+        parameters:
+        - in: path
+          name: tag_id
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/children'
+        tags:
+        - Tags
+        security:
+        - AngelListAuth: []
+    /tags/{tag_id}/jobs:
+      get:
+        summary: Get Jobs by Tag
+        description: Get Jobs by Tag
+        operationId: jobs
+        parameters:
+        - in: path
+          name: tag_id
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/jobs'
+        tags:
+        - Tags
+        security:
+        - AngelListAuth: []
+    /tags/{tag_id}/parents:
+      get:
+        summary: Get Tag Parents
+        description: Get Tag Parents
+        operationId: tagParents
+        parameters:
+        - in: path
+          name: tag_id
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/all'
+        tags:
+        - Tags
+        security: []
+    /tags/{tag_id}/startups:
+      get:
+        summary: Get Startups by Tag
+        description: Get Startups by Tag
+        operationId: tagStartups
+        parameters:
+        - in: path
+          name: tag_id
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/startups'
+        tags:
+        - Tags
+        security:
+        - AngelListAuth: []
+    /tags/{tag_id}/users:
+      get:
+        summary: Get Users by Tag
+        description: Get Users by Tag
+        operationId: tagUsers
+        parameters:
+        - in: path
+          name: tag_id
+          type: integer
+          format: integer
+        responses:
+          200:
+            description: Successful response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/all'
+        tags:
+        - Tags
+        security:
+        - AngelListAuth: []
+  securityDefinitions:
+    AngelListAuth:
+      type: oauth2
+      flow: accessCode
+      authorizationUrl: https://angel.co/api/oauth/authorize
+      tokenUrl: https://angel.co/api/oauth/token
+  definitions:
+    jobs:
+      properties:
+        job_id:
+          description: This is a default description.
+          type: integer
+    abilities:
+      properties:
+        intro:
+          description: This is a default description.
+          type: string
+    locations:
+      properties:
+        angellist_url:
+          description: This is a default description.
+          type: string
+        display_name:
+          description: This is a default description.
+          type: string
+        id:
+          description: This is a default description.
+          type: string
+        locations:
+          description: This is a default description.
+          type: string
+        name:
+          description: This is a default description.
+          type: string
+        tag_type:
+          description: This is a default description.
+          type: string
+    all:
+      properties:
+        all:
+          description: This is a default description.
+          type: string
+        followers:
+          description: This is a default description.
+          type: string
+        investor_followers:
+          description: This is a default description.
+          type: string
+        startups:
+          description: This is a default description.
+          type: string
+    children:
+      properties:
+        children:
+          description: This is a default description.
+          type: string
+    startups:
+      properties:
+        startup_id:
+          description: This is a default description.
+          type: integer

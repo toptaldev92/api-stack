@@ -1,0 +1,88 @@
+- swagger: "2.0"
+  info:
+    title: USA Today Census
+    description: 'The USA TODAY Census API allows developers to easily and programmatically
+      access United States Census information. Data concerning ethnicity, housing, population
+      and race is available from both the 2000 and 2010 census, as well as basic population
+      numbers dating back to the original 1790 census. All data returned in JSON formatting. '
+    version: v1
+  host: api.usatoday.com
+  basePath: open/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    census:
+      get:
+        summary: Census
+        description: 'The USA TODAY Census API allows developers to easily and programmatically
+          access United States Census information. Data concerning ethnicity, housing,
+          population and race is available from both the 2000 and 2010 census, as well
+          as basic population numbers dating back to the original 1790 census. All data
+          returned in JSON formatting. '
+        operationId: ""
+        parameters:
+        - in: query
+          name: api_key
+          description: The API key used for the query
+          type: string
+          format: string
+        - in: query
+          name: Ethnicity
+          description: Returns an areas ethnic data. Information includes how much of
+            the population identifies as Hispanic or non-Hispanic white, and the USA
+            TODAY Diversity Index.
+          type: string
+          format: string
+          default: eth
+        - in: path
+          name: Housing
+          description: Returns an areas housing data. Information includes the number
+            of housing units, and the percentage of those that are vacant.
+          type: string
+          format: string
+          default: hou
+        - in: query
+          name: keypat
+          description: The Census API allows data searches by name, state abbreviation,
+            FIPS code or GNIS code. The developer may use _ as a one character wildcard,
+            or ~ as an arbitrary length wildcard.
+          type: string
+          format: string
+        - in: query
+          name: locations
+          description: Location search
+          type: string
+          format: string
+          default: loc
+        - in: path
+          name: Population
+          description: Returns an areas population data. Information includes the total
+            population of an area, average population per square mile, and the percent
+            by which that population has changed since the last census.
+          type: string
+          format: string
+          default: pop
+        - in: path
+          name: Race
+          description: Returns an areas racial data. Information includes the percentage
+            of an areas population that identifies as White, Black, American Indian,
+            Asian, native Hawaiian/Pacific Islander, or mixed race.
+          type: string
+          format: string
+        - in: query
+          name: sumlevid
+          description: Use sumlevid to define what level of census data you would like.
+            By default, this is set to 2.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - census
+        security: []
+  definitions: []

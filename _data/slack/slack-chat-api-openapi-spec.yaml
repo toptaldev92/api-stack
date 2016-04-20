@@ -1,0 +1,143 @@
+- swagger: "2.0"
+  info:
+    title: Slack Chat API
+    description: The API for management Slack Chats
+    termsOfService: https://slack.com/terms-of-service/api
+    version: ~
+  host: slack.com
+  basePath: /api
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /methods/chat.delete:
+      get:
+        summary: Delete Message
+        description: <td width=70%>Deletes a message.</td>
+        operationId: chatdelete
+        parameters:
+        - in: query
+          name: channel
+          description: Channel containing the message to be deleted.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: chat:write:user)'
+          type: string
+        - in: query
+          name: ts
+          description: Timestamp of the message to be deleted.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - chat
+        security: []
+    /methods/chat.postMessage:
+      get:
+        summary: Send Message
+        description: <td width=70%>Sends a message to a channel.</td>
+        operationId: chatpostmessage
+        parameters:
+        - in: query
+          name: as_user
+          description: Pass true to post the message as the authed user, instead of
+            as a bot
+          type: string
+        - in: query
+          name: attachments
+          description: Structured message attachments.
+          type: string
+        - in: query
+          name: channel
+          description: Channel, private group, or IM channel to send message to. Can
+            be an encoded ID, or a name. See below for more details.
+          type: string
+        - in: query
+          name: icon_emoji
+          description: emoji to use as the icon for this message. Overrides icon_url.
+          type: string
+        - in: query
+          name: icon_url
+          description: URL to an image to use as the icon for this message
+          type: string
+        - in: query
+          name: link_names
+          description: Find and link channel names and usernames.
+          type: string
+        - in: query
+          name: parse
+          description: Change how messages are treated. See below.
+          type: string
+        - in: query
+          name: text
+          description: Text of the message to send. See below for an explanation of
+            formatting.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: chat:write:bot or chat:write:user)'
+          type: string
+        - in: query
+          name: unfurl_links
+          description: Pass true to enable unfurling of primarily text-based content.
+          type: string
+        - in: query
+          name: unfurl_media
+          description: Pass false to disable unfurling of media content.
+          type: string
+        - in: query
+          name: username
+          description: Name of bot.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - chat
+        security: []
+    /methods/chat.update:
+      get:
+        summary: Update Message
+        description: <td width=70%>Updates a message.</td>
+        operationId: chatupdate
+        parameters:
+        - in: query
+          name: attachments
+          description: Structured message attachments.
+          type: string
+        - in: query
+          name: channel
+          description: Channel containing the message to be updated.
+          type: string
+        - in: query
+          name: link_names
+          description: Find and link channel names and usernames.
+          type: string
+        - in: query
+          name: parse
+          description: Change how messages are treated. See below.
+          type: string
+        - in: query
+          name: text
+          description: New text for the message, using the default formatting rules.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: chat:write:user)'
+          type: string
+        - in: query
+          name: ts
+          description: Timestamp of the message to be updated.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - chat
+        security: []
+  definitions: []

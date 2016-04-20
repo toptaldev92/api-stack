@@ -1,0 +1,101 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Next Caller API",
+		"description": "Next Calleru2019s RESTful API is designed to allow your business the ability to identify unknown callers with our Advanced Caller IDu2122 service.",
+		"termsOfService": "https://dev.nextcaller.com/terms/",
+		"version": "v2"
+	},
+	"host": "api.nextcaller.com",
+	"basePath": "/v2",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/{version}/records/": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"description": "Specifies a format of response: JSON or XML.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "phone",
+					"description": "Specifies the callers phone number.",
+					"type": "long"
+				},
+				{
+					"in": "query",
+					"name": "version",
+					"description": "Specifies a api version.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "version",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/{version}/users/{nextcaller_id}/": {
+			"post": {
+				"summary": "Get Profile",
+				"description": "Get Profile",
+				"operationId": "get-profile",
+				"parameters": [{
+					"in": "query",
+					"name": "Content-Type",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"description": "Specifies a format of response: JSON or XML.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "nextcaller_id",
+					"description": "The ID of the user whose profile you wish to edit",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "nextcaller_id",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "version",
+					"description": "Specifies a api version.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "version",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

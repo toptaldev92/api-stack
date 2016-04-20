@@ -1,0 +1,619 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Fitbit Foods API",
+		"description": "The Fitbit API allows developers to interact with Fitbit data in their own applications, products and services.",
+		"version": "1"
+	},
+	"host": "api.fitbit.com",
+	"basePath": "/1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/foods.{format}": {
+			"post": {
+				"summary": "Delete Water Log",
+				"description": "Delete Water Log",
+				"operationId": "delete-water-log",
+				"parameters": [{
+					"in": "query",
+					"name": "calories",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "defaultFoodMeasurementUnitId",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "defaultServingSize",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["food"],
+				"security": []
+			}
+		},
+		"/foods/search.{format}": {
+			"get": {
+				"summary": "Get Activity",
+				"description": "Get Activity",
+				"operationId": "get-activity",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "query",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["food"],
+				"security": []
+			}
+		},
+		"/foods/units.{format}": {
+			"get": {
+				"summary": "Get Food",
+				"description": "Get Food",
+				"operationId": "get-food",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["food"],
+				"security": []
+			}
+		},
+		"/foods/{food-id}.{format}": {
+			"get": {
+				"summary": "Search Foods",
+				"description": "Search Foods",
+				"operationId": "search-foods",
+				"parameters": [{
+					"in": "query",
+					"name": "food-id",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "food-id",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["food"],
+				"security": []
+			}
+		},
+		"/user/-/foods/log.{format}": {
+			"post": {
+				"summary": "Log Activity",
+				"description": "Log Activity",
+				"operationId": "log-activity",
+				"parameters": [{
+					"in": "query",
+					"name": "amount",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "foodId",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "mealTypeId",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "unitId",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["food"],
+				"security": []
+			}
+		},
+		"/user/-/foods/log/favorite.{format}": {
+			"get": {
+				"summary": "Get Frequent Foods",
+				"description": "Get Frequent Foods",
+				"operationId": "get-frequent-foods",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["food"],
+				"security": []
+			}
+		},
+		"/user/-/foods/log/favorite/{id}.{format}": {
+			"delete": {
+				"summary": "Add Favorite Food",
+				"description": "Add Favorite Food",
+				"operationId": "add-favorite-food",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["food"],
+				"security": []
+			},
+			"post": {
+				"summary": "Update Activity Weekly Goals",
+				"description": "Update Activity Weekly Goals",
+				"operationId": "update-activity-weekly-goals",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["food"],
+				"security": []
+			}
+		},
+		"/user/-/foods/log/frequent.{format}": {
+			"get": {
+				"summary": "Get Recent Foods",
+				"description": "Get Recent Foods",
+				"operationId": "get-recent-foods",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["food"],
+				"security": []
+			}
+		},
+		"/user/-/foods/log/goal.{format}": {
+			"get": {
+				"summary": "Get Meals",
+				"description": "Get Meals",
+				"operationId": "get-meals",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["food"],
+				"security": []
+			},
+			"post": {
+				"summary": "Get Food Goals",
+				"description": "Get Food Goals",
+				"operationId": "get-food-goals",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "intensity",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["food"],
+				"security": []
+			}
+		},
+		"/user/-/foods/log/recent.{format}": {
+			"get": {
+				"summary": "Get Favorite Activities",
+				"description": "Get Favorite Activities",
+				"operationId": "get-favorite-activities",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["food"],
+				"security": []
+			}
+		},
+		"/user/-/foods/log/water.{format}": {
+			"post": {
+				"summary": "Get Water",
+				"description": "Get Water",
+				"operationId": "get-water",
+				"parameters": [{
+					"in": "query",
+					"name": "amount",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["food"],
+				"security": []
+			}
+		},
+		"/user/-/foods/log/water/date/{date}.{format}": {
+			"get": {
+				"summary": "Delete Favorite Food",
+				"description": "Delete Favorite Food",
+				"operationId": "delete-favorite-food",
+				"parameters": [{
+					"in": "query",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["food"],
+				"security": []
+			}
+		},
+		"/user/-/foods/log/water/{water-log-id}.{format}": {
+			"delete": {
+				"summary": "Log Water",
+				"description": "Log Water",
+				"operationId": "log-water",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "water-log-id",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "water-log-id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["food"],
+				"security": []
+			}
+		},
+		"/user/-/foods/log/{food-log-id}.{format}": {
+			"delete": {
+				"summary": "Log Glucose",
+				"description": "Log Glucose",
+				"operationId": "log-glucose",
+				"parameters": [{
+					"in": "query",
+					"name": "food-log-id",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "food-log-id",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["food"],
+				"security": []
+			}
+		},
+		"/user/{user-id}/foods/log/caloriesIn/date/{start-date-or-end-date}/{end-date-or-period}.{format}": {
+			"get": {
+				"summary": "Update Fat Goal",
+				"description": "Update Fat Goal",
+				"operationId": "update-fat-goal",
+				"parameters": [{
+					"in": "query",
+					"name": "end-date-or-period",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "end-date-or-period",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "start-date-or-end-date",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "start-date-or-end-date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user-id",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "user-id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["food"],
+				"security": []
+			}
+		},
+		"/user/{user-id}/foods/log/date/{date}.{format}": {
+			"get": {
+				"summary": "Get Activities",
+				"description": "Get Activities",
+				"operationId": "get-activities",
+				"parameters": [{
+					"in": "query",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "date",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user-id",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "user-id",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["food"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

@@ -1,0 +1,108 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Getty Images Purchases API",
+		"version": "v3"
+	},
+	"host": "connect.gettyimages.com",
+	"basePath": "/v3/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/v3/purchased-images": {
+			"get": {
+				"summary": "Get Previous Purchases",
+				"description": "",
+				"operationId": "Purchases_GetPreviousPurchases",
+				"parameters": [{
+					"in": "header",
+					"name": "Api-Key",
+					"description": "Api-Key",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "header",
+					"name": "Authorization",
+					"description": "Authorization token required. Used for applying content access restrictions. Use one of the OAuth2 grants to auto-populate this value.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "end_date",
+					"description": "If specified, retrieves previous purchases on or before this date.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Current page number for results. The default is 1.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page_size",
+					"description": "Page size for results The default is 75.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "start_date",
+					"description": "If specified, retrieves previous purchases on or after this date.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"PreviousPurchases": {
+			"properties": {
+				"result_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"previous_purchases": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"PreviousPurchase": {
+			"properties": {
+				"date_purchased": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"image_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"license_model": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"order_id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"thumb_uri": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

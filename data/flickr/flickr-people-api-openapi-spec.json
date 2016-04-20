@@ -1,0 +1,698 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Flickr People API",
+		"description": "The API for managing Flickr People",
+		"termsOfService": "https://www.flickr.com/services/api/tos/",
+		"version": null
+	},
+	"host": "www.flickr.com",
+	"basePath": "/services/rest/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/?method=flickr.people.findByEmail": {
+			"get": {
+				"summary": "flickr.people.findByEmail",
+				"description": "<div class=MethodDescription>Return a users NSID, given their email address</div>",
+				"operationId": "methodflickrpeoplefindbyemail",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "find_email",
+					"description": "The email address of the user to find  (may be primary or secondary).",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User not found - No user with the supplied email address was found."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.people.findByUsername": {
+			"get": {
+				"summary": "flickr.people.findByUsername",
+				"description": "<div class=MethodDescription>Return a users NSID, given their username.</div>",
+				"operationId": "methodflickrpeoplefindbyusername",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "The username of the user to lookup.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User not found - No user with the supplied username was found."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.people.getGroups": {
+			"get": {
+				"summary": "flickr.people.getGroups",
+				"description": "<div class=MethodDescription>Returns the list of groups a user is a member of.</div>",
+				"operationId": "methodflickrpeoplegetgroups",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "extras",
+					"description": "A comma-delimited list of extra information to fetch for each returned record. Currently supported fields are: privacy, throttle, restrictions",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "The NSID of the user to fetch groups for.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User not found - The user id passed did not match a Flickr user."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.people.getInfo": {
+			"get": {
+				"summary": "flickr.people.getInfo",
+				"description": "<div class=MethodDescription>Get information about a user.</div>",
+				"operationId": "methodflickrpeoplegetinfo",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "The NSID of the user to fetch information about.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User not found - The user id passed did not match a Flickr user."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.people.getLimits": {
+			"get": {
+				"summary": "flickr.people.getLimits",
+				"description": "<div class=MethodDescription>Returns the photo and video limits that apply to the calling user account.</div>",
+				"operationId": "methodflickrpeoplegetlimits",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User not found - The user id passed did not match a Flickr user."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.people.getPhotos": {
+			"get": {
+				"summary": "flickr.people.getPhotos",
+				"description": "<div class=MethodDescription>Return photos from the given users photostream. Only photos visible to the calling user will be returned. This method must be authenticated; to return public photos for a user, use <a href=/services/api/flickr.people.getPublicPhotos.html>flickr.people.getPublicPhotos</a>.</div>",
+				"operationId": "methodflickrpeoplegetphotos",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "content_type",
+					"description": "Content Type setting:1 for photos only.2 for screenshots only.3 for other only.4 for photos and screenshots.5 for screenshots and other.6 for photos and other.7 for photos, screenshots, and other (all).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "extras",
+					"description": "A comma-delimited list of extra information to fetch for each returned record. Currently supported fields are: description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "max_taken_date",
+					"description": "Maximum taken date. Photos with an taken date less than or equal to this value will be returned. The date should be in the form of a mysql datetime.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "max_upload_date",
+					"description": "Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "min_taken_date",
+					"description": "Minimum taken date. Photos with an taken date greater than or equal to this value will be returned. The date should be in the form of a mysql datetime.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "min_upload_date",
+					"description": "Minimum upload date. Photos with an upload date greater than or equal to this value will be returned. The date should be in the form of a unix timestamp.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of results to return. If this argument is omitted, it defaults to 1.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "privacy_filter",
+					"description": "Return photos only matching a certain privacy level. This only applies when making an authenticated call to view photos you own. Valid values are:1 public photos2 private photos visible to friends3 private photos visible to family4 private photos visible to friends & family5 completely private photos",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "safe_search",
+					"description": "Safe search setting:1 for safe.2 for moderate.3 for restricted.(Please note: Un-authed calls can only see Safe content.)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "The NSID of the user whos photos to return. A value of me will return the calling users photos.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "Required arguments missing - "
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"2": {
+						"description": "Unknown user - A user_id was passed which did not match a valid flickr user."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.people.getPhotosOf": {
+			"get": {
+				"summary": "flickr.people.getPhotosOf",
+				"description": "<div class=MethodDescription>Returns a list of photos containing a particular Flickr member.</div>",
+				"operationId": "methodflickrpeoplegetphotosof",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "extras",
+					"description": "A comma-delimited list of extra information to fetch for each returned record. Currently supported fields are: description, license, date_upload, date_taken, date_person_added, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "owner_id",
+					"description": "An NSID of a Flickr member. This will restrict the list of photos to those taken by that member.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of results to return. If this argument is omitted, it defaults to 1.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "The NSID of the user you want to find photos of. A value of me will search against photos of the calling user, for authenticated calls.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User not found. - A user_id was passed which did not match a valid flickr user."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"2": {
+						"description": "Unknown user - A user_id was passed which did not match a valid flickr user."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.people.getPublicGroups": {
+			"get": {
+				"summary": "flickr.people.getPublicGroups",
+				"description": "<div class=MethodDescription>Returns the list of public groups a user is a member of.</div>",
+				"operationId": "methodflickrpeoplegetpublicgroups",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "invitation_only",
+					"description": "Include public groups that require an invitation or administrator approval to join.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "The NSID of the user to fetch groups for.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User not found - The user id passed did not match a Flickr user."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"2": {
+						"description": "Unknown user - A user_id was passed which did not match a valid flickr user."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/?method=flickr.people.getPublicPhotos": {
+			"get": {
+				"summary": "flickr.people.getPublicPhotos",
+				"description": "<div class=MethodDescription>Get a list of public photos for the given user.</div>",
+				"operationId": "methodflickrpeoplegetpublicphotos",
+				"parameters": [{
+					"in": "query",
+					"name": "api_key",
+					"description": "Your API application key. See here for more details.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "extras",
+					"description": "A comma-delimited list of extra information to fetch for each returned record. Currently supported fields are: description, license, date_upload, date_taken, owner_name, icon_server, original_format, last_update, geo, tags, machine_tags, o_dims, views, media, path_alias, url_sq, url_t, url_s, url_q, url_m, url_n, url_z, url_c, url_l, url_o",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page of results to return. If this argument is omitted, it defaults to 1.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "safe_search",
+					"description": "Safe search setting:1 for safe.2 for moderate.3 for restricted.(Please note: Un-authed calls can only see Safe content.)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "The NSID of the user whos photos to return.",
+					"type": "string"
+				}],
+				"responses": {
+					"1": {
+						"description": "User not found - The user NSID passed was not a valid user NSID."
+					},
+					"100": {
+						"description": "Invalid API Key - The API key passed was not valid or has expired."
+					},
+					"105": {
+						"description": "Service currently unavailable - The requested service is temporarily unavailable."
+					},
+					"106": {
+						"description": "Write operation failed - The requested operation failed due to a temporary issue."
+					},
+					"111": {
+						"description": "Format xxx not found - The requested response format was not found."
+					},
+					"112": {
+						"description": "Method xxx not found - The requested method was not found."
+					},
+					"114": {
+						"description": "Invalid SOAP envelope - The SOAP envelope send in the request could not be parsed."
+					},
+					"115": {
+						"description": "Invalid XML-RPC Method Call - The XML-RPC request document could not be parsed."
+					},
+					"116": {
+						"description": "Bad URL found - One or more arguments contained a URL that has been used for abuse on Flickr."
+					},
+					"95": {
+						"description": "SSL is required - SSL is required to access the Flickr API."
+					},
+					"96": {
+						"description": "Invalid signature - The passed signature was invalid."
+					},
+					"97": {
+						"description": "Missing signature - The call required signing but no signature was sent."
+					},
+					"98": {
+						"description": "Login failed / Invalid auth token - The login details or auth token passed were invalid."
+					},
+					"99": {
+						"description": "User not logged in / Insufficient permissions - The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+					},
+					"2": {
+						"description": "Unknown user - A user_id was passed which did not match a valid flickr user."
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

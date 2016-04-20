@@ -1,0 +1,171 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Facebook Graph (Comment) API",
+		"description": "API for managing Facebook Comments",
+		"termsOfService": "https://www.facebook.com/policies/",
+		"version": null
+	},
+	"host": "graph.facebook.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/comments": {
+			"get": {
+				"summary": "Get Comments",
+				"description": "A comment can be made on various types of content on Facebook",
+				"operationId": "comment",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["comments"],
+				"security": []
+			}
+		},
+		"/{comment-id}": {
+			"delete": {
+				"summary": "Delete Comment",
+				"description": "A comment can be made on various types of content on Facebook",
+				"operationId": "comment",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["comments"],
+				"security": []
+			},
+			"get": {
+				"summary": "Get Comment",
+				"description": "A comment can be made on various types of content on Facebook",
+				"operationId": "comment",
+				"parameters": [{
+					"in": "query",
+					"name": "attachment",
+					"description": "Link or photo attached to the comment",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "can_comment",
+					"description": "Whether the viewer can reply to this comment",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "can_hide",
+					"description": "Whether the viewer can hide this comment",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "can_like",
+					"description": "Whether the viewer can like this comment",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "can_remove",
+					"description": "Whether the viewer can remove this comment",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "comment_count",
+					"description": "Number of replies to this comment",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "created_time",
+					"description": "The time this comment was made",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "from",
+					"description": "The person that made this comment",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "id",
+					"description": "The comment ID",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "like_count",
+					"description": "Number of times this comment was liked",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "message",
+					"description": "The comment text",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "message_tags",
+					"description": "An array of Profiles tagged in message.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "object",
+					"description": "Parent object this comment was made on",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "parent",
+					"description": "For comment replies, this the comment that this is a reply to",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_likes",
+					"description": "Whether the viewer has liked this comment",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["comments"],
+				"security": []
+			},
+			"post": {
+				"summary": "Update Comment",
+				"description": "A comment can be made on various types of content on Facebook",
+				"operationId": "comment",
+				"parameters": [{
+					"in": "query",
+					"name": "is_hidden",
+					"description": "Whether this comment is hidden or visible.  The original poster can still see the comment, along with the page admin and anyone else tagged in the comment",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "message",
+					"description": "The updated comment text.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["comments"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

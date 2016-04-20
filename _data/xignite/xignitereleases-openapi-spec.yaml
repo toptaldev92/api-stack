@@ -1,0 +1,327 @@
+- swagger: "2.0"
+  info:
+    title: XigniteReleases
+    description: Company Press Release API List
+    version: v1
+  host: http://www.xignite.com/
+  basePath: xReleases.xml/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    GetHistoricalMarketHeadlines/:
+      get:
+        summary: Historical Market Headlines
+        description: Returns market headlines for a date range.
+        operationId: ""
+        parameters:
+        - in: query
+          name: EndDate
+          description: The end date range.
+          type: string
+          format: string
+        - in: query
+          name: Source
+          description: The source of the news.
+          type: string
+          format: string
+        - in: query
+          name: StartDate
+          description: The start date range.
+          type: string
+          format: string
+        - in: query
+          name: _Token
+          description: The API Key.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' press releases'
+        - ' markets'
+        security: []
+    GetHistoricalSecurityHeadlines/:
+      get:
+        summary: HistoricalSecurityHeadlines
+        description: Returns headlines for a company and a date range.
+        operationId: ""
+        parameters:
+        - in: query
+          name: EndDate
+          description: EndDate
+          type: string
+          format: string
+        - in: query
+          name: Identifier
+          description: The ticker symbol for company
+          type: string
+          format: string
+        - in: query
+          name: IdentifierType
+          description: The identifier to use.
+          type: string
+          format: string
+        - in: query
+          name: Source
+          description: The source of the news.
+          type: string
+          format: string
+        - in: query
+          name: StartDate
+          description: The start date range.
+          type: string
+          format: string
+        - in: query
+          name: _Token
+          description: The API Key.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' press releases'
+        - ' headlines'
+        security: []
+    GetLastMarketHeadlines/:
+      get:
+        summary: GetLastMarketHeadlines
+        description: Returns market headlines published since a specific date and time.
+        operationId: ""
+        parameters:
+        - in: query
+          name: SinceDate
+          description: The beginning of data range.
+          type: string
+          format: string
+        - in: query
+          name: _Token
+          description: The API Key.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' press releases'
+        security: []
+    GetLastSecurityHeadlines/:
+      get:
+        summary: Last Security Headlines
+        description: Returns headlines for a company published since a specific date
+          and time.
+        operationId: ""
+        parameters:
+        - in: query
+          name: Identifier
+          description: The ticker symbol for company
+          type: string
+          format: string
+        - in: query
+          name: IdentifierType
+          description: The identifier to use.
+          type: string
+          format: string
+        - in: query
+          name: SinceDate
+          description: The start date range.
+          type: string
+          format: string
+        - in: query
+          name: _Token
+          description: The API Key.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' press releases'
+        security: []
+    GetReleaseContent/:
+      get:
+        summary: Release Content
+        description: Return detailed information about a release as well as its content.
+        operationId: ""
+        parameters:
+        - in: query
+          name: ReleaseID
+          description: The press release ID>
+          type: string
+          format: string
+        - in: query
+          name: _Token
+          description: The API Key.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' press releases'
+        security: []
+    GetTodaysSecurityHeadlines:
+      get:
+        summary: Todays Security Headlines
+        description: Returns headlines for a company published today.
+        operationId: ""
+        parameters:
+        - in: query
+          name: Identifier
+          description: The ticker symbol for company
+          type: string
+          format: string
+        - in: query
+          name: IdentifierType
+          description: The identifier to use.
+          type: string
+          format: string
+        - in: query
+          name: _Token
+          description: The API Key.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' headlines'
+        security: []
+    GetTopMarketHeadlines/:
+      get:
+        summary: Top Market Headlines
+        description: Returns a given number of market headlines published most recently.
+        operationId: ""
+        parameters:
+        - in: query
+          name: Count
+          description: The number of news items to return.
+          type: number
+          format: string
+        - in: query
+          name: _Token
+          description: The API Key.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' markets'
+        security: []
+    GetTopSecurityHeadlines/:
+      get:
+        summary: Top Security Headlines
+        description: Returns a given number of company headlines published most recently.
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' securities'
+        - ' press releases'
+        security: []
+    SearchMarketHeadlines/:
+      get:
+        summary: Search Market Headlines
+        description: Search market headlines across all companies based on date, source,
+          and title.
+        operationId: ""
+        parameters:
+        - in: query
+          name: EndDate
+          description: The end date range.
+          type: string
+          format: string
+        - in: query
+          name: Source
+          description: The source of the news.
+          type: string
+          format: string
+        - in: query
+          name: StartDate
+          description: The start date range.
+          type: string
+          format: string
+        - in: query
+          name: Title
+          description: Title of the headlines.
+          type: string
+          format: string
+        - in: query
+          name: _Token
+          description: The API Key.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' markets'
+        - ' search'
+        security: []
+    SearchSecurityHeadlines/:
+      get:
+        summary: Search Security Headlines
+        description: Search headlines for a company across all companies based on date,
+          source, and title.
+        operationId: ""
+        parameters:
+        - in: query
+          name: EndDate
+          description: The end date range.
+          type: string
+          format: string
+        - in: query
+          name: Identifier
+          description: The ticker symbol for company
+          type: string
+          format: string
+        - in: query
+          name: IdentifierType
+          description: The identifier to use.
+          type: string
+          format: string
+        - in: query
+          name: Source
+          description: The source of the news.
+          type: string
+          format: string
+        - in: query
+          name: StartDate
+          description: The start date range.
+          type: string
+          format: string
+        - in: query
+          name: Title
+          description: The title of the article.
+          type: string
+          format: string
+        - in: query
+          name: _Token
+          description: The API Key.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - news
+        - ' securities'
+        - ' search'
+        security: []
+  definitions: []

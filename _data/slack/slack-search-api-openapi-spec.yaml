@@ -1,0 +1,136 @@
+- swagger: "2.0"
+  info:
+    title: Slack Search API
+    description: The API for management Slack Searchs
+    termsOfService: https://slack.com/terms-of-service/api
+    version: ~
+  host: slack.com
+  basePath: /api
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /methods/search.all:
+      get:
+        summary: Searches for messages and files matching a query.
+        description: <td width=70%>Searches for messages and files matching a query.</td>
+        operationId: searchall
+        parameters:
+        - in: query
+          name: count
+          description: Number of items to return per page.
+          type: string
+        - in: query
+          name: highlight
+          description: Pass a value of 1 to enable query highlight markers (see below).
+          type: string
+        - in: query
+          name: page
+          description: Page number of results to return.
+          type: string
+        - in: query
+          name: query
+          description: Search query. May contains booleans, etc.
+          type: string
+        - in: query
+          name: sort
+          description: Return matches sorted by either score or timestamp.
+          type: string
+        - in: query
+          name: sort_dir
+          description: Change sort direction to ascending (asc) or descending (desc).
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: search:read)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - search
+        security: []
+    /methods/search.files:
+      get:
+        summary: Searches for files matching a query.
+        description: <td width=70%>Searches for files matching a query.</td>
+        operationId: searchfiles
+        parameters:
+        - in: query
+          name: count
+          description: Number of items to return per page.
+          type: string
+        - in: query
+          name: highlight
+          description: Pass a value of 1 to enable query highlight markers (see below).
+          type: string
+        - in: query
+          name: page
+          description: Page number of results to return.
+          type: string
+        - in: query
+          name: query
+          description: Search query. May contain booleans, etc.
+          type: string
+        - in: query
+          name: sort
+          description: Return matches sorted by either score or timestamp.
+          type: string
+        - in: query
+          name: sort_dir
+          description: Change sort direction to ascending (asc) or descending (desc).
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: search:read)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - search
+        security: []
+    /methods/search.messages:
+      get:
+        summary: Searches for messages matching a query.
+        description: <td width=70%>Searches for messages matching a query.</td>
+        operationId: searchmessages
+        parameters:
+        - in: query
+          name: count
+          description: Number of items to return per page.
+          type: string
+        - in: query
+          name: highlight
+          description: Pass a value of 1 to enable query highlight markers (see below).
+          type: string
+        - in: query
+          name: page
+          description: Page number of results to return.
+          type: string
+        - in: query
+          name: query
+          description: Search query. May contains booleans, etc.
+          type: string
+        - in: query
+          name: sort
+          description: Return matches sorted by either score or timestamp.
+          type: string
+        - in: query
+          name: sort_dir
+          description: Change sort direction to ascending (asc) or descending (desc).
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: search:read)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - search
+        security: []
+  definitions: []

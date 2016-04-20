@@ -1,0 +1,461 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Guardian Content API",
+		"description": "The Content API is a public service for accessing all the content the Guardian creates and the collections we have of that content (tags and sections). There are over one and a half million items available published as far back as 1999. This overview will give you some idea of what data is available, how to find what you need, and what you will see when you make a request to us.",
+		"version": "v1"
+	},
+	"host": "beta.content.guardianapis.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"search/": {
+			"get": {
+				"summary": "Content Search",
+				"description": "Search for the content API.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "all",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "allowUgc",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "api-key",
+					"description": "The API key used for the query",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "byline",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "callback",
+					"description": "The javascript callback name to wrap the JSON response. Read HTTP Status Codes and APIs: how the Guardians Content API does it for more details",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "commentable",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "commentCloseDate",
+					"description": "The date the comments have been closed",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"description": "The format to return the results in",
+					"type": "string",
+					"format": "string",
+					"default": "json"
+				},
+				{
+					"in": "query",
+					"name": "from-date",
+					"description": "Return only content published on or after that date",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "hasStoryPackage",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "headline",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "ids",
+					"description": "Return only content with those IDs",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "internalPageCode",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "isPremoderated",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "lastModified",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "liveBloggingNow",
+					"description": "Content is currently live blogged if true",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "order-by",
+					"description": "Returns results in the specified order",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Return only the result set from a particular page",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page-size",
+					"description": "Modify the number of items displayed per page",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "production-office",
+					"description": "Return only content from those production offices",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "productionOffice",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "publication",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "Request content containing this free text",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "reference",
+					"description": "Return only content with those references",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "reference-type",
+					"description": "Return only content with references of those types",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "rights",
+					"description": "Return only content with those rights",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "score",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "section",
+					"description": "Return only content in those sections",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "shortUrl",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "shouldHideAdverts",
+					"description": "Adverts will not be displayed if true",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "show-elements",
+					"description": "Add associated media elements such as images and audio",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "show-fields",
+					"description": "Add fields associated with the content",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "show-references",
+					"description": "Add associated reference data such as ISBNs",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "show-rights",
+					"description": "Add associated rights",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "show-tags",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "showInRelatedContent",
+					"description": "Whether this content can appear in automatically generated Related Content",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "standfirst",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "starRating",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "tag",
+					"description": "Return only content with those tags",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "thumbnail",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "to-date",
+					"description": "Return only content published on or before that date",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "trailText",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "use-date",
+					"description": "Changes which type of date is used to order the results",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "wordcount",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["news"],
+				"security": []
+			}
+		},
+		"sections/": {
+			"get": {
+				"summary": "Sections",
+				"description": "Retrieve list of sections.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api-key",
+					"description": "The API key used for the query",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "callback",
+					"description": "The javascript callback name to wrap the JSON response.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"description": "The format to return the results in",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "Return section based on the query term specified",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["news",
+				" sections"],
+				"security": []
+			}
+		},
+		"tags/": {
+			"get": {
+				"summary": "Tags",
+				"description": "Tags search.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "api-key",
+					"description": "The API key used for the query",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "callback",
+					"description": "The javascript callback name to wrap the JSON response. Read HTTP Status Codes and APIs: how the Guardians Content API does it for more details",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"description": "The format to return the results in",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Returns results only for that page index",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page-size",
+					"description": "Modify the number of items displayed per page",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "Request tags containing this free text",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "reference",
+					"description": "Return only tags with those references",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "reference-type",
+					"description": "Return only tags with references of those types",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "section",
+					"description": "Return only tags in those sections",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "show-references",
+					"description": "Show associated reference data such as ISBNs",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "Return only tags of those types",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["news",
+				" tags"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

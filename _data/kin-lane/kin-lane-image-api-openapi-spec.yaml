@@ -1,0 +1,287 @@
+- swagger: "2.0"
+  info:
+    title: Images
+    description: This is an API image, allowing me to add definitions for key and phrases
+      used in the API space.
+    termsOfService: http://stack.network/terms-of-service.html
+    version: ~
+  host: image.api.kinlane.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /images/:
+      get:
+        summary: get images
+        description: all images
+        operationId: getImages
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+        - in: query
+          name: query
+          description: a text query to search across image
+        responses:
+          200:
+            description: OK
+        tags:
+        - Images
+        security: []
+      post:
+        summary: add image
+        description: add image
+        operationId: addImage
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the API
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the API
+        - in: formData
+          name: creator
+          description: creator of the image
+        - in: formData
+          name: description
+          description: description of the image
+        - in: formData
+          name: height
+          description: height of the image
+        - in: formData
+          name: imageUrl
+          description: url of the image
+        - in: formData
+          name: name
+          description: name of the image
+        - in: formData
+          name: thumbnailUrl
+          description: thumbnailUrl of the image
+        - in: formData
+          name: width
+          description: width of the image
+        responses:
+          200:
+            description: OK
+        tags:
+        - Images
+        security: []
+    /images/sync/amazons3/:
+      get:
+        summary: sync amazon s3
+        description: sync amazon s3
+        operationId: syncAmazonS3
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the image
+        - in: query
+          name: appkey
+          description: your appkey for accessing the image
+        - in: query
+          name: bucket
+          description: bucket to sync with
+        - in: query
+          name: prefix
+          description: prefix (folder) to sync with
+        responses:
+          200:
+            description: OK
+        tags:
+        - Images
+        security: []
+    /images/{image_id}/:
+      delete:
+        summary: delete image
+        description: delete image
+        operationId: deleteImage
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+        - in: path
+          name: image_id
+          description: id for the image term
+        responses:
+          200:
+            description: OK
+        tags:
+        - Images
+        security: []
+      get:
+        summary: get image
+        description: get image
+        operationId: getImage
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+        - in: path
+          name: image_id
+          description: id for the image term
+        responses:
+          200:
+            description: OK
+        tags:
+        - Images
+        security: []
+      put:
+        summary: update image
+        description: update image
+        operationId: updateImage
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the API
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the API
+        - in: formData
+          name: creator
+          description: creator of the image
+        - in: formData
+          name: description
+          description: description of the image
+        - in: formData
+          name: height
+          description: height of the image
+        - in: formData
+          name: imageUrl
+          description: url of the image
+        - in: path
+          name: image_id
+          description: id for the image term
+        - in: formData
+          name: name
+          description: name of the image
+        - in: formData
+          name: thumbnailUrl
+          description: thumbnailUrl of the image
+        - in: formData
+          name: width
+          description: width of the image
+        responses:
+          200:
+            description: OK
+        tags:
+        - Images
+        security: []
+    /images/{image_id}/tags/:
+      get:
+        summary: get image tags
+        description: get image tags
+        operationId: getimageTags
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the image
+        - in: query
+          name: appkey
+          description: your appkey for accessing the image
+        - in: path
+          name: image_id
+          description: id for image
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+      post:
+        summary: add image tag
+        description: add image tag
+        operationId: addImageTag
+        parameters:
+        - in: formData
+          name: appid
+          description: your appid for accessing the image
+        - in: formData
+          name: appkey
+          description: your appkey for accessing the image
+        - in: path
+          name: image_id
+          description: id for the image
+        - in: formData
+          name: tag
+          description: tag name
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /images/{image_id}/tags/{tag}/:
+      delete:
+        summary: delete image tag
+        description: delete image tag
+        operationId: deleteImageTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the image
+        - in: query
+          name: appkey
+          description: your appkey for accessing the image
+        - in: path
+          name: image_id
+          description: id for the image
+        - in: path
+          name: tag
+          description: tag to remove from image
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+  definitions:
+    image:
+      properties:
+        image_id:
+          description: This is a default description.
+          type: get
+        name:
+          description: This is a default description.
+          type: get
+        description:
+          description: This is a default description.
+          type: get
+        imageUrl:
+          description: This is a default description.
+          type: get
+        thumbnailUrl:
+          description: This is a default description.
+          type: get
+        width:
+          description: This is a default description.
+          type: get
+        height:
+          description: This is a default description.
+          type: get
+        creator:
+          description: This is a default description.
+          type: get
+    tag:
+      properties:
+        tag_id:
+          description: This is a default description.
+          type: get
+        tag:
+          description: This is a default description.
+          type: get
+        api_count:
+          description: This is a default description.
+          type: get

@@ -1,0 +1,95 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Spotify Album API",
+		"version": null
+	},
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/albums": {
+			"get": {
+				"summary": "",
+				"description": "[Get Several Albums](https://developer.spotify.com/web-api/get-several-albums/)n",
+				"operationId": "get-several-albumshttpsdeveloperspotifycomwebapigetseveralalbums",
+				"parameters": [{
+					"in": "query",
+					"name": "ids",
+					"description": "A comma-separated list of IDs"
+				},
+				{
+					"in": "query",
+					"name": "market",
+					"description": "The market (an ISO 3166-1 alpha-2 country code)"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/albums/{id}": {
+			"get": {
+				"summary": "",
+				"description": "[Get an Album](https://developer.spotify.com/web-api/get-album/)n",
+				"operationId": "get-an-albumhttpsdeveloperspotifycomwebapigetalbum",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The Spotify ID for the album"
+				},
+				{
+					"in": "query",
+					"name": "market",
+					"description": "The market (an ISO 3166-1 alpha-2 country code)"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/albums/{id}/tracks": {
+			"get": {
+				"summary": "",
+				"description": "[Get an Albums Tracks](https://developer.spotify.com/web-api/get-albums-tracks/)n",
+				"operationId": "get-an-albums-trackshttpsdeveloperspotifycomwebapigetalbumstracks",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The Spotify ID for the album"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "The maximum number of items to return"
+				},
+				{
+					"in": "query",
+					"name": "market",
+					"description": "The market (an ISO 3166-1 alpha-2 country code)"
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "The index of the first item to return"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

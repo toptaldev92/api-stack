@@ -1,0 +1,151 @@
+- swagger: "2.0"
+  info:
+    title: Slack Files API
+    description: The API for management Slack Filess
+    termsOfService: https://slack.com/terms-of-service/api
+    version: ~
+  host: slack.com
+  basePath: /api
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /methods/files.delete:
+      get:
+        summary: Dekete Fuke
+        description: <td width=70%>Deletes a file.</td>
+        operationId: filesdelete
+        parameters:
+        - in: query
+          name: file
+          description: ID of file to delete.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: files:write:user)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - files
+        security: []
+    /methods/files.info:
+      get:
+        summary: Get File Information
+        description: <td width=70%>Gets information about a team file.</td>
+        operationId: filesinfo
+        parameters:
+        - in: query
+          name: count
+          description: Number of items to return per page.
+          type: string
+        - in: query
+          name: file
+          description: File to fetch info for
+          type: string
+        - in: query
+          name: page
+          description: Page number of results to return.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: files:read)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - files
+        security: []
+    /methods/files.list:
+      get:
+        summary: List Files
+        description: <td width=70%>Lists &amp; filters team files.</td>
+        operationId: fileslist
+        parameters:
+        - in: query
+          name: count
+          description: Number of items to return per page.
+          type: string
+        - in: query
+          name: page
+          description: Page number of results to return.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: files:read)'
+          type: string
+        - in: query
+          name: ts_from
+          description: Filter files created after this timestamp (inclusive).
+          type: string
+        - in: query
+          name: ts_to
+          description: Filter files created before this timestamp (inclusive).
+          type: string
+        - in: query
+          name: types
+          description: Filter files by type:all - All filesposts - Postssnippets - Snippetsimages
+            - Image filesgdocs - Google docszips - Zip filespdfs - PDF filesYou can
+            pass multiple values in the types argument, like types=posts,snippets.The
+            default value is all, which does not filter the list.
+          type: string
+        - in: query
+          name: user
+          description: Filter files created by a single user.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - files
+        security: []
+    /methods/files.upload:
+      get:
+        summary: Upload File
+        description: <td width=70%>Uploads or creates a file.</td>
+        operationId: filesupload
+        parameters:
+        - in: query
+          name: channels
+          description: Comma separated list of channels to share the file into.
+          type: string
+        - in: query
+          name: content
+          description: File contents via a POST var.
+          type: string
+        - in: query
+          name: file
+          description: File contents via multipart/form-data.
+          type: string
+        - in: query
+          name: filename
+          description: Filename of file.
+          type: string
+        - in: query
+          name: filetype
+          description: Slack-internal file type identifier.
+          type: string
+        - in: query
+          name: initial_comment
+          description: Initial comment to add to file.
+          type: string
+        - in: query
+          name: title
+          description: Title of file.
+          type: string
+        - in: query
+          name: token
+          description: 'Authentication token (Requires scope: files:write:user)'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - files
+        security: []
+  definitions: []

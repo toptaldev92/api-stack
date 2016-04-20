@@ -1,0 +1,318 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Mogreet Transcoding API",
+		"description": "The Mogreet platform has fully featured content ingestion, transcoding and serving features to make using audio, images and video in your mobile apps, web and messaging simple and painless.   You never need to know what content container, codec, image size or frame rate is appropriate for a given media device u2013 the Mogreet platform does that for you. ",
+		"version": "v1"
+	},
+	"host": "api.mogreet.com",
+	"basePath": "cm/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"keyword.add": {
+			"get": {
+				"summary": "Keyword Add",
+				"description": "Use the keyword.add method to bind another keyword to an existing campaign. MO (mobile originated) SMS or MMS messages which begin with that keyword will be routed to the given campaign and handled there.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" SMS",
+				" MMS",
+				" Keyword"],
+				"security": []
+			}
+		},
+		"keyword.check": {
+			"get": {
+				"summary": "Keyword Check",
+				"description": "Use the keyword.check method to test whether a provided keyword is already in use on the given shortcode.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" SMS",
+				" MMS",
+				" Keyword"],
+				"security": []
+			}
+		},
+		"keyword.list": {
+			"get": {
+				"summary": "Keyword List",
+				"description": "Use the list method to enumerate all the keywords which belong to a given client. This call is useful for checking to see if a given list exists already, or just to check out what lists you do have access to.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" SMS",
+				" MMS"],
+				"security": []
+			}
+		},
+		"keyword.remove": {
+			"get": {
+				"summary": "Keyword Remove",
+				"description": "Use the keyword.remove method to remove a keyword from an existing campaign. The keyword will become available for other campaigns on the same shortcode.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" SMS",
+				" MMS",
+				" Keyword"],
+				"security": []
+			}
+		},
+		"list.append": {
+			"get": {
+				"summary": "List Append",
+				"description": "Use the append API call to add new numbers to a list. The call requires a list_id, to which numbers will be appended, and a list of mobile numbers delimited by commas. The maximum quantity of mobile numbers which may be appended in a single API call is 1024.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" SMS",
+				" MMS"],
+				"security": []
+			}
+		},
+		"list.create": {
+			"get": {
+				"summary": "List Creates",
+				"description": "Use the create method to add a new list. The list is created empty. In addition to the standard client_id and token params, pass in a name for the new list. The name parameter is required later to destroy the list, to prevent accidental list destruction.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" SMS",
+				" MMS"],
+				"security": []
+			}
+		},
+		"list.download": {
+			"get": {
+				"summary": "List Download",
+				"description": "The download API call takes the usual token and client_id, plus a list_id, and after validation, returns the contents of the list back to the caller in the response body.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" SMS",
+				" MMS"],
+				"security": []
+			}
+		},
+		"list.info": {
+			"get": {
+				"summary": "List Info",
+				"description": "Returns information about list.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" SMS",
+				" MMS"],
+				"security": []
+			}
+		},
+		"list.prune": {
+			"get": {
+				"summary": "List Prune",
+				"description": "Use the prune API call to remove one or more mobile numbers from a list. The call takes a comma separated list and removes those numbers it finds to match in the target list_id. The maximum quantity of mobile numbers which may be pruned in a single API call is 1024.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" SMS",
+				" MMS"],
+				"security": []
+			}
+		},
+		"list.send": {
+			"get": {
+				"summary": "List Send",
+				"description": "The list.send API method performs a bulk send of a given message and content to all the MSISDNs in the list, obeying the opt-in status of each number on the given campaign and shortcode. Because lists belong to clients, rather than specific campaigns, the method requires a list_id and a campaign_id.",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" SMS",
+				" MMS"],
+				"security": []
+			}
+		},
+		"media.destroy": {
+			"get": {
+				"summary": "Media Destroy",
+				"description": "Destroys media.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "client_id",
+					"description": "Your client id.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "content_id",
+					"description": "The content id of the content item you want removed from the system. After deletion that content item will no longer be available. There is no undo.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Your token.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" SMS",
+				" MMS"],
+				"security": []
+			}
+		},
+		"media.list": {
+			"get": {
+				"summary": "Media List",
+				"description": "List the media.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "client_id",
+					"description": "Your client id.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "format",
+					"description": "Optional. When set to json the response will be in JSON format rather than XML.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Your token.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" SMS",
+				" MMS"],
+				"security": []
+			}
+		},
+		"media.upload": {
+			"get": {
+				"summary": "Media Upload",
+				"description": "Uploads media for transcoding.",
+				"operationId": "",
+				"parameters": [{
+					"in": "query",
+					"name": "callback_url ",
+					"description": "If you specify a callback_url, a message indicating success or failure will be delivered to the location specified, as an XML document. ",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "client_id",
+					"description": "Your client id.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "file ",
+					"description": "The actual data file payload to ingest: the image file, audio file or video file. This field is used when POSTing multi-part form data. It can be omitted if you are using the URL ingestion method.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "A descriptive name to be used in the media.list and other areas to describe the media content. This can be different than the filename.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Your token.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "type",
+					"description": "the media type of the content file, one of: audio, image, video The API uses this to pre-validate the file extension prior to ingesting it. The observed filetype of the file (.png, .jpg, .mov, etc) should be appropriate for the type described in this field. If there is a mismatch, an error will be returned (see below).",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "url ",
+					"description": "When you wish to ingest a media file which is already hosted somewhere on the internet, you can use this option instead of the POST multi-part form method. The URL should identify a file hosted at a fully qualified domain, and be publically available without login or other security.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Messaging",
+				" SMS",
+				" MMS"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

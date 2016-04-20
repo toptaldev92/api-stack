@@ -1,0 +1,389 @@
+- swagger: "2.0"
+  info:
+    title: Infoconnect API
+    description: Infoconnect our API platform, ensures you have the data you need when
+      you need it to make quick, intelligent business decisions and stay a step ahead
+      of competitors. Below are all the endpoints available to query the Infogroup business
+      and consumer databases.
+    termsOfService: http://developer.infoconnect.com/page/terms-use
+    version: ~
+  host: api.infoconnect.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /v1/companies:
+      get:
+        summary: Get Company
+        description: Get Company
+        operationId: get-company
+        parameters:
+        - in: query
+          name: city
+          description: Filters through the Companies collection by city name.
+          type: string
+        - in: query
+          name: companyname
+          description: Filters through the Companies collection and returns resources
+            by company name.
+          type: string
+        - in: query
+          name: Content-Type
+          description: The content type.
+          type: string
+        - in: query
+          name: ein
+          description: Filters through the Companies collection and returns resources
+            with an Employer Identification Number (EIN).
+          type: string
+        - in: query
+          name: email
+          description: Filters through the Companies collection and returns resources
+            with a case-insensitive email address match at the level.
+          type: string
+        - in: query
+          name: firstname
+          description: Filters through the Companies collection by the primary contacts
+            first name.
+          type: string
+        - in: query
+          name: lastname
+          description: Filters through the Companies collection by the primary contacts
+            last name.
+          type: string
+        - in: query
+          name: limit
+          description: Number of responses to return. If used, must be a number between
+            1 and 10. Default is 10.
+          type: integer
+        - in: query
+          name: offset
+          description: Number of responses to be skipped for generating the output.
+            If used, must be a number between 0-100 minus limit. Default is 0.
+          type: integer
+        - in: query
+          name: phone
+          description: Filters through the Companies collection and returns resources
+            with an ten-digit phone number match.
+          type: string
+        - in: query
+          name: postalcode
+          description: Filters through the Companies collection by ZIP code or Postal
+            code.
+          type: string
+        - in: query
+          name: resourcetype
+          description: Identifies the resource type for the response. The default value
+            basic returns a base resource type that is valid across all methods; the
+            resource type parameter is not needed to produce this response. To get a
+            more detailed response set the resource type parameter to enhanced. To retrieve
+            resources with Ids only, set the resource type parameter to core.
+          type: string
+        - in: query
+          name: stateprovince
+          description: Filters through the Companies collection by State or Province
+            abbreviation.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /v1/companies/counts:
+      post:
+        summary: Search Companies
+        description: Search Companies
+        operationId: search-companies
+        parameters:
+        - in: query
+          name: Content-Type
+          description: The content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /v1/companies/search:
+      post:
+        summary: Get Companies
+        description: Get Companies
+        operationId: get-companies
+        parameters:
+        - in: query
+          name: Content-Type
+          description: The content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /v1/companies/{id}:
+      get:
+        summary: ""
+        description: ""
+        operationId: ""
+        parameters:
+        - in: query
+          name: Content-Type
+          description: The content type.
+          type: string
+        - in: query
+          name: id
+          description: A nine to ten digit Infogroup identification number. A number
+            referencing the company assigned by Infogroup. This number will always refer
+            to a single company and the reference will never change, unless the resource
+            is permanently removed. Requesting a record by {id} will always return zero
+            or one response.
+          type: string
+        - in: path
+          name: id
+          type: string
+        - in: query
+          name: resourcetype
+          description: Identifies the resource type for the response. The default value
+            basic returns a base resource type that is valid across all methods; the
+            resource type parameter is not needed to produce this response. To get a
+            more detailed response set the resource type parameter to enhanced. To retrieve
+            resources with Ids only, set the resource type parameter to core.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /v1/people:
+      get:
+        summary: Get Person
+        description: Get Person
+        operationId: get-person
+        parameters:
+        - in: query
+          name: city
+          description: Filters through the People collection by city name.
+          type: string
+        - in: query
+          name: Content-Type
+          description: The content type.
+          type: string
+        - in: query
+          name: email
+          description: Filters through the People collection and returns resources with
+            a case-insensitive email address match at the level.
+          type: string
+        - in: query
+          name: emailsha1upper
+          description: Filters through the People collection and returns resources with
+            a case-insensitive email address match at the level. If used, must be a
+            SHA1 hashed upper case email address.
+          type: string
+        - in: query
+          name: firstname
+          description: Filters through the People collection by the primary contacts
+            first name.
+          type: string
+        - in: query
+          name: includehistoricalemail
+          description: IncludeHistoricalEmail can only be used in combination with Email
+            or EmailSha1Upper. IncludeHistoricalEmail is used to retrieve historical
+            records. Including this limits the ResourceType to Basic only. These records
+            do not have an Id therefore cannot be used to return an Enhanced ResourceType.
+            If used, must be True or False. Default is False.
+          type: boolean
+        - in: query
+          name: lastname
+          description: Filters through the People collection by the primary contacts
+            last name.
+          type: string
+        - in: query
+          name: limit
+          description: Number of responses to return. If used, must be a number between
+            1 and 10. Default is 10.
+          type: integer
+        - in: query
+          name: offset
+          description: Number of responses to be skipped for generating the output.
+            If used, must be a number between 0-100 minus limit. Default is 0.
+          type: integer
+        - in: query
+          name: phone
+          description: Filters through the People collection and returns resources with
+            an ten-digit phone number match.
+          type: string
+        - in: query
+          name: postalcode
+          description: Filters through the People collection by ZIP code or Postal code.
+          type: string
+        - in: query
+          name: resourcetype
+          description: Identifies the resource type for the response. The default value
+            basic returns a base resource type that is valid across all methods; the
+            resource type parameter is not needed to produce this response. To get a
+            more detailed response set the resource type parameter to enhanced. To retrieve
+            resources with Ids only, set the resource type parameter to core. Additional
+            ResourceTypes are Core, LifeStyle and TargetReady.
+          type: string
+        - in: query
+          name: stateprovince
+          description: Filters through the People collection by State or Province abbreviation.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /v1/people/counts:
+      post:
+        summary: Search People
+        description: Search People
+        operationId: search-people
+        parameters:
+        - in: query
+          name: Content-Type
+          description: The content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /v1/people/search:
+      post:
+        summary: Get People
+        description: Get People
+        operationId: get-people
+        parameters:
+        - in: query
+          name: Content-Type
+          description: The content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /v1/people/{id}:
+      get:
+        summary: Count Companies
+        description: Count Companies
+        operationId: count-companies
+        parameters:
+        - in: query
+          name: Content-Type
+          description: The content type.
+          type: string
+        - in: query
+          name: id
+          description: A twelve digit Infogroup identification number. A number referencing
+            the individual assigned by Infogroup. This number will always refer to a
+            single individual and the reference will never change, unless the resource
+            is permanently removed. Requesting a record by {id} will always return zero
+            or one response.
+          type: string
+        - in: path
+          name: id
+          type: string
+        - in: query
+          name: resourcetype
+          description: Identifies the resource type for the response. The default value
+            basic returns a base resource type that is valid across all methods; the
+            resource type parameter is not needed to produce this response. To get a
+            more detailed response set the resource type parameter to enhanced. To retrieve
+            resources with Ids only, set the resource type parameter to core. Additional
+            ResourceTypes are Core, LifeStyle and TargetReady.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /v1/sics:
+      get:
+        summary: Get SIC
+        description: Get SIC
+        operationId: get-sic
+        parameters:
+        - in: query
+          name: Content-Type
+          description: The content type.
+          type: string
+        - in: query
+          name: keyword
+          description: By SIC description. Example barber.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /v1/sics/{id}:
+      get:
+        summary: MultipleMatch
+        description: MultipleMatch
+        operationId: multiplematch
+        parameters:
+        - in: query
+          name: Content-Type
+          description: The content type.
+          type: string
+        - in: query
+          name: id
+          description: A two, four, or six numeric Standard Identification Classification
+            (SIC) code.
+          type: string
+        - in: path
+          name: id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /v3/match:
+      post:
+        summary: Count People
+        description: Count People
+        operationId: count-people
+        parameters:
+        - in: query
+          name: Content-Type
+          description: The content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /v3/multiplematch:
+      post:
+        summary: Match
+        description: Match
+        operationId: match
+        parameters:
+        - in: query
+          name: Content-Type
+          description: The content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

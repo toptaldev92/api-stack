@@ -1,0 +1,341 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Video",
+		"description": "This is my video API for keeping track of video files I create, and find across the internet. It doesn't store the video currently, just provides a pointer to where it exists, and some meta data to support.",
+		"termsOfService": "http://stack.network/terms-of-service.html",
+		"version": null
+	},
+	"host": "video.api.kinlane.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/video/": {
+			"get": {
+				"summary": "retrieve all video",
+				"description": "retrieve all video",
+				"operationId": "getVideos",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "query",
+					"description": "a text query to search across video"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Videos"],
+				"security": []
+			},
+			"post": {
+				"summary": "add video",
+				"description": "add a new video",
+				"operationId": "addVideo",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the API"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "creator",
+					"description": "creator of the video"
+				},
+				{
+					"in": "formData",
+					"name": "description",
+					"description": "description of the video"
+				},
+				{
+					"in": "formData",
+					"name": "name",
+					"description": "name of the video"
+				},
+				{
+					"in": "query",
+					"name": "thumbnailUrl",
+					"description": "thumbnailUrl of the video"
+				},
+				{
+					"in": "formData",
+					"name": "url",
+					"description": "url of the video"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Videos"],
+				"security": []
+			}
+		},
+		"/video/{video_id}/": {
+			"delete": {
+				"summary": "delete video",
+				"description": "deletes an video",
+				"operationId": "deleteVideo",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API"
+				},
+				{
+					"in": "path",
+					"name": "video_id",
+					"description": "unique id for the video"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Videos"],
+				"security": []
+			},
+			"get": {
+				"summary": "get video using id",
+				"description": "Retrieve a video using its ID",
+				"operationId": "getVideo",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the API"
+				},
+				{
+					"in": "path",
+					"name": "video_id",
+					"description": "unique id for the video"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Videos"],
+				"security": []
+			},
+			"put": {
+				"summary": "update video",
+				"description": "update video",
+				"operationId": "updateVideo",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the API"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the API"
+				},
+				{
+					"in": "query",
+					"name": "creator",
+					"description": "creator of the video"
+				},
+				{
+					"in": "formData",
+					"name": "description",
+					"description": "description of the video"
+				},
+				{
+					"in": "formData",
+					"name": "name",
+					"description": "name of the video"
+				},
+				{
+					"in": "query",
+					"name": "thumbnailUrl",
+					"description": "thumbnailUrl of the video"
+				},
+				{
+					"in": "formData",
+					"name": "url",
+					"description": "url of the video"
+				},
+				{
+					"in": "path",
+					"name": "video_id",
+					"description": "unique id for the video"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Videos"],
+				"security": []
+			}
+		},
+		"/video/{video_id}/tags/": {
+			"get": {
+				"summary": "retrieve video tags",
+				"description": "Returns the tags for an video",
+				"operationId": "getvideoTags",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the video"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the video"
+				},
+				{
+					"in": "path",
+					"name": "video_id",
+					"description": "id for video"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			},
+			"post": {
+				"summary": "add tag to video",
+				"description": "add tag for video",
+				"operationId": "addPeopleTag",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the video"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the video"
+				},
+				{
+					"in": "formData",
+					"name": "tag",
+					"description": "tag name"
+				},
+				{
+					"in": "path",
+					"name": "video_id",
+					"description": "id for the video"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			}
+		},
+		"/video/{video_id}/tags/{tag}": {
+			"delete": {
+				"summary": "delete a video tag",
+				"description": "deletes a tag applied to video",
+				"operationId": "deletevideoTag",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the video"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the video"
+				},
+				{
+					"in": "path",
+					"name": "tag",
+					"description": "tag to remove from video"
+				},
+				{
+					"in": "path",
+					"name": "video_id",
+					"description": "id for the video"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tags"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"video": {
+			"properties": {
+				"video_id": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"description": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"thumbnailUrl": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"creator": {
+					"description": "This is a default description.",
+					"type": "delete"
+				}
+			}
+		},
+		"tag": {
+			"properties": {
+				"tag_id": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"tag": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"api_count": {
+					"description": "This is a default description.",
+					"type": "delete"
+				}
+			}
+		}
+	}
+}

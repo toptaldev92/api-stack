@@ -1,0 +1,185 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "AngelList Me API",
+		"description": "Pull AngelList profile.",
+		"termsOfService": "https://angel.co/terms",
+		"contact": {
+			"name": "AngelList",
+			"url": "https://angel.co/api",
+			"email": "api@angel.co"
+		},
+		"version": "v1"
+	},
+	"host": "api.angel.co",
+	"basePath": "/1/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/me": {
+			"get": {
+				"summary": "Get Me",
+				"description": "Get Me",
+				"operationId": "me",
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/me"
+							}
+						}
+					}
+				},
+				"tags": ["Me"],
+				"security": [{
+					"AngelListAuth": []
+				}]
+			}
+		}
+	},
+	"securityDefinitions": {
+		"AngelListAuth": {
+			"type": "oauth2",
+			"flow": "accessCode",
+			"authorizationUrl": "https://angel.co/api/oauth/authorize",
+			"tokenUrl": "https://angel.co/api/oauth/token"
+		}
+	},
+	"definitions": {
+		"me": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "integer"
+				},
+				"bio": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"follower_count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"angellist_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"image": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"email": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"blog_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"online_bio_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"twitter_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"facebook_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"linkedin_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"aboutme_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"github_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"dribbble_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"behance_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resume_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"what_ive_built": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"what_i_do": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"criteria": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"locations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"roles": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"skills": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"investor": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"scopes": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"skills": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "integer"
+				},
+				"tag_type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"display_name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"angellist_url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"level": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

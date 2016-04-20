@@ -1,0 +1,122 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "API Evangelist - Events API",
+		"description": "This is a template business API from API Evangelist.",
+		"termsOfService": "http://apievangelist.com/terms-of-service.html",
+		"version": "v1"
+	},
+	"host": "http://events.api.apievangelist.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/events/": {
+			"get": {
+				"summary": "Pulls a listing of events",
+				"description": "Returns a list of events, allowing you to filter by keyword query.",
+				"operationId": "getJobs",
+				"parameters": [{
+					"in": "query",
+					"name": "query",
+					"description": "a text query to search across events",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/events/{id}": {
+			"get": {
+				"summary": "Retrieve an event using its ID",
+				"description": "Returns a events detail",
+				"operationId": "getJobs",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id for the event, notice this is in the path, not a query variable",
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"events": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"description": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"image": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"duration": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"startDate": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"endDate": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"location": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"streetAddress": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"addressLocality": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"addressRegion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"postalCode": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"telephone": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"email": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

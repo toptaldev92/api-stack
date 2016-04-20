@@ -1,0 +1,43 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Facebook Graph (Domain) API",
+		"description": "API for managing Facebook Domains",
+		"termsOfService": "https://www.facebook.com/policies/",
+		"version": null
+	},
+	"host": "graph.facebook.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/{domain-id}": {
+			"get": {
+				"summary": "Get Website Domain",
+				"description": "A website domain within the Graph API",
+				"operationId": "domain",
+				"parameters": [{
+					"in": "query",
+					"name": "id",
+					"description": "The ID of the domain.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "The name of the domain.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["domains"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

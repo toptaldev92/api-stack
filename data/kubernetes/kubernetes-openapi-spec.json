@@ -1,0 +1,4275 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Kubernetes",
+		"version": null
+	},
+	"host": "/api/v1beta3",
+	"basePath": "127.0.0.1:6443",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/api/v1beta3/endpoints": {
+			"get": {
+				"summary": "list objects of kind Endpoints",
+				"description": "",
+				"operationId": "listEndpoints",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/events": {
+			"get": {
+				"summary": "list objects of kind Event",
+				"description": "",
+				"operationId": "listEvent",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/limitranges": {
+			"get": {
+				"summary": "list objects of kind LimitRange",
+				"description": "",
+				"operationId": "listLimitRange",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces": {
+			"get": {
+				"summary": "list objects of kind Namespace",
+				"description": "",
+				"operationId": "listNamespace",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "create a Namespace",
+				"description": "",
+				"operationId": "createNamespace",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{namespaces}/bindings": {
+			"post": {
+				"summary": "create a Binding",
+				"description": "",
+				"operationId": "createBinding",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{namespaces}/endpoints": {
+			"get": {
+				"summary": "list objects of kind Endpoints",
+				"description": "",
+				"operationId": "listEndpoints",
+				"parameters": [{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "create a Endpoints",
+				"description": "",
+				"operationId": "createEndpoints",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{namespaces}/endpoints/{name}": {
+			"get": {
+				"summary": "read the specified Endpoints",
+				"description": "",
+				"operationId": "readEndpoints",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Endpoints",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "update the specified Endpoints",
+				"description": "",
+				"operationId": "updateEndpoints",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Endpoints",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{namespaces}/events": {
+			"get": {
+				"summary": "list objects of kind Event",
+				"description": "",
+				"operationId": "listEvent",
+				"parameters": [{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "create a Event",
+				"description": "",
+				"operationId": "createEvent",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{namespaces}/events/{name}": {
+			"delete": {
+				"summary": "delete a Event",
+				"description": "",
+				"operationId": "deleteEvent",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Event",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "read the specified Event",
+				"description": "",
+				"operationId": "readEvent",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Event",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "update the specified Event",
+				"description": "",
+				"operationId": "updateEvent",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Event",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{namespaces}/limitranges": {
+			"get": {
+				"summary": "list objects of kind LimitRange",
+				"description": "",
+				"operationId": "listLimitRange",
+				"parameters": [{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "create a LimitRange",
+				"description": "",
+				"operationId": "createLimitRange",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{namespaces}/limitranges/{name}": {
+			"delete": {
+				"summary": "delete a LimitRange",
+				"description": "",
+				"operationId": "deleteLimitRange",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the LimitRange",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "read the specified LimitRange",
+				"description": "",
+				"operationId": "readLimitRange",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the LimitRange",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "update the specified LimitRange",
+				"description": "",
+				"operationId": "updateLimitRange",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "name",
+					"description": "name of the LimitRange",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{namespaces}/pods": {
+			"get": {
+				"summary": "list objects of kind Pod",
+				"description": "",
+				"operationId": "listPod",
+				"parameters": [{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "create a Pod",
+				"description": "",
+				"operationId": "createPod",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{namespaces}/pods/{name}": {
+			"delete": {
+				"summary": "delete a Pod",
+				"description": "",
+				"operationId": "deletePod",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Pod",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "read the specified Pod",
+				"description": "",
+				"operationId": "readPod",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Pod",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "update the specified Pod",
+				"description": "",
+				"operationId": "updatePod",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Pod",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{namespaces}/replicationcontrollers": {
+			"get": {
+				"summary": "list objects of kind ReplicationController",
+				"description": "",
+				"operationId": "listReplicationController",
+				"parameters": [{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "create a ReplicationController",
+				"description": "",
+				"operationId": "createReplicationController",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{namespaces}/replicationcontrollers/{name}": {
+			"delete": {
+				"summary": "delete a ReplicationController",
+				"description": "",
+				"operationId": "deleteReplicationController",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the ReplicationController",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "read the specified ReplicationController",
+				"description": "",
+				"operationId": "readReplicationController",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the ReplicationController",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "update the specified ReplicationController",
+				"description": "",
+				"operationId": "updateReplicationController",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "name",
+					"description": "name of the ReplicationController",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{namespaces}/resourcequotas": {
+			"get": {
+				"summary": "list objects of kind ResourceQuota",
+				"description": "",
+				"operationId": "listResourceQuota",
+				"parameters": [{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "create a ResourceQuota",
+				"description": "",
+				"operationId": "createResourceQuota",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{namespaces}/resourcequotas/{name}": {
+			"delete": {
+				"summary": "delete a ResourceQuota",
+				"description": "",
+				"operationId": "deleteResourceQuota",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the ResourceQuota",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "read the specified ResourceQuota",
+				"description": "",
+				"operationId": "readResourceQuota",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the ResourceQuota",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "update the specified ResourceQuota",
+				"description": "",
+				"operationId": "updateResourceQuota",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "name",
+					"description": "name of the ResourceQuota",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{namespaces}/resourcequotausages": {
+			"post": {
+				"summary": "create a ResourceQuotaUsage",
+				"description": "",
+				"operationId": "createResourceQuotaUsage",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{namespaces}/secrets": {
+			"get": {
+				"summary": "list objects of kind Secret",
+				"description": "",
+				"operationId": "listSecret",
+				"parameters": [{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "create a Secret",
+				"description": "",
+				"operationId": "createSecret",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{namespaces}/secrets/{name}": {
+			"delete": {
+				"summary": "delete a Secret",
+				"description": "",
+				"operationId": "deleteSecret",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Secret",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "read the specified Secret",
+				"description": "",
+				"operationId": "readSecret",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Secret",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "update the specified Secret",
+				"description": "",
+				"operationId": "updateSecret",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Secret",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{namespaces}/services": {
+			"get": {
+				"summary": "list objects of kind Service",
+				"description": "",
+				"operationId": "listService",
+				"parameters": [{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "create a Service",
+				"description": "",
+				"operationId": "createService",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{namespaces}/services/{name}": {
+			"delete": {
+				"summary": "delete a Service",
+				"description": "",
+				"operationId": "deleteService",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Service",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "read the specified Service",
+				"description": "",
+				"operationId": "readService",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Service",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "update the specified Service",
+				"description": "",
+				"operationId": "updateService",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Service",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/namespaces/{name}": {
+			"delete": {
+				"summary": "delete a Namespace",
+				"description": "",
+				"operationId": "deleteNamespace",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Namespace",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "read the specified Namespace",
+				"description": "",
+				"operationId": "readNamespace",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Namespace",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "update the specified Namespace",
+				"description": "",
+				"operationId": "updateNamespace",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Namespace",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/nodes": {
+			"get": {
+				"summary": "list objects of kind Node",
+				"description": "",
+				"operationId": "listNode",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "create a Node",
+				"description": "",
+				"operationId": "createNode",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/nodes/{name}": {
+			"delete": {
+				"summary": "delete a Node",
+				"description": "",
+				"operationId": "deleteNode",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Node",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "read the specified Node",
+				"description": "",
+				"operationId": "readNode",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Node",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "update the specified Node",
+				"description": "",
+				"operationId": "updateNode",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Node",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/pods": {
+			"get": {
+				"summary": "list objects of kind Pod",
+				"description": "",
+				"operationId": "listPod",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/proxy/namespaces/{namespaces}/pods/{name}": {
+			"delete": {
+				"summary": "proxy DELETE requests to Pod",
+				"description": "",
+				"operationId": "proxyDELETEPod",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Pod",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "proxy GET requests to Pod",
+				"description": "",
+				"operationId": "proxyGETPod",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Pod",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "proxy POST requests to Pod",
+				"description": "",
+				"operationId": "proxyPOSTPod",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Pod",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "proxy PUT requests to Pod",
+				"description": "",
+				"operationId": "proxyPUTPod",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Pod",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/proxy/namespaces/{namespaces}/pods/{name}/{path:*}": {
+			"delete": {
+				"summary": "proxy DELETE requests to Pod",
+				"description": "",
+				"operationId": "proxyDELETEPod",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Pod",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "proxy GET requests to Pod",
+				"description": "",
+				"operationId": "proxyGETPod",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Pod",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "proxy POST requests to Pod",
+				"description": "",
+				"operationId": "proxyPOSTPod",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Pod",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "proxy PUT requests to Pod",
+				"description": "",
+				"operationId": "proxyPUTPod",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Pod",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/proxy/namespaces/{namespaces}/services/{name}": {
+			"delete": {
+				"summary": "proxy DELETE requests to Service",
+				"description": "",
+				"operationId": "proxyDELETEService",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Service",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "proxy GET requests to Service",
+				"description": "",
+				"operationId": "proxyGETService",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Service",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "proxy POST requests to Service",
+				"description": "",
+				"operationId": "proxyPOSTService",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Service",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "proxy PUT requests to Service",
+				"description": "",
+				"operationId": "proxyPUTService",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Service",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/proxy/namespaces/{namespaces}/services/{name}/{path:*}": {
+			"delete": {
+				"summary": "proxy DELETE requests to Service",
+				"description": "",
+				"operationId": "proxyDELETEService",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Service",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "proxy GET requests to Service",
+				"description": "",
+				"operationId": "proxyGETService",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Service",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "proxy POST requests to Service",
+				"description": "",
+				"operationId": "proxyPOSTService",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Service",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "proxy PUT requests to Service",
+				"description": "",
+				"operationId": "proxyPUTService",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Service",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/proxy/nodes/{name}": {
+			"delete": {
+				"summary": "proxy DELETE requests to Node",
+				"description": "",
+				"operationId": "proxyDELETENode",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Node",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "proxy GET requests to Node",
+				"description": "",
+				"operationId": "proxyGETNode",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Node",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "proxy POST requests to Node",
+				"description": "",
+				"operationId": "proxyPOSTNode",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Node",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "proxy PUT requests to Node",
+				"description": "",
+				"operationId": "proxyPUTNode",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Node",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/proxy/nodes/{name}/{path:*}": {
+			"delete": {
+				"summary": "proxy DELETE requests to Node",
+				"description": "",
+				"operationId": "proxyDELETENode",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Node",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "proxy GET requests to Node",
+				"description": "",
+				"operationId": "proxyGETNode",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Node",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "proxy POST requests to Node",
+				"description": "",
+				"operationId": "proxyPOSTNode",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Node",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "proxy PUT requests to Node",
+				"description": "",
+				"operationId": "proxyPUTNode",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Node",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/redirect/namespaces/{namespaces}/pods/{name}": {
+			"get": {
+				"summary": "redirect GET request to Pod",
+				"description": "",
+				"operationId": "redirectPod",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Pod",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/redirect/namespaces/{namespaces}/services/{name}": {
+			"get": {
+				"summary": "redirect GET request to Service",
+				"description": "",
+				"operationId": "redirectService",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Service",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/redirect/nodes/{name}": {
+			"get": {
+				"summary": "redirect GET request to Node",
+				"description": "",
+				"operationId": "redirectNode",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Node",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/replicationcontrollers": {
+			"get": {
+				"summary": "list objects of kind ReplicationController",
+				"description": "",
+				"operationId": "listReplicationController",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/resourcequotas": {
+			"get": {
+				"summary": "list objects of kind ResourceQuota",
+				"description": "",
+				"operationId": "listResourceQuota",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/secrets": {
+			"get": {
+				"summary": "list objects of kind Secret",
+				"description": "",
+				"operationId": "listSecret",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/services": {
+			"get": {
+				"summary": "list objects of kind Service",
+				"description": "",
+				"operationId": "listService",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/endpoints": {
+			"get": {
+				"summary": "watch a list of Endpoints",
+				"description": "",
+				"operationId": "watchEndpointslist",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/events": {
+			"get": {
+				"summary": "watch a list of Event",
+				"description": "",
+				"operationId": "watchEventlist",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/limitranges": {
+			"get": {
+				"summary": "watch a list of LimitRange",
+				"description": "",
+				"operationId": "watchLimitRangelist",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/namespaces": {
+			"get": {
+				"summary": "watch a list of Namespace",
+				"description": "",
+				"operationId": "watchNamespacelist",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/namespaces/{namespaces}/endpoints": {
+			"get": {
+				"summary": "watch a list of Endpoints",
+				"description": "",
+				"operationId": "watchEndpointslist",
+				"parameters": [{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/namespaces/{namespaces}/endpoints/{name}": {
+			"get": {
+				"summary": "watch a particular Endpoints",
+				"description": "",
+				"operationId": "watchEndpoints",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Endpoints",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/namespaces/{namespaces}/events": {
+			"get": {
+				"summary": "watch a list of Event",
+				"description": "",
+				"operationId": "watchEventlist",
+				"parameters": [{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/namespaces/{namespaces}/events/{name}": {
+			"get": {
+				"summary": "watch a particular Event",
+				"description": "",
+				"operationId": "watchEvent",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Event",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/namespaces/{namespaces}/limitranges": {
+			"get": {
+				"summary": "watch a list of LimitRange",
+				"description": "",
+				"operationId": "watchLimitRangelist",
+				"parameters": [{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/namespaces/{namespaces}/limitranges/{name}": {
+			"get": {
+				"summary": "watch a particular LimitRange",
+				"description": "",
+				"operationId": "watchLimitRange",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the LimitRange",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/namespaces/{namespaces}/pods": {
+			"get": {
+				"summary": "watch a list of Pod",
+				"description": "",
+				"operationId": "watchPodlist",
+				"parameters": [{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/namespaces/{namespaces}/pods/{name}": {
+			"get": {
+				"summary": "watch a particular Pod",
+				"description": "",
+				"operationId": "watchPod",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Pod",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/namespaces/{namespaces}/replicationcontrollers": {
+			"get": {
+				"summary": "watch a list of ReplicationController",
+				"description": "",
+				"operationId": "watchReplicationControllerlist",
+				"parameters": [{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/namespaces/{namespaces}/replicationcontrollers/{name}": {
+			"get": {
+				"summary": "watch a particular ReplicationController",
+				"description": "",
+				"operationId": "watchReplicationController",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the ReplicationController",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/namespaces/{namespaces}/resourcequotas": {
+			"get": {
+				"summary": "watch a list of ResourceQuota",
+				"description": "",
+				"operationId": "watchResourceQuotalist",
+				"parameters": [{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/namespaces/{namespaces}/resourcequotas/{name}": {
+			"get": {
+				"summary": "watch a particular ResourceQuota",
+				"description": "",
+				"operationId": "watchResourceQuota",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the ResourceQuota",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/namespaces/{namespaces}/secrets": {
+			"get": {
+				"summary": "watch a list of Secret",
+				"description": "",
+				"operationId": "watchSecretlist",
+				"parameters": [{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/namespaces/{namespaces}/secrets/{name}": {
+			"get": {
+				"summary": "watch a particular Secret",
+				"description": "",
+				"operationId": "watchSecret",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Secret",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/namespaces/{namespaces}/services": {
+			"get": {
+				"summary": "watch a list of Service",
+				"description": "",
+				"operationId": "watchServicelist",
+				"parameters": [{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/namespaces/{namespaces}/services/{name}": {
+			"get": {
+				"summary": "watch a particular Service",
+				"description": "",
+				"operationId": "watchService",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Service",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "namespaces",
+					"description": "object name and auth scope, such as for teams and projects",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/namespaces/{name}": {
+			"get": {
+				"summary": "watch a particular Namespace",
+				"description": "",
+				"operationId": "watchNamespace",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Namespace",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/nodes": {
+			"get": {
+				"summary": "watch a list of Node",
+				"description": "",
+				"operationId": "watchNodelist",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/nodes/{name}": {
+			"get": {
+				"summary": "watch a particular Node",
+				"description": "",
+				"operationId": "watchNode",
+				"parameters": [{
+					"in": "path",
+					"name": "name",
+					"description": "name of the Node",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/pods": {
+			"get": {
+				"summary": "watch a list of Pod",
+				"description": "",
+				"operationId": "watchPodlist",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/replicationcontrollers": {
+			"get": {
+				"summary": "watch a list of ReplicationController",
+				"description": "",
+				"operationId": "watchReplicationControllerlist",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/resourcequotas": {
+			"get": {
+				"summary": "watch a list of ResourceQuota",
+				"description": "",
+				"operationId": "watchResourceQuotalist",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/secrets": {
+			"get": {
+				"summary": "watch a list of Secret",
+				"description": "",
+				"operationId": "watchSecretlist",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/api/v1beta3/watch/services": {
+			"get": {
+				"summary": "watch a list of Service",
+				"description": "",
+				"operationId": "watchServicelist",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"v1beta3.Binding": {
+			"properties": {
+				"annotations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"creationTimestamp": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"generateName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"host": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"labels": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"namespace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"podID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uid": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.Capabilities": {
+			"properties": {
+				"add": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"drop": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.CapabilityType": {
+			"properties": []
+		},
+		"v1beta3.Container": {
+			"properties": {
+				"capabilities": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"command": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"env": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"image": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"imagePullPolicy": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"lifecycle": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"livenessProbe": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ports": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"privileged": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"readinessProbe": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resources": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"terminationMessagePath": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"volumeMounts": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"workingDir": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.EmptyDirVolumeSource": {
+			"properties": []
+		},
+		"v1beta3.Endpoint": {
+			"properties": {
+				"ip": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"port": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.Endpoints": {
+			"properties": {
+				"annotations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"creationTimestamp": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"endpoints": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"generateName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"labels": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"namespace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"protocol": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uid": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.EndpointsList": {
+			"properties": {
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"items": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.EnvVar": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"value": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.Event": {
+			"properties": {
+				"annotations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"count": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"creationTimestamp": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"firstTimestamp": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"generateName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"involvedObject": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"labels": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"lastTimestamp": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"message": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"namespace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"reason": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"source": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uid": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.EventList": {
+			"properties": {
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"items": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.EventSource": {
+			"properties": {
+				"component": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"host": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.ExecAction": {
+			"properties": {
+				"command": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.GCEPersistentDiskVolumeSource": {
+			"properties": {
+				"fsType": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"partition": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"pdName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"readOnly": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.GitRepoVolumeSource": {
+			"properties": {
+				"repository": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"revision": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.HTTPGetAction": {
+			"properties": {
+				"host": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"path": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"port": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.Handler": {
+			"properties": {
+				"exec": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"httpGet": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"tcpSocket": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.HostPathVolumeSource": {
+			"properties": {
+				"path": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.Lifecycle": {
+			"properties": {
+				"postStart": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"preStop": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.LimitRange": {
+			"properties": {
+				"annotations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"creationTimestamp": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"generateName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"labels": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"namespace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"spec": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uid": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.LimitRangeItem": {
+			"properties": {
+				"max": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"min": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.LimitRangeList": {
+			"properties": {
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"items": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.LimitRangeSpec": {
+			"properties": {
+				"limits": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.Namespace": {
+			"properties": {
+				"annotations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"creationTimestamp": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"generateName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"labels": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"namespace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"spec": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uid": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.NamespaceList": {
+			"properties": {
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"items": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.NamespaceSpec": {
+			"properties": []
+		},
+		"v1beta3.NamespaceStatus": {
+			"properties": []
+		},
+		"v1beta3.Node": {
+			"properties": {
+				"annotations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"creationTimestamp": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"generateName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"labels": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"namespace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"spec": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uid": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.NodeCondition": {
+			"properties": {
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"lastProbeTime": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"lastTransitionTime": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"message": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"reason": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.NodeList": {
+			"properties": {
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"items": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.NodeSpec": {
+			"properties": {
+				"capacity": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"cidr": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.NodeStatus": {
+			"properties": {
+				"conditions": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"hostIP": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"phase": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.ObjectReference": {
+			"properties": {
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"fieldPath": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"namespace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uid": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.Pod": {
+			"properties": {
+				"annotations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"creationTimestamp": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"generateName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"labels": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"namespace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"spec": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uid": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.PodCondition": {
+			"properties": {
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.PodList": {
+			"properties": {
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"items": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.PodSpec": {
+			"properties": {
+				"containers": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"dnsPolicy": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"host": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"nodeSelector": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"restartPolicy": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"volumes": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.PodSpec.nodeSelector": {
+			"properties": []
+		},
+		"v1beta3.PodStatus": {
+			"properties": {
+				"Condition": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"host": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"hostIP": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"info": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"message": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"phase": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"podIP": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.PodTemplateSpec": {
+			"properties": {
+				"annotations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"creationTimestamp": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"generateName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"labels": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"namespace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"spec": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uid": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.Port": {
+			"properties": {
+				"containerPort": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"hostIP": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"hostPort": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"protocol": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.Probe": {
+			"properties": {
+				"exec": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"httpGet": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"initialDelaySeconds": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"tcpSocket": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"timeoutSeconds": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.ReplicationController": {
+			"properties": {
+				"annotations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"creationTimestamp": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"generateName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"labels": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"namespace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"spec": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uid": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.ReplicationControllerList": {
+			"properties": {
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"items": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.ReplicationControllerSpec": {
+			"properties": {
+				"replicas": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selector": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"template": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"templateRef": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.ReplicationControllerSpec.selector": {
+			"properties": []
+		},
+		"v1beta3.ReplicationControllerStatus": {
+			"properties": {
+				"replicas": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.ResourceQuota": {
+			"properties": {
+				"annotations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"creationTimestamp": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"generateName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"labels": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"namespace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"spec": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uid": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.ResourceQuotaList": {
+			"properties": {
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"items": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.ResourceQuotaSpec": {
+			"properties": {
+				"hard": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.ResourceQuotaStatus": {
+			"properties": {
+				"hard": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"used": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.ResourceQuotaUsage": {
+			"properties": {
+				"annotations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"creationTimestamp": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"generateName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"labels": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"namespace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uid": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.ResourceRequirements": {
+			"properties": {
+				"limits": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.RestartPolicy": {
+			"properties": {
+				"always": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"never": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"onFailure": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.RestartPolicyAlways": {
+			"properties": []
+		},
+		"v1beta3.RestartPolicyNever": {
+			"properties": []
+		},
+		"v1beta3.RestartPolicyOnFailure": {
+			"properties": []
+		},
+		"v1beta3.Secret": {
+			"properties": {
+				"annotations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"creationTimestamp": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"data": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"generateName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"labels": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"namespace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uid": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.Secret.data": {
+			"properties": []
+		},
+		"v1beta3.SecretList": {
+			"properties": {
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"items": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.SecretVolumeSource": {
+			"properties": {
+				"target": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.Service": {
+			"properties": {
+				"annotations": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"creationTimestamp": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"generateName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"labels": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"namespace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"spec": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uid": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.ServiceList": {
+			"properties": {
+				"apiVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"items": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"resourceVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.ServiceSpec": {
+			"properties": {
+				"containerPort": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"createExternalLoadBalancer": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"port": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"portalIP": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"protocol": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"publicIPs": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"selector": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sessionAffinity": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.ServiceSpec.selector": {
+			"properties": []
+		},
+		"v1beta3.ServiceStatus": {
+			"properties": []
+		},
+		"v1beta3.TCPSocketAction": {
+			"properties": {
+				"port": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.Volume": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"source": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.VolumeMount": {
+			"properties": {
+				"mountPath": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"readOnly": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"v1beta3.VolumeSource": {
+			"properties": {
+				"emptyDir": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"gcePersistentDisk": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"gitRepo": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"hostPath": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"secret": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

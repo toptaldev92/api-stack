@@ -1,0 +1,237 @@
+- swagger: "2.0"
+  info:
+    title: Getty Images Download API
+    termsOfService: http://api.gettyimages.com/terms_use
+    version: v3
+  host: connect.gettyimages.com
+  basePath: /v3/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /v3/downloads:
+      get:
+        summary: Returns information about a customer's downloaded assets.
+        description: ""
+        operationId: Downloads_GetDownloads
+        parameters:
+        - in: header
+          name: Api-Key
+          description: Api-Key
+          type: string
+          format: string
+        - in: header
+          name: Authorization
+          description: Authorization token required. Used for applying content access
+            restrictions. Use one of the OAuth2 grants to auto-populate this value.
+          type: string
+          format: string
+        - in: query
+          name: end_date
+          description: If specified, select assets downloaded on or before this date.
+            Dates should be submitted in ISO 8601 format (i.e., YYYY-MM-DD).
+          type: string
+          format: string
+        - in: query
+          name: page
+          description: Page number
+          type: string
+          format: string
+        - in: query
+          name: page_size
+          description: Size of page
+          type: string
+          format: string
+        - in: query
+          name: product_offering
+          description: Specifies product offerings to be included in the previous download
+            results.
+          type: string
+          format: string
+        - in: query
+          name: start_date
+          description: If specified, select assets downloaded on or after this date.
+            Dates should be submitted in ISO 8601 format (i.e., YYYY-MM-DD).
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /v3/downloads/images/{id}:
+      post:
+        summary: Download an image
+        description: The single step download call returns either a redirect or a response
+          message with the URI to download the largest image available.rn                Returns
+          HTTP status code 303 Redirect to download URI or HTTP status code 200.
+        operationId: Downloads_PostDownloads
+        parameters:
+        - in: header
+          name: Api-Key
+          description: Api-Key
+          type: string
+          format: string
+        - in: header
+          name: Authorization
+          description: Authorization token required. Used for applying content access
+            restrictions. Use one of the OAuth2 grants to auto-populate this value.
+          type: string
+          format: string
+        - in: query
+          name: auto_download
+          type: string
+          format: string
+        - in: query
+          name: file_type
+          type: string
+          format: string
+        - in: query
+          name: height
+          description: Specifies the pixel height of the particular image to download.rn                    Available
+            heights can be found in the images/{ids} response for the specific image.rn                    If
+            left blank, it will return the largest available size.
+          type: string
+          format: string
+        - in: path
+          name: id
+          description: Id of image to download.
+          type: string
+          format: string
+        - in: query
+          name: product_id
+          type: string
+          format: string
+        - in: query
+          name: product_type
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /v3/downloads/videos/{id}:
+      post:
+        summary: Download a video
+        description: The single step download call returns either a redirect or a response
+          message with the URI to download the largest video available.rn                Returns
+          HTTP status code 303 Redirect to download URI or HTTP status code 200.
+        operationId: Downloads_PostVideoDownloads
+        parameters:
+        - in: header
+          name: Api-Key
+          description: Api-Key
+          type: string
+          format: string
+        - in: header
+          name: Authorization
+          description: Authorization token required. Used for applying content access
+            restrictions. Use one of the OAuth2 grants to auto-populate this value.
+          type: string
+          format: string
+        - in: query
+          name: auto_download
+          description: Specifies whether to auto-download the video. If true is specified,
+            a 303 SeeOther status is returned with arn                    Location header
+            set to the location of the video.rn                    If false is specified,
+            the download URI will be returned in the response message.
+          type: string
+          format: string
+        - in: path
+          name: id
+          description: Id of video to download.
+          type: string
+          format: string
+        - in: query
+          name: size
+          description: Specifies the size to be downloaded.
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /v3/downloads/{id}:
+      post:
+        summary: Download an image
+        description: The single step download call returns either a redirect or a response
+          message with the URI to download the largest image available.rn                Returns
+          HTTP status code 303 Redirect to download URI or HTTP status code 200.
+        operationId: Downloads_PostDownloads
+        parameters:
+        - in: header
+          name: Api-Key
+          description: Api-Key
+          type: string
+          format: string
+        - in: header
+          name: Authorization
+          description: Authorization token required. Used for applying content access
+            restrictions. Use one of the OAuth2 grants to auto-populate this value.
+          type: string
+          format: string
+        - in: query
+          name: auto_download
+          type: string
+          format: string
+        - in: query
+          name: file_type
+          type: string
+          format: string
+        - in: query
+          name: height
+          description: Specifies the pixel height of the particular image to download.rn                    Available
+            heights can be found in the images/{ids} response for the specific image.rn                    If
+            left blank, it will return the largest available size.
+          type: string
+          format: string
+        - in: path
+          name: id
+          description: Id of image to download.
+          type: string
+          format: string
+        - in: query
+          name: product_id
+          type: string
+          format: string
+        - in: query
+          name: product_type
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions:
+    downloads_response:
+      properties:
+        result_count:
+          description: This is a default description.
+          type: string
+        downloads:
+          description: This is a default description.
+          type: string
+    download:
+      properties:
+        date_downloaded:
+          description: This is a default description.
+          type: string
+        id:
+          description: This is a default description.
+          type: string
+        product_offering:
+          description: This is a default description.
+          type: string
+        thumb_uri:
+          description: This is a default description.
+          type: string

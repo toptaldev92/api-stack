@@ -1,0 +1,831 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Lyft API",
+		"description": "Drive your app to success with Lyft's API",
+		"contact": {
+			"name": "Lyft",
+			"url": "http://developer.lyft.com",
+			"email": "api-support@lyft.com"
+		},
+		"version": null
+	},
+	"host": "api.lyft.com",
+	"basePath": "/v1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/cost": {
+			"get": {
+				"summary": "Cost estimates",
+				"description": "Estimate the cost of taking a Lyft between two points.n",
+				"operationId": "estimate-the-cost-of-taking-a-lyft-between-two-points",
+				"parameters": [{
+					"in": "query",
+					"name": "end_lat",
+					"description": "Latitude of the ending location"
+				},
+				{
+					"in": "query",
+					"name": "end_lng",
+					"description": "Longitude of the ending location"
+				},
+				{
+					"in": "query",
+					"name": "No Name"
+				},
+				{
+					"in": "query",
+					"name": "start_lat",
+					"description": "Latitude of the starting location"
+				},
+				{
+					"in": "query",
+					"name": "start_lng",
+					"description": "Longitude of the starting location"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/drivers": {
+			"get": {
+				"summary": "Available drivers nearby",
+				"description": "The drivers endpoint returns a list of nearby drivers lat and lng at a given location.n",
+				"operationId": "the-drivers-endpoint-returns-a-list-of-nearby-drivers-lat-and-lng-at-a-given-location",
+				"parameters": [{
+					"in": "query",
+					"name": "No Name"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/eta": {
+			"get": {
+				"summary": "Pickup ETAs",
+				"description": "The ETA endpoint lets you know how quickly a Lyft driver can come get youn",
+				"operationId": "the-eta-endpoint-lets-you-know-how-quickly-a-lyft-driver-can-come-get-you",
+				"parameters": [{
+					"in": "query",
+					"name": "No Name"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/rides": {
+			"get": {
+				"summary": "List rides",
+				"description": "Get a list of past & current rides for this passenger.n",
+				"operationId": "get-a-list-of-past--current-rides-for-this-passenger",
+				"parameters": [{
+					"in": "query",
+					"name": "No Name"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Request a Lyft",
+				"description": "Request a Lyft come pick you up at the given location.n",
+				"operationId": "request-a-lyft-come-pick-you-up-at-the-given-location",
+				"parameters": [{
+					"in": "body",
+					"name": "request",
+					"description": "Ride request information",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/rides/{id}": {
+			"get": {
+				"summary": "Get the ride detail of a given ride ID",
+				"description": "Get the status of a ride along with information about the driver, vehicle and price of a given ride IDn",
+				"operationId": "get-the-status-of-a-ride-along-with-information-about-the-driver-vehicle-and-price-of-a-given-ride-i",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the ride"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/rides/{id}/cancel": {
+			"post": {
+				"summary": "Cancel a ongoing requested ride",
+				"description": "Cancel a ongoing ride which was requested earlier by providing the ride id.n",
+				"operationId": "cancel-a-ongoing-ride-which-was-requested-earlier-by-providing-the-ride-id",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the ride"
+				},
+				{
+					"in": "body",
+					"name": "request",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/rides/{id}/destination": {
+			"put": {
+				"summary": "Update the destination of the ride",
+				"description": "Add or update the rides destination. Note that the ride must still be active (not droppedOff or canceled), and that destinations on Lyft Line rides can not be changed.n",
+				"operationId": "add-or-update-the-rides-destination-note-that-the-ride-must-still-be-active-not-droppedoff-or-cancel",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the ride"
+				},
+				{
+					"in": "body",
+					"name": "request",
+					"description": "The coordinates and optional address of the destination",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/rides/{id}/rating": {
+			"put": {
+				"summary": "Add the passenger's rating, feedback, and tip",
+				"description": "Add the passengers 1 to 5 star rating of the ride, optional written feedback, and optional tip amount in minor units and currency. The ride must already be dropped off, and ratings must be given within 24 hours of drop off. For purposes of display, 5 is considered the default rating. When this endpoint is successfully called, payment processing will begin.n",
+				"operationId": "add-the-passengers-1-to-5-star-rating-of-the-ride-optional-written-feedback-and-optional-tip-amount-",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the ride"
+				},
+				{
+					"in": "body",
+					"name": "request",
+					"description": "The rating and optional feedback",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/rides/{id}/receipt": {
+			"get": {
+				"summary": "Get the receipt of the rides.",
+				"description": "Get the receipt information of a processed ride by providing the ride id. Receipts will only be available to view once the payment has been processed. In the case of canceled ride, cancellation penalty is included if applicable.n",
+				"operationId": "get-the-receipt-information-of-a-processed-ride-by-providing-the-ride-id-receipts-will-only-be-avail",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the ride"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/ridetypes": {
+			"get": {
+				"summary": "Types of rides",
+				"description": "The ride types endpoint returns information about what kinds of Lyft rides you can request at a given location.n",
+				"operationId": "the-ride-types-endpoint-returns-information-about-what-kinds-of-lyft-rides-you-can-request-at-a-give",
+				"parameters": [{
+					"in": "query",
+					"name": "No Name"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/sandbox/primetime": {
+			"put": {
+				"summary": "Preset Prime Time percentage",
+				"description": "Preset a Prime Time percentage in the region surrounding the specified location. This Prime Time percentage will be applied when requesting cost, or when requesting a ride in sandbox mode.n",
+				"operationId": "preset-a-prime-time-percentage-in-the-region-surrounding-the-specified-location-this-prime-time-perc",
+				"parameters": [{
+					"in": "body",
+					"name": "request",
+					"description": "Prime Time to be preset in the region surrounding the lat, lng",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/sandbox/rides/{id}": {
+			"put": {
+				"summary": "Propagate ride through states",
+				"description": "Propagate a sandbox-ride through various statesn",
+				"operationId": "propagate-a-sandboxride-through-various-states",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The ID of the ride"
+				},
+				{
+					"in": "body",
+					"name": "status",
+					"description": "state to propagate the ride into",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/sandbox/ridetypes": {
+			"put": {
+				"summary": "Preset types of rides for sandbox",
+				"description": "The sandbox-ridetypes endpoint allows you to preset the ridetypes in the region surrounding the specified latitude and longitude to allow testing different scenariosn",
+				"operationId": "the-sandboxridetypes-endpoint-allows-you-to-preset-the-ridetypes-in-the-region-surrounding-the-speci",
+				"parameters": [{
+					"in": "body",
+					"name": "request",
+					"description": "Ridetypes to be preset in the region surrounding the lat, lng",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/sandbox/ridetypes/{ride_type}": {
+			"put": {
+				"summary": "Driver availability for processing ride request",
+				"description": "Set driver availability for the provided ride_type in the city/region surrounding the specified locationn",
+				"operationId": "set-driver-availability-for-the-provided-ride_type-in-the-cityregion-surrounding-the-specified-locat",
+				"parameters": [{
+					"in": "query",
+					"name": "No Name"
+				},
+				{
+					"in": "body",
+					"name": "request",
+					"description": "Driver availability to be preset in the region surrounding the lat, lng",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"PricingDetails": {
+			"properties": {
+				"base_charge": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"cancel_penalty_amount": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"cost_minimum": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"cost_per_mile": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"cost_per_minute": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"currency": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"trust_and_service": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"RideType": {
+			"properties": {
+				"display_name": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"seats": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"image_url": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"SandboxRideType": {
+			"properties": {
+				"lat": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"lng": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"ride_types": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"SandboxPrimetime": {
+			"properties": {
+				"lat": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"lng": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"primetime_percentage": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"SandboxDriverAvailability": {
+			"properties": {
+				"lat": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"lng": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"driver_availability": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"LatLng": {
+			"properties": {
+				"lat": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"lng": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"Tip": {
+			"properties": {
+				"amount": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"currency": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"PassengerDetail": {
+			"properties": {
+				"first_name": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"last_name": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"phone_number": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"DriverDetail": {
+			"properties": {
+				"first_name": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"phone_number": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"rating": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"image_url": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"VehicleDetail": {
+			"properties": {
+				"make": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"model": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"year": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"license_plate": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"license_plate_state": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"color": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"image_url": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"Cost": {
+			"properties": {
+				"amount": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"currency": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"description": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"CancellationRequest": {
+			"properties": {
+				"cancel_confirmation_token": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"LineItem": {
+			"properties": {
+				"type": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"amount": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"currency": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"Charge": {
+			"properties": {
+				"amount": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"currency": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"payment_method": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"Eta": {
+			"properties": {
+				"display_name": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"eta_seconds": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"CostEstimate": {
+			"properties": {
+				"display_name": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"currency": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"estimated_cost_cents_min": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"estimated_cost_cents_max": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"estimated_distance_miles": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"estimated_duration_seconds": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"primetime_percentage": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"primetime_confirmation_token": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"SandboxRideUpdate": {
+			"properties": {
+				"ride_id": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"RideRequest": {
+			"properties": {
+				"ride_id": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"Ride": {
+			"properties": {
+				"ride_id": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"primetime_confirmation_token": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"RideDetail": {
+			"properties": {
+				"ride_id": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"primetime_percentage": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"line_items": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"can_cancel": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"canceled_by": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"rating": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"feedback": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"route_url": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"requested_at": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"RideReceipt": {
+			"properties": {
+				"ride_id": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"line_items": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"charges": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"requested_at": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"NearbyDriver": {
+			"properties": {
+				"locations": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"NearbyDriversByRideType": {
+			"properties": {
+				"ride_type": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"drivers": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"Error": {
+			"properties": {
+				"error": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"error_detail": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"error_description": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"ErrorDetail": {
+			"properties": {
+				"field_name": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"RideRequestError": {
+			"properties": {
+				"error": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"error_detail": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"error_description": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"primetime_percentage": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"primetime_confirmation_token": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"token_duration": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		},
+		"RatingRequest": {
+			"properties": {
+				"rating": {
+					"description": "This is a default description.",
+					"type": "put"
+				},
+				"feedback": {
+					"description": "This is a default description.",
+					"type": "put"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,264 @@
+- swagger: "2.0"
+  info:
+    title: API Evangelist - Support API
+    description: I've been tracking on the ways that leading companies who are doing
+      APis handle their support for some time now. I've been formalizing my research,
+      and organizing it here. I will keep working to organize better, and produce guides,
+      and tooling. To help drive some of it I have also developed an API that will help
+      me manage my open APIs, as well as the support on others.
+    termsOfService: http://kinlane.com/terms-of-service.html
+    version: v1
+  host: support.api.apievangelist.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /support/:
+      get:
+        summary: Get Support
+        description: retrieves all support entries
+        operationId: getSupport
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+        - in: query
+          name: host
+          description: host for the support entry
+        - in: query
+          name: query
+          description: a text query to search across support entries
+        responses:
+          200:
+            description: OK
+        tags:
+        - Support
+        security: []
+      post:
+        summary: Add Support
+        description: add support
+        operationId: addChangeLog
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+        - in: query
+          name: footer
+          description: footer for the support entry
+        - in: query
+          name: header
+          description: header for the support entry
+        - in: query
+          name: host
+          description: host of the support entry
+        - in: query
+          name: image
+          description: image for the support entry
+        - in: query
+          name: title
+          description: title of the support entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Support
+        security: []
+    /support/{host}/:
+      get:
+        summary: Get Support by Host
+        description: retrieves all support entries by host
+        operationId: getSupport
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+        - in: query
+          name: host
+          description: host for the support entry
+        - in: query
+          name: query
+          description: a text query to search across support entries
+        responses:
+          200:
+            description: OK
+        tags:
+        - Support
+        security: []
+    /support/{host}/default/:
+      post:
+        summary: Set Default Support For Host
+        description: set default support for host
+        operationId: setDefaultChangeLogForHost
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+        - in: query
+          name: description
+          description: description for the support entry key
+        - in: query
+          name: name
+          description: name of the support entry key
+        - in: query
+          name: support_id
+          description: unique id of the support entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Support
+        security: []
+    /support/{support_id}/:
+      delete:
+        summary: Delete Support
+        description: delete an support entry
+        operationId: deleteChangeLog
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+        - in: query
+          name: host
+          description: host for the support entry
+        - in: path
+          name: support_id
+          description: id for the support entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Support
+        security: []
+      get:
+        summary: Get Support
+        description: retrieve a specific support entry
+        operationId: getChangeLogEntry
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+        - in: path
+          name: support_id
+          description: id for the support entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Support
+        security: []
+      put:
+        summary: Update Support
+        description: update an support entry
+        operationId: updateChangeLog
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+        - in: query
+          name: footer
+          description: footer for the support entry
+        - in: query
+          name: header
+          description: header for the support entry
+        - in: query
+          name: host
+          description: host for the support entry
+        - in: query
+          name: image
+          description: image for the support entry
+        - in: query
+          name: title
+          description: title of the support entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Support
+        security: []
+    /support/{support_id}/keys/:
+      post:
+        summary: Add Support Key
+        description: Add support key
+        operationId: addChangeLogKey
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the API
+        - in: query
+          name: appkey
+          description: your appkey for accessing the API
+        - in: query
+          name: description
+          description: description for the support entry key
+        - in: query
+          name: name
+          description: name of the support entry key
+        - in: query
+          name: support_id
+          description: unique id of the support entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Support
+        security: []
+  definitions:
+    support:
+      properties:
+        support_id:
+          description: This is a default description.
+          type: get
+        title:
+          description: This is a default description.
+          type: get
+        image:
+          description: This is a default description.
+          type: get
+        header:
+          description: This is a default description.
+          type: get
+        footer:
+          description: This is a default description.
+          type: get
+        keys:
+          description: This is a default description.
+          type: get
+    keys:
+      properties:
+        key_id:
+          description: This is a default description.
+          type: get
+        name:
+          description: This is a default description.
+          type: get
+        description:
+          description: This is a default description.
+          type: get
+        support_id:
+          description: This is a default description.
+          type: get

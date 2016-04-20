@@ -1,0 +1,101 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "IBM Watson Language Classifier API",
+		"description": "REST methods for Language Classifier",
+		"version": "v1"
+	},
+	"host": "service.platform.watson.ibm.com",
+	"basePath": "/laser/v1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/feedback/service/v1/api/languageidentification": {
+			"put": {
+				"summary": "Submit feedback on the Language Identification service",
+				"description": "The feedback API allows you to provide information on how well the service performed.  The feedback is used to further improve the service and future results.",
+				"operationId": "profile",
+				"parameters": [{
+					"in": "Header",
+					"name": "Basic Authorization",
+					"description": "Base64 Basic Auth",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "body",
+					"name": "Feedback information",
+					"description": "JSON Data",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/laser/service/txtlid": {
+			"post": {
+				"summary": "Sends text to the server",
+				"description": "You can detect the language of text that is encoded as UTF-8 by using the Watson Language Identification (LID) service.",
+				"operationId": "postLid",
+				"parameters": [{
+					"in": "query",
+					"name": "rt",
+					"description": "Return type. The content type to accept.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sid",
+					"description": "Language identification of the text.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "txt",
+					"description": "The text that you want to process. Must be encoded as UTF-8.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"Feedback": {
+			"properties": {
+				"service_request": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"service_response": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"score": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"text": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

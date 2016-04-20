@@ -1,0 +1,133 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Spotify Artist API",
+		"version": null
+	},
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/artists": {
+			"get": {
+				"summary": "",
+				"description": "[Get Several Artists](https://developer.spotify.com/web-api/get-several-artists/)n",
+				"operationId": "get-several-artistshttpsdeveloperspotifycomwebapigetseveralartists",
+				"parameters": [{
+					"in": "query",
+					"name": "ids",
+					"description": "A comma-separated list of IDs"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/artists/{id}": {
+			"get": {
+				"summary": "",
+				"description": "[Get an Artist](https://developer.spotify.com/web-api/get-artist/)n",
+				"operationId": "get-an-artisthttpsdeveloperspotifycomwebapigetartist",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The Spotify ID for the artist"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/artists/{id}/albums": {
+			"get": {
+				"summary": "",
+				"description": "[Get an Artists Albums](https://developer.spotify.com/web-api/get-artists-albums/)n",
+				"operationId": "get-an-artists-albumshttpsdeveloperspotifycomwebapigetartistsalbums",
+				"parameters": [{
+					"in": "query",
+					"name": "album_type",
+					"description": "Filter by album types"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "The Spotify ID for the artist"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "The maximum number of items to return"
+				},
+				{
+					"in": "query",
+					"name": "market",
+					"description": "The market (an ISO 3166-1 alpha-2 country code)"
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "The index of the first item to return"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/artists/{id}/related-artists": {
+			"get": {
+				"summary": "",
+				"description": "[Get an Artists Related Artists](https://developer.spotify.com/web-api/get-related-artists/)n",
+				"operationId": "get-an-artists-related-artistshttpsdeveloperspotifycomwebapigetrelatedartists",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "The Spotify ID for the artist"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/artists/{id}/top-tracks": {
+			"get": {
+				"summary": "",
+				"description": "[Get an Artists Top Tracks](https://developer.spotify.com/web-api/get-artists-top-tracks/)n",
+				"operationId": "get-an-artists-top-trackshttpsdeveloperspotifycomwebapigetartiststoptracks",
+				"parameters": [{
+					"in": "query",
+					"name": "country",
+					"description": "The country (an ISO 3166-1 alpha-2 country code)"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "The Spotify ID for the artist"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

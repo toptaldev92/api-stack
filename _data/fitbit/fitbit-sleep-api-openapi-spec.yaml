@@ -1,0 +1,133 @@
+- swagger: "2.0"
+  info:
+    title: Fitbit Sleep API
+    description: The Fitbit API allows developers to interact with Fitbit data in their
+      own applications, products and services.
+    version: "1"
+  host: api.fitbit.com
+  basePath: /1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /user/-/sleep.{format}:
+      post:
+        summary: Log Food
+        description: Log Food
+        operationId: log-food
+        parameters:
+        - in: query
+          name: date
+          type: string
+        - in: query
+          name: duration
+          type: string
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        - in: query
+          name: startTime
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - sleep
+        security: []
+    /user/-/sleep/{sleep-log-id}.{format}:
+      delete:
+        summary: Get Badges
+        description: Get Badges
+        operationId: get-badges
+        parameters:
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        - in: query
+          name: sleep-log-id
+          type: string
+        - in: path
+          name: sleep-log-id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - sleep
+        security: []
+    /user/{user-id}/sleep/date/{date}.{format}:
+      get:
+        summary: Get Foods
+        description: Get Foods
+        operationId: get-foods
+        parameters:
+        - in: query
+          name: date
+          type: string
+        - in: path
+          name: date
+          type: string
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        - in: query
+          name: user-id
+          type: string
+        - in: path
+          name: user-id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - sleep
+        security: []
+    /user/{user-id}/sleep/minutesAsleep/date/{start-date-or-end-date}/{end-date-or-period}.{format}:
+      get:
+        summary: Get Time Series
+        description: Get Time Series
+        operationId: get-time-series
+        parameters:
+        - in: query
+          name: end-date-or-period
+          type: string
+        - in: path
+          name: end-date-or-period
+          type: string
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        - in: query
+          name: start-date-or-end-date
+          type: string
+        - in: path
+          name: start-date-or-end-date
+          type: string
+        - in: query
+          name: user-id
+          type: string
+        - in: path
+          name: user-id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - sleep
+        security: []
+  definitions: []

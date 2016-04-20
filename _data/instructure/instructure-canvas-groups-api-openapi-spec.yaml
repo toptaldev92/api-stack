@@ -1,0 +1,1775 @@
+- swagger: "2.0"
+  info:
+    title: Instructure Canvas Groups API
+    description: 'Canvas LMS includes a REST API for accessing and modifying data externally
+      from the main application, in your own programs and scripts. '
+    termsOfService: https://www.canvaslms.com/policies/api-policy
+    version: v1
+  host: canvas.instructure.com
+  basePath: /api/v1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /groups:
+      post:
+        summary: Create a group
+        description: ""
+        operationId: create-a-group
+        parameters:
+        - in: query
+          name: description
+          description: A description of the group
+          type: string
+        - in: query
+          name: is_public
+          description: whether the group is public (applies only to community groups)
+          type: boolean
+        - in: query
+          name: join_level
+          description: 'no descriptionnn        n        n          Allowed values:
+            parent_context_auto_join, parent_context_request, invitation_only'
+          type: string
+        - in: query
+          name: name
+          description: The name of the group
+          type: string
+        - in: query
+          name: storage_quota_mb
+          description: The allowed file storage for the group, in megabytes. This parameter
+            isnignored if the caller does not have the manage_storage_quotas permission.
+          type: integer
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /groups/{group_id}:
+      delete:
+        summary: Delete a group
+        description: ""
+        operationId: delete-a-group
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+      get:
+        summary: Get a single group
+        description: ""
+        operationId: get-a-single-group
+        parameters:
+        - in: query
+          name: include[]
+          description: 'u201cpermissionsu201d: Include permissions the current user
+            has for the group.nnn        n        n          Allowed values: permissions'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+      put:
+        summary: Edit a group
+        description: ""
+        operationId: edit-a-group
+        parameters:
+        - in: query
+          name: avatar_id
+          description: The id of the attachment previously uploaded to the group that
+            you wouldnlike to use as the avatar image for this group.
+          type: integer
+        - in: query
+          name: description
+          description: A description of the group
+          type: string
+        - in: query
+          name: is_public
+          description: Whether the group is public (applies only to community groups).
+            Currentlynyou cannot set a group back to private once it has been made public.
+          type: boolean
+        - in: query
+          name: join_level
+          description: 'no descriptionnn        n        n          Allowed values:
+            parent_context_auto_join, parent_context_request, invitation_only'
+          type: string
+        - in: query
+          name: members[]
+          description: An array of user ids for users you would like in the group. Users
+            not innthe group will be sent invitations. Existing group members who aren&#39;tnin
+            the list will be removed from the group.
+          type: string
+        - in: query
+          name: name
+          description: The name of the group
+          type: string
+        - in: query
+          name: storage_quota_mb
+          description: The allowed file storage for the group, in megabytes. This parameter
+            isnignored if the caller does not have the manage_storage_quotas permission.
+          type: integer
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /groups/{group_id}/activity_stream:
+      get:
+        summary: Group activity stream
+        description: ""
+        operationId: group-activity-stream
+        responses:
+          200:
+            description: OK
+        tags:
+        - group activity stream
+        security: []
+    /groups/{group_id}/activity_stream/summary:
+      get:
+        summary: Group activity stream summary
+        description: ""
+        operationId: group-activity-stream-summary
+        responses:
+          200:
+            description: OK
+        tags:
+        - group activity stream
+        security: []
+    /groups/{group_id}/assignments/assignment_id/override:
+      get:
+        summary: Redirect to the assignment override for a group
+        description: ""
+        operationId: redirect-to-the-assignment-override-for-a-group
+        responses:
+          200:
+            description: OK
+        tags:
+        - group assignments
+        security: []
+    /groups/{group_id}/conferences:
+      get:
+        summary: List conferences
+        description: ""
+        operationId: list-conferences
+        responses:
+          200:
+            description: OK
+        tags:
+        - group conferences
+        security: []
+    /groups/{group_id}/content_exports:
+      get:
+        summary: List content exports
+        description: ""
+        operationId: list-content-exports
+        responses:
+          200:
+            description: OK
+        tags:
+        - group content exports
+        security: []
+      post:
+        summary: Export content
+        description: ""
+        operationId: export-content
+        parameters:
+        - in: query
+          name: export_type
+          description: 'u201ccommon_cartridgeu201dnnExport the contents of the course
+            in the Common Cartridge (.imscc) formatnu201cqtiu201dnnExport quizzes from
+            a course in the QTI formatnu201czipu201dnnExport files from a course, group,
+            or user in a zip filennn        n        n          Allowed values: common_cartridge,
+            qti, zip'
+          type: string
+        - in: query
+          name: skip_notifications
+          description: Don&#39;t send the notifications about the export to the user.
+            Default:nfalse
+          type: boolean
+        responses:
+          200:
+            description: OK
+        tags:
+        - group content exports
+        security: []
+    /groups/{group_id}/content_exports/id:
+      get:
+        summary: Show content export
+        description: ""
+        operationId: show-content-export
+        responses:
+          200:
+            description: OK
+        tags:
+        - group content exports
+        security: []
+    /groups/{group_id}/content_licenses:
+      get:
+        summary: List licenses
+        description: ""
+        operationId: list-licenses
+        responses:
+          200:
+            description: OK
+        tags:
+        - group content licenses
+        security: []
+    /groups/{group_id}/content_migrations:
+      get:
+        summary: List content migrations
+        description: ""
+        operationId: list-content-migrations
+        responses:
+          200:
+            description: OK
+        tags:
+        - group content migrations
+        security: []
+      post:
+        summary: Create a content migration
+        description: ""
+        operationId: create-a-content-migration
+        parameters:
+        - in: query
+          name: date_shift_options[day_substitutions][X]
+          description: Move anything scheduled for day &#39;X&#39; to the specified
+            day.n(0-Sunday, 1-Monday, 2-Tuesday, 3-Wednesday, 4-Thursday, 5-Friday,n6-Saturday)
+          type: integer
+        - in: query
+          name: date_shift_options[new_end_date]
+          description: The new end date for the source content/course
+          type: date
+        - in: query
+          name: date_shift_options[new_start_date]
+          description: The new start date for the content/course
+          type: date
+        - in: query
+          name: date_shift_options[old_end_date]
+          description: The original end date of the source content/course
+          type: date
+        - in: query
+          name: date_shift_options[old_start_date]
+          description: The original start date of the source content/course
+          type: date
+        - in: query
+          name: date_shift_options[remove_dates]
+          description: Whether to remove dates in the copied course. Cannot be used
+            in conjunctionnwith shift_dates.
+          type: boolean
+        - in: query
+          name: date_shift_options[shift_dates]
+          description: Whether to shift dates in the copied course
+          type: boolean
+        - in: query
+          name: migration_type
+          description: The type of the migration. Use thenMigrator endpoint tonsee all
+            available migrators. Default allowed values:ncanvas_cartridge_importer,
+            common_cartridge_importer, course_copy_importer,nzip_file_importer, qti_converter,
+            moodle_converter
+          type: string
+        - in: query
+          name: pre_attachment[*]
+          description: Other file upload properties, See File Upload Documentation
+          type: string
+        - in: query
+          name: pre_attachment[name]
+          description: Required if uploading a file. This is the first step in uploading
+            a file tonthe content migration. See the File Upload Documentation for details
+            on the file upload workflow.
+          type: string
+        - in: query
+          name: settings[file_url]
+          description: A URL to download the file from. Must not require authentication.
+          type: string
+        - in: query
+          name: settings[folder_id]
+          description: The folder to unzip the .zip file into for a zip_file_import.
+          type: string
+        - in: query
+          name: settings[overwrite_quizzes]
+          description: Whether to overwrite quizzes with the same identifiers between
+            contentnpackages.
+          type: boolean
+        - in: query
+          name: settings[question_bank_id]
+          description: The existing question bank ID to import questions into if not
+            specified innthe content package.
+          type: integer
+        - in: query
+          name: settings[question_bank_name]
+          description: The question bank to import questions into if not specified in
+            the contentnpackage, if both bank id and name are set, id will take precedence.
+          type: string
+        - in: query
+          name: settings[source_course_id]
+          description: The course to copy from for a course copy migration. (required
+            if doingncourse copy)
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group content migrations
+        security: []
+    /groups/{group_id}/content_migrations/content_migration_id/migration_issues:
+      get:
+        summary: List migration issues
+        description: ""
+        operationId: list-migration-issues
+        responses:
+          200:
+            description: OK
+        tags:
+        - group content migrations
+        security: []
+    /groups/{group_id}/content_migrations/content_migration_id/migration_issues/{id}:
+      get:
+        summary: Get a migration issue
+        description: ""
+        operationId: get-a-migration-issue
+        responses:
+          200:
+            description: OK
+        tags:
+        - group content migrations
+        security: []
+      put:
+        summary: Update a migration issue
+        description: ""
+        operationId: update-a-migration-issue
+        parameters:
+        - in: query
+          name: workflow_state
+          description: 'Set the workflow_state of the issue.nn        n        n          Allowed
+            values: active, resolved'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group content migrations
+        security: []
+    /groups/{group_id}/content_migrations/id:
+      get:
+        summary: Get a content migration
+        description: ""
+        operationId: get-a-content-migration
+        responses:
+          200:
+            description: OK
+        tags:
+        - group content migrations
+        security: []
+      put:
+        summary: Update a content migration
+        description: ""
+        operationId: update-a-content-migration
+        responses:
+          200:
+            description: OK
+        tags:
+        - group content migrations
+        security: []
+    /groups/{group_id}/content_migrations/migrators:
+      get:
+        summary: List Migration Systems
+        description: ""
+        operationId: list-migration-systems
+        responses:
+          200:
+            description: OK
+        tags:
+        - group content migrations
+        security: []
+    /groups/{group_id}/discussion_topics:
+      get:
+        summary: List discussion topics
+        description: ""
+        operationId: list-discussion-topics
+        parameters:
+        - in: query
+          name: only_announcements
+          description: Return announcements instead of discussion topics. Defaults to
+            false
+          type: boolean
+        - in: query
+          name: order_by
+          description: 'Determines the order of the discussion topic list. Defaults
+            to u201cpositionu201d.nn        n        n          Allowed values: position,
+            recent_activity'
+          type: string
+        - in: query
+          name: scope
+          description: 'Only return discussion topics in the given state(s). Defaults
+            to includingnall topics. Filtering is done after pagination, so pages may
+            be smallernthan requested if topics are filtered. Can pass multiple states
+            as commanseparated string.nn        n        n          Allowed values:
+            locked, unlocked, pinned, unpinned'
+          type: string
+        - in: query
+          name: search_term
+          description: The partial title of the discussion topics to match and return.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+      post:
+        summary: Create a new discussion topic
+        description: ""
+        operationId: create-a-new-discussion-topic
+        parameters:
+        - in: query
+          name: allow_rating
+          description: If true, users will be allowed to rate entries.
+          type: boolean
+        - in: query
+          name: assignment
+          description: To create an assignment discussion, pass the assignment parameters
+            as ansub-object. See the Create an Assignment API for the available parameters.
+            The name parameter will benignored, as it&#39;s taken from the discussion
+            title. If you want to make andiscussion that was an assignment NOT an assignment,
+            pass set_assignment =nfalse as part of the assignment object
+          type: assignment
+        - in: query
+          name: attachment
+          description: A multipart/form-data form-field-style attachment. Attachments
+            larger thann1 kilobyte are subject to quota restrictions.
+          type: file
+        - in: query
+          name: delayed_post_at
+          description: If a timestamp is given, the topic will not be published until
+            that time.
+          type: datetime
+        - in: query
+          name: discussion_type
+          description: 'The type of discussion. Defaults to side_comment if not value
+            is given.nAccepted values are &#39;side_comment&#39;, for discussions that
+            only allownone level of nested comments, and &#39;threaded&#39; for fully
+            threadedndiscussions.nn        n        n          Allowed values: side_comment,
+            threaded'
+          type: string
+        - in: query
+          name: group_category_id
+          description: If present, the topic will become a group discussion assigned
+            to the group.
+          type: integer
+        - in: query
+          name: is_announcement
+          description: If true, this topic is an announcement. It will appear in thenannouncement&#39;s
+            section rather than the discussions section. Thisnrequires announcment-posting
+            permissions.
+          type: boolean
+        - in: query
+          name: lock_at
+          description: If a timestamp is given, the topic will be scheduled to lock
+            at thenprovided timestamp. If the timestamp is in the past, the topic will
+            benlocked.
+          type: datetime
+        - in: query
+          name: message
+          description: no description
+          type: string
+        - in: query
+          name: only_graders_can_rate
+          description: If true, only graders will be allowed to rate entries.
+          type: boolean
+        - in: query
+          name: pinned
+          description: If true, this topic will be listed in the u201cPinned Discussionu201d
+            section
+          type: boolean
+        - in: query
+          name: podcast_enabled
+          description: If true, the topic will have an associated podcast feed.
+          type: boolean
+        - in: query
+          name: podcast_has_student_posts
+          description: If true, the podcast will include posts from students as well.
+            Impliesnpodcast_enabled.
+          type: boolean
+        - in: query
+          name: position_after
+          description: By default, discussions are sorted chronologically by creation
+            date, youncan pass the id of another topic to have this one show up after
+            the othernwhen they are listed.
+          type: string
+        - in: query
+          name: published
+          description: Whether this topic is published (true) or draft state (false).
+            Onlynteachers and TAs have the ability to create draft state topics.
+          type: boolean
+        - in: query
+          name: require_initial_post
+          description: If true then a user may not respond to other replies until that
+            user hasnmade an initial reply. Defaults to false.
+          type: boolean
+        - in: query
+          name: sort_by_rating
+          description: If true, entries will be sorted by rating.
+          type: boolean
+        - in: query
+          name: title
+          description: no description
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+    /groups/{group_id}/discussion_topics/reorder:
+      post:
+        summary: Reorder pinned topics
+        description: ""
+        operationId: reorder-pinned-topics
+        parameters:
+        - in: query
+          name: order[]
+          description: The ids of the pinned discussion topics in the desired order.
+            (For example,nu201corder=104,102,103u201d.)
+          type: integer
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+    /groups/{group_id}/discussion_topics/topic_id:
+      delete:
+        summary: Delete a topic
+        description: ""
+        operationId: delete-a-topic
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+      get:
+        summary: Get a single topic
+        description: ""
+        operationId: get-a-single-topic
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+      put:
+        summary: Update a topic
+        description: ""
+        operationId: update-a-topic
+        parameters:
+        - in: query
+          name: allow_rating
+          description: If true, users will be allowed to rate entries.
+          type: boolean
+        - in: query
+          name: assignment
+          description: To create an assignment discussion, pass the assignment parameters
+            as ansub-object. See the Create an Assignment API for the available parameters.
+            The name parameter will benignored, as it&#39;s taken from the discussion
+            title. If you want to make andiscussion that was an assignment NOT an assignment,
+            pass set_assignment =nfalse as part of the assignment object
+          type: assignment
+        - in: query
+          name: delayed_post_at
+          description: If a timestamp is given, the topic will not be published until
+            that time.
+          type: datetime
+        - in: query
+          name: discussion_type
+          description: 'The type of discussion. Defaults to side_comment if not value
+            is given.nAccepted values are &#39;side_comment&#39;, for discussions that
+            only allownone level of nested comments, and &#39;threaded&#39; for fully
+            threadedndiscussions.nn        n        n          Allowed values: side_comment,
+            threaded'
+          type: string
+        - in: query
+          name: group_category_id
+          description: If present, the topic will become a group discussion assigned
+            to the group.
+          type: integer
+        - in: query
+          name: is_announcement
+          description: If true, this topic is an announcement. It will appear in thenannouncement&#39;s
+            section rather than the discussions section. Thisnrequires announcment-posting
+            permissions.
+          type: boolean
+        - in: query
+          name: lock_at
+          description: If a timestamp is given, the topic will be scheduled to lock
+            at thenprovided timestamp. If the timestamp is in the past, the topic will
+            benlocked.
+          type: datetime
+        - in: query
+          name: message
+          description: no description
+          type: string
+        - in: query
+          name: only_graders_can_rate
+          description: If true, only graders will be allowed to rate entries.
+          type: boolean
+        - in: query
+          name: pinned
+          description: If true, this topic will be listed in the u201cPinned Discussionu201d
+            section
+          type: boolean
+        - in: query
+          name: podcast_enabled
+          description: If true, the topic will have an associated podcast feed.
+          type: boolean
+        - in: query
+          name: podcast_has_student_posts
+          description: If true, the podcast will include posts from students as well.
+            Impliesnpodcast_enabled.
+          type: boolean
+        - in: query
+          name: position_after
+          description: By default, discussions are sorted chronologically by creation
+            date, youncan pass the id of another topic to have this one show up after
+            the othernwhen they are listed.
+          type: string
+        - in: query
+          name: published
+          description: Whether this topic is published (true) or draft state (false).
+            Onlynteachers and TAs have the ability to create draft state topics.
+          type: boolean
+        - in: query
+          name: require_initial_post
+          description: If true then a user may not respond to other replies until that
+            user hasnmade an initial reply. Defaults to false.
+          type: boolean
+        - in: query
+          name: sort_by_rating
+          description: If true, entries will be sorted by rating.
+          type: boolean
+        - in: query
+          name: title
+          description: no description
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+    /groups/{group_id}/discussion_topics/topic_id/entries:
+      get:
+        summary: List topic entries
+        description: ""
+        operationId: list-topic-entries
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+      post:
+        summary: Post an entry
+        description: ""
+        operationId: post-an-entry
+        parameters:
+        - in: query
+          name: attachment
+          description: a multipart/form-data form-field-style attachment. Attachments
+            larger thann1 kilobyte are subject to quota restrictions.
+          type: string
+        - in: query
+          name: message
+          description: The body of the entry.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+    /groups/{group_id}/discussion_topics/topic_id/entries/{entry_id}/rating:
+      post:
+        summary: Rate entry
+        description: ""
+        operationId: rate-entry
+        parameters:
+        - in: query
+          name: rating
+          description: A rating to set on this entry. Only 0 and 1 are accepted.
+          type: integer
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+    /groups/{group_id}/discussion_topics/topic_id/entries/{entry_id}/read:
+      delete:
+        summary: Mark entry as unread
+        description: ""
+        operationId: mark-entry-as-unread
+        parameters:
+        - in: query
+          name: forced_read_state
+          description: A boolean value to set the entry&#39;s forced_read_state. No
+            change is madenif this argument is not specified.
+          type: boolean
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+      put:
+        summary: Mark entry as read
+        description: ""
+        operationId: mark-entry-as-read
+        parameters:
+        - in: query
+          name: forced_read_state
+          description: A boolean value to set the entry&#39;s forced_read_state. No
+            change is madenif this argument is not specified.
+          type: boolean
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+    /groups/{group_id}/discussion_topics/topic_id/entries/{entry_id}/replies:
+      get:
+        summary: List entry replies
+        description: ""
+        operationId: list-entry-replies
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+      post:
+        summary: Post a reply
+        description: ""
+        operationId: post-a-reply
+        parameters:
+        - in: query
+          name: attachment
+          description: a multipart/form-data form-field-style attachment. Attachments
+            larger thann1 kilobyte are subject to quota restrictions.
+          type: string
+        - in: query
+          name: message
+          description: The body of the entry.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+    /groups/{group_id}/discussion_topics/topic_id/entries/{id}:
+      delete:
+        summary: Delete an entry
+        description: ""
+        operationId: delete-an-entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+      put:
+        summary: Update an entry
+        description: ""
+        operationId: update-an-entry
+        parameters:
+        - in: query
+          name: message
+          description: The updated body of the entry.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+    /groups/{group_id}/discussion_topics/topic_id/entry_list:
+      get:
+        summary: List entries
+        description: ""
+        operationId: list-entries
+        parameters:
+        - in: query
+          name: ids[]
+          description: A list of entry ids to retrieve. Entries will be returned in
+            id order,nsmallest id first.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+    /groups/{group_id}/discussion_topics/topic_id/read:
+      delete:
+        summary: Mark topic as unread
+        description: ""
+        operationId: mark-topic-as-unread
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+      put:
+        summary: Mark topic as read
+        description: ""
+        operationId: mark-topic-as-read
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+    /groups/{group_id}/discussion_topics/topic_id/read_all:
+      delete:
+        summary: Mark all entries as unread
+        description: ""
+        operationId: mark-all-entries-as-unread
+        parameters:
+        - in: query
+          name: forced_read_state
+          description: A boolean value to set all of the entries&#39; forced_read_state.
+            No changenis made if this argument is not specified.
+          type: boolean
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+      put:
+        summary: Mark all entries as read
+        description: ""
+        operationId: mark-all-entries-as-read
+        parameters:
+        - in: query
+          name: forced_read_state
+          description: A boolean value to set all of the entries&#39; forced_read_state.
+            No changenis made if this argument is not specified.
+          type: boolean
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+    /groups/{group_id}/discussion_topics/topic_id/subscribed:
+      delete:
+        summary: Unsubscribe from a topic
+        description: ""
+        operationId: unsubscribe-from-a-topic
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+      put:
+        summary: Subscribe to a topic
+        description: ""
+        operationId: subscribe-to-a-topic
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+    /groups/{group_id}/discussion_topics/topic_id/view:
+      get:
+        summary: Get the full topic
+        description: ""
+        operationId: get-the-full-topic
+        responses:
+          200:
+            description: OK
+        tags:
+        - group discussion topics
+        security: []
+    /groups/{group_id}/external_feeds:
+      get:
+        summary: List external feeds
+        description: ""
+        operationId: list-external-feeds
+        responses:
+          200:
+            description: OK
+        tags:
+        - group external feeds
+        security: []
+      post:
+        summary: Create an external feed
+        description: ""
+        operationId: create-an-external-feed
+        parameters:
+        - in: query
+          name: header_match
+          description: If given, only feed entries that contain this string in their
+            title will benimported
+          type: boolean
+        - in: query
+          name: url
+          description: The url to the external rss or atom feed
+          type: string
+        - in: query
+          name: verbosity
+          description: 'Defaults to u201cfullu201dnn        n        n          Allowed
+            values: full, truncate, link_only'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group external feeds
+        security: []
+    /groups/{group_id}/external_feeds/external_feed_id:
+      delete:
+        summary: Delete an external feed
+        description: ""
+        operationId: delete-an-external-feed
+        responses:
+          200:
+            description: OK
+        tags:
+        - group external feeds
+        security: []
+    /groups/{group_id}/files:
+      get:
+        summary: List files
+        description: ""
+        operationId: list-files
+        parameters:
+        - in: query
+          name: content_types[]
+          description: Filter results by content-type. You can specify type/subtype
+            pairs (e.g.,n&#39;image/jpeg&#39;), or simply types (e.g., &#39;image&#39;,
+            which willnmatch &#39;image/gif&#39;, &#39;image/jpeg&#39;, etc.).
+          type: string
+        - in: query
+          name: include[]
+          description: 'Array of additional information to include.nu201cuseru201dnnthe
+            user who uploaded the file or last edited its contentnu201cusage_rightsu201dnncopyright
+            and license information for the file (see UsageRights)nnn        n        n          Allowed
+            values: user'
+          type: string
+        - in: query
+          name: only[]
+          description: Array of information to restrict to. Overrides include[]nu201cnamesu201dnnonly
+            returns file name information
+          type: array
+        - in: query
+          name: order
+          description: 'The sorting order. Defaults to &#39;asc&#39;.nn        n        n          Allowed
+            values: asc, desc'
+          type: string
+        - in: query
+          name: search_term
+          description: The partial name of the files to match and return.
+          type: string
+        - in: query
+          name: sort
+          description: 'Sort results by this field. Defaults to &#39;name&#39;. Note
+            thatn`sort=user` implies `include[]=user`.nn        n        n          Allowed
+            values: name, size, created_at, updated_at, content_type, user'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group files
+        security: []
+      post:
+        summary: Upload a file
+        description: ""
+        operationId: upload-a-file
+        responses:
+          200:
+            description: OK
+        tags:
+        - group files
+        security: []
+    /groups/{group_id}/files/id:
+      get:
+        summary: Get file
+        description: ""
+        operationId: get-file
+        parameters:
+        - in: query
+          name: include[]
+          description: 'Array of additional information to include.nu201cuseru201dnnthe
+            user who uploaded the file or last edited its contentnu201cusage_rightsu201dnncopyright
+            and license information for the file (see UsageRights)nnn        n        n          Allowed
+            values: user'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group files
+        security: []
+    /groups/{group_id}/files/quota:
+      get:
+        summary: Get quota information
+        description: ""
+        operationId: get-quota-information
+        responses:
+          200:
+            description: OK
+        tags:
+        - group files
+        security: []
+    /groups/{group_id}/folders:
+      get:
+        summary: List all folders
+        description: ""
+        operationId: list-all-folders
+        responses:
+          200:
+            description: OK
+        tags:
+        - group folders
+        security: []
+      post:
+        summary: Create folder
+        description: ""
+        operationId: create-folder
+        parameters:
+        - in: query
+          name: hidden
+          description: Flag the folder as hidden
+          type: boolean
+        - in: query
+          name: locked
+          description: Flag the folder as locked
+          type: boolean
+        - in: query
+          name: lock_at
+          description: The datetime to lock the folder at
+          type: datetime
+        - in: query
+          name: name
+          description: The name of the folder
+          type: string
+        - in: query
+          name: parent_folder_id
+          description: The id of the folder to store the file in. If this and parent_folder_pathnare
+            sent an error will be returned. If neither is given, a default foldernwill
+            be used.
+          type: string
+        - in: query
+          name: parent_folder_path
+          description: The path of the folder to store the new folder in. The path separator
+            isnthe forward slash `/`, never a back slash. The parent folder will bencreated
+            if it does not already exist. This parameter only applies to newnfolders
+            in a context that has folders, such as a user, a course, or angroup. If
+            this and parent_folder_id are sent an error will be returned. Ifnneither
+            is given, a default folder will be used.
+          type: string
+        - in: query
+          name: position
+          description: Set an explicit sort position for the folder
+          type: integer
+        - in: query
+          name: unlock_at
+          description: The datetime to unlock the folder at
+          type: datetime
+        responses:
+          200:
+            description: OK
+        tags:
+        - group folders
+        security: []
+    /groups/{group_id}/folders/by_path:
+      get:
+        summary: Resolve path
+        description: ""
+        operationId: resolve-path
+        responses:
+          200:
+            description: OK
+        tags:
+        - group folders
+        security: []
+    /groups/{group_id}/folders/by_path/*full_path:
+      get:
+        summary: Resolve path
+        description: ""
+        operationId: resolve-path
+        responses:
+          200:
+            description: OK
+        tags:
+        - group folders
+        security: []
+    /groups/{group_id}/folders/id:
+      get:
+        summary: Get folder
+        description: ""
+        operationId: get-folder
+        responses:
+          200:
+            description: OK
+        tags:
+        - group folders
+        security: []
+    /groups/{group_id}/front_page:
+      get:
+        summary: Show front page
+        description: ""
+        operationId: show-front-page
+        responses:
+          200:
+            description: OK
+        tags:
+        - group pages
+        security: []
+      put:
+        summary: Update/create front page
+        description: ""
+        operationId: updatecreate-front-page
+        parameters:
+        - in: query
+          name: wiki_page[body]
+          description: The content for the new page.
+          type: string
+        - in: query
+          name: wiki_page[editing_roles]
+          description: 'Which user roles are allowed to edit this page. Any combination
+            of thesenroles is allowed (separated by commas).nu201cteachersu201dnnAllows
+            editing by teachers in the course.nu201cstudentsu201dnnAllows editing by
+            students in the course.nu201cmembersu201dnnFor group wikis, allows editing
+            by members of the group.nu201cpublicu201dnnAllows editing by any user.nnn        n        n          Allowed
+            values: teachers, students, members, public'
+          type: string
+        - in: query
+          name: wiki_page[notify_of_update]
+          description: Whether participants should be notified when this page changes.
+          type: boolean
+        - in: query
+          name: wiki_page[published]
+          description: Whether the page is published (true) or draft state (false).
+          type: boolean
+        - in: query
+          name: wiki_page[title]
+          description: 'The title for the new page. NOTE: changing a page&#39;s title
+            will changenits url. The updated url will be returned in the result.'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group pages
+        security: []
+    /groups/{group_id}/invite:
+      post:
+        summary: Invite others to a group
+        description: ""
+        operationId: invite-others-to-a-group
+        parameters:
+        - in: query
+          name: invitees[]
+          description: An array of email addresses to be sent invitations.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /groups/{group_id}/memberships:
+      get:
+        summary: List group memberships
+        description: ""
+        operationId: list-group-memberships
+        parameters:
+        - in: query
+          name: filter_states[]
+          description: 'Only list memberships with the given workflow_states. By default
+            it willnreturn all memberships.nn        n        n          Allowed values:
+            accepted, invited, requested'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group memberships
+        security: []
+      post:
+        summary: Create a membership
+        description: ""
+        operationId: create-a-membership
+        parameters:
+        - in: query
+          name: user_id
+          description: no description
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group memberships
+        security: []
+    /groups/{group_id}/memberships/membership_id:
+      delete:
+        summary: Leave a group
+        description: ""
+        operationId: leave-a-group
+        responses:
+          200:
+            description: OK
+        tags:
+        - group memberships
+        security: []
+      get:
+        summary: Get a single group membership
+        description: ""
+        operationId: get-a-single-group-membership
+        responses:
+          200:
+            description: OK
+        tags:
+        - group memberships
+        security: []
+      put:
+        summary: Update a membership
+        description: ""
+        operationId: update-a-membership
+        parameters:
+        - in: query
+          name: moderator
+          description: no description
+          type: string
+        - in: query
+          name: workflow_state
+          description: 'Currently, the only allowed value is u201cacceptedu201dnn        n        n          Allowed
+            values: accepted'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group memberships
+        security: []
+    /groups/{group_id}/pages:
+      get:
+        summary: List pages
+        description: ""
+        operationId: list-pages
+        parameters:
+        - in: query
+          name: order
+          description: 'The sorting order. Defaults to &#39;asc&#39;.nn        n        n          Allowed
+            values: asc, desc'
+          type: string
+        - in: query
+          name: published
+          description: If true, include only published paqes. If false, exclude published
+            pages.nIf not present, do not filter on published status.
+          type: boolean
+        - in: query
+          name: search_term
+          description: The partial title of the pages to match and return.
+          type: string
+        - in: query
+          name: sort
+          description: 'Sort results by this field.nn        n        n          Allowed
+            values: title, created_at, updated_at'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group pages
+        security: []
+      post:
+        summary: Create page
+        description: ""
+        operationId: create-page
+        parameters:
+        - in: query
+          name: wiki_page[body]
+          description: The content for the new page.
+          type: string
+        - in: query
+          name: wiki_page[editing_roles]
+          description: 'Which user roles are allowed to edit this page. Any combination
+            of thesenroles is allowed (separated by commas).nu201cteachersu201dnnAllows
+            editing by teachers in the course.nu201cstudentsu201dnnAllows editing by
+            students in the course.nu201cmembersu201dnnFor group wikis, allows editing
+            by members of the group.nu201cpublicu201dnnAllows editing by any user.nnn        n        n          Allowed
+            values: teachers, students, members, public'
+          type: string
+        - in: query
+          name: wiki_page[front_page]
+          description: Set an unhidden page as the front page (if true)
+          type: boolean
+        - in: query
+          name: wiki_page[notify_of_update]
+          description: Whether participants should be notified when this page changes.
+          type: boolean
+        - in: query
+          name: wiki_page[published]
+          description: Whether the page is published (true) or draft state (false).
+          type: boolean
+        - in: query
+          name: wiki_page[title]
+          description: The title for the new page.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group pages
+        security: []
+    /groups/{group_id}/pages/url:
+      delete:
+        summary: Delete page
+        description: ""
+        operationId: delete-page
+        responses:
+          200:
+            description: OK
+        tags:
+        - group pages
+        security: []
+      get:
+        summary: Show page
+        description: ""
+        operationId: show-page
+        responses:
+          200:
+            description: OK
+        tags:
+        - group pages
+        security: []
+      put:
+        summary: Update/create page
+        description: ""
+        operationId: updatecreate-page
+        parameters:
+        - in: query
+          name: wiki_page[body]
+          description: The content for the new page.
+          type: string
+        - in: query
+          name: wiki_page[editing_roles]
+          description: 'Which user roles are allowed to edit this page. Any combination
+            of thesenroles is allowed (separated by commas).nu201cteachersu201dnnAllows
+            editing by teachers in the course.nu201cstudentsu201dnnAllows editing by
+            students in the course.nu201cmembersu201dnnFor group wikis, allows editing
+            by members of the group.nu201cpublicu201dnnAllows editing by any user.nnn        n        n          Allowed
+            values: teachers, students, members, public'
+          type: string
+        - in: query
+          name: wiki_page[front_page]
+          description: Set an unhidden page as the front page (if true)
+          type: boolean
+        - in: query
+          name: wiki_page[notify_of_update]
+          description: Whether participants should be notified when this page changes.
+          type: boolean
+        - in: query
+          name: wiki_page[published]
+          description: Whether the page is published (true) or draft state (false).
+          type: boolean
+        - in: query
+          name: wiki_page[title]
+          description: 'The title for the new page. NOTE: changing a page&#39;s title
+            will changenits url. The updated url will be returned in the result.'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group pages
+        security: []
+    /groups/{group_id}/pages/url/revisions:
+      get:
+        summary: List revisions
+        description: ""
+        operationId: list-revisions
+        responses:
+          200:
+            description: OK
+        tags:
+        - group pages
+        security: []
+    /groups/{group_id}/pages/url/revisions/latest:
+      get:
+        summary: Show revision
+        description: ""
+        operationId: show-revision
+        parameters:
+        - in: query
+          name: summary
+          description: If set, exclude page content from results
+          type: boolean
+        responses:
+          200:
+            description: OK
+        tags:
+        - group pages
+        security: []
+    /groups/{group_id}/pages/url/revisions/{revision_id}:
+      get:
+        summary: Show revision
+        description: ""
+        operationId: show-revision
+        parameters:
+        - in: query
+          name: summary
+          description: If set, exclude page content from results
+          type: boolean
+        responses:
+          200:
+            description: OK
+        tags:
+        - group pages
+        security: []
+      post:
+        summary: Revert to revision
+        description: ""
+        operationId: revert-to-revision
+        parameters:
+        - in: query
+          name: revision_id
+          description: The revision to revert to (use the List Revisions API to see
+            available revisions)
+          type: integer
+        responses:
+          200:
+            description: OK
+        tags:
+        - group pages
+        security: []
+    /groups/{group_id}/preview_html:
+      post:
+        summary: Preview processed html
+        description: ""
+        operationId: preview-processed-html
+        parameters:
+        - in: query
+          name: html
+          description: The html content to process
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /groups/{group_id}/tabs:
+      get:
+        summary: List available tabs for a course or group
+        description: ""
+        operationId: list-available-tabs-for-a-course-or-group
+        parameters:
+        - in: query
+          name: include[]
+          description: 'Optionally include external tool tabs in the returned list of
+            tabs (Onlynhas effect for courses, not groups)nn        n        n          Allowed
+            values: external'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups
+        security: []
+    /groups/{group_id}/usage_rights:
+      delete:
+        summary: Remove usage rights
+        description: ""
+        operationId: remove-usage-rights
+        parameters:
+        - in: query
+          name: file_ids[]
+          description: List of ids of files to remove associated usage rights from.
+          type: string
+        - in: query
+          name: folder_ids[]
+          description: List of ids of folders. Usage rights will be removed from all
+            files innthese folders.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups usage rights
+        security: []
+      put:
+        summary: Set usage rights
+        description: ""
+        operationId: set-usage-rights
+        parameters:
+        - in: query
+          name: file_ids[]
+          description: List of ids of files to set usage rights for.
+          type: string
+        - in: query
+          name: folder_ids[]
+          description: List of ids of folders to search for files to set usage rights
+            for. Notenthat new files uploaded to these folders do not automatically
+            inherit thesenrights.
+          type: string
+        - in: query
+          name: publish
+          description: Whether the file(s) or folder(s) should be published on save,
+            provided thatnusage rights have been specified (set to `true` to publish
+            on save).
+          type: boolean
+        - in: query
+          name: usage_rights[legal_copyright]
+          description: The legal copyright line for the files
+          type: string
+        - in: query
+          name: usage_rights[license]
+          description: The license that applies to the files. See thenList licenses
+            endpoint for thensupported license types.
+          type: string
+        - in: query
+          name: usage_rights[use_justification]
+          description: 'The intellectual property justification for using the files
+            in Canvasnn        n        n          Allowed values: own_copyright, used_by_permission,
+            fair_use, public_domain, creative_commons'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - groups usage rights
+        security: []
+    /groups/{group_id}/users:
+      get:
+        summary: List group's users
+        description: ""
+        operationId: list-groups-users
+        parameters:
+        - in: query
+          name: include[]
+          description: 'u201cavatar_urlu201d: Include users&#39; avatar_urls.nnn        n        n          Allowed
+            values: avatar_url'
+          type: string
+        - in: query
+          name: search_term
+          description: The partial name or full ID of the users to match and return
+            in the resultsnlist. Must be at least 3 characters.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group users
+        security: []
+    /groups/{group_id}/users/user_id:
+      delete:
+        summary: Leave a group
+        description: ""
+        operationId: leave-a-group
+        responses:
+          200:
+            description: OK
+        tags:
+        - group users
+        security: []
+      get:
+        summary: Get a single group membership
+        description: ""
+        operationId: get-a-single-group-membership
+        responses:
+          200:
+            description: OK
+        tags:
+        - group users
+        security: []
+      put:
+        summary: Update a membership
+        description: ""
+        operationId: update-a-membership
+        parameters:
+        - in: query
+          name: moderator
+          description: no description
+          type: string
+        - in: query
+          name: workflow_state
+          description: 'Currently, the only allowed value is u201cacceptedu201dnn        n        n          Allowed
+            values: accepted'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group users
+        security: []
+    /group_categories/{group_category_id}:
+      delete:
+        summary: Delete a Group Category
+        description: ""
+        operationId: delete-a-group-category
+        responses:
+          200:
+            description: OK
+        tags:
+        - group categories
+        security: []
+      get:
+        summary: Get a single group category
+        description: ""
+        operationId: get-a-single-group-category
+        responses:
+          200:
+            description: OK
+        tags:
+        - group categories
+        security: []
+      put:
+        summary: Update a Group Category
+        description: ""
+        operationId: update-a-group-category
+        parameters:
+        - in: query
+          name: auto_leader
+          description: 'Assigns group leaders automatically when generating and allocating
+            studentsnto groups Valid values are:nu201cfirstu201dnnthe first student
+            to be allocated to a group is the leadernu201crandomu201dnna random student
+            from all members is chosen as the leadernnn        n        n          Allowed
+            values: first, random'
+          type: string
+        - in: query
+          name: create_group_count
+          description: Create this number of groups (Course Only).
+          type: integer
+        - in: query
+          name: group_limit
+          description: Limit the maximum number of users in each group (Course Only).
+            Requiresnself signup.
+          type: integer
+        - in: query
+          name: name
+          description: Name of the group category
+          type: string
+        - in: query
+          name: self_signup
+          description: 'Allow students to sign up for a group themselves (Course Only).
+            Validnvalues are:nu201cenabledu201dnnallows students to self sign up for
+            any group in coursenu201crestrictedu201dnnallows students to self sign up
+            only for groups in the same section nullndisallows self sign upnnn        n        n          Allowed
+            values: enabled, restricted'
+          type: string
+        - in: query
+          name: split_group_count
+          description: (Deprecated) Create this number of groups, and evenly distribute
+            studentsnamong them. not allowed with u201cenable_self_signupu201d. because
+            the groupnassignment happens synchronously, it&#39;s recommended that you
+            instead usenthe assign_unassigned_members endpoint. (Course Only)
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - group categories
+        security: []
+    /group_categories/{group_category_id}/assign_unassigned_members:
+      post:
+        summary: Assign unassigned members
+        description: ""
+        operationId: assign-unassigned-members
+        parameters:
+        - in: query
+          name: sync
+          description: The assigning is done asynchronously by default. If you would
+            like tonoverride this and have the assigning done synchronously, set this
+            value tontrue.
+          type: boolean
+        responses:
+          200:
+            description: OK
+        tags:
+        - group categories
+        security: []
+    /group_categories/{group_category_id}/groups:
+      get:
+        summary: List groups in group category
+        description: ""
+        operationId: list-groups-in-group-category
+        responses:
+          200:
+            description: OK
+        tags:
+        - group categories
+        security: []
+      post:
+        summary: Create a group
+        description: ""
+        operationId: create-a-group
+        parameters:
+        - in: query
+          name: description
+          description: A description of the group
+          type: string
+        - in: query
+          name: is_public
+          description: whether the group is public (applies only to community groups)
+          type: boolean
+        - in: query
+          name: join_level
+          description: 'no descriptionnn        n        n          Allowed values:
+            parent_context_auto_join, parent_context_request, invitation_only'
+          type: string
+        - in: query
+          name: name
+          description: The name of the group
+          type: string
+        - in: query
+          name: storage_quota_mb
+          description: The allowed file storage for the group, in megabytes. This parameter
+            isnignored if the caller does not have the manage_storage_quotas permission.
+          type: integer
+        responses:
+          200:
+            description: OK
+        tags:
+        - group categories
+        security: []
+    /group_categories/{group_category_id}/users:
+      get:
+        summary: List users in group category
+        description: ""
+        operationId: list-users-in-group-category
+        parameters:
+        - in: query
+          name: search_term
+          description: The partial name or full ID of the users to match and return
+            in the resultsnlist. Must be at least 3 characters.
+          type: string
+        - in: query
+          name: unassigned
+          description: Set this value to true if you wish only to search unassigned
+            users in thengroup category.
+          type: boolean
+        responses:
+          200:
+            description: OK
+        tags:
+        - group categories
+        security: []
+  definitions: []

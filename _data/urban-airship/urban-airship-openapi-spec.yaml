@@ -1,0 +1,1236 @@
+- swagger: "2.0"
+  info:
+    title: Urban Airship
+    description: 'The Urban Airship Push API is a major update which unifies several
+      legacy endpoints into twou2014 one for sending messages and one for scheduling. '
+    termsOfService: http://urbanairship.com/legal/terms-of-use
+    version: v3
+  host: go.urbanairship.com
+  basePath: /api
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /airmail/send:
+      post:
+        summary: Reset User Credentials
+        description: Reset User Credentials
+        operationId: reset-user-credentials
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /airmail/send/broadcast:
+      post:
+        summary: Send Message
+        description: Send Message
+        operationId: send-message
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apids:
+      get:
+        summary: Broadcast Message
+        description: Broadcast Message
+        operationId: broadcast-message
+        parameters:
+        - in: query
+          name: limit
+          description: Control how many APIDs are returned at a time. The maximum limit
+            is 5000.
+          type: integer
+        - in: query
+          name: start
+          description: APID from where to start from.
+          type: integer
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /apids/{apid}:
+      delete:
+        summary: Get APID
+        description: Get APID
+        operationId: get-apid
+        parameters:
+        - in: query
+          name: apid
+          description: An APID (Android Push ID) is the Urban Airship ID of a device
+            to which a message can be pushed.
+          type: string
+        - in: path
+          name: apid
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: Register APID
+        description: Register APID
+        operationId: register-apid
+        parameters:
+        - in: query
+          name: apid
+          description: An APID (Android Push ID) is the Urban Airship ID of a device
+            to which a message can be pushed.
+          type: string
+        - in: path
+          name: apid
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: List Invalid Device Tokens
+        description: List Invalid Device Tokens
+        operationId: list-invalid-device-tokens
+        parameters:
+        - in: query
+          name: apid
+          description: An APID (Android Push ID) is the Urban Airship ID of a device
+            to which a message can be pushed.
+          type: string
+        - in: path
+          name: apid
+          type: string
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /app/content:
+      get:
+        summary: Delete User Messages
+        description: Delete User Messages
+        operationId: delete-user-messages
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        - in: query
+          name: user_id
+          description: The user ID.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /app/content/{product_id}/download:
+      post:
+        summary: Get Store Inventory
+        description: Get Store Inventory
+        operationId: get-store-inventory
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        - in: query
+          name: product_id
+          description: The product ID.
+          type: string
+        - in: path
+          name: product_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /app/updates:
+      post:
+        summary: Download Paid Content
+        description: Download Paid Content
+        operationId: download-paid-content
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        - in: query
+          name: product_id
+          description: The product ID.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /device_pins/{pin}:
+      delete:
+        summary: Get Device PIN
+        description: Get Device PIN
+        operationId: get-device-pin
+        parameters:
+        - in: query
+          name: pin
+          description: A BlackBerry PIN. Device PINs should be 8 character strings,
+            without spaces.
+          type: string
+        - in: path
+          name: pin
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: Register PIN
+        description: Register PIN
+        operationId: register-pin
+        parameters:
+        - in: query
+          name: pin
+          description: A BlackBerry PIN. Device PINs should be 8 character strings,
+            without spaces.
+          type: string
+        - in: path
+          name: pin
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: List APIDs
+        description: List APIDs
+        operationId: list-apids
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        - in: query
+          name: pin
+          description: A BlackBerry PIN. Device PINs should be 8 character strings,
+            without spaces.
+          type: string
+        - in: path
+          name: pin
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /device_tokens:
+      get:
+        summary: Get Hourly Message Counts
+        description: Get Hourly Message Counts
+        operationId: get-hourly-message-counts
+        parameters:
+        - in: query
+          name: limit
+          description: The total items to return. By default, we paginate at 5000 device
+            tokens.
+          type: integer
+        - in: query
+          name: page
+          description: The page number.
+          type: integer
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /device_tokens/count:
+      get:
+        summary: List Device Tokens
+        description: List Device Tokens
+        operationId: list-device-tokens
+        parameters:
+        - in: query
+          name: limit
+          description: The total items to return. By default, we paginate at 5000 device
+            tokens.
+          type: integer
+        - in: query
+          name: page
+          description: The page number.
+          type: integer
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /device_tokens/feedback:
+      get:
+        summary: Count Device Tokens
+        description: Count Device Tokens
+        operationId: count-device-tokens
+        parameters:
+        - in: query
+          name: since
+          description: 'Since timestamp in ISO 8601 format. Example: 2012-03-01+13:00:00.'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /device_tokens/{device_token}/tags:
+      get:
+        summary: Modify Tag Device Tokens
+        description: Modify Tag Device Tokens
+        operationId: modify-tag-device-tokens
+        parameters:
+        - in: query
+          name: device_token
+          description: A specific device token.
+          type: string
+        - in: path
+          name: device_token
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /device_tokens/{device_token}/tags/{tag}:
+      delete:
+        summary: Add Device Token Tag
+        description: Add Device Token Tag
+        operationId: add-device-token-tag
+        parameters:
+        - in: query
+          name: device_token
+          description: A specific device token.
+          type: string
+        - in: path
+          name: device_token
+          type: string
+        - in: query
+          name: tag
+          description: Tags can be of any format you wish, but we recommend that they
+            be URL-safe in order to make less work for you. The maximum length of a
+            tag is 128 characters.
+          type: string
+        - in: path
+          name: tag
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: List Device Token Tags
+        description: List Device Token Tags
+        operationId: list-device-token-tags
+        parameters:
+        - in: query
+          name: device_token
+          description: A specific device token.
+          type: string
+        - in: path
+          name: device_token
+          type: string
+        - in: query
+          name: tag
+          description: Tags can be of any format you wish, but we recommend that they
+            be URL-safe in order to make less work for you. The maximum length of a
+            tag is 128 characters.
+          type: string
+        - in: path
+          name: tag
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /device_tokens/{token}:
+      delete:
+        summary: Get Device Token
+        description: Get Device Token
+        operationId: get-device-token
+        parameters:
+        - in: query
+          name: token
+          description: 'Device tokens should be represented as an uppercase string,
+            64 characters long, without spaces or other separators. An example device
+            token is: FE66489F304DC75B8D6E8200DFF8A456E8DAEACEC428B427E9518741C92C6660.'
+          type: string
+        - in: path
+          name: token
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: Register Device Token
+        description: Register Device Token
+        operationId: register-device-token
+        parameters:
+        - in: query
+          name: token
+          description: 'Device tokens should be represented as an uppercase string,
+            64 characters long, without spaces or other separators. An example device
+            token is: FE66489F304DC75B8D6E8200DFF8A456E8DAEACEC428B427E9518741C92C6660.'
+          type: string
+        - in: path
+          name: token
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: ""
+        description: ""
+        operationId: ""
+        parameters:
+        - in: query
+          name: token
+          description: 'Device tokens should be represented as an uppercase string,
+            64 characters long, without spaces or other separators. An example device
+            token is: FE66489F304DC75B8D6E8200DFF8A456E8DAEACEC428B427E9518741C92C6660.'
+          type: string
+        - in: path
+          name: token
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /feeds:
+      get:
+        summary: Create Feed Item
+        description: Create Feed Item
+        operationId: create-feed-item
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: Download Content
+        description: Download Content
+        operationId: download-content
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /feeds/{feed_id}:
+      delete:
+        summary: Update Feed
+        description: Update Feed
+        operationId: update-feed
+        parameters:
+        - in: query
+          name: feed_id
+          description: A particular feed.
+          type: string
+        - in: path
+          name: feed_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: List Feeds
+        description: List Feeds
+        operationId: list-feeds
+        parameters:
+        - in: query
+          name: feed_id
+          description: A particular feed.
+          type: string
+        - in: path
+          name: feed_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: Get Feed
+        description: Get Feed
+        operationId: get-feed
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        - in: query
+          name: feed_id
+          description: A particular feed.
+          type: string
+        - in: path
+          name: feed_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /partner/apps:
+      get:
+        summary: Delete Device Token Tag
+        description: Delete Device Token Tag
+        operationId: delete-device-token-tag
+        parameters:
+        - in: query
+          name: device_token
+          description: A specific device token.
+          type: string
+        - in: query
+          name: tag
+          description: Tags can be of any format you wish, but we recommend that they
+            be URL-safe in order to make less work for you. The maximum length of a
+            tag is 128 characters.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: List Applications
+        description: List Applications
+        operationId: list-applications
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /partner/apps/{app_id}:
+      put:
+        summary: Create Application
+        description: Create Application
+        operationId: create-application
+        parameters:
+        - in: query
+          name: app_id
+          description: A specific application.
+          type: string
+        - in: path
+          name: app_id
+          type: string
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /push:
+      post:
+        summary: Disable Device Token
+        description: Disable Device Token
+        operationId: disable-device-token
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /push/batch:
+      post:
+        summary: Remove Scheduled Notification Alias
+        description: Remove Scheduled Notification Alias
+        operationId: remove-scheduled-notification-alias
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /push/broadcast:
+      post:
+        summary: Push Notification Batch
+        description: Push Notification Batch
+        operationId: push-notification-batch
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /push/scheduled:
+      post:
+        summary: Cancel Scheduled Notification
+        description: Cancel Scheduled Notification
+        operationId: cancel-scheduled-notification
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /push/scheduled/alias/{alias}:
+      delete:
+        summary: Change Scheduled Notification Alias
+        description: Change Scheduled Notification Alias
+        operationId: change-scheduled-notification-alias
+        parameters:
+        - in: query
+          name: alias
+          description: Scheduled notification alias.
+          type: string
+        - in: path
+          name: alias
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: Bulk Delete Scheduled Notifications
+        description: Bulk Delete Scheduled Notifications
+        operationId: bulk-delete-scheduled-notifications
+        parameters:
+        - in: query
+          name: alias
+          description: Scheduled notification alias.
+          type: string
+        - in: path
+          name: alias
+          type: string
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /push/scheduled/{notification}:
+      delete:
+        summary: Push Notification
+        description: Push Notification
+        operationId: push-notification
+        parameters:
+        - in: query
+          name: notification
+          description: Scheduled notification ID.
+          type: string
+        - in: path
+          name: notification
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /push/stats:
+      get:
+        summary: Broadcast Notification
+        description: Broadcast Notification
+        operationId: broadcast-notification
+        parameters:
+        - in: query
+          name: end
+          description: 'End date in UTC format. Example: 2009-06-22+06:00.'
+          type: string
+        - in: query
+          name: format
+          description: Response format.
+          type: string
+        - in: query
+          name: start
+          description: 'Start date in UTC format. Example: 2009-06-22.'
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /tags:
+      get:
+        summary: Delete Feed
+        description: Delete Feed
+        operationId: delete-feed
+        parameters:
+        - in: query
+          name: feed_id
+          description: A particular feed.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /tags/{tag}:
+      post:
+        summary: Delete Tag
+        description: Delete Tag
+        operationId: delete-tag
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        - in: query
+          name: tag
+          description: Tags can be of any format you wish, but we recommend that they
+            be URL-safe in order to make less work for you. The maximum length of a
+            tag is 128 characters.
+          type: string
+        - in: path
+          name: tag
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: List Tags
+        description: List Tags
+        operationId: list-tags
+        parameters:
+        - in: query
+          name: tag
+          description: Tags can be of any format you wish, but we recommend that they
+            be URL-safe in order to make less work for you. The maximum length of a
+            tag is 128 characters.
+          type: string
+        - in: path
+          name: tag
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user:
+      post:
+        summary: Push Message Batch
+        description: Push Message Batch
+        operationId: push-message-batch
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/recover:
+      post:
+        summary: Reset Credentials
+        description: Reset Credentials
+        operationId: reset-credentials
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/recover/{id}:
+      get:
+        summary: Recover Account
+        description: Recover Account
+        operationId: recover-account
+        parameters:
+        - in: query
+          name: id
+          description: ID of the useru2019s account recovery.
+          type: string
+        - in: path
+          name: id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/{user_id}:
+      delete:
+        summary: Modify User
+        description: Modify User
+        operationId: modify-user
+        parameters:
+        - in: query
+          name: user_id
+          description: The user ID.
+          type: string
+        - in: path
+          name: user_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: Create User
+        description: Create User
+        operationId: create-user
+        parameters:
+        - in: query
+          name: user_id
+          description: User ID.
+          type: string
+        - in: path
+          name: user_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      put:
+        summary: Create User
+        description: Create User
+        operationId: create-user
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        - in: query
+          name: user_id
+          description: The user ID.
+          type: string
+        - in: path
+          name: user_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/{user_id}/available_subscriptions:
+      get:
+        summary: Check Recovery Status
+        description: Check Recovery Status
+        operationId: check-recovery-status
+        parameters:
+        - in: query
+          name: user_id
+          description: User ID.
+          type: string
+        - in: path
+          name: user_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/{user_id}/creds/reset:
+      post:
+        summary: Delete User
+        description: Delete User
+        operationId: delete-user
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        - in: query
+          name: user_id
+          description: The user ID.
+          type: string
+        - in: path
+          name: user_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/{user_id}/messages:
+      get:
+        summary: Broadcast Message
+        description: Broadcast Message
+        operationId: broadcast-message
+        parameters:
+        - in: query
+          name: full_list
+          description: Get the full message included in this list (which might take
+            a while to download).
+          type: string
+        - in: query
+          name: since
+          description: 'Return only new items. Example: since=some_message_id will return
+            all messages sent after the message ID of some_message_id.'
+          type: string
+        - in: query
+          name: user_id
+          description: The user ID.
+          type: string
+        - in: path
+          name: user_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/{user_id}/messages/delete:
+      post:
+        summary: Mark User Message As Read
+        description: Mark User Message As Read
+        operationId: mark-user-message-as-read
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        - in: query
+          name: user_id
+          description: The user ID.
+          type: string
+        - in: path
+          name: user_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/{user_id}/messages/message/{message_id}:
+      delete:
+        summary: Get User Message
+        description: Get User Message
+        operationId: get-user-message
+        parameters:
+        - in: query
+          name: message_id
+          description: The message ID.
+          type: string
+        - in: path
+          name: message_id
+          type: string
+        - in: query
+          name: user_id
+          description: The user ID.
+          type: string
+        - in: path
+          name: user_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      get:
+        summary: Mark User Unread Messages As Read
+        description: Mark User Unread Messages As Read
+        operationId: mark-user-unread-messages-as-read
+        parameters:
+        - in: query
+          name: message_id
+          description: The message ID.
+          type: string
+        - in: path
+          name: message_id
+          type: string
+        - in: query
+          name: user_id
+          description: The user ID.
+          type: string
+        - in: path
+          name: user_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/{user_id}/messages/message/{message_id}/body:
+      get:
+        summary: Delete User Message
+        description: Delete User Message
+        operationId: delete-user-message
+        parameters:
+        - in: query
+          name: message_id
+          description: The message ID.
+          type: string
+        - in: path
+          name: message_id
+          type: string
+        - in: query
+          name: user_id
+          description: The user ID.
+          type: string
+        - in: path
+          name: user_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/{user_id}/messages/message/{message_id}/read:
+      post:
+        summary: Get User Message Body
+        description: Get User Message Body
+        operationId: get-user-message-body
+        parameters:
+        - in: query
+          name: message_id
+          description: The message ID.
+          type: string
+        - in: path
+          name: message_id
+          type: string
+        - in: query
+          name: user_id
+          description: The user ID.
+          type: string
+        - in: path
+          name: user_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/{user_id}/messages/unread:
+      get:
+        summary: List User Messages
+        description: List User Messages
+        operationId: list-user-messages
+        parameters:
+        - in: query
+          name: user_id
+          description: The user ID.
+          type: string
+        - in: path
+          name: user_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+      post:
+        summary: List User Unread Messages
+        description: List User Unread Messages
+        operationId: list-user-unread-messages
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        - in: query
+          name: user_id
+          description: The user ID.
+          type: string
+        - in: path
+          name: user_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/{user_id}/subscriptions/content/{content_id}/download:
+      post:
+        summary: List Available Content
+        description: List Available Content
+        operationId: list-available-content
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        - in: query
+          name: content_id
+          description: Content ID.
+          type: string
+        - in: path
+          name: content_id
+          type: string
+        - in: query
+          name: user_id
+          description: User ID.
+          type: string
+        - in: path
+          name: user_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/{user_id}/subscriptions/{subscription_key}/purchase:
+      post:
+        summary: Retrieve Subscription Options
+        description: Retrieve Subscription Options
+        operationId: retrieve-subscription-options
+        parameters:
+        - in: query
+          name: Content-Type
+          description: Content type.
+          type: string
+        - in: query
+          name: subscription_key
+          description: Subscription Key.
+          type: string
+        - in: path
+          name: subscription_key
+          type: string
+        - in: query
+          name: user_id
+          description: User ID.
+          type: string
+        - in: path
+          name: user_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /user/{user_id}/subscription_content:
+      get:
+        summary: Add Subscription
+        description: Add Subscription
+        operationId: add-subscription
+        parameters:
+        - in: query
+          name: user_id
+          description: User ID.
+          type: string
+        - in: path
+          name: user_id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

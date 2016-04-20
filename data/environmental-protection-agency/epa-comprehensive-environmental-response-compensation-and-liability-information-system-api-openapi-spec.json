@@ -1,0 +1,2101 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "EPA Comprehensive Environmental Response, Compensation, and Liability Information System API",
+		"description": "The Comprehensive Environmental Response, Compensation, and Liability Information System provides information about Superfund (cleaning/removal of hazardous waste) sites, from discovery to their listing on the National Priorities list.",
+		"contact": {
+			"name": "EP Envirofacts",
+			"url": "http://www.epa.gov/enviro/index.html"
+		},
+		"version": "v1"
+	},
+	"host": "iaspub.epa.gov",
+	"basePath": "/enviro/efservice/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/CER_ACTION/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_ACTION",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_action"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_CMT_SITE/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_CMT_SITE",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_cmt_site"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_CMT_SITE_ALIAS/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_CMT_SITE_ALIAS",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_site"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_CONTACT/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_CONTACT",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_contact"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_FEDERAL_REGISTER/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_FEDERAL_REGISTER",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_federal_register"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_FINANCIAL_TRANSACTION/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_FINANCIAL_TRANSACTION",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_financial_transaction"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_LOCATION/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_LOCATION",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_location"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_OPERABLE_UNIT/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_OPERABLE_UNIT",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_operable_unit"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_REF_ACTION_ANOMALY/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_REF_ACTION_ANOMALY",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_ref_action_anomaly"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_REF_ACTION_CRITICAL_FLAG/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_REF_ACTION_CRITICAL_FLAG",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_ref_action_critical_flag"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_REF_ACTION_LEAD_TYPE/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_REF_ACTION_LEAD_TYPE",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_ref_action_lead_type"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_REF_ACTION_QUALIFIER/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_REF_ACTION_QUALIFIER",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_ref_action_qualifier"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_REF_ACTION_TYPE/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_REF_ACTION_TYPE",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_ref_action_type"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_REF_CMT_SITE/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_REF_CMT_SITE",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_ref_cmt_site"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_REF_FDRL_RGSTR_ACTN/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_REF_FDRL_RGSTR_ACTN",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_ref_fdrl_rgstr_actn"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_REF_FEDERAL_FACILITY/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_REF_FEDERAL_FACILITY",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_ref_federal_facility"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_REF_FINAN_TRANSACTION_TYPE/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_REF_FINAN_TRANSACTION_TYPE",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_ref_finan_transaction_type"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_REF_NON_NPL_STATUS/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_REF_NON_NPL_STATUS",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_ref_non_npl_status"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_REF_NPL_STATUS/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_REF_NPL_STATUS",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_ref_npl_status"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_REF_OWNERSHIP_TYPE/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_REF_OWNERSHIP_TYPE",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_ref_ownership_type"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_REF_PLANNING_STATUS/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_REF_PLANNING_STATUS",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_ref_planning_status"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_REF_REGION/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_REF_REGION",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_ref_region"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_REF_SIC/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_REF_SIC",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_ref_sic"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_REF_SITE_INCIDENT_CATEGORY/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_REF_SITE_INCIDENT_CATEGORY",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_ref_site_incident_category"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_REF_SITE_INCIDENT_TYPE/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_REF_SITE_INCIDENT_TYPE",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_ref_site_incident_type"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_REF_STATE/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_REF_STATE",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_ref_state"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_SITE/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_SITE",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_site"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_SITE_ALIAS/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_SITE_ALIAS",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_site_alias"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_SITE_ROT_REF/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_SITE_ROT_REF",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_site_rot_ref"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_WSMC_CROSS_LINK/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_WSMC_CROSS_LINK",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_wsmc_cross_link"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		},
+		"/CER_WST_SRC_MEDIA_CONTAMINATED/ROWS/{row_start}:{row_end}/{output}": {
+			"get": {
+				"summary": "",
+				"description": "",
+				"operationId": "enviroFacts_CER_WST_SRC_MEDIA_CONTAMINATED",
+				"parameters": [{
+					"in": "path",
+					"name": "output",
+					"description": "which format to output (JSON,XML,CSV,Excel)",
+					"type": "string",
+					"format": "string",
+					"default": "JSON"
+				},
+				{
+					"in": "path",
+					"name": "row_end",
+					"description": "which row to end on",
+					"type": "integer",
+					"format": "integer",
+					"default": 25
+				},
+				{
+					"in": "path",
+					"name": "row_start",
+					"description": "which row to start on",
+					"type": "integer",
+					"format": "integer",
+					"default": 0
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/cer_wst_src_media_contaminated"
+							}
+						}
+					}
+				},
+				"tags": ["Hazardous Waste"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"cer_contact": {
+			"properties": {
+				"PERSON_FIRST_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PERSON_LAST_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PERSON_PHONE_NMBR1": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RROLE_DESC": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_location": {
+			"properties": {
+				"ACCURACY_VALUE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CITY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"COLLECTION_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"COLLECT_MTH_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"COMMENT_TEXT": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"COUNTY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"GEOMETRIC_TYPE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"HDATUM_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LATITUDE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LOCATION_ADDRESS": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LONGITUDE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"POSTAL_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"PRIMARY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"REF_POINT_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SCALE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_EPA_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SOURCE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"STATE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SUB_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SUB_TYPE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"VACCURACY": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"VDATUM_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"VERTICAL_MEASURE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"VMETHOD_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_operable_unit": {
+			"properties": {
+				"OU_DESC_TEXT": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"OU_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"OU_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_federal_register": {
+			"properties": {
+				"FR_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FR_NPL_UPDATE_NMBR": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RFRA_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_ref_fdrl_rgstr_actn": {
+			"properties": {
+				"RFRA_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RFRA_DESC": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_ref_cmt_site": {
+			"properties": {
+				"RCST_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RCS_DESC": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_cmt_site": {
+			"properties": {
+				"CSITE_SEQ_NMBR": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CSITE_TEXT": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RCST_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_site": {
+			"properties": {
+				"RFED_FCLTY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RNON_NPL_STATUS_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RNPL_STATUS_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RREGION_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RSITINC_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RSTATE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_CITY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_CNGRSNL_DSTRCT_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_CNTY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_EPA_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_FUDS_FLAG": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_IFMS_SSID_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_NFRAP_FLAG": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_RCRA_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_SHORT_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_SMSA_NMBR": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_STRT_ADRS1": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_STRT_ADRS2": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_USGS_HYDRO_UNIT_NMBR": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_ZIP_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_site_rot_ref": {
+			"properties": {
+				"CREATED_BY": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"CREATED_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LAST_UPDATED_BY": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"LAST_UPDATED_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"M_ROW_x0024__x0024_": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ROT_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_wst_src_media_contaminated": {
+			"properties": {
+				"SITE_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"WSMC_NMBR": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_wsmc_cross_link": {
+			"properties": {
+				"SITE_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"WCL_C2501": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"WSMC_NMBR": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_ref_site_incident_type": {
+			"properties": {
+				"RSIT_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RSIT_DESC": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_ref_ownership_type": {
+			"properties": {
+				"ROT_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ROT_DESC": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_ref_region": {
+			"properties": {
+				"RREGION_CITY_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RREGION_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RREGION_DESC": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RREGION_STRT_ADRS1": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RREGION_STRT_ADRS2": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RREGION_ZIP_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RSTATE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_ref_state": {
+			"properties": {
+				"RREGION_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RSTATE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RSTATE_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_ref_sic": {
+			"properties": {
+				"RSIC_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RSIC_CODE_DESC": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_ref_federal_facility": {
+			"properties": {
+				"RFED_FCLTY_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RFED_FCLTY_DESC": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_ref_site_incident_category": {
+			"properties": {
+				"RSITINC_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RSITINC_DESC": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_action": {
+			"properties": {
+				"ACT_ACTL_CMPLTN_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ACT_ACTL_STRT_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"ACT_CODE_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"OU_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAA_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RACT_CRITICAL_FLAG_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RALT_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAQ_ACTION_QUAL_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAT_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RPS_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_ref_action_lead_type": {
+			"properties": {
+				"RALT_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RALT_DESC": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_ref_action_qualifier": {
+			"properties": {
+				"RAQ_ACTION_QUAL_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAQ_ACTION_QUAL_DESC": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_ref_planning_status": {
+			"properties": {
+				"RPS_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RPS_DESC": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_ref_action_anomaly": {
+			"properties": {
+				"RAA_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAA_DESC": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_ref_action_type": {
+			"properties": {
+				"RAT_C2_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAT_C2_TYPE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAT_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAT_DEF": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAT_DEFAULT_PRED_ACT_TYPE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAT_DEF_OU": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAT_HISTORICAL_ONLY_FLAG": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAT_LEVEL": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAT_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAT_NSI_INDICATOR": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAT_SHORT_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAT_WITHOUT_START_FLAG": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RFBS_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RIE_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_financial_transaction": {
+			"properties": {
+				"ACT_CODE_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FT_AMT": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FT_BUDGET_FY": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FT_DATE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"FT_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RAT_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RFTT_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"SITE_ID": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_ref_finan_transaction_type": {
+			"properties": {
+				"RFTT_CODE": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RFTT_LONG_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RFTT_ORDER": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RFTT_PLAN_ACT": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"RFTT_SHORT_NAME": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"cer_ref_action_critical_flag": {
+			"properties": {
+				"filler": {
+					"description": "Just filling until we have",
+					"type": "string"
+				}
+			}
+		},
+		"cer_ref_non_npl_status": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		},
+		"cer_ref_npl_status": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		},
+		"cer_site_alias": {
+			"properties": {
+				"filler": {
+					"description": "until we have model",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

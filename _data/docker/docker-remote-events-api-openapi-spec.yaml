@@ -1,0 +1,47 @@
+- swagger: "2.0"
+  info:
+    title: Docker Remote Events API
+    description: The API for managing Docker Remote Events
+    termsOfService: https://www.docker.com/docker-terms-service
+    version: ""
+  host: api.example.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /events:
+      get:
+        summary: Monitor Docker's events
+        description: Monitor Dockers events
+        operationId: monitor-dockers-events
+        parameters:
+        - in: query
+          name: container
+          description: '&lt;string&gt; -- container to filter'
+        - in: query
+          name: event
+          description: '&lt;string&gt; -- event to filter'
+        - in: query
+          name: filters
+          description: 'a json encoded value of the filters (a map[string][]string)
+            to process on the event list. Available filters:'
+        - in: query
+          name: image
+          description: '&lt;string&gt; -- image to filter'
+        - in: query
+          name: since
+          description: timestamp used for polling
+        - in: query
+          name: until
+          description: timestamp used for polling
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

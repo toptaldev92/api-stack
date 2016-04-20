@@ -1,0 +1,231 @@
+- swagger: "2.0"
+  info:
+    title: Giphy API
+    description: Giphy is an animated GIF search engine. The Giphy API is open to the
+      public. We have instituted a simple, single public beta key system to let anyone
+      try it out. The API key is required for all endpoints.
+    termsOfService: http://giphy.com/terms
+    contact:
+      name: Giphy
+      url: https://github.com/Giphy/GiphyAPI
+      email: api@giphy.com
+    version: v1
+  host: api.giphy.com
+  basePath: v1/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /gifs:
+      get:
+        summary: Get Gifs
+        description: A multiget version of the get GIF by ID endpoint. In this case
+          the IDs are feqkVgjJpYtjy and 7rzbxdu0ZEXLy.  Note the additional user metadata
+          attached to the document that describes the second GIF in the response, 7rzbxdu0ZEXLy.nn    http://api.giphy.com/v1/gifs?api_key=dc6zaTOxFJmzC&ids=feqkVgjJpYtjy,7rzbxdu0ZEXLynn<a
+          href=http://api.giphy.com/v1/gifs?api_key=dc6zaTOxFJmzC&ids=feqkVgjJpYtjy,7rzbxdu0ZEXLy
+          target=_blank>Example</a>
+        operationId: Get GIFs by ID
+        parameters:
+        - in: query
+          name: ids
+        responses:
+          200:
+            description: OK
+        tags:
+        - gifs
+        security: []
+      parameters:
+        summary: Get Gif Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - gifs
+        security: []
+    /gifs/random:
+      get:
+        summary: Get Random Gif
+        description: Returns a random GIF, limited by tag. Excluding the tag parameter
+          will return a random GIF from the Giphy catalog.nn    http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=american+psychonn<a
+          href=http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=american+psycho
+          target=_blank>Example</a>
+        operationId: Random
+        parameters:
+        - in: query
+          name: count
+          description: Count of media to return.
+        - in: query
+          name: max_id
+          description: Return media earlier than this `max_id`.
+        - in: query
+          name: max_timestamp
+          description: Return media before this UNIX timestamp.
+        - in: query
+          name: min_id
+          description: Return media later than this `min_id`.
+        - in: query
+          name: min_timestamp
+          description: Return media after this UNIX timestamp.
+        - in: query
+          name: tag
+        - in: path
+          name: user-id
+          description: The ID of a user to get recent media of, or **self** to retrieve
+            media of authenticated user.
+        responses:
+          200:
+            description: OK
+        tags:
+        - gifs
+        security: []
+      parameters:
+        summary: Get Random Gif Parameters
+        description: ""
+        operationId: ""
+        parameters:
+        - in: path
+          name: user-id
+          description: The ID of a user, or **self** to retrieve information about authenticated
+            user.
+        responses:
+          200:
+            description: OK
+        tags:
+        - gifs
+        security: []
+    /gifs/search:
+      get:
+        summary: Search Gifs
+        description: Search all Giphy GIFs for a word or phrase. Punctuation will be
+          stripped and ignored. Use a plus or url encode for phrases. nnExamples:nn<a
+          href=http://api.giphy.com/v1/gifs/search?q=paul+rudd&api_key=dc6zaTOxFJmzC
+          target=_blank>paul+rudd</a>nn<a href=http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=dc6zaTOxFJmzC
+          target=_blank>ryan+gosling</a>nn<a href=http://api.giphy.com/v1/gifs/search?q=american+psycho&api_key=dc6zaTOxFJmzC
+          target=_blank>american+psycho</a>nn<a href=http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=dc6zaTOxFJmzC&limit=1&offset=0
+          target=_blank>funny+cat</a>
+        operationId: Search
+        parameters:
+        - in: query
+          name: action
+          description: Type of action to apply for relationship with the user.
+        - in: query
+          name: limit
+        - in: query
+          name: offset
+        - in: query
+          name: q
+        - in: path
+          name: user-id
+          description: The ID of the target user.
+        responses:
+          200:
+            description: OK
+        tags:
+        - gifs
+        security: []
+      parameters:
+        summary: Get Search Gif Parameters
+        description: ""
+        operationId: ""
+        parameters:
+        - in: path
+          name: user-id
+          description: The ID of a user to get information about.
+        responses:
+          200:
+            description: OK
+        tags:
+        - gifs
+        security: []
+    /gifs/translate:
+      get:
+        summary: Translate Gif
+        description: The translate API draws on search, but uses the Giphy special sauce
+          to handle translating from one vocabulary to another. In this case, words
+          and phrases to GIFs. Example implementations of translate can be found in
+          the Giphy <a href=http://giphy.com/posts/slack-adds-giphy-to-every-chatroom-wut
+          target=_blank>Slack</a>, <a href=https://marketplace.atlassian.com/plugins/com.giphy.api.hipchat
+          target=_blank>Hipchat</a>, <a href=https://wire.com/news/giphy-say-it-with-gif
+          target=_blank>Wire</a>, or <a href=https://dasher.im/ target=_blank>Dasher</a>
+          integrations. Use a plus or url encode for phrases.nn    http://api.giphy.com/v1/gifs/translate?s=superman&api_key=dc6zaTOxFJmzCnn<a
+          href=http://api.giphy.com/v1/gifs/translate?s=superman&api_key=dc6zaTOxFJmzC
+          target=_blank>Example</a>
+        operationId: Translate
+        parameters:
+        - in: query
+          name: s
+        responses:
+          200:
+            description: OK
+        tags:
+        - gifs
+        security: []
+      parameters:
+        summary: Get Translate Gif Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - gifs
+        security: []
+    /gifs/trending:
+      get:
+        summary: Get Trending Gifs
+        description: Fetch GIFs currently trending online. Hand curated by the Giphy
+          editorial team. The data returned mirrors the GIFs showcased on the <a href=
+          target=_blank></a>[Giphy homepage](http://giphy.com). Returns 25 results by
+          default.nn    http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzCnn<a
+          href=http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC target=_blank>Example</a>
+          trending GIFs query.n<a href=http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&limit=5
+          target=_blank>Example</a> trending GIFs limited to 5 results.
+        operationId: Trending GIFs
+        parameters:
+        - in: query
+          name: limit
+        responses:
+          200:
+            description: OK
+        tags:
+        - gifs
+        security: []
+      parameters:
+        summary: Get Trending Gifs Parameter
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - gifs
+        security: []
+    /gifs/{gif-id}:
+      get:
+        summary: Get Gif
+        description: Returns meta data about a GIF, by GIF id. In the below example,
+          the GIF ID is feqkVgjJpYtjynn    http://api.giphy.com/v1/gifs/feqkVgjJpYtjy?api_key=dc6zaTOxFJmzCnn<a
+          href=http://api.giphy.com/v1/gifs/feqkVgjJpYtjy?api_key=dc6zaTOxFJmzC target=_blank>Example</a>
+        operationId: Get GIF by ID
+        responses:
+          200:
+            description: OK
+        tags:
+        - gifs
+        security: []
+      parameters:
+        summary: Get Gif Parameters
+        description: ""
+        operationId: ""
+        responses:
+          200:
+            description: OK
+        tags:
+        - gifs
+        security: []
+  definitions: []

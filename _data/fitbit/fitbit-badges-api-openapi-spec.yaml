@@ -1,0 +1,40 @@
+- swagger: "2.0"
+  info:
+    title: Fitbit Badges API
+    description: The Fitbit API allows developers to interact with Fitbit data in their
+      own applications, products and services.
+    version: "1"
+  host: api.fitbit.com
+  basePath: /1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /user/{user-id}/badges.{format}:
+      get:
+        summary: Get Activity Stats
+        description: Get Activity Stats
+        operationId: get-activity-stats
+        parameters:
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        - in: query
+          name: user-id
+          type: string
+        - in: path
+          name: user-id
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - activities
+        security: []
+  definitions: []

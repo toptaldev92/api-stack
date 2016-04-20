@@ -1,0 +1,135 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Slack Do Not Disturb API",
+		"description": "The API for management Slack Do Not Disturbs",
+		"termsOfService": "https://slack.com/terms-of-service/api",
+		"version": null
+	},
+	"host": "slack.com",
+	"basePath": "/api",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/methods/dnd.endDnd": {
+			"get": {
+				"summary": "End Do Not Disturb",
+				"description": "<td width=70%>Ends the current user&#039;s Do Not Disturb session immediately.</td>",
+				"operationId": "dndenddnd",
+				"parameters": [{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: dnd:write)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["do not disturb"],
+				"security": []
+			}
+		},
+		"/methods/dnd.endSnooze": {
+			"get": {
+				"summary": "End Snooze",
+				"description": "<td width=70%>Ends the current user&#039;s snooze mode immediately.</td>",
+				"operationId": "dndendsnooze",
+				"parameters": [{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: dnd:write)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["do not disturb"],
+				"security": []
+			}
+		},
+		"/methods/dnd.info": {
+			"get": {
+				"summary": "Get Do Not Disturb Status",
+				"description": "<td width=70%>Retrieves a user&#039;s current Do Not Disturb status.</td>",
+				"operationId": "dndinfo",
+				"parameters": [{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: dnd:read)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user",
+					"description": "User to fetch status for (defaults to current user)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["do not disturb"],
+				"security": []
+			}
+		},
+		"/methods/dnd.setSnooze": {
+			"get": {
+				"summary": "Turn On Do Not Disturb Status",
+				"description": "<td width=70%>Turns on Do Not Disturb mode for the current user, or changes its duration.</td>",
+				"operationId": "dndsetsnooze",
+				"parameters": [{
+					"in": "query",
+					"name": "num_minutes",
+					"description": "Number of minutes, from now, to snooze until.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: dnd:write)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["do not disturb"],
+				"security": []
+			}
+		},
+		"/methods/dnd.teamInfo": {
+			"get": {
+				"summary": "Get Do Not Disturb Status For Team",
+				"description": "<td width=70%>Retrieves the Do Not Disturb status for users on a team.</td>",
+				"operationId": "dndteaminfo",
+				"parameters": [{
+					"in": "query",
+					"name": "token",
+					"description": "Authentication token (Requires scope: dnd:read)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "users",
+					"description": "Comma-separated list of users to fetch Do Not Disturb status for",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["do not disturb"],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

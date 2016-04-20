@@ -1,0 +1,474 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Docker Remote Containers API",
+		"description": "The API for managing Docker Remote Containers",
+		"termsOfService": "https://www.docker.com/docker-terms-service",
+		"version": ""
+	},
+	"host": "api.example.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/containers/create": {
+			"post": {
+				"summary": "Create a container",
+				"description": "Create a container",
+				"operationId": "create-a-container",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "Assign the specified name to the container. Must    match /?[a-zA-Z0-9_-]+.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/containers/json": {
+			"get": {
+				"summary": "List containers",
+				"description": "List containers",
+				"operationId": "list-containers",
+				"parameters": [{
+					"in": "query",
+					"name": "all",
+					"description": "1/True/true or 0/False/false, Show all containers.        Only running containers are shown by default (i.e., this defaults to false)"
+				},
+				{
+					"in": "query",
+					"name": "before",
+					"description": "Show only containers created before Id, include        non-running ones."
+				},
+				{
+					"in": "query",
+					"name": "exited",
+					"description": "&lt;int&gt; -- containers with exit code of &lt;int&gt;"
+				},
+				{
+					"in": "query",
+					"name": "filters",
+					"description": "a json encoded value of the filters (a map[string][]string) to process on the containers list. Available filters:"
+				},
+				{
+					"in": "query",
+					"name": "limit",
+					"description": "Show limit last created        containers, include non-running ones."
+				},
+				{
+					"in": "query",
+					"name": "since",
+					"description": "Show only containers created since Id, include        non-running ones."
+				},
+				{
+					"in": "query",
+					"name": "size",
+					"description": "1/True/true or 0/False/false, Show the containers        sizes"
+				},
+				{
+					"in": "query",
+					"name": "status",
+					"description": "(restarting|running|paused|exited)"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/containers/{id}": {
+			"delete": {
+				"summary": "Remove a container",
+				"description": "Remove a container",
+				"operationId": "remove-a-container",
+				"parameters": [{
+					"in": "query",
+					"name": "force",
+					"description": "1/True/true or 0/False/false, Kill then remove the container.        Default false"
+				},
+				{
+					"in": "path",
+					"name": "id"
+				},
+				{
+					"in": "query",
+					"name": "v",
+					"description": "1/True/true or 0/False/false, Remove the volumes        associated to the container. Default false"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/containers/{id}/attach": {
+			"post": {
+				"summary": "Attach to a container",
+				"description": "Attach to a container",
+				"operationId": "attach-to-a-container",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				},
+				{
+					"in": "query",
+					"name": "logs",
+					"description": "1/True/true or 0/False/false, return logs. Default false"
+				},
+				{
+					"in": "query",
+					"name": "stderr",
+					"description": "1/True/true or 0/False/false, if logs=true, return        stderr log, if stream=true, attach to stderr. Default false"
+				},
+				{
+					"in": "query",
+					"name": "stdin",
+					"description": "1/True/true or 0/False/false, if stream=true, attach        to stdin. Default false"
+				},
+				{
+					"in": "query",
+					"name": "stdout",
+					"description": "1/True/true or 0/False/false, if logs=true, return        stdout log, if stream=true, attach to stdout. Default false"
+				},
+				{
+					"in": "query",
+					"name": "stream",
+					"description": "1/True/true or 0/False/false, return stream.        Default false"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/containers/{id}/changes": {
+			"get": {
+				"summary": "Inspect changes on a container's filesystem",
+				"description": "Inspect changes on a containers filesystem",
+				"operationId": "inspect-changes-on-a-containers-filesystem",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/containers/{id}/copy": {
+			"post": {
+				"summary": "Copy files or folders from a container",
+				"description": "Copy files or folders from a container",
+				"operationId": "copy-files-or-folders-from-a-container",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/containers/{id}/exec": {
+			"post": {
+				"summary": "Image tarball format",
+				"description": "Image tarball format",
+				"operationId": "image-tarball-format",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/containers/{id}/export": {
+			"get": {
+				"summary": "Export a container",
+				"description": "Export a container",
+				"operationId": "export-a-container",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/containers/{id}/json": {
+			"get": {
+				"summary": "Inspect a container",
+				"description": "Inspect a container",
+				"operationId": "inspect-a-container",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/containers/{id}/kill": {
+			"post": {
+				"summary": "Kill a container",
+				"description": "Kill a container",
+				"operationId": "kill-a-container",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/containers/{id}/logs": {
+			"get": {
+				"summary": "Get container logs",
+				"description": "Get container logs",
+				"operationId": "get-container-logs",
+				"parameters": [{
+					"in": "query",
+					"name": "follow",
+					"description": "1/True/true or 0/False/false, return stream. Default false"
+				},
+				{
+					"in": "path",
+					"name": "id"
+				},
+				{
+					"in": "query",
+					"name": "stderr",
+					"description": "1/True/true or 0/False/false, show stderr log. Default false"
+				},
+				{
+					"in": "query",
+					"name": "stdout",
+					"description": "1/True/true or 0/False/false, show stdout log. Default false"
+				},
+				{
+					"in": "query",
+					"name": "tail",
+					"description": "Output specified number of lines at the end of logs: all or &lt;number&gt;. Default all"
+				},
+				{
+					"in": "query",
+					"name": "timestamps",
+					"description": "1/True/true or 0/False/false, print timestamps for        every log line. Default false"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/containers/{id}/pause": {
+			"post": {
+				"summary": "Pause a container",
+				"description": "Pause a container",
+				"operationId": "pause-a-container",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/containers/{id}/resize?h=&lt;height&gt;&amp;w=&lt;width&gt;": {
+			"post": {
+				"summary": "Resize a container TTY",
+				"description": "Resize a container TTY",
+				"operationId": "resize-a-container-tty",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/containers/{id}/restart": {
+			"post": {
+				"summary": "Restart a container",
+				"description": "Restart a container",
+				"operationId": "restart-a-container",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				},
+				{
+					"in": "query",
+					"name": "t",
+					"description": "number of seconds to wait before killing the container"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/containers/{id}/start": {
+			"post": {
+				"summary": "Start a container",
+				"description": "Start a container",
+				"operationId": "start-a-container",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/containers/{id}/stop": {
+			"post": {
+				"summary": "Stop a container",
+				"description": "Stop a container",
+				"operationId": "stop-a-container",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				},
+				{
+					"in": "query",
+					"name": "t",
+					"description": "number of seconds to wait before killing the container"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/containers/{id}/top": {
+			"get": {
+				"summary": "List processes running inside a container",
+				"description": "List processes running inside a container",
+				"operationId": "list-processes-running-inside-a-container",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				},
+				{
+					"in": "query",
+					"name": "ps_args",
+					"description": "ps arguments to use (e.g., aux)"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/containers/{id}/unpause": {
+			"post": {
+				"summary": "Unpause a container",
+				"description": "Unpause a container",
+				"operationId": "unpause-a-container",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/containers/{id}/wait": {
+			"post": {
+				"summary": "Wait a container",
+				"description": "Wait a container",
+				"operationId": "wait-a-container",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

@@ -1,0 +1,73 @@
+- swagger: "2.0"
+  info:
+    title: Fitbit Glucose API
+    description: The Fitbit API allows developers to interact with Fitbit data in their
+      own applications, products and services.
+    version: "1"
+  host: api.fitbit.com
+  basePath: /1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /user/-/glucose.{format}:
+      post:
+        summary: Log Blood Pressure
+        description: Log Blood Pressure
+        operationId: log-blood-pressure
+        parameters:
+        - in: query
+          name: date
+          type: string
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        - in: query
+          name: glucose
+          type: string
+        - in: query
+          name: hba1c
+          type: string
+        - in: query
+          name: time
+          type: string
+        - in: query
+          name: tracker
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - glucose
+        security: []
+    /user/-/glucose/date/{date}.{format}:
+      get:
+        summary: Get Blood Pressure
+        description: Get Blood Pressure
+        operationId: get-blood-pressure
+        parameters:
+        - in: query
+          name: date
+          type: string
+        - in: path
+          name: date
+          type: string
+        - in: query
+          name: format
+          type: string
+        - in: path
+          name: format
+          type: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - glucose
+        security: []
+  definitions: []

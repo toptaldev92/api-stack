@@ -1,0 +1,842 @@
+- swagger: "2.0"
+  info:
+    title: EPA Radiation Ambient Monitoring API
+    description: Formerly, Environmental Radiation Ambient Monitoring System (ERAMS),
+      provides data from a national network of monitoring stations that collect air,
+      precipitation, drinking water, and milk samples for analysis of radioactivity.
+    contact:
+      name: EP Envirofacts
+      url: http://www.epa.gov/enviro/index.html
+    version: v1
+  host: iaspub.epa.gov
+  basePath: /enviro/efservice/
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /BGM_ONSITE_TREATMENT/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_BGM_ONSITE_TREATMENT
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/bgm_onsite_treatment'
+        tags:
+        - Radiation
+        security: []
+    /ERM_ANALYSIS/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_ERM_ANALYSIS
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/erm_analysis'
+        tags:
+        - Radiation
+        security: []
+    /ERM_ANALYTE/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_ERM_ANALYTE
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/erm_analyte'
+        tags:
+        - Radiation
+        security: []
+    /ERM_ANA_PROC/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_ERM_ANA_PROC
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/erm_ana_proc'
+        tags:
+        - Radiation
+        security: []
+    /ERM_COUNT/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_ERM_COUNT
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/erm_count'
+        tags:
+        - Radiation
+        security: []
+    /ERM_DET_TYPE/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_ERM_DET_TYPE
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/erm_det_type'
+        tags:
+        - Radiation
+        security: []
+    /ERM_LOCATION/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_ERM_LOCATION
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/erm_location'
+        tags:
+        - Radiation
+        security: []
+    /ERM_MATRIX/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_ERM_MATRIX
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/erm_matrix'
+        tags:
+        - Radiation
+        security: []
+    /ERM_PROJECT/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_ERM_PROJECT
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/erm_project'
+        tags:
+        - Radiation
+        security: []
+    /ERM_RESULT/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_ERM_RESULT
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/erm_result'
+        tags:
+        - Radiation
+        security: []
+    /ERM_SAMPLE/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_ERM_SAMPLE
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/erm_sample'
+        tags:
+        - Radiation
+        security: []
+    /ERM_STUDY/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_ERM_STUDY
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/erm_study'
+        tags:
+        - Radiation
+        security: []
+    /LCR_SAMPLE/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_LCR_SAMPLE
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/lcr_sample'
+        tags:
+        - Radiation
+        security: []
+    /LCR_SAMPLE_RESULT/ROWS/{row_start}:{row_end}/{output}:
+      get:
+        summary: ""
+        description: ""
+        operationId: enviroFacts_LCR_SAMPLE_RESULT
+        parameters:
+        - in: path
+          name: output
+          description: which format to output (JSON,XML,CSV,Excel)
+          type: string
+          format: string
+          default: JSON
+        - in: path
+          name: row_end
+          description: which row to end on
+          type: integer
+          format: integer
+          default: 25
+        - in: path
+          name: row_start
+          description: which row to start on
+          type: integer
+          format: integer
+          default: 0
+        responses:
+          200:
+            description: Successful Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/lcr_sample_result'
+        tags:
+        - Radiation
+        security: []
+  definitions:
+    erm_result:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        ANALYTE_ID:
+          description: This is a default description.
+          type: string
+        ANA_NUM:
+          description: This is a default description.
+          type: string
+        CSU:
+          description: This is a default description.
+          type: string
+        CSU_IN_SI:
+          description: This is a default description.
+          type: string
+        MDC:
+          description: This is a default description.
+          type: string
+        MDC_IN_SI:
+          description: This is a default description.
+          type: string
+        RESULT_AMOUNT:
+          description: This is a default description.
+          type: string
+        RESULT_DATE:
+          description: This is a default description.
+          type: string
+        RESULT_ID:
+          description: This is a default description.
+          type: string
+        RESULT_IN_SI:
+          description: This is a default description.
+          type: string
+        RESULT_UNIT:
+          description: This is a default description.
+          type: string
+        SI_UNIT:
+          description: This is a default description.
+          type: string
+    erm_analysis:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        ANA_COMMENT:
+          description: This is a default description.
+          type: string
+        ANA_NUM:
+          description: This is a default description.
+          type: string
+        ANA_PROC_NUM:
+          description: This is a default description.
+          type: string
+        ANA_SIZE:
+          description: This is a default description.
+          type: string
+        ANA_SIZE_2:
+          description: This is a default description.
+          type: string
+        ANA_UNIT:
+          description: This is a default description.
+          type: string
+        ANA_UNIT_2:
+          description: This is a default description.
+          type: string
+        SAMP_NUM:
+          description: This is a default description.
+          type: string
+    erm_count:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        ANA_NUM:
+          description: This is a default description.
+          type: string
+        DET_NUM:
+          description: This is a default description.
+          type: string
+        DURATION:
+          description: This is a default description.
+          type: string
+        RUN_NUM:
+          description: This is a default description.
+          type: string
+        RUN_START:
+          description: This is a default description.
+          type: string
+    erm_sample:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        CLIENT_ID:
+          description: This is a default description.
+          type: string
+        COLLECT_END:
+          description: This is a default description.
+          type: string
+        COLLECT_START:
+          description: This is a default description.
+          type: string
+        LOC_NUM:
+          description: This is a default description.
+          type: string
+        MAT_ID:
+          description: This is a default description.
+          type: string
+        PROJ_NUM:
+          description: This is a default description.
+          type: string
+        SAMP_COMMENT:
+          description: This is a default description.
+          type: string
+        SAMP_DESC:
+          description: This is a default description.
+          type: string
+        SAMP_ID:
+          description: This is a default description.
+          type: string
+        SAMP_NUM:
+          description: This is a default description.
+          type: string
+        SAMP_SIZE:
+          description: This is a default description.
+          type: string
+        SAMP_UNIT:
+          description: This is a default description.
+          type: string
+    erm_matrix:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        MAT_DESC:
+          description: This is a default description.
+          type: string
+        MAT_ID:
+          description: This is a default description.
+          type: string
+        MAT_NUM:
+          description: This is a default description.
+          type: string
+    erm_location:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        CITY_NAME:
+          description: This is a default description.
+          type: string
+        LOC_NUM:
+          description: This is a default description.
+          type: string
+        STATE_ABBR:
+          description: This is a default description.
+          type: string
+        STATION:
+          description: This is a default description.
+          type: string
+        SURFACE_WATER_SOURCE:
+          description: This is a default description.
+          type: string
+    erm_project:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        PROJ_ID:
+          description: This is a default description.
+          type: string
+        PROJ_NAME:
+          description: This is a default description.
+          type: string
+        PROJ_NUM:
+          description: This is a default description.
+          type: string
+        STUDY_NUM:
+          description: This is a default description.
+          type: string
+    erm_study:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        STUDY_ID:
+          description: This is a default description.
+          type: string
+        STUDY_NAME:
+          description: This is a default description.
+          type: string
+        STUDY_NUM:
+          description: This is a default description.
+          type: string
+    erm_analyte:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        ANALYTE_ID:
+          description: This is a default description.
+          type: string
+        ANALYTE_NAME:
+          description: This is a default description.
+          type: string
+        ANA_TYPE:
+          description: This is a default description.
+          type: string
+        CRS_ID:
+          description: This is a default description.
+          type: string
+        HALF_LIFE:
+          description: This is a default description.
+          type: string
+        HALF_LIFE_TIME_UNIT:
+          description: This is a default description.
+          type: string
+    erm_ana_proc:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        ANA_PROC_ID:
+          description: This is a default description.
+          type: string
+        ANA_PROC_NAME:
+          description: This is a default description.
+          type: string
+        ANA_PROC_NUM:
+          description: This is a default description.
+          type: string
+        PROC_TYPE_ID:
+          description: This is a default description.
+          type: string
+    erm_det_type:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        DET_ID:
+          description: This is a default description.
+          type: string
+        DET_NUM:
+          description: This is a default description.
+          type: string
+        DET_TYPE_ID:
+          description: This is a default description.
+          type: string
+    bgm_onsite_treatment:
+      properties:
+        ACTIVITY_LOCATION:
+          description: This is a default description.
+          type: string
+        HANDLER_ID:
+          description: This is a default description.
+          type: string
+        HZ_PG:
+          description: This is a default description.
+          type: string
+        LAST_CHANGE:
+          description: This is a default description.
+          type: string
+        MANAGED_TONS_CALC:
+          description: This is a default description.
+          type: string
+        MANAGEMENT_METHOD:
+          description: This is a default description.
+          type: string
+        MANAGEMENT_METHOD_OWNER:
+          description: This is a default description.
+          type: string
+        SEQ_NUMBER:
+          description: This is a default description.
+          type: string
+        SOURCE_TYPE:
+          description: This is a default description.
+          type: string
+        SYS_PG_NUM_SEQ:
+          description: This is a default description.
+          type: string
+        SYS_TDR_QTY:
+          description: This is a default description.
+          type: string
+        USERID:
+          description: This is a default description.
+          type: string
+    lcr_sample:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        EPA_REGION:
+          description: This is a default description.
+          type: string
+        PRIMACY_AGENCY_CODE:
+          description: This is a default description.
+          type: string
+        PWSID:
+          description: This is a default description.
+          type: string
+        RECONCILIATION_ID:
+          description: This is a default description.
+          type: string
+        SAMPLE_ID:
+          description: This is a default description.
+          type: string
+        SAMPLING_END_DATE:
+          description: This is a default description.
+          type: string
+        SAMPLING_START_DATE:
+          description: This is a default description.
+          type: string
+    lcr_sample_result:
+      properties:
+        "":
+          description: This is a default description.
+          type: string
+        CONTAMINANT_CODE:
+          description: This is a default description.
+          type: string
+        EPA_REGION:
+          description: This is a default description.
+          type: string
+        PRIMACY_AGENCY_CODE:
+          description: This is a default description.
+          type: string
+        PWSID:
+          description: This is a default description.
+          type: string
+        RESULT_SIGN_CODE:
+          description: This is a default description.
+          type: string
+        SAMPLE_ID:
+          description: This is a default description.
+          type: string
+        SAMPLE_MEASURE:
+          description: This is a default description.
+          type: string
+        SAR_ID:
+          description: This is a default description.
+          type: string
+        UNIT_OF_MEASURE:
+          description: This is a default description.
+          type: string

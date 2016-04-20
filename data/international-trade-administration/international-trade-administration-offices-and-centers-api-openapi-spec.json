@@ -1,0 +1,126 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "ITA Offices And Centers",
+		"description": "This API provides contact and address information for all of ITAu2019s domestic and international export assistance centers. Incorporating these listings into directories of business counseling services is one example of how developers can use this API to assist exporters.",
+		"termsOfService": "http://developer.trade.gov/tos.html",
+		"version": "1.0"
+	},
+	"host": "api.trade.gov",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/ita_office_locations/search": {
+			"get": {
+				"summary": "ITA Offices and Centers Search",
+				"description": "This API provides contact and address information for all of ITAs domestic and international export assistance centers.",
+				"operationId": "office",
+				"parameters": [{
+					"in": "query",
+					"name": "city",
+					"description": "Returns office locations based on city name",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "countries",
+					"description": "Returns office locations based on ISO alpha-2 country codes.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "keyword",
+					"description": "Returns office locations for a match within the post or office name fields.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "offset",
+					"description": "The offset parameter defines the offset from the first result you want to fetch.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "size",
+					"description": "The size parameter allows you to configure the maximum amount of hits to be returned. ",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "state",
+					"description": "Returns locations for export assistance centers located in a specific U.S. State or Dependent Area.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful Offices Response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/office"
+							}
+						}
+					}
+				},
+				"tags": ["Trade",
+				" Commerce",
+				" Offices",
+				" Centers",
+				" Locations"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"Office": {
+			"properties": {
+				"id": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"post": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"office_name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"state": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"city": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"address": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"email": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"fax": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"mail_instructions": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"phone": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"post_type": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

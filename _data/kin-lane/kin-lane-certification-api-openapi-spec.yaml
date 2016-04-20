@@ -1,0 +1,309 @@
+- swagger: "2.0"
+  info:
+    title: Certification
+    description: This is an certification for all my certification entries. I use a
+      single certification system to manage all my sites. Based upon tagging, I then
+      publish each post out to its respective Github Page based repo.
+    termsOfService: http://stack.network/terms-of-service.html
+    version: ~
+  host: certification.api.kinlane.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /certification/:
+      get:
+        summary: all certifications
+        description: all certifications
+        operationId: getCertifications
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the certification
+        - in: query
+          name: appkey
+          description: your appkey for accessing the certification
+        - in: query
+          name: query
+          description: a text query to search across certification
+        responses:
+          200:
+            description: OK
+        tags:
+        - Certification
+        security: []
+      post:
+        summary: add a certification post
+        description: add a certification post
+        operationId: addCertification
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the certification
+        - in: query
+          name: appkey
+          description: your appkey for accessing the certification
+        - in: query
+          name: author
+          description: author of the certification
+        - in: query
+          name: body
+          description: full text for the certification
+        - in: query
+          name: curated_id
+          description: full text for the certification
+        - in: query
+          name: footer
+          description: curated id the certification originated from
+        - in: query
+          name: post_date
+          description: date the certification was posted
+        - in: query
+          name: status
+          description: status of the certification
+        - in: query
+          name: summary
+          description: summary for the certification
+        - in: query
+          name: title
+          description: ttle for the certification
+        responses:
+          200:
+            description: OK
+        tags:
+        - Certification
+        security: []
+    /certification/published/:
+      get:
+        summary: published certifications
+        description: published certifications
+        operationId: getPublishedCertifications
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the certification
+        - in: query
+          name: appkey
+          description: your appkey for accessing the certification
+        responses:
+          200:
+            description: OK
+        tags:
+        - Certification
+        security: []
+    /certification/tags/{tag}/certification/:
+      get:
+        summary: certification tags by week certifications
+        description: certification tags by week certifications
+        operationId: getCertificationTagCCertification
+        parameters:
+        - in: path
+          name: tag
+          description: the tag to filter by
+        - in: query
+          name: week
+          description: the week to filter by, defaults to this week
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /certification/{certification_id}/:
+      delete:
+        summary: delete certification
+        description: delete certification
+        operationId: deleteCertification
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the certification
+        - in: query
+          name: appkey
+          description: your appkey for accessing the certification
+        - in: path
+          name: certification_id
+          description: the unique id for certification entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Certification
+        security: []
+      get:
+        summary: Retrieve a certification using its slug
+        description: Returns the certification detail
+        operationId: getCertification
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the certification
+        - in: query
+          name: appkey
+          description: your appkey for accessing the certification
+        - in: path
+          name: certification_id
+          description: the unique id for certification entry
+        responses:
+          200:
+            description: OK
+        tags:
+        - Certification
+        security: []
+      put:
+        summary: update certification
+        description: update certification
+        operationId: updateCertification
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the certification
+        - in: query
+          name: appkey
+          description: your appkey for accessing the certification
+        - in: query
+          name: author
+          description: author of the certification
+        - in: query
+          name: body
+          description: full text for the certification
+        - in: path
+          name: certification_id
+          description: the unique id for certification entry
+        - in: query
+          name: curated_id
+          description: full text for the certification
+        - in: query
+          name: footer
+          description: curated id the certification originated from
+        - in: query
+          name: post_date
+          description: date the certification was posted
+        - in: query
+          name: status
+          description: status of the certification
+        - in: query
+          name: summary
+          description: summary for the certification
+        - in: query
+          name: title
+          description: ttle for the certification
+        responses:
+          200:
+            description: OK
+        tags:
+        - Certification
+        security: []
+    /certification/{certification_id}/tags/:
+      get:
+        summary: certification tags
+        description: certification tags
+        operationId: getcertificationTags
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the certification
+        - in: query
+          name: appkey
+          description: your appkey for accessing the certification
+        - in: path
+          name: certification_id
+          description: id for certification
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+      post:
+        summary: add tag to certification
+        description: add tag to certification
+        operationId: addCertificationTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the certification
+        - in: query
+          name: appkey
+          description: your appkey for accessing the certification
+        - in: path
+          name: certification_id
+          description: id for the certification
+        - in: query
+          name: tag
+          description: tag name
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /certification/{certification_id}/tags/{tag}:
+      delete:
+        summary: delete certification tag
+        description: delete certification tag
+        operationId: deletecertificationTag
+        parameters:
+        - in: query
+          name: appid
+          description: your appid for accessing the certification
+        - in: query
+          name: appkey
+          description: your appkey for accessing the certification
+        - in: path
+          name: certification_id
+          description: id for the certification
+        - in: path
+          name: tag
+          description: tag to remove from certification
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+  definitions:
+    certification:
+      properties:
+        certification_id:
+          description: This is a default description.
+          type: get
+        post_date:
+          description: This is a default description.
+          type: get
+        title:
+          description: This is a default description.
+          type: get
+        author:
+          description: This is a default description.
+          type: get
+        summary:
+          description: This is a default description.
+          type: get
+        body:
+          description: This is a default description.
+          type: get
+        footer:
+          description: This is a default description.
+          type: get
+        status:
+          description: This is a default description.
+          type: get
+        curated_id:
+          description: This is a default description.
+          type: get
+    tag:
+      properties:
+        tag_id:
+          description: This is a default description.
+          type: get
+        tag:
+          description: This is a default description.
+          type: get
+        api_count:
+          description: This is a default description.
+          type: get

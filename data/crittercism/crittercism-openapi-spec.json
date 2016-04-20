@@ -1,0 +1,1401 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Crittercism",
+		"description": "Crittercismu2019s REST API is intended to be incrementally discoverable. Starting from the allYourBase endpoint, a client should be able to determine the version of the API it wants to use, then progress toward endpoint discovery, and finally, get a token and begin retrieving data.",
+		"version": "v1.1"
+	},
+	"host": "developers.crittercism.com",
+	"basePath": "/v1.0",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/allyourbase": {
+			"get": {
+				"summary": "Get available API versions",
+				"description": "The version discovery endpoint lets clients determine which versions of the API are in service, and the base URIs where they can be reached.",
+				"operationId": "allYourBase",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/app/{appId}/crash/counts": {
+			"get": {
+				"summary": "Get crash counts for an app",
+				"description": "Get crash counts for the last 30 days for an app",
+				"operationId": "getAppCrashCounts",
+				"parameters": [{
+					"in": "path",
+					"name": "appId",
+					"description": "app Id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appVersion",
+					"description": "specific version of the app",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/app/{appId}/crash/summaries": {
+			"get": {
+				"summary": "Get crash summaries for an app",
+				"description": "Get the name, occurrence dates, reason, user counts, and a few other relevant properties of the crashes for an app.",
+				"operationId": "getAppCrashSummaries",
+				"parameters": [{
+					"in": "path",
+					"name": "appId",
+					"description": "app Id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appVersion",
+					"description": "specific version of the app",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "firstOccurredEnd",
+					"description": "ending date range of first occurrence of the crash (ISO 8601 datetime format: YYYY-MM-DDThh:mm:ssTZD where TZD is time zone designator Z or +hh:mm or -hh:mm)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "firstOccurredStart",
+					"description": "beginning date range of first occurrence of the crash (ISO 8601 datetime format: YYYY-MM-DDThh:mm:ssTZD where TZD is time zone designator Z or +hh:mm or -hh:mm)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "lastOccurredEnd",
+					"description": "ending date range of last occurrence of the crash (ISO 8601 datetime format: YYYY-MM-DDThh:mm:ssTZD where TZD is time zone designator Z or +hh:mm or -hh:mm)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "lastOccurredStart",
+					"description": "beginning date range of last occurrence of the crash (ISO 8601 datetime format: YYYY-MM-DDThh:mm:ssTZD where TZD is time zone designator Z or +hh:mm or -hh:mm)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sortBy",
+					"description": "Crash summary field to sort results by",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sortOrder",
+					"description": "Sort results in ascending or descending order",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "status",
+					"description": "Crash status",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/app/{appId}/exception/counts": {
+			"get": {
+				"summary": "Get exception counts for an app",
+				"description": "Get exception counts for the last 30 days for an app",
+				"operationId": "getAppExceptionCounts",
+				"parameters": [{
+					"in": "path",
+					"name": "appId",
+					"description": "app Id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appVersion",
+					"description": "specific version of the app",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/app/{appId}/exception/summaries": {
+			"get": {
+				"summary": "Get exception summaries for an app",
+				"description": "Get the name, occurrence dates, reason, user counts, and a few other relevant properties of the exceptions for an app.",
+				"operationId": "getAppExceptionSummaries",
+				"parameters": [{
+					"in": "path",
+					"name": "appId",
+					"description": "app Id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "appVersion",
+					"description": "specific version of the app",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "firstOccurredEnd",
+					"description": "ending date range of first occurrence of the exception (ISO 8601 datetime format: YYYY-MM-DDThh:mm:ssTZD where TZD is time zone designator Z or +hh:mm or -hh:mm)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "firstOccurredStart",
+					"description": "beginning date range of first occurrence of the exception (ISO 8601 datetime format: YYYY-MM-DDThh:mm:ssTZD where TZD is time zone designator Z or +hh:mm or -hh:mm)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "lastOccurredEnd",
+					"description": "ending date range of last occurrence of the exception (ISO 8601 datetime format: YYYY-MM-DDThh:mm:ssTZD where TZD is time zone designator Z or +hh:mm or -hh:mm)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "lastOccurredStart",
+					"description": "beginning date range of last occurrence of the exception (ISO 8601 datetime format: YYYY-MM-DDThh:mm:ssTZD where TZD is time zone designator Z or +hh:mm or -hh:mm)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sortBy",
+					"description": "Exception summary field to sort results by",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sortOrder",
+					"description": "Sort results in ascending or descending order",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "status",
+					"description": "Exception status",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/apps": {
+			"get": {
+				"summary": "Get properties about your apps",
+				"description": "The apps endpoint provides information about a customers mobile applications. The apps endpoint returns a list of apps with links to additional metric endpoints. Information requested in the attributes parameter is made available as a series of key-value pairs inside the object representing each app.",
+				"operationId": "getAppSummary",
+				"parameters": [{
+					"in": "query",
+					"name": "attributes",
+					"description": "The attributes about your apps that you would like to retrieve",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/apps/crash/counts": {
+			"post": {
+				"summary": "Get crash counts for one of more apps",
+				"description": "Get crash counts for the last 30 days for one or more apps.",
+				"operationId": "getAppsCrashCounts",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "Array of app selectors.  Each app selector must include an appId and optionally the appVersion",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/apps/crash/summaries": {
+			"post": {
+				"summary": "Get crash summaries for one of more apps",
+				"description": "Get the name, occurrence dates, reason, user counts, and a few other relevant properties of the crashes for one or more apps.",
+				"operationId": "getAppsCrashSummaries",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "Array of app selectors.  Each app selector must include an appId and optionally the appVersion",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "query",
+					"name": "firstOccurredEnd",
+					"description": "ending date range of first occurrence of the crash (ISO 8601 datetime format: YYYY-MM-DDThh:mm:ssTZD where TZD is time zone designator Z or +hh:mm or -hh:mm)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "firstOccurredStart",
+					"description": "beginning date range of first occurrence of the crash (ISO 8601 datetime format: YYYY-MM-DDThh:mm:ssTZD where TZD is time zone designator Z or +hh:mm or -hh:mm)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "lastOccurredEnd",
+					"description": "ending date range of last occurrence of the crash (ISO 8601 datetime format: YYYY-MM-DDThh:mm:ssTZD where TZD is time zone designator Z or +hh:mm or -hh:mm)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "lastOccurredStart",
+					"description": "beginning date range of last occurrence of the crash (ISO 8601 datetime format: YYYY-MM-DDThh:mm:ssTZD where TZD is time zone designator Z or +hh:mm or -hh:mm)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sortBy",
+					"description": "Crash summary field to sort results by",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sortOrder",
+					"description": "Sort results in ascending or descending order",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "status",
+					"description": "Crash status",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/apps/exception/counts": {
+			"post": {
+				"summary": "Get exception counts for one of more apps",
+				"description": "Get exception counts for the last 30 days for one or more apps.",
+				"operationId": "getAppsExceptionCounts",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "Array of app selectors.  Each app selector must include an appId and optionally the appVersion",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/apps/exception/summaries": {
+			"post": {
+				"summary": "Get exception summaries for one of more apps",
+				"description": "Get the name, occurrence dates, reason, user counts, and a few other relevant properties of the exceptions for one or more apps.",
+				"operationId": "getAppsExceptionSummaries",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "Array of app selectors.  Each app selector must include an appId and optionally the appVersion",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "query",
+					"name": "firstOccurredEnd",
+					"description": "ending date range of first occurrence of the exception (ISO 8601 datetime format: YYYY-MM-DDThh:mm:ssTZD where TZD is time zone designator Z or +hh:mm or -hh:mm)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "firstOccurredStart",
+					"description": "beginning date range of first occurrence of the exception (ISO 8601 datetime format: YYYY-MM-DDThh:mm:ssTZD where TZD is time zone designator Z or +hh:mm or -hh:mm)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "lastOccurredEnd",
+					"description": "ending date range of last occurrence of the exception (ISO 8601 datetime format: YYYY-MM-DDThh:mm:ssTZD where TZD is time zone designator Z or +hh:mm or -hh:mm)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "lastOccurredStart",
+					"description": "beginning date range of last occurrence of the exception (ISO 8601 datetime format: YYYY-MM-DDThh:mm:ssTZD where TZD is time zone designator Z or +hh:mm or -hh:mm)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sortBy",
+					"description": "Exception summary field to sort results by",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "sortOrder",
+					"description": "Sort results in ascending or descending order",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "status",
+					"description": "Exception status",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/crash/{hash}": {
+			"get": {
+				"summary": "Get crash details",
+				"description": "Get crash details by crash hash value",
+				"operationId": "getCrash",
+				"parameters": [{
+					"in": "query",
+					"name": "diagnostics",
+					"description": "include detailed diagnostics information for crash",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "hash",
+					"description": "crash unique hash value",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Update crash status and fix version",
+				"description": "Update crash status and fix version",
+				"operationId": "updateCrash",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "Updated crash status and fix version",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "hash",
+					"description": "crash unique hash value",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/errorMonitoring/graph": {
+			"post": {
+				"summary": "Retrieves time series data organized into buckets of one day",
+				"description": "The graph endpoint retrieves time-series data, organized into buckets of one day. This endpoint is useful for viewing how a metric has changed over time, for a particular app.",
+				"operationId": "graph",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "Graph query",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/errorMonitoring/pie": {
+			"post": {
+				"summary": "Retrieves absolute populations for certain slices of data",
+				"description": "The pie endpoint allows comparisons of the absolute population for certain slices of the data.",
+				"operationId": "pie",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "Pie query",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/errorMonitoring/sparklines": {
+			"post": {
+				"summary": "Retrieves several time series, each based on the value of a filter",
+				"description": "This endpoint retrieves several time series, each based on the value of a filter. Only one filter can be applied per endpoint call. The endpoint uses the same input format as the pie endpoint, described above, and the output is similar to the graph endpoint.",
+				"operationId": "sparkline",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "Sparkline query",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/exception/{hash}": {
+			"get": {
+				"summary": "Get exception details",
+				"description": "Get exception details by exception hash value",
+				"operationId": "getException",
+				"parameters": [{
+					"in": "query",
+					"name": "diagnostics",
+					"description": "include detailed diagnostics information for exception",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "hash",
+					"description": "exception unique hash value",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/performanceManagement/pie": {
+			"post": {
+				"summary": "Retrieves absolute populations for certain slices of data",
+				"description": "The pie endpoint allows querying the point-in-time value of a particular metric. Some filter/metric combinations require a Pro subscription.",
+				"operationId": "pie",
+				"parameters": [{
+					"in": "body",
+					"name": "body",
+					"description": "Pie query",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/v1.0/base": {
+			"get": {
+				"summary": "Get available actions for the v1.0 API",
+				"description": "This endpoint lets clients discover the endpoints available for a selected version of the API.",
+				"operationId": "getActions",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"CrashCountResponse": {
+			"properties": {
+				"date": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"value": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"appId": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"appId-appVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"CrashSummaryResponse": {
+			"properties": {
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"reason": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"displayReason": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"hash": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"firstOccurred": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"lastOccurred": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uniqueSessionCount": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"isSymbolized": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sessionCount": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"appId": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"appId-appVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ExceptionCountResponse": {
+			"properties": {
+				"date": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"value": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"appId": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"appId-appVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ExceptionSummaryResponse": {
+			"properties": {
+				"type": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"items": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"appId": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"appId-appVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"AppSummaryData": {
+			"properties": {
+				"links": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"appName": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"appType": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"appVersions": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"crashPercent": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"dau": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"latency": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"latestAppStoreReleaseDate": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"latestVersionString": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"linkToAppStore": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"iconURL": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"mau": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"rating": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"role": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"AppSummaryResponse": {
+			"properties": {
+				"$_app_id_1": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"$_app_id_n": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"AppSelectorInternal": {
+			"properties": {
+				"appId": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"appVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"AppSelector": {
+			"properties": {
+				"appSelectors": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"CrashCountResponseInternal": {
+			"properties": {
+				"date": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"value": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"CrashSummaryResponseInternal": {
+			"properties": {
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"reason": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"displayReason": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"hash": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"firstOccurred": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"lastOccurred": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uniqueSessionCount": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"isSymbolized": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sessionCount": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ExceptionCountResponseInternal": {
+			"properties": {
+				"date": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"value": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ExceptionSummaryResponseInternal": {
+			"properties": {
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"reason": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"displayReason": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"hash": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"firstOccurred": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"lastOccurred": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uniqueSessionCount": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"isSymbolized": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sessionCount": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"CountsByVersion": {
+			"properties": {
+				"total": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"appVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"DayCounts": {
+			"properties": {
+				"YYYY-MM-DD": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"DailyCountsByVersion": {
+			"properties": {
+				"total": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"appVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"CrashResponse": {
+			"properties": {
+				"appId": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"breadcrumbs": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"class": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"dailyOccurrencesByVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"diagnostics": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"displayReason": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"firstOccurred": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"hash": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"lastOccurred": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"reason": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sessionCountsByVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"stacktrace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"symbolizedStacktrace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uniqueSessionCountsByVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"unsymbolizedHash": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"UpdateCrashBody": {
+			"properties": {
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"fixVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"Filter": {
+			"properties": {
+				"appVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"os": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"carrier": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"device": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"service": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"GraphRequestInternal": {
+			"properties": {
+				"appId": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"appIds": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"graph": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"duration": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"filters": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"PieRequestInternal": {
+			"properties": {
+				"appId": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"appIds": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"graph": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"groupBy": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"duration": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"filters": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"SparklineRequestInternal": {
+			"properties": {
+				"appId": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"appIds": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"graph": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"groupBy": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"duration": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"filters": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"SeriesData": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"label": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"points": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"SliceData": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"label": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"value": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"SeriesCollection": {
+			"properties": {
+				"start": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"end": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"interval": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"series": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"SlicesCollection": {
+			"properties": {
+				"start": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"end": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"interval": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"slices": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"GraphRequest": {
+			"properties": {
+				"params": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"GraphResponse": {
+			"properties": {
+				"params": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"data": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"PieRequest": {
+			"properties": {
+				"params": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"PieResponse": {
+			"properties": {
+				"params": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"data": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"SparklineRequest": {
+			"properties": {
+				"params": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"SparklineResponse": {
+			"properties": {
+				"params": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"data": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ExceptionResponse": {
+			"properties": {
+				"appId": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"breadcrumbs": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"class": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"dailyOccurrencesByVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"diagnostics": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"displayReason": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"firstOccurred": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"hash": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"lastOccurred": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"reason": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"sessionCountsByVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"stacktrace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"symbolizedStacktrace": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"uniqueSessionCountsByVersion": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"unsymbolizedHash": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"ServiceMonitoringRequestInternal": {
+			"properties": {
+				"appId": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"appIds": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"graph": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"duration": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"groupBy": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"filters": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

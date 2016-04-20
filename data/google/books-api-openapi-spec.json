@@ -1,0 +1,3380 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Books API",
+		"description": "Lets you search for books and manage your Google Books library.",
+		"contact": {
+			"name": "Google",
+			"url": "https://google.com"
+		},
+		"version": "v1"
+	},
+	"host": "www.googleapis.com",
+	"basePath": "/books/v1",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/cloudloading/addBook": {
+			"parameters": {
+				"summary": "Add Book Parameters",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["books"],
+				"security": []
+			},
+			"post": {
+				"summary": "Add Book",
+				"description": "",
+				"operationId": "books.cloudloading.addBook",
+				"parameters": [{
+					"in": "query",
+					"name": "drive_document_id",
+					"description": "A drive document id. The upload_client_token must not be set.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "mime_type",
+					"description": "The document MIME type. It can be set only if the drive_document_id is set.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "The document name. It can be set only if the drive_document_id is set.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "upload_client_token",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["books"],
+				"security": []
+			}
+		},
+		"/cloudloading/deleteBook": {
+			"parameters": {
+				"summary": "Delete Book Parameters",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["books"],
+				"security": []
+			},
+			"post": {
+				"summary": "Delete Book",
+				"description": "Remove the book and its contents",
+				"operationId": "books.cloudloading.deleteBook",
+				"parameters": [{
+					"in": "query",
+					"name": "volumeId",
+					"description": "The id of the book to be removed.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["books"],
+				"security": []
+			}
+		},
+		"/cloudloading/updateBook": {
+			"parameters": {
+				"summary": "Update Book Parameters",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["books"],
+				"security": []
+			},
+			"post": {
+				"summary": "Update Book",
+				"description": "",
+				"operationId": "books.cloudloading.updateBook",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["books"],
+				"security": []
+			}
+		},
+		"/dictionary/listOfflineMetadata": {
+			"get": {
+				"summary": "Get Dictionary Offline Metadata",
+				"description": "Returns a list of offline dictionary meatadata available",
+				"operationId": "books.dictionary.listOfflineMetadata",
+				"parameters": [{
+					"in": "query",
+					"name": "cpksver",
+					"description": "The device/version ID from which to request the data.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["dictionary"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Dictionary Offline Metadata",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["dictionary"],
+				"security": []
+			}
+		},
+		"/myconfig/getUserSettings": {
+			"get": {
+				"summary": "Get User Settings",
+				"description": "Gets the current settings for the user.",
+				"operationId": "books.myconfig.getUserSettings",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["configuration"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get User Settings",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["configuration"],
+				"security": []
+			}
+		},
+		"/myconfig/releaseDownloadAccess": {
+			"parameters": {
+				"summary": "Release Download Access",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["configuration"],
+				"security": []
+			},
+			"post": {
+				"summary": "Release Download Access",
+				"description": "Release downloaded content access restriction.",
+				"operationId": "books.myconfig.releaseDownloadAccess",
+				"parameters": [{
+					"in": "query",
+					"name": "cpksver",
+					"description": "The device/version ID from which to release the restriction.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "locale",
+					"description": "ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "volumeIds",
+					"description": "The volume(s) to release restrictions for.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["configuration"],
+				"security": []
+			}
+		},
+		"/myconfig/requestAccess": {
+			"parameters": {
+				"summary": "Request Access",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["configuration"],
+				"security": []
+			},
+			"post": {
+				"summary": "Request Access",
+				"description": "Request concurrent and download access restrictions.",
+				"operationId": "books.myconfig.requestAccess",
+				"parameters": [{
+					"in": "query",
+					"name": "cpksver",
+					"description": "The device/version ID from which to request the restrictions.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "licenseTypes",
+					"description": "The type of access license to request. If not specified, the default is BOTH.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "locale",
+					"description": "ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "nonce",
+					"description": "The client nonce value.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "volumeId",
+					"description": "The volume to request concurrent/download restrictions for.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["configuration"],
+				"security": []
+			}
+		},
+		"/myconfig/syncVolumeLicenses": {
+			"parameters": {
+				"summary": "Sync Volume Licenses",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["configuration"],
+				"security": []
+			},
+			"post": {
+				"summary": "Sync Volume Licenses",
+				"description": "Request downloaded content access for specified volumes on the My eBooks shelf.",
+				"operationId": "books.myconfig.syncVolumeLicenses",
+				"parameters": [{
+					"in": "query",
+					"name": "cpksver",
+					"description": "The device/version ID from which to release the restriction.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "features",
+					"description": "List of features supported by the client, i.e., RENTALS",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "locale",
+					"description": "ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "nonce",
+					"description": "The client nonce value.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "showPreorders",
+					"description": "Set to true to show pre-ordered books. Defaults to false.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "volumeIds",
+					"description": "The volume(s) to request download restrictions for.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["configuration"],
+				"security": []
+			}
+		},
+		"/myconfig/updateUserSettings": {
+			"parameters": {
+				"summary": "Update User Settings",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["configuration"],
+				"security": []
+			},
+			"post": {
+				"summary": "Update User Settings",
+				"description": "Sets the settings for the user. If a sub-object is specified, it will overwrite the existing sub-object stored in the server. Unspecified sub-objects will retain the existing value.",
+				"operationId": "books.myconfig.updateUserSettings",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["configuration"],
+				"security": []
+			}
+		},
+		"/mylibrary/annotations": {
+			"get": {
+				"summary": "Get Annotations",
+				"description": "Retrieves a list of annotations, possibly filtered.",
+				"operationId": "books.mylibrary.annotations.list",
+				"parameters": [{
+					"in": "query",
+					"name": "contentVersion",
+					"description": "The content version for the requested volume.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "layerId",
+					"description": "The layer ID to limit annotation by.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "layerIds",
+					"description": "The layer ID(s) to limit annotation by.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "Maximum number of results to return",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageToken",
+					"description": "The value of the nextToken from the previous page.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "showDeleted",
+					"description": "Set to true to return deleted annotations. updatedMin must be in the request to use this. Defaults to false.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "updatedMax",
+					"description": "RFC 3339 timestamp to restrict to items updated prior to this timestamp (exclusive).",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "updatedMin",
+					"description": "RFC 3339 timestamp to restrict to items updated since this timestamp (inclusive).",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "volumeId",
+					"description": "The volume to restrict annotations to.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Annotations",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			},
+			"post": {
+				"summary": "Add Annotation",
+				"description": "Inserts a new annotation.",
+				"operationId": "books.mylibrary.annotations.insert",
+				"parameters": [{
+					"in": "query",
+					"name": "country",
+					"description": "ISO-3166-1 code to override the IP-based location.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "showOnlySummaryInResponse",
+					"description": "Requests that only the summary of the specified layer be provided in the response.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			}
+		},
+		"/mylibrary/annotations/summary": {
+			"parameters": {
+				"summary": "Add Annotation Summary",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			},
+			"post": {
+				"summary": "Add Annotation Summary",
+				"description": "Gets the summary of specified layers.",
+				"operationId": "books.mylibrary.annotations.summary",
+				"parameters": [{
+					"in": "query",
+					"name": "layerIds",
+					"description": "Array of layer IDs to get the summary for.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "volumeId",
+					"description": "Volume id to get the summary for.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			}
+		},
+		"/mylibrary/annotations/{annotationId}": {
+			"delete": {
+				"summary": "Delete Annotation",
+				"description": "Deletes an annotation.",
+				"operationId": "books.mylibrary.annotations.delete",
+				"parameters": [{
+					"in": "path",
+					"name": "annotationId",
+					"description": "The ID for the annotation to delete.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Delete Annotation",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			},
+			"put": {
+				"summary": "Update Annotation",
+				"description": "Updates an existing annotation.",
+				"operationId": "books.mylibrary.annotations.update",
+				"parameters": [{
+					"in": "path",
+					"name": "annotationId",
+					"description": "The ID for the annotation to update.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			}
+		},
+		"/mylibrary/bookshelves": {
+			"get": {
+				"summary": "Get Bookshelves",
+				"description": "Retrieves a list of bookshelves belonging to the authenticated user.",
+				"operationId": "books.mylibrary.bookshelves.list",
+				"parameters": [{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["bookshelf"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Bookshelves",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			}
+		},
+		"/mylibrary/bookshelves/{shelf}": {
+			"get": {
+				"summary": "Get Bookshelf",
+				"description": "Retrieves metadata for a specific bookshelf belonging to the authenticated user.",
+				"operationId": "books.mylibrary.bookshelves.get",
+				"parameters": [{
+					"in": "path",
+					"name": "shelf",
+					"description": "ID of bookshelf to retrieve.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Bookshelf",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			}
+		},
+		"/mylibrary/bookshelves/{shelf}/addVolume": {
+			"parameters": {
+				"summary": "Add Volume To Bookshelf",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			},
+			"post": {
+				"summary": "Add Volume To Bookshelf",
+				"description": "Adds a volume to a bookshelf.",
+				"operationId": "books.mylibrary.bookshelves.addVolume",
+				"parameters": [{
+					"in": "query",
+					"name": "reason",
+					"description": "The reason for which the book is added to the library.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "shelf",
+					"description": "ID of bookshelf to which to add a volume.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "volumeId",
+					"description": "ID of volume to add.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			}
+		},
+		"/mylibrary/bookshelves/{shelf}/clearVolumes": {
+			"parameters": {
+				"summary": "Clear Volumes From Bookshelf",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			},
+			"post": {
+				"summary": "Clear Volumes From Bookshelf",
+				"description": "Clears all volumes from a bookshelf.",
+				"operationId": "books.mylibrary.bookshelves.clearVolumes",
+				"parameters": [{
+					"in": "path",
+					"name": "shelf",
+					"description": "ID of bookshelf from which to remove a volume.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			}
+		},
+		"/mylibrary/bookshelves/{shelf}/moveVolume": {
+			"parameters": {
+				"summary": "Move Volume From Bookshelf",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			},
+			"post": {
+				"summary": "Move Volume From Bookshelf",
+				"description": "Moves a volume within a bookshelf.",
+				"operationId": "books.mylibrary.bookshelves.moveVolume",
+				"parameters": [{
+					"in": "path",
+					"name": "shelf",
+					"description": "ID of bookshelf with the volume.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "volumeId",
+					"description": "ID of volume to move.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "volumePosition",
+					"description": "Position on shelf to move the item (0 puts the item before the current first item, 1 puts it between the first and the second and so on.)",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			}
+		},
+		"/mylibrary/bookshelves/{shelf}/removeVolume": {
+			"parameters": {
+				"summary": "Remove Volume From Bookshelf",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			},
+			"post": {
+				"summary": "Remove Volume From Bookshelf",
+				"description": "Removes a volume from a bookshelf.",
+				"operationId": "books.mylibrary.bookshelves.removeVolume",
+				"parameters": [{
+					"in": "query",
+					"name": "reason",
+					"description": "The reason for which the book is removed from the library.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "shelf",
+					"description": "ID of bookshelf from which to remove a volume.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "volumeId",
+					"description": "ID of volume to remove.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			}
+		},
+		"/mylibrary/bookshelves/{shelf}/volumes": {
+			"get": {
+				"summary": "Get Bookshelf Volumes",
+				"description": "Gets volume information for volumes on a bookshelf.",
+				"operationId": "books.mylibrary.bookshelves.volumes.list",
+				"parameters": [{
+					"in": "query",
+					"name": "country",
+					"description": "ISO-3166-1 code to override the IP-based location.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "Maximum number of results to return",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Restrict information returned to a set of selected fields.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "Full-text search query string in this bookshelf.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "shelf",
+					"description": "The bookshelf ID or name retrieve volumes for.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "showPreorders",
+					"description": "Set to true to show pre-ordered books. Defaults to false.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "startIndex",
+					"description": "Index of the first element to return (starts at 0)",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Bookshelf Volumes",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["annotations"],
+				"security": []
+			}
+		},
+		"/mylibrary/readingpositions/{volumeId}": {
+			"get": {
+				"summary": "Get Volume Reading Position",
+				"description": "Retrieves my reading position information for a volume.",
+				"operationId": "books.mylibrary.readingpositions.get",
+				"parameters": [{
+					"in": "query",
+					"name": "contentVersion",
+					"description": "Volume content version for which this reading position is requested.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "volumeId",
+					"description": "ID of volume for which to retrieve a reading position.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["reading"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Volume Reading Position",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["reading"],
+				"security": []
+			}
+		},
+		"/mylibrary/readingpositions/{volumeId}/setPosition": {
+			"parameters": {
+				"summary": "Set Volume Reading Position",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["reading"],
+				"security": []
+			},
+			"post": {
+				"summary": "Set Volume Reading Position",
+				"description": "Sets my reading position information for a volume.",
+				"operationId": "books.mylibrary.readingpositions.setPosition",
+				"parameters": [{
+					"in": "query",
+					"name": "action",
+					"description": "Action that caused this reading position to be set.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "contentVersion",
+					"description": "Volume content version for which this reading position applies.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "deviceCookie",
+					"description": "Random persistent device cookie optional on set position.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "position",
+					"description": "Position string for the new volume reading position.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "timestamp",
+					"description": "RFC 3339 UTC format timestamp associated with this reading position.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "volumeId",
+					"description": "ID of volume for which to update the reading position.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["reading"],
+				"security": []
+			}
+		},
+		"/onboarding/listCategories": {
+			"get": {
+				"summary": "Get Listing Categories",
+				"description": "List categories for onboarding experience.",
+				"operationId": "books.onboarding.listCategories",
+				"parameters": [{
+					"in": "query",
+					"name": "locale",
+					"description": "ISO-639-1 language and ISO-3166-1 country code. Default is en-US if unset.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["categories"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Listing Categories",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["categories"],
+				"security": []
+			}
+		},
+		"/onboarding/listCategoryVolumes": {
+			"get": {
+				"summary": "Get Listing Category Volumes",
+				"description": "List available volumes under categories for onboarding experience.",
+				"operationId": "books.onboarding.listCategoryVolumes",
+				"parameters": [{
+					"in": "query",
+					"name": "categoryId",
+					"description": "List of category ids requested.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "locale",
+					"description": "ISO-639-1 language and ISO-3166-1 country code. Default is en-US if unset.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxAllowedMaturityRating",
+					"description": "The maximum allowed maturity rating of returned volumes. Books with a higher maturity rating are filtered out.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageSize",
+					"description": "Number of maximum results per page to be included in the response.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageToken",
+					"description": "The value of the nextToken from the previous page.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["categories"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Listing Category Volumes",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["categories"],
+				"security": []
+			}
+		},
+		"/promooffer/accept": {
+			"parameters": {
+				"summary": "Accept Promo Offer",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["promotion"],
+				"security": []
+			},
+			"post": {
+				"summary": "Accept Promo Offer",
+				"description": "",
+				"operationId": "books.promooffer.accept",
+				"parameters": [{
+					"in": "query",
+					"name": "androidId",
+					"description": "device android_id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "device",
+					"description": "device device",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "manufacturer",
+					"description": "device manufacturer",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "model",
+					"description": "device model",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "offerId",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "product",
+					"description": "device product",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "serial",
+					"description": "device serial",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "volumeId",
+					"description": "Volume id to exercise the offer",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["promotion"],
+				"security": []
+			}
+		},
+		"/promooffer/dismiss": {
+			"parameters": {
+				"summary": "Dismiss Promo Offer",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["promotion"],
+				"security": []
+			},
+			"post": {
+				"summary": "Dismiss Promo Offer",
+				"description": "",
+				"operationId": "books.promooffer.dismiss",
+				"parameters": [{
+					"in": "query",
+					"name": "androidId",
+					"description": "device android_id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "device",
+					"description": "device device",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "manufacturer",
+					"description": "device manufacturer",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "model",
+					"description": "device model",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "offerId",
+					"description": "Offer to dimiss",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "product",
+					"description": "device product",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "serial",
+					"description": "device serial",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["promotion"],
+				"security": []
+			}
+		},
+		"/promooffer/get": {
+			"get": {
+				"summary": "Get Promo Offer",
+				"description": "Returns a list of promo offers available to the user",
+				"operationId": "books.promooffer.get",
+				"parameters": [{
+					"in": "query",
+					"name": "androidId",
+					"description": "device android_id",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "device",
+					"description": "device device",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "manufacturer",
+					"description": "device manufacturer",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "model",
+					"description": "device model",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "product",
+					"description": "device product",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "serial",
+					"description": "device serial",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["promotion"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Promo Offer",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["promotion"],
+				"security": []
+			}
+		},
+		"/users/{userId}/bookshelves": {
+			"get": {
+				"summary": "Get User Bookshelf",
+				"description": "Retrieves a list of public bookshelves for the specified user.",
+				"operationId": "books.bookshelves.list",
+				"parameters": [{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "ID of user for whom to retrieve bookshelves.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["bookshelf"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get User Bookshelf",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["bookshelf"],
+				"security": []
+			}
+		},
+		"/users/{userId}/bookshelves/{shelf}": {
+			"get": {
+				"summary": "Get User Bookshelf Shelf",
+				"description": "Retrieves metadata for a specific bookshelf for the specified user.",
+				"operationId": "books.bookshelves.get",
+				"parameters": [{
+					"in": "path",
+					"name": "shelf",
+					"description": "ID of bookshelf to retrieve.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "ID of user for whom to retrieve bookshelves.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["bookshelf"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get User Bookshelf Shelf",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["bookshelf"],
+				"security": []
+			}
+		},
+		"/users/{userId}/bookshelves/{shelf}/volumes": {
+			"get": {
+				"summary": "Get User Bookshelf Shelf Volumes",
+				"description": "Retrieves volumes in a specific bookshelf for the specified user.",
+				"operationId": "books.bookshelves.volumes.list",
+				"parameters": [{
+					"in": "query",
+					"name": "maxResults",
+					"description": "Maximum number of results to return",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "shelf",
+					"description": "ID of bookshelf to retrieve volumes.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "showPreorders",
+					"description": "Set to true to show pre-ordered books. Defaults to false.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "startIndex",
+					"description": "Index of the first element to return (starts at 0)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "userId",
+					"description": "ID of user for whom to retrieve bookshelf volumes.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["bookshelf"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get User Bookshelf Shelf Volumes",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["bookshelf"],
+				"security": []
+			}
+		},
+		"/volumes": {
+			"get": {
+				"summary": "Get Volumes",
+				"description": "Performs a book search.",
+				"operationId": "books.volumes.list",
+				"parameters": [{
+					"in": "query",
+					"name": "download",
+					"description": "Restrict to volumes by download availability.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "filter",
+					"description": "Filter search results.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "langRestrict",
+					"description": "Restrict results to books with this language code.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "libraryRestrict",
+					"description": "Restrict search to this users library.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "Maximum number of results to return.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "orderBy",
+					"description": "Sort search results.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "partner",
+					"description": "Restrict and brand results for partner ID.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "printType",
+					"description": "Restrict to books or magazines.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Restrict information returned to a set of selected fields.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "q",
+					"description": "Full-text search query string.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "showPreorders",
+					"description": "Set to true to show books available for preorder. Defaults to false.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "startIndex",
+					"description": "Index of the first result to return (starts at 0)",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Volumes",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			}
+		},
+		"/volumes/mybooks": {
+			"get": {
+				"summary": "Get Volumes Books",
+				"description": "Return a list of books in My Library.",
+				"operationId": "books.volumes.mybooks.list",
+				"parameters": [{
+					"in": "query",
+					"name": "acquireMethod",
+					"description": "How the book was aquired",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "locale",
+					"description": "ISO-639-1 language and ISO-3166-1 country code. Ex:en_US. Used for generating recommendations.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "Maximum number of results to return.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "processingState",
+					"description": "The processing state of the user uploaded volumes to be returned. Applicable only if the UPLOADED is specified in the acquireMethod.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "startIndex",
+					"description": "Index of the first result to return (starts at 0)",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Volumes Books",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			}
+		},
+		"/volumes/recommended": {
+			"get": {
+				"summary": "Get Volumes Recommended",
+				"description": "Return a list of recommended books for the current user.",
+				"operationId": "books.volumes.recommended.list",
+				"parameters": [{
+					"in": "query",
+					"name": "locale",
+					"description": "ISO-639-1 language and ISO-3166-1 country code. Ex: en_US. Used for generating recommendations.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxAllowedMaturityRating",
+					"description": "The maximum allowed maturity rating of returned recommendations. Books with a higher maturity rating are filtered out.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Volumes Recommended",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			}
+		},
+		"/volumes/recommended/rate": {
+			"parameters": {
+				"summary": "Get Volumes Recommended Rate",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			},
+			"post": {
+				"summary": "Get Volumes Recommended Rate",
+				"description": "Rate a recommended book for the current user.",
+				"operationId": "books.volumes.recommended.rate",
+				"parameters": [{
+					"in": "query",
+					"name": "locale",
+					"description": "ISO-639-1 language and ISO-3166-1 country code. Ex: en_US. Used for generating recommendations.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "rating",
+					"description": "Rating to be given to the volume.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "volumeId",
+					"description": "ID of the source volume.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			}
+		},
+		"/volumes/useruploaded": {
+			"get": {
+				"summary": "Get Volumes Uploaded",
+				"description": "Return a list of books uploaded by the current user.",
+				"operationId": "books.volumes.useruploaded.list",
+				"parameters": [{
+					"in": "query",
+					"name": "locale",
+					"description": "ISO-639-1 language and ISO-3166-1 country code. Ex: en_US. Used for generating recommendations.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "Maximum number of results to return.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "processingState",
+					"description": "The processing state of the user uploaded volumes to be returned.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "startIndex",
+					"description": "Index of the first result to return (starts at 0)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "volumeId",
+					"description": "The ids of the volumes to be returned. If not specified all that match the processingState are returned.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Volumes Uploaded",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			}
+		},
+		"/volumes/{volumeId}": {
+			"get": {
+				"summary": "Get Volume",
+				"description": "Gets volume information for a single volume.",
+				"operationId": "books.volumes.get",
+				"parameters": [{
+					"in": "query",
+					"name": "country",
+					"description": "ISO-3166-1 code to override the IP-based location.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "partner",
+					"description": "Brand results for partner ID.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "projection",
+					"description": "Restrict information returned to a set of selected fields.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_library_consistent_read",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "volumeId",
+					"description": "ID of volume to retrieve.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Volume",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			}
+		},
+		"/volumes/{volumeId}/associated": {
+			"get": {
+				"summary": "Get Associated Volumes",
+				"description": "Return a list of associated books.",
+				"operationId": "books.volumes.associated.list",
+				"parameters": [{
+					"in": "query",
+					"name": "association",
+					"description": "Association type.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "locale",
+					"description": "ISO-639-1 language and ISO-3166-1 country code. Ex: en_US. Used for generating recommendations.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxAllowedMaturityRating",
+					"description": "The maximum allowed maturity rating of returned recommendations. Books with a higher maturity rating are filtered out.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "volumeId",
+					"description": "ID of the source volume.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Associated Volumes",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			}
+		},
+		"/volumes/{volumeId}/layers/{layerId}": {
+			"get": {
+				"summary": "Get Volume Layer",
+				"description": "Gets the volume annotations for a volume and layer.",
+				"operationId": "books.layers.volumeAnnotations.list",
+				"parameters": [{
+					"in": "query",
+					"name": "contentVersion",
+					"description": "The content version for the requested volume.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "endOffset",
+					"description": "The end offset to end retrieving data from.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "endPosition",
+					"description": "The end position to end retrieving data from.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "layerId",
+					"description": "The ID for the layer to get the annotations.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "locale",
+					"description": "The locale information for the data. ISO-639-1 language and ISO-3166-1 country code. Ex: en_US.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "Maximum number of results to return",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageToken",
+					"description": "The value of the nextToken from the previous page.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "showDeleted",
+					"description": "Set to true to return deleted annotations. updatedMin must be in the request to use this. Defaults to false.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "startOffset",
+					"description": "The start offset to start retrieving data from.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "startPosition",
+					"description": "The start position to start retrieving data from.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "updatedMax",
+					"description": "RFC 3339 timestamp to restrict to items updated prior to this timestamp (exclusive).",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "updatedMin",
+					"description": "RFC 3339 timestamp to restrict to items updated since this timestamp (inclusive).",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "volumeAnnotationsVersion",
+					"description": "The version of the volume annotations that you are requesting.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "volumeId",
+					"description": "The volume to retrieve annotations for.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Volume Layer",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			}
+		},
+		"/volumes/{volumeId}/layers/{layerId}/annotations/{annotationId}": {
+			"get": {
+				"summary": "Get Volume Layer Annotations",
+				"description": "Gets the volume annotation.",
+				"operationId": "books.layers.volumeAnnotations.get",
+				"parameters": [{
+					"in": "path",
+					"name": "annotationId",
+					"description": "The ID of the volume annotation to retrieve.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "layerId",
+					"description": "The ID for the layer to get the annotations.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "locale",
+					"description": "The locale information for the data. ISO-639-1 language and ISO-3166-1 country code. Ex: en_US.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "volumeId",
+					"description": "The volume to retrieve annotations for.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Volume Layer Annotations",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			}
+		},
+		"/volumes/{volumeId}/layers/{layerId}/data": {
+			"get": {
+				"summary": "Get Volume Layer Data",
+				"description": "Gets the annotation data for a volume and layer.",
+				"operationId": "books.layers.annotationData.list",
+				"parameters": [{
+					"in": "query",
+					"name": "annotationDataId",
+					"description": "The list of Annotation Data Ids to retrieve. Pagination is ignored if this is set.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "contentVersion",
+					"description": "The content version for the requested volume.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "h",
+					"description": "The requested pixel height for any images. If height is provided width must also be provided.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "layerId",
+					"description": "The ID for the layer to get the annotation data.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "locale",
+					"description": "The locale information for the data. ISO-639-1 language and ISO-3166-1 country code. Ex: en_US.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "Maximum number of results to return",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageToken",
+					"description": "The value of the nextToken from the previous page.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "scale",
+					"description": "The requested scale for the image.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "updatedMax",
+					"description": "RFC 3339 timestamp to restrict to items updated prior to this timestamp (exclusive).",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "updatedMin",
+					"description": "RFC 3339 timestamp to restrict to items updated since this timestamp (inclusive).",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "volumeId",
+					"description": "The volume to retrieve annotation data for.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "w",
+					"description": "The requested pixel width for any images. If width is provided height must also be provided.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Volume Layer Data",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			}
+		},
+		"/volumes/{volumeId}/layers/{layerId}/data/{annotationDataId}": {
+			"get": {
+				"summary": "Get Volume Layer Data Annotations",
+				"description": "Gets the annotation data.",
+				"operationId": "books.layers.annotationData.get",
+				"parameters": [{
+					"in": "query",
+					"name": "allowWebDefinitions",
+					"description": "For the dictionary layer. Whether or not to allow web definitions.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "annotationDataId",
+					"description": "The ID of the annotation data to retrieve.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "contentVersion",
+					"description": "The content version for the volume you are trying to retrieve.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "h",
+					"description": "The requested pixel height for any images. If height is provided width must also be provided.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "layerId",
+					"description": "The ID for the layer to get the annotations.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "locale",
+					"description": "The locale information for the data. ISO-639-1 language and ISO-3166-1 country code. Ex: en_US.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "scale",
+					"description": "The requested scale for the image.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "volumeId",
+					"description": "The volume to retrieve annotations for.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "w",
+					"description": "The requested pixel width for any images. If width is provided height must also be provided.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Volume Layer Data Annotations",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			}
+		},
+		"/volumes/{volumeId}/layersummary": {
+			"get": {
+				"summary": "Get Volume Layer Summaries",
+				"description": "List the layer summaries for a volume.",
+				"operationId": "books.layers.list",
+				"parameters": [{
+					"in": "query",
+					"name": "contentVersion",
+					"description": "The content version for the requested volume.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "maxResults",
+					"description": "Maximum number of results to return",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "pageToken",
+					"description": "The value of the nextToken from the previous page.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "volumeId",
+					"description": "The volume to retrieve layers for.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Volume Layer Summaries",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			}
+		},
+		"/volumes/{volumeId}/layersummary/{summaryId}": {
+			"get": {
+				"summary": "Get Volume Layer Summary",
+				"description": "Gets the layer summary for a volume.",
+				"operationId": "books.layers.get",
+				"parameters": [{
+					"in": "query",
+					"name": "contentVersion",
+					"description": "The content version for the requested volume.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "source",
+					"description": "String to identify the originator of this request.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "summaryId",
+					"description": "The ID for the layer to get the summary for.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "volumeId",
+					"description": "The volume to retrieve layers for.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			},
+			"parameters": {
+				"summary": "Get Volume Layer Summary",
+				"description": "",
+				"operationId": "",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["volumes"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"Annotation": {
+			"properties": {
+				"afterSelectedText": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"beforeSelectedText": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"clientVersionRanges": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"created": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"currentVersionRanges": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"data": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"deleted": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"highlightStyle": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"layerId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"layerSummary": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"pageIds": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"selectedText": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"updated": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"volumeId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Annotationdata": {
+			"properties": {
+				"annotationType": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"encoded_data": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"layerId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"updated": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"volumeId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Annotations": {
+			"properties": {
+				"items": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"nextPageToken": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"totalItems": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"AnnotationsSummary": {
+			"properties": {
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"layers": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Annotationsdata": {
+			"properties": {
+				"items": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"nextPageToken": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"totalItems": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"BooksAnnotationsRange": {
+			"properties": {
+				"endOffset": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"endPosition": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"startOffset": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"startPosition": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"BooksCloudloadingResource": {
+			"properties": {
+				"author": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"processingState": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"volumeId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"BooksVolumesRecommendedRateResponse": {
+			"properties": {
+				"consistency_token": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Bookshelf": {
+			"properties": {
+				"access": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"created": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"description": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"updated": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"volumeCount": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"volumesLastUpdated": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Bookshelves": {
+			"properties": {
+				"items": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Category": {
+			"properties": {
+				"items": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"ConcurrentAccessRestriction": {
+			"properties": {
+				"deviceAllowed": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"maxConcurrentDevices": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"message": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"nonce": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"reasonCode": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"restricted": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"signature": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"source": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"timeWindowSeconds": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"volumeId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Dictlayerdata": {
+			"properties": {
+				"common": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"dict": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"DownloadAccessRestriction": {
+			"properties": {
+				"deviceAllowed": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"downloadsAcquired": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"justAcquired": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"maxDownloadDevices": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"message": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"nonce": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"reasonCode": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"restricted": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"signature": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"source": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"volumeId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"DownloadAccesses": {
+			"properties": {
+				"downloadAccessList": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Geolayerdata": {
+			"properties": {
+				"common": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"geo": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Layersummaries": {
+			"properties": {
+				"items": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"totalItems": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Layersummary": {
+			"properties": {
+				"annotationCount": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"annotationTypes": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"annotationsDataLink": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"annotationsLink": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"contentVersion": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"dataCount": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"layerId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"selfLink": {
+					"description": "test",
+					"type": "string"
+				},
+				"updated": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"volumeAnnotationsVersion": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"volumeId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Metadata": {
+			"properties": {
+				"items": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Offers": {
+			"properties": {
+				"items": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"ReadingPosition": {
+			"properties": {
+				"epubCfiPosition": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"gbImagePosition": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"gbTextPosition": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"pdfPosition": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"updated": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"volumeId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"RequestAccess": {
+			"properties": {
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Review": {
+			"properties": {
+				"author": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"content": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"date": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"fullTextUrl": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"rating": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"source": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"volumeId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Usersettings": {
+			"properties": {
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"notesExport": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Volume": {
+			"properties": {
+				"accessInfo": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"etag": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"layerInfo": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"recommendedInfo": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"saleInfo": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"searchInfo": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"userInfo": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"volumeInfo": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Volume2": {
+			"properties": {
+				"items": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"nextPageToken": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Volumeannotation": {
+			"properties": {
+				"annotationDataId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"annotationDataLink": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"annotationType": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"contentRanges": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"data": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"deleted": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"layerId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"pageIds": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"selectedText": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"selfLink": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"updated": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"volumeId": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Volumeannotations": {
+			"properties": {
+				"items": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"nextPageToken": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"totalItems": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"version": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		},
+		"Volumes": {
+			"properties": {
+				"items": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"kind": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				},
+				"totalItems": {
+					"description": "This is a default description.",
+					"type": "parameters"
+				}
+			}
+		}
+	}
+}

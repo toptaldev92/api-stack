@@ -1,0 +1,1606 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "API Documentation",
+		"description": "## IntroductionnnThe import.io API is a [REST](http://en.wikipedia.org/wiki/Representational_state_transfer)ful API. It is designed as much as possible to have resource-oriented URLs and to use HTTP status codes to indicate API status. nnWe use standard HTTP which can be understood by any HTTP client, and we support [CORS](http://enable-cors.org/) to allow you to interact with our API from a client-side web application. Remember, you should never expose your secret API key in any public client-side code.nnJSON is always returned from the API, including errors.nnimport.io uses conventional HTTP response codes to indicate success or failure of an API request. In general, codes in the 2xx range indicate success, codes in the 4xx range indicate an error that resulted from the provided information (e.g. a required parameter was missing), and codes in the 5xx range indicate an error with our servers.nnAll API requests *should* be made over HTTPS to `https://api.import.io/`nnThis documentation is generated from a [Swagger 2.0 definition](#swagger), which you can use to [access the APIs from node.js](https://github.com/swagger-api/swagger-js), or generate [client libraries for other languages](https://github.com/swagger-api/swagger-codegen).nnnn## API AuthenticationnnYou authenticate to the import.io API by providing your API key as URL query string parameter `_apikey`. You can manage your API key from [your account](https://import.io/data/account/). Your API key allows unrestricted privileges your account, so keep it secret!nnWhen you are logged in, *submit your password in this page header* to see the API key in the API explorer below.nn## Quick Startnn### Basic conceptsnn* import.io lets you publish dynamic APIs and Data Sets to its platform (object class `Connector`).n  * To disambiguate between dynamic API created on the platform, and static APIs such as this, we use the term `Connector` within the import.io APIs to refer to a API or Data Set published to import.io.n  * Extractors, Crawlers and Data Sets are just specializations of Connector.n* You can create these via UI tooling, or by using the APIs detailed here.n* The dynamic API definition for a Connector is versioned (object class `ConnectorVersion`); querying a connector by default queries the most recent version, whose id can be found on the `Connector` object (`latestVersionGuid`).n* Each `ConnectorVersion` has a schema (object class `Schema`) defining its input and output properties.n* All objects are accessible via the REST API.n* The output properties are returned with the query data.n  * Extra meta-data may be passed back depending on a output property [type](#data-types). n  * All fields _may_ be multi-valued (i.e. arrays).nn### Convert a URL into datannYou can use import.io magic to convert a URL into data tables over our API instantly.nn[Try it yourself!](?magic#!/Magic_Methods/magic)nn### Query a custom APInnCreate an API in the UI, do a query.nn[Try it yourself!](?query#!/Query_Methods/queryGet)nn## Data TypesnnFor most output property types we also return `myvar/_source` with the original textual data. nn| Type  |  Returns |  Notes | n| ---   |  ---     |  ---   |n|   `STRING` | myvar  |  We normalize whitespace from text, and don't return empty strings | n|  `CURRENCY` |  myvar, myvar/_currency, myvar/_source |  The ISO currency code is returned as `myvar/_currency`, the numeric value in `myvar` |  n|  `INT` |  myvar, myvar/_source | 64 bit integer (`long`) | n|  `DOUBLE` |  myvar, myvar/_source |  64 bit float | n|  `LANG` |  myvar, myvar/_source |  3 letter ISO code | n|  `COUNTRY` |  myvar, myvar/_source |  3 letter ISO code | n|  `BOOLEAN` |  myvar, myvar/_source |  true if 1, yes, on, active, true, y | n|  `URL` |  myvar, myvar/_text, myvar/_title, myvar/_source |  `myvar/_text` is the normalized text content of the anchor | n|  `IMAGE` |  myvar,  myvar/_alt, myvar/_title, myvar/_source |   | n|  `HTML` |  myvar | Raw HTML as well-formed XML  | n|  `MAP` |  myvar |  JSON compatible map | nn## URL SigningnnIf you want to share a URL without disclosing your API key you can sign the verb, URL and an expiry with your API key using HMAC SHA-1, e.g.nn```nhttps://api.import.io/store/connector/_search?_mine=truen```nnYour end URL looks would look like:nn```n/store/connector/_search?_mine=true&_user=YOUR_USER_GUID&_expiry=1579512584000&_digest=42qMVKvRcJ1vQBCwVcw7cYO161Q%3Dn```nnHere's an example in PHP:nn```phpn&lt;?phpnn// $expires is a utc-millisec formatnfunction sign($apiKey, $method, $url, $expiry) { nn  // extract the userGuid and signing keyn  $parts = explode(":", $apiKey);n  $userGuid = $parts[0];n  $key = $parts[1];nn  // form the URL to be signedn  $newUrl = $url . "&_user=" . $userGuid . "&_expiry=" . $expiry;nn  // we sign the http verb + the url with the user and expiry informationn  $check = $method . " " . $newUrl;nn  // use a sha1 hmac algorithm for the digest & base 64 encode itn  $digest = base64_encode(hash_hmac("sha1", $check, base64_decode($key), true));nn  // add the digest onto the end of the URLn  return $newUrl . "&_digest=" . urlencode($digest);nn}nn$signed = sign($argv[1], "GET", "https://api.import.io/store/connector/_search?_mine=true", (time() + (60*60*24)) * 1000);nnecho $signed;n```",
+		"version": "1.0"
+	},
+	"host": "api.import.io",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/auth/apikeyadmin": {
+			"get": {
+				"summary": "Get API key",
+				"description": "",
+				"operationId": "getApiKey",
+				"parameters": [{
+					"in": "query",
+					"name": "password",
+					"description": "Your current password - required to prevent XSS attacks.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "New API key",
+				"description": "",
+				"operationId": "newApiKey",
+				"parameters": [{
+					"in": "query",
+					"name": "password",
+					"description": "Your current password - required to prevent XSS attacks.",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/auth/currentuser": {
+			"get": {
+				"summary": "Get session user",
+				"description": "",
+				"operationId": "currentUser",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/store/connector/_count": {
+			"get": {
+				"summary": "Count Connectors",
+				"description": "",
+				"operationId": "countConnectors",
+				"parameters": [{
+					"in": "query",
+					"name": "q",
+					"description": "An elasticsearch [query string](http://www.elastic.co/guide/en/elasticsearch/reference/1.x/query-dsl-query-string-query.html#query-string-syntax)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_default_operator",
+					"description": "Operator a space character represents.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_exists",
+					"description": "Required fields (multi-valued)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_field",
+					"description": "Field to operate on",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_mine",
+					"description": "Restrict to just the objects you own",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_missing",
+					"description": "Fields that must be null (multi-valued)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_type",
+					"description": "The type of search",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/store/connector/_magic": {
+			"get": {
+				"summary": "Magically get data",
+				"description": "This is the simplest way to convert a URL into data using the import.io platform.nnThis will magically generate up to 3 different `ConnectorVersion` configurations, and return a `Page` object for each representing lists or tables on the page at that URL.nnJavascript and infinite scroll support in beta.nnYou can select the region to process using a keyword contained within it.nnIf you wish to repeatedly extract the same table from many URLs, you can use the `connectorVersionGuid` returned in the table in the Magic versioned method below, or the standard query methods (although these do not support js/infinite scroll currently).nn",
+				"operationId": "magic",
+				"parameters": [{
+					"in": "query",
+					"name": "infiniteScrollPages",
+					"description": "How many times to load infinite scroll - requires js=true",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "js",
+					"description": "Whether to process with javascript on (slower)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "regionText",
+					"description": "Process the area that contains this phrase",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "URL you wish to process",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/store/connector/_magic/{connectorVersionGuid}": {
+			"get": {
+				"summary": "Re-run table",
+				"description": "This will re-run a specific `ConnectorVersion` that generated a table via the regular magic call.nnUse this if you want to use the same table extraction for many URLs.nn",
+				"operationId": "magicTable",
+				"parameters": [{
+					"in": "path",
+					"name": "connectorVersionGuid",
+					"description": "The id of the ConnectorVersion for that table you want",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "infiniteScrollPages",
+					"description": "How many times to load infinite scroll - requires js=true",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "js",
+					"description": "Whether to process with javascript on (slower)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"description": "URL you wish to process",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/store/connector/_search": {
+			"get": {
+				"summary": "Search Connectors",
+				"description": "Search your connectors - or all Connectors if you are an administrator of an organization.",
+				"operationId": "searchConnectors",
+				"parameters": [{
+					"in": "query",
+					"name": "q",
+					"description": "An elasticsearch [query string](http://www.elastic.co/guide/en/elasticsearch/reference/1.x/query-dsl-query-string-query.html#query-string-syntax)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_default_operator",
+					"description": "Operator a space character represents.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_exists",
+					"description": "Required fields (multi-valued)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_facet",
+					"description": "Fields that should have facets produced (multi-valued)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_field",
+					"description": "Field to operate on",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_mine",
+					"description": "Restrict to just the objects you own",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_missing",
+					"description": "Fields that must be null (multi-valued)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_page",
+					"description": "The page to return",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_perpage",
+					"description": "Up to 100",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_sort",
+					"description": "The field to sort upon, e.g. _meta.creationTimestamp",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_sortDirection",
+					"description": "Direction of sort; ASC or DESC",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_type",
+					"description": "The type of search",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/store/connector/{id}": {
+			"get": {
+				"summary": "Get Connector",
+				"description": "",
+				"operationId": "getConnector",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "ID of the object",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"patch": {
+				"summary": "Update Connector",
+				"description": "Overwrites supplied fields. Declared fields with `null` values will be nullified in the store.",
+				"operationId": "updateConnector",
+				"parameters": [{
+					"in": "body",
+					"name": "connector",
+					"description": "Class of the object",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "GUID of the Data Source",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "timestamp",
+					"description": "Required timestamp of the object",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/store/connector/{id}/_attachment/publishSnapshot/{publishSnapshot}": {
+			"get": {
+				"summary": "Get Publish Snapshot",
+				"description": "Returns the static data from training a Connector.",
+				"operationId": "getPublishStaticData",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "ID of the Object",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "publishSnapshot",
+					"description": "Value of the `publishSnapshot` field in the `Connector`",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/store/connector/{id}/_attachment/settings/{settings}": {
+			"get": {
+				"summary": "Get Extra Settings",
+				"description": "Returns crawl - or other - additional settings.",
+				"operationId": "getSettings",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "ID of the Object",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "settings",
+					"description": "Value of the `settings` field in the `Connector`",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/store/connector/{id}/_attachment/snapshot/{snapshot}": {
+			"get": {
+				"summary": "Get Data Snapshot",
+				"description": "Returns uploaded snapshots: crawls or data set data",
+				"operationId": "getDataSnapshot",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "ID of the Object",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "snapshot",
+					"description": "Value of the `snapshot` field in the `Connector`",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/store/connector/{id}/_attachment/testResults/{testResults}": {
+			"get": {
+				"summary": "Get Test Results",
+				"description": "",
+				"operationId": "getCheckResults",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "ID of the Object",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "testResults",
+					"description": "Value of the `testResults` field in the `Connector`",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/store/connector/{id}/_attachment/{field}/_history": {
+			"get": {
+				"summary": "Attachment Version History",
+				"description": "",
+				"operationId": "",
+				"parameters": [{
+					"in": "path",
+					"name": "field",
+					"description": "The field name of the attachment in the object",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "ID of the Object",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "_page",
+					"description": "The page to return",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/store/connector/{id}/_disown": {
+			"post": {
+				"summary": "Disown Connector",
+				"description": "Make myself no longer the owner of a connector, removing it from My Data.nnConnectors cannot be deleted.",
+				"operationId": "disownConnector",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "ID of the object",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/store/connector/{id}/_login": {
+			"post": {
+				"summary": "Query Login",
+				"description": "This API logs into the target site for an authenticated API. Pass the cookies back through a POST query to use the authenticated session.nn",
+				"operationId": "queryLogin",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the Connector you are querying.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "body",
+					"name": "input",
+					"description": "Login input",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/store/connector/{id}/_query": {
+			"get": {
+				"summary": "Simple Query",
+				"description": "This is the simplest way to make a query onto the import.io platform.nnSpecify your inputs as `input={name}:{value}` named query string parameters, for example:nn```htmln/store/connector/d50aff7b-ad19-4f64-ab1a-1e8f9a1bb249/_query?n    input=webpage/url:http%3A%2F%2Fcdn.import.io%2Ftest%2Fpages%2Fbasic%2Findex.htmln```nnThere can be default values for inputs, e.g. the URL you extracted data from for `webpage/url`. You can see the defaults in the `Schema` of the `ConnectorVersion`.nn",
+				"operationId": "queryGet",
+				"parameters": [{
+					"in": "query",
+					"name": "format",
+					"description": "The output response format",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "ID of the Connector you are querying.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "input",
+					"description": "The inputs in the format {name}:{value} (multiple query parameters accepted)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "The page you require (if supported by the Connector)",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "version",
+					"description": "The specific ConnectorVersion you want to query if not the latest",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Advanced Query",
+				"description": "You can pass up cookies to use for a query in the input object optionally. This is shown in the example.nnThis feature is required if you are using authenticated APIs and maintaining a session between calls.",
+				"operationId": "queryPost",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "ID of the Connector you are querying.",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "body",
+					"name": "query",
+					"description": "The query to execute.",
+					"schema": {
+						"$ref": "#/definitions/holder"
+					}
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/store/connectorversion/{id}/schema": {
+			"get": {
+				"summary": "Get ConnectorVersion Schema",
+				"description": "",
+				"operationId": "getConnectorVersionSchema",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "ID of the ConnectorVersion",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"DataView": {
+			"properties": {
+				"tiles": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"QueryResult": {
+			"properties": {
+				"enabled": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"pages": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"DataSource": {
+			"properties": {
+				"status": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"tags": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"firstReadyAt": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"working": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"deprecated": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"statusAsOf": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"note": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"lastRunSuccessAt": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"instructions": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"schema": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"DataSourceRun": {
+			"properties": {
+				"startedAt": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"completedAt": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"note": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"progress": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"Connector": {
+			"properties": {
+				"status": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"lastCheckedAt": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"tags": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"pagePattern": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"latestVersion": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"reversedDomain": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"authenticated": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"extension": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"headline": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"lastModifiedAt": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"source": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"publishSnapshot": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"PublishRequest": {
+			"properties": []
+		},
+		"Playback": {
+			"properties": {
+				"javascriptDisabled": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"contentType": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"prerequests": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"javascriptDisabledForLogin": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"loginBrowserActions": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"fixHtml": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"javascriptDisabledForLastAction": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"maxPages": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"javascriptWhitelist": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"infiniteScrollPages": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"prerendered": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"http10": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"browserActions": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"paginationRequests": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"paginationXPaths": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"privileged": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"crawler": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"Attachment": {
+			"properties": {
+				"field": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"size": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"AttachmentSearch": {
+			"properties": {
+				"hits": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"took": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"timed_out": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"MagicTables": {
+			"properties": []
+		},
+		"Schema": {
+			"properties": {
+				"inputProperties": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"outputProperties": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"ConnectorTestResult": {
+			"properties": {
+				"renderedHTML": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"expectedPages": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"runAt": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"actualFields": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"actualTotalResults": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"actualResults": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"expectedTotalResults": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"expectedResults": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"cpuMilliseconds": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"expectedFields": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"responseMilliseconds": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"actualPages": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"input": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"ApiKey": {
+			"properties": {
+				"apiKey": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"Subscriptions": {
+			"properties": {
+				"subscriptions": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"BrowserAction": {
+			"properties": {
+				"domain": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"format": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"input": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"value": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"CheckResults": {
+			"properties": {
+				"results": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"WebQueryConfiguration": {
+			"properties": {
+				"version": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"urlProperties": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"http404TheSameAsNoResults": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"ConnectorVersionTests": {
+			"properties": {
+				"testQueries": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"DataSourceConfig": {
+			"properties": {
+				"nextRunAt": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"periodMinutes": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"preCrawlExtractionConfig": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"dataUpdatedAt": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"inRunExtractionConfig": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"guidUniqueFields": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"strategy": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"DataSourceSearch": {
+			"properties": {
+				"hits": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"took": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"timed_out": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"PublishingError": {
+			"properties": {
+				"message": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"DataSourceRunSearch": {
+			"properties": {
+				"hits": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"took": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"timed_out": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"Subscription": {
+			"properties": {
+				"status": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"packageName": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"expires": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"Count": {
+			"properties": {
+				"count": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"Pagination": {
+			"properties": {
+				"pattern": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"next": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"currentPageNum": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"previous": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"PublishResult": {
+			"properties": {
+				"responseTime": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"cpuTime": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"ConnectorVersionRuntimeConfiguration": {
+			"properties": []
+		},
+		"PipelineStageConfig": {
+			"properties": []
+		},
+		"TestQuery": {
+			"properties": {
+				"proxyPort": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"expectedPages": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"proxyPassword": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"proxyHost": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"expectedFields": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"expectedTotalResults": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"proxyUsername": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"pageExamples": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"expectedResults": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"ConnectorSearch": {
+			"properties": {
+				"hits": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"took": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"timed_out": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"Element": {
+			"properties": {
+				"xpaths": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"formId": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"id": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"formName": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"PackageUrlRequest": {
+			"properties": {
+				"url": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"note": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"status": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"Snapshot": {
+			"properties": {
+				"objectCount": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"state": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"publishedAt": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"IO": {
+			"properties": {
+				"defaultValue": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"domain": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"name": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"CheckTestResult": {
+			"properties": []
+		},
+		"StatusResponse": {
+			"properties": {
+				"status": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"PackageUrlRequestResponse": {
+			"properties": []
+		},
+		"Property": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"DataTile": {
+			"properties": {
+				"name": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"unlocked": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"settings": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"type": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"results": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"schemas": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"Page": {
+			"properties": {
+				"totalResults": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"errorType": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"outputProperties": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"cookies": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"results": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"pageUrl": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"error": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"data": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"ErrorModel": {
+			"properties": {
+				"code": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"data": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"error": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"ConnectorVersion": {
+			"properties": []
+		},
+		"ConnectorTestError": {
+			"properties": {
+				"message": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"Scraper": {
+			"properties": {
+				"resultRegexp": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"resultPipeline": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"errorXPaths": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"resultXPaths": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"noResultsRegExp": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"ignoreFirst": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"singleResultPipeline": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"namespaces": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"noResultsXPaths": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"errorRegexp": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"totalResultsRegExp": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"totalResultsXPaths": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"Snapshots": {
+			"properties": {
+				"snapshots": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"Meta": {
+			"properties": {
+				"timestamp": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"creationTimestamp": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"patchTimestamp": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"User": {
+			"properties": {
+				"username": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"roles": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"email": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"Query": {
+			"properties": {
+				"proxyPort": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"cookies": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"format": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"returnPaginationSuggestions": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"proxyPassword": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"proxyHost": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"proxyUsername": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"input": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"userAgent": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"page": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		},
+		"QueryLoginInput": {
+			"properties": {
+				"username": {
+					"description": "This is a default description.",
+					"type": "get"
+				},
+				"password": {
+					"description": "This is a default description.",
+					"type": "get"
+				}
+			}
+		}
+	}
+}

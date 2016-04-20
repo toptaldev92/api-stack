@@ -1,0 +1,410 @@
+- swagger: "2.0"
+  info:
+    title: Stack Exchange Tags API
+    description: The API for managing Stack Exchange tags.
+    termsOfService: http://stackexchange.com/legal/api-terms-of-use
+    version: "2.2"
+  host: api.stackexchange.com
+  basePath: /2.2
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /tags:
+      get:
+        summary: Get Stats
+        description: Get Stats
+        operationId: get-stats
+        parameters:
+        - in: query
+          name: filter
+          description: Required text in returned tags. string
+        - in: query
+          name: fromdate
+          description: Unix timestamp of the minimum creation date on a returned item.
+            unix epoch date, range [0, 253,402,300,799]
+        - in: query
+          name: max
+          description: Maximum of the range to include in the response according to
+            the current sort. integer or unix epoch date
+        - in: query
+          name: min
+          description: Minimum of the range to include in the response according to
+            the current sort. integer or unix epoch date
+        - in: query
+          name: order
+          description: How the current sort should be ordered. one of desc (default),
+            or asc
+        - in: query
+          name: page
+          description: The pagination offset for the current collection. Affected by
+            the specified pagesize. 32-bit signed integer
+        - in: query
+          name: pagesize
+          description: The number of collection results to display during pagination.
+            Should be between 0 and 100 inclusive. 32-bit signed integer
+        - in: query
+          name: sort
+          description: How a collection should be sorted. one of activity (default),
+            creation, or votes
+        - in: query
+          name: todate
+          description: Unix timestamp of the maximum creation date on a returned item.
+            Unix epoch date, range [0, 253,402,300,799]
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /tags/moderator-only:
+      get:
+        summary: Get the tags on the site that only moderators can use.
+        description: Get the tags on the site that only moderators can use.
+        operationId: ""
+        parameters:
+        - in: query
+          name: fromdate
+          description: Unix timestamp of the minimum creation date on a returned item.
+            unix epoch date, range [0, 253,402,300,799]
+        - in: query
+          name: inname
+          description: Required text in returned tags. string
+        - in: query
+          name: max
+          description: Maximum of the range to include in the response according to
+            the current sort. integer or unix epoch date
+        - in: query
+          name: min
+          description: Minimum of the range to include in the response according to
+            the current sort. integer or unix epoch date
+        - in: query
+          name: order
+          description: How the current sort should be ordered. one of desc (default),
+            or asc
+        - in: query
+          name: page
+          description: The pagination offset for the current collection. Affected by
+            the specified pagesize. 32-bit signed integer
+        - in: query
+          name: pagesize
+          description: The number of collection results to display during pagination.
+            Should be between 0 and 100 inclusive. 32-bit signed integer
+        - in: query
+          name: sort
+          description: How a collection should be sorted. one of activity (default),
+            creation, or votes
+        - in: query
+          name: todate
+          description: Unix timestamp of the maximum creation date on a returned item.
+            Unix epoch date, range [0, 253,402,300,799]
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /tags/required:
+      get:
+        summary: Get the tags on the site that fulfill required tag constraints.
+        description: Get the tags on the site that fulfill required tag constraints.
+        operationId: ""
+        parameters:
+        - in: query
+          name: fromdate
+          description: Unix timestamp of the minimum creation date on a returned item.
+            unix epoch date, range [0, 253,402,300,799]
+        - in: query
+          name: inname
+          description: Required text in returned tags. string
+        - in: query
+          name: max
+          description: Maximum of the range to include in the response according to
+            the current sort. integer or unix epoch date
+        - in: query
+          name: min
+          description: Minimum of the range to include in the response according to
+            the current sort. integer or unix epoch date
+        - in: query
+          name: order
+          description: How the current sort should be ordered. one of desc (default),
+            or asc
+        - in: query
+          name: page
+          description: The pagination offset for the current collection. Affected by
+            the specified pagesize. 32-bit signed integer
+        - in: query
+          name: pagesize
+          description: The number of collection results to display during pagination.
+            Should be between 0 and 100 inclusive. 32-bit signed integer
+        - in: query
+          name: sort
+          description: How a collection should be sorted. one of activity (default),
+            creation, or votes
+        - in: query
+          name: todate
+          description: Unix timestamp of the maximum creation date on a returned item.
+            Unix epoch date, range [0, 253,402,300,799]
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /tags/synonyms:
+      get:
+        summary: Get Tags
+        description: Get Tags
+        operationId: get-tags
+        parameters:
+        - in: query
+          name: fromdate
+          description: Unix timestamp of the minimum creation date on a returned item.
+            unix epoch date, range [0, 253,402,300,799]
+        - in: query
+          name: max
+          description: Maximum of the range to include in the response according to
+            the current sort. integer or unix epoch date
+        - in: query
+          name: min
+          description: Minimum of the range to include in the response according to
+            the current sort. integer or unix epoch date
+        - in: query
+          name: order
+          description: How the current sort should be ordered. one of desc (default),
+            or asc
+        - in: query
+          name: page
+          description: The pagination offset for the current collection. Affected by
+            the specified pagesize. 32-bit signed integer
+        - in: query
+          name: pagesize
+          description: The number of collection results to display during pagination.
+            Should be between 0 and 100 inclusive. 32-bit signed integer
+        - in: query
+          name: sort
+          description: How a collection should be sorted. one of activity (default),
+            creation, or votes
+        - in: query
+          name: todate
+          description: Unix timestamp of the maximum creation date on a returned item.
+            Unix epoch date, range [0, 253,402,300,799]
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /tags/{tags}/faq:
+      get:
+        summary: Get frequently asked questions in a set of tags.
+        description: Get frequently asked questions in a set of tags.
+        operationId: ""
+        parameters:
+        - in: query
+          name: page
+          type: string
+          format: string
+        - in: query
+          name: pagesize
+          type: string
+          format: string
+        - in: query
+          name: tags
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /tags/{tags}/info:
+      get:
+        summary: Get tags on the site by their names.
+        description: Get tags on the site by their names.
+        operationId: ""
+        parameters:
+        - in: query
+          name: fromdate
+          description: Unix timestamp of the minimum creation date on a returned item.
+            unix epoch date, range [0, 253,402,300,799]
+        - in: query
+          name: max
+          description: Maximum of the range to include in the response according to
+            the current sort. integer or unix epoch date
+        - in: query
+          name: min
+          description: Minimum of the range to include in the response according to
+            the current sort. integer or unix epoch date
+        - in: query
+          name: order
+          description: How the current sort should be ordered. one of desc (default),
+            or asc
+        - in: query
+          name: page
+          description: The pagination offset for the current collection. Affected by
+            the specified pagesize. 32-bit signed integer
+        - in: query
+          name: pagesize
+          description: The number of collection results to display during pagination.
+            Should be between 0 and 100 inclusive. 32-bit signed integer
+        - in: query
+          name: sort
+          description: How a collection should be sorted. one of activity (default),
+            creation, or votes
+        - in: query
+          name: tags
+          description: Required text in returned tags. string
+        - in: query
+          name: todate
+          description: Unix timestamp of the maximum creation date on a returned item.
+            Unix epoch date, range [0, 253,402,300,799]
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /tags/{tags}/related:
+      get:
+        summary: Get related tags, based on common tag pairings.
+        description: Get related tags, based on common tag pairings.
+        operationId: ""
+        parameters:
+        - in: query
+          name: page
+          type: string
+          format: string
+        - in: query
+          name: pagesize
+          type: string
+          format: string
+        - in: query
+          name: tags
+          type: string
+          format: string
+        responses:
+          200:
+            description: OK
+        tags:
+        - Tags
+        security: []
+    /tags/{tags}/synonyms:
+      get:
+        summary: Get Tags' Synonyms
+        description: Get Tags Synonyms
+        operationId: get-tags-synonyms
+        parameters:
+        - in: query
+          name: fromdate
+          description: Unix timestamp of the minimum creation date on a returned item.
+            unix epoch date, range [0, 253,402,300,799]
+        - in: query
+          name: max
+          description: Maximum of the range to include in the response according to
+            the current sort. integer or unix epoch date
+        - in: query
+          name: min
+          description: Minimum of the range to include in the response according to
+            the current sort. integer or unix epoch date
+        - in: query
+          name: order
+          description: How the current sort should be ordered. one of desc (default),
+            or asc
+        - in: query
+          name: page
+          description: The pagination offset for the current collection. Affected by
+            the specified pagesize. 32-bit signed integer
+        - in: query
+          name: pagesize
+          description: The number of collection results to display during pagination.
+            Should be between 0 and 100 inclusive. 32-bit signed integer
+        - in: query
+          name: sort
+          description: How a collection should be sorted. one of activity (default),
+            creation, or votes
+        - in: query
+          name: tags
+          description: The tags for which to return synonyms. This is a vectorized parameter,
+            multiple ids can be sent a single request if delimited with a semi-colon.
+            string
+        - in: path
+          name: tags
+        - in: query
+          name: todate
+          description: Unix timestamp of the maximum creation date on a returned item.
+            Unix epoch date, range [0, 253,402,300,799]
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /tags/{tags}/wikis:
+      get:
+        summary: Get Specific Tags Synonyms
+        description: Get Specific Tags Synonyms
+        operationId: get-specific-tags-synonyms
+        parameters:
+        - in: query
+          name: tags
+          description: The tags for which to return wikis. This is a vectorized parameter,
+            multiple ids can be sent a single request if delimited with a semi-colon.
+            string
+        - in: path
+          name: tags
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /tags/{tag}/top-answerers/{period}:
+      get:
+        summary: Get Tags' Wikis
+        description: Get Tags Wikis
+        operationId: get-tags-wikis
+        parameters:
+        - in: query
+          name: period
+          description: One of all-time or month. string
+        - in: path
+          name: period
+        - in: query
+          name: tag
+          description: The tags in question. string
+        - in: path
+          name: tag
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /tags/{tag}/top-askers/{period}:
+      get:
+        summary: Get Tag Top Answerers By Period
+        description: Get Tag Top Answerers By Period
+        operationId: get-tag-top-answerers-by-period
+        parameters:
+        - in: query
+          name: period
+          description: One of all-time or month. string
+        - in: path
+          name: period
+        - in: query
+          name: tag
+          description: The tags in question. string
+        - in: path
+          name: tag
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

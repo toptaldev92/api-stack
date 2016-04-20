@@ -1,0 +1,119 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Alchemy Concept Tagging API",
+		"description": "Automatically extract concept tags for any web page or posted (uploaded) HTML/text file.",
+		"termsOfService": "http://www.alchemyapi.com/company/terms.html",
+		"contact": {
+			"name": "AlchemyAPI",
+			"url": "http://www.alchemyapi.com/company/contact",
+			"email": "questions@alchemyapi.com"
+		},
+		"version": "v1"
+	},
+	"host": "access.alchemyapi.com",
+	"basePath": "/calls/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/url/URLGetRankedConcepts": {
+			"get": {
+				"summary": "Get Ranked Concepts By URL",
+				"description": "Automatically extract concept tags for any web page or posted (uploaded) HTML/text file.",
+				"operationId": "callsUrlURLGetRankedConcepts",
+				"parameters": [{
+					"in": "query",
+					"name": "apikey",
+					"type": "string",
+					"format": "string"
+				},
+				{
+					"in": "query",
+					"name": "url",
+					"type": "string",
+					"format": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/results"
+							}
+						}
+					}
+				},
+				"tags": ["Tagging"],
+				"security": [{
+					"apikey": []
+				}]
+			}
+		}
+	},
+	"securityDefinitions": {
+		"apikey": {
+			"type": "apiKey",
+			"name": "apikey"
+		}
+	},
+	"definitions": {
+		"results": {
+			"properties": {
+				"status": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"usage": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"url": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"language": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"concepts": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		},
+		"concept": {
+			"properties": {
+				"text": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"relevance": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"website": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"dbpedia": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"freebase": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"opencyc": {
+					"description": "This is a default description.",
+					"type": "string"
+				},
+				"yago": {
+					"description": "This is a default description.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

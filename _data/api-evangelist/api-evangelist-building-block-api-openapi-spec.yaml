@@ -1,0 +1,145 @@
+- swagger: "2.0"
+  info:
+    title: API Evangelist Building Block API
+    description: This is an API that provides access to the common building blocks used
+      across the API space.
+    termsOfService: http://developer.apievangelist.com/index.html
+    contact:
+      name: Kin Lane
+      url: http://kinlane.com
+      email: info@apievangelist.com
+    license:
+      name: MIT
+      url: http://opensource.org/licenses/MIT
+    version: "1.0"
+  host: api.apievangelist.com
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /buildingblock/types/:
+      get:
+        summary: Retrieve a list of the building block types
+        description: Returns the building block types
+        operationId: getBuildingBlockTypes
+        parameters:
+        - in: query
+          name: appid
+          description: application id for application making calls
+          type: string
+        - in: query
+          name: appkey
+          description: application key for application making calls
+          type: string
+        responses:
+          200:
+            description: Successful Building Block Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/buildingblocktype'
+        tags:
+        - ""
+        security: []
+    /buildingblock/{id}:
+      get:
+        summary: Retrieve a building block using its ID
+        description: Returns a building block detail
+        operationId: getBuildingBlock
+        parameters:
+        - in: query
+          name: appid
+          description: application id for application making calls
+          type: string
+        - in: query
+          name: appkey
+          description: application key for application making calls
+          type: string
+        - in: path
+          name: id
+          description: id of the building block to be returned
+          type: integer
+        responses:
+          200:
+            description: Successful Building Block Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/buildingblock'
+        tags:
+        - ""
+        security: []
+    /buildingblocks/:
+      get:
+        summary: Pull building blocks
+        description: Returns a list of all building blocks filtered by keyword.
+        operationId: getBuildingBlocks
+        parameters:
+        - in: query
+          name: appid
+          description: application id for application making calls
+          type: string
+        - in: query
+          name: appkey
+          description: application key for application making calls
+          type: string
+        - in: query
+          name: type
+          description: the type of building blocks to pull
+          type: string
+        responses:
+          200:
+            description: Successful Building Block Response
+            schema:
+              type: array
+              items:
+                $ref: '#/definitions/buildingblock'
+        tags:
+        - ""
+        security: []
+  definitions:
+    buildingblock:
+      properties:
+        Building_Block_ID:
+          description: This is a default description.
+          type: string
+        Name:
+          description: This is a default description.
+          type: string
+        Details:
+          description: This is a default description.
+          type: string
+        Image:
+          description: This is a default description.
+          type: string
+        Width:
+          description: This is a default description.
+          type: string
+        Tags:
+          description: This is a default description.
+          type: string
+        Category:
+          description: This is a default description.
+          type: string
+        Category-Slug:
+          description: This is a default description.
+          type: string
+    buildingblocktype:
+      properties:
+        Type:
+          description: This is a default description.
+          type: string
+    Error:
+      properties:
+        code:
+          description: This is a default description.
+          type: integer
+        message:
+          description: This is a default description.
+          type: string
+        fields:
+          description: This is a default description.
+          type: string

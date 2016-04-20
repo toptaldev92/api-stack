@@ -1,0 +1,49 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Eventbrite Media API",
+		"description": "The API for managing the Eventbrite media.",
+		"version": "v3"
+	},
+	"host": "www.eventbriteapi.com",
+	"basePath": "/v3",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/media/upload/": {
+			"get ": {
+				"summary": "See Media uploads.",
+				"description": "See Media uploads.",
+				"operationId": "see-media-uploads",
+				"parameters": [{
+					"in": "query",
+					"name": "type",
+					"description": "The type of image to upload (Valid choices are: image-event-logo, image-organizer-logo, or image-user-photo)"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/media/{id}/": {
+			"get ": {
+				"summary": "Return an image for a given id.",
+				"description": "Return an image for a given id.",
+				"operationId": "return-an-image-for-a-given-id",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

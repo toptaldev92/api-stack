@@ -1,0 +1,574 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "LinkedIn People API",
+		"version": ""
+	},
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/people-search": {
+			"get": {
+				"summary": "Search People",
+				"description": "Search People",
+				"operationId": "search-people",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/id={id}": {
+			"get": {
+				"summary": "Get Member Profile",
+				"description": "Get Member Profile",
+				"operationId": "get-member-profile",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/url={public-profile-url}/network": {
+			"get": {
+				"summary": "Get Member Shares Stream By URL",
+				"description": "Get Member Shares Stream By URL",
+				"operationId": "get-member-shares-stream-by-url",
+				"parameters": [{
+					"in": "path",
+					"name": "public-profile-url"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/{id}": {
+			"get": {
+				"summary": "Get Out Of Network Profile",
+				"description": "Get Out Of Network Profile",
+				"operationId": "get-out-of-network-profile",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/{id}/connections": {
+			"get": {
+				"summary": "Get Member Connections By ID",
+				"description": "Get Member Connections By ID",
+				"operationId": "get-member-connections-by-id",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/{id}/network": {
+			"get": {
+				"summary": "Get Member Shares Stream By ID",
+				"description": "Get Member Shares Stream By ID",
+				"operationId": "get-member-shares-stream-by-id",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/{id}/network/updates": {
+			"get": {
+				"summary": "Get Member Network Updates",
+				"description": "Get Member Network Updates",
+				"operationId": "get-member-network-updates",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~": {
+			"get": {
+				"summary": "Get My Profile",
+				"description": "Get My Profile",
+				"operationId": "get-my-profile",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/connections": {
+			"get": {
+				"summary": "Get My Connections",
+				"description": "Get My Connections",
+				"operationId": "get-my-connections",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/following/companies": {
+			"get": {
+				"summary": "Get Followed Companies",
+				"description": "Get Followed Companies",
+				"operationId": "get-followed-companies",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Start Following Company",
+				"description": "Start Following Company",
+				"operationId": "start-following-company",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/following/companies/id={id}": {
+			"delete": {
+				"summary": "Stop Following Company",
+				"description": "Stop Following Company",
+				"operationId": "stop-following-company",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/group-memberships": {
+			"get": {
+				"summary": "Get Groups",
+				"description": "Get Groups",
+				"operationId": "get-groups",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Join Group",
+				"description": "Join Group",
+				"operationId": "join-group",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/group-memberships/{group-id}": {
+			"delete": {
+				"summary": "Leave Group",
+				"description": "Leave Group",
+				"operationId": "leave-group",
+				"parameters": [{
+					"in": "path",
+					"name": "group-id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Get Group Settings",
+				"description": "Get Group Settings",
+				"operationId": "get-group-settings",
+				"parameters": [{
+					"in": "path",
+					"name": "group-id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Update Group Settings",
+				"description": "Update Group Settings",
+				"operationId": "update-group-settings",
+				"parameters": [{
+					"in": "path",
+					"name": "group-id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/group-memberships/{group-id}/posts": {
+			"get": {
+				"summary": "Get Group Member Posts",
+				"description": "Get Group Member Posts",
+				"operationId": "get-group-member-posts",
+				"parameters": [{
+					"in": "path",
+					"name": "group-id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/job-bookmarks": {
+			"get": {
+				"summary": "Get Job Bookmarks",
+				"description": "Get Job Bookmarks",
+				"operationId": "get-job-bookmarks",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Add Job Bookmark",
+				"description": "Add Job Bookmark",
+				"operationId": "add-job-bookmark",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/job-bookmarks/{job-id}": {
+			"delete": {
+				"summary": "Remove Job Bookmark",
+				"description": "Remove Job Bookmark",
+				"operationId": "remove-job-bookmark",
+				"parameters": [{
+					"in": "path",
+					"name": "job-id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/mailbox": {
+			"post": {
+				"summary": "Invite By Email",
+				"description": "Invite By Email",
+				"operationId": "invite-by-email",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/network": {
+			"get": {
+				"summary": "Get My Shares Stream",
+				"description": "Get My Shares Stream",
+				"operationId": "get-my-shares-stream",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/network/network-stats": {
+			"get": {
+				"summary": "Get Network Statistics",
+				"description": "Get Network Statistics",
+				"operationId": "get-network-statistics",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/network/updates": {
+			"get": {
+				"summary": "Get Network Updates",
+				"description": "Get Network Updates",
+				"operationId": "get-network-updates",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/network/updates/key={network_update_key}/is-liked": {
+			"put": {
+				"summary": "Like Comment",
+				"description": "Like Comment",
+				"operationId": "like-comment",
+				"parameters": [{
+					"in": "path",
+					"name": "network_update_key"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/network/updates/key={network_update_key}/likes": {
+			"get": {
+				"summary": "Get Likes",
+				"description": "Get Likes",
+				"operationId": "get-likes",
+				"parameters": [{
+					"in": "path",
+					"name": "network_update_key"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/network/updates/key={network_update_key}/update-comments": {
+			"get": {
+				"summary": "Get Comments",
+				"description": "Get Comments",
+				"operationId": "get-comments",
+				"parameters": [{
+					"in": "path",
+					"name": "network_update_key"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Post Comment",
+				"description": "Post Comment",
+				"operationId": "post-comment",
+				"parameters": [{
+					"in": "path",
+					"name": "network_update_key"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/person-activities": {
+			"post": {
+				"summary": "Post Network Updates",
+				"description": "Post Network Updates",
+				"operationId": "post-network-updates",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/shares": {
+			"post": {
+				"summary": "Add Share",
+				"description": "Add Share",
+				"operationId": "add-share",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/suggestions/groups": {
+			"get": {
+				"summary": "Get User Suggested Groups",
+				"description": "Get User Suggested Groups",
+				"operationId": "get-user-suggested-groups",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/suggestions/groups/{id}": {
+			"get": {
+				"summary": "Delete User Suggested Group",
+				"description": "Delete User Suggested Group",
+				"operationId": "delete-user-suggested-group",
+				"parameters": [{
+					"in": "path",
+					"name": "id"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/suggestions/job-suggestions:(jobs)": {
+			"get": {
+				"summary": "Get Member Suggested Jobs",
+				"description": "Get Member Suggested Jobs",
+				"operationId": "get-member-suggested-jobs",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~/suggestions/to-follow/companies": {
+			"get": {
+				"summary": "Get Suggested Companies To Follow",
+				"description": "Get Suggested Companies To Follow",
+				"operationId": "get-suggested-companies-to-follow",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/people/~:(current-share)": {
+			"get": {
+				"summary": "Get Current Share",
+				"description": "Get Current Share",
+				"operationId": "get-current-share",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": []
+}

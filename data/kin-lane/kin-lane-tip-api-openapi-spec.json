@@ -1,0 +1,346 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Tips",
+		"description": "This is an tip for all my API tips. I use a single tip system to manage all my sites. Based upon tagging, I then publish each post out to its respective Github Page based repo.",
+		"termsOfService": "http://stack.network/terms-of-service.html",
+		"version": null
+	},
+	"host": "tip.api.kinlane.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/tip/": {
+			"get": {
+				"summary": "all tips",
+				"description": "all tips",
+				"operationId": "getTips",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tip"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tip"
+				},
+				{
+					"in": "query",
+					"name": "count",
+					"description": "how many to show on page"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "which page of results to show"
+				},
+				{
+					"in": "query",
+					"name": "query",
+					"description": "a text query to search across tip"
+				},
+				{
+					"in": "query",
+					"name": "sort",
+					"description": "which field to sort by"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tips"],
+				"security": []
+			},
+			"post": {
+				"summary": "add a tip post",
+				"description": "add a tip post",
+				"operationId": "addTip",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the tip"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the tip"
+				},
+				{
+					"in": "formData",
+					"name": "author",
+					"description": "author of the tip"
+				},
+				{
+					"in": "formData",
+					"name": "details",
+					"description": "summary for the tip"
+				},
+				{
+					"in": "formData",
+					"name": "image",
+					"description": "full text for the tip"
+				},
+				{
+					"in": "formData",
+					"name": "title",
+					"description": "ttle for the tip"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tips"],
+				"security": []
+			}
+		},
+		"/tip/{tip_id}/": {
+			"delete": {
+				"summary": "delete tip",
+				"description": "delete tip",
+				"operationId": "deletetip",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tip"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tip"
+				},
+				{
+					"in": "path",
+					"name": "tip_id",
+					"description": "the unique id for tip entry"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tips"],
+				"security": []
+			},
+			"get": {
+				"summary": "Retrieve a tip using its slug",
+				"description": "Returns the tip detail",
+				"operationId": "gettip",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tip"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tip"
+				},
+				{
+					"in": "path",
+					"name": "tip_id",
+					"description": "the unique id for tip entry"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tips"],
+				"security": []
+			},
+			"put": {
+				"summary": "update tip",
+				"description": "update tip",
+				"operationId": "updatetip",
+				"parameters": [{
+					"in": "formData",
+					"name": "appid",
+					"description": "your appid for accessing the tip"
+				},
+				{
+					"in": "formData",
+					"name": "appkey",
+					"description": "your appkey for accessing the tip"
+				},
+				{
+					"in": "formData",
+					"name": "author",
+					"description": "author of the tip"
+				},
+				{
+					"in": "formData",
+					"name": "details",
+					"description": "summary for the tip"
+				},
+				{
+					"in": "formData",
+					"name": "image",
+					"description": "full text for the tip"
+				},
+				{
+					"in": "path",
+					"name": "tip_id",
+					"description": "the unique id for tip entry"
+				},
+				{
+					"in": "formData",
+					"name": "title",
+					"description": "ttle for the tip"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tips"],
+				"security": []
+			}
+		},
+		"/tip/{tip_id}/tags/": {
+			"get": {
+				"summary": "tip tags",
+				"description": "tip tags",
+				"operationId": "gettipTags",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tip"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tip"
+				},
+				{
+					"in": "path",
+					"name": "tip_id",
+					"description": "id for tip"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tips"],
+				"security": []
+			},
+			"post": {
+				"summary": "add tag to tip",
+				"description": "add tag to tip",
+				"operationId": "addtipTag",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tip"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tip"
+				},
+				{
+					"in": "query",
+					"name": "tag",
+					"description": "tag name"
+				},
+				{
+					"in": "path",
+					"name": "tip_id",
+					"description": "id for the tip"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tips"],
+				"security": []
+			}
+		},
+		"/tip/{tip_id}/tags/{tag}": {
+			"delete": {
+				"summary": "delete tip tag",
+				"description": "delete tip tag",
+				"operationId": "deleteTipTag",
+				"parameters": [{
+					"in": "query",
+					"name": "appid",
+					"description": "your appid for accessing the tip"
+				},
+				{
+					"in": "query",
+					"name": "appkey",
+					"description": "your appkey for accessing the tip"
+				},
+				{
+					"in": "path",
+					"name": "tag",
+					"description": "tag to remove from tip"
+				},
+				{
+					"in": "path",
+					"name": "tip_id",
+					"description": "id for the tip"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": ["Tips"],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"tip": {
+			"properties": {
+				"tip_id": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"post_date": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"title": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"author": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"details": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"image": {
+					"description": "This is a default description.",
+					"type": "delete"
+				}
+			}
+		},
+		"tag": {
+			"properties": {
+				"tag_id": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"tag": {
+					"description": "This is a default description.",
+					"type": "delete"
+				},
+				"api_count": {
+					"description": "This is a default description.",
+					"type": "delete"
+				}
+			}
+		}
+	}
+}

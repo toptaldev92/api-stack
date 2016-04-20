@@ -1,0 +1,92 @@
+- swagger: "2.0"
+  info:
+    title: Twitter Account API
+    description: The API for Twitter accounts.
+    termsOfService: https://dev.twitter.com/overview/terms
+    contact:
+      name: Twitter
+      url: https://twittercommunity.com/
+    version: "1.1"
+  host: api.twitter.com
+  basePath: /1.1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /account/update_profile_colors/:
+      post:
+        summary: account/update_profile_colors
+        description: 'This endpoint has been deprecated. Most of the values below may
+          no longer be customised. Please refer to account/update_profile to update
+          profile link colors.Sets one or more hex values that control the color scheme
+          of the authenticating user&#8217;s profile page on twitter.com. Each parameter&#8217;s
+          value must be a valid hexadecimal value, and may be either three or six characters
+          (ex: #fff or #ffffff).'
+        operationId: accountUpdateProfileColors
+        parameters:
+        - in: query
+          name: include_entities
+        - in: query
+          name: profile_background_color
+        - in: query
+          name: profile_link_color
+        - in: query
+          name: profile_sidebar_border_color
+        - in: query
+          name: profile_sidebar_fill_color
+        - in: query
+          name: profile_text_color
+        - in: query
+          name: skip_status
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /account/update_profile_image/:
+      post:
+        summary: account/update_profile_image
+        description: Updates the authenticating user&#8217;s profile image. Note that
+          this method expects raw multipart data, not a URL to an image.This method
+          asynchronously processes the uploaded file before updating the user&#8217;s
+          profile image URL. You can either update your local cache the next time you
+          request the user&#8217;s information, or, at least 5 seconds after uploading
+          the image, ask for the updated URL using GET users / show.
+        operationId: accountUpdateProfileImage
+        parameters:
+        - in: query
+          name: ""
+        - in: query
+          name: include_entities
+        - in: query
+          name: skip_status
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /account/verify_credentials/:
+      get:
+        summary: account/verify_credentials
+        description: Returns an HTTP 200 OK response code and a representation of the
+          requesting user if authentication was successful; returns a 401 status code
+          and an error message if not. Use this method to test if supplied user credentials
+          are valid.
+        operationId: accountVerifyCredentials
+        parameters:
+        - in: query
+          name: include_entities
+        - in: query
+          name: skip_status
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []

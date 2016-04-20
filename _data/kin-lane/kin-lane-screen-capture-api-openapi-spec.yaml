@@ -1,0 +1,53 @@
+- swagger: "2.0"
+  info:
+    title: API Evangelist Screen Capture API
+    description: This is a simple API that accepts a URL to any website, then returns
+      an image screenshot of the page.
+    version: ~
+  host: screen-capture.api.apievangelist.com
+  basePath: /v1
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /screen-capture:
+      get:
+        summary: Screen Capture
+        description: Returns PNG file returned from screen capture of a url.
+        operationId: captureScreen
+        parameters:
+        - in: query
+          name: appid
+          description: application id for application making calls
+        - in: query
+          name: appkey
+          description: application key for application making calls
+        - in: query
+          name: url
+          description: a url for screen capture
+        responses:
+          200:
+            description: OK
+        tags:
+        - Screen Capture
+        security: []
+  definitions:
+    Screen Capture:
+      properties:
+        url:
+          description: This is a default description.
+          type: get
+    Error:
+      properties:
+        code:
+          description: This is a default description.
+          type: get
+        message:
+          description: This is a default description.
+          type: get
+        fields:
+          description: This is a default description.
+          type: get

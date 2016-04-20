@@ -1,0 +1,64 @@
+- swagger: "2.0"
+  info:
+    title: Docker Remote Exec API
+    description: The API for managing Docker Remote Exec
+    termsOfService: https://www.docker.com/docker-terms-service
+    version: ""
+  host: api.example.com
+  basePath: /
+  schemes:
+  - http
+  produces:
+  - application/json
+  consumes:
+  - application/json
+  paths:
+    /exec/{id}/json:
+      get:
+        summary: Exec Inspect
+        description: Exec Inspect
+        operationId: exec-inspect
+        parameters:
+        - in: path
+          name: id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /exec/{id}/resize:
+      post:
+        summary: Exec Resize
+        description: Exec Resize
+        operationId: exec-resize
+        parameters:
+        - in: query
+          name: h
+          description: height of tty session
+        - in: path
+          name: id
+        - in: query
+          name: w
+          description: width
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+    /exec/{id}/start:
+      post:
+        summary: Exec Start
+        description: Exec Start
+        operationId: exec-start
+        parameters:
+        - in: path
+          name: id
+        responses:
+          200:
+            description: OK
+        tags:
+        - ""
+        security: []
+  definitions: []
