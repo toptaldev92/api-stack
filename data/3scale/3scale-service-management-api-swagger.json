@@ -1,0 +1,248 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "3scale Service Management API",
+		"description": "The API for managing 3Scale services.",
+		"termsOfService": "http://www.3scale.net/terms-and-conditions/",
+		"contact": {
+			"name": "3Scale",
+			"url": "https://support.3scale.net/"
+		},
+		"version": "1"
+	},
+	"host": "su1.3scale.net",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/transactions.xml": {
+			"post": {
+				"summary": "Report (App Id authentication pattern)",
+				"description": "",
+				"operationId": "report",
+				"parameters": [{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "service_id",
+					"description": "Service id. Required only if you have more than one service.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "transactions",
+					"description": "Transactions to be reported. There is a limit of 1000 transactions to be reported on a single request.",
+					"type": "array"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/transactions/authorize.xml": {
+			"get": {
+				"summary": "Authorize (App Id authentication pattern)",
+				"description": "",
+				"operationId": "authorize",
+				"parameters": [{
+					"in": "query",
+					"name": "app_id",
+					"description": "App Id (identifier of the application if the auth. pattern is App Id)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "app_key",
+					"description": "App Key (shared secret of the application if the authentication pattern is App Id). The app key is required if the application has one or more keys defined.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "referrer",
+					"description": "Referrer IP Address or Domain. Required only if referrer filtering is enabled. If special value * (wildcard) is passed, the referrer check is bypassed.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "service_id",
+					"description": "Service id. Required only if you have more than one service.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "usage",
+					"description": "Predicted Usage. Actual usage will need to be reported with a report or an authrep.",
+					"type": "hash"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "User id. String identifying an end user. Required only when the application is rate limiting end users. The End User plans feature is not available in all 3scale plans.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_key",
+					"description": "User Key (identifier and shared secret of the application if the auth. pattern is Api Key)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/transactions/authrep.xml": {
+			"get": {
+				"summary": "AuthRep (Authorize + Report for the App Id authentication pattern)",
+				"description": "",
+				"operationId": "authrep",
+				"parameters": [{
+					"in": "query",
+					"name": "app_id",
+					"description": "App Id (identifier of the application if the auth. pattern is App Id)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "app_key",
+					"description": "App Key (shared secret of the application if the authentication pattern is App Id). The app key is required if the application has one or more keys defined.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "log",
+					"description": "Request Log allows to log the requests/responses/status_codes of your API back to 3scale to maintain a log of the latest activity on your API. Request Logs are optional and not available in all 3scale plans.",
+					"type": "hash"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "referrer",
+					"description": "Referrer IP Address or Domain. Required only if referrer filtering is enabled. If special value * (wildcard) is passed, the referrer check is bypassed.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "service_id",
+					"description": "Service id. Required only if you have more than one service.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "usage",
+					"description": "Usage will increment the metrics with the values passed. The value can be only a positive integer (e.g. 1, 50). Reporting sage[hits]=1 will increment the hits counter by +1.",
+					"type": "hash"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "User id. String identifying an end user. Required only when the application is rate limiting end users. The End User plans feature is not available in all 3scale plans.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_key",
+					"description": "User Key (identifier and shared secret of the application if the auth. pattern is Api Key)",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/transactions/oauth_authorize.xml": {
+			"get": {
+				"summary": "Authorize (Oauth authentication mode pattern)",
+				"description": "",
+				"operationId": "authorize",
+				"parameters": [{
+					"in": "query",
+					"name": "app_id",
+					"description": "Client Id (identifier of the application if the auth. pattern is Oauth, note that client_id == app_id)",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "redirect_url",
+					"description": "Optional redirect URL for OAuth. Will be validated if sent.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "referrer",
+					"description": "Referrer IP Address or Domain. Required only if referrer filtering is enabled. If special value * (wildcard) is passed, the referrer check is bypassed.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "service_id",
+					"description": "Service id. Required only if you have more than one service.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "usage",
+					"description": "Predicted Usage. Actual usage will need to be reported with a report or an authrep.",
+					"type": "hash"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "User id. String identifying an end user. Required only when the application is rate limiting end users. The End User plans feature is not available in all 3scale plans.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"Errors": {
+			"properties": {
+				"Name": {
+					"description": "The description of the error.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}
