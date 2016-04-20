@@ -1,0 +1,4384 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "3Scale Account Management API",
+		"description": "The API for managing 3Scale accounts.",
+		"termsOfService": "http://www.3scale.net/terms-and-conditions/",
+		"contact": {
+			"name": "3Scale",
+			"url": "https://support.3scale.net/"
+		},
+		"version": "1"
+	},
+	"host": "su1.3scale.net",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"consumes": ["application/json"],
+	"paths": {
+		"/admin/api/accounts.xml": {
+			"get": {
+				"summary": "Account List",
+				"description": "",
+				"operationId": "account",
+				"parameters": [{
+					"in": "query",
+					"name": "page",
+					"description": "Page in the paginated list. Defaults to 1.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of results per page. Default and max is 500.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "state",
+					"description": "Account state. ",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/find.xml": {
+			"get": {
+				"summary": "Account Find",
+				"description": "",
+				"operationId": "account",
+				"parameters": [{
+					"in": "query",
+					"name": "email",
+					"description": "email of the user of the account",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "username of the user of the account",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_id",
+					"description": "id of the user of the account",
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/applications.xml": {
+			"get": {
+				"summary": "Application List",
+				"description": "",
+				"operationId": "application",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Application Create",
+				"description": "",
+				"operationId": "application",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "additional_fields",
+					"description": "Additional fields have to be name and value i.e &name=value. You can add as many as you want. Additional fields cover for the custom fields declared in Settings >> Fields Definitions on your API Admin Portal. Typical examples are url, country, janrain_token, etc. Please check your Fields Definitions to get the list of all your required fields.",
+					"type": "custom"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "Description of the application to be created.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "Name of the application to be created.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "plan_id",
+					"description": "id of the application plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/applications/{application_id}/keys.xml": {
+			"get": {
+				"summary": "Application Key List",
+				"description": "",
+				"operationId": "application",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "application_id",
+					"description": "id of the application.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Application key Create",
+				"description": "",
+				"operationId": "application",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "application_id",
+					"description": "id of the application.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "key",
+					"description": "app_key to be added",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/applications/{application_id}/keys/{key}.xml": {
+			"delete": {
+				"summary": "Application key Delete",
+				"description": "",
+				"operationId": "application",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "application_id",
+					"description": "id of the application.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "key",
+					"description": "app_key to be deleted.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/applications/{application_id}/referrer_filters.xml": {
+			"get": {
+				"summary": "Application Referrer Filter List",
+				"description": "",
+				"operationId": "application",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "application_id",
+					"description": "id of the application.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Application referrer filter Create",
+				"description": "",
+				"operationId": "application",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "application_id",
+					"description": "id of the application.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "referrer_filter",
+					"description": "referrer filter to be created.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/applications/{application_id}/referrer_filters/{id}.xml": {
+			"delete": {
+				"summary": "Application referrer filter Delete",
+				"description": "",
+				"operationId": "application",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "application_id",
+					"description": "id of the application.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of referrer filter to be deleted.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/applications/{id}.xml": {
+			"get": {
+				"summary": "Application Read",
+				"description": "",
+				"operationId": "application",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the application.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Application Update",
+				"description": "",
+				"operationId": "application",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "additional_fields",
+					"description": "Additional fields have to be name and value i.e &name=value. You can add as many as you want. Additional fields cover for the custom fields declared in Settings >> Fields Definitions on your API Admin Portal. Typical examples are url, country, janrain_token, etc. Please check your Fields Definitions to get the list of all your required fields.",
+					"type": "custom"
+				},
+				{
+					"in": "query",
+					"name": "description",
+					"description": "Description of the application.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the application.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "Name of the application.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/applications/{id}/accept.xml": {
+			"put": {
+				"summary": "Application Accept",
+				"description": "",
+				"operationId": "application",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the application.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/applications/{id}/change_plan.xml": {
+			"put": {
+				"summary": "Application Change Plan",
+				"description": "",
+				"operationId": "application",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the application.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "plan_id",
+					"description": "id of the new application plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/applications/{id}/customize_plan.xml": {
+			"put": {
+				"summary": "Application Create Plan Customization",
+				"description": "",
+				"operationId": "application",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the application.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/applications/{id}/decustomize_plan.xml": {
+			"put": {
+				"summary": "Application Delete Plan Customization",
+				"description": "",
+				"operationId": "application",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the application.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/applications/{id}/resume.xml": {
+			"put": {
+				"summary": "Application Resume",
+				"description": "",
+				"operationId": "application",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the application.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/applications/{id}/suspend.xml": {
+			"put": {
+				"summary": "Application Suspend",
+				"description": "",
+				"operationId": "application",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the application.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/messages.xml": {
+			"post": {
+				"summary": "Account Message",
+				"description": "",
+				"operationId": "account",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "body",
+					"description": "Text to send",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/plan.xml": {
+			"get": {
+				"summary": "Account Fetch Account Plan",
+				"description": "",
+				"operationId": "account",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/users.xml": {
+			"get": {
+				"summary": "User List",
+				"description": "",
+				"operationId": "user",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "role",
+					"description": "Filter users by Role.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "state",
+					"description": "Filter users by State.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "User Create",
+				"description": "",
+				"operationId": "user",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "additional_fields",
+					"description": "Additional fields have to be name and value i.e &name=value. You can add as many as you want. Additional fields cover for the custom fields declared in Settings >> Fields Definitions on your API Admin Portal. Typical examples are url, country, janrain_token, etc. Please check your Fields Definitions to get the list of all your required fields.",
+					"type": "custom"
+				},
+				{
+					"in": "query",
+					"name": "email",
+					"description": "Email of the user.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "password",
+					"description": "Password of the user.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Username of the user.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/users/{id}.xml": {
+			"delete": {
+				"summary": "User Delete",
+				"description": "",
+				"operationId": "user",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the user.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "User Read",
+				"description": "",
+				"operationId": "user",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the user.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "User Update",
+				"description": "",
+				"operationId": "user",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "additional_fields",
+					"description": "Additional fields have to be name and value i.e &name=value. You can add as many as you want. Additional fields cover for the custom fields declared in Settings >> Fields Definitions on your API Admin Portal. Typical examples are url, country, janrain_token, etc. Please check your Fields Definitions to get the list of all your required fields.",
+					"type": "custom"
+				},
+				{
+					"in": "query",
+					"name": "email",
+					"description": "Email of the user.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the user.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "password",
+					"description": "Password of the user.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Username of the user.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/users/{id}/activate.xml": {
+			"put": {
+				"summary": "User Activate",
+				"description": "",
+				"operationId": "user",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the user.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/users/{id}/admin.xml": {
+			"put": {
+				"summary": "User change Role to Admin",
+				"description": "",
+				"operationId": "user",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the user.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/users/{id}/member.xml": {
+			"put": {
+				"summary": "User change Role to Member",
+				"description": "",
+				"operationId": "user",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the user.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/users/{id}/suspend.xml": {
+			"put": {
+				"summary": "User Suspend",
+				"description": "",
+				"operationId": "user",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the user.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{account_id}/users/{id}/unsuspend.xml": {
+			"put": {
+				"summary": "User Unsuspend",
+				"description": "",
+				"operationId": "user",
+				"parameters": [{
+					"in": "path",
+					"name": "account_id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the user.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{id}.xml": {
+			"delete": {
+				"summary": "Account Delete ",
+				"description": "",
+				"operationId": "account",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Account Read",
+				"description": "",
+				"operationId": "account",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Account Update",
+				"description": "",
+				"operationId": "account",
+				"parameters": [{
+					"in": "query",
+					"name": "additional_fields",
+					"description": "Additional fields have to be name and value i.e &name=value. You can add as many as you want. Additional fields cover for the custom fields declared in Settings >> Fields Definitions on your API Admin Portal. Typical examples are url, country, janrain_token, etc. Please check your Fields Definitions to get the list of all your required fields.",
+					"type": "custom"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "org_name",
+					"description": "Organization name of the account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{id}/approve.xml": {
+			"put": {
+				"summary": "Account Approve",
+				"description": "",
+				"operationId": "account",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{id}/change_plan.xml": {
+			"put": {
+				"summary": "Account Change Plan",
+				"description": "",
+				"operationId": "account",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "plan_id",
+					"description": "id of the target account plan",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{id}/credit_card.xml": {
+			"delete": {
+				"summary": "Account Delete Credit Card",
+				"description": "",
+				"operationId": "account",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Account Set Credit Card",
+				"description": "",
+				"operationId": "account",
+				"parameters": [{
+					"in": "query",
+					"name": "billing_address_address",
+					"description": "Address associated to the credit card",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "billing_address_city",
+					"description": "Billing address city",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "billing_address_country",
+					"description": "Billing address country",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "billing_address_name",
+					"description": "Name of the person/company to bill",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "billing_address_phone",
+					"description": "Billing address phone",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "billing_address_state",
+					"description": "Billing address state",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "billing_address_zip",
+					"description": "Billing address ZIP code",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "credit_card_authorize_net_payment_profile_token",
+					"description": "Authorize.net payment profile token. Unused for other payment gateways",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "credit_card_expiration_month",
+					"description": "Month of expiration of credit card. 2digit number",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "credit_card_expiration_year",
+					"description": "Year of expiration of credit card. 2digit number",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "credit_card_partial_number",
+					"description": "4 last numbers of the credit card",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "credit_card_token",
+					"description": "The token returned by the payment gateway. Client_id if youre using braintree (In that case, the first credit card will be used)",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{id}/make_pending.xml": {
+			"put": {
+				"summary": "Account Reset to Pending",
+				"description": "",
+				"operationId": "account",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/accounts/{id}/reject.xml": {
+			"put": {
+				"summary": "Account Reject",
+				"description": "",
+				"operationId": "account",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the account.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/account_plans.xml": {
+			"get": {
+				"summary": "Account Plan List",
+				"description": "",
+				"operationId": "account_plan",
+				"parameters": [{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Account Plan Create",
+				"description": "",
+				"operationId": "account_plan",
+				"parameters": [{
+					"in": "query",
+					"name": "name",
+					"description": "Name of the account plan.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "system_name",
+					"description": "System Name of the object to be created. System names cannot be modified after creation, they are used as key to identify the objects.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/account_plans/{account_plan_id}/features.xml": {
+			"get": {
+				"summary": "Account Plan Feature List",
+				"description": "",
+				"operationId": "account_plan_feature",
+				"parameters": [{
+					"in": "path",
+					"name": "account_plan_id",
+					"description": "id of the account plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/account_plans/{account_plan_id}/features/{id}.xml": {
+			"delete": {
+				"summary": "Account Plan Features Delete",
+				"description": "",
+				"operationId": "account_plan_feature",
+				"parameters": [{
+					"in": "path",
+					"name": "account_plan_id",
+					"description": "id of the account plan.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the feature.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Account Plan Features Create",
+				"description": "",
+				"operationId": "account_plan_feature",
+				"parameters": [{
+					"in": "path",
+					"name": "account_plan_id",
+					"description": "id of the account plan.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the feature.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/account_plans/{id}.xml": {
+			"delete": {
+				"summary": "Account Plan Delete",
+				"description": "",
+				"operationId": "account_plan",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the account plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Account Plan Read",
+				"description": "",
+				"operationId": "account_plan",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the account plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Account Plan Update",
+				"description": "",
+				"operationId": "account_plan",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the account plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "Name of the account plan.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/account_plans/{id}/default.xml": {
+			"put": {
+				"summary": "Account Plan set to Default",
+				"description": "",
+				"operationId": "account_plan",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the account plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/active_docs/{id}.xml": {
+			"put": {
+				"summary": "ActiveDocs JSON Spec Update",
+				"description": "",
+				"operationId": "active_docs",
+				"parameters": [{
+					"in": "query",
+					"name": "body",
+					"description": "JSON Spec of the ActiveDocs (based on the spec of Swagger).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the active doc.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/applications.xml": {
+			"get": {
+				"summary": "Application List (all services)",
+				"description": "",
+				"operationId": "application",
+				"parameters": [{
+					"in": "query",
+					"name": "active_since",
+					"description": "filter date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "inactive_since",
+					"description": "filter date",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "page",
+					"description": "Page in the paginated list. Defaults to 1.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "per_page",
+					"description": "Number of results per page. Default and max is 500.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "service_id",
+					"description": "filter by service",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/applications/find.xml": {
+			"get": {
+				"summary": "Application Find",
+				"description": "",
+				"operationId": "application",
+				"parameters": [{
+					"in": "query",
+					"name": "application_id",
+					"description": "id of the application.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "app_id",
+					"description": "app_id of the application (for app_id/app_key and oauth authentication modes).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "user_key",
+					"description": "user_key of the application (for user_key authentication mode).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/application_plans.xml": {
+			"get": {
+				"summary": "Application Plan List (all services)",
+				"description": "",
+				"operationId": "application_plan",
+				"parameters": [{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/application_plans/{application_plan_id}/features.xml": {
+			"get": {
+				"summary": "Application Plan Feature List",
+				"description": "",
+				"operationId": "application_plan_feature",
+				"parameters": [{
+					"in": "path",
+					"name": "application_plan_id",
+					"description": "id of the application plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Application Plan Feature Create",
+				"description": "",
+				"operationId": "application_plan_feature",
+				"parameters": [{
+					"in": "path",
+					"name": "application_plan_id",
+					"description": "id of the application plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "feature_id",
+					"description": "id of the feature.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/application_plans/{application_plan_id}/features/{id}.xml": {
+			"delete": {
+				"summary": "Application Plan Feature Delete",
+				"description": "",
+				"operationId": "application_plan_feature",
+				"parameters": [{
+					"in": "path",
+					"name": "application_plan_id",
+					"description": "id of the application plan.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the feature.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/application_plans/{application_plan_id}/limits.xml": {
+			"get": {
+				"summary": "Limits List per Application Plan",
+				"description": "",
+				"operationId": "application_plan_limits",
+				"parameters": [{
+					"in": "path",
+					"name": "application_plan_id",
+					"description": "id of the application plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/application_plans/{application_plan_id}/metrics/{metric_id}/limits.xml": {
+			"get": {
+				"summary": "Limit List per Metric",
+				"description": "",
+				"operationId": "application_plan_limit",
+				"parameters": [{
+					"in": "path",
+					"name": "application_plan_id",
+					"description": "id of the application plan.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "metric_id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Limit Create",
+				"description": "",
+				"operationId": "application_plan_limit",
+				"parameters": [{
+					"in": "path",
+					"name": "application_plan_id",
+					"description": "id of the application plan.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "metric_id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "period",
+					"description": "period of the limit.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "value",
+					"description": "value of the limit.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/application_plans/{application_plan_id}/metrics/{metric_id}/limits/{id}.xml": {
+			"delete": {
+				"summary": "Limit Delete",
+				"description": "",
+				"operationId": "application_plan_limit",
+				"parameters": [{
+					"in": "path",
+					"name": "application_plan_id",
+					"description": "id of the application plan.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the limit.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "metric_id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Limit Read",
+				"description": "",
+				"operationId": "application_plan_limit",
+				"parameters": [{
+					"in": "path",
+					"name": "application_plan_id",
+					"description": "id of the application plan.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the limit.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "metric_id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Limit Update",
+				"description": "",
+				"operationId": "application_plan_limit",
+				"parameters": [{
+					"in": "path",
+					"name": "application_plan_id",
+					"description": "id of the application plan.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the limit.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "metric_id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "period",
+					"description": "period of the limit.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "value",
+					"description": "value of the limit.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/application_plans/{application_plan_id}/metrics/{metric_id}/pricing_rules.xml": {
+			"get": {
+				"summary": "Pricing Rules List per Metric",
+				"description": "",
+				"operationId": "application_plan_pricing_rules",
+				"parameters": [{
+					"in": "path",
+					"name": "application_plan_id",
+					"description": "id of the application plan.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "metric_id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/application_plans/{application_plan_id}/pricing_rules.xml": {
+			"get": {
+				"summary": "Pricing Rules List per Application Plan",
+				"description": "",
+				"operationId": "application_plan_pricing_rules",
+				"parameters": [{
+					"in": "path",
+					"name": "application_plan_id",
+					"description": "id of the application plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/end_user_plans.xml": {
+			"get": {
+				"summary": "End User Plan List (all services)",
+				"description": "",
+				"operationId": "end_user_plan",
+				"parameters": [{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/end_user_plans/{end_user_plan_id}/metrics/{metric_id}/limits.xml": {
+			"get": {
+				"summary": "Limit List for End User Plans ",
+				"description": "",
+				"operationId": "end_user_plan_limit",
+				"parameters": [{
+					"in": "path",
+					"name": "end_user_plan_id",
+					"description": "id of the end user plan.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "metric_id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Limit Create for End User Plans",
+				"description": "",
+				"operationId": "end_user_plan_limit",
+				"parameters": [{
+					"in": "path",
+					"name": "end_user_plan_id",
+					"description": "id of the end user plan.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "metric_id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "period",
+					"description": "period of the limit.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "value",
+					"description": "value of the limit.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/end_user_plans/{end_user_plan_id}/metrics/{metric_id}/limits/{id}.xml": {
+			"delete": {
+				"summary": "Limit Delete for End User Plans",
+				"description": "",
+				"operationId": "end_user_plan_limit",
+				"parameters": [{
+					"in": "path",
+					"name": "end_user_plan_id",
+					"description": "id of the end user plan.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the limit.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "metric_id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Limit Read for End User Plans",
+				"description": "",
+				"operationId": "end_user_plan_limit",
+				"parameters": [{
+					"in": "path",
+					"name": "end_user_plan_id",
+					"description": "id of the end user plan.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the limit.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "metric_id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Limit Update for End User Plans",
+				"description": "",
+				"operationId": "end_user_plan_limit",
+				"parameters": [{
+					"in": "path",
+					"name": "end_user_plan_id",
+					"description": "id of the end user plan.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the limit.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "metric_id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "period",
+					"description": "period of the limit.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "value",
+					"description": "value of the limit.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/features.xml": {
+			"get": {
+				"summary": "Account Feature List",
+				"description": "",
+				"operationId": "account_feature",
+				"parameters": [{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Account Feature Create",
+				"description": "",
+				"operationId": "account_feature",
+				"parameters": [{
+					"in": "query",
+					"name": "name",
+					"description": "Name of the feature.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "system_name",
+					"description": "System Name of the object to be created. System names cannot be modified after creation, they are used as key to identify the objects.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/features/{id}.xml": {
+			"delete": {
+				"summary": "Account Feature Delete",
+				"description": "",
+				"operationId": "account_feature",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the feature.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Account Feature Read",
+				"description": "",
+				"operationId": "account_feature",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the feature.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Account Feature Update",
+				"description": "",
+				"operationId": "account_feature",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the feature.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "Name of the feature.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/nginx.zip": {
+			"get": {
+				"summary": "Nginx configuration files",
+				"description": "",
+				"operationId": "nginx",
+				"parameters": [{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/provider.xml": {
+			"get": {
+				"summary": "Account Read",
+				"description": "",
+				"operationId": "account",
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services.xml": {
+			"get": {
+				"summary": "Service List",
+				"description": "",
+				"operationId": "service",
+				"parameters": [{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Service Create",
+				"description": "",
+				"operationId": "service",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"description": "Extra parameters",
+					"type": "custom"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "Name of the service to be created.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "system_name",
+					"description": "System Name of the object to be created. System names cannot be modified after creation, they are used as key to identify the objects.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{id}.xml": {
+			"get": {
+				"summary": "Service Read",
+				"description": "",
+				"operationId": "service",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the service.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Service Update",
+				"description": "",
+				"operationId": "service",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"description": "Extra parameters",
+					"type": "custom"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the service.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "New name for the service.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{id}/service_plans.xml": {
+			"get": {
+				"summary": "Service Plan List",
+				"description": "",
+				"operationId": "service_plan",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the service.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Service Plan Create",
+				"description": "",
+				"operationId": "service_plan",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the service.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "Name of the service plan.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "system_name",
+					"description": "System Name of the object to be created. System names cannot be modified after creation, they are used as key to identify the objects.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{service_id}/application_plans.xml": {
+			"get": {
+				"summary": "Application Plan List",
+				"description": "",
+				"operationId": "application_plan",
+				"parameters": [{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Application Plan Create",
+				"description": "",
+				"operationId": "application_plan",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"description": "Extra parameters",
+					"type": "custom"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "Name of the application plan.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "system_name",
+					"description": "System Name of the object to be created. System names cannot be modified after creation, they are used as key to identify the objects.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{service_id}/application_plans/{id}.xml": {
+			"delete": {
+				"summary": "Application Plan Delete",
+				"description": "",
+				"operationId": "application_plan",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the application plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Application Plan Read",
+				"description": "",
+				"operationId": "application_plan",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the application plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Application Plan Update",
+				"description": "",
+				"operationId": "application_plan",
+				"parameters": [{
+					"in": "query",
+					"name": "",
+					"description": "Extra parameters",
+					"type": "custom"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the application plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "Name of the application plan.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{service_id}/application_plans/{id}/default.xml": {
+			"put": {
+				"summary": "Application Plan set to Default",
+				"description": "",
+				"operationId": "application_plan",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the application plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{service_id}/end_users.xml": {
+			"post": {
+				"summary": "End User Create",
+				"description": "",
+				"operationId": "end_user",
+				"parameters": [{
+					"in": "query",
+					"name": "plan_id",
+					"description": "id of the end user plan. If not passed the default end user plan will be used.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "username (unique identifier) of the end user.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{service_id}/end_users/{username}.xml": {
+			"delete": {
+				"summary": "End User Delete",
+				"description": "",
+				"operationId": "end_user",
+				"parameters": [{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "username",
+					"description": "username (unique identifier) of the end user.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "End User Read",
+				"description": "",
+				"operationId": "end_user",
+				"parameters": [{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "username",
+					"description": "username (unique identifier) of the end user.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{service_id}/end_users/{username}/change_plan.xml": {
+			"put": {
+				"summary": "End User Change Plan",
+				"description": "",
+				"operationId": "end_user",
+				"parameters": [{
+					"in": "query",
+					"name": "plan_id",
+					"description": "id of the new end user plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "username",
+					"description": "username (unique identifier) of the end user.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{service_id}/end_user_plans.xml": {
+			"get": {
+				"summary": "End User Plan List",
+				"description": "",
+				"operationId": "end_user_plan",
+				"parameters": [{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "End User Plan Create",
+				"description": "",
+				"operationId": "end_user_plan",
+				"parameters": [{
+					"in": "query",
+					"name": "name",
+					"description": "Name of the end user plan.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{service_id}/end_user_plans/{id}.xml": {
+			"get": {
+				"summary": "End User Plan Read",
+				"description": "",
+				"operationId": "end_user_plan",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the end user plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "End User Plan Update",
+				"description": "",
+				"operationId": "end_user_plan",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the end user plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "Name of the end user plan.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{service_id}/end_user_plans/{id}/default.xml": {
+			"put": {
+				"summary": "End User Plan set to Default",
+				"description": "",
+				"operationId": "end_user_plan",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the end user plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{service_id}/features.xml": {
+			"get": {
+				"summary": "Service Feature List",
+				"description": "",
+				"operationId": "service_feature",
+				"parameters": [{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Service Feature Create",
+				"description": "",
+				"operationId": "service_feature",
+				"parameters": [{
+					"in": "query",
+					"name": "name",
+					"description": "Name of the feature.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "scope",
+					"description": "Type of plan that the feature will be available for.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "system_name",
+					"description": "System Name of the object to be created. System names cannot be modified after creation, they are used as key to identify the objects.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{service_id}/features/{id}.xml": {
+			"delete": {
+				"summary": "Service Feature Delete",
+				"description": "",
+				"operationId": "service_feature",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the feature.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Service Feature Read",
+				"description": "",
+				"operationId": "service_feature",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the feature.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Service Feature Update",
+				"description": "",
+				"operationId": "service_feature",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the feature.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "Name of the feature.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{service_id}/metrics.xml": {
+			"get": {
+				"summary": "Metric List",
+				"description": "",
+				"operationId": "metric",
+				"parameters": [{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Metric Create",
+				"description": "",
+				"operationId": "metric",
+				"parameters": [{
+					"in": "query",
+					"name": "friendly_name",
+					"description": "Descriptive Name of the metric.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "DEPRECATED: Please use system_name parameter",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "system_name",
+					"description": "System Name of the metric. This is the name used to report API requests with the Service Management API. If blank a system_name will be generated for you from the friendly_name parameter",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "unit",
+					"description": "Measure unit of the metric.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{service_id}/metrics/{id}.xml": {
+			"delete": {
+				"summary": "Metric Delete",
+				"description": "",
+				"operationId": "metric",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Metric Read",
+				"description": "",
+				"operationId": "metric",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Metric Update",
+				"description": "",
+				"operationId": "metric",
+				"parameters": [{
+					"in": "query",
+					"name": "friendly_name",
+					"description": "Name of the metric.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "unit",
+					"description": "Measure unit of the metric.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{service_id}/metrics/{metric_id}/methods.xml": {
+			"get": {
+				"summary": "Method List",
+				"description": "",
+				"operationId": "metric_method",
+				"parameters": [{
+					"in": "path",
+					"name": "metric_id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Method Create",
+				"description": "",
+				"operationId": "metric_method",
+				"parameters": [{
+					"in": "query",
+					"name": "friendly_name",
+					"description": "Name of the method.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "metric_id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "system_name",
+					"description": "System Name of the metric. This is the name used to report API requests with the Service Management API. If blank a system_name will be generated for you from the friendly_name parameter",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "unit",
+					"description": "Measure unit of the method.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{service_id}/metrics/{metric_id}/methods/{id}.xml": {
+			"delete": {
+				"summary": "Method Delete",
+				"description": "",
+				"operationId": "metric_method",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the method.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "metric_id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Method Read",
+				"description": "",
+				"operationId": "metric_method",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the method.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "metric_id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Method Update",
+				"description": "",
+				"operationId": "metric_method",
+				"parameters": [{
+					"in": "query",
+					"name": "friendly_name",
+					"description": "Name of the method.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the method.",
+					"type": "int"
+				},
+				{
+					"in": "path",
+					"name": "metric_id",
+					"description": "id of the metric.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "unit",
+					"description": "Measure unit of the method.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{service_id}/service_plans/{id}.xml": {
+			"delete": {
+				"summary": "Service Plan Delete",
+				"description": "",
+				"operationId": "service_plan",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the service plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Service Plan Read",
+				"description": "",
+				"operationId": "service_plan",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the service plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "Service Plan Update",
+				"description": "",
+				"operationId": "service_plan",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the service plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "name",
+					"description": "Name of the service plan.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/services/{service_id}/service_plans/{id}/default.xml": {
+			"put": {
+				"summary": "Service Plan set to Default",
+				"description": "",
+				"operationId": "service_plan",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the service plan.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_id",
+					"description": "id of the service.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/service_plans.xml": {
+			"get": {
+				"summary": "Service Plan List (all services)",
+				"description": "",
+				"operationId": "service_plan",
+				"parameters": [{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/service_plans/{service_plan_id}/features.xml": {
+			"get": {
+				"summary": "Service Plan Feature List",
+				"description": "",
+				"operationId": "service_plan_feature",
+				"parameters": [{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_plan_id",
+					"description": "id of the service plan.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "Service Plan Feature Add",
+				"description": "",
+				"operationId": "service_plan_feature",
+				"parameters": [{
+					"in": "query",
+					"name": "feature_id",
+					"description": "id of the feature.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "service_plan_id",
+					"description": "id of the service plan.",
+					"type": "int"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/signup.xml": {
+			"post": {
+				"summary": "Signup Express",
+				"description": "",
+				"operationId": "signup",
+				"parameters": [{
+					"in": "query",
+					"name": "account_plan_id",
+					"description": "id of the account plan (if not assigned default will be used instead).",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "additional_fields",
+					"description": "Additional fields have to be name and value i.e &name=value. You can add as many as you want. Additional fields cover for the custom fields declared in Settings >> Fields Definitions on your API Admin Portal. Typical examples are url, country, janrain_token, etc. Please check your Fields Definitions to get the list of all your required fields.",
+					"type": "custom"
+				},
+				{
+					"in": "query",
+					"name": "application_plan_id",
+					"description": "id of the application plan (if not assigned default will be used instead).",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "email",
+					"description": "Email of the admin user.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "org_name",
+					"description": "Organization Name of the buyer account.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "password",
+					"description": "Password of the admin user.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "service_plan_id",
+					"description": "id of the service plan (if not assigned default will be used instead).",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Username of the admin user (on the new buyer account).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/users.xml": {
+			"get": {
+				"summary": "User List (provider account)",
+				"description": "",
+				"operationId": "user_provider_account",
+				"parameters": [{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "role",
+					"description": "Filter users by Role.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "state",
+					"description": "Filter users by State.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"post": {
+				"summary": "User Create (provider account)",
+				"description": "",
+				"operationId": "user_provider_account",
+				"parameters": [{
+					"in": "query",
+					"name": "additional_fields",
+					"description": "Additional fields have to be name and value i.e &name=value. You can add as many as you want. Additional fields cover for the custom fields declared in Settings >> Fields Definitions on your API Admin Portal. Typical examples are url, country, janrain_token, etc. Please check your Fields Definitions to get the list of all your required fields.",
+					"type": "custom"
+				},
+				{
+					"in": "query",
+					"name": "email",
+					"description": "Email of the user.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "password",
+					"description": "Password of the user.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Username of the user.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/users/{id}.xml": {
+			"delete": {
+				"summary": "User Delete (provider account)",
+				"description": "",
+				"operationId": "user_provider_account",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the user.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "User Read (provider account)",
+				"description": "",
+				"operationId": "user_provider_account",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the user.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"put": {
+				"summary": "User Update (provider account)",
+				"description": "",
+				"operationId": "user_provider_account",
+				"parameters": [{
+					"in": "query",
+					"name": "additional_fields",
+					"description": "Additional fields have to be name and value i.e &name=value. You can add as many as you want. Additional fields cover for the custom fields declared in Settings >> Fields Definitions on your API Admin Portal. Typical examples are url, country, janrain_token, etc. Please check your Fields Definitions to get the list of all your required fields.",
+					"type": "custom"
+				},
+				{
+					"in": "query",
+					"name": "email",
+					"description": "Email of the user.",
+					"type": "string"
+				},
+				{
+					"in": "path",
+					"name": "id",
+					"description": "id of the user.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "password",
+					"description": "Password of the user.",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "username",
+					"description": "Username of the user.",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/users/{id}/activate.xml": {
+			"put": {
+				"summary": "User Activate (provider account)",
+				"description": "",
+				"operationId": "user_provider_account",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the user.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/users/{id}/admin.xml": {
+			"put": {
+				"summary": "User change Role to Admin (provider account)",
+				"description": "",
+				"operationId": "user_provider_account",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the user.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/users/{id}/member.xml": {
+			"put": {
+				"summary": "User change Role to Member (provider account)",
+				"description": "",
+				"operationId": "user_provider_account",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the user.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/users/{id}/suspend.xml": {
+			"put": {
+				"summary": "User Suspend (provider account)",
+				"description": "",
+				"operationId": "user_provider_account",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the user.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/users/{id}/unsuspend.xml": {
+			"put": {
+				"summary": "User Unsuspend (of provider account)",
+				"description": "",
+				"operationId": "user_provider_account",
+				"parameters": [{
+					"in": "path",
+					"name": "id",
+					"description": "id of the user.",
+					"type": "int"
+				},
+				{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		},
+		"/admin/api/webhooks/failures.xml": {
+			"delete": {
+				"summary": "Webhooks Delete Failed Deliveries",
+				"description": "",
+				"operationId": "webhooks",
+				"parameters": [{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				},
+				{
+					"in": "query",
+					"name": "time",
+					"description": "Only failed webhook deliveries whose time is less or equal than the passed time are destroyed (if used).",
+					"type": "time"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			},
+			"get": {
+				"summary": "Webhooks List Failed Deliveries",
+				"description": "",
+				"operationId": "webhooks",
+				"parameters": [{
+					"in": "query",
+					"name": "provider_key",
+					"description": "Your api key with 3scale (also known as provider key).",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK"
+					}
+				},
+				"tags": [""],
+				"security": []
+			}
+		}
+	},
+	"definitions": {
+		"Errors": {
+			"properties": {
+				"Name": {
+					"description": "The description of the error.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}
