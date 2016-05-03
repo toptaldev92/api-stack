@@ -86,65 +86,16 @@
 
   </div>
 
-	<script type="text/javascript">
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-1119465-51']);
-	  _gaq.push(['_setDomainName', 'apievangelist.com']);
-	  _gaq.push(['_trackPageview']);
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
+    ga('create', 'UA-1119465-70', 'auto');
+    ga('send', 'pageview');
 
-	  function checkLinkRot()
-	    {
-	    var linkArray = [];
-	    var links = document.getElementsByTagName("a");
-	    for(var i=0; i<links.length; i++) {
-	        linkArray.push(links[i].href);
-	    }
-	    url = "http://linkrot.api.laneworks.net/v1/links/";
-	    var myJsonString = JSON.stringify(linkArray);
-	    $.ajax({
-	        type: "POST",
-	        url: url,
-	        data: myJsonString,
-	        success: function (data) {
-	             $.each(data, function($Key,$Value) {
-	                $URL = $Value['URL'];
-	                $returnURL = $Value['returnURL'];
-	                var links = document.getElementsByTagName("a");
-	                for(var i=0; i<links.length; i++) {
-	                    if(links[i].href==$URL)
-	                        {
-	                        document.getElementsByTagName("a")[i].href=$returnURL;
-	                        }
-	                     }
-	             });
-	        }
-	       });
-	    }
-
-	</script>
-
-	<!-- Google Code for API Evangelist visitors -->
-	<script type="text/javascript">
-	/* <![CDATA[ */
-	var google_conversion_id = 964245031;
-	var google_conversion_label = "U2foCJGT0wkQp-zkywM";
-	var google_custom_params = window.google_tag_params;
-	var google_remarketing_only = true;
-	/* ]]> */
-	</script>
-	<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-	</script>
-	<noscript>
-	<div style="display:inline;">
-	   <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/964245031/?value=1.000000&amp;label=U2foCJGT0wkQp-zkywM&amp;guid=ON&amp;script=0"/>
-	</div>
-	</noscript>
+  </script>
 
   <script type="text/javascript">
     // project view log
@@ -155,12 +106,10 @@
     function featureProjects()
         {
         $get_feature_project_url = "http://project.api.kinlane.com/project/feature/";
-        console.log($get_feature_project_url);
         $.ajax({
           url: $get_feature_project_url,
           type:"GET",
           success:function(data) {
-            console.log(data);
               $feature_title = data['feature_title'];
               $feature_image = data['feature_image'];
               $feature_url = data['feature_url'];
