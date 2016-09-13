@@ -29,110 +29,112 @@ title: The API Stack
   </tr>
   {% assign orgs = lifecycle[1] %}
   {% for org in orgs %}
-  <tr>
-    <td width='25'></td>
-    <td>
-      {{ org.name }}
-      <table cellpading="10" cellspacing="10" width="100%" class="card" border="0">
-        <tr>
-          <td colspan="2" style="padding: 15px;">
-            {% if org.photo != null %}
-              <a href="{{ org.url }}">
-                <img src="{{ org.photo }}" align="left" style="padding: 10px;" width="125" />
-              </a>
-            {% endif %}
-            <a href="{{ org.url }}" style="font-size: 22px;"><strong>{{ apisjson.name }}</strong></a><br />
-          </td>
-        </tr>
-        <tr>
-          <td align="center" colspan="3" style="margin-left: 25px; margin-right: 25px;">
-            <ul style="list-style: none; display: inline;">
-              {% if org.portal_url != '' %}
-                <li style="display: inline; padding-left: 15px; padding-right: 15px;">
-                  <a href="{{ org.org.portal_url }}" target="_blank" title="Portal">
-                    <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-portal-developers.jpg" width="26" align="center" />
+    {% unless org.name contains 'bot' %}
+      <tr>
+        <td width='25'></td>
+        <td>
+          {{ org.name }}
+          <table cellpading="10" cellspacing="10" width="100%" class="card" border="0">
+            <tr>
+              <td colspan="2" style="padding: 15px;">
+                {% if org.photo != null %}
+                  <a href="{{ org.url }}">
+                    <img src="{{ org.photo }}" align="left" style="padding: 10px;" width="125" />
                   </a>
-                </li>
-              {% endif %}
-              {% if org.blog_url != '' %}
-                <li style="display: inline; padding-left: 15px; padding-right: 15px;">
-                  <a href="{{ org.blog_url }}" target="_blank" title="Blog">
-                    <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-blog-icon.png" width="26" align="center" />
-                  </a>
-                </li>
-              {% endif %}
-
-              {% if org.blogrss_url != '' %}
-                <li style="display: inline; padding-left: 15px; padding-right: 15px;">
-                  <a href="{{ org.blogrss_url }}" target="_blank" title="Blog RSS">
-                    <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-rss-icon.png" width="26" align="center" />
-                  </a>
-                </li>
-              {% endif %}
-
-              {% if org.twitter_url != '' %}
-                <li style="display: inline; padding-left: 15px; padding-right: 15px;">
-                  <a href="{{ org.twitter_url }}" target="_blank" title="Twitter">
-                    <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-twitter-icon.png" width="45" align="center" />
-                  </a>
-                </li>
-              {% endif %}
-
-              {% if org.gitub_url != '' %}
-                <li style="display: inline; padding-left: 15px; padding-right: 15px;">
-                  <a href="{{ org.gitub_url }}" target="_blank" title="Github">
-                    <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-github-icon.png" width="52" align="center" />
-                  </a>
-                </li>
-              {% endif %}
-
-              {% if org.apisjson.url != null %}
-                <li style="display: inline; padding-left: 15px; padding-right: 15px;">
-                  <a href="{{ org.apisjson.url }}" target="_blank" title="APIs.json">
-                    <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-api-a.png" width="51" align="center" />
-                  </a>
-                </li>
-              {% endif %}
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td align="center" colspan="3" style="margin-left: 90px; margin-right: 90px;">
-
-            <p style="font-size: 18px; text-align: left; margin-left: 117px;"><strong>APIs:</strong></p>
-
-              <table cellpadding="3" cellspacing="2" width="70%" border="0" style="margin-bottom: 25px;">
-                  {% for api in org.apis %}
-                  <tr>
-                    <td align="left">
-                        <a href="{{ api.documentation_url }}" target="_blank" title="Documentation">{{ api.name }}</a>
-                    </td>
-                    <td align="right">
-                        {% if org.apisjson.url != null %}
-                          <a href="{{ api.documentation_url }}" target="_blank" title="OpenAPI Spec JSON">
-                            <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-documentation.png" width="25" align="right" />
-                          </a>
-                        {% endif %}
-                        {% if org.apisjson.openapi_json_spec_url != null %}
-                          <a href="{{ api.openapi_json_spec_url }}" target="_blank" title="OpenAPI Spec JSON">
-                            <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-swagger-round.png" width="25" align="right" />
-                          </a>
-                        {% endif %}
-                        {% if org.apisjson.openapi_yaml_spec_url != null %}
-                          <a href="{{ api.openapi_yaml_spec_url }}" target="_blank" title="OpenAPI Spec Yaml">
-                            <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-yaml.png" width="25" align="right" />
-                          </a>
-                        {% endif %}
-                    </td>
-                  </tr>
-                  {% endfor %}
-                </table>
-
+                {% endif %}
+                <a href="{{ org.url }}" style="font-size: 22px;"><strong>{{ apisjson.name }}</strong></a><br />
               </td>
             </tr>
-      </table>
-    </td>
-  </tr>
+            <tr>
+              <td align="center" colspan="3" style="margin-left: 25px; margin-right: 25px;">
+                <ul style="list-style: none; display: inline;">
+                  {% if org.portal_url != '' %}
+                    <li style="display: inline; padding-left: 15px; padding-right: 15px;">
+                      <a href="{{ org.org.portal_url }}" target="_blank" title="Portal">
+                        <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-portal-developers.jpg" width="26" align="center" />
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if org.blog_url != '' %}
+                    <li style="display: inline; padding-left: 15px; padding-right: 15px;">
+                      <a href="{{ org.blog_url }}" target="_blank" title="Blog">
+                        <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-blog-icon.png" width="26" align="center" />
+                      </a>
+                    </li>
+                  {% endif %}
+
+                  {% if org.blogrss_url != '' %}
+                    <li style="display: inline; padding-left: 15px; padding-right: 15px;">
+                      <a href="{{ org.blogrss_url }}" target="_blank" title="Blog RSS">
+                        <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-rss-icon.png" width="26" align="center" />
+                      </a>
+                    </li>
+                  {% endif %}
+
+                  {% if org.twitter_url != '' %}
+                    <li style="display: inline; padding-left: 15px; padding-right: 15px;">
+                      <a href="{{ org.twitter_url }}" target="_blank" title="Twitter">
+                        <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-twitter-icon.png" width="45" align="center" />
+                      </a>
+                    </li>
+                  {% endif %}
+
+                  {% if org.gitub_url != '' %}
+                    <li style="display: inline; padding-left: 15px; padding-right: 15px;">
+                      <a href="{{ org.gitub_url }}" target="_blank" title="Github">
+                        <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-github-icon.png" width="52" align="center" />
+                      </a>
+                    </li>
+                  {% endif %}
+
+                  {% if org.apisjson.url != null %}
+                    <li style="display: inline; padding-left: 15px; padding-right: 15px;">
+                      <a href="{{ org.apisjson.url }}" target="_blank" title="APIs.json">
+                        <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-api-a.png" width="51" align="center" />
+                      </a>
+                    </li>
+                  {% endif %}
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" colspan="3" style="margin-left: 90px; margin-right: 90px;">
+
+                <p style="font-size: 18px; text-align: left; margin-left: 117px;"><strong>APIs:</strong></p>
+
+                  <table cellpadding="3" cellspacing="2" width="70%" border="0" style="margin-bottom: 25px;">
+                      {% for api in org.apis %}
+                      <tr>
+                        <td align="left">
+                            <a href="{{ api.documentation_url }}" target="_blank" title="Documentation">{{ api.name }}</a>
+                        </td>
+                        <td align="right">
+                            {% if org.apisjson.url != null %}
+                              <a href="{{ api.documentation_url }}" target="_blank" title="OpenAPI Spec JSON">
+                                <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-documentation.png" width="25" align="right" />
+                              </a>
+                            {% endif %}
+                            {% if org.apisjson.openapi_json_spec_url != null %}
+                              <a href="{{ api.openapi_json_spec_url }}" target="_blank" title="OpenAPI Spec JSON">
+                                <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-swagger-round.png" width="25" align="right" />
+                              </a>
+                            {% endif %}
+                            {% if org.apisjson.openapi_yaml_spec_url != null %}
+                              <a href="{{ api.openapi_yaml_spec_url }}" target="_blank" title="OpenAPI Spec Yaml">
+                                <img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-yaml.png" width="25" align="right" />
+                              </a>
+                            {% endif %}
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </table>
+
+                  </td>
+                </tr>
+          </table>
+        </td>
+      </tr>
+    {% endunless %}
   {% endfor %}
 {% endfor %}
 </table>
