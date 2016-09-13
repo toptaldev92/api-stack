@@ -1,0 +1,43 @@
+---
+layout: page
+title: The API Stack
+---
+
+<script type="text/javascript">
+
+  function showme($id)
+    {
+    if(document.getElementById($id).style.display=='none')
+      {
+      document.getElementById($id).style.display = '';
+      }
+    else
+      {
+      document.getElementById($id).style.display = 'none';
+      }
+    }
+
+</script>
+
+<h1>My API Lifecycle Stack</h1>
+<p></p>
+<table cellpadding="3" cellspacing="2" width="90%" border="0" style="margin-top: 10px;">
+{% for folder in site.data.lifecycle-organizations %}
+  {% assign tag = entry[0] %}
+  <tr>
+    <td colspan="2"><strong>{{ tag }}</strong></td>
+  </tr>
+  {% assign orgs = entry[1] %}
+  {% for org in orgs %}
+  <tr>
+    <td width='25'></td>
+    <td>
+      {{ org.name }}
+    </td>
+  </tr>
+  {% endfor %}
+{% endfor %}
+</table>
+<br />
+<p>If you are an API provider and would like to see your API here, feel free to submit a link to it in the Github issues, or even fork and submit a pull requests. I'm looking for as much help as I can, to make this as complete as possible source for API definitions as I possibly can.</p>
+<p>Remember, the more open, complete, freely available API definitions there are, the more people will have healthy patterns to follow when crafting their own APIs. If you design APIs, make sure and share your patterns.</p>
