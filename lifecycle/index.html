@@ -22,11 +22,20 @@ title: The API Stack
 <h1>My API Lifecycle Stack</h1>
 <p></p>
 <table cellpadding="3" cellspacing="2" width="90%" border="0" style="margin-top: 10px;">
-{% for folder in site.data.lifecycle-organizations %}
-  {% assign tag = entry[0] %}
+{% for lifecycle in site.data.lifecycle-organizations %}
+  {% assign tag = lifecycle[0] %}
   <tr>
     <td colspan="2"><strong>{{ tag }}</strong></td>
   </tr>
+  {% assign orgs = lifecycle[1] %}
+  {% for org in orgs %}
+  <tr>
+    <td width='25'></td>
+    <td>
+      {{ org.name }}
+    </td>
+  </tr>
+  {% endfor %}
 {% endfor %}
 </table>
 <br />
