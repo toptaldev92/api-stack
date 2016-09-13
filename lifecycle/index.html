@@ -28,7 +28,9 @@ title: The API Stack
     <td colspan="2"><strong>{{ tag }}</strong></td>
   </tr>
   {% assign orgs = lifecycle[1] %}
+  {% unless orgs == empty %}
   {% for org in orgs %}
+
     {% unless org.name contains 'bot' %}
       <tr>
         <td width='25'></td>
@@ -140,5 +142,6 @@ title: The API Stack
       </tr>
     {% endunless %}
   {% endfor %}
+  {% endunless %}
 {% endfor %}
 </table>
