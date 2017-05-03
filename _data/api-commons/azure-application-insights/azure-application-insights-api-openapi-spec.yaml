@@ -1,0 +1,340 @@
+agger: "2.0"
+info:
+  title: Application Insights API
+  description: Application Insights (in preview) is an all-in-one telemetry solution
+    that can help you detect issues, triage impact and solve problems in your web
+    apps and services. It provides deep diagnostics and real-time insights while being
+    a seamless part of your ALM processes through Visual Studio, Visual Studio Team
+    Services, and Azure Diagnostics integrations. It supports ASP.NET, J2EE and most
+    of the popular web technologies for web apps on Azure or on your own servers.
+  version: 1.0.0
+host: management.azure.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /providers/microsoft.insights/operations:
+    get:
+      summary: List Operations
+      description: Lists all of the available insights REST API operations
+      operationId: Operations_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Operations
+  /subscriptions/{subscriptionId}/providers/microsoft.insights/components:
+    get:
+      summary: List Components
+      description: Gets a list of all Application Insights components within a subscription
+      operationId: Components_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Components
+  /subscriptions/{subscriptionId}/providers/microsoft.insights/webtests:
+    get:
+      summary: List Web Tests
+      description: Get all Application Insights web test alerts definitioned within
+        a subscription
+      operationId: WebTests_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Web Tests
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components:
+    get:
+      summary: List Components By Resource Group
+      description: Gets a list of Application Insights components within a resource
+        group
+      operationId: Components_ListByResourceGroup
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Components
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components/{resourceName}:
+    delete:
+      summary: Delete Components
+      description: Deletes an Application Insights component
+      operationId: Components_Delete
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Components
+    get:
+      summary: Get Components
+      description: Returns an Application Insights component
+      operationId: Components_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Components
+    patch:
+      summary: Update Components Tags
+      description: Updates an existing component's tags
+      operationId: Components_UpdateTags
+      parameters:
+      - in: body
+        name: ComponentTags
+        description: Updated tag information to set into the component instance
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Components
+    put:
+      summary: Create or Update Components
+      description: Creates (or updates) an Application Insights component
+      operationId: Components_CreateOrUpdate
+      parameters:
+      - in: body
+        name: InsightProperties
+        description: Properties that need to be specified to create an Application
+          Insights component
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Components
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/webtests:
+    get:
+      summary: Web Tests By Resource Group
+      description: Get all Application Insights web tests defined within a specified
+        resource group
+      operationId: WebTests_ListByResourceGroup
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Web Tests
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/webtests/{webTestName}:
+    delete:
+      summary: Delete Web Tests
+      description: Deletes an Application Insights web test
+      operationId: WebTests_Delete
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Web Tests
+    get:
+      summary: Get Web Tests
+      description: Get a specific Application Insights web test definition
+      operationId: WebTests_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Web Tests
+    patch:
+      summary: Update Web Tests Tags
+      description: Creates or updates an Application Insights web test definition
+      operationId: WebTests_UpdateTags
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: WebTestTags
+        description: Updated tag information to set into the web test instance
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Web Tests
+    put:
+      summary: Create or Update Web Tests
+      description: Creates or updates an Application Insights web test definition
+      operationId: WebTests_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: WebTestDefinition
+        description: Properties that need to be specified to create or update an Application
+          Insights web test definition
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Web Tests
+definitions:
+  ErrorResponse:
+    properties:
+      code:
+        description: This is a default description.
+        type: get
+      message:
+        description: This is a default description.
+        type: get
+  Operation:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+  OperationListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  Resource:
+    properties:
+      id:
+        description: This is a default description.
+        type: patch
+      name:
+        description: This is a default description.
+        type: patch
+      type:
+        description: This is a default description.
+        type: patch
+      location:
+        description: This is a default description.
+        type: patch
+  TagsResource:
+    properties: []
+  ApplicationInsightsComponent:
+    properties:
+      kind:
+        description: This is a default description.
+        type: patch
+  ApplicationInsightsComponentProperties:
+    properties:
+      ApplicationId:
+        description: This is a default description.
+        type: patch
+      AppId:
+        description: This is a default description.
+        type: patch
+      Application_Type:
+        description: This is a default description.
+        type: patch
+      Flow_Type:
+        description: This is a default description.
+        type: patch
+      Request_Source:
+        description: This is a default description.
+        type: patch
+      InstrumentationKey:
+        description: This is a default description.
+        type: patch
+      CreationDate:
+        description: This is a default description.
+        type: patch
+      TenantId:
+        description: This is a default description.
+        type: patch
+      HockeyAppId:
+        description: This is a default description.
+        type: patch
+      HockeyAppToken:
+        description: This is a default description.
+        type: patch
+  ApplicationInsightsComponentListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: patch
+      nextLink:
+        description: This is a default description.
+        type: patch
+  webTestListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  WebTest:
+    properties:
+      kind:
+        description: This is a default description.
+        type: get
+  WebTestProperties:
+    properties:
+      SyntheticMonitorId:
+        description: This is a default description.
+        type: get
+      Name:
+        description: This is a default description.
+        type: get
+      Description:
+        description: This is a default description.
+        type: get
+      Enabled:
+        description: This is a default description.
+        type: get
+      Frequency:
+        description: This is a default description.
+        type: get
+      Timeout:
+        description: This is a default description.
+        type: get
+      Kind:
+        description: This is a default description.
+        type: get
+      RetryEnabled:
+        description: This is a default description.
+        type: get
+      Locations:
+        description: This is a default description.
+        type: get
+      Configuration:
+        description: This is a default description.
+        type: get
+  WebTestGeolocation:
+    properties:
+      Id:
+        description: This is a default description.
+        type: get
