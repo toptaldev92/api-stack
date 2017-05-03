@@ -1,0 +1,82 @@
+agger: "2.0"
+info:
+  title: No Title
+  version: 1.0.0
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /api/1.1/hosts/12345678.xml:
+    get:
+      summary: Get a host
+      description: Get a host | Hosts | REST API v1
+      operationId: get-a-host
+      responses:
+        200:
+          description: OK
+      tags:
+      - Hosts
+  /api/1.1/hosts/23456789.xml:
+    delete:
+      summary: Delete a host
+      description: Status 200 on success
+      operationId: delete-a-host
+      responses:
+        200:
+          description: OK
+      tags:
+      - Hosts
+    put:
+      summary: Update a host
+      description: Status 200 on success
+      operationId: update-a-host
+      responses:
+        200:
+          description: OK
+      tags:
+      - Hosts
+  /api/1.1/zones/12345678/hosts.xml:
+    get:
+      summary: List hosts
+      description: 'This API method has two uses:'
+      operationId: list-hosts
+      responses:
+        200:
+          description: OK
+      tags:
+      - Hosts
+    post:
+      summary: Create a host
+      description: hostname, priority, and ttl may be left out entirely if their value
+        is nil
+      operationId: create-a-host
+      responses:
+        200:
+          description: OK
+      tags:
+      - Hosts
+  header:
+    x-query-count:
+      summary: Count all hosts
+      description: This is the total number of hosts available for the specified zone
+      operationId: count-all-hosts
+      responses:
+        200:
+          description: OK
+      tags:
+      - Hosts
+  will:
+    zone_id:
+      summary: Get a blank host
+      description: This response may be useful to obtain a blank host, suitable for
+        use as a template or retrieving default values for included fields
+      operationId: get-a-blank-host
+      responses:
+        200:
+          description: OK
+      tags:
+      - Hosts
+definitions: []
