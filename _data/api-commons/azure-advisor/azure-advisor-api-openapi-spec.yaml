@@ -1,0 +1,303 @@
+agger: "2.0"
+info:
+  title: Azure Advisor API
+  description: Azure Advisor is a personalized recommendation engine that helps you
+    follow Azure best practices. It analyzes your Azure resource configuration and
+    usage telemetry, then provides recommendations that can reduce costs and improve
+    the performance, security, and reliability of your applications.
+  version: "2017-04-19"
+host: management.azure.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /providers/Microsoft.Advisor/operations:
+    get:
+      summary: List Operations
+      description: Lists all the available Advisor REST API operations
+      operationId: Operations_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Operations
+  /subscriptions/{subscriptionId}/providers/Microsoft.Advisor/generateRecommendations:
+    post:
+      summary: Generate Recommendations
+      description: Initiates the recommendation generation or computation process
+        for a subscription
+      operationId: Recommendations_Generate
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Recommendations
+  /subscriptions/{subscriptionId}/providers/Microsoft.Advisor/generateRecommendations/{operationId}:
+    get:
+      summary: Get Recommendation
+      description: Retrieves the status of the recommendation computation or generation
+        process
+      operationId: Recommendations_GetGenerateStatus
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: operationId
+        description: The operation ID, which can be found from the Location field
+          in the generate recommendation response header
+      responses:
+        200:
+          description: OK
+      tags:
+      - Recommendations
+  /subscriptions/{subscriptionId}/providers/Microsoft.Advisor/recommendations:
+    get:
+      summary: List Recommendations
+      description: Obtains cached recommendations for a subscription
+      operationId: Recommendations_List
+      parameters:
+      - in: query
+        name: $filter
+        description: The filter to apply to the recommendations
+      - in: query
+        name: $skipToken
+        description: The page-continuation token to use with a paged version of this
+          API
+      - in: query
+        name: $top
+        description: The number of recommendations per page if a paged version of
+          this API is being used
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Recommendations
+  /subscriptions/{subscriptionId}/providers/Microsoft.Advisor/suppressions:
+    get:
+      summary: List Suppressions
+      description: Retrieves the list of snoozed or dismissed suppressions for a subscription
+      operationId: Suppressions_List
+      parameters:
+      - in: query
+        name: $skipToken
+        description: The page-continuation token to use with a paged version of this
+          API
+      - in: query
+        name: $top
+        description: The number of suppressions per page if a paged version of this
+          API is being used
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Suppressions
+  /{resourceUri}/providers/Microsoft.Advisor/recommendations/{recommendationId}:
+    get:
+      summary: Get Recommendations
+      description: Obtains details of a cached recommendation
+      operationId: Recommendations_Get
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: recommendationId
+        description: The recommendation ID
+      - in: path
+        name: resourceUri
+        description: The fully qualified Azure Resource Manager identifier of the
+          resource to which the recommendation applies
+      responses:
+        200:
+          description: OK
+      tags:
+      - Recommendations
+  /{resourceUri}/providers/Microsoft.Advisor/recommendations/{recommendationId}/suppressions/{name}:
+    delete:
+      summary: Delete Suppressions
+      description: Enables the activation of a snoozed or dismissed recommendation
+      operationId: Suppressions_Delete
+      parameters:
+      - in: path
+        name: name
+        description: The name of the suppression
+      - in: query
+        name: No Name
+      - in: path
+        name: recommendationId
+        description: The recommendation ID
+      - in: path
+        name: resourceUri
+        description: The fully qualified Azure Resource Manager identifier of the
+          resource to which the recommendation applies
+      responses:
+        200:
+          description: OK
+      tags:
+      - Suppressions
+    get:
+      summary: Get Suppressions
+      description: Obtains the details of a suppression
+      operationId: Suppressions_Get
+      parameters:
+      - in: path
+        name: name
+        description: The name of the suppression
+      - in: query
+        name: No Name
+      - in: path
+        name: recommendationId
+        description: The recommendation ID
+      - in: path
+        name: resourceUri
+        description: The fully qualified Azure Resource Manager identifier of the
+          resource to which the recommendation applies
+      responses:
+        200:
+          description: OK
+      tags:
+      - Suppressions
+    put:
+      summary: Create Suppressions
+      description: Enables the snoozed or dismissed attribute of a recommendation
+      operationId: Suppressions_Create
+      parameters:
+      - in: path
+        name: name
+        description: The name of the suppression
+      - in: query
+        name: No Name
+      - in: path
+        name: recommendationId
+        description: The recommendation ID
+      - in: path
+        name: resourceUri
+        description: The fully qualified Azure Resource Manager identifier of the
+          resource to which the recommendation applies
+      - in: body
+        name: suppressionContract
+        description: The snoozed or dismissed attribute; for example, the snooze duration
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Suppressions
+definitions:
+  ResourceRecommendationBaseListResult:
+    properties:
+      nextLink:
+        description: This is a default description.
+        type: get
+      value:
+        description: This is a default description.
+        type: get
+  ResourceRecommendationBase:
+    properties: []
+  RecommendationProperties:
+    properties:
+      category:
+        description: This is a default description.
+        type: get
+      impact:
+        description: This is a default description.
+        type: get
+      impactedField:
+        description: This is a default description.
+        type: get
+      impactedValue:
+        description: This is a default description.
+        type: get
+      lastUpdated:
+        description: This is a default description.
+        type: get
+      metadata:
+        description: This is a default description.
+        type: get
+      recommendationTypeId:
+        description: This is a default description.
+        type: get
+      risk:
+        description: This is a default description.
+        type: get
+      suppressionIds:
+        description: This is a default description.
+        type: get
+  Resource:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      name:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+  ShortDescription:
+    properties:
+      problem:
+        description: This is a default description.
+        type: get
+      solution:
+        description: This is a default description.
+        type: get
+  OperationEntityListResult:
+    properties:
+      nextLink:
+        description: This is a default description.
+        type: get
+      value:
+        description: This is a default description.
+        type: get
+  OperationEntity:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+  OperationDisplayInfo:
+    properties:
+      description:
+        description: This is a default description.
+        type: get
+      operation:
+        description: This is a default description.
+        type: get
+      provider:
+        description: This is a default description.
+        type: get
+      resource:
+        description: This is a default description.
+        type: get
+  SuppressionContract:
+    properties: []
+  SuppressionProperties:
+    properties:
+      suppressionId:
+        description: This is a default description.
+        type: get
+      ttl:
+        description: This is a default description.
+        type: get
+  SuppressionContractListResult:
+    properties:
+      nextLink:
+        description: This is a default description.
+        type: get
+      value:
+        description: This is a default description.
+        type: get
