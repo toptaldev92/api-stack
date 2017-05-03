@@ -1,0 +1,2844 @@
+agger: "2.0"
+info:
+  title: AWS API Gateway API
+  version: 1.0.0
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /:
+    get:
+      summary: Root Service
+      description: Represents the root of the Amazon API Gateway control service
+      operationId: apiGateway
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: UnauthorizedException
+        description: TooManyRequestsException
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Root
+  /account:
+    patch:
+      summary: Account Update
+      description: Changes information about the associated Account resource
+      operationId: accountUpdate
+      parameters:
+      - in: header
+        name: '&quot;op&quot;'
+        type: string
+      - in: header
+        name: '&quot;patchOperations&quot;'
+        type: string
+      - in: header
+        name: '&quot;path&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: body
+        name: from
+        description: Not supported
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Host
+        type: string
+      - in: body
+        name: op
+        description: An update operation to be performed with this PATCH request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: path
+        description: The op operation&#39;s target, as identified by a JSON Pointer
+          value that references a location within the targeted resource
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: REST API Reference
+        description: Link Relations
+        type: string
+      - in: body
+        name: value
+        description: The new target value of the update operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Account
+  /apikeys:
+    get:
+      summary: Get API Keys
+      description: Gets the ApiKeys resource representing the set of ApiKey resources
+        to identify clients for all of your APIs
+      operationId: apigatewayApi-keys
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: REST API Reference
+        description: Link Relations
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Keys
+    post:
+      summary: Create Key
+      description: Creates a new ApiKey resource to represent an API key
+      operationId: apikeyCreate
+      parameters:
+      - in: header
+        name: '&quot;description&quot;'
+        type: string
+      - in: header
+        name: '&quot;enabled&quot;'
+        type: string
+      - in: header
+        name: '&quot;name&quot;'
+        type: string
+      - in: header
+        name: '&quot;restApiId&quot;'
+        type: string
+      - in: header
+        name: '&quot;stageKeys&quot;'
+        type: string
+      - in: header
+        name: '&quot;stageName&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: REST API Reference
+        description: Link Relations
+        type: string
+      - in: body
+        name: restApiId
+        description: A list of Stage resources that are associated with the ApiKey
+          resource
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: stageName
+        description: The stage name in the RestApi that the stage key references
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Keys
+  /apikeys/a2TprUZuzf2EKbbmMUotDaHYGg8kgxFypcarGved:
+    delete:
+      summary: Deletes An Api Key Resource
+      description: Deletes an ApiKey resource
+      operationId: apikeyDelete
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: REST API Reference
+        description: Link Relations
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Keys
+  /apikeys/hzYAVO9Sg98nsNh65VfX81M84O2kyXVy6K1xwHD7:
+    get:
+      summary: Get API Key
+      description: Gets the ApiKey resource with the specified key identifier
+      operationId: apikeyBy-key
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: REST API Reference
+        description: Link Relations
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Keys
+    patch:
+      summary: Apikey Update
+      description: Changes an API key properties, including the description, enabled,
+        and name properties
+      operationId: apikeyUpdate
+      parameters:
+      - in: header
+        name: '&quot;op&quot;'
+        type: string
+      - in: header
+        name: '&quot;patchOperations&quot;'
+        type: string
+      - in: header
+        name: '&quot;path&quot;'
+        type: string
+      - in: header
+        name: '&quot;value&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: body
+        name: from
+        description: Not supported
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Host
+        type: string
+      - in: body
+        name: op
+        description: An update operation to be performed with this PATCH request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: path
+        description: The op operation&#39;s target, as identified by a JSON Pointer
+          value that references a location within the targeted resource
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: REST API Reference
+        description: Link Relations
+        type: string
+      - in: body
+        name: value
+        description: The new target value of the update operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Keys
+  /apikeys?mode=import&amp;format=csv&amp;failonwarnings=false:
+    post:
+      summary: Imports One Or More API Keys
+      description: Imports one or more API keys
+      operationId: apikeyImport
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: REST API Reference
+        description: Link Relations
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Keys
+  /clientcertificates:
+    post:
+      summary: Clientcertificate Generate
+      description: Generates a new ClientCertificate resource
+      operationId: clientcertificateGenerate
+      parameters:
+      - in: header
+        name: '&quot;description&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Client Certificates
+  /clientcertificates/9ao60f:
+    get:
+      summary: Clientcertificate Byid
+      description: Gets the ClientCertificate resource with the specified identifier
+      operationId: clientcertificateBy-id
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Client Certificates
+  /clientcertificates/{clientcertificate_id}:
+    patch:
+      summary: Clientcertificate Update
+      description: Changes information about the ClientCertificate resource
+      operationId: clientcertificateUpdate
+      parameters:
+      - in: header
+        name: '&quot;op&quot;'
+        type: string
+      - in: header
+        name: '&quot;patchOperations&quot;'
+        type: string
+      - in: header
+        name: '&quot;path&quot;'
+        type: string
+      - in: header
+        name: '&quot;value&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: query
+        name: DryRun
+        description: Checks whether you have the required permissions for the action,
+          without actually making the request,        and provides an error response
+        type: string
+      - in: query
+        name: ExecutableBy.N
+        description: Scopes the images by users with explicit launch permissions
+        type: string
+      - in: query
+        name: Filter.N
+        description: One or more filters
+        type: string
+      - in: body
+        name: from
+        description: Not supported
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: ImageId.N
+        description: One or more image IDs
+        type: string
+      - in: body
+        name: op
+        description: An update operation to be performed with this PATCH request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: Owner.N
+        description: Filters the images by the owner
+        type: string
+      - in: body
+        name: path
+        description: The op operation&#39;s target, as identified by a JSON Pointer
+          value that references a location within the targeted resource
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: value
+        description: The new target value of the update operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Certificates
+  /domainnames/a.b.c.com/basepathmappings:
+    get:
+      summary: Get Domain Base Path
+      description: Gets the BasePathMappings resource representing the collection
+        of base path mappings for the specified custom domain name
+      operationId: domainnameBasepathmappings
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Domain
+  /domainnames/mon-api.com:
+    delete:
+      summary: Domainname Delete
+      description: Deletes the domain name resource
+      operationId: domainnameDelete
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Domain
+  /restapis:
+    post:
+      summary: Restapi Create
+      description: Creates a new API represented by a RestApi instance in API Gateway
+      operationId: restapiCreate
+      parameters:
+      - in: header
+        name: '&quot;description&quot;'
+        type: string
+      - in: header
+        name: '&quot;name&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: REST API Reference
+        description: Link Relations
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API
+  /restapis/86l3267lf6/authorizers:
+    get:
+      summary: Restapi Authorizers
+      description: Gets an API&#39;s collection of custom authorizers that is represented
+        as an Authorizers instance
+      operationId: restapiAuthorizers
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Length
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Authorizers
+  /restapis/8ekh4oszgl/resources/4oa3abz7jc/methods/GET:
+    delete:
+      summary: Method Delete
+      description: Delete the method resource
+      operationId: methodDelete
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Method
+  /restapis/fugvjdxtri/:
+    patch:
+      summary: Restapi Update
+      description: Changes properties of a RestApi resource
+      operationId: restapiUpdate
+      parameters:
+      - in: header
+        name: '&quot;op&quot;'
+        type: string
+      - in: header
+        name: '&quot;patchOperations&quot;'
+        type: string
+      - in: header
+        name: '&quot;path&quot;'
+        type: string
+      - in: header
+        name: '&quot;value&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: body
+        name: from
+        description: Not supported
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Host
+        type: string
+      - in: body
+        name: op
+        description: An update operation to be performed with this PATCH request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: path
+        description: The op operation&#39;s target, as identified by a JSON Pointer
+          value that references a location within the targeted resource
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: value
+        description: The new target value of the update operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API
+  /restapis/fugvjdxtri/deployments/dzacq7:
+    delete:
+      summary: Deployment Delete
+      description: Deletes the deployment resource
+      operationId: deploymentDelete
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Deployment
+    patch:
+      summary: Deployment Update
+      description: Changes information about the deployment resource
+      operationId: deploymentUpdate
+      parameters:
+      - in: header
+        name: '&quot;op&quot;'
+        type: string
+      - in: header
+        name: '&quot;patchOperations&quot;'
+        type: string
+      - in: header
+        name: '&quot;path&quot;'
+        type: string
+      - in: header
+        name: '&quot;value&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: body
+        name: from
+        description: Not supported
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Host
+        type: string
+      - in: body
+        name: op
+        description: An update operation to be performed with this PATCH request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: path
+        description: The op operation&#39;s target, as identified by a JSON Pointer
+          value that references a location within the targeted resource
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: value
+        description: The new target value of the update operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Deployment
+  /restapis/fugvjdxtri/deployments?limit=2:
+    get:
+      summary: Restapi Deployments
+      description: Gets an API&#39;s Deployments resource
+      operationId: restapiDeployments
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Deployment
+  /restapis/fugvjdxtri/resources:
+    get:
+      summary: Restapi Resources
+      description: Gets an API&#39;s resource collection as represented by a Resources
+        instance
+      operationId: restapiResources
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Resources
+  /restapis/fugvjdxtri/resources/3kzxbg5sa2:
+    get:
+      summary: Resource Byid
+      description: Gets an API resource of the Resource type for a given resource
+        identifier
+      operationId: resourceBy-id
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Resources
+    post:
+      summary: Resource Create
+      description: Creates an API resource
+      operationId: resourceCreate
+      parameters:
+      - in: header
+        name: '&quot;pathPart&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Resources
+  /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET:
+    get:
+      summary: Resource Methods
+      description: Gets an API resource&#39;s method of a given HTTP verb
+      operationId: resourceMethods
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Resource Methods
+    patch:
+      summary: Method Update
+      description: Update the method settings
+      operationId: methodUpdate
+      parameters:
+      - in: header
+        name: '&quot;op&quot;'
+        type: string
+      - in: header
+        name: '&quot;patchOperations&quot;'
+        type: string
+      - in: header
+        name: '&quot;path&quot;'
+        type: string
+      - in: header
+        name: '&quot;value&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Cache-Control
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: body
+        name: from
+        description: Not supported
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Host
+        type: string
+      - in: body
+        name: op
+        description: An update operation to be performed with this PATCH request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: path
+        description: The op operation&#39;s target, as identified by a JSON Pointer
+          value that references a location within the targeted resource
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: value
+        description: The new target value of the update operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Resource Methods
+  /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration:
+    delete:
+      summary: Integration Delete
+      description: Deletes an integration
+      operationId: integrationDelete
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Integration
+    patch:
+      summary: Integration Update
+      description: Changes information about an integration
+      operationId: integrationUpdate
+      parameters:
+      - in: header
+        name: '&quot;op&quot;'
+        type: string
+      - in: header
+        name: '&quot;patchOperations&quot;'
+        type: string
+      - in: header
+        name: '&quot;path&quot;'
+        type: string
+      - in: header
+        name: '&quot;value&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: body
+        name: from
+        description: Not supported
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Host
+        type: string
+      - in: body
+        name: op
+        description: An update operation to be performed with this PATCH request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: path
+        description: The op operation&#39;s target, as identified by a JSON Pointer
+          value that references a location within the targeted resource
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: value
+        description: The new target value of the update operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Integration
+    put:
+      summary: Integration Put
+      description: Set up the method&#39;s integration request
+      operationId: integrationPut
+      parameters:
+      - in: header
+        name: '&quot;application/json&quot;'
+        type: string
+      - in: header
+        name: '&quot;httpMethod&quot;'
+        type: string
+      - in: header
+        name: '&quot;integration.request.header.Content-Type&quot;'
+        type: string
+      - in: header
+        name: '&quot;passthroughBehavior&quot;'
+        type: string
+      - in: header
+        name: '&quot;requestParameters&quot;'
+        type: string
+      - in: header
+        name: '&quot;requestTemplates&quot;'
+        type: string
+      - in: header
+        name: '&quot;type&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: body
+        name: WHEN_NO_MATCH passes the request body for unmapped content types through
+          to the integration back end without transformation.
+        description: NEVER rejects unmapped content types with an HTTP 415 &#39;Unsupported
+          Media Type&#39; response
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Integration
+  /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200:
+    delete:
+      summary: Integrationresponse Delete
+      description: Deletes an integration response
+      operationId: integrationresponseDelete
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Integration
+    get:
+      summary: Integration Responses
+      description: Specifies the integration&#39;s responses
+      operationId: integrationResponses
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Integration
+    patch:
+      summary: Integrationresponse Update
+      description: Changes information about an integration response
+      operationId: integrationresponseUpdate
+      parameters:
+      - in: header
+        name: '&quot;op&quot;'
+        type: string
+      - in: header
+        name: '&quot;patchOperations&quot;'
+        type: string
+      - in: header
+        name: '&quot;path&quot;'
+        type: string
+      - in: header
+        name: '&quot;value&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: body
+        name: from
+        description: Not supported
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Host
+        type: string
+      - in: body
+        name: op
+        description: An update operation to be performed with this PATCH request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: path
+        description: The op operation&#39;s target, as identified by a JSON Pointer
+          value that references a location within the targeted resource
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: value
+        description: The new target value of the update operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Integration
+    put:
+      summary: Integrationresponse Put
+      description: Set up an IntegrationResponse for the integration
+      operationId: integrationresponsePut
+      parameters:
+      - in: header
+        name: '&quot;method.response.header.Content-Type&quot;'
+        type: string
+      - in: header
+        name: '&quot;responseParameters&quot;'
+        type: string
+      - in: header
+        name: '&quot;selectionPattern&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: body
+        name: 'CONVERT_TO_BINARY: Converts a response payload from a Base64-encoded
+          string to the corresponding binary blob.'
+        description: 'CONVERT_TO_TEXT: Converts a response payload from a binary blob
+          to a Base64-encoded string'
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Integration
+  /restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200:
+    get:
+      summary: Get Response
+      description: Represents a method response of a given HTTP status code returned
+        to the client
+      operationId: methodResponse
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: responseModels
+        description: Specifies the Model resources used for the response&#39;s content-type
+        type: string
+      - in: query
+        name: responseParameters
+        description: A key-value map specifying required or optional response parameters
+          that Amazon API Gateway can send back to the caller
+        type: string
+      - in: query
+        name: statusCode
+        description: The method response&#39;s status code
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Method Response
+    put:
+      summary: Methodresponse Put
+      description: Set up the method response
+      operationId: methodresponsePut
+      parameters:
+      - in: header
+        name: '&quot;application/json&quot;'
+        type: string
+      - in: header
+        name: '&quot;method.response.header.Content-Type&quot;'
+        type: string
+      - in: header
+        name: '&quot;responseModels&quot;'
+        type: string
+      - in: header
+        name: '&quot;responseParameters&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Method Response
+  /restapis/fugvjdxtri/resources/47rxl6:
+    post:
+      summary: Resource Createchild
+      description: Creates a child API resource of a given API resource
+      operationId: resourceCreate-child
+      parameters:
+      - in: header
+        name: '&quot;pathPart&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API resource
+  /restapis/fugvjdxtri/stages/stage1:
+    patch:
+      summary: Stage Update
+      description: Changes information about the stage
+      operationId: stageUpdate
+      parameters:
+      - in: header
+        name: '&quot;op&quot;'
+        type: string
+      - in: header
+        name: '&quot;patchOperations&quot;'
+        type: string
+      - in: header
+        name: '&quot;path&quot;'
+        type: string
+      - in: header
+        name: '&quot;value&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: body
+        name: from
+        description: Not supported
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Host
+        type: string
+      - in: body
+        name: op
+        description: An update operation to be performed with this PATCH request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: path
+        description: The op operation&#39;s target, as identified by a JSON Pointer
+          value that references a location within the targeted resource
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: value
+        description: The new target value of the update operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Stage
+  /restapis/l9kujxkzq2/models:
+    get:
+      summary: Restapi Models
+      description: Gets an API&#39;s model collection represented by a Models instance
+      operationId: restapiModels
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Length
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Models
+  /restapis/mxsmn867vb/authorizers:
+    post:
+      summary: Authorizer Create
+      description: Creates an Authorizer resource
+      operationId: authorizerCreate
+      parameters:
+      - in: header
+        name: '&quot;authorizerResultTtlInSeconds&quot;'
+        type: string
+      - in: header
+        name: '&quot;authType&quot;'
+        type: string
+      - in: header
+        name: '&quot;identitySource&quot;'
+        type: string
+      - in: header
+        name: '&quot;name&quot;'
+        type: string
+      - in: header
+        name: '&quot;type&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Authorizer
+  /restapis/mxsmn867vb/authorizers/40j2n8:
+    get:
+      summary: Authorizer Byid
+      description: Gets the Authorizer resource representing a custom authorizer of
+        a specified identifier
+      operationId: authorizerBy-id
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Authorizer
+  /restapis/mxsmn867vb/authorizers/4unj71:
+    delete:
+      summary: Authorizer Delete
+      description: Deletes an authorizer
+      operationId: authorizerDelete
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: REST API Reference
+        description: Link Relations
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Authorizer
+  /restapis/uojnr9hd57/models:
+    post:
+      summary: Model Create
+      description: Creates a new Model for this API
+      operationId: modelCreate
+      parameters:
+      - in: header
+        name: '&quot;contentType&quot;'
+        type: string
+      - in: header
+        name: '&quot;description&quot;'
+        type: string
+      - in: header
+        name: '&quot;name&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Model
+  /restapis/uojnr9hd57/models/CalcOutput:
+    delete:
+      summary: Model Delete
+      description: Deletes a model
+      operationId: modelDelete
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Model
+  /restapis/uojnr9hd57/models/output:
+    get:
+      summary: Model Byname
+      description: Gets information about the Model of a specified name
+      operationId: modelBy-name
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Model
+  /restapis/uojnr9hd57/models/output/default_template:
+    get:
+      summary: Model Generatetemplate
+      description: Generates a sample mapping template that can be used to transform
+        a payload into the structure of a model
+      operationId: modelGenerate-template
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Model
+  /restapis/uojnr9hd57/resources/0cjtch/methods/GET:
+    get:
+      summary: Method Byhttpmethod
+      description: Gets the method (as a Method resource) on a specified API resource
+        (as Resource resource) of the given HTTP method type
+      operationId: methodBy-http-method
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Length
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Method
+  /restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration:
+    get:
+      summary: Method Integration
+      description: Gets the method&#39;s integration responsible for passing the client-submitted
+        request to the back end and performing necessary transformations to make the
+        request compliant with the back end
+      operationId: methodIntegration
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Length
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Method Integration
+  /restapis/uojnr9hd57/resources/0cjtch/methods/GET/responses/200:
+    delete:
+      summary: Methodresponse Delete
+      description: Deletes method response settings
+      operationId: methodresponseDelete
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Length
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Method
+    get:
+      summary: Method Responses
+      description: Gets a method response associated with a given HTTP status code
+      operationId: methodResponses
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Length
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Method
+    patch:
+      summary: Methodresponse Update
+      description: Update MethodResponse resource&#39;s properties
+      operationId: methodresponseUpdate
+      parameters:
+      - in: header
+        name: '&quot;op&quot;'
+        type: string
+      - in: header
+        name: '&quot;patchOperations&quot;'
+        type: string
+      - in: header
+        name: '&quot;path&quot;'
+        type: string
+      - in: header
+        name: '&quot;value&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: body
+        name: from
+        description: Not supported
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Host
+        type: string
+      - in: body
+        name: op
+        description: An update operation to be performed with this PATCH request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: path
+        description: The op operation&#39;s target, as identified by a JSON Pointer
+          value that references a location within the targeted resource
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: value
+        description: The new target value of the update operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Method
+  /restapis/uycll6xg9a/stages/alpha:
+    delete:
+      summary: Stage Delete
+      description: Deletes a named stage of a given API
+      operationId: stageDelete
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Stage
+  /restapis/uycll6xg9a/stages/alpha/cache/authorizers:
+    delete:
+      summary: Stage Flush
+      description: Flushes all cached Authorizer entries on a named stage
+      operationId: stageFlush-authorizer-cache
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Stage
+  /restapis/uycll6xg9a/stages/alpha/cache/data:
+    delete:
+      summary: Stage Flush
+      description: Flushes the cached data of a named stage
+      operationId: stageFlush-cache
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Stage
+  /restapis/wn611yeyp3?mode=merge:
+    put:
+      summary: Restapi Put
+      description: Update the definition of a REST API, including the resources, methods,
+        templates, and models
+      operationId: restapiPut
+      parameters:
+      - in: header
+        name: '&quot;$ref&quot;'
+        type: string
+      - in: header
+        name: '&quot;/gello&quot;'
+        type: string
+      - in: header
+        name: '&quot;/hello&quot;'
+        type: string
+      - in: header
+        name: '&quot;200&quot;'
+        type: string
+      - in: header
+        name: '&quot;Access-Control-Allow-Headers&quot;'
+        type: string
+      - in: header
+        name: '&quot;Access-Control-Allow-Methods&quot;'
+        type: string
+      - in: header
+        name: '&quot;Access-Control-Allow-Origin&quot;'
+        type: string
+      - in: header
+        name: '&quot;application/json&quot;'
+        type: string
+      - in: header
+        name: '&quot;basePath&quot;'
+        type: string
+      - in: header
+        name: '&quot;consumes&quot;'
+        type: string
+      - in: header
+        name: '&quot;default&quot;'
+        type: string
+      - in: header
+        name: '&quot;definitions&quot;'
+        type: string
+      - in: header
+        name: '&quot;description&quot;'
+        type: string
+      - in: header
+        name: '&quot;Empty&quot;'
+        type: string
+      - in: header
+        name: '&quot;get&quot;'
+        type: string
+      - in: header
+        name: '&quot;headers&quot;'
+        type: string
+      - in: header
+        name: '&quot;host&quot;'
+        type: string
+      - in: header
+        name: '&quot;httpMethod&quot;'
+        type: string
+      - in: header
+        name: '&quot;info&quot;'
+        type: string
+      - in: header
+        name: '&quot;method.response.header.Access-Control-Allow-Headers&quot;'
+        type: string
+      - in: header
+        name: '&quot;method.response.header.Access-Control-Allow-Methods&quot;'
+        type: string
+      - in: header
+        name: '&quot;method.response.header.Access-Control-Allow-Origin&quot;'
+        type: string
+      - in: header
+        name: '&quot;options&quot;'
+        type: string
+      - in: header
+        name: '&quot;passthroughBehavior&quot;'
+        type: string
+      - in: header
+        name: '&quot;paths&quot;'
+        type: string
+      - in: header
+        name: '&quot;post&quot;'
+        type: string
+      - in: header
+        name: '&quot;produces&quot;'
+        type: string
+      - in: header
+        name: '&quot;requestTemplates&quot;'
+        type: string
+      - in: header
+        name: '&quot;responseParameters&quot;'
+        type: string
+      - in: header
+        name: '&quot;responses&quot;'
+        type: string
+      - in: header
+        name: '&quot;schema&quot;'
+        type: string
+      - in: header
+        name: '&quot;schemes&quot;'
+        type: string
+      - in: header
+        name: '&quot;statusCode&quot;'
+        type: string
+      - in: header
+        name: '&quot;swagger&quot;'
+        type: string
+      - in: header
+        name: '&quot;title&quot;'
+        type: string
+      - in: header
+        name: '&quot;type&quot;'
+        type: string
+      - in: header
+        name: '&quot;x-amazon-apigateway-integration&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API
+  /restapis?mode=import&amp;failonwarning=true:
+    post:
+      summary: Restapi Import
+      description: Creates an API from an external API definition
+      operationId: restapiImport
+      parameters:
+      - in: header
+        name: '&quot;$ref&quot;'
+        type: string
+      - in: header
+        name: '&quot;/&quot;'
+        type: string
+      - in: header
+        name: '&quot;200&quot;'
+        type: string
+      - in: header
+        name: '&quot;application/json&quot;'
+        type: string
+      - in: header
+        name: '&quot;basePath&quot;'
+        type: string
+      - in: header
+        name: '&quot;consumes&quot;'
+        type: string
+      - in: header
+        name: '&quot;Content-Type&quot;'
+        type: string
+      - in: header
+        name: '&quot;default&quot;'
+        type: string
+      - in: header
+        name: '&quot;definitions&quot;'
+        type: string
+      - in: header
+        name: '&quot;description&quot;'
+        type: string
+      - in: header
+        name: '&quot;Empty&quot;'
+        type: string
+      - in: header
+        name: '&quot;get&quot;'
+        type: string
+      - in: header
+        name: '&quot;headers&quot;'
+        type: string
+      - in: header
+        name: '&quot;host&quot;'
+        type: string
+      - in: header
+        name: '&quot;httpMethod&quot;'
+        type: string
+      - in: header
+        name: '&quot;info&quot;'
+        type: string
+      - in: header
+        name: '&quot;integration.request.header.Content-Type&quot;'
+        type: string
+      - in: header
+        name: '&quot;method.response.header.Content-Type&quot;'
+        type: string
+      - in: header
+        name: '&quot;passthroughBehavior&quot;'
+        type: string
+      - in: header
+        name: '&quot;paths&quot;'
+        type: string
+      - in: header
+        name: '&quot;produces&quot;'
+        type: string
+      - in: header
+        name: '&quot;requestParameters&quot;'
+        type: string
+      - in: header
+        name: '&quot;requestTemplates&quot;'
+        type: string
+      - in: header
+        name: '&quot;responseParameters&quot;'
+        type: string
+      - in: header
+        name: '&quot;responses&quot;'
+        type: string
+      - in: header
+        name: '&quot;responseTemplates&quot;'
+        type: string
+      - in: header
+        name: '&quot;schema&quot;'
+        type: string
+      - in: header
+        name: '&quot;schemes&quot;'
+        type: string
+      - in: header
+        name: '&quot;statusCode&quot;'
+        type: string
+      - in: header
+        name: '&quot;swagger&quot;'
+        type: string
+      - in: header
+        name: '&quot;title&quot;'
+        type: string
+      - in: header
+        name: '&quot;type&quot;'
+        type: string
+      - in: header
+        name: '&quot;x-amazon-apigateway-integration&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: REST API Reference
+        description: Link Relations
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - API
+  /usageplans/{usageplanId}/keys/{keyId}:
+    delete:
+      summary: Clientcertificate Delete
+      description: Deletes the ClientCertificate resource
+      operationId: clientcertificateDelete
+      parameters:
+      - in: query
+        name: Attribute
+        description: The AMI attribute
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: query
+        name: DryRun
+        description: Checks whether you have the required permissions for the action,
+          without actually making the request,        and provides an error response
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: ImageId
+        description: The ID of the AMI
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Certificates
+  along:
+    fugvjdxtri</code>):
+      summary: Deployment Create
+      description: Creates a new Deployment for the API, which will be referenced
+        by the provided Stage
+      operationId: deploymentCreate
+      parameters:
+      - in: header
+        name: '&quot;cacheClusterEnabled&quot;'
+        type: string
+      - in: header
+        name: '&quot;description&quot;'
+        type: string
+      - in: header
+        name: '&quot;stageDescription&quot;'
+        type: string
+      - in: header
+        name: '&quot;stageName&quot;'
+        type: string
+      - in: header
+        name: '&quot;sv1&quot;'
+        type: string
+      - in: header
+        name: '&quot;variables&quot;'
+        type: string
+      - in: query
+        name: Attribute
+        description: The name of the attribute to modify
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: query
+        name: Description
+        description: A description for the AMI
+        type: string
+      - in: query
+        name: DryRun
+        description: Checks whether you have the required permissions for the action,
+          without actually making the request,        and provides an error response
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: ImageId
+        description: The ID of the AMI
+        type: string
+      - in: query
+        name: LaunchPermission
+        description: A launch permission modification
+        type: string
+      - in: query
+        name: OperationType
+        description: The operation type
+        type: string
+      - in: query
+        name: ProductCode.N
+        description: One or more product codes
+        type: string
+      - in: query
+        name: UserGroup.N
+        description: One or more user groups
+        type: string
+      - in: query
+        name: UserId.N
+        description: One or more AWS account IDs
+        type: string
+      - in: query
+        name: Value
+        description: The value of the attribute being modified
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  base:
+    testapi</code>:
+      summary: Basepathmapping Create
+      description: Creates a new BasePathMapping resource
+      operationId: basepathmappingCreate
+      parameters:
+      - in: header
+        name: '&quot;basePath&quot;'
+        type: string
+      - in: header
+        name: '&quot;restApiId&quot;'
+        type: string
+      - in: header
+        name: '&quot;stage&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: query
+        name: BlockDeviceMapping.N
+        description: Information about one or more block device mappings
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: query
+        name: Description
+        description: A description for the new image
+        type: string
+      - in: query
+        name: DryRun
+        description: Checks whether you have the required permissions for the action,
+          without actually making the request,        and provides an error response
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: InstanceId
+        description: The ID of the instance
+        type: string
+      - in: query
+        name: Name
+        description: A name for the new image
+        type: string
+      - in: query
+        name: NoReboot
+        description: By default, Amazon EC2 attempts to shut down and reboot the instance
+          before creating the image
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  enabling:
+    alpha</code>,:
+      summary: Stage Create
+      description: Creates a new stage, as represented by a Stage instance, in a pre-existing
+        Deployment of an API
+      operationId: stageCreate
+      parameters:
+      - in: header
+        name: '&quot;cacheClusterEnabled&quot;'
+        type: string
+      - in: header
+        name: '&quot;cacheClusterSize&quot;'
+        type: string
+      - in: header
+        name: '&quot;deploymentId&quot;'
+        type: string
+      - in: header
+        name: '&quot;description&quot;'
+        type: string
+      - in: header
+        name: '&quot;stageName&quot;'
+        type: string
+      - in: header
+        name: '&quot;sv_1&quot;'
+        type: string
+      - in: header
+        name: '&quot;sv_2&quot;'
+        type: string
+      - in: header
+        name: '&quot;variables&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: query
+        name: DryRun
+        description: "Checks whether you have the required permissions for the action,
+          without actually making the request, \t    and provides an error response"
+        type: string
+      - in: query
+        name: Filter.N
+        description: One or more filters
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: InstanceId.N
+        description: One or more instance IDs
+        type: string
+      - in: query
+        name: MaxResults
+        description: The maximum number of results to return for the request in a
+          single page
+        type: string
+      - in: query
+        name: NextToken
+        description: The token to retrieve the next page of results
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  from:
+    m799ha</code>:
+      summary: Resource Delete
+      description: Deletes an API resource represented by a Resource instance
+      operationId: resourceDelete
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: query
+        name: BundleId
+        description: The ID of the bundle task
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: query
+        name: DryRun
+        description: Checks whether you have the required permissions for the action,
+          without actually making the request,        and provides an error response
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  is:
+    authorizationtype</code>:
+      summary: Method Put
+      description: Create a Method resource on a specified Resource resource
+      operationId: methodPut
+      parameters:
+      - in: header
+        name: '&quot;authorizationType&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: query
+        name: DryRun
+        description: Checks whether you have the required permissions for the action,
+          without actually making the      request, and provides an error response
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: InstanceId
+        description: The ID of the instance
+        type: string
+      - in: query
+        name: ProductCode
+        description: The product code
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  of:
+    certificatename</code>):
+      summary: Domainname Update
+      description: Changes information about the domain name resource
+      operationId: domainnameUpdate
+      parameters:
+      - in: header
+        name: '&quot;op&quot;'
+        type: string
+      - in: header
+        name: '&quot;patchOperations&quot;'
+        type: string
+      - in: header
+        name: '&quot;path&quot;'
+        type: string
+      - in: header
+        name: '&quot;value&quot;'
+        type: string
+      - in: query
+        name: Architecture
+        description: The architecture of the AMI
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: query
+        name: BlockDeviceMapping.N
+        description: One or more block device mapping entries
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: query
+        name: Description
+        description: A description for your AMI
+        type: string
+      - in: query
+        name: DryRun
+        description: Checks whether you have the required permissions for the action,
+          without actually making the request,        and provides an error response
+        type: string
+      - in: query
+        name: EnaSupport
+        description: Set to true to enable enhanced networking with ENA for the AMI
+          and any instances that you launch from the AMI
+        type: string
+      - in: body
+        name: from
+        description: Not supported
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: ImageLocation
+        description: The full path to your AMI manifest in Amazon S3 storage
+        type: string
+      - in: query
+        name: KernelId
+        description: The ID of the kernel
+        type: string
+      - in: query
+        name: Name
+        description: A name for your AMI
+        type: string
+      - in: body
+        name: op
+        description: An update operation to be performed with this PATCH request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: path
+        description: The op operation&#39;s target, as identified by a JSON Pointer
+          value that references a location within the targeted resource
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: RamdiskId
+        description: The ID of the RAM disk
+        type: string
+      - in: query
+        name: RootDeviceName
+        description: "The name of the root device (for example, /dev/sda1, or\t\t\t\t/dev/xvda)"
+        type: string
+      - in: query
+        name: SriovNetSupport
+        description: Set to simple to enable enhanced networking with the Intel 82599
+          Virtual Function interface for the AMI and any instances that you launch
+          from the AMI
+        type: string
+      - in: body
+        name: value
+        description: The new target value of the update operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: VirtualizationType
+        description: The type of virtualization
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    testapi</code>):
+      summary: Basepathmapping Update
+      description: Changes information about the base path mapping resource
+      operationId: basepathmappingUpdate
+      parameters:
+      - in: header
+        name: '&quot;op&quot;'
+        type: string
+      - in: header
+        name: '&quot;patchOperations&quot;'
+        type: string
+      - in: header
+        name: '&quot;path&quot;'
+        type: string
+      - in: header
+        name: '&quot;value&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: query
+        name: DryRun
+        description: Checks whether you have the required permissions for the action,
+          without actually making the request,        and provides an error response
+        type: string
+      - in: body
+        name: from
+        description: Not supported
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: ImageId
+        description: The ID of the AMI
+        type: string
+      - in: body
+        name: op
+        description: An update operation to be performed with this PATCH request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: path
+        description: The op operation&#39;s target, as identified by a JSON Pointer
+          value that references a location within the targeted resource
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: value
+        description: The new target value of the update operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  property:
+    identitysource</code>:
+      summary: Authorizer Update
+      description: Changes information about an authorizer
+      operationId: authorizerUpdate
+      parameters:
+      - in: header
+        name: '&quot;op&quot;'
+        type: string
+      - in: header
+        name: '&quot;patchOperations&quot;'
+        type: string
+      - in: header
+        name: '&quot;path&quot;'
+        type: string
+      - in: header
+        name: '&quot;value&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: query
+        name: ClientToken
+        description: "Unique, case-sensitive identifier you provide to ensure\t\t\t\tidempotency
+          of the request"
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: query
+        name: Description
+        description: A description for the new AMI in the destination region
+        type: string
+      - in: query
+        name: DryRun
+        description: Checks whether you have the required permissions for the action,
+          without actually making the request,        and provides an error response
+        type: string
+      - in: query
+        name: Encrypted
+        description: Specifies whether the destination snapshots of the copied image
+          should be encrypted
+        type: string
+      - in: body
+        name: from
+        description: Not supported
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: KmsKeyId
+        description: The full ARN of the AWS Key Management Service (AWS KMS) CMK
+          to use when encrypting the snapshots of an image during a copy operation
+        type: string
+      - in: query
+        name: Name
+        description: The name of the new AMI in the destination region
+        type: string
+      - in: body
+        name: op
+        description: An update operation to be performed with this PATCH request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: path
+        description: The op operation&#39;s target, as identified by a JSON Pointer
+          value that references a location within the targeted resource
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: SourceImageId
+        description: The ID of the AMI to copy
+        type: string
+      - in: query
+        name: SourceRegion
+        description: The name of the region that contains the AMI to copy
+        type: string
+      - in: body
+        name: value
+        description: The new target value of the update operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  resource:
+    /r2/r2-1</code>:
+      summary: Resource Update
+      description: Update an API resource represented by a Resource instance only
+      operationId: resourceUpdate
+      parameters:
+      - in: header
+        name: '&quot;op&quot;'
+        type: string
+      - in: header
+        name: '&quot;patchOperations&quot;'
+        type: string
+      - in: header
+        name: '&quot;path&quot;'
+        type: string
+      - in: header
+        name: '&quot;value&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: query
+        name: BundleId.N
+        description: One or more bundle task IDs
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: query
+        name: DryRun
+        description: Checks whether you have the required permissions for the action,
+          without actually making the request,        and provides an error response
+        type: string
+      - in: query
+        name: Filter.N
+        description: One or more filters
+        type: string
+      - in: body
+        name: from
+        description: Not supported
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Host
+        type: string
+      - in: body
+        name: op
+        description: An update operation to be performed with this PATCH request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: path
+        description: The op operation&#39;s target, as identified by a JSON Pointer
+          value that references a location within the targeted resource
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: value
+        description: The new target value of the update operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  stage:
+    prod</code>:
+      summary: Stage Byname
+      description: Gets information of a named stage represented by a Stage resource
+      operationId: stageBy-name
+      parameters:
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: query
+        name: DryRun
+        description: "Checks whether you have the required permissions for the action,
+          without actually making the request, \t\t    and provides an error response"
+        type: string
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: InstanceId
+        description: The ID of an EC2-Classic instance to link to the ClassicLink-enabled
+          VPC
+        type: string
+      - in: query
+        name: SecurityGroupId.N
+        description: The ID of one or more of the VPC's security groups
+        type: string
+      - in: query
+        name: VpcId
+        description: The ID of a ClassicLink-enabled VPC
+        type: string
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  usageplans/{usageplanId}/keys:
+    post:
+      summary: Usageplankey Create
+      description: Creates a UsagePlanKey resource to associate an existing API key
+        to the specified usage plan
+      operationId: usageplankeyCreate
+      parameters:
+      - in: body
+        name: apiId
+        description: API Id of the associated API stage in a usage plan
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: AttributeName.N
+        description: One or more account attribute names
+        type: string
+      - in: query
+        name: DryRun
+        description: Checks whether you have the required permissions for the action,
+          without actually making the request,        and provides an error response
+        type: string
+      - in: body
+        name: from
+        description: Not supported
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: method
+        description: The HTTP verb of a method
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: name
+        description: The name of the targeted API entity
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: op
+        description: An update operation to be performed with this PATCH request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: path
+        description: The op operation&#39;s target, as identified by a JSON Pointer
+          value that references a location within the targeted resource
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: stage
+        description: API stage name of the associated API stage in a usage plan
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: statusCode
+        description: The HTTP status code of a response
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: type
+        description: The type of API entity to which the documentation content applies
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: value
+        description: The new target value of the update operation
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Keys
+  value.:
+    op.description</code>:
+      summary: Model Update
+      description: Updates properties of a Model resource
+      operationId: modelUpdate
+      parameters:
+      - in: header
+        name: '&quot;op&quot;'
+        type: string
+      - in: header
+        name: '&quot;patchOperations&quot;'
+        type: string
+      - in: header
+        name: '&quot;path&quot;'
+        type: string
+      - in: header
+        name: Authorization
+        type: string
+      - in: header
+        name: Content-Type
+        type: string
+      - in: query
+        name: DryRun
+        description: Checks whether you have the required permissions for the action,
+          without actually making the request,        and provides an error response
+        type: string
+      - in: body
+        name: from
+        description: Not supported
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: Host
+        type: string
+      - in: query
+        name: InstanceId
+        description: The ID of the instance to bundle
+        type: string
+      - in: body
+        name: op
+        description: An update operation to be performed with this PATCH request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: path
+        description: The op operation&#39;s target, as identified by a JSON Pointer
+          value that references a location within the targeted resource
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: Storage
+        description: The bucket in which to store the AMI
+        type: string
+      - in: body
+        name: value
+        description: The new target value of the update operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: X-Amz-Date
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+definitions: []
