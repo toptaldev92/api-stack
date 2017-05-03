@@ -1,0 +1,966 @@
+agger: "2.0"
+info:
+  title: CdnManagementClient
+  description: Use these APIs to manage Azure CDN resources through the Azure Resource
+    Manager. You must make sure that requests made to these resources are secure.
+  version: 1.0.0
+host: management.azure.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /providers/Microsoft.Cdn/checkNameAvailability:
+    post:
+      summary: Check Name Availability
+      description: Check the availability of a resource name
+      operationId: CheckNameAvailability
+      parameters:
+      - in: body
+        name: checkNameAvailabilityInput
+        description: Input to check
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Name Availability
+  /providers/Microsoft.Cdn/edgenodes:
+    get:
+      summary: Edge Nodes List
+      description: Lists all the edge nodes of a CDN service
+      operationId: EdgeNodes_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Edge Node
+  /providers/Microsoft.Cdn/operations:
+    get:
+      summary: List Operations
+      description: Lists all of the available CDN REST API operations
+      operationId: ListOperations
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Operations
+  /subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkResourceUsage:
+    post:
+      summary: List Resource Usage
+      description: Check the quota and actual usage of the CDN profiles under the
+        given subscription
+      operationId: ListResourceUsage
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Resource Usage
+  /subscriptions/{subscriptionId}/providers/Microsoft.Cdn/profiles:
+    get:
+      summary: Profiles List
+      description: Lists all of the CDN profiles within an Azure subscription
+      operationId: Profiles_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Profile
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles:
+    get:
+      summary: Profiles List By Resource Group
+      description: Lists all of the CDN profiles within a resource group
+      operationId: Profiles_ListByResourceGroup
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Profile
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}:
+    delete:
+      summary: Profiles Delete
+      description: Deletes an existing CDN profile with the specified parameters
+      operationId: Profiles_Delete
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Profile
+    get:
+      summary: Profiles Get
+      description: Gets a CDN profile with the specified profile name under the specified
+        subscription and resource group
+      operationId: Profiles_Get
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Profile
+    patch:
+      summary: Profiles Update
+      description: Updates an existing CDN profile with the specified profile name
+        under the specified subscription and resource group
+      operationId: Profiles_Update
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      - in: body
+        name: profileUpdateParameters
+        description: Profile properties needed to update an existing profile
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Profile
+    put:
+      summary: Profiles Create
+      description: Creates a new CDN profile with a profile name under the specified
+        subscription and resource group
+      operationId: Profiles_Create
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: profile
+        description: Profile properties needed to create a new profile
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Profile
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkResourceUsage
+  : post:
+      summary: Profiles List Resource Usage
+      description: Checks the quota and actual usage of endpoints under the given
+        CDN profile
+      operationId: Profiles_ListResourceUsage
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Profile
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints:
+    get:
+      summary: Endpoints List By Profile
+      description: Lists existing CDN endpoints
+      operationId: Endpoints_ListByProfile
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Endpoint
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}
+  : delete:
+      summary: Endpoints Delete
+      description: Deletes an existing CDN endpoint with the specified endpoint name
+        under the specified subscription, resource group and profile
+      operationId: Endpoints_Delete
+      parameters:
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Endpoint
+    get:
+      summary: Endpoints Get
+      description: Gets an existing CDN endpoint with the specified endpoint name
+        under the specified subscription, resource group and profile
+      operationId: Endpoints_Get
+      parameters:
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Endpoint
+    patch:
+      summary: Endpoints Update
+      description: Updates an existing CDN endpoint with the specified endpoint name
+        under the specified subscription, resource group and profile
+      operationId: Endpoints_Update
+      parameters:
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: body
+        name: endpointUpdateProperties
+        description: Endpoint update properties
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Endpoint
+    put:
+      summary: Endpoints Create
+      description: Creates a new CDN endpoint with the specified endpoint name under
+        the specified subscription, resource group and profile
+      operationId: Endpoints_Create
+      parameters:
+      - in: body
+        name: endpoint
+        description: Endpoint properties
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Endpoint
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/checkResourceUsage
+  : post:
+      summary: Endpoints List Resource Usage
+      description: Checks the quota and usage of geo filters and custom domains under
+        the given endpoint
+      operationId: Endpoints_ListResourceUsage
+      parameters:
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Endpoint
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains
+  : get:
+      summary: Custom Domains List By Endpoint
+      description: Lists all of the existing custom domains within an endpoint
+      operationId: CustomDomains_ListByEndpoint
+      parameters:
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Custom Domain
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}
+  : delete:
+      summary: Custom Domains Delete
+      description: Deletes an existing custom domain within an endpoint
+      operationId: CustomDomains_Delete
+      parameters:
+      - in: path
+        name: customDomainName
+        description: Name of the custom domain within an endpoint
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Custom Domain
+    get:
+      summary: Custom Domains Get
+      description: Gets an exisitng custom domain within an endpoint
+      operationId: CustomDomains_Get
+      parameters:
+      - in: path
+        name: customDomainName
+        description: Name of the custom domain within an endpoint
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Custom Domain
+    put:
+      summary: Custom Domains Create
+      description: Creates a new custom domain within an endpoint
+      operationId: CustomDomains_Create
+      parameters:
+      - in: path
+        name: customDomainName
+        description: Name of the custom domain within an endpoint
+      - in: body
+        name: customDomainProperties
+        description: Properties required to create a new custom domain
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Custom Domain
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/disableCustomHttps
+  : post:
+      summary: Custom Domains Disable Custom Https
+      description: Disable https delivery of the custom domain
+      operationId: CustomDomains_DisableCustomHttps
+      parameters:
+      - in: path
+        name: customDomainName
+        description: Name of the custom domain within an endpoint
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Custom Domain
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/enableCustomHttps
+  : post:
+      summary: Custom Domains Enable Custom Https
+      description: Enable https delivery of the custom domain
+      operationId: CustomDomains_EnableCustomHttps
+      parameters:
+      - in: path
+        name: customDomainName
+        description: Name of the custom domain within an endpoint
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Custom Domain
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/load
+  : post:
+      summary: Endpoints Load Content
+      description: Pre-loads a content to CDN
+      operationId: Endpoints_LoadContent
+      parameters:
+      - in: body
+        name: contentFilePaths
+        description: The path to the content to be loaded
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Endpoint
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins
+  : get:
+      summary: Origins List By Endpoint
+      description: Lists all of the existing origins within an endpoint
+      operationId: Origins_ListByEndpoint
+      parameters:
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Endpoint
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}
+  : get:
+      summary: Origins Get
+      description: Gets an existing origin within an endpoint
+      operationId: Origins_Get
+      parameters:
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: query
+        name: No Name
+      - in: path
+        name: originName
+        description: Name of the origin which is unique within the endpoint
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Orgins
+    patch:
+      summary: Origins Update
+      description: Updates an existing origin within an endpoint
+      operationId: Origins_Update
+      parameters:
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: query
+        name: No Name
+      - in: path
+        name: originName
+        description: Name of the origin which is unique within the endpoint
+      - in: body
+        name: originUpdateProperties
+        description: Origin properties
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Orgins
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/purge
+  : post:
+      summary: Endpoints Purge Content
+      description: Removes a content from CDN
+      operationId: Endpoints_PurgeContent
+      parameters:
+      - in: body
+        name: contentFilePaths
+        description: The path to the content to be purged
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Endpoint
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/start
+  : post:
+      summary: Endpoints Start
+      description: Starts an existing CDN endpoint that is on a stopped state
+      operationId: Endpoints_Start
+      parameters:
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Endpoint
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/stop
+  : post:
+      summary: Endpoints Stop
+      description: Stops an existing running CDN endpoint
+      operationId: Endpoints_Stop
+      parameters:
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Endpoint
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/validateCustomDomain
+  : post:
+      summary: Endpoints Validate Custom Domain
+      description: Validates the custom domain mapping to ensure it maps to the correct
+        CDN endpoint in DNS
+      operationId: Endpoints_ValidateCustomDomain
+      parameters:
+      - in: body
+        name: customDomainProperties
+        description: Custom domain to be validated
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: endpointName
+        description: Name of the endpoint under the profile which is unique globally
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Endpointv
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/generateSsoUri:
+    post:
+      summary: Profiles Generate Sso Uri
+      description: Generates a dynamic SSO URI used to sign in to the CDN supplemental
+        portal
+      operationId: Profiles_GenerateSsoUri
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: profileName
+        description: Name of the CDN profile which is unique within the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Profile
+definitions:
+  Profile:
+    properties: []
+  ProfileProperties:
+    properties:
+      resourceState:
+        description: This is a default description.
+        type: get
+      provisioningState:
+        description: This is a default description.
+        type: get
+  ProfileListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  ProfileUpdateParameters:
+    properties:
+      tags:
+        description: This is a default description.
+        type: get
+  SsoUri:
+    properties:
+      ssoUriValue:
+        description: This is a default description.
+        type: get
+  Endpoint:
+    properties: []
+  EndpointProperties:
+    properties:
+      hostName:
+        description: This is a default description.
+        type: get
+      origins:
+        description: This is a default description.
+        type: get
+      resourceState:
+        description: This is a default description.
+        type: get
+      provisioningState:
+        description: This is a default description.
+        type: get
+  EndpointListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  EndpointUpdateParameters:
+    properties:
+      tags:
+        description: This is a default description.
+        type: get
+  EndpointPropertiesUpdateParameters:
+    properties:
+      originHostHeader:
+        description: This is a default description.
+        type: get
+      originPath:
+        description: This is a default description.
+        type: get
+      contentTypesToCompress:
+        description: This is a default description.
+        type: get
+      isCompressionEnabled:
+        description: This is a default description.
+        type: get
+      isHttpAllowed:
+        description: This is a default description.
+        type: get
+      isHttpsAllowed:
+        description: This is a default description.
+        type: get
+      optimizationType:
+        description: This is a default description.
+        type: get
+      geoFilters:
+        description: This is a default description.
+        type: get
+  DeepCreatedOrigin:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+  DeepCreatedOriginProperties:
+    properties:
+      hostName:
+        description: This is a default description.
+        type: get
+      httpPort:
+        description: This is a default description.
+        type: get
+      httpsPort:
+        description: This is a default description.
+        type: get
+  GeoFilter:
+    properties:
+      relativePath:
+        description: This is a default description.
+        type: get
+      action:
+        description: This is a default description.
+        type: get
+      countryCodes:
+        description: This is a default description.
+        type: get
+  PurgeParameters:
+    properties:
+      contentPaths:
+        description: This is a default description.
+        type: get
+  LoadParameters:
+    properties:
+      contentPaths:
+        description: This is a default description.
+        type: get
+  Origin:
+    properties: []
+  OriginProperties:
+    properties:
+      hostName:
+        description: This is a default description.
+        type: get
+      httpPort:
+        description: This is a default description.
+        type: get
+      httpsPort:
+        description: This is a default description.
+        type: get
+      resourceState:
+        description: This is a default description.
+        type: get
+      provisioningState:
+        description: This is a default description.
+        type: get
+  OriginUpdateParameters:
+    properties: []
+  OriginPropertiesParameters:
+    properties:
+      hostName:
+        description: This is a default description.
+        type: get
+      httpPort:
+        description: This is a default description.
+        type: get
+      httpsPort:
+        description: This is a default description.
+        type: get
+  OriginListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  CustomDomain:
+    properties: []
+  CustomDomainProperties:
+    properties:
+      hostName:
+        description: This is a default description.
+        type: get
+      resourceState:
+        description: This is a default description.
+        type: get
+      customHttpsProvisioningState:
+        description: This is a default description.
+        type: get
+      validationData:
+        description: This is a default description.
+        type: get
+      provisioningState:
+        description: This is a default description.
+        type: get
+  CustomDomainParameters:
+    properties: []
+  CustomDomainPropertiesParameters:
+    properties:
+      hostName:
+        description: This is a default description.
+        type: get
+  CustomDomainListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  ValidateCustomDomainInput:
+    properties:
+      hostName:
+        description: This is a default description.
+        type: get
+  ValidateCustomDomainOutput:
+    properties:
+      customDomainValidated:
+        description: This is a default description.
+        type: get
+      reason:
+        description: This is a default description.
+        type: get
+      message:
+        description: This is a default description.
+        type: get
+  CheckNameAvailabilityInput:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+  CheckNameAvailabilityOutput:
+    properties:
+      nameAvailable:
+        description: This is a default description.
+        type: get
+      reason:
+        description: This is a default description.
+        type: get
+      message:
+        description: This is a default description.
+        type: get
+  ResourceUsageListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  ResourceUsage:
+    properties:
+      resourceType:
+        description: This is a default description.
+        type: get
+      unit:
+        description: This is a default description.
+        type: get
+      currentValue:
+        description: This is a default description.
+        type: get
+      limit:
+        description: This is a default description.
+        type: get
+  Operation:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+  OperationListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  EdgenodeResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  EdgeNode:
+    properties: []
+  EdgeNodeProperties:
+    properties:
+      ipAddressGroups:
+        description: This is a default description.
+        type: get
+  IpAddressGroup:
+    properties:
+      deliveryRegion:
+        description: This is a default description.
+        type: get
+      ipv4Addresses:
+        description: This is a default description.
+        type: get
+      ipv6Addresses:
+        description: This is a default description.
+        type: get
+  cidrIpAddress:
+    properties:
+      baseIpAddress:
+        description: This is a default description.
+        type: get
+      prefixLength:
+        description: This is a default description.
+        type: get
+  Resource:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      name:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+      location:
+        description: This is a default description.
+        type: get
+      tags:
+        description: This is a default description.
+        type: get
+  Sku:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+  ErrorResponse:
+    properties:
+      code:
+        description: This is a default description.
+        type: get
+      message:
+        description: This is a default description.
+        type: get
