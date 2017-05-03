@@ -1,0 +1,48 @@
+agger: "2.0"
+info:
+  title: Enforcement API
+  description: Posts a Malware event to the API for processing and optionally adding
+    to a customer's domain lists.
+  version: 1.0.0
+host: s-platform.api.opendns.com
+basePath: /1.0
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /domains:
+    delete:
+      summary: Delete Domain
+      description: "To delete a domain from the shared customer\u2019s domain list,
+        run a DELETE request against the domains endpoint of the API"
+      operationId: deleteDomain
+      responses:
+        200:
+          description: OK
+      tags:
+      - Domains
+    get:
+      summary: Get Domains
+      description: "To gather the lists of domains already added to the shared customer\u2019s
+        domain list, run a GET request against the domains endpoint of the API"
+      operationId: getDomains
+      responses:
+        200:
+          description: OK
+      tags:
+      - Domains
+  /events:
+    put:
+      summary: Post Event
+      description: Posts a Malware event to the API for processing and optionally
+        adding to a customer's domain lists
+      operationId: postEvent
+      responses:
+        200:
+          description: OK
+      tags:
+      - Event
+definitions: []
