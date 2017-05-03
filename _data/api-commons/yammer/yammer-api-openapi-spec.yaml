@@ -1,0 +1,773 @@
+agger: "2.0"
+info:
+  title: Yammer API
+  description: 'TODO: Add Description'
+  version: 1.0.0
+host: example.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /api/v1/oauth/tokens.json:
+    get:
+      summary: Get Tokens
+      description: Get the tokens
+      operationId: Get Tokens_
+      parameters:
+      - in: query
+        name: consumer_key
+      - in: query
+        name: user_id
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tokens
+  '{yamURI}/activity.json':
+    post:
+      summary: 'Create An Activity '
+      description: Creates activities
+      operationId: Create an Activity _
+      parameters:
+      - in: body
+        name: Body
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Activity
+  '{yamURI}/autocomplete/ranked':
+    get:
+      summary: Get Return Users
+      description: Return typeahead suggestions for the prefix passed
+      operationId: Get_Return Users, Group, OGs[5]_
+      parameters:
+      - in: query
+        name: models
+      - in: query
+        name: prefix
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  '{yamURI}/export':
+    get:
+      summary: Get Export Of Data
+      description: Exports data from Network
+      operationId: Get_Export of Data_
+      parameters:
+      - in: query
+        name: include
+      - in: query
+        name: include_ens
+      - in: query
+        name: since
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Data
+  '{yamURI}/groups.json':
+    get:
+      summary: List Active Groups
+      description: List activity groups
+      operationId: List Active Groups_
+      parameters:
+      - in: query
+        name: sort_by
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Groups
+  '{yamURI}/group_memberships.json':
+    delete:
+      summary: Delete Leave A Group
+      description: Join the group specified by the numeric string ID
+      operationId: Delete_Leave a group_
+      parameters:
+      - in: query
+        name: group_id
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Groups
+    post:
+      summary: Create Join A Group
+      description: Join the group specified by the numeric string ID
+      operationId: Create_Join a group_
+      parameters:
+      - in: query
+        name: group_id
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Groups
+  '{yamURI}/invitations.json':
+    post:
+      summary: "Create Invites A User To The Current User\u2019s Yammer Networ"
+      description: email - The email address of the user being invited
+      operationId: "Create_Invites a user to the current user\u2019s Yammer networ_"
+      parameters:
+      - in: query
+        name: email
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Invites
+  '{yamURI}/messages.json':
+    get:
+      summary: GET Messages
+      description: "All public messages in the user\u2019s (whose access token is
+        being used to make the API call henceforth referred to as current user) Yammer
+        network"
+      operationId: GET Messages_
+      parameters:
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Messages
+    post:
+      summary: CreateCreate Message JSON
+      description: Create a new message
+      operationId: Create_'Create Message' JSON_
+      parameters:
+      - in: body
+        name: Body
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Messages
+  '{yamURI}/messages/algo.json':
+    get:
+      summary: GET Algo Messages
+      description: "The algorithmic feed for the user that corresponds to \u201CTop\u201D
+        conversations, which is what the vast majority of users will see in the Yammer
+        web interface"
+      operationId: GET 'Algo' Messages_
+      parameters:
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Messages
+  '{yamURI}/messages/bookmarked_by.json':
+    get:
+      summary: Get Messages Bookmarked
+      description: Get messages bookmarked by ser
+      operationId: Get_Messages Bookmarked by Current User_
+      parameters:
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Messages
+  '{yamURI}/messages/following.json':
+    get:
+      summary: GET Following Messages
+      description: "The \u201CFollowing\u201D feed which is conversations involving
+        people, groups and topics that the user is following"
+      operationId: GET 'Following' Messages_
+      parameters:
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Messages
+  '{yamURI}/messages/inbox.json':
+    get:
+      summary: Get Inbox Messages
+      description: Get Inbox Messages
+      operationId: Get_'Inbox' Messages_
+      parameters:
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Messages
+  '{yamURI}/messages/in_group/9651.json':
+    get:
+      summary: Get Messages In A Specific Group
+      description: Get Messages In A Specific Group
+      operationId: Get_Messages in a Specific Group_
+      parameters:
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Messages
+  '{yamURI}/messages/in_thread/14622342.json':
+    get:
+      summary: Get In Thread Messages
+      description: Get In Thread Messages
+      operationId: Get_In Thread Messages_
+      parameters:
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Messages
+  '{yamURI}/messages/liked_by.json':
+    get:
+      summary: Get Messages Liked By Current User
+      description: Get Messages Liked By Current User
+      operationId: Get_Messages Liked by Current User_
+      parameters:
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Messages Likedcurrent User
+  '{yamURI}/messages/my_feed.json':
+    get:
+      summary: GET My Feed Messages
+      description: "The user\u2019s feed, based on the selection they have made between
+        \u201CFollowing\u201D and \u201CTop\u201D conversations"
+      operationId: GET 'My Feed' Messages_
+      parameters:
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Messages
+  '{yamURI}/messages/private.json':
+    get:
+      summary: GetPrivate Messages
+      description: Private messages received by the user
+      operationId: Get_'Private' Messages_
+      parameters:
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Messages
+  '{yamURI}/messages/received.json':
+    get:
+      summary: GetReceived Messages
+      description: All messages received by the user
+      operationId: Get_'Received' Messages_
+      parameters:
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Messages
+  '{yamURI}/messages/sent.json':
+    get:
+      summary: GetSent Messages
+      description: All messages sent by the user
+      operationId: Get_'Sent' Messages_
+      parameters:
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Messages
+  '{yamURI}/messages/{message_id}.json':
+    delete:
+      summary: DeleteSpecific Message
+      description: Remove a message
+      operationId: Delete_'Specific Message'_
+      parameters:
+      - in: path
+        name: message_id
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Messages
+    get:
+      summary: GetSpecific Message
+      description: Returns a specfic message using the messageID key in the environment
+        keys
+      operationId: Get_'Specific Message'_
+      parameters:
+      - in: path
+        name: message_id
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Messages
+  '{yamURI}/networks/current.json':
+    get:
+      summary: Get Network Request
+      description: Facilitates switching a user between different Yammer networks
+      operationId: Get_Network Request_
+      parameters:
+      - in: query
+        name: exclude_own_messages_from_unseen
+      - in: query
+        name: include_suspended
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Networks
+  '{yamURI}/networks/exportable.json':
+    get:
+      summary: Get Exportable Networks
+      description: Get Exportable Networks
+      operationId: Get_Exportable Networks_
+      parameters:
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Networks
+  '{yamURI}/oauth.json':
+    post:
+      summary: Create Generate Tokens
+      description: Create Generate Tokens
+      operationId: Create_Generate Tokens_
+      parameters:
+      - in: query
+        name: consumer_key
+      - in: query
+        name: user_id
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tokens
+  '{yamURI}/relationships.json':
+    get:
+      summary: Get Show Org Chart
+      description: Show org chart relationships
+      operationId: Get_Show Org Chart_
+      parameters:
+      - in: formData
+        name: department
+      - in: formData
+        name: email
+      - in: formData
+        name: full_name
+      - in: formData
+        name: job_title
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Org Chart
+    post:
+      summary: Add A Relationshipd
+      description: Add an org chart relationship
+      operationId: Add a Relationshipd_
+      parameters:
+      - in: body
+        name: Body
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Relationships
+  '{yamURI}/search.json':
+    get:
+      summary: Search Request
+      description: "\tThe search resource will return a list of messages, users, topics
+        and groups that match the user\u2019s search query"
+      operationId: Search Request_
+      parameters:
+      - in: query
+        name: num_per_page
+      - in: query
+        name: page
+      - in: query
+        name: search
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Search Request
+  '{yamURI}/streams/activities.json':
+    get:
+      summary: Get View Activities
+      description: Get View Activities
+      operationId: Get_View Activities_
+      parameters:
+      - in: formData
+        name: pending_attachment1
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Activities
+  '{yamURI}/streams/notifications.json':
+    get:
+      summary: Get Notifications
+      description: Get the notifications feed for the current user
+      operationId: Get_Notifications_
+      parameters:
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Notifications
+  '{yamURI}/suggestions.json':
+    get:
+      summary: Get Suggested Groups And Users
+      description: Show suggested groups to join and users to follow
+      operationId: Get_Suggested Groups and Users_
+      parameters:
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Groups
+  '{yamURI}/users.json':
+    get:
+      summary: Retrieve Users By  Messages
+      description: Results will be returned sorted by number of messages, instead
+        of the default behavior of sorting alphabetically
+      operationId: 'Retrieve Users by # messages_'
+      parameters:
+      - in: formData
+        name: department
+      - in: formData
+        name: email
+      - in: formData
+        name: full_name
+      - in: formData
+        name: job_title
+      - in: query
+        name: sort_by
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+    post:
+      summary: Create A User By JSON
+      description: Create an existing user
+      operationId: Create a User by JSON_
+      parameters:
+      - in: body
+        name: Body
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+    put:
+      summary: Update A User By JSON
+      description: Update an existing user
+      operationId: Update a User by JSON_
+      parameters:
+      - in: body
+        name: Body
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  '{yamURI}/users/by_email.json':
+    get:
+      summary: Get Specific User By Email
+      description: View data about a user
+      operationId: Get_Specific User by Email_
+      parameters:
+      - in: query
+        name: email
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  '{yamURI}/users/current.json':
+    get:
+      summary: Get Current User
+      description: View data about the current user
+      operationId: Get_Current User_
+      parameters:
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  '{yamURI}/users/followed_by/{userID}.json':
+    get:
+      summary: Get Who Is The User Followed By
+      description: Get Who Is The User Followed By
+      operationId: Get_Who is the User Followed By_
+      parameters:
+      - in: formData
+        name: department
+      - in: formData
+        name: email
+      - in: formData
+        name: full_name
+      - in: formData
+        name: job_title
+      - in: path
+        name: userID
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Follows
+  '{yamURI}/users/following/{userID}.json':
+    get:
+      summary: Get Who Is The User Following
+      description: Get Who Is The User Following
+      operationId: Get_Who is the User Following_
+      parameters:
+      - in: formData
+        name: department
+      - in: formData
+        name: email
+      - in: formData
+        name: full_name
+      - in: formData
+        name: job_title
+      - in: path
+        name: userID
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Follows
+  '{yamURI}/users/in_group/{group_id}.json':
+    get:
+      summary: Get Users In A Group
+      description: ' Users in a group'
+      operationId: Get_Users in a Group_
+      parameters:
+      - in: formData
+        name: body
+      - in: formData
+        name: broadcast
+      - in: path
+        name: group_id
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  '{yamURI}/users/{user_id}.json':
+    get:
+      summary: Get Specific User By ID
+      description: View data about a user
+      operationId: Get_Specific User by ID_
+      parameters:
+      - in: formData
+        name: body
+      - in: formData
+        name: broadcast
+      - in: path
+        name: user_id
+      - in: path
+        name: yamURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+definitions:
+  CreateMessagewithOpenGraphObjectJSONcopyRequest:
+    properties:
+      body:
+        description: This is a default description.
+        type: get
+      og_url:
+        description: This is a default description.
+        type: get
+      og_fetch:
+        description: This is a default description.
+        type: get
+  CreateanActivityRequest:
+    properties: []
+  Activity:
+    properties:
+      action:
+        description: This is a default description.
+        type: get
+      private:
+        description: This is a default description.
+        type: get
+      message:
+        description: This is a default description.
+        type: get
+      users:
+        description: This is a default description.
+        type: get
+  Actor:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      email:
+        description: This is a default description.
+        type: get
+  Object4:
+    properties:
+      url:
+        description: This is a default description.
+        type: get
+      description:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+      title:
+        description: This is a default description.
+        type: get
+      image:
+        description: This is a default description.
+        type: get
+  User:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      email:
+        description: This is a default description.
+        type: get
+  UpdateaUserbyJSONRequest:
+    properties:
+      email:
+        description: This is a default description.
+        type: get
+      full_name:
+        description: This is a default description.
+        type: get
+      job_title:
+        description: This is a default description.
+        type: get
+      department:
+        description: This is a default description.
+        type: get
+      location:
+        description: This is a default description.
+        type: get
+  CreateaUserbyJSONRequest:
+    properties:
+      email:
+        description: This is a default description.
+        type: get
+      full_name:
+        description: This is a default description.
+        type: get
+      job_title:
+        description: This is a default description.
+        type: get
+      department:
+        description: This is a default description.
+        type: get
+      location:
+        description: This is a default description.
+        type: get
+  AddaRelationshipdRequest:
+    properties:
+      superior:
+        description: This is a default description.
+        type: get
+  CreateMessageJSONRequest:
+    properties:
+      body:
+        description: This is a default description.
+        type: get
+      group_id:
+        description: This is a default description.
+        type: get
+      topic1:
+        description: This is a default description.
+        type: get
