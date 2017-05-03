@@ -1,0 +1,679 @@
+agger: "2.0"
+info:
+  title: SchedulerManagementClient
+  version: 1.0.0
+host: management.azure.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /subscriptions/{subscriptionId}/providers/Microsoft.Scheduler/jobCollections:
+    get:
+      summary: Job Collections List By Subscription
+      description: Gets all job collections under specified subscription
+      operationId: JobCollections_ListBySubscription
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Job Collections Subscription
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections:
+    get:
+      summary: Job Collections List By Resource Group
+      description: Gets all job collections under specified resource group
+      operationId: JobCollections_ListByResourceGroup
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The resource group name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Job Collections Resource Group
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
+  : delete:
+      summary: Job Collections Delete
+      description: Deletes a job collection
+      operationId: JobCollections_Delete
+      parameters:
+      - in: path
+        name: jobCollectionName
+        description: The job collection name
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The resource group name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Job Collections
+    get:
+      summary: Job Collections Get
+      description: Gets a job collection
+      operationId: JobCollections_Get
+      parameters:
+      - in: path
+        name: jobCollectionName
+        description: The job collection name
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The resource group name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Job Collections
+    patch:
+      summary: Job Collections Patch
+      description: Patches an existing job collection
+      operationId: JobCollections_Patch
+      parameters:
+      - in: body
+        name: jobCollection
+        description: The job collection definition
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: jobCollectionName
+        description: The job collection name
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The resource group name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Job Collections
+    put:
+      summary: Job Collections Create Or Update
+      description: Provisions a new job collection or updates an existing job collection
+      operationId: JobCollections_CreateOrUpdate
+      parameters:
+      - in: body
+        name: jobCollection
+        description: The job collection definition
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: jobCollectionName
+        description: The job collection name
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The resource group name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Job Collections
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/disable
+  : post:
+      summary: Job Collections Disable
+      description: Disables all of the jobs in the job collection
+      operationId: JobCollections_Disable
+      parameters:
+      - in: path
+        name: jobCollectionName
+        description: The job collection name
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The resource group name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Job Collections
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/enable
+  : post:
+      summary: Job Collections Enable
+      description: Enables all of the jobs in the job collection
+      operationId: JobCollections_Enable
+      parameters:
+      - in: path
+        name: jobCollectionName
+        description: The job collection name
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The resource group name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Job Collections
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs
+  : get:
+      summary: Jobs List
+      description: Lists all jobs under the specified job collection
+      operationId: Jobs_List
+      parameters:
+      - in: query
+        name: $filter
+        description: The filter to apply on the job state
+      - in: query
+        name: $skip
+        description: The (0-based) index of the job history list from which to begin
+          requesting entries
+      - in: query
+        name: $top
+        description: The number of jobs to request, in the of range of [1
+      - in: path
+        name: jobCollectionName
+        description: The job collection name
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The resource group name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Jobs
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
+  : delete:
+      summary: Jobs Delete
+      description: Deletes a job
+      operationId: Jobs_Delete
+      parameters:
+      - in: path
+        name: jobCollectionName
+        description: The job collection name
+      - in: path
+        name: jobName
+        description: The job name
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The resource group name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Jobs
+    get:
+      summary: Jobs Get
+      description: Gets a job
+      operationId: Jobs_Get
+      parameters:
+      - in: path
+        name: jobCollectionName
+        description: The job collection name
+      - in: path
+        name: jobName
+        description: The job name
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The resource group name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Jobs
+    patch:
+      summary: Jobs Patch
+      description: Patches an existing job
+      operationId: Jobs_Patch
+      parameters:
+      - in: body
+        name: job
+        description: The job definition
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: jobCollectionName
+        description: The job collection name
+      - in: path
+        name: jobName
+        description: The job name
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The resource group name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Jobs
+    put:
+      summary: Jobs Create Or Update
+      description: Provisions a new job or updates an existing job
+      operationId: Jobs_CreateOrUpdate
+      parameters:
+      - in: body
+        name: job
+        description: The job definition
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: jobCollectionName
+        description: The job collection name
+      - in: path
+        name: jobName
+        description: The job name
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The resource group name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Jobs
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
+  : get:
+      summary: Jobs List Job History
+      description: Lists job history
+      operationId: Jobs_ListJobHistory
+      parameters:
+      - in: query
+        name: $filter
+        description: The filter to apply on the job state
+      - in: query
+        name: $skip
+        description: The (0-based) index of the job history list from which to begin
+          requesting entries
+      - in: query
+        name: $top
+        description: the number of job history to request, in the of range of [1
+      - in: path
+        name: jobCollectionName
+        description: The job collection name
+      - in: path
+        name: jobName
+        description: The job name
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The resource group name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Jobs
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/run
+  : post:
+      summary: Jobs Run
+      description: Runs a job
+      operationId: Jobs_Run
+      parameters:
+      - in: path
+        name: jobCollectionName
+        description: The job collection name
+      - in: path
+        name: jobName
+        description: The job name
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The resource group name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Jobs
+definitions:
+  JobCollectionListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  JobListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  JobHistoryListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  JobCollectionDefinition:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+      name:
+        description: This is a default description.
+        type: get
+      location:
+        description: This is a default description.
+        type: get
+      tags:
+        description: This is a default description.
+        type: get
+  JobCollectionProperties:
+    properties:
+      state:
+        description: This is a default description.
+        type: get
+  Sku:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+  JobCollectionQuota:
+    properties:
+      maxJobCount:
+        description: This is a default description.
+        type: get
+      maxJobOccurrence:
+        description: This is a default description.
+        type: get
+  JobDefinition:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+      name:
+        description: This is a default description.
+        type: get
+  JobProperties:
+    properties:
+      startTime:
+        description: This is a default description.
+        type: get
+  JobHistoryDefinition:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+      name:
+        description: This is a default description.
+        type: get
+  JobHistoryDefinitionProperties:
+    properties:
+      startTime:
+        description: This is a default description.
+        type: get
+      endTime:
+        description: This is a default description.
+        type: get
+      expectedExecutionTime:
+        description: This is a default description.
+        type: get
+      actionName:
+        description: This is a default description.
+        type: get
+      message:
+        description: This is a default description.
+        type: get
+      retryCount:
+        description: This is a default description.
+        type: get
+      repeatCount:
+        description: This is a default description.
+        type: get
+  JobAction:
+    properties:
+      type:
+        description: This is a default description.
+        type: get
+  JobErrorAction:
+    properties:
+      type:
+        description: This is a default description.
+        type: get
+  HttpRequest:
+    properties:
+      uri:
+        description: This is a default description.
+        type: get
+      method:
+        description: This is a default description.
+        type: get
+      body:
+        description: This is a default description.
+        type: get
+      headers:
+        description: This is a default description.
+        type: get
+  ClientCertAuthentication:
+    properties:
+      password:
+        description: This is a default description.
+        type: get
+      pfx:
+        description: This is a default description.
+        type: get
+      certificateThumbprint:
+        description: This is a default description.
+        type: get
+      certificateExpirationDate:
+        description: This is a default description.
+        type: get
+      certificateSubjectName:
+        description: This is a default description.
+        type: get
+  BasicAuthentication:
+    properties:
+      username:
+        description: This is a default description.
+        type: get
+      password:
+        description: This is a default description.
+        type: get
+  OAuthAuthentication:
+    properties:
+      secret:
+        description: This is a default description.
+        type: get
+      tenant:
+        description: This is a default description.
+        type: get
+      audience:
+        description: This is a default description.
+        type: get
+      clientId:
+        description: This is a default description.
+        type: get
+  HttpAuthentication:
+    properties:
+      type:
+        description: This is a default description.
+        type: get
+  StorageQueueMessage:
+    properties:
+      storageAccount:
+        description: This is a default description.
+        type: get
+      queueName:
+        description: This is a default description.
+        type: get
+      sasToken:
+        description: This is a default description.
+        type: get
+      message:
+        description: This is a default description.
+        type: get
+  ServiceBusQueueMessage:
+    properties:
+      queueName:
+        description: This is a default description.
+        type: get
+  ServiceBusTopicMessage:
+    properties:
+      topicPath:
+        description: This is a default description.
+        type: get
+  ServiceBusMessage:
+    properties:
+      customMessageProperties:
+        description: This is a default description.
+        type: get
+      message:
+        description: This is a default description.
+        type: get
+      namespace:
+        description: This is a default description.
+        type: get
+      transportType:
+        description: This is a default description.
+        type: get
+  ServiceBusAuthentication:
+    properties:
+      sasKey:
+        description: This is a default description.
+        type: get
+      sasKeyName:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+  ServiceBusBrokeredMessageProperties:
+    properties:
+      contentType:
+        description: This is a default description.
+        type: get
+      correlationId:
+        description: This is a default description.
+        type: get
+      forcePersistence:
+        description: This is a default description.
+        type: get
+      label:
+        description: This is a default description.
+        type: get
+      messageId:
+        description: This is a default description.
+        type: get
+      partitionKey:
+        description: This is a default description.
+        type: get
+      replyTo:
+        description: This is a default description.
+        type: get
+      replyToSessionId:
+        description: This is a default description.
+        type: get
+      scheduledEnqueueTimeUtc:
+        description: This is a default description.
+        type: get
+      sessionId:
+        description: This is a default description.
+        type: get
+  RetryPolicy:
+    properties:
+      retryType:
+        description: This is a default description.
+        type: get
+      retryInterval:
+        description: This is a default description.
+        type: get
+      retryCount:
+        description: This is a default description.
+        type: get
+  JobMaxRecurrence:
+    properties:
+      frequency:
+        description: This is a default description.
+        type: get
+      interval:
+        description: This is a default description.
+        type: get
+  JobRecurrence:
+    properties:
+      frequency:
+        description: This is a default description.
+        type: get
+      interval:
+        description: This is a default description.
+        type: get
+      count:
+        description: This is a default description.
+        type: get
+      endTime:
+        description: This is a default description.
+        type: get
+  JobRecurrenceSchedule:
+    properties:
+      weekDays:
+        description: This is a default description.
+        type: get
+      hours:
+        description: This is a default description.
+        type: get
+      minutes:
+        description: This is a default description.
+        type: get
+      monthDays:
+        description: This is a default description.
+        type: get
+      monthlyOccurrences:
+        description: This is a default description.
+        type: get
+  JobRecurrenceScheduleMonthlyOccurrence:
+    properties:
+      day:
+        description: This is a default description.
+        type: get
+      Occurrence:
+        description: This is a default description.
+        type: get
+  JobStateFilter:
+    properties: []
+  JobHistoryFilter:
+    properties: []
+  JobStatus:
+    properties:
+      executionCount:
+        description: This is a default description.
+        type: get
+      failureCount:
+        description: This is a default description.
+        type: get
+      faultedCount:
+        description: This is a default description.
+        type: get
+      lastExecutionTime:
+        description: This is a default description.
+        type: get
+      nextExecutionTime:
+        description: This is a default description.
+        type: get
