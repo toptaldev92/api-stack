@@ -1,0 +1,871 @@
+agger: "2.0"
+info:
+  title: AWS WAF API
+  version: 1.0.0
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /?Action=AssociateWebACL&k=1:
+    get:
+      summary: ' Associate Web ACL '
+      description: 'Service: AWS WAF RegionalAssociates a web ACL with a resource'
+      operationId: associateWebACL
+      parameters:
+      - in: query
+        name: ResourceArn
+        description: The ARN (Amazon Resource Name) of the resource to be protected
+        type: string
+      - in: query
+        name: WebACLId
+        description: A unique identifier (ID) for the web ACL
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Web ACL
+  /?Action=CreateByteMatchSet&k=1:
+    get:
+      summary: ' Create Byte Match Set '
+      description: 'Service: AWS WAFCreates a ByteMatchSet'
+      operationId: createByteMatchSet
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: Name
+        description: A friendly name or description of the ByteMatchSet
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'Byte Match Set '
+  /?Action=CreateIPSet&k=1:
+    get:
+      summary: ' Create IP Set '
+      description: 'Service: AWS WAFCreates an'
+      operationId: createIPSet
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: Name
+        description: A friendly name or description of the IPSet
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - IP Sets
+  /?Action=CreateRule&k=1:
+    get:
+      summary: ' Create Rule '
+      description: "Service: AWS WAFCreates a Rule, which contains the IPSet objects,
+        ByteMatchSet objects, and \n\t\t\tother predicates that identify the requests
+        that you want to block"
+      operationId: createRule
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: MetricName
+        description: A friendly name or description for the metrics for this Rule
+        type: string
+      - in: query
+        name: Name
+        description: A friendly name or description of the Rule
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Rules
+  /?Action=CreateSizeConstraintSet&k=1:
+    get:
+      summary: ' Create Size Constraint Set '
+      description: 'Service: AWS WAFCreates a SizeConstraintSet'
+      operationId: createSizeConstraintSet
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: Name
+        description: A friendly name or description of the SizeConstraintSet
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'Size Constraint Set '
+  /?Action=CreateSqlInjectionMatchSet&k=1:
+    get:
+      summary: ' Create Sql Injection Match Set '
+      description: 'Service: AWS WAFCreates a'
+      operationId: createSqlInjectionMatchSet
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: Name
+        description: A friendly name or description for the SqlInjectionMatchSet that
+          you're creating
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'SQL Injection Match Set '
+  /?Action=CreateWebACL&k=1:
+    get:
+      summary: ' Create Web ACL'
+      description: 'Service: AWS WAFCreates a WebACL, which contains the Rules that
+        identify the CloudFront web requests that you want to allow, block, or count'
+      operationId: createWebACL
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: DefaultAction
+        description: "The action that you want  AWS WAF to take when a request doesn't
+          match the criteria specified in any of the Rule \t\t\tobjects that are associated
+          with the WebACL"
+        type: string
+      - in: query
+        name: MetricName
+        description: A friendly name or description for the metrics for this WebACL
+        type: string
+      - in: query
+        name: Name
+        description: A friendly name or description of the WebACL
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Web ACL
+  /?Action=CreateXssMatchSet&k=1:
+    get:
+      summary: ' Create XSS Match Set '
+      description: 'Service: AWS WAFCreates an'
+      operationId: createXssMatchSet
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: Name
+        description: A friendly name or description for the XssMatchSet that you're
+          creating
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'XSS Match Set '
+  /?Action=DeleteByteMatchSet&k=1:
+    get:
+      summary: ' Delete Byte Match Set '
+      description: 'Service: AWS WAFPermanently deletes a'
+      operationId: deleteByteMatchSet
+      parameters:
+      - in: query
+        name: ByteMatchSetId
+        description: The ByteMatchSetId of the ByteMatchSet that you want to delete
+        type: string
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'Byte Match Set '
+  /?Action=DeleteIPSet&k=1:
+    get:
+      summary: ' Delete IP Set '
+      description: 'Service: AWS WAFPermanently deletes an'
+      operationId: deleteIPSet
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: IPSetId
+        description: The IPSetId of the IPSet that you want to delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - IP Sets
+  /?Action=DeleteRule&k=1:
+    get:
+      summary: ' Delete Rule '
+      description: 'Service: AWS WAFPermanently deletes a'
+      operationId: deleteRule
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: RuleId
+        description: The RuleId of the Rule that you want to delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Rules
+  /?Action=DeleteSizeConstraintSet&k=1:
+    get:
+      summary: ' Delete Size Constraint Set '
+      description: 'Service: AWS WAFPermanently deletes a'
+      operationId: deleteSizeConstraintSet
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: SizeConstraintSetId
+        description: The SizeConstraintSetId of the SizeConstraintSet that you want
+          to delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'Size Constraint Set '
+  /?Action=DeleteSqlInjectionMatchSet&k=1:
+    get:
+      summary: ' Delete Sql Injection Match Set '
+      description: 'Service: AWS WAFPermanently deletes a'
+      operationId: deleteSqlInjectionMatchSet
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: SqlInjectionMatchSetId
+        description: The SqlInjectionMatchSetId of the SqlInjectionMatchSet that you
+          want to delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'SQL Injection Match Set '
+  /?Action=DeleteWebACL&k=1:
+    get:
+      summary: ' Delete Web ACL'
+      description: 'Service: AWS WAFPermanently deletes a'
+      operationId: deleteWebACL
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: WebACLId
+        description: The WebACLId of the WebACL that you want to delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Web ACL
+  /?Action=DeleteXssMatchSet&k=1:
+    get:
+      summary: ' Delete Xss Match Set '
+      description: 'Service: AWS WAFPermanently deletes an'
+      operationId: deleteXssMatchSet
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: XssMatchSetId
+        description: The XssMatchSetId of the XssMatchSet that you want to delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - XSS Match Set
+  /?Action=DisassociateWebACL&k=1:
+    get:
+      summary: ' Disassociate Web ACL'
+      description: 'Service: AWS WAF RegionalRemoves a web ACL from the specified
+        resource'
+      operationId: disassociateWebACL
+      parameters:
+      - in: query
+        name: ResourceArn
+        description: The ARN (Amazon Resource Name) of the resource from which the
+          web ACL is being removed
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Web ACL
+  /?Action=GetByteMatchSet&k=1:
+    get:
+      summary: ' Get Byte Match Set '
+      description: 'Service: AWS WAFReturns the'
+      operationId: getByteMatchSet
+      parameters:
+      - in: query
+        name: ByteMatchSetId
+        description: The ByteMatchSetId of the ByteMatchSet that you want to get
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'Byte Match Set '
+  /?Action=GetChangeToken&k=1:
+    get:
+      summary: ' Get Change Token '
+      description: 'Service: AWS WAFWhen you want to create, update, or delete AWS
+        WAF objects, get a change token and include the change token in the create,
+        update, or delete request'
+      operationId: getChangeToken
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The ChangeToken that you used in the request
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'Change Token '
+  /?Action=GetChangeTokenStatus&k=1:
+    get:
+      summary: ' Get Change Token Status '
+      description: 'Service: AWS WAFReturns the status of a ChangeToken that you got
+        by calling'
+      operationId: getChangeTokenStatus
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The change token for which you want to get the status
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'Change Token '
+  /?Action=GetIPSet&k=1:
+    get:
+      summary: ' Get IP Set '
+      description: 'Service: AWS WAFReturns the'
+      operationId: getIPSet
+      parameters:
+      - in: query
+        name: IPSetId
+        description: The IPSetId of the IPSet that you want to get
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - IP Sets
+  /?Action=GetRule&k=1:
+    get:
+      summary: ' Get Rule '
+      description: 'Service: AWS WAFReturns the'
+      operationId: getRule
+      parameters:
+      - in: query
+        name: RuleId
+        description: The RuleId of the Rule that you want to get
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Rules
+  /?Action=GetSampledRequests&k=1:
+    get:
+      summary: ' Get Sampled Requests '
+      description: 'Service: AWS WAFGets detailed information about a specified number
+        of requests--a sample--that AWS WAF randomly selects from among the first
+        5,000 requests that your AWS resource received during a time range that you
+        choose'
+      operationId: getSampledRequests
+      parameters:
+      - in: query
+        name: MaxItems
+        description: "The number of requests that you want AWS WAF to return from
+          among the first 5,000 requests that your AWS resource received\t\t\tduring
+          the time range"
+        type: string
+      - in: query
+        name: RuleId
+        description: 'RuleId is one of two values:'
+        type: string
+      - in: query
+        name: TimeWindow
+        description: "The start date and time and the end date and time of the range
+          for which you want GetSampledRequests to return a \t\t    \tsample of requests"
+        type: string
+      - in: query
+        name: WebAclId
+        description: The WebACLId of the WebACL for which you want GetSampledRequests
+          to return a sample of requests
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /?Action=GetSizeConstraintSet&k=1:
+    get:
+      summary: ' Get Size Constraint Set '
+      description: 'Service: AWS WAFReturns the'
+      operationId: getSizeConstraintSet
+      parameters:
+      - in: query
+        name: SizeConstraintSetId
+        description: The SizeConstraintSetId of the SizeConstraintSet that you want
+          to get
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'Size Constraint Set '
+  /?Action=GetSqlInjectionMatchSet&k=1:
+    get:
+      summary: ' Get Sql Injection Match Set '
+      description: 'Service: AWS WAFReturns the'
+      operationId: getSqlInjectionMatchSet
+      parameters:
+      - in: query
+        name: SqlInjectionMatchSetId
+        description: The SqlInjectionMatchSetId of the SqlInjectionMatchSet that you
+          want to get
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'SQL Injection Match Set '
+  /?Action=GetWebACL&k=1:
+    get:
+      summary: ' Get Web ACL'
+      description: 'Service: AWS WAFReturns the'
+      operationId: getWebACL
+      parameters:
+      - in: query
+        name: WebACLId
+        description: The WebACLId of the WebACL that you want to get
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Web ACL
+  /?Action=GetWebACLForResource&k=1:
+    get:
+      summary: ' Get Web ACLFor Resource '
+      description: 'Service: AWS WAF RegionalReturns the web ACL for the specified
+        resource'
+      operationId: getWebACLForResource
+      parameters:
+      - in: query
+        name: ResourceArn
+        description: The ARN (Amazon Resource Name) of the resource for which to get
+          the web ACL
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Web ACL
+  /?Action=GetXssMatchSet&k=1:
+    get:
+      summary: ' Get Xss Match Set '
+      description: 'Service: AWS WAFReturns the'
+      operationId: getXssMatchSet
+      parameters:
+      - in: query
+        name: XssMatchSetId
+        description: The XssMatchSetId of the XssMatchSet that you want to get
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - XSS Match Set
+  /?Action=ListByteMatchSets&k=1:
+    get:
+      summary: ' List Byte Match Sets '
+      description: 'Service: AWS WAFReturns an array of'
+      operationId: listByteMatchSets
+      parameters:
+      - in: query
+        name: Limit
+        description: Specifies the number of ByteMatchSet objects that you want AWS
+          WAF to return for this request
+        type: string
+      - in: query
+        name: NextMarker
+        description: "If you specify a value for Limit and you have more ByteMatchSets
+          than the value of Limit, \t\t\tAWS WAF returns a NextMarker value in the
+          response that allows you to list another group of ByteMatchSets"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'Byte Match Sets '
+  /?Action=ListIPSets&k=1:
+    get:
+      summary: ' List IP Sets '
+      description: 'Service: AWS WAFReturns an array of'
+      operationId: listIPSets
+      parameters:
+      - in: query
+        name: Limit
+        description: Specifies the number of IPSet objects that you want AWS WAF to
+          return for this request
+        type: string
+      - in: query
+        name: NextMarker
+        description: "If you specify a value for Limit and you have more IPSets than
+          the value of Limit, \t\t\tAWS WAF returns a NextMarker value in the response
+          that allows you to list another group of IPSets"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - IP Sets
+  /?Action=ListResourcesForWebACL&k=1:
+    get:
+      summary: ' List Resources For Web ACL'
+      description: 'Service: AWS WAF RegionalReturns an array of resources associated
+        with the specified web ACL'
+      operationId: listResourcesForWebACL
+      parameters:
+      - in: query
+        name: WebACLId
+        description: The unique identifier (ID) of the web ACL for which to list the
+          associated resources
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Web ACL
+  /?Action=ListRules&k=1:
+    get:
+      summary: ' List Rules '
+      description: 'Service: AWS WAFReturns an array of'
+      operationId: listRules
+      parameters:
+      - in: query
+        name: Limit
+        description: Specifies the number of Rules that you want AWS WAF to return
+          for this request
+        type: string
+      - in: query
+        name: NextMarker
+        description: "If you specify a value for Limit and you have more Rules than
+          the value of Limit, \t\t\tAWS WAF returns a NextMarker value in the response
+          that allows you to list another group of Rules"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Rules
+  /?Action=ListSizeConstraintSets&k=1:
+    get:
+      summary: ' List Size Constraint Sets '
+      description: 'Service: AWS WAFReturns an array of'
+      operationId: listSizeConstraintSets
+      parameters:
+      - in: query
+        name: Limit
+        description: Specifies the number of SizeConstraintSet objects that you want
+          AWS WAF to return for this request
+        type: string
+      - in: query
+        name: NextMarker
+        description: "If you specify a value for Limit and you have more SizeConstraintSets
+          than the value of Limit, \t\t\tAWS WAF returns a NextMarker value in the
+          response that allows you to list another group of SizeConstraintSets"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Size Constraint Sets
+  /?Action=ListSqlInjectionMatchSets&k=1:
+    get:
+      summary: ' List SQL Injection Match Sets '
+      description: 'Service: AWS WAFReturns an array of'
+      operationId: listSqlInjectionMatchSets
+      parameters:
+      - in: query
+        name: Limit
+        description: Specifies the number of SqlInjectionMatchSet objects that you
+          want AWS WAF to return for this request
+        type: string
+      - in: query
+        name: NextMarker
+        description: "If you specify a value for Limit and you have more SqlInjectionMatchSet
+          objects than the value of \t\t\tLimit, AWS WAF returns a NextMarker value
+          in the response that allows you to list another group of \t\t\tSqlInjectionMatchSets"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'SQL Injection Match Sets '
+  /?Action=ListWebACLs&k=1:
+    get:
+      summary: ' List Web ACLs'
+      description: 'Service: AWS WAFReturns an array of'
+      operationId: listWebACLs
+      parameters:
+      - in: query
+        name: Limit
+        description: Specifies the number of WebACL objects that you want AWS WAF
+          to return for this request
+        type: string
+      - in: query
+        name: NextMarker
+        description: "If you specify a value for Limit and you have more WebACL objects
+          than the number that you specify \t\t\tfor Limit, AWS WAF returns a NextMarker
+          value in the response that allows you to list another group of \t\t\tWebACL
+          objects"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Web ACL
+  /?Action=ListXssMatchSets&k=1:
+    get:
+      summary: ' List Xss Match Sets '
+      description: 'Service: AWS WAFReturns an array of'
+      operationId: listXssMatchSets
+      parameters:
+      - in: query
+        name: Limit
+        description: Specifies the number of XssMatchSet objects that you want AWS
+          WAF to return for this request
+        type: string
+      - in: query
+        name: NextMarker
+        description: "If you specify a value for Limit and you have more XssMatchSet
+          objects than the value of \t\t\tLimit, AWS WAF returns a NextMarker value
+          in the response that allows you to list another group of \t\t\tXssMatchSets"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - XSS Match Set
+  /?Action=UpdateByteMatchSet&k=1:
+    get:
+      summary: ' Update Byte Match Set '
+      description: 'Service: AWS WAFInserts or deletes'
+      operationId: updateByteMatchSet
+      parameters:
+      - in: query
+        name: ByteMatchSetId
+        description: The ByteMatchSetId of the ByteMatchSet that you want to update
+        type: string
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: Updates
+        description: An array of ByteMatchSetUpdate objects that you want to insert
+          into or delete from a ByteMatchSet
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'Byte Match Set '
+  /?Action=UpdateIPSet&k=1:
+    get:
+      summary: ' Update IP Set '
+      description: 'Service: AWS WAFInserts or deletes'
+      operationId: updateIPSet
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: IPSetId
+        description: The IPSetId of the IPSet that you want to update
+        type: string
+      - in: query
+        name: Updates
+        description: An array of IPSetUpdate objects that you want to insert into
+          or delete from an IPSet
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - IP Sets
+  /?Action=UpdateRule&k=1:
+    get:
+      summary: ' Update Rule'
+      description: 'Service: AWS WAFInserts or deletes'
+      operationId: updateRule
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: RuleId
+        description: The RuleId of the Rule that you want to update
+        type: string
+      - in: query
+        name: Updates
+        description: "An array of RuleUpdate objects that you want to insert into
+          or delete from a \t\t\tRule"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Rules
+  /?Action=UpdateSizeConstraintSet&k=1:
+    get:
+      summary: ' Update Size Constraint Set '
+      description: 'Service: AWS WAFInserts or deletes'
+      operationId: updateSizeConstraintSet
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: SizeConstraintSetId
+        description: The SizeConstraintSetId of the SizeConstraintSet that you want
+          to update
+        type: string
+      - in: query
+        name: Updates
+        description: An array of SizeConstraintSetUpdate objects that you want to
+          insert into or delete from a SizeConstraintSet
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'Size Constraint Set '
+  /?Action=UpdateSqlInjectionMatchSet&k=1:
+    get:
+      summary: ' Update SQL Injection Match Set '
+      description: 'Service: AWS WAFInserts or deletes'
+      operationId: updateSqlInjectionMatchSet
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: SqlInjectionMatchSetId
+        description: The SqlInjectionMatchSetId of the SqlInjectionMatchSet that you
+          want to update
+        type: string
+      - in: query
+        name: Updates
+        description: "An array of SqlInjectionMatchSetUpdate objects that you want
+          to insert into or delete from a \t\t\tSqlInjectionMatchSet"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'SQL Injection Match Sets '
+  /?Action=UpdateWebACL&k=1:
+    get:
+      summary: ' Update Web ACL'
+      description: 'Service: AWS WAFInserts or deletes'
+      operationId: updateWebACL
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: DefaultAction
+        description: A default action for the web ACL, either ALLOW or BLOCK
+        type: string
+      - in: query
+        name: Updates
+        description: An array of updates to make to the WebACL
+        type: string
+      - in: query
+        name: WebACLId
+        description: The WebACLId of the WebACL that you want to update
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Web ACL
+  /?Action=UpdateXssMatchSet&k=1:
+    get:
+      summary: ' Update Xss Match Set '
+      description: 'Service: AWS WAFInserts or deletes'
+      operationId: updateXssMatchSet
+      parameters:
+      - in: query
+        name: ChangeToken
+        description: The value returned by the most recent call to GetChangeToken
+        type: string
+      - in: query
+        name: Updates
+        description: "An array of XssMatchSetUpdate objects that you want to insert
+          into or delete from a \t\t\tXssMatchSet"
+        type: string
+      - in: query
+        name: XssMatchSetId
+        description: The XssMatchSetId of the XssMatchSet that you want to update
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - XSS Match Set
+definitions: []
