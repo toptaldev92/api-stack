@@ -1,0 +1,465 @@
+agger: "2.0"
+info:
+  title: AWS Cognito API
+  version: 1.0.0
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /?Action=CreateIdentityPool&k=1:
+    get:
+      summary: ' Create Identity Pool '
+      description: Creates a new identity pool
+      operationId: createIdentityPool
+      parameters:
+      - in: query
+        name: AllowUnauthenticatedIdentities
+        description: TRUE if the identity pool supports unauthenticated logins
+        type: string
+      - in: query
+        name: CognitoIdentityProviders
+        description: An array of Amazon Cognito Identity user pools and their client
+          IDs
+        type: string
+      - in: query
+        name: DeveloperProviderName
+        description: The domain by which Cognito will refer to your users
+        type: string
+      - in: query
+        name: IdentityPoolName
+        description: A string that you provide
+        type: string
+      - in: query
+        name: OpenIdConnectProviderARNs
+        description: A list of OpendID Connect provider ARNs
+        type: string
+      - in: query
+        name: SamlProviderARNs
+        description: An array of Amazon Resource Names (ARNs) of the SAML provider
+          for your identity         pool
+        type: string
+      - in: query
+        name: SupportedLoginProviders
+        description: Optional key:value pairs mapping provider names to provider app
+          IDs
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identity Pool
+  /?Action=DeleteIdentities&k=1:
+    get:
+      summary: ' Delete Identities '
+      description: Deletes identities from an identity pool
+      operationId: deleteIdentities
+      parameters:
+      - in: query
+        name: IdentityIdsToDelete
+        description: A list of 1-60 identities that you want to delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identities
+  /?Action=DeleteIdentityPool&k=1:
+    get:
+      summary: ' Delete Identity Pool '
+      description: Deletes a user pool
+      operationId: deleteIdentityPool
+      parameters:
+      - in: query
+        name: IdentityPoolId
+        description: An identity pool ID in the format REGION:GUID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identity Pool
+  /?Action=DescribeIdentity&k=1:
+    get:
+      summary: ' Describe Identity '
+      description: |-
+        Returns metadata related to the given identity, including when the identity was
+                 created and any associated linked logins
+      operationId: describeIdentity
+      parameters:
+      - in: query
+        name: IdentityId
+        description: A unique identifier in the format REGION:GUID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identities
+  /?Action=DescribeIdentityPool&k=1:
+    get:
+      summary: ' Describe Identity Pool '
+      description: |-
+        Gets details about a particular identity pool, including the pool name, ID
+                 description, creation date, and current number of users
+      operationId: describeIdentityPool
+      parameters:
+      - in: query
+        name: IdentityPoolId
+        description: An identity pool ID in the format REGION:GUID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identity Pool
+  /?Action=GetCredentialsForIdentity&k=1:
+    get:
+      summary: ' Get Credentials For Identity '
+      description: Returns credentials for the provided identity ID
+      operationId: getCredentialsForIdentity
+      parameters:
+      - in: query
+        name: CustomRoleArn
+        description: The Amazon Resource Name (ARN) of the role to be assumed when
+          multiple roles were         received in the token from the identity provider
+        type: string
+      - in: query
+        name: IdentityId
+        description: A unique identifier in the format REGION:GUID
+        type: string
+      - in: query
+        name: Logins
+        description: A set of optional name-value pairs that map provider names to
+          provider         tokens
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identities
+  /?Action=GetId&k=1:
+    get:
+      summary: ' Get Id '
+      description: Generates (or retrieves) a Cognito ID
+      operationId: getId
+      parameters:
+      - in: query
+        name: AccountId
+        description: A standard AWS account ID (9+ digits)
+        type: string
+      - in: query
+        name: IdentityPoolId
+        description: An identity pool ID in the format REGION:GUID
+        type: string
+      - in: query
+        name: Logins
+        description: A set of optional name-value pairs that map provider names to
+          provider tokens
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identities
+  /?Action=GetIdentityPoolRoles&k=1:
+    get:
+      summary: ' Get Identity Pool Roles '
+      description: Gets the roles for an identity pool
+      operationId: getIdentityPoolRoles
+      parameters:
+      - in: query
+        name: IdentityPoolId
+        description: An identity pool ID in the format REGION:GUID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identity Pool Roles
+  /?Action=GetOpenIdToken&k=1:
+    get:
+      summary: ' Get Open Id Token '
+      description: Gets an OpenID token, using a known Cognito ID
+      operationId: getOpenIdToken
+      parameters:
+      - in: query
+        name: IdentityId
+        description: A unique identifier in the format REGION:GUID
+        type: string
+      - in: query
+        name: Logins
+        description: A set of optional name-value pairs that map provider names to
+          provider tokens
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Open ID Token
+  /?Action=GetOpenIdTokenForDeveloperIdentity&k=1:
+    get:
+      summary: ' Get Open Id Token For Developer Identity '
+      description: |-
+        Registers (or retrieves) a Cognito IdentityId and an OpenID Connect
+                 token for a user authenticated by your backend authentication process
+      operationId: getOpenIdTokenForDeveloperIdentity
+      parameters:
+      - in: query
+        name: IdentityId
+        description: A unique identifier in the format REGION:GUID
+        type: string
+      - in: query
+        name: IdentityPoolId
+        description: An identity pool ID in the format REGION:GUID
+        type: string
+      - in: query
+        name: Logins
+        description: A set of optional name-value pairs that map provider names to
+          provider tokens
+        type: string
+      - in: query
+        name: TokenDuration
+        description: The expiration time of the token, in seconds
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Open ID Token for Developer Identities
+  /?Action=ListIdentities&k=1:
+    get:
+      summary: ' List Identities '
+      description: Lists the identities in a pool
+      operationId: listIdentities
+      parameters:
+      - in: query
+        name: HideDisabled
+        description: An optional boolean parameter that allows you to hide disabled
+          identities
+        type: string
+      - in: query
+        name: IdentityPoolId
+        description: An identity pool ID in the format REGION:GUID
+        type: string
+      - in: query
+        name: MaxResults
+        description: The maximum number of identities to return
+        type: string
+      - in: query
+        name: NextToken
+        description: A pagination token
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identities
+  /?Action=ListIdentityPools&k=1:
+    get:
+      summary: ' List Identity Pools '
+      description: Lists all of the Cognito identity pools registered for your account
+      operationId: listIdentityPools
+      parameters:
+      - in: query
+        name: MaxResults
+        description: The maximum number of identities to return
+        type: string
+      - in: query
+        name: NextToken
+        description: A pagination token
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identity Pool
+  /?Action=LookupDeveloperIdentity&k=1:
+    get:
+      summary: ' Lookup Developer Identity '
+      description: |-
+        Retrieves the IdentityID associated with a
+                    DeveloperUserIdentifier or the list of
+                 DeveloperUserIdentifiers associated with an IdentityId for an
+                 existing identity
+      operationId: lookupDeveloperIdentity
+      parameters:
+      - in: query
+        name: DeveloperUserIdentifier
+        description: A unique ID used by your backend authentication process to identify
+          a user
+        type: string
+      - in: query
+        name: IdentityId
+        description: A unique identifier in the format REGION:GUID
+        type: string
+      - in: query
+        name: IdentityPoolId
+        description: An identity pool ID in the format REGION:GUID
+        type: string
+      - in: query
+        name: MaxResults
+        description: The maximum number of identities to return
+        type: string
+      - in: query
+        name: NextToken
+        description: A pagination token
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Developer Identities
+  /?Action=MergeDeveloperIdentities&k=1:
+    get:
+      summary: ' Merge Developer Identities '
+      description: |-
+        Merges two users having different IdentityIds, existing in the same
+                 identity pool, and identified by the same developer provider
+      operationId: mergeDeveloperIdentities
+      parameters:
+      - in: query
+        name: DestinationUserIdentifier
+        description: User identifier for the destination user
+        type: string
+      - in: query
+        name: DeveloperProviderName
+        description: The domain by which Cognito will refer to your users
+        type: string
+      - in: query
+        name: IdentityPoolId
+        description: An identity pool ID in the format REGION:GUID
+        type: string
+      - in: query
+        name: SourceUserIdentifier
+        description: User identifier for the source user
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Developer Identities
+  /?Action=SetIdentityPoolRoles&k=1:
+    get:
+      summary: ' Set Identity Pool Roles '
+      description: Sets the roles for an identity pool
+      operationId: setIdentityPoolRoles
+      parameters:
+      - in: query
+        name: IdentityPoolId
+        description: An identity pool ID in the format REGION:GUID
+        type: string
+      - in: query
+        name: RoleMappings
+        description: How users for a specific identity provider are to mapped to roles
+        type: string
+      - in: query
+        name: Roles
+        description: The map of roles associated with this pool
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identity Pool
+  /?Action=UnlinkDeveloperIdentity&k=1:
+    get:
+      summary: ' Unlink Developer Identity '
+      description: Unlinks a DeveloperUserIdentifier from an existing identity
+      operationId: unlinkDeveloperIdentity
+      parameters:
+      - in: query
+        name: DeveloperProviderName
+        description: The domain by which Cognito will refer to your users
+        type: string
+      - in: query
+        name: DeveloperUserIdentifier
+        description: A unique ID used by your backend authentication process to identify
+          a user
+        type: string
+      - in: query
+        name: IdentityId
+        description: A unique identifier in the format REGION:GUID
+        type: string
+      - in: query
+        name: IdentityPoolId
+        description: An identity pool ID in the format REGION:GUID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Developer Identities
+  /?Action=UnlinkIdentity&k=1:
+    get:
+      summary: ' Unlink Identity '
+      description: Unlinks a federated identity from an existing account
+      operationId: unlinkIdentity
+      parameters:
+      - in: query
+        name: IdentityId
+        description: A unique identifier in the format REGION:GUID
+        type: string
+      - in: query
+        name: Logins
+        description: A set of optional name-value pairs that map provider names to
+          provider         tokens
+        type: string
+      - in: query
+        name: LoginsToRemove
+        description: Provider names to unlink from this identity
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identities
+  /?Action=UpdateIdentityPool&k=1:
+    get:
+      summary: ' Update Identity Pool '
+      description: Updates a user pool
+      operationId: updateIdentityPool
+      parameters:
+      - in: query
+        name: AllowUnauthenticatedIdentities
+        description: TRUE if the identity pool supports unauthenticated logins
+        type: string
+      - in: query
+        name: CognitoIdentityProviders
+        description: A list representing an Amazon Cognito Identity User Pool and
+          its client ID
+        type: string
+      - in: query
+        name: DeveloperProviderName
+        description: The domain by which Cognito will refer to your users
+        type: string
+      - in: query
+        name: IdentityPoolId
+        description: An identity pool ID in the format REGION:GUID
+        type: string
+      - in: query
+        name: IdentityPoolName
+        description: A string that you provide
+        type: string
+      - in: query
+        name: OpenIdConnectProviderARNs
+        description: A list of OpendID Connect provider ARNs
+        type: string
+      - in: query
+        name: SamlProviderARNs
+        description: An array of Amazon Resource Names (ARNs) of the SAML provider
+          for your identity         pool
+        type: string
+      - in: query
+        name: SupportedLoginProviders
+        description: Optional key:value pairs mapping provider names to provider app
+          IDs
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identity Pool
+definitions: []
