@@ -1,0 +1,95 @@
+agger: "2.0"
+info:
+  title: Plugin API
+  description: The Plugin API.
+  version: 1.0.0
+host: api.newrelic.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /v2/plugins.{format}:
+    get:
+      summary: List
+      description: <p>This API endpoint returns a list of the Plugins associated with
+        your New Relic account
+      operationId: list
+      parameters:
+      - in: query
+        name: detailed
+        description: Include all data about a plugin
+        type: boolean
+      - in: query
+        name: filter[guid]
+        description: Filter plugin by guid
+        type: string
+      - in: query
+        name: filter[ids]
+        description: Filter plugin by ids
+        type: list
+      - in: query
+        name: page
+        description: Pagination index
+        type: integer
+      responses:
+        200:
+          description: OK
+      tags:
+      - Plugin
+  /v2/plugins/{id}.{format}:
+    get:
+      summary: Show
+      description: <p>This API endpoint returns a single plugin, identified by its
+        ID
+      operationId: show
+      parameters:
+      - in: query
+        name: detailed
+        description: Include all data about a plugin
+        type: boolean
+      - in: path
+        name: id
+        description: Plugin ID
+        type: integer
+      responses:
+        200:
+          description: OK
+      tags:
+      - Plugin
+definitions:
+  "":
+    properties:
+      plugin:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      name:
+        description: This is a default description.
+        type: string
+      guid:
+        description: This is a default description.
+        type: string
+      publisher:
+        description: This is a default description.
+        type: string
+      component_agent_count:
+        description: This is a default description.
+        type: string
+      details:
+        description: This is a default description.
+        type: string
+      summary_metrics:
+        description: This is a default description.
+        type: string
+      description:
+        description: This is a default description.
+        type: string
+      is_public:
+        description: This is a default description.
+        type: string
