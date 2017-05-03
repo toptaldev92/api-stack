@@ -1,0 +1,62 @@
+agger: "2.0"
+info:
+  title: Usage API
+  description: The Usage API.
+  version: 1.0.0
+host: api.newrelic.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /v2/usages/{product}.{format}:
+    get:
+      summary: List
+      description: <p>Show a list of usage for a product in a given time frame
+      operationId: list
+      parameters:
+      - in: query
+        name: end_date
+        description: 'Format: YYYY-MM-DD'
+        type: date
+      - in: query
+        name: include_subaccounts
+        description: 'Include subaccounts usage? (default: false)'
+        type: boolean
+      - in: path
+        name: product
+        description: 'Available: apm, browser, mobile'
+        type: string
+      - in: query
+        name: start_date
+        description: 'Format: YYYY-MM-DD'
+        type: date
+      responses:
+        200:
+          description: OK
+      tags:
+      - Usage
+definitions:
+  "":
+    properties:
+      usage_data:
+        description: This is a default description.
+        type: string
+      product:
+        description: This is a default description.
+        type: string
+      from:
+        description: This is a default description.
+        type: string
+      to:
+        description: This is a default description.
+        type: string
+      unit:
+        description: This is a default description.
+        type: string
+      usages:
+        description: This is a default description.
+        type: string
