@@ -1,4 +1,4 @@
 ---
 layout: none
 ---
-{% assign yaml_data = site.data.apis | replace: 'https://raw.githubusercontent.com/api-stack/api-stack//_data/api-commons', site.url %}{% assign show_json = yaml_data | json | replace: '=>', ':' %}{{ show_json }}
+{% assign base_url = site.url | append: "/apis/" %}{% assign yaml_data = site.data.apis | replace: 'https://raw.githubusercontent.com/api-stack/api-stack//_data/api-commons/base_url', base_url %}{% assign show_json = yaml_data | json | replace: '=>', ':' %}{{ show_json }}
