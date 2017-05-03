@@ -1,0 +1,85 @@
+agger: "2.0"
+info:
+  title: Notification Channel API
+  description: The Notification Channel API.
+  version: 1.0.0
+host: api.newrelic.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /v2/notification_channels.{format}:
+    get:
+      summary: List
+      description: '<p><strong>WARNING</strong>: This is legacy alerting'
+      operationId: list
+      parameters:
+      - in: query
+        name: filter[ids]
+        description: Filter by notification channel IDs
+        type: list
+      - in: query
+        name: filter[type]
+        description: Filter by notification channel types
+        type: list
+      - in: query
+        name: page
+        description: Pagination index
+        type: integer
+      responses:
+        200:
+          description: OK
+      tags:
+      - Notification Channel
+  /v2/notification_channels/{id}.{format}:
+    get:
+      summary: Show
+      description: '<p><strong>WARNING</strong>: This is legacy alerting'
+      operationId: show
+      parameters:
+      - in: path
+        name: id
+        description: Notification Channel ID
+        type: integer
+      responses:
+        200:
+          description: OK
+      tags:
+      - Notification Channel
+definitions:
+  "":
+    properties:
+      notification_channel:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      type:
+        description: This is a default description.
+        type: string
+      downtime_only:
+        description: This is a default description.
+        type: string
+      url:
+        description: This is a default description.
+        type: string
+      name:
+        description: This is a default description.
+        type: string
+      description:
+        description: This is a default description.
+        type: string
+      email:
+        description: This is a default description.
+        type: string
+      subdomain:
+        description: This is a default description.
+        type: string
+      service:
+        description: This is a default description.
+        type: string
