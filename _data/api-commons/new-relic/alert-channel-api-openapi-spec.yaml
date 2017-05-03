@@ -1,0 +1,87 @@
+agger: "2.0"
+info:
+  title: Alert Channel API
+  description: The Alert Channel API.
+  version: 1.0.0
+host: api.newrelic.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /v2/alerts_channels.{format}:
+    get:
+      summary: List
+      description: <p>This API endpoint works with new Alerts on alerts
+      operationId: list
+      parameters:
+      - in: query
+        name: page
+        description: Pagination index
+        type: integer
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Create
+      description: <p>This API endpoint works with new Alerts on alerts
+      operationId: create
+      parameters:
+      - in: body
+        name: channel
+        description: channel schema
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: policy_ids
+        description: Policy IDs to associate with channel
+        type: array
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /v2/alerts_channels/{channel_id}.{format}:
+    delete:
+      summary: Delete
+      description: <p>This API endpoint deletes Alerts notification channels
+      operationId: delete
+      parameters:
+      - in: path
+        name: channel_id
+        description: Channel ID
+        type: integer
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+definitions:
+  "":
+    properties:
+      channel:
+        description: This is a default description.
+        type: DELETE
+      id:
+        description: This is a default description.
+        type: DELETE
+      name:
+        description: This is a default description.
+        type: DELETE
+      type:
+        description: This is a default description.
+        type: DELETE
+      configuration:
+        description: This is a default description.
+        type: DELETE
+      links:
+        description: This is a default description.
+        type: DELETE
+      policy_ids:
+        description: This is a default description.
+        type: DELETE
