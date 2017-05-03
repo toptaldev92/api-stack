@@ -1,0 +1,381 @@
+agger: "2.0"
+info:
+  title: CognitiveServicesManagementClient
+  description: Cognitive Services Management Client
+  version: 1.0.0
+host: management.azure.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /providers/Microsoft.CognitiveServices/operations:
+    get:
+      summary: Operations List
+      description: Lists all the available Cognitive Services account operations
+      operationId: Operations_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Operation
+  /subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/accounts:
+    get:
+      summary: Accounts List
+      description: Returns all the resources of a particular type belonging to a subscription
+      operationId: Accounts_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Account
+  /subscriptions/{subscriptionId}/providers/Microsoft.CognitiveServices/locations/{location}/checkSkuAvailability:
+    post:
+      summary: Check Sku Availability List
+      description: Check available SKUs
+      operationId: CheckSkuAvailability_List
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Check SKU Availablity POST body
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - SKU
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts:
+    get:
+      summary: Accounts List By Resource Group
+      description: Returns all the resources of a particular type belonging to a resource
+        group
+      operationId: Accounts_ListByResourceGroup
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group within the user's subscription
+      responses:
+        200:
+          description: OK
+      tags:
+      - Account
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}:
+    delete:
+      summary: Cognitive Services Accounts Delete
+      description: Deletes a Cognitive Services account from the resource group
+      operationId: CognitiveServicesAccounts_Delete
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of Cognitive Services account
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group within the user's subscription
+      responses:
+        200:
+          description: OK
+      tags:
+      - Cognitive Service
+    get:
+      summary: Cognitive Services Accounts Get Properties
+      description: Returns a Cognitive Services account specified by the parameters
+      operationId: CognitiveServicesAccounts_GetProperties
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of Cognitive Services account
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group within the user's subscription
+      responses:
+        200:
+          description: OK
+      tags:
+      - Cognitive Service
+    patch:
+      summary: Cognitive Services Accounts Update
+      description: Updates a Cognitive Services account
+      operationId: CognitiveServicesAccounts_Update
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of Cognitive Services account
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The parameters to provide for the created account
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group within the user's subscription
+      responses:
+        200:
+          description: OK
+      tags:
+      - Cognitive Service
+    put:
+      summary: Cognitive Services Accounts Create
+      description: Create Cognitive Services Account
+      operationId: CognitiveServicesAccounts_Create
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of Cognitive Services account
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The parameters to provide for the created account
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group within the user's subscription
+      responses:
+        200:
+          description: OK
+      tags:
+      - Cognitive Service
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/listKeys
+  : post:
+      summary: Cognitive Services Accounts List Keys
+      description: Lists the account keys for the specified Cognitive Services account
+      operationId: CognitiveServicesAccounts_ListKeys
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of Cognitive Services account
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group within the user's subscription
+      responses:
+        200:
+          description: OK
+      tags:
+      - Cognitive Service
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/regenerateKey
+  : post:
+      summary: Cognitive Services Accounts Regenerate Key
+      description: Regenerates the specified account key for the specified Cognitive
+        Services account
+      operationId: CognitiveServicesAccounts_RegenerateKey
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of Cognitive Services account
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: regenerate key parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group within the user's subscription
+      responses:
+        200:
+          description: OK
+      tags:
+      - Cognitive Service
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CognitiveServices/accounts/{accountName}/skus
+  : get:
+      summary: Cognitive Services Accounts List Skus
+      description: List available SKUs for the requested Cognitive Services account
+      operationId: CognitiveServicesAccounts_ListSkus
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of Cognitive Services account
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group within the user's subscription
+      responses:
+        200:
+          description: OK
+      tags:
+      - Cognitive Service
+definitions:
+  CognitiveServicesAccountCreateParameters:
+    properties:
+      location:
+        description: This is a default description.
+        type: post
+      tags:
+        description: This is a default description.
+        type: post
+      properties:
+        description: This is a default description.
+        type: post
+  CognitiveServicesAccountUpdateParameters:
+    properties:
+      tags:
+        description: This is a default description.
+        type: post
+  Sku:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
+      tier:
+        description: This is a default description.
+        type: post
+  CognitiveServicesAccount:
+    properties:
+      etag:
+        description: This is a default description.
+        type: post
+      id:
+        description: This is a default description.
+        type: post
+      kind:
+        description: This is a default description.
+        type: post
+      location:
+        description: This is a default description.
+        type: post
+      name:
+        description: This is a default description.
+        type: post
+      tags:
+        description: This is a default description.
+        type: post
+      type:
+        description: This is a default description.
+        type: post
+  CognitiveServicesAccountListResult:
+    properties:
+      nextLink:
+        description: This is a default description.
+        type: post
+      value:
+        description: This is a default description.
+        type: post
+  CognitiveServicesAccountProperties:
+    properties:
+      provisioningState:
+        description: This is a default description.
+        type: post
+      endpoint:
+        description: This is a default description.
+        type: post
+      internalId:
+        description: This is a default description.
+        type: post
+  CognitiveServicesAccountKeys:
+    properties:
+      key1:
+        description: This is a default description.
+        type: post
+      key2:
+        description: This is a default description.
+        type: post
+  RegenerateKeyParameters:
+    properties:
+      keyName:
+        description: This is a default description.
+        type: post
+  CognitiveServicesAccountEnumerateSkusResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+  CognitiveServicesResourceAndSku:
+    properties:
+      resourceType:
+        description: This is a default description.
+        type: post
+  Error:
+    properties: []
+  ErrorBody:
+    properties:
+      code:
+        description: This is a default description.
+        type: post
+      message:
+        description: This is a default description.
+        type: post
+  OperationEntityListResult:
+    properties:
+      nextLink:
+        description: This is a default description.
+        type: post
+      value:
+        description: This is a default description.
+        type: post
+  OperationEntity:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
+      origin:
+        description: This is a default description.
+        type: post
+      properties:
+        description: This is a default description.
+        type: post
+  OperationDisplayInfo:
+    properties:
+      description:
+        description: This is a default description.
+        type: post
+      operation:
+        description: This is a default description.
+        type: post
+      provider:
+        description: This is a default description.
+        type: post
+      resource:
+        description: This is a default description.
+        type: post
+  CheckSkuAvailabilityParameter:
+    properties:
+      skus:
+        description: This is a default description.
+        type: post
+      type:
+        description: This is a default description.
+        type: post
+  CheckSkuAvailabilityResultList:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+  CheckSkuAvailabilityResult:
+    properties:
+      type:
+        description: This is a default description.
+        type: post
+      skuAvailable:
+        description: This is a default description.
+        type: post
+      reason:
+        description: This is a default description.
+        type: post
+      message:
+        description: This is a default description.
+        type: post
