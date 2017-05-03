@@ -1,0 +1,3749 @@
+agger: "2.0"
+info:
+  title: Data.gov API
+  description: The data.gov catalog is powered by CKAN, a powerful open source data
+    platform that includes a robust API. Please be aware that data.gov and the data.gov
+    CKAN API only contain metadata about datasets. This metadata includes URLs and
+    descriptions of datasets, but it does not include the actual data within each
+    dataset.
+  version: "3"
+host: catalog.data.gov
+basePath: /api/3/
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /activity:
+    get:
+      summary: Fetch site activity, optionally filterd by user of org
+      description: ""
+      operationId: activity
+      parameters:
+      - in: query
+        name: organization
+        description: Filter activities for that particular organization
+      - in: query
+        name: page
+        description: The page to fetch
+      - in: query
+        name: page_size
+        description: The page size to fetch
+      - in: query
+        name: user
+        description: Filter activities for that particular user
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/:
+    get:
+      summary: List or search all datasets
+      description: ""
+      operationId: list_datasets
+      parameters:
+      - in: query
+        name: badge
+      - in: query
+        name: extra
+      - in: query
+        name: facets
+        description: Selected facets to fetch
+      - in: query
+        name: featured
+      - in: query
+        name: format
+      - in: query
+        name: geozone
+      - in: query
+        name: granularity
+      - in: query
+        name: license
+      - in: query
+        name: organization
+      - in: query
+        name: owner
+      - in: query
+        name: page
+        description: The page to display
+      - in: query
+        name: page_size
+        description: The page size
+      - in: query
+        name: q
+        description: The search query
+      - in: query
+        name: reuses
+      - in: query
+        name: sort
+        description: The field (and direction) on which sorting apply
+      - in: query
+        name: tag
+      - in: query
+        name: temporal_coverage
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Create a new dataset
+      description: ""
+      operationId: create_dataset
+      parameters:
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/badges/:
+    get:
+      summary: List all available dataset badges and their labels
+      description: ""
+      operationId: available_dataset_badges
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/checkurl/:
+    get:
+      summary: Checks that a URL exists and returns metadata
+      description: ""
+      operationId: checkurl
+      parameters:
+      - in: query
+        name: group
+        description: The dataset related to the URL
+      - in: query
+        name: url
+        description: The URL to check
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/community_resources/:
+    get:
+      summary: List all community resources
+      description: ""
+      operationId: list_community_resources
+      parameters:
+      - in: query
+        name: dataset
+        description: Filter activities for that particular dataset
+      - in: query
+        name: organization
+        description: Filter activities for that particular organization
+      - in: query
+        name: owner
+        description: Filter activities for that particular user
+      - in: query
+        name: page
+        description: The page to fetch
+      - in: query
+        name: page_size
+        description: The page size to fetch
+      - in: query
+        name: sort
+        description: The sorting attribute
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Create a new community resource
+      description: ""
+      operationId: create_community_resource
+      parameters:
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/community_resources/{community}/:
+    delete:
+      summary: Delete a given community resource
+      description: ""
+      operationId: delete_community_resource
+      parameters:
+      - in: path
+        name: community
+        description: The community resource unique identifier
+      - in: query
+        name: dataset
+        description: The dataset ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    get:
+      summary: Retrieve a community resource given its identifier
+      description: ""
+      operationId: retrieve_community_resource
+      parameters:
+      - in: path
+        name: community
+        description: The community resource unique identifier
+      - in: query
+        name: dataset
+        description: The dataset ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    put:
+      summary: Update a given community resource
+      description: ""
+      operationId: update_community_resource
+      parameters:
+      - in: path
+        name: community
+        description: The community resource unique identifier
+      - in: query
+        name: dataset
+        description: The dataset ID or slug
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/community_resources/{community}/upload/:
+    post:
+      summary: Update the file related to a given community resource
+      description: ""
+      operationId: upload_community_resource
+      parameters:
+      - in: path
+        name: community
+        description: The community resource unique identifier
+      - in: query
+        name: dataset
+        description: The dataset ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/frequencies/:
+    get:
+      summary: List all available frequencies
+      description: ""
+      operationId: list_frequencies
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/full/:
+    get:
+      summary: ""
+      description: ""
+      operationId: list_datasets_full
+      parameters:
+      - in: query
+        name: badge
+      - in: query
+        name: extra
+      - in: query
+        name: facets
+        description: Selected facets to fetch
+      - in: query
+        name: featured
+      - in: query
+        name: format
+      - in: query
+        name: geozone
+      - in: query
+        name: granularity
+      - in: query
+        name: license
+      - in: query
+        name: organization
+      - in: query
+        name: owner
+      - in: query
+        name: page
+        description: The page to display
+      - in: query
+        name: page_size
+        description: The page size
+      - in: query
+        name: q
+        description: The search query
+      - in: query
+        name: reuses
+      - in: query
+        name: sort
+        description: The field (and direction) on which sorting apply
+      - in: query
+        name: tag
+      - in: query
+        name: temporal_coverage
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/licenses/:
+    get:
+      summary: List all available licenses
+      description: ""
+      operationId: list_licenses
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/suggest/:
+    get:
+      summary: Suggest datasets
+      description: ""
+      operationId: suggest_datasets
+      parameters:
+      - in: query
+        name: q
+        description: The string to autocomplete/suggest
+      - in: query
+        name: size
+        description: The amount of suggestion to fetch
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/suggest/formats/:
+    get:
+      summary: Suggest file formats
+      description: ""
+      operationId: suggest_formats
+      parameters:
+      - in: query
+        name: q
+        description: The string to autocomplete/suggest
+      - in: query
+        name: size
+        description: The amount of suggestion to fetch
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/{dataset}/:
+    delete:
+      summary: Delete a dataset given its identifier
+      description: ""
+      operationId: delete_dataset
+      parameters:
+      - in: path
+        name: dataset
+        description: The dataset ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    get:
+      summary: Get a dataset given its identifier
+      description: ""
+      operationId: get_dataset
+      parameters:
+      - in: path
+        name: dataset
+        description: The dataset ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    put:
+      summary: Update a dataset given its identifier
+      description: ""
+      operationId: update_dataset
+      parameters:
+      - in: path
+        name: dataset
+        description: The dataset ID or slug
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/{dataset}/badges/:
+    post:
+      summary: Create a new badge for a given dataset
+      description: ""
+      operationId: add_dataset_badge
+      parameters:
+      - in: path
+        name: dataset
+        description: The dataset ID or slug
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/{dataset}/badges/{badge_kind}/:
+    delete:
+      summary: Delete a badge for a given dataset
+      description: ""
+      operationId: delete_dataset_badge
+      parameters:
+      - in: path
+        name: badge_kind
+      - in: path
+        name: dataset
+        description: The dataset ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/{dataset}/featured/:
+    delete:
+      summary: Unmark the dataset as featured
+      description: ""
+      operationId: unfeature_reuse
+      parameters:
+      - in: path
+        name: dataset
+        description: The dataset ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Mark the dataset as featured
+      description: ""
+      operationId: feature_dataset
+      parameters:
+      - in: path
+        name: dataset
+        description: The dataset ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/{dataset}/full/:
+    get:
+      summary: Get a dataset given its identifier
+      description: ""
+      operationId: get_dataset_full
+      parameters:
+      - in: path
+        name: dataset
+        description: The dataset ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/{dataset}/resources/:
+    post:
+      summary: Create a new resource for a given dataset
+      description: ""
+      operationId: create_resource
+      parameters:
+      - in: path
+        name: dataset
+        description: The dataset ID or slug
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    put:
+      summary: Reorder resources
+      description: ""
+      operationId: update_resources
+      parameters:
+      - in: path
+        name: dataset
+        description: The dataset ID or slug
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/{dataset}/resources/{rid}/:
+    delete:
+      summary: Delete a given resource on a given dataset
+      description: ""
+      operationId: delete_resource
+      parameters:
+      - in: path
+        name: dataset
+        description: The dataset ID or slug
+      - in: path
+        name: rid
+        description: The resource unique identifier
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    put:
+      summary: Update a given resource on a given dataset
+      description: ""
+      operationId: update_resource
+      parameters:
+      - in: path
+        name: dataset
+        description: The dataset ID or slug
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: rid
+        description: The resource unique identifier
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/{dataset}/resources/{rid}/upload/:
+    post:
+      summary: Upload a file related to a given resource on a given dataset
+      description: ""
+      operationId: upload_dataset_resource
+      parameters:
+      - in: path
+        name: dataset
+        description: The dataset ID or slug
+      - in: path
+        name: rid
+        description: The resource unique identifier
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/{dataset}/upload/:
+    post:
+      summary: Upload a new dataset resource
+      description: ""
+      operationId: upload_dataset_resources
+      parameters:
+      - in: path
+        name: dataset
+        description: The dataset ID or slug
+      - in: formData
+        name: file
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/{dataset}/upload/community/:
+    post:
+      summary: Upload a new community resource
+      description: ""
+      operationId: upload_community_resources
+      parameters:
+      - in: path
+        name: dataset
+        description: The dataset ID or slug
+      - in: formData
+        name: file
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /datasets/{id}/followers/:
+    delete:
+      summary: Unfollow an object given its ID
+      description: Returns the number of followers left after the operation
+      operationId: unfollow
+      parameters:
+      - in: path
+        name: id
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    get:
+      summary: List all followers for a given object
+      description: ""
+      operationId: list_followers
+      parameters:
+      - in: path
+        name: id
+      - in: query
+        name: page
+        description: The page to fetch
+      - in: query
+        name: page_size
+        description: The page size to fetch
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Follow an object given its ID
+      description: Returns the number of followers left after the operation
+      operationId: follow
+      parameters:
+      - in: path
+        name: id
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /discussions/:
+    get:
+      summary: List all Discussions
+      description: ""
+      operationId: list_discussions
+      parameters:
+      - in: query
+        name: closed
+        description: Filters discussions on their closed status if specified
+      - in: query
+        name: for
+        description: Filter discussions for a given subject
+      - in: query
+        name: page
+        description: The page to fetch
+      - in: query
+        name: page_size
+        description: The page size to fetch
+      - in: query
+        name: sort
+        description: The sorting attribute
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Create a new Discussion
+      description: ""
+      operationId: create_discussion
+      parameters:
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /discussions/{id}/:
+    delete:
+      summary: Delete a discussion given its ID
+      description: ""
+      operationId: delete_discussion
+      parameters:
+      - in: path
+        name: id
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    get:
+      summary: Get a discussion given its ID
+      description: ""
+      operationId: get_discussion
+      parameters:
+      - in: path
+        name: id
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Add comment and optionnaly close a discussion given its ID
+      description: ""
+      operationId: comment_discussion
+      parameters:
+      - in: path
+        name: id
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /harvest/backends:
+    get:
+      summary: List all available harvest backends
+      description: ""
+      operationId: harvest_backends
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /harvest/job/{ident}/:
+    get:
+      summary: List all jobs for a given source
+      description: ""
+      operationId: get_harvest_job
+      parameters:
+      - in: path
+        name: ident
+      - in: query
+        name: page
+        description: The page to fetch
+      - in: query
+        name: page_size
+        description: The page size to fetch
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /harvest/job_status:
+    get:
+      summary: List all available harvesters
+      description: ""
+      operationId: get_list_harvester_api
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /harvest/source/{ident}:
+    delete:
+      summary: ""
+      description: ""
+      operationId: delete_harvest_source
+      parameters:
+      - in: path
+        name: ident
+        description: A source ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    get:
+      summary: Get a single source given an ID or a slug
+      description: ""
+      operationId: get_harvest_source
+      parameters:
+      - in: path
+        name: ident
+        description: A source ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /harvest/source/{ident}/jobs/:
+    get:
+      summary: List all jobs for a given source
+      description: ""
+      operationId: list_harvest_jobs
+      parameters:
+      - in: path
+        name: ident
+      - in: query
+        name: page
+        description: The page to fetch
+      - in: query
+        name: page_size
+        description: The page size to fetch
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /harvest/source/{ident}/preview:
+    get:
+      summary: Preview a single harvest source given an ID or a slug
+      description: ""
+      operationId: preview_harvest_source
+      parameters:
+      - in: path
+        name: ident
+        description: A source ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /harvest/source/{ident}/validate:
+    post:
+      summary: Validate or reject an harvest source
+      description: ""
+      operationId: validate_harvest_source
+      parameters:
+      - in: path
+        name: ident
+        description: A source ID or slug
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /harvest/sources/:
+    get:
+      summary: List all harvest sources
+      description: ""
+      operationId: list_harvest_sources
+      parameters:
+      - in: query
+        name: owner
+        description: The organization or user ID to filter on
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Create a new harvests source
+      description: ""
+      operationId: create_harvest_source
+      parameters:
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /issues/:
+    get:
+      summary: List all Issues
+      description: ""
+      operationId: list_issues
+      parameters:
+      - in: query
+        name: closed
+        description: Filter closed issues
+      - in: query
+        name: for
+        description: Filter issues for a given subject
+      - in: query
+        name: page
+        description: The page to fetch
+      - in: query
+        name: page_size
+        description: The page size to fetch
+      - in: query
+        name: sort
+        description: The sorting attribute
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Create a new Issue
+      description: ""
+      operationId: create_issue
+      parameters:
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /issues/{id}/:
+    get:
+      summary: Get an issue given its ID
+      description: ""
+      operationId: get_issue
+      parameters:
+      - in: path
+        name: id
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Add comment and optionnaly close an issue given its ID
+      description: ""
+      operationId: comment_issue
+      parameters:
+      - in: path
+        name: id
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /me/:
+    get:
+      summary: Fetch the current user (me) identity
+      description: ""
+      operationId: get_me
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    put:
+      summary: Update my profile
+      description: ""
+      operationId: update_me
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /me/apikey:
+    delete:
+      summary: Clear/destroy an apikey
+      description: ""
+      operationId: clear_apikey
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: (Re)Generate my API Key
+      description: ""
+      operationId: generate_apikey
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /me/avatar:
+    post:
+      summary: Upload a new avatar
+      description: ""
+      operationId: my_avatar
+      parameters:
+      - in: formData
+        name: bbox
+      - in: formData
+        name: file
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /me/datasets/:
+    get:
+      summary: List all my datasets (including private ones)
+      description: ""
+      operationId: my_datasets
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /me/metrics/:
+    get:
+      summary: Fetch the current user (me) metrics
+      description: ""
+      operationId: my_metrics
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /me/org_community_resources/:
+    get:
+      summary: List all community resources related to me and my organizations
+      description: ""
+      operationId: my_org_community_resources
+      parameters:
+      - in: query
+        name: q
+        description: The string to filter items
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /me/org_datasets/:
+    get:
+      summary: List all datasets related to me and my organizations
+      description: ""
+      operationId: my_org_datasets
+      parameters:
+      - in: query
+        name: q
+        description: The string to filter items
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /me/org_discussions/:
+    get:
+      summary: List all discussions related to my organizations
+      description: ""
+      operationId: my_org_discussions
+      parameters:
+      - in: query
+        name: q
+        description: The string to filter items
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /me/org_issues/:
+    get:
+      summary: List all issues related to my organizations
+      description: ""
+      operationId: my_org_issues
+      parameters:
+      - in: query
+        name: q
+        description: The string to filter items
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /me/org_reuses/:
+    get:
+      summary: List all reuses related to me and my organizations
+      description: ""
+      operationId: my_org_reuses
+      parameters:
+      - in: query
+        name: q
+        description: The string to filter items
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /me/reuses/:
+    get:
+      summary: List all my reuses (including private ones)
+      description: ""
+      operationId: my_reuses
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /metrics/{id}:
+    get:
+      summary: Fetch metrics for an object given its ID
+      description: If day is set, start and end will be ignored
+      operationId: metrics_for
+      parameters:
+      - in: query
+        name: cumulative
+        description: Either cumulative metrics or not
+      - in: query
+        name: day
+        description: Specific day date to fetch
+      - in: query
+        name: end
+        description: End of the period to fetch
+      - in: path
+        name: id
+        description: The object ID to fetch metric for
+      - in: query
+        name: start
+        description: Start of the period to fetch
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /notifications/:
+    get:
+      summary: List all current user pending notifications
+      description: ""
+      operationId: get_notifications
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /oembeds/:
+    get:
+      summary: The returned payload is a list of OEmbed formatted responses
+      description: 'See: http://oembed'
+      operationId: oembeds
+      parameters:
+      - in: query
+        name: references
+        description: References of the resources to embed
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /organizations/:
+    get:
+      summary: List or search all organizations
+      description: ""
+      operationId: list_organizations
+      parameters:
+      - in: query
+        name: badge
+      - in: query
+        name: datasets
+      - in: query
+        name: facets
+        description: Selected facets to fetch
+      - in: query
+        name: followers
+      - in: query
+        name: page
+        description: The page to display
+      - in: query
+        name: page_size
+        description: The page size
+      - in: query
+        name: permitted_reuses
+      - in: query
+        name: q
+        description: The search query
+      - in: query
+        name: reuses
+      - in: query
+        name: sort
+        description: The field (and direction) on which sorting apply
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Create a new organization
+      description: ""
+      operationId: create_organization
+      parameters:
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /organizations/badges/:
+    get:
+      summary: List all available organization badges and their labels
+      description: ""
+      operationId: available_organization_badges
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /organizations/suggest/:
+    get:
+      summary: Suggest organizations
+      description: ""
+      operationId: suggest_organizations
+      parameters:
+      - in: query
+        name: q
+        description: The string to autocomplete/suggest
+      - in: query
+        name: size
+        description: The amount of suggestion to fetch
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /organizations/{id}/followers/:
+    delete:
+      summary: Unfollow an object given its ID
+      description: Returns the number of followers left after the operation
+      operationId: unfollow
+      parameters:
+      - in: path
+        name: id
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    get:
+      summary: List all followers for a given object
+      description: ""
+      operationId: list_followers
+      parameters:
+      - in: path
+        name: id
+      - in: query
+        name: page
+        description: The page to fetch
+      - in: query
+        name: page_size
+        description: The page size to fetch
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Follow an object given its ID
+      description: Returns the number of followers left after the operation
+      operationId: follow
+      parameters:
+      - in: path
+        name: id
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /organizations/{org}/:
+    delete:
+      summary: Delete a organization given its identifier
+      description: ""
+      operationId: delete_organization
+      parameters:
+      - in: path
+        name: org
+        description: The organization ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    get:
+      summary: Get a organization given its identifier
+      description: ""
+      operationId: get_organization
+      parameters:
+      - in: path
+        name: org
+        description: The organization ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    put:
+      summary: Update a organization given its identifier
+      description: ""
+      operationId: update_organization
+      parameters:
+      - in: path
+        name: org
+        description: The organization ID or slug
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /organizations/{org}/badges/:
+    post:
+      summary: Create a new badge for a given organization
+      description: ""
+      operationId: add_organization_badge
+      parameters:
+      - in: path
+        name: org
+        description: The organization ID or slug
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /organizations/{org}/badges/{badge_kind}/:
+    delete:
+      summary: Delete a badge for a given organization
+      description: ""
+      operationId: delete_organization_badge
+      parameters:
+      - in: path
+        name: badge_kind
+      - in: path
+        name: org
+        description: The organization ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /organizations/{org}/datasets/:
+    get:
+      summary: List organization datasets (including private ones when member)
+      description: ""
+      operationId: list_organization_datasets
+      parameters:
+      - in: path
+        name: org
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /organizations/{org}/discussions/:
+    get:
+      summary: List organization discussions
+      description: ""
+      operationId: list_organization_discussions
+      parameters:
+      - in: path
+        name: org
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /organizations/{org}/issues/:
+    get:
+      summary: List organization issues
+      description: ""
+      operationId: list_organization_issues
+      parameters:
+      - in: path
+        name: org
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /organizations/{org}/logo:
+    post:
+      summary: Upload a new logo
+      description: ""
+      operationId: organization_logo
+      parameters:
+      - in: formData
+        name: bbox
+      - in: formData
+        name: file
+      - in: path
+        name: org
+        description: The organization ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    put:
+      summary: Set the logo BBox
+      description: ""
+      operationId: resize_organization_logo
+      parameters:
+      - in: formData
+        name: bbox
+      - in: formData
+        name: file
+      - in: path
+        name: org
+        description: The organization ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /organizations/{org}/member/{user}:
+    delete:
+      summary: Delete member from an organization
+      description: ""
+      operationId: delete_organization_member
+      parameters:
+      - in: path
+        name: org
+        description: The organization ID or slug
+      - in: path
+        name: user
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Add a member into a given organization
+      description: ""
+      operationId: create_organization_member
+      parameters:
+      - in: path
+        name: org
+        description: The organization ID or slug
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: user
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    put:
+      summary: Update member status into a given organization
+      description: ""
+      operationId: update_organization_member
+      parameters:
+      - in: path
+        name: org
+        description: The organization ID or slug
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: user
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /organizations/{org}/membership/:
+    get:
+      summary: List membership requests for a given organization
+      description: ""
+      operationId: list_membership_requests
+      parameters:
+      - in: path
+        name: org
+        description: The organization ID or slug
+      - in: query
+        name: status
+        description: If provided, only return requests ith a given status
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Apply for membership to a given organization
+      description: ""
+      operationId: post_membership_request_api
+      parameters:
+      - in: path
+        name: org
+        description: The organization ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /organizations/{org}/membership/{id}/accept/:
+    post:
+      summary: Accept user membership to a given organization
+      description: ""
+      operationId: accept_membership
+      parameters:
+      - in: path
+        name: id
+      - in: path
+        name: org
+        description: The organization ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /organizations/{org}/membership/{id}/refuse/:
+    post:
+      summary: Refuse user membership to a given organization
+      description: ""
+      operationId: refuse_membership
+      parameters:
+      - in: body
+        name: comment
+        description: The refusal reason
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: id
+      - in: path
+        name: org
+        description: The organization ID or slug
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /organizations/{org}/reuses/:
+    get:
+      summary: List organization reuses (including private ones when member)
+      description: ""
+      operationId: list_organization_reuses
+      parameters:
+      - in: path
+        name: org
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /posts/:
+    get:
+      summary: List all posts
+      description: ""
+      operationId: list_posts
+      parameters:
+      - in: query
+        name: page
+        description: The page to fetch
+      - in: query
+        name: page_size
+        description: The page size to fetch
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Create a post
+      description: ""
+      operationId: create_post
+      parameters:
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /posts/{post}/:
+    delete:
+      summary: Delete a given post
+      description: ""
+      operationId: delete_post
+      parameters:
+      - in: path
+        name: post
+        description: The post ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    get:
+      summary: Get a given post
+      description: ""
+      operationId: get_post
+      parameters:
+      - in: path
+        name: post
+        description: The post ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    put:
+      summary: Update a given post
+      description: ""
+      operationId: update_post
+      parameters:
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: post
+        description: The post ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /posts/{post}/image:
+    post:
+      summary: Upload a new image
+      description: ""
+      operationId: post_image
+      parameters:
+      - in: formData
+        name: bbox
+      - in: formData
+        name: file
+      - in: path
+        name: post
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    put:
+      summary: Set the image BBox
+      description: ""
+      operationId: resize_post_image
+      parameters:
+      - in: formData
+        name: bbox
+      - in: formData
+        name: file
+      - in: path
+        name: post
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /reuses/:
+    get:
+      summary: ""
+      description: ""
+      operationId: list_reuses
+      parameters:
+      - in: query
+        name: badge
+      - in: query
+        name: dataset
+      - in: query
+        name: datasets
+      - in: query
+        name: extra
+      - in: query
+        name: facets
+        description: Selected facets to fetch
+      - in: query
+        name: featured
+      - in: query
+        name: followers
+      - in: query
+        name: organization
+      - in: query
+        name: owner
+      - in: query
+        name: page
+        description: The page to display
+      - in: query
+        name: page_size
+        description: The page size
+      - in: query
+        name: q
+        description: The search query
+      - in: query
+        name: sort
+        description: The field (and direction) on which sorting apply
+      - in: query
+        name: tag
+      - in: query
+        name: type
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Create a new object
+      description: ""
+      operationId: create_reuse
+      parameters:
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /reuses/badges/:
+    get:
+      summary: List all available reuse badges and their labels
+      description: ""
+      operationId: available_reuse_badges
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /reuses/suggest/:
+    get:
+      summary: Suggest reuses
+      description: ""
+      operationId: suggest_reuses
+      parameters:
+      - in: query
+        name: q
+        description: The string to autocomplete/suggest
+      - in: query
+        name: size
+        description: The amount of suggestion to fetch
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /reuses/types/:
+    get:
+      summary: List all reuse types
+      description: ""
+      operationId: reuse_types
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /reuses/{id}/followers/:
+    delete:
+      summary: Unfollow an object given its ID
+      description: Returns the number of followers left after the operation
+      operationId: unfollow
+      parameters:
+      - in: path
+        name: id
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    get:
+      summary: List all followers for a given object
+      description: ""
+      operationId: list_followers
+      parameters:
+      - in: path
+        name: id
+      - in: query
+        name: page
+        description: The page to fetch
+      - in: query
+        name: page_size
+        description: The page size to fetch
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Follow an object given its ID
+      description: Returns the number of followers left after the operation
+      operationId: follow
+      parameters:
+      - in: path
+        name: id
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /reuses/{reuse}/:
+    delete:
+      summary: Delete a given reuse
+      description: ""
+      operationId: delete_reuse
+      parameters:
+      - in: path
+        name: reuse
+        description: The reuse ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    get:
+      summary: Fetch a given reuse
+      description: ""
+      operationId: get_reuse
+      parameters:
+      - in: path
+        name: reuse
+        description: The reuse ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    put:
+      summary: Update a given reuse
+      description: ""
+      operationId: update_reuse
+      parameters:
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: reuse
+        description: The reuse ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /reuses/{reuse}/badges/:
+    post:
+      summary: Create a new badge for a given reuse
+      description: ""
+      operationId: add_reuse_badge
+      parameters:
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: reuse
+        description: The reuse ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /reuses/{reuse}/badges/{badge_kind}/:
+    delete:
+      summary: Delete a badge for a given reuse
+      description: ""
+      operationId: delete_reuse_badge
+      parameters:
+      - in: path
+        name: badge_kind
+      - in: path
+        name: reuse
+        description: The reuse ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /reuses/{reuse}/datasets/:
+    post:
+      summary: Add a dataset to a given reuse
+      description: ""
+      operationId: reuse_add_dataset
+      parameters:
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: reuse
+        description: The reuse ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /reuses/{reuse}/featured/:
+    delete:
+      summary: Unmark a reuse as featured
+      description: ""
+      operationId: unfeature_reuse
+      parameters:
+      - in: path
+        name: reuse
+        description: The reuse ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Mark a reuse as featured
+      description: ""
+      operationId: feature_reuse
+      parameters:
+      - in: path
+        name: reuse
+        description: The reuse ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /reuses/{reuse}/image:
+    post:
+      summary: Upload a new reuse image
+      description: ""
+      operationId: reuse_image
+      parameters:
+      - in: formData
+        name: bbox
+      - in: formData
+        name: file
+      - in: path
+        name: reuse
+        description: The reuse ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /site/:
+    get:
+      summary: Site-wide variables
+      description: ""
+      operationId: get_site
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /site/home/datasets/:
+    get:
+      summary: List homepage datasets
+      description: ""
+      operationId: get_home_datasets
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    put:
+      summary: Set the homepage datasets editorial selection
+      description: ""
+      operationId: set_home_datasets
+      parameters:
+      - in: body
+        name: payload
+        description: Dataset IDs to put in homepage
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /site/home/reuses/:
+    get:
+      summary: List homepage featured reuses
+      description: ""
+      operationId: get_home_reuses
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    put:
+      summary: Set the homepage reuses editorial selection
+      description: ""
+      operationId: set_home_reuses
+      parameters:
+      - in: body
+        name: payload
+        description: Reuse IDs to put in homepage
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /spatial/coverage/{level}:
+    get:
+      summary: List each zone for a given level with their datasets count
+      description: ""
+      operationId: spatial_coverage
+      parameters:
+      - in: path
+        name: level
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /spatial/granularities:
+    get:
+      summary: List all known spatial granularities
+      description: ""
+      operationId: spatial_granularities
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /spatial/levels:
+    get:
+      summary: List all known levels
+      description: ""
+      operationId: spatial_levels
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /spatial/zone/{id}:
+    get:
+      summary: Fetch a zone
+      description: ""
+      operationId: spatial_zone
+      parameters:
+      - in: path
+        name: id
+        description: A zone identifier
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /spatial/zones/suggest:
+    get:
+      summary: Suggest geospatial zones
+      description: ""
+      operationId: suggest_zones
+      parameters:
+      - in: query
+        name: q
+        description: The string to autocomplete/suggest
+      - in: query
+        name: size
+        description: The amount of suggestion to fetch
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /spatial/zones/{ids}:
+    get:
+      summary: Fetch a zone list as GeoJSON
+      description: ""
+      operationId: spatial_zones
+      parameters:
+      - in: path
+        name: ids
+        description: A zone identifiers list (comma separated)
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /tags/suggest/:
+    get:
+      summary: Suggest tags
+      description: ""
+      operationId: suggest_tags
+      parameters:
+      - in: query
+        name: q
+        description: The string to autocomplete/suggest
+      - in: query
+        name: size
+        description: The amount of suggestion to fetch
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /territory/suggest/:
+    get:
+      summary: ""
+      description: ""
+      operationId: suggest_territory
+      parameters:
+      - in: query
+        name: q
+        description: The string to autocomplete/suggest
+      - in: query
+        name: size
+        description: The maximum result size
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /topics/:
+    get:
+      summary: List all topics
+      description: ""
+      operationId: list_topics
+      parameters:
+      - in: query
+        name: page
+        description: The page to fetch
+      - in: query
+        name: page_size
+        description: The page size to fetch
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Create a topic
+      description: ""
+      operationId: create_topic
+      parameters:
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /topics/{topic}/:
+    delete:
+      summary: Delete a given topic
+      description: ""
+      operationId: delete_topic
+      parameters:
+      - in: path
+        name: topic
+        description: The topic ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    get:
+      summary: Get a given topic
+      description: ""
+      operationId: get_topic
+      parameters:
+      - in: path
+        name: topic
+        description: The topic ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    put:
+      summary: Update a given topic
+      description: ""
+      operationId: update_topic
+      parameters:
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: topic
+        description: The topic ID or slug
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /transfer/:
+    get:
+      summary: List all transfer requests
+      description: ""
+      operationId: list_transfers
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Initiate transfer request
+      description: ""
+      operationId: request_transfer
+      parameters:
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /transfer/{id}/:
+    get:
+      summary: Fetch a transfer request given its identifier
+      description: ""
+      operationId: get_transfer
+      parameters:
+      - in: path
+        name: id
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Respond to a transfer request
+      description: ""
+      operationId: respond_to_transfer
+      parameters:
+      - in: path
+        name: id
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /users/:
+    get:
+      summary: List all objects
+      description: ""
+      operationId: list_users
+      parameters:
+      - in: query
+        name: datasets
+      - in: query
+        name: facets
+        description: Selected facets to fetch
+      - in: query
+        name: organization
+      - in: query
+        name: page
+        description: The page to display
+      - in: query
+        name: page_size
+        description: The page size
+      - in: query
+        name: q
+        description: The search query
+      - in: query
+        name: reuses
+      - in: query
+        name: sort
+        description: The field (and direction) on which sorting apply
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Create a new object
+      description: ""
+      operationId: create_user
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /users/suggest/:
+    get:
+      summary: Suggest users
+      description: ""
+      operationId: suggest_users
+      parameters:
+      - in: query
+        name: q
+        description: The string to autocomplete/suggest
+      - in: query
+        name: size
+        description: The amount of suggestion to fetch
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /users/{id}/followers/:
+    delete:
+      summary: Unfollow an object given its ID
+      description: Returns the number of followers left after the operation
+      operationId: unfollow
+      parameters:
+      - in: path
+        name: id
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    get:
+      summary: List all followers for a given object
+      description: ""
+      operationId: list_followers
+      parameters:
+      - in: path
+        name: id
+      - in: query
+        name: page
+        description: The page to fetch
+      - in: query
+        name: page_size
+        description: The page size to fetch
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Follow an user given its ID
+      description: ""
+      operationId: post_follow_user_api
+      parameters:
+      - in: path
+        name: id
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /users/{user}/:
+    delete:
+      summary: Delete a given object
+      description: ""
+      operationId: delete_user_api
+      parameters:
+      - in: path
+        name: user
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    get:
+      summary: Get a given object
+      description: ""
+      operationId: get_user
+      parameters:
+      - in: path
+        name: user
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    put:
+      summary: Update a given object
+      description: ""
+      operationId: update_user
+      parameters:
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: user
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /workers/jobs/:
+    get:
+      summary: List all scheduled jobs
+      description: ""
+      operationId: list_jobs
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    post:
+      summary: Create a new scheduled job
+      description: ""
+      operationId: post_jobs_api
+      parameters:
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /workers/jobs/schedulables:
+    get:
+      summary: List all schedulable jobs
+      description: ""
+      operationId: get_jobs_reference_api
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /workers/jobs/{id}:
+    delete:
+      summary: Delete a single scheduled job
+      description: ""
+      operationId: delete_job_api
+      parameters:
+      - in: path
+        name: id
+        description: A job ID
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    get:
+      summary: Fetch a single scheduled job
+      description: ""
+      operationId: get_job_api
+      parameters:
+      - in: path
+        name: id
+        description: A job ID
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+    put:
+      summary: Update a single scheduled job
+      description: ""
+      operationId: put_job_api
+      parameters:
+      - in: path
+        name: id
+        description: A job ID
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /workers/tasks/{id}:
+    get:
+      summary: Get a tasks status given its ID
+      description: ""
+      operationId: get_task_api
+      parameters:
+      - in: path
+        name: id
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+definitions:
+  Activity:
+    properties:
+      created_at:
+        description: This is a default description.
+        type: string
+      icon:
+        description: This is a default description.
+        type: string
+      key:
+        description: This is a default description.
+        type: string
+      kwargs:
+        description: This is a default description.
+        type: string
+      label:
+        description: This is a default description.
+        type: string
+      related_to:
+        description: This is a default description.
+        type: string
+      related_to_id:
+        description: This is a default description.
+        type: string
+      related_to_kind:
+        description: This is a default description.
+        type: string
+      related_to_url:
+        description: This is a default description.
+        type: string
+  ActivityPage:
+    properties:
+      data:
+        description: This is a default description.
+        type: string
+      facets:
+        description: This is a default description.
+        type: string
+      next_page:
+        description: This is a default description.
+        type: string
+      page:
+        description: This is a default description.
+        type: string
+      page_size:
+        description: This is a default description.
+        type: string
+      previous_page:
+        description: This is a default description.
+        type: string
+      total:
+        description: This is a default description.
+        type: string
+  ApiKey:
+    properties:
+      apikey:
+        description: This is a default description.
+        type: string
+  Badge:
+    properties:
+      kind:
+        description: This is a default description.
+        type: string
+  BaseReference:
+    properties:
+      class:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+  Checksum:
+    properties:
+      type:
+        description: This is a default description.
+        type: string
+      value:
+        description: This is a default description.
+        type: string
+  CommunityResourcePage:
+    properties:
+      data:
+        description: This is a default description.
+        type: string
+      facets:
+        description: This is a default description.
+        type: string
+      next_page:
+        description: This is a default description.
+        type: string
+      page:
+        description: This is a default description.
+        type: string
+      page_size:
+        description: This is a default description.
+        type: string
+      previous_page:
+        description: This is a default description.
+        type: string
+      total:
+        description: This is a default description.
+        type: string
+  Crontab:
+    properties:
+      day_of_month:
+        description: This is a default description.
+        type: string
+      day_of_week:
+        description: This is a default description.
+        type: string
+      hour:
+        description: This is a default description.
+        type: string
+      minute:
+        description: This is a default description.
+        type: string
+      month_of_year:
+        description: This is a default description.
+        type: string
+  Dataset:
+    properties:
+      badges:
+        description: This is a default description.
+        type: string
+      community_resources:
+        description: This is a default description.
+        type: string
+      created_at:
+        description: This is a default description.
+        type: string
+      deleted:
+        description: This is a default description.
+        type: string
+      description:
+        description: This is a default description.
+        type: string
+      extras:
+        description: This is a default description.
+        type: string
+      featured:
+        description: This is a default description.
+        type: string
+      frequency:
+        description: This is a default description.
+        type: string
+      frequency_date:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+  DatasetFullPage:
+    properties:
+      data:
+        description: This is a default description.
+        type: string
+      facets:
+        description: This is a default description.
+        type: string
+      next_page:
+        description: This is a default description.
+        type: string
+      page:
+        description: This is a default description.
+        type: string
+      page_size:
+        description: This is a default description.
+        type: string
+      previous_page:
+        description: This is a default description.
+        type: string
+      total:
+        description: This is a default description.
+        type: string
+  DatasetPage:
+    properties:
+      data:
+        description: This is a default description.
+        type: string
+      facets:
+        description: This is a default description.
+        type: string
+      next_page:
+        description: This is a default description.
+        type: string
+      page:
+        description: This is a default description.
+        type: string
+      page_size:
+        description: This is a default description.
+        type: string
+      previous_page:
+        description: This is a default description.
+        type: string
+      total:
+        description: This is a default description.
+        type: string
+  DatasetPreview:
+    properties:
+      badges:
+        description: This is a default description.
+        type: string
+      community_resources:
+        description: This is a default description.
+        type: string
+      created_at:
+        description: This is a default description.
+        type: string
+      deleted:
+        description: This is a default description.
+        type: string
+      description:
+        description: This is a default description.
+        type: string
+      extras:
+        description: This is a default description.
+        type: string
+      featured:
+        description: This is a default description.
+        type: string
+      frequency:
+        description: This is a default description.
+        type: string
+      frequency_date:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+  DatasetSuggestion:
+    properties:
+      id:
+        description: This is a default description.
+        type: string
+      image_url:
+        description: This is a default description.
+        type: string
+      page:
+        description: This is a default description.
+        type: string
+      score:
+        description: This is a default description.
+        type: string
+      slug:
+        description: This is a default description.
+        type: string
+      title:
+        description: This is a default description.
+        type: string
+  Discussion:
+    properties:
+      class:
+        description: This is a default description.
+        type: string
+      closed:
+        description: This is a default description.
+        type: string
+      closed_by:
+        description: This is a default description.
+        type: string
+      created:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      subject:
+        description: This is a default description.
+        type: string
+      title:
+        description: This is a default description.
+        type: string
+      url:
+        description: This is a default description.
+        type: string
+  DiscussionMessage:
+    properties:
+      content:
+        description: This is a default description.
+        type: string
+      posted_on:
+        description: This is a default description.
+        type: string
+  DiscussionPage:
+    properties:
+      data:
+        description: This is a default description.
+        type: string
+      facets:
+        description: This is a default description.
+        type: string
+      next_page:
+        description: This is a default description.
+        type: string
+      page:
+        description: This is a default description.
+        type: string
+      page_size:
+        description: This is a default description.
+        type: string
+      previous_page:
+        description: This is a default description.
+        type: string
+      total:
+        description: This is a default description.
+        type: string
+  DiscussionResponse:
+    properties:
+      close:
+        description: This is a default description.
+        type: string
+      comment:
+        description: This is a default description.
+        type: string
+  Follow:
+    properties:
+      id:
+        description: This is a default description.
+        type: string
+      since:
+        description: This is a default description.
+        type: string
+  FollowPage:
+    properties:
+      data:
+        description: This is a default description.
+        type: string
+      facets:
+        description: This is a default description.
+        type: string
+      next_page:
+        description: This is a default description.
+        type: string
+      page:
+        description: This is a default description.
+        type: string
+      page_size:
+        description: This is a default description.
+        type: string
+      previous_page:
+        description: This is a default description.
+        type: string
+      total:
+        description: This is a default description.
+        type: string
+  Frequency:
+    properties:
+      id:
+        description: This is a default description.
+        type: string
+      label:
+        description: This is a default description.
+        type: string
+  GeoGranularity:
+    properties:
+      id:
+        description: This is a default description.
+        type: string
+      name:
+        description: This is a default description.
+        type: string
+  GeoJSON:
+    properties:
+      coordinates:
+        description: This is a default description.
+        type: string
+      type:
+        description: This is a default description.
+        type: string
+  GeoJSONFeature:
+    properties:
+      id:
+        description: This is a default description.
+        type: string
+      properties:
+        description: This is a default description.
+        type: string
+      type:
+        description: This is a default description.
+        type: string
+  GeoJSONFeatureCollection:
+    properties:
+      features:
+        description: This is a default description.
+        type: string
+      type:
+        description: This is a default description.
+        type: string
+  GeoLevel:
+    properties:
+      id:
+        description: This is a default description.
+        type: string
+      name:
+        description: This is a default description.
+        type: string
+      parents:
+        description: This is a default description.
+        type: string
+  HarvestBackend:
+    properties:
+      id:
+        description: This is a default description.
+        type: string
+      label:
+        description: This is a default description.
+        type: string
+  HarvestError:
+    properties:
+      created_at:
+        description: This is a default description.
+        type: string
+      details:
+        description: This is a default description.
+        type: string
+      message:
+        description: This is a default description.
+        type: string
+  HarvestItem:
+    properties:
+      args:
+        description: This is a default description.
+        type: string
+      created:
+        description: This is a default description.
+        type: string
+      ended:
+        description: This is a default description.
+        type: string
+      errors:
+        description: This is a default description.
+        type: string
+      kwargs:
+        description: This is a default description.
+        type: string
+      remote_id:
+        description: This is a default description.
+        type: string
+      started:
+        description: This is a default description.
+        type: string
+      status:
+        description: This is a default description.
+        type: string
+  HarvestItemPreview:
+    properties:
+      args:
+        description: This is a default description.
+        type: string
+      created:
+        description: This is a default description.
+        type: string
+      ended:
+        description: This is a default description.
+        type: string
+      errors:
+        description: This is a default description.
+        type: string
+      kwargs:
+        description: This is a default description.
+        type: string
+      remote_id:
+        description: This is a default description.
+        type: string
+      started:
+        description: This is a default description.
+        type: string
+      status:
+        description: This is a default description.
+        type: string
+  HarvestJob:
+    properties:
+      created:
+        description: This is a default description.
+        type: string
+      ended:
+        description: This is a default description.
+        type: string
+      errors:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      items:
+        description: This is a default description.
+        type: string
+      source:
+        description: This is a default description.
+        type: string
+      started:
+        description: This is a default description.
+        type: string
+      status:
+        description: This is a default description.
+        type: string
+  HarvestJobPage:
+    properties:
+      data:
+        description: This is a default description.
+        type: string
+      facets:
+        description: This is a default description.
+        type: string
+      next_page:
+        description: This is a default description.
+        type: string
+      page:
+        description: This is a default description.
+        type: string
+      page_size:
+        description: This is a default description.
+        type: string
+      previous_page:
+        description: This is a default description.
+        type: string
+      total:
+        description: This is a default description.
+        type: string
+  HarvestJobPreview:
+    properties:
+      created:
+        description: This is a default description.
+        type: string
+      ended:
+        description: This is a default description.
+        type: string
+      errors:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      items:
+        description: This is a default description.
+        type: string
+      source:
+        description: This is a default description.
+        type: string
+      started:
+        description: This is a default description.
+        type: string
+      status:
+        description: This is a default description.
+        type: string
+  HarvestSource:
+    properties:
+      active:
+        description: This is a default description.
+        type: string
+      backend:
+        description: This is a default description.
+        type: string
+      config:
+        description: This is a default description.
+        type: string
+      created_at:
+        description: This is a default description.
+        type: string
+      deleted:
+        description: This is a default description.
+        type: string
+      description:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      name:
+        description: This is a default description.
+        type: string
+      url:
+        description: This is a default description.
+        type: string
+  HarvestSourceValidation:
+    properties:
+      comment:
+        description: This is a default description.
+        type: string
+      "on":
+        description: This is a default description.
+        type: string
+      state:
+        description: This is a default description.
+        type: string
+  Interval:
+    properties:
+      every:
+        description: This is a default description.
+        type: string
+      period:
+        description: This is a default description.
+        type: string
+  Issue:
+    properties:
+      class:
+        description: This is a default description.
+        type: string
+      closed:
+        description: This is a default description.
+        type: string
+      closed_by:
+        description: This is a default description.
+        type: string
+      created:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      subject:
+        description: This is a default description.
+        type: string
+      title:
+        description: This is a default description.
+        type: string
+      url:
+        description: This is a default description.
+        type: string
+  IssueMessage:
+    properties:
+      content:
+        description: This is a default description.
+        type: string
+      posted_on:
+        description: This is a default description.
+        type: string
+  IssuePage:
+    properties:
+      data:
+        description: This is a default description.
+        type: string
+      facets:
+        description: This is a default description.
+        type: string
+      next_page:
+        description: This is a default description.
+        type: string
+      page:
+        description: This is a default description.
+        type: string
+      page_size:
+        description: This is a default description.
+        type: string
+      previous_page:
+        description: This is a default description.
+        type: string
+      total:
+        description: This is a default description.
+        type: string
+  IssueResponse:
+    properties:
+      close:
+        description: This is a default description.
+        type: string
+      comment:
+        description: This is a default description.
+        type: string
+  Job:
+    properties:
+      args:
+        description: This is a default description.
+        type: string
+      description:
+        description: This is a default description.
+        type: string
+      enabled:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      kwargs:
+        description: This is a default description.
+        type: string
+      last_run_at:
+        description: This is a default description.
+        type: string
+      last_run_id:
+        description: This is a default description.
+        type: string
+      name:
+        description: This is a default description.
+        type: string
+      schedule:
+        description: This is a default description.
+        type: string
+      task:
+        description: This is a default description.
+        type: string
+  License:
+    properties:
+      flags:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      maintainer:
+        description: This is a default description.
+        type: string
+      title:
+        description: This is a default description.
+        type: string
+      url:
+        description: This is a default description.
+        type: string
+  Member:
+    properties:
+      role:
+        description: This is a default description.
+        type: string
+  MembershipRequest:
+    properties:
+      comment:
+        description: This is a default description.
+        type: string
+      created:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      status:
+        description: This is a default description.
+        type: string
+  Metric:
+    properties:
+      date:
+        description: This is a default description.
+        type: string
+      level:
+        description: This is a default description.
+        type: string
+      object_id:
+        description: This is a default description.
+        type: string
+      values:
+        description: This is a default description.
+        type: string
+  MyMetrics:
+    properties:
+      datasets_count:
+        description: This is a default description.
+        type: string
+      datasets_org_count:
+        description: This is a default description.
+        type: string
+      followers_count:
+        description: This is a default description.
+        type: string
+      followers_org_count:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      resources_availability:
+        description: This is a default description.
+        type: string
+  Notification:
+    properties:
+      created_on:
+        description: This is a default description.
+        type: string
+      details:
+        description: This is a default description.
+        type: string
+      type:
+        description: This is a default description.
+        type: string
+  Organization:
+    properties:
+      acronym:
+        description: This is a default description.
+        type: string
+      badges:
+        description: This is a default description.
+        type: string
+      created_at:
+        description: This is a default description.
+        type: string
+      deleted:
+        description: This is a default description.
+        type: string
+      description:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      last_modified:
+        description: This is a default description.
+        type: string
+      logo:
+        description: This is a default description.
+        type: string
+      members:
+        description: This is a default description.
+        type: string
+      metrics:
+        description: This is a default description.
+        type: string
+  OrganizationPage:
+    properties:
+      data:
+        description: This is a default description.
+        type: string
+      facets:
+        description: This is a default description.
+        type: string
+      next_page:
+        description: This is a default description.
+        type: string
+      page:
+        description: This is a default description.
+        type: string
+      page_size:
+        description: This is a default description.
+        type: string
+      previous_page:
+        description: This is a default description.
+        type: string
+      total:
+        description: This is a default description.
+        type: string
+  OrganizationSuggestion:
+    properties:
+      acronym:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      image_url:
+        description: This is a default description.
+        type: string
+      name:
+        description: This is a default description.
+        type: string
+      page:
+        description: This is a default description.
+        type: string
+      score:
+        description: This is a default description.
+        type: string
+      slug:
+        description: This is a default description.
+        type: string
+  Post:
+    properties:
+      content:
+        description: This is a default description.
+        type: string
+      created_at:
+        description: This is a default description.
+        type: string
+      credit_to:
+        description: This is a default description.
+        type: string
+      credit_url:
+        description: This is a default description.
+        type: string
+      datasets:
+        description: This is a default description.
+        type: string
+      headline:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      image:
+        description: This is a default description.
+        type: string
+      last_modified:
+        description: This is a default description.
+        type: string
+      name:
+        description: This is a default description.
+        type: string
+  PostPage:
+    properties:
+      data:
+        description: This is a default description.
+        type: string
+      facets:
+        description: This is a default description.
+        type: string
+      next_page:
+        description: This is a default description.
+        type: string
+      page:
+        description: This is a default description.
+        type: string
+      page_size:
+        description: This is a default description.
+        type: string
+      previous_page:
+        description: This is a default description.
+        type: string
+      total:
+        description: This is a default description.
+        type: string
+  RefuseMembership:
+    properties:
+      comment:
+        description: This is a default description.
+        type: string
+  Resource:
+    properties:
+      created_at:
+        description: This is a default description.
+        type: string
+      description:
+        description: This is a default description.
+        type: string
+      filesize:
+        description: This is a default description.
+        type: string
+      filetype:
+        description: This is a default description.
+        type: string
+      format:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      is_available:
+        description: This is a default description.
+        type: string
+      last_modified:
+        description: This is a default description.
+        type: string
+      metrics:
+        description: This is a default description.
+        type: string
+      mime:
+        description: This is a default description.
+        type: string
+  Reuse:
+    properties:
+      badges:
+        description: This is a default description.
+        type: string
+      created_at:
+        description: This is a default description.
+        type: string
+      datasets:
+        description: This is a default description.
+        type: string
+      deleted:
+        description: This is a default description.
+        type: string
+      description:
+        description: This is a default description.
+        type: string
+      featured:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      image:
+        description: This is a default description.
+        type: string
+      last_modified:
+        description: This is a default description.
+        type: string
+      metrics:
+        description: This is a default description.
+        type: string
+  ReusePage:
+    properties:
+      data:
+        description: This is a default description.
+        type: string
+      facets:
+        description: This is a default description.
+        type: string
+      next_page:
+        description: This is a default description.
+        type: string
+      page:
+        description: This is a default description.
+        type: string
+      page_size:
+        description: This is a default description.
+        type: string
+      previous_page:
+        description: This is a default description.
+        type: string
+      total:
+        description: This is a default description.
+        type: string
+  ReuseSuggestion:
+    properties:
+      id:
+        description: This is a default description.
+        type: string
+      image_url:
+        description: This is a default description.
+        type: string
+      page:
+        description: This is a default description.
+        type: string
+      score:
+        description: This is a default description.
+        type: string
+      slug:
+        description: This is a default description.
+        type: string
+      title:
+        description: This is a default description.
+        type: string
+  ReuseType:
+    properties:
+      id:
+        description: This is a default description.
+        type: string
+      label:
+        description: This is a default description.
+        type: string
+  Site:
+    properties:
+      id:
+        description: This is a default description.
+        type: string
+      metrics:
+        description: This is a default description.
+        type: string
+      title:
+        description: This is a default description.
+        type: string
+  SpatialCoverage:
+    properties:
+      granularity:
+        description: This is a default description.
+        type: string
+      zones:
+        description: This is a default description.
+        type: string
+  Task:
+    properties:
+      exc:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      result:
+        description: This is a default description.
+        type: string
+      status:
+        description: This is a default description.
+        type: string
+      traceback:
+        description: This is a default description.
+        type: string
+  TemporalCoverage:
+    properties:
+      end:
+        description: This is a default description.
+        type: string
+      start:
+        description: This is a default description.
+        type: string
+  TerritorySuggestion:
+    properties:
+      code:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      keys:
+        description: This is a default description.
+        type: string
+      level:
+        description: This is a default description.
+        type: string
+      name:
+        description: This is a default description.
+        type: string
+      score:
+        description: This is a default description.
+        type: string
+  Topic:
+    properties:
+      created_at:
+        description: This is a default description.
+        type: string
+      datasets:
+        description: This is a default description.
+        type: string
+      deleted:
+        description: This is a default description.
+        type: string
+      description:
+        description: This is a default description.
+        type: string
+      featured:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      last_modified:
+        description: This is a default description.
+        type: string
+      name:
+        description: This is a default description.
+        type: string
+      page:
+        description: This is a default description.
+        type: string
+      private:
+        description: This is a default description.
+        type: string
+  TopicPage:
+    properties:
+      data:
+        description: This is a default description.
+        type: string
+      facets:
+        description: This is a default description.
+        type: string
+      next_page:
+        description: This is a default description.
+        type: string
+      page:
+        description: This is a default description.
+        type: string
+      page_size:
+        description: This is a default description.
+        type: string
+      previous_page:
+        description: This is a default description.
+        type: string
+      total:
+        description: This is a default description.
+        type: string
+  Transfer:
+    properties:
+      comment:
+        description: This is a default description.
+        type: string
+      created:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      reponse_comment:
+        description: This is a default description.
+        type: string
+      responded:
+        description: This is a default description.
+        type: string
+      status:
+        description: This is a default description.
+        type: string
+  TransferRequest:
+    properties:
+      comment:
+        description: This is a default description.
+        type: string
+  TransferResponse:
+    properties:
+      comment:
+        description: This is a default description.
+        type: string
+      response:
+        description: This is a default description.
+        type: string
+  UploadedImage:
+    properties:
+      image:
+        description: This is a default description.
+        type: string
+      success:
+        description: This is a default description.
+        type: string
+  UploadedResource:
+    properties:
+      created_at:
+        description: This is a default description.
+        type: string
+      description:
+        description: This is a default description.
+        type: string
+      filesize:
+        description: This is a default description.
+        type: string
+      filetype:
+        description: This is a default description.
+        type: string
+      format:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      is_available:
+        description: This is a default description.
+        type: string
+      last_modified:
+        description: This is a default description.
+        type: string
+      metrics:
+        description: This is a default description.
+        type: string
+      mime:
+        description: This is a default description.
+        type: string
+  User:
+    properties:
+      about:
+        description: This is a default description.
+        type: string
+      avatar:
+        description: This is a default description.
+        type: string
+      first_name:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      last_name:
+        description: This is a default description.
+        type: string
+      organizations:
+        description: This is a default description.
+        type: string
+      page:
+        description: This is a default description.
+        type: string
+      roles:
+        description: This is a default description.
+        type: string
+      since:
+        description: This is a default description.
+        type: string
+      slug:
+        description: This is a default description.
+        type: string
+  UserPage:
+    properties:
+      data:
+        description: This is a default description.
+        type: string
+      facets:
+        description: This is a default description.
+        type: string
+      next_page:
+        description: This is a default description.
+        type: string
+      page:
+        description: This is a default description.
+        type: string
+      page_size:
+        description: This is a default description.
+        type: string
+      previous_page:
+        description: This is a default description.
+        type: string
+      total:
+        description: This is a default description.
+        type: string
+  UserSuggestion:
+    properties:
+      avatar_url:
+        description: This is a default description.
+        type: string
+      first_name:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      last_name:
+        description: This is a default description.
+        type: string
+      score:
+        description: This is a default description.
+        type: string
+      slug:
+        description: This is a default description.
+        type: string
