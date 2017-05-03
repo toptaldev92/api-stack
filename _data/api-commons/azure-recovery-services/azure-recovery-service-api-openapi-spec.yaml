@@ -1,0 +1,601 @@
+agger: "2.0"
+info:
+  title: RecoveryServicesClient
+  version: 1.0.0
+host: management.azure.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /subscriptions/{subscriptionId}/providers/Microsoft.RecoveryServices/vaults:
+    get:
+      summary: Vaults List By Subscription Id
+      description: Fetches all the resources of the specified type in the subscription
+      operationId: Vaults_ListBySubscriptionId
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vaults Subscription
+  /Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/operations:
+    get:
+      summary: Operations List
+      description: Returns the list of available operations
+      operationId: Operations_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Operations
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults:
+    get:
+      summary: Vaults List By Resource Group
+      description: Retrieve a list of Vaults
+      operationId: Vaults_ListByResourceGroup
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vaults Resource Group
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}:
+    delete:
+      summary: Vaults Delete
+      description: Deletes a vault
+      operationId: Vaults_Delete
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vaults
+    get:
+      summary: Vaults Get
+      description: Get the Vault details
+      operationId: Vaults_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vaults
+    patch:
+      summary: Vaults Update
+      description: Updates the vault
+      operationId: Vaults_Update
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: vault
+        description: Recovery Services Vault to be created
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vaults
+    put:
+      summary: Vaults Create Or Update
+      description: Creates or updates a Recovery Services vault
+      operationId: Vaults_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: vault
+        description: Recovery Services Vault to be created
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vaults
+  ? /Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig
+  : get:
+      summary: Backup Vault Configs Get
+      description: Fetches vault config
+      operationId: BackupVaultConfigs_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Backup Vault Configs
+    patch:
+      summary: Backup Vault Configs Update
+      description: Updates vault config model type
+      operationId: BackupVaultConfigs_Update
+      parameters:
+      - in: body
+        name: backupVaultConfig
+        description: Backup vault config
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Backup Vault Configs
+  ? /Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupstorageconfig/vaultstorageconfig
+  : get:
+      summary: Backup Storage Configs Get
+      description: Fetches resource storage config
+      operationId: BackupStorageConfigs_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Backup Storage Configs
+    patch:
+      summary: Backup Storage Configs Update
+      description: Updates vault storage model type
+      operationId: BackupStorageConfigs_Update
+      parameters:
+      - in: body
+        name: backupStorageConfig
+        description: Backup storage config
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Backup Storage Configs
+  ? /Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/certificates/{certificateName}
+  : put:
+      summary: Vault Certificates Create
+      description: Upload a certificate for a resource
+      operationId: VaultCertificates_Create
+      parameters:
+      - in: path
+        name: certificateName
+        description: Certificate friendly name
+      - in: body
+        name: certificateRequest
+        description: Input parameters for uploading the vault certificate
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vault Certificates
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo
+  : get:
+      summary: Vault Extended Info Get
+      description: Get the vault extended info
+      operationId: VaultExtendedInfo_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vault Extended Info
+    patch:
+      summary: Vault Extended Info Update
+      description: Update vault extended info
+      operationId: VaultExtendedInfo_Update
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: resourceResourceExtendedInfoDetails
+        description: resourceResourceExtendedInfoDetails
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vault Extended Info
+    put:
+      summary: Vault Extended Info Create Or Update
+      description: Create vault extended info
+      operationId: VaultExtendedInfo_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: resourceResourceExtendedInfoDetails
+        description: resourceResourceExtendedInfoDetails
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vault Extended Info
+  ? /Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/registeredIdentities/{identityName}
+  : delete:
+      summary: Registered Identities Delete
+      description: Unregisters the given container from your Recovery Services vault
+      operationId: RegisteredIdentities_Delete
+      parameters:
+      - in: path
+        name: identityName
+        description: Name of the protection container to unregister
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Registered Identities
+  ? /Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/replicationUsages
+  : get:
+      summary: Replication Usages List
+      description: Fetches the replication usages of the vault
+      operationId: ReplicationUsages_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Replication Usages
+  ? /Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/usages
+  : get:
+      summary: Usages List By Vaults
+      description: Fetches the usages of the vault
+      operationId: Usages_ListByVaults
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Usages Vaults
+definitions:
+  BackupStorageConfigProperties:
+    properties:
+      storageModelType:
+        description: This is a default description.
+        type: patch
+      storageType:
+        description: This is a default description.
+        type: patch
+      storageTypeState:
+        description: This is a default description.
+        type: patch
+  BackupStorageConfig:
+    properties: []
+  BackupVaultConfigProperties:
+    properties:
+      storageType:
+        description: This is a default description.
+        type: patch
+      storageTypeState:
+        description: This is a default description.
+        type: patch
+      enhancedSecurityState:
+        description: This is a default description.
+        type: patch
+  BackupVaultConfig:
+    properties: []
+  CertificateRequest:
+    properties: []
+  RawCertificateData:
+    properties:
+      authType:
+        description: This is a default description.
+        type: delete
+      certificate:
+        description: This is a default description.
+        type: delete
+  ResourceCertificateAndAadDetails:
+    properties:
+      aadAuthority:
+        description: This is a default description.
+        type: delete
+      aadTenantId:
+        description: This is a default description.
+        type: delete
+      servicePrincipalClientId:
+        description: This is a default description.
+        type: delete
+      servicePrincipalObjectId:
+        description: This is a default description.
+        type: delete
+      azureManagementEndpointAudience:
+        description: This is a default description.
+        type: delete
+  ResourceCertificateAndAcsDetails:
+    properties:
+      globalAcsNamespace:
+        description: This is a default description.
+        type: delete
+      globalAcsHostName:
+        description: This is a default description.
+        type: delete
+      globalAcsRPRealm:
+        description: This is a default description.
+        type: delete
+  ResourceCertificateDetails:
+    properties:
+      authType:
+        description: This is a default description.
+        type: delete
+      certificate:
+        description: This is a default description.
+        type: delete
+      friendlyName:
+        description: This is a default description.
+        type: delete
+      issuer:
+        description: This is a default description.
+        type: delete
+      resourceId:
+        description: This is a default description.
+        type: delete
+      subject:
+        description: This is a default description.
+        type: delete
+      thumbprint:
+        description: This is a default description.
+        type: delete
+      validFrom:
+        description: This is a default description.
+        type: delete
+      validTo:
+        description: This is a default description.
+        type: delete
+  VaultCertificateResponse:
+    properties:
+      name:
+        description: This is a default description.
+        type: delete
+      type:
+        description: This is a default description.
+        type: delete
+      id:
+        description: This is a default description.
+        type: delete
+  JobsSummary:
+    properties:
+      failedJobs:
+        description: This is a default description.
+        type: get
+      suspendedJobs:
+        description: This is a default description.
+        type: get
+      inProgressJobs:
+        description: This is a default description.
+        type: get
+  MonitoringSummary:
+    properties:
+      unHealthyVmCount:
+        description: This is a default description.
+        type: get
+      unHealthyProviderCount:
+        description: This is a default description.
+        type: get
+      eventsCount:
+        description: This is a default description.
+        type: get
+      deprecatedProviderCount:
+        description: This is a default description.
+        type: get
+      supportedProviderCount:
+        description: This is a default description.
+        type: get
+      unsupportedProviderCount:
+        description: This is a default description.
+        type: get
+  ReplicationUsage:
+    properties:
+      protectedItemCount:
+        description: This is a default description.
+        type: get
+      recoveryPlanCount:
+        description: This is a default description.
+        type: get
+      registeredServersCount:
+        description: This is a default description.
+        type: get
+      recoveryServicesProviderAuthType:
+        description: This is a default description.
+        type: get
+  ReplicationUsageList:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  ClientDiscoveryDisplay:
+    properties:
+      Provider:
+        description: This is a default description.
+        type: patch
+      Resource:
+        description: This is a default description.
+        type: patch
+      Operation:
+        description: This is a default description.
+        type: patch
+      Description:
+        description: This is a default description.
+        type: patch
+  ClientDiscoveryForLogSpecification:
+    properties:
+      name:
+        description: This is a default description.
+        type: patch
+      displayName:
+        description: This is a default description.
+        type: patch
+      blobDuration:
+        description: This is a default description.
+        type: patch
+  ClientDiscoveryForServiceSpecification:
+    properties:
+      logSpecifications:
+        description: This is a default description.
+        type: patch
+  ClientDiscoveryProperties:
+    properties: []
+  ClientDiscoveryResponse:
+    properties:
+      Value:
+        description: This is a default description.
+        type: patch
+      NextLink:
+        description: This is a default description.
+        type: patch
+  ClientDiscoveryValueForSingleApi:
+    properties:
+      Name:
+        description: This is a default description.
+        type: patch
+      Origin:
+        description: This is a default description.
+        type: patch
+  Resource:
+    properties:
+      id:
+        description: This is a default description.
+        type: patch
+      name:
+        description: This is a default description.
+        type: patch
+      type:
+        description: This is a default description.
+        type: patch
+      eTag:
+        description: This is a default description.
+        type: patch
+  Sku:
+    properties:
+      name:
+        description: This is a default description.
+        type: patch
+  TrackedResource:
+    properties:
+      location:
+        description: This is a default description.
+        type: patch
+      tags:
+        description: This is a default description.
+        type: patch
+  UpgradeDetails:
+    properties:
+      operationId:
+        description: This is a default description.
+        type: patch
+      startTimeUtc:
+        description: This is a default description.
+        type: patch
+      lastUpdatedTimeUtc:
+        description: This is a default description.
+        type: patch
+      endTimeUtc:
+        description: This is a default description.
+        type: patch
+      status:
+        description: This is a default description.
+        type: patch
+      message:
+        description: This is a default description.
+        type: patch
+      triggerType:
+        description: This is a default description.
+        type: patch
+      upgradedResourceId:
+        description: This is a default description.
+        type: patch
+      previousResourceId:
+        description: This is a default description.
+        type: patch
+  Vault:
+    properties: []
+  VaultExtendedInfo:
+    properties:
+      integrityKey:
+        description: This is a default description.
+        type: patch
+      encryptionKey:
+        description: This is a default description.
+        type: patch
+      encryptionKeyThumbprint:
+        description: This is a default description.
+        type: patch
+      algorithm:
+        description: This is a default description.
+        type: patch
+  VaultExtendedInfoResource:
+    properties: []
+  VaultList:
+    properties:
+      value:
+        description: This is a default description.
+        type: patch
+      nextLink:
+        description: This is a default description.
+        type: patch
+  VaultProperties:
+    properties:
+      provisioningState:
+        description: This is a default description.
+        type: patch
+  VaultUsage:
+    properties:
+      unit:
+        description: This is a default description.
+        type: get
+      quotaPeriod:
+        description: This is a default description.
+        type: get
+      nextResetTime:
+        description: This is a default description.
+        type: get
+      currentValue:
+        description: This is a default description.
+        type: get
+      limit:
+        description: This is a default description.
+        type: get
+  VaultUsageList:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  NameInfo:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      localizedValue:
+        description: This is a default description.
+        type: get
