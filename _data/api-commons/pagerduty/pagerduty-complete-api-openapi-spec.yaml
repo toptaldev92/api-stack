@@ -1,0 +1,278 @@
+agger: "2.0"
+info:
+  title: PagerDuty API
+  description: The PagerDuty API provides programmatic access to entities within a
+    PagerDuty account. It is designed around [RESTful principles](https://en.wikipedia.org/wiki/Representational_state_transfer)
+    with a path structure based on resources and their relationships.All requests
+    and responses are serialized in [JSON](https://en.wikipedia.org/wiki/JSON), including
+    error responses.Schema are designed to be reusable across requests and across
+    endpoints.More sophisticated API clients should treat PagerDuty resources as unique
+    objects keyed by the `id` field that can be used in any API request involving
+    resources of that type.Every resource contains a `type` field that identifies
+    the schema it uses.## Rate limitingEach account and authentication mechanism is
+    limited to the number of API requests it can make every minute. API requests that
+    exceed the API rate limit will return an [HTTP status code](error_codes.html#http_responses)
+    of 429. Different requests may affect your rate limit differently, so clients
+    should always be prepared to be rate limited and respond appropriately.## Read-Only
+    API KeysAPI requests made with read-only keys attempting to access endpoints with
+    methods other than `GET` will return an [HTTP status code](error_codes.html#http_responses)
+    of 403.## Error CodesMost APIs will return an error code from an unsuccessful
+    call. They are described [here](error_codes.html).
+  version: "2.0"
+host: api.pagerduty.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths: []
+definitions:
+  IncidentUrgencyType:
+    properties:
+      type:
+        description: This is a default description.
+        type: string
+      urgency:
+        description: This is a default description.
+        type: string
+  SupportHours:
+    properties:
+      type:
+        description: This is a default description.
+        type: string
+      time_zone:
+        description: This is a default description.
+        type: string
+      days_of_week:
+        description: This is a default description.
+        type: string
+      start_time:
+        description: This is a default description.
+        type: string
+      end_time:
+        description: This is a default description.
+        type: string
+  Reference:
+    properties:
+      id:
+        description: This is a default description.
+        type: string
+      summary:
+        description: This is a default description.
+        type: string
+      type:
+        description: This is a default description.
+        type: string
+      self:
+        description: This is a default description.
+        type: string
+      html_url:
+        description: This is a default description.
+        type: string
+  IncidentNote:
+    properties:
+      id:
+        description: This is a default description.
+        type: string
+      content:
+        description: This is a default description.
+        type: string
+      created_at:
+        description: This is a default description.
+        type: string
+  Notification:
+    properties:
+      id:
+        description: This is a default description.
+        type: string
+      type:
+        description: This is a default description.
+        type: string
+      started_at:
+        description: This is a default description.
+        type: string
+      address:
+        description: This is a default description.
+        type: string
+  Context:
+    properties:
+      type:
+        description: This is a default description.
+        type: string
+  Channel:
+    properties:
+      type:
+        description: This is a default description.
+        type: string
+  LogEntryNotification:
+    properties:
+      type:
+        description: This is a default description.
+        type: string
+      status:
+        description: This is a default description.
+        type: string
+      address:
+        description: This is a default description.
+        type: string
+  ScheduledAction:
+    properties:
+      type:
+        description: This is a default description.
+        type: string
+      at:
+        description: This is a default description.
+        type: string
+      to_urgency:
+        description: This is a default description.
+        type: string
+  IncidentAction:
+    properties:
+      type:
+        description: This is a default description.
+        type: string
+      at:
+        description: This is a default description.
+        type: string
+  PushContactMethodSound:
+    properties:
+      type:
+        description: This is a default description.
+        type: string
+      file:
+        description: This is a default description.
+        type: string
+  EscalationRule:
+    properties:
+      id:
+        description: This is a default description.
+        type: string
+      escalation_delay_in_minutes:
+        description: This is a default description.
+        type: string
+      targets:
+        description: This is a default description.
+        type: string
+  SubSchedule:
+    properties:
+      name:
+        description: This is a default description.
+        type: string
+      rendered_schedule_entries:
+        description: This is a default description.
+        type: string
+      rendered_coverage_percentage:
+        description: This is a default description.
+        type: string
+  ScheduleLayer:
+    properties:
+      id:
+        description: This is a default description.
+        type: string
+      start:
+        description: This is a default description.
+        type: string
+      end:
+        description: This is a default description.
+        type: string
+      users:
+        description: This is a default description.
+        type: string
+      restrictions:
+        description: This is a default description.
+        type: string
+      rotation_virtual_start:
+        description: This is a default description.
+        type: string
+      rotation_turn_length_seconds:
+        description: This is a default description.
+        type: string
+      name:
+        description: This is a default description.
+        type: string
+      rendered_schedule_entries:
+        description: This is a default description.
+        type: string
+      rendered_coverage_percentage:
+        description: This is a default description.
+        type: string
+  ScheduleLayerEntry:
+    properties:
+      start:
+        description: This is a default description.
+        type: string
+      end:
+        description: This is a default description.
+        type: string
+  Override:
+    properties:
+      id:
+        description: This is a default description.
+        type: string
+      start:
+        description: This is a default description.
+        type: string
+      end:
+        description: This is a default description.
+        type: string
+  Restriction:
+    properties:
+      type:
+        description: This is a default description.
+        type: string
+      duration_seconds:
+        description: This is a default description.
+        type: string
+      start_time_of_day:
+        description: This is a default description.
+        type: string
+  Pagination:
+    properties:
+      offset:
+        description: This is a default description.
+        type: string
+      limit:
+        description: This is a default description.
+        type: string
+      more:
+        description: This is a default description.
+        type: string
+      total:
+        description: This is a default description.
+        type: string
+  Error:
+    properties: []
+  ErrorObject:
+    properties:
+      code:
+        description: This is a default description.
+        type: string
+      message:
+        description: This is a default description.
+        type: string
+      errors:
+        description: This is a default description.
+        type: string
+  Assignment:
+    properties:
+      at:
+        description: This is a default description.
+        type: string
+  Acknowledgement:
+    properties:
+      at:
+        description: This is a default description.
+        type: string
+  Oncall:
+    properties:
+      escalation_level:
+        description: This is a default description.
+        type: string
+      start:
+        description: This is a default description.
+        type: string
+      end:
+        description: This is a default description.
+        type: string
