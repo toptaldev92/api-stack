@@ -1,0 +1,174 @@
+agger: "2.0"
+info:
+  title: Application Instance API
+  description: The Application Instance API.
+  version: 1.0.0
+host: api.newrelic.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /v2/applications/{application_id}/instances.{format}:
+    get:
+      summary: List
+      description: <p>This API endpoint returns a <a href="https://docs
+      operationId: list
+      parameters:
+      - in: path
+        name: application_id
+        description: Application ID
+        type: integer
+      - in: query
+        name: filter[hostname]
+        description: Filter by server hostname
+        type: string
+      - in: query
+        name: filter[ids]
+        description: Filter by application instance ids
+        type: list
+      - in: query
+        name: page
+        description: Pagination index
+        type: integer
+      responses:
+        200:
+          description: OK
+      tags:
+      - Application Instance
+  /v2/applications/{application_id}/instances/{id}.{format}:
+    get:
+      summary: Show
+      description: <p>This API endpoint returns a single application instance, identified
+        by ID
+      operationId: show
+      parameters:
+      - in: path
+        name: application_id
+        description: Application ID
+        type: integer
+      - in: path
+        name: id
+        description: Application instance ID
+        type: integer
+      responses:
+        200:
+          description: OK
+      tags:
+      - Application Instance
+  /v2/applications/{application_id}/instances/{instance_id}/metrics.{format}:
+    get:
+      summary: Metric Names
+      description: <p>Return a list of known metrics and their value names for the
+        given resource
+      operationId: names
+      parameters:
+      - in: path
+        name: application_id
+        description: Application ID
+        type: integer
+      - in: query
+        name: cursor
+        description: Cursor for next page (replacing page param)
+        type: string
+      - in: path
+        name: instance_id
+        description: Application Instance ID
+        type: integer
+      - in: query
+        name: name
+        description: Filter metrics by name
+        type: string
+      - in: query
+        name: page
+        description: Pagination index (will be deprecated)
+        type: integer
+      responses:
+        200:
+          description: OK
+      tags:
+      - Application Instance
+  /v2/applications/{application_id}/instances/{instance_id}/metrics/data.{format}:
+    get:
+      summary: Metric Data
+      description: <p>This API endpoint returns a list of values for each of the requested
+        metrics
+      operationId: data
+      parameters:
+      - in: path
+        name: application_id
+        description: Application ID
+        type: integer
+      - in: query
+        name: from
+        description: Retrieve metrics after this time
+        type: time
+      - in: path
+        name: instance_id
+        description: Application Instance ID
+        type: integer
+      - in: query
+        name: names
+        description: Retrieve specific metrics by name
+        type: array
+      - in: query
+        name: period
+        description: Period of timeslices in seconds
+        type: integer
+      - in: query
+        name: raw
+        description: Return unformatted raw values
+        type: boolean
+      - in: query
+        name: summarize
+        description: Summarize the data
+        type: boolean
+      - in: query
+        name: to
+        description: Retrieve metrics before this time
+        type: time
+      - in: query
+        name: values
+        description: Retrieve specific metric values
+        type: array
+      responses:
+        200:
+          description: OK
+      tags:
+      - Application Instance
+definitions:
+  "":
+    properties:
+      application_instance:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      application_name:
+        description: This is a default description.
+        type: string
+      host:
+        description: This is a default description.
+        type: string
+      port:
+        description: This is a default description.
+        type: string
+      language:
+        description: This is a default description.
+        type: string
+      health_status:
+        description: This is a default description.
+        type: string
+      application_summary:
+        description: This is a default description.
+        type: string
+      end_user_summary:
+        description: This is a default description.
+        type: string
+      links:
+        description: This is a default description.
+        type: string
