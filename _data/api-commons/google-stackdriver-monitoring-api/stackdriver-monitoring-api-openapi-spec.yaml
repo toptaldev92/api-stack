@@ -1,0 +1,397 @@
+agger: "2.0"
+info:
+  title: Cloud Monitoring
+  description: Accesses Google Cloud Monitoring data.
+  contact:
+    name: Google
+    url: https://google.com
+  version: v2beta2
+host: www.googleapis.com
+basePath: /cloudmonitoring/v2beta2/projects
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /{project}/metricDescriptors:
+    get:
+      summary: ""
+      description: List metric descriptors that match the query
+      operationId: cloudmonitoring.metricDescriptors.list
+      parameters:
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: count
+        description: Maximum number of metric descriptors per page
+      - in: query
+        name: pageToken
+        description: The pagination token, which is used to page through large result
+          sets
+      - in: path
+        name: project
+        description: The project id
+      - in: query
+        name: query
+        description: The query used to search against existing metrics
+      responses:
+        200:
+          description: OK
+      tags:
+      - Monitoring
+    post:
+      summary: ""
+      description: Create a new metric
+      operationId: cloudmonitoring.metricDescriptors.create
+      parameters:
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: project
+        description: The project id
+      responses:
+        200:
+          description: OK
+      tags:
+      - Monitoring
+  /{project}/metricDescriptors/{metric}:
+    delete:
+      summary: ""
+      description: Delete an existing metric
+      operationId: cloudmonitoring.metricDescriptors.delete
+      parameters:
+      - in: path
+        name: metric
+        description: Name of the metric
+      - in: path
+        name: project
+        description: The project ID to which the metric belongs
+      responses:
+        200:
+          description: OK
+      tags:
+      - Monitoring
+  /{project}/timeseries/{metric}:
+    get:
+      summary: ""
+      description: List the data points of the time series that match the metric and
+        labels values and that have data points in the interval
+      operationId: cloudmonitoring.timeseries.list
+      parameters:
+      - in: query
+        name: aggregator
+        description: The aggregation function that will reduce the data points in
+          each window to a single point
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: count
+        description: Maximum number of data points per page, which is used for pagination
+          of results
+      - in: query
+        name: labels
+        description: "A collection of labels for the matching time series, which are
+          represented as:  \n- key==value: key equals the value \n- key=~value: key
+          regex matches the value \n- key!=value: key does not equal the value \n-
+          key!~value: key regex does not match the value  For example, to list all
+          of the time series descriptors for the region us-central1, you could specify:\nlabel=cloud"
+      - in: path
+        name: metric
+        description: Metric names are protocol-free URLs as listed in the Supported
+          Metrics page
+      - in: query
+        name: oldest
+        description: Start of the time interval (exclusive), which is expressed as
+          an RFC 3339 timestamp
+      - in: query
+        name: pageToken
+        description: The pagination token, which is used to page through large result
+          sets
+      - in: path
+        name: project
+        description: The project ID to which this time series belongs
+      - in: query
+        name: timespan
+        description: 'Length of the time interval to query, which is an alternative
+          way to declare the interval: (youngest - timespan, youngest]'
+      - in: query
+        name: window
+        description: The sampling window
+      - in: query
+        name: youngest
+        description: End of the time interval (inclusive), which is expressed as an
+          RFC 3339 timestamp
+      responses:
+        200:
+          description: OK
+      tags:
+      - Monitoring
+  /{project}/timeseries:write:
+    post:
+      summary: ""
+      description: Put data points to one or more time series for one or more metrics
+      operationId: cloudmonitoring.timeseries.write
+      parameters:
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: project
+        description: The project ID
+      responses:
+        200:
+          description: OK
+      tags:
+      - Monitoring
+  /{project}/timeseriesDescriptors/{metric}:
+    get:
+      summary: ""
+      description: List the descriptors of the time series that match the metric and
+        labels values and that have data points in the interval
+      operationId: cloudmonitoring.timeseriesDescriptors.list
+      parameters:
+      - in: query
+        name: aggregator
+        description: The aggregation function that will reduce the data points in
+          each window to a single point
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: count
+        description: Maximum number of time series descriptors per page
+      - in: query
+        name: labels
+        description: "A collection of labels for the matching time series, which are
+          represented as:  \n- key==value: key equals the value \n- key=~value: key
+          regex matches the value \n- key!=value: key does not equal the value \n-
+          key!~value: key regex does not match the value  For example, to list all
+          of the time series descriptors for the region us-central1, you could specify:\nlabel=cloud"
+      - in: path
+        name: metric
+        description: Metric names are protocol-free URLs as listed in the Supported
+          Metrics page
+      - in: query
+        name: oldest
+        description: Start of the time interval (exclusive), which is expressed as
+          an RFC 3339 timestamp
+      - in: query
+        name: pageToken
+        description: The pagination token, which is used to page through large result
+          sets
+      - in: path
+        name: project
+        description: The project ID to which this time series belongs
+      - in: query
+        name: timespan
+        description: 'Length of the time interval to query, which is an alternative
+          way to declare the interval: (youngest - timespan, youngest]'
+      - in: query
+        name: window
+        description: The sampling window
+      - in: query
+        name: youngest
+        description: End of the time interval (inclusive), which is expressed as an
+          RFC 3339 timestamp
+      responses:
+        200:
+          description: OK
+      tags:
+      - Monitoring
+definitions:
+  DeleteMetricDescriptorResponse:
+    properties:
+      kind:
+        description: This is a default description.
+        type: parameters
+  ListMetricDescriptorsRequest:
+    properties:
+      kind:
+        description: This is a default description.
+        type: parameters
+  ListMetricDescriptorsResponse:
+    properties:
+      kind:
+        description: This is a default description.
+        type: parameters
+      metrics:
+        description: This is a default description.
+        type: parameters
+      nextPageToken:
+        description: This is a default description.
+        type: parameters
+  ListTimeseriesDescriptorsRequest:
+    properties:
+      kind:
+        description: This is a default description.
+        type: parameters
+  ListTimeseriesDescriptorsResponse:
+    properties:
+      kind:
+        description: This is a default description.
+        type: parameters
+      nextPageToken:
+        description: This is a default description.
+        type: parameters
+      oldest:
+        description: This is a default description.
+        type: parameters
+      timeseries:
+        description: This is a default description.
+        type: parameters
+      youngest:
+        description: This is a default description.
+        type: parameters
+  ListTimeseriesRequest:
+    properties:
+      kind:
+        description: This is a default description.
+        type: parameters
+  ListTimeseriesResponse:
+    properties:
+      kind:
+        description: This is a default description.
+        type: parameters
+      nextPageToken:
+        description: This is a default description.
+        type: parameters
+      oldest:
+        description: This is a default description.
+        type: parameters
+      timeseries:
+        description: This is a default description.
+        type: parameters
+      youngest:
+        description: This is a default description.
+        type: parameters
+  MetricDescriptor:
+    properties:
+      description:
+        description: This is a default description.
+        type: parameters
+      labels:
+        description: This is a default description.
+        type: parameters
+      name:
+        description: This is a default description.
+        type: parameters
+      project:
+        description: This is a default description.
+        type: parameters
+  MetricDescriptorLabelDescriptor:
+    properties:
+      description:
+        description: This is a default description.
+        type: parameters
+      key:
+        description: This is a default description.
+        type: parameters
+  MetricDescriptorTypeDescriptor:
+    properties:
+      metricType:
+        description: This is a default description.
+        type: parameters
+      valueType:
+        description: This is a default description.
+        type: parameters
+  Point:
+    properties:
+      boolValue:
+        description: This is a default description.
+        type: parameters
+      doubleValue:
+        description: This is a default description.
+        type: parameters
+      end:
+        description: This is a default description.
+        type: parameters
+      int64Value:
+        description: This is a default description.
+        type: parameters
+      start:
+        description: This is a default description.
+        type: parameters
+      stringValue:
+        description: This is a default description.
+        type: parameters
+  PointDistribution:
+    properties:
+      buckets:
+        description: This is a default description.
+        type: parameters
+  PointDistributionBucket:
+    properties:
+      count:
+        description: This is a default description.
+        type: parameters
+      lowerBound:
+        description: This is a default description.
+        type: parameters
+      upperBound:
+        description: This is a default description.
+        type: parameters
+  PointDistributionOverflowBucket:
+    properties:
+      count:
+        description: This is a default description.
+        type: parameters
+      lowerBound:
+        description: This is a default description.
+        type: parameters
+  PointDistributionUnderflowBucket:
+    properties:
+      count:
+        description: This is a default description.
+        type: parameters
+      upperBound:
+        description: This is a default description.
+        type: parameters
+  Timeseries:
+    properties:
+      points:
+        description: This is a default description.
+        type: parameters
+  TimeseriesDescriptor:
+    properties:
+      labels:
+        description: This is a default description.
+        type: parameters
+      metric:
+        description: This is a default description.
+        type: parameters
+      project:
+        description: This is a default description.
+        type: parameters
+  TimeseriesDescriptorLabel:
+    properties:
+      key:
+        description: This is a default description.
+        type: parameters
+      value:
+        description: This is a default description.
+        type: parameters
+  TimeseriesPoint:
+    properties: []
+  WriteTimeseriesRequest:
+    properties:
+      commonLabels:
+        description: This is a default description.
+        type: parameters
+      timeseries:
+        description: This is a default description.
+        type: parameters
+  WriteTimeseriesResponse:
+    properties:
+      kind:
+        description: This is a default description.
+        type: parameters
