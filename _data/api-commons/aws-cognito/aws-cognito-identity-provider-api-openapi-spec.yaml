@@ -1,0 +1,1697 @@
+agger: "2.0"
+info:
+  title: AWs Cognito Identity Provider API
+  version: 1.0.0
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /?Action=AddCustomAttributes&k=1:
+    get:
+      summary: ' Add Custom Attributes '
+      description: Adds additional user attributes to the user pool schema
+      operationId: addCustomAttributes
+      parameters:
+      - in: query
+        name: CustomAttributes
+        description: An array of custom attributes, such as Mutable and Name
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool where you want to add custom            attributes
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Attributes
+  /?Action=AdminAddUserToGroup&k=1:
+    get:
+      summary: ' Admin Add User To Group '
+      description: Adds the specified user to the specified group
+      operationId: adminAddUserToGroup
+      parameters:
+      - in: query
+        name: GroupName
+        description: The group name
+        type: string
+      - in: query
+        name: Username
+        description: The username for the user
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Groups
+  /?Action=AdminConfirmSignUp&k=1:
+    get:
+      summary: ' Admin Confirm Sign Up '
+      description: Confirms user registration as an admin without using a confirmation
+        code
+      operationId: adminConfirmSignUp
+      parameters:
+      - in: query
+        name: Username
+        description: The user name for which you want to confirm user registration
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for which you want to confirm user registration
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Sign Up
+  /?Action=AdminCreateUser&k=1:
+    get:
+      summary: ' Admin Create User '
+      description: |-
+        Creates a new user in the specified user pool and sends a welcome message via email
+                    or phone (SMS)
+      operationId: adminCreateUser
+      parameters:
+      - in: query
+        name: DesiredDeliveryMediums
+        description: Specify EMAIL if email will be used to send the welcome message
+        type: string
+      - in: query
+        name: ForceAliasCreation
+        description: This parameter is only used if the phone_number_verified or email_verified            attribute
+          is set to True
+        type: string
+      - in: query
+        name: MessageAction
+        description: Set to RESEND to resend the invitation message to a user that
+          already exists and            reset the expiration limit on the user's account
+        type: string
+      - in: query
+        name: TemporaryPassword
+        description: The user's temporary password
+        type: string
+      - in: query
+        name: UserAttributes
+        description: An array of name-value pairs that contain user attributes and
+          attribute values to            be set for the user to be created
+        type: string
+      - in: query
+        name: Username
+        description: The username for the user
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool where the user will be created
+        type: string
+      - in: query
+        name: ValidationData
+        description: The user's validation data
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=AdminDeleteUser&k=1:
+    get:
+      summary: ' Admin Delete User '
+      description: Deletes a user as an administrator
+      operationId: adminDeleteUser
+      parameters:
+      - in: query
+        name: Username
+        description: The user name of the user you wish to delete
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool where you want to delete the
+          user
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=AdminDeleteUserAttributes&k=1:
+    get:
+      summary: ' Admin Delete User Attributes '
+      description: Deletes the user attributes in a user pool as an administrator
+      operationId: adminDeleteUserAttributes
+      parameters:
+      - in: query
+        name: UserAttributeNames
+        description: An array of strings representing the user attribute names you
+          wish to            delete
+        type: string
+      - in: query
+        name: Username
+        description: The user name of the user from which you would like to delete
+          attributes
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool where you want to delete user            attributes
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=AdminDisableUser&k=1:
+    get:
+      summary: ' Admin Disable User '
+      description: Disables the specified user as an administrator
+      operationId: adminDisableUser
+      parameters:
+      - in: query
+        name: Username
+        description: The user name of the user you wish to disable
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool where you want to disable
+          the user
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=AdminEnableUser&k=1:
+    get:
+      summary: ' Admin Enable User '
+      description: Enables the specified user as an administrator
+      operationId: adminEnableUser
+      parameters:
+      - in: query
+        name: Username
+        description: The user name of the user you wish to enable
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool where you want to enable the
+          user
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=AdminForgetDevice&k=1:
+    get:
+      summary: ' Admin Forget Device '
+      description: Forgets the device, as an administrator
+      operationId: adminForgetDevice
+      parameters:
+      - in: query
+        name: DeviceKey
+        description: The device key
+        type: string
+      - in: query
+        name: Username
+        description: The user name
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Devices
+  /?Action=AdminGetDevice&k=1:
+    get:
+      summary: ' Admin Get Device '
+      description: Gets the device, as an administrator
+      operationId: adminGetDevice
+      parameters:
+      - in: query
+        name: DeviceKey
+        description: The device key
+        type: string
+      - in: query
+        name: Username
+        description: The user name
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - http://laneworks.net/api-stack/pull/pull-amazon-cognito-sync.php
+  /?Action=AdminGetUser&k=1:
+    get:
+      summary: ' Admin Get User '
+      description: Gets the specified user by user name in a user pool as an administrator
+      operationId: adminGetUser
+      parameters:
+      - in: query
+        name: Username
+        description: The user name of the user you wish to retrieve
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool where you want to get information
+          about the            user
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=AdminInitiateAuth&k=1:
+    get:
+      summary: ' Admin Initiate Auth '
+      description: Initiates the authentication flow, as an administrator
+      operationId: adminInitiateAuth
+      parameters:
+      - in: query
+        name: AuthFlow
+        description: The authentication flow
+        type: string
+      - in: query
+        name: AuthParameters
+        description: The authentication parameters
+        type: string
+      - in: query
+        name: ClientId
+        description: The client app ID
+        type: string
+      - in: query
+        name: ClientMetadata
+        description: The client app metadata
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The ID of the Amazon Cognito user pool
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Authnetication
+  /?Action=AdminListDevices&k=1:
+    get:
+      summary: ' Admin List Devices '
+      description: Lists devices, as an administrator
+      operationId: adminListDevices
+      parameters:
+      - in: query
+        name: Limit
+        description: The limit of the devices request
+        type: string
+      - in: query
+        name: PaginationToken
+        description: The pagination token
+        type: string
+      - in: query
+        name: Username
+        description: The user name
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - http://laneworks.net/api-stack/pull/pull-amazon-cognito-sync.php
+  /?Action=AdminListGroupsForUser&k=1:
+    get:
+      summary: ' Admin List Groups For User '
+      description: Lists the groups that the user belongs to
+      operationId: adminListGroupsForUser
+      parameters:
+      - in: query
+        name: Limit
+        description: The limit of the request to list groups
+        type: string
+      - in: query
+        name: NextToken
+        description: An identifier that was returned from the previous call to this
+          operation, which can            be used to return the next set of items
+          in the list
+        type: string
+      - in: query
+        name: Username
+        description: The username for the user
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Groups
+  /?Action=AdminRemoveUserFromGroup&k=1:
+    get:
+      summary: ' Admin Remove User From Group '
+      description: Removes the specified user from the specified group
+      operationId: adminRemoveUserFromGroup
+      parameters:
+      - in: query
+        name: GroupName
+        description: The group name
+        type: string
+      - in: query
+        name: Username
+        description: The username for the user
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Groups
+  /?Action=AdminResetUserPassword&k=1:
+    get:
+      summary: ' Admin Reset User Password '
+      description: Resets the specified user's password in a user pool as an administrator
+      operationId: adminResetUserPassword
+      parameters:
+      - in: query
+        name: Username
+        description: The user name of the user whose password you wish to reset
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool where you want to reset the
+          user's            password
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Passwords
+  /?Action=AdminRespondToAuthChallenge&k=1:
+    get:
+      summary: ' Admin Respond To Auth Challenge '
+      description: Responds to an authentication challenge, as an administrator
+      operationId: adminRespondToAuthChallenge
+      parameters:
+      - in: query
+        name: ChallengeName
+        description: The name of the challenge
+        type: string
+      - in: query
+        name: ChallengeResponses
+        description: The challenge response
+        type: string
+      - in: query
+        name: ClientId
+        description: The client ID
+        type: string
+      - in: query
+        name: Session
+        description: The session
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The ID of the Amazon Cognito user pool
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Authentication Challenge
+  /?Action=AdminSetUserSettings&k=1:
+    get:
+      summary: ' Admin Set User Settings '
+      description: Sets all the user settings for a specified user name
+      operationId: adminSetUserSettings
+      parameters:
+      - in: query
+        name: MFAOptions
+        description: Specifies the options for MFA (e
+        type: string
+      - in: query
+        name: Username
+        description: The user name of the user for whom you wish to set user settings
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool where you want to set the
+          user's settings, such            as MFA options
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=AdminUpdateDeviceStatus&k=1:
+    get:
+      summary: ' Admin Update Device Status '
+      description: Updates the device status as an administrator
+      operationId: adminUpdateDeviceStatus
+      parameters:
+      - in: query
+        name: DeviceKey
+        description: The device key
+        type: string
+      - in: query
+        name: DeviceRememberedStatus
+        description: The status indicating whether a device has been remembered or
+          not
+        type: string
+      - in: query
+        name: Username
+        description: The user name
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID&gt;
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=AdminUpdateUserAttributes&k=1:
+    get:
+      summary: ' Admin Update User Attributes '
+      description: |-
+        Updates the specified user's attributes, including developer attributes, as an
+                    administrator
+      operationId: adminUpdateUserAttributes
+      parameters:
+      - in: query
+        name: UserAttributes
+        description: An array of name-value pairs representing user attributes
+        type: string
+      - in: query
+        name: Username
+        description: The user name of the user for whom you want to update user attributes
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool where you want to update user            attributes
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=AdminUserGlobalSignOut&k=1:
+    get:
+      summary: ' Admin User Global Sign Out '
+      description: Signs out users from all devices, as an administrator
+      operationId: adminUserGlobalSignOut
+      parameters:
+      - in: query
+        name: Username
+        description: The user name
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users Global Sign Out
+  /?Action=ChangePassword&k=1:
+    get:
+      summary: ' Change Password '
+      description: Changes the password for a specified user in a user pool
+      operationId: changePassword
+      parameters:
+      - in: query
+        name: AccessToken
+        description: The access token in the change password request
+        type: string
+      - in: query
+        name: PreviousPassword
+        description: The old password in the change password request
+        type: string
+      - in: query
+        name: ProposedPassword
+        description: The new password in the change password request
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Password
+  /?Action=ConfirmDevice&k=1:
+    get:
+      summary: ' Confirm Device '
+      description: Confirms tracking of the device
+      operationId: confirmDevice
+      parameters:
+      - in: query
+        name: AccessToken
+        description: The access token
+        type: string
+      - in: query
+        name: DeviceKey
+        description: The device key
+        type: string
+      - in: query
+        name: DeviceName
+        description: The device name
+        type: string
+      - in: query
+        name: DeviceSecretVerifierConfig
+        description: The configuration of the device secret verifier
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Devices
+  /?Action=ConfirmForgotPassword&k=1:
+    get:
+      summary: ' Confirm Forgot Password '
+      description: |-
+        Allows a user to enter a code provided when they reset their password to update
+                    their password
+      operationId: confirmForgotPassword
+      parameters:
+      - in: query
+        name: ClientId
+        description: The ID of the client associated with the user pool
+        type: string
+      - in: query
+        name: ConfirmationCode
+        description: The confirmation code sent by a user's request to retrieve a
+          forgotten            password
+        type: string
+      - in: query
+        name: Password
+        description: The password sent by sent by a user's request to retrieve a forgotten            password
+        type: string
+      - in: query
+        name: SecretHash
+        description: A keyed-hash message authentication code (HMAC) calculated using
+          the secret key of            a user pool client and username plus the client
+          ID in the message
+        type: string
+      - in: query
+        name: Username
+        description: The user name of the user for whom you want to enter a code to
+          retrieve a forgotten            password
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Passwords
+  /?Action=ConfirmSignUp&k=1:
+    get:
+      summary: ' Confirm Sign Up '
+      description: |-
+        Confirms registration of a user and handles the existing alias from a previous
+                    user
+      operationId: confirmSignUp
+      parameters:
+      - in: query
+        name: ClientId
+        description: The ID of the client associated with the user pool
+        type: string
+      - in: query
+        name: ConfirmationCode
+        description: The confirmation code sent by a user's request to confirm registration
+        type: string
+      - in: query
+        name: ForceAliasCreation
+        description: Boolean to be specified to force user confirmation irrespective
+          of existing alias
+        type: string
+      - in: query
+        name: SecretHash
+        description: A keyed-hash message authentication code (HMAC) calculated using
+          the secret key of            a user pool client and username plus the client
+          ID in the message
+        type: string
+      - in: query
+        name: Username
+        description: The user name of the user whose registration you wish to confirm
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Sign Ups
+  /?Action=CreateGroup&k=1:
+    get:
+      summary: ' Create Group '
+      description: Creates a new group in the specified user pool
+      operationId: createGroup
+      parameters:
+      - in: query
+        name: Description
+        description: A string containing the description of the group
+        type: string
+      - in: query
+        name: GroupName
+        description: The name of the group
+        type: string
+      - in: query
+        name: Precedence
+        description: A nonnegative integer value that specifies the precedence of
+          this group relative to            the other groups that a user can belong
+          to in the user pool
+        type: string
+      - in: query
+        name: RoleArn
+        description: The role ARN for the group
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Groups
+  /?Action=CreateUserImportJob&k=1:
+    get:
+      summary: ' Create User Import Job '
+      description: Creates the user import job
+      operationId: createUserImportJob
+      parameters:
+      - in: query
+        name: CloudWatchLogsRoleArn
+        description: The role ARN for the Amazon CloudWatch Logging role for the user
+          import            job
+        type: string
+      - in: query
+        name: JobName
+        description: The job name for the user import job
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool that the users are being imported            into
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Imports
+  /?Action=CreateUserPool&k=1:
+    get:
+      summary: ' Create User Pool '
+      description: |-
+        Creates a new Amazon Cognito user pool and sets the password policy for the
+                    pool
+      operationId: createUserPool
+      parameters:
+      - in: query
+        name: AdminCreateUserConfig
+        description: The configuration for AdminCreateUser requests
+        type: string
+      - in: query
+        name: AliasAttributes
+        description: Attributes supported as an alias for this user pool
+        type: string
+      - in: query
+        name: AutoVerifiedAttributes
+        description: The attributes to be auto-verified
+        type: string
+      - in: query
+        name: DeviceConfiguration
+        description: The device configuration
+        type: string
+      - in: query
+        name: EmailConfiguration
+        description: The email configuration
+        type: string
+      - in: query
+        name: EmailVerificationMessage
+        description: A string representing the email verification message
+        type: string
+      - in: query
+        name: EmailVerificationSubject
+        description: A string representing the email verification subject
+        type: string
+      - in: query
+        name: LambdaConfig
+        description: The Lambda trigger configuration information for the new user
+          pool
+        type: string
+      - in: query
+        name: MfaConfiguration
+        description: Specifies MFA configuration details
+        type: string
+      - in: query
+        name: Policies
+        description: The policies associated with the new user pool
+        type: string
+      - in: query
+        name: PoolName
+        description: A string used to name the user pool
+        type: string
+      - in: query
+        name: Schema
+        description: An array of schema attributes for the new user pool
+        type: string
+      - in: query
+        name: SmsAuthenticationMessage
+        description: A string representing the SMS authentication message
+        type: string
+      - in: query
+        name: SmsConfiguration
+        description: The SMS configuration
+        type: string
+      - in: query
+        name: SmsVerificationMessage
+        description: A string representing the SMS verification message
+        type: string
+      - in: query
+        name: UserPoolTags
+        description: The cost allocation tags for the user pool
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Pools
+  /?Action=CreateUserPoolClient&k=1:
+    get:
+      summary: ' Create User Pool Client '
+      description: Creates the user pool client
+      operationId: createUserPoolClient
+      parameters:
+      - in: query
+        name: ClientName
+        description: The client name for the user pool client you would like to create
+        type: string
+      - in: query
+        name: ExplicitAuthFlows
+        description: The explicit authentication flows
+        type: string
+      - in: query
+        name: GenerateSecret
+        description: Boolean to specify whether you want to generate a secret for
+          the user pool client            being created
+        type: string
+      - in: query
+        name: ReadAttributes
+        description: The read attributes
+        type: string
+      - in: query
+        name: RefreshTokenValidity
+        description: The validity of the refresh token, in days
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool where you want to create a
+          user pool            client
+        type: string
+      - in: query
+        name: WriteAttributes
+        description: The write attributes
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Pool Clients
+  /?Action=DeleteGroup&k=1:
+    get:
+      summary: ' Delete Group '
+      description: Deletes a group
+      operationId: deleteGroup
+      parameters:
+      - in: query
+        name: GroupName
+        description: The name of the group
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Groups
+  /?Action=DeleteUser&k=1:
+    get:
+      summary: ' Delete User '
+      description: Allows a user to delete one's self
+      operationId: deleteUser
+      parameters:
+      - in: query
+        name: AccessToken
+        description: The access token from a request to delete a user
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=DeleteUserAttributes&k=1:
+    get:
+      summary: ' Delete User Attributes '
+      description: Deletes the attributes for a user
+      operationId: deleteUserAttributes
+      parameters:
+      - in: query
+        name: AccessToken
+        description: The access token used in the request to delete user attributes
+        type: string
+      - in: query
+        name: UserAttributeNames
+        description: An array of strings representing the user attribute names you
+          wish to            delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=DeleteUserPool&k=1:
+    get:
+      summary: ' Delete User Pool '
+      description: Deletes the specified Amazon Cognito user pool
+      operationId: deleteUserPool
+      parameters:
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool you want to delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Pools
+  /?Action=DeleteUserPoolClient&k=1:
+    get:
+      summary: ' Delete User Pool Client '
+      description: Allows the developer to delete the user pool client
+      operationId: deleteUserPoolClient
+      parameters:
+      - in: query
+        name: ClientId
+        description: The ID of the client associated with the user pool
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool where you want to delete the
+          client
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Pools
+  /?Action=DescribeUserImportJob&k=1:
+    get:
+      summary: ' Describe User Import Job '
+      description: Describes the user import job
+      operationId: describeUserImportJob
+      parameters:
+      - in: query
+        name: JobId
+        description: The job ID for the user import job
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool that the users are being imported            into
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Imports
+  /?Action=DescribeUserPool&k=1:
+    get:
+      summary: ' Describe User Pool '
+      description: |-
+        Returns the configuration information and metadata of the specified user
+                    pool
+      operationId: describeUserPool
+      parameters:
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool you want to describe
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Pools
+  /?Action=DescribeUserPoolClient&k=1:
+    get:
+      summary: ' Describe User Pool Client '
+      description: |-
+        Client method for returning the configuration information and metadata of the
+                    specified user pool client
+      operationId: describeUserPoolClient
+      parameters:
+      - in: query
+        name: ClientId
+        description: The ID of the client associated with the user pool
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool you want to describe
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Pool Clients
+  /?Action=ForgetDevice&k=1:
+    get:
+      summary: ' Forget Device '
+      description: Forgets the specified device
+      operationId: forgetDevice
+      parameters:
+      - in: query
+        name: AccessToken
+        description: The access token for the forgotten device request
+        type: string
+      - in: query
+        name: DeviceKey
+        description: The device key
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Devices
+  /?Action=ForgotPassword&k=1:
+    get:
+      summary: ' Forgot Password '
+      description: Retrieves the password for the specified client ID or username
+      operationId: forgotPassword
+      parameters:
+      - in: query
+        name: ClientId
+        description: The ID of the client associated with the user pool
+        type: string
+      - in: query
+        name: SecretHash
+        description: A keyed-hash message authentication code (HMAC) calculated using
+          the secret key of            a user pool client and username plus the client
+          ID in the message
+        type: string
+      - in: query
+        name: Username
+        description: The user name of the user for whom you want to enter a code to
+          reset a forgotten            password
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Passwords
+  /?Action=GetCSVHeader&k=1:
+    get:
+      summary: ' Get C S V Header '
+      description: Gets the header information for the
+      operationId: getCSVHeader
+      parameters:
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool that the users are to be imported            into
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - CSV Header
+  /?Action=GetDevice&k=1:
+    get:
+      summary: ' Get Device '
+      description: Gets the device
+      operationId: getDevice
+      parameters:
+      - in: query
+        name: AccessToken
+        description: The access token
+        type: string
+      - in: query
+        name: DeviceKey
+        description: The device key
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Pools
+  /?Action=GetGroup&k=1:
+    get:
+      summary: ' Get Group '
+      description: Gets a group
+      operationId: getGroup
+      parameters:
+      - in: query
+        name: GroupName
+        description: The name of the group
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Groups
+  /?Action=GetUser&k=1:
+    get:
+      summary: ' Get User '
+      description: Gets the user attributes and metadata for a user
+      operationId: getUser
+      parameters:
+      - in: query
+        name: AccessToken
+        description: The access token returned by the server response to get information
+          about the            user
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=GetUserAttributeVerificationCode&k=1:
+    get:
+      summary: ' Get User Attribute Verification Code '
+      description: |-
+        Gets the user attribute verification code for the specified attribute
+                    name
+      operationId: getUserAttributeVerificationCode
+      parameters:
+      - in: query
+        name: AccessToken
+        description: The access token returned by the server response to get the user
+          attribute            verification code
+        type: string
+      - in: query
+        name: AttributeName
+        description: The attribute name returned by the server response to get the
+          user attribute            verification code
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Verification Codes
+  /?Action=GlobalSignOut&k=1:
+    get:
+      summary: ' Global Sign Out '
+      description: Signs out users from all devices
+      operationId: globalSignOut
+      parameters:
+      - in: query
+        name: AccessToken
+        description: The access token
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Sign Out
+  /?Action=InitiateAuth&k=1:
+    get:
+      summary: ' Initiate Auth '
+      description: Initiates the authentication flow
+      operationId: initiateAuth
+      parameters:
+      - in: query
+        name: AuthFlow
+        description: The authentication flow
+        type: string
+      - in: query
+        name: AuthParameters
+        description: The authentication parameters
+        type: string
+      - in: query
+        name: ClientId
+        description: The client ID
+        type: string
+      - in: query
+        name: ClientMetadata
+        description: The client app's metadata
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Authentication
+  /?Action=ListDevices&k=1:
+    get:
+      summary: ' List Devices '
+      description: Lists the devices
+      operationId: listDevices
+      parameters:
+      - in: query
+        name: AccessToken
+        description: The access tokens for the request to list devices
+        type: string
+      - in: query
+        name: Limit
+        description: The limit of the device request
+        type: string
+      - in: query
+        name: PaginationToken
+        description: The pagination token for the list request
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Devices
+  /?Action=ListGroups&k=1:
+    get:
+      summary: ' List Groups '
+      description: Lists the groups associated with a user pool
+      operationId: listGroups
+      parameters:
+      - in: query
+        name: Limit
+        description: The limit of the request to list groups
+        type: string
+      - in: query
+        name: NextToken
+        description: An identifier that was returned from the previous call to this
+          operation, which can            be used to return the next set of items
+          in the list
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Groups
+  /?Action=ListUserImportJobs&k=1:
+    get:
+      summary: ' List User Import Jobs '
+      description: Lists the user import jobs
+      operationId: listUserImportJobs
+      parameters:
+      - in: query
+        name: MaxResults
+        description: The maximum number of import jobs you want the request to return
+        type: string
+      - in: query
+        name: PaginationToken
+        description: An identifier that was returned from the previous call to ListUserImportJobs,
+          which            can be used to return the next set of import jobs in the
+          list
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool that the users are being imported            into
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Imports
+  /?Action=ListUserPoolClients&k=1:
+    get:
+      summary: ' List User Pool Clients '
+      description: Lists the clients that have been created for the specified user
+        pool
+      operationId: listUserPoolClients
+      parameters:
+      - in: query
+        name: MaxResults
+        description: The maximum number of results you want the request to return
+          when listing the user            pool clients
+        type: string
+      - in: query
+        name: NextToken
+        description: An identifier that was returned from the previous call to this
+          operation, which can            be used to return the next set of items
+          in the list
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool where you want to list user
+          pool            clients
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - user Pool Clients
+  /?Action=ListUserPools&k=1:
+    get:
+      summary: ' List User Pools '
+      description: Lists the user pools associated with an AWS account
+      operationId: listUserPools
+      parameters:
+      - in: query
+        name: MaxResults
+        description: The maximum number of results you want the request to return
+          when listing the user            pools
+        type: string
+      - in: query
+        name: NextToken
+        description: An identifier that was returned from the previous call to this
+          operation, which can            be used to return the next set of items
+          in the list
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - user Pools
+  /?Action=ListUsers&k=1:
+    get:
+      summary: ' List Users '
+      description: Lists the users in the Amazon Cognito user pool
+      operationId: listUsers
+      parameters:
+      - in: query
+        name: AttributesToGet
+        description: The attributes to get from the request to list users
+        type: string
+      - in: query
+        name: Filter
+        description: The filter for the list users request
+        type: string
+      - in: query
+        name: Limit
+        description: The limit of the request to list users
+        type: string
+      - in: query
+        name: PaginationToken
+        description: An identifier that was returned from the previous call to this
+          operation, which can            be used to return the next set of items
+          in the list
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for which you want to list users
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=ListUsersInGroup&k=1:
+    get:
+      summary: ' List Users In Group '
+      description: Lists the users in the specified group
+      operationId: listUsersInGroup
+      parameters:
+      - in: query
+        name: GroupName
+        description: The name of the group
+        type: string
+      - in: query
+        name: Limit
+        description: The limit of the request to list users
+        type: string
+      - in: query
+        name: NextToken
+        description: An identifier that was returned from the previous call to this
+          operation, which can            be used to return the next set of items
+          in the list
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Groups
+  /?Action=ResendConfirmationCode&k=1:
+    get:
+      summary: ' Resend Confirmation Code '
+      description: |-
+        Resends the confirmation (for confirmation of registration) to a specific user in
+                    the user pool
+      operationId: resendConfirmationCode
+      parameters:
+      - in: query
+        name: ClientId
+        description: The ID of the client associated with the user pool
+        type: string
+      - in: query
+        name: SecretHash
+        description: A keyed-hash message authentication code (HMAC) calculated using
+          the secret key of            a user pool client and username plus the client
+          ID in the message
+        type: string
+      - in: query
+        name: Username
+        description: The user name of the user to whom you wish to resend a confirmation
+          code
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Confirmation Code
+  /?Action=RespondToAuthChallenge&k=1:
+    get:
+      summary: ' Respond To Auth Challenge '
+      description: Responds to the authentication challenge
+      operationId: respondToAuthChallenge
+      parameters:
+      - in: query
+        name: ChallengeName
+        description: The name of the challenge
+        type: string
+      - in: query
+        name: ChallengeResponses
+        description: The responses to the authentication challenge
+        type: string
+      - in: query
+        name: ClientId
+        description: The client ID
+        type: string
+      - in: query
+        name: Session
+        description: The session
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Authentication Challenges
+  /?Action=SetUserSettings&k=1:
+    get:
+      summary: ' Set User Settings '
+      description: Sets the user settings like multi-factor authentication (MFA)
+      operationId: setUserSettings
+      parameters:
+      - in: query
+        name: AccessToken
+        description: The access token for the set user settings request
+        type: string
+      - in: query
+        name: MFAOptions
+        description: Specifies the options for MFA (e
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=SignUp&k=1:
+    get:
+      summary: ' Sign Up '
+      description: |-
+        Registers the user in the specified user pool and creates a user name, password,
+                    and user attributes
+      operationId: signUp
+      parameters:
+      - in: query
+        name: ClientId
+        description: The ID of the client associated with the user pool
+        type: string
+      - in: query
+        name: Password
+        description: The password of the user you wish to register
+        type: string
+      - in: query
+        name: SecretHash
+        description: A keyed-hash message authentication code (HMAC) calculated using
+          the secret key of            a user pool client and username plus the client
+          ID in the message
+        type: string
+      - in: query
+        name: UserAttributes
+        description: An array of name-value pairs representing user attributes
+        type: string
+      - in: query
+        name: Username
+        description: The user name of the user you wish to register
+        type: string
+      - in: query
+        name: ValidationData
+        description: The validation data in the request to register a user
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Sign Up
+  /?Action=StartUserImportJob&k=1:
+    get:
+      summary: ' Start User Import Job '
+      description: Starts the user import
+      operationId: startUserImportJob
+      parameters:
+      - in: query
+        name: JobId
+        description: The job ID for the user import job
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool that the users are being imported            into
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Imports
+  /?Action=StopUserImportJob&k=1:
+    get:
+      summary: ' Stop User Import Job '
+      description: Stops the user import job
+      operationId: stopUserImportJob
+      parameters:
+      - in: query
+        name: JobId
+        description: The job ID for the user import job
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool that the users are being imported            into
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Iimport
+  /?Action=UpdateDeviceStatus&k=1:
+    get:
+      summary: ' Update Device Status '
+      description: Updates the device status
+      operationId: updateDeviceStatus
+      parameters:
+      - in: query
+        name: AccessToken
+        description: The access token
+        type: string
+      - in: query
+        name: DeviceKey
+        description: The device key
+        type: string
+      - in: query
+        name: DeviceRememberedStatus
+        description: The status of whether a device is remembered
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Devices
+  /?Action=UpdateGroup&k=1:
+    get:
+      summary: ' Update Group '
+      description: Updates the specified group with the specified attributes
+      operationId: updateGroup
+      parameters:
+      - in: query
+        name: Description
+        description: A string containing the new description of the group
+        type: string
+      - in: query
+        name: GroupName
+        description: The name of the group
+        type: string
+      - in: query
+        name: Precedence
+        description: The new precedence value for the group
+        type: string
+      - in: query
+        name: RoleArn
+        description: The new role ARN for the group
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Groups
+  /?Action=UpdateUserAttributes&k=1:
+    get:
+      summary: ' Update User Attributes '
+      description: Allows a user to update a specific attribute (one at a time)
+      operationId: updateUserAttributes
+      parameters:
+      - in: query
+        name: AccessToken
+        description: The access token for the request to update user attributes
+        type: string
+      - in: query
+        name: UserAttributes
+        description: An array of name-value pairs representing user attributes
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=UpdateUserPool&k=1:
+    get:
+      summary: ' Update User Pool '
+      description: Updates the specified user pool with the specified attributes
+      operationId: updateUserPool
+      parameters:
+      - in: query
+        name: AdminCreateUserConfig
+        description: The configuration for AdminCreateUser requests
+        type: string
+      - in: query
+        name: AutoVerifiedAttributes
+        description: The attributes that are automatically verified when the Amazon
+          Cognito service            makes a request to update user pools
+        type: string
+      - in: query
+        name: DeviceConfiguration
+        description: Device configuration
+        type: string
+      - in: query
+        name: EmailConfiguration
+        description: Email configuration
+        type: string
+      - in: query
+        name: EmailVerificationMessage
+        description: The contents of the email verification message
+        type: string
+      - in: query
+        name: EmailVerificationSubject
+        description: The subject of the email verification message
+        type: string
+      - in: query
+        name: LambdaConfig
+        description: The AWS Lambda configuration information from the request to
+          update the user            pool
+        type: string
+      - in: query
+        name: MfaConfiguration
+        description: 'Can be one of the following values:'
+        type: string
+      - in: query
+        name: Policies
+        description: A container with the policies you wish to update in a user pool
+        type: string
+      - in: query
+        name: SmsAuthenticationMessage
+        description: The contents of the SMS authentication message
+        type: string
+      - in: query
+        name: SmsConfiguration
+        description: SMS configuration
+        type: string
+      - in: query
+        name: SmsVerificationMessage
+        description: A container with information about the SMS verification message
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool you want to update
+        type: string
+      - in: query
+        name: UserPoolTags
+        description: The cost allocation tags for the user pool
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Pools
+  /?Action=UpdateUserPoolClient&k=1:
+    get:
+      summary: ' Update User Pool Client '
+      description: |-
+        Allows the developer to update the specified user pool client and password
+                    policy
+      operationId: updateUserPoolClient
+      parameters:
+      - in: query
+        name: ClientId
+        description: The ID of the client associated with the user pool
+        type: string
+      - in: query
+        name: ClientName
+        description: The client name from the update user pool client request
+        type: string
+      - in: query
+        name: ExplicitAuthFlows
+        description: Explicit authentication flows
+        type: string
+      - in: query
+        name: ReadAttributes
+        description: The read-only attributes of the user pool
+        type: string
+      - in: query
+        name: RefreshTokenValidity
+        description: The validity of the refresh token, in days
+        type: string
+      - in: query
+        name: UserPoolId
+        description: The user pool ID for the user pool where you want to update the
+          user pool            client
+        type: string
+      - in: query
+        name: WriteAttributes
+        description: The writeable attributes of the user pool
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - User Pool Clients
+  /?Action=VerifyUserAttribute&k=1:
+    get:
+      summary: ' Verify User Attribute '
+      description: Verifies the specified user attributes in the user pool
+      operationId: verifyUserAttribute
+      parameters:
+      - in: query
+        name: AccessToken
+        description: Represents the access token of the request to verify user attributes
+        type: string
+      - in: query
+        name: AttributeName
+        description: The attribute name in the request to verify user attributes
+        type: string
+      - in: query
+        name: Code
+        description: The verification code in the request to verify user attributes
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+definitions: []
