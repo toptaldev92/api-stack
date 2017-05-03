@@ -1,0 +1,695 @@
+agger: "2.0"
+info:
+  title: Relay API
+  description: Use these API to manage Azure Relay resources through Azure Resources
+    Manager.
+  version: 1.0.0
+host: management.azure.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /providers/Microsoft.Relay/operations:
+    get:
+      summary: Operations List
+      description: Lists all of the available Relay REST API operations
+      operationId: Operations_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Operations
+  /subscriptions/{subscriptionId}/providers/Microsoft.Relay/CheckNameAvailability:
+    post:
+      summary: Namespaces Check Name Availability
+      description: Check the give namespace name availability
+      operationId: Namespaces_CheckNameAvailability
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters to check availability of the given namespace name
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces Name Availability
+  /subscriptions/{subscriptionId}/providers/Microsoft.Relay/Namespaces:
+    get:
+      summary: Namespaces List
+      description: Lists all the available namespaces within the subscription irrespective
+        of the resourceGroups
+      operationId: Namespaces_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/Namespaces:
+    get:
+      summary: Namespaces List By Resource Group
+      description: Lists all the available namespaces within the ResourceGroup
+      operationId: Namespaces_ListByResourceGroup
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces Resource Group
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}:
+    delete:
+      summary: Namespaces Delete
+      description: Deletes an existing namespace
+      operationId: Namespaces_Delete
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces
+    get:
+      summary: Namespaces Get
+      description: Returns the description for the specified namespace
+      operationId: Namespaces_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces
+    patch:
+      summary: Namespaces Update
+      description: Creates or updates a namespace
+      operationId: Namespaces_Update
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters for updating a namespace resource
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces
+    put:
+      summary: Namespaces Create Or Update
+      description: Create Azure Relay namespace
+      operationId: Namespaces_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to create a Namespace Resource
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/AuthorizationRules
+  : get:
+      summary: Namespaces List Authorization Rules
+      description: Authorization rules for a namespace
+      operationId: Namespaces_ListAuthorizationRules
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces Authorization Rules
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}
+  : delete:
+      summary: Namespaces Delete Authorization Rule
+      description: Deletes a namespace authorization rule
+      operationId: Namespaces_DeleteAuthorizationRule
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces Authorization Rule
+    get:
+      summary: Namespaces Get Authorization Rule
+      description: Authorization rule for a namespace by name
+      operationId: Namespaces_GetAuthorizationRule
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces Authorization Rule
+    put:
+      summary: Namespaces Create Or Update Authorization Rule
+      description: Creates or Updates an authorization rule for a namespace
+      operationId: Namespaces_CreateOrUpdateAuthorizationRule
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The authorization rule parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces Authorization Rule
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}/listKeys
+  : post:
+      summary: Namespaces List Keys
+      description: 'Primary and Secondary ConnectionStrings to the namespace '
+      operationId: Namespaces_ListKeys
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces Keys
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}/regenerateKeys
+  : post:
+      summary: Namespaces Regenerate Keys
+      description: 'Regenerates the Primary or Secondary ConnectionStrings to the
+        namespace '
+      operationId: Namespaces_RegenerateKeys
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to regenerate Auth Rule
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces Regenerate Keys
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/HybridConnections
+  : get:
+      summary: Hybrid Connections List By Namespace
+      description: Lists the HybridConnection within the namespace
+      operationId: HybridConnections_ListByNamespace
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Hybrid Connections Namespace
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/HybridConnections/{hybridConnectionName}
+  : delete:
+      summary: Hybrid Connections Delete
+      description: 'Deletes a HybridConnection '
+      operationId: HybridConnections_Delete
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Hybrid Connections
+    get:
+      summary: Hybrid Connections Get
+      description: Returns the description for the specified HybridConnection
+      operationId: HybridConnections_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Hybrid Connections
+    put:
+      summary: Hybrid Connections Create Or Update
+      description: Creates or Updates a service HybridConnection
+      operationId: HybridConnections_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to create a HybridConnection
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Hybrid Connections
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/HybridConnections/{hybridConnectionName}/authorizationRules
+  : get:
+      summary: Hybrid Connections List Authorization Rules
+      description: Authorization rules for a HybridConnection
+      operationId: HybridConnections_ListAuthorizationRules
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Hybrid Connections Authorization Rules
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/HybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}
+  : delete:
+      summary: Hybrid Connections Delete Authorization Rule
+      description: Deletes a HybridConnection authorization rule
+      operationId: HybridConnections_DeleteAuthorizationRule
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Hybrid Connections Authorization Rule
+    get:
+      summary: Hybrid Connections Get Authorization Rule
+      description: HybridConnection authorizationRule for a HybridConnection by name
+      operationId: HybridConnections_GetAuthorizationRule
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Hybrid Connections Authorization Rule
+    put:
+      summary: Hybrid Connections Create Or Update Authorization Rule
+      description: Creates or Updates an authorization rule for a HybridConnection
+      operationId: HybridConnections_CreateOrUpdateAuthorizationRule
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The authorization rule parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Hybrid Connections Authorization Rule
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/HybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}/ListKeys
+  : post:
+      summary: Hybrid Connections List Keys
+      description: Primary and Secondary ConnectionStrings to the HybridConnection
+      operationId: HybridConnections_ListKeys
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Hybrid Connections Keys
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/HybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}/regenerateKeys
+  : post:
+      summary: Hybrid Connections Regenerate Keys
+      description: Regenerates the Primary or Secondary ConnectionStrings to the HybridConnection
+      operationId: HybridConnections_RegenerateKeys
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to regenerate Auth Rule
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Hybrid Connections Regenerate Keys
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/WcfRelays
+  : get:
+      summary: WCFRelays List By Namespace
+      description: Lists the WCFRelays within the namespace
+      operationId: WCFRelays_ListByNamespace
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Wcfrelays Namespace
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/WcfRelays/{relayName}
+  : delete:
+      summary: WCFRelays Delete
+      description: 'Deletes a WCFRelays '
+      operationId: WCFRelays_Delete
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - WCFRelays
+    get:
+      summary: WCFRelays Get
+      description: Returns the description for the specified WCFRelays
+      operationId: WCFRelays_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - WCFRelays
+    put:
+      summary: WCFRelays Create Or Update
+      description: Creates or Updates a WCFRelay
+      operationId: WCFRelays_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to create a WCFRelays
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - WCFRelays
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/WcfRelays/{relayName}/authorizationRules
+  : get:
+      summary: WCFRelays List Authorization Rules
+      description: Authorization rules for a WCFRelays
+      operationId: WCFRelays_ListAuthorizationRules
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - WCFRelays Authorization Rules
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/WcfRelays/{relayName}/authorizationRules/{authorizationRuleName}
+  : delete:
+      summary: WCFRelays Delete Authorization Rule
+      description: Deletes a WCFRelays authorization rule
+      operationId: WCFRelays_DeleteAuthorizationRule
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - WCFRelays Authorization Rule
+    get:
+      summary: WCFRelays Get Authorization Rule
+      description: Get authorizationRule for a WCFRelays by name
+      operationId: WCFRelays_GetAuthorizationRule
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - WCFRelays Authorization Rule
+    put:
+      summary: WCFRelays Create Or Update Authorization Rule
+      description: Creates or Updates an authorization rule for a WCFRelays
+      operationId: WCFRelays_CreateOrUpdateAuthorizationRule
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The authorization rule parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - WCFRelays Authorization Rule
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/WcfRelays/{relayName}/authorizationRules/{authorizationRuleName}/ListKeys
+  : post:
+      summary: WCFRelays List Keys
+      description: Primary and Secondary ConnectionStrings to the WCFRelays
+      operationId: WCFRelays_ListKeys
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - WCFRelays Keys
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/WcfRelays/{relayName}/authorizationRules/{authorizationRuleName}/regenerateKeys
+  : post:
+      summary: WCFRelays Regenerate Keys
+      description: Regenerates the Primary or Secondary ConnectionStrings to the WCFRelays
+      operationId: WCFRelays_RegenerateKeys
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to regenerate Auth Rule
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - WCFRelays Regenerate Keys
+definitions:
+  TrackedResource:
+    properties:
+      location:
+        description: This is a default description.
+        type: post
+      tags:
+        description: This is a default description.
+        type: post
+  Resource:
+    properties:
+      id:
+        description: This is a default description.
+        type: post
+      name:
+        description: This is a default description.
+        type: post
+      type:
+        description: This is a default description.
+        type: post
+  HybridConnectionListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  HybridConnection:
+    properties: []
+  HybridConnectionProperties:
+    properties:
+      createdAt:
+        description: This is a default description.
+        type: post
+      updatedAt:
+        description: This is a default description.
+        type: post
+      listenerCount:
+        description: This is a default description.
+        type: post
+      requiresClientAuthorization:
+        description: This is a default description.
+        type: post
+      userMetadata:
+        description: This is a default description.
+        type: post
+  WcfRelaysListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  WcfRelay:
+    properties: []
+  WcfRelayProperties:
+    properties:
+      relayType:
+        description: This is a default description.
+        type: post
+      createdAt:
+        description: This is a default description.
+        type: post
+      updatedAt:
+        description: This is a default description.
+        type: post
+      listenerCount:
+        description: This is a default description.
+        type: post
+      requiresClientAuthorization:
+        description: This is a default description.
+        type: post
+      requiresTransportSecurity:
+        description: This is a default description.
+        type: post
+      isDynamic:
+        description: This is a default description.
+        type: post
+      userMetadata:
+        description: This is a default description.
+        type: post
+  RelayNamespaceListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  RelayNamespace:
+    properties: []
+  RelayNamespaceProperties:
+    properties:
+      provisioningState:
+        description: This is a default description.
+        type: post
+      createdAt:
+        description: This is a default description.
+        type: post
+      updatedAt:
+        description: This is a default description.
+        type: post
+      serviceBusEndpoint:
+        description: This is a default description.
+        type: post
+      metricId:
+        description: This is a default description.
+        type: post
+  Sku:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
+      tier:
+        description: This is a default description.
+        type: post
+  AuthorizationRuleListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  AuthorizationRule:
+    properties: []
+  AuthorizationRuleProperties:
+    properties:
+      rights:
+        description: This is a default description.
+        type: post
+  AuthorizationRuleKeys:
+    properties:
+      primaryConnectionString:
+        description: This is a default description.
+        type: post
+      secondaryConnectionString:
+        description: This is a default description.
+        type: post
+      primaryKey:
+        description: This is a default description.
+        type: post
+      secondaryKey:
+        description: This is a default description.
+        type: post
+      keyName:
+        description: This is a default description.
+        type: post
+  RegenerateKeysParameters:
+    properties:
+      policyKey:
+        description: This is a default description.
+        type: post
+  ErrorResponse:
+    properties:
+      code:
+        description: This is a default description.
+        type: post
+      message:
+        description: This is a default description.
+        type: post
+  CheckNameAvailability:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
+  CheckNameAvailabilityResult:
+    properties:
+      nameAvailable:
+        description: This is a default description.
+        type: post
+      message:
+        description: This is a default description.
+        type: post
+  RelayNamespaceUpdateParameter:
+    properties:
+      tags:
+        description: This is a default description.
+        type: post
+  OperationListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  Operation:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
