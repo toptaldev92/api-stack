@@ -1,0 +1,4133 @@
+agger: "2.0"
+info:
+  title: DevTestLabsClient
+  description: The DevTest Labs Client.
+  version: 1.0.0
+host: management.azure.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /subscriptions/{subscriptionId}/providers/Microsoft.DevTestLab/labs:
+    get:
+      summary: Labs List By Subscription
+      description: List labs in a subscription
+      operationId: Labs_ListBySubscription
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Labs
+  /subscriptions/{subscriptionId}/providers/Microsoft.DevTestLab/schedules:
+    get:
+      summary: Global Schedules List By Subscription
+      description: List schedules in a subscription
+      operationId: GlobalSchedules_ListBySubscription
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Global Schedules
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs:
+    get:
+      summary: Labs List By Resource Group
+      description: List labs in a resource group
+      operationId: Labs_ListByResourceGroup
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Labs
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources:
+    get:
+      summary: Artifact Sources List
+      description: List artifact sources in a given lab
+      operationId: ArtifactSources_List
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Artifact Sources
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{artifactSourceName}/armtemplates
+  : get:
+      summary: Arm Templates List
+      description: List azure resource manager templates in a given artifact source
+      operationId: ArmTemplates_List
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: path
+        name: artifactSourceName
+        description: The name of the artifact source
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - ARM Templates
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{artifactSourceName}/armtemplates/{name}
+  : get:
+      summary: Arm Templates Get
+      description: Get azure resource manager template
+      operationId: ArmTemplates_Get
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: path
+        name: artifactSourceName
+        description: The name of the artifact source
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the azure Resource Manager template
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - ARM Templates
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{artifactSourceName}/artifacts
+  : get:
+      summary: Artifacts List
+      description: List artifacts in a given artifact source
+      operationId: Artifacts_List
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: path
+        name: artifactSourceName
+        description: The name of the artifact source
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Artifacts
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{artifactSourceName}/artifacts/{name}
+  : get:
+      summary: Artifacts Get
+      description: Get artifact
+      operationId: Artifacts_Get
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: path
+        name: artifactSourceName
+        description: The name of the artifact source
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the artifact
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Artifacts
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{artifactSourceName}/artifacts/{name}/generateArmTemplate
+  : post:
+      summary: Artifacts Generate Arm Template
+      description: Generates an ARM template for the given artifact, uploads the required
+        files to a storage account, and validates the generated artifact
+      operationId: Artifacts_GenerateArmTemplate
+      parameters:
+      - in: path
+        name: artifactSourceName
+        description: The name of the artifact source
+      - in: body
+        name: generateArmTemplateRequest
+        description: Parameters for generating an ARM template for deploying artifacts
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the artifact
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Artifacts
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/artifactsources/{name}
+  : delete:
+      summary: Artifact Sources Delete
+      description: Delete artifact source
+      operationId: ArtifactSources_Delete
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the artifact source
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Artifact Sources
+    get:
+      summary: Artifact Sources Get
+      description: Get artifact source
+      operationId: ArtifactSources_Get
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the artifact source
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Artifact Sources
+    patch:
+      summary: Artifact Sources Update
+      description: Modify properties of artifact sources
+      operationId: ArtifactSources_Update
+      parameters:
+      - in: body
+        name: artifactSource
+        description: Properties of an artifact source
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the artifact source
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Artifact Sources
+    put:
+      summary: Artifact Sources Create Or Update
+      description: Create or replace an existing artifact source
+      operationId: ArtifactSources_CreateOrUpdate
+      parameters:
+      - in: body
+        name: artifactSource
+        description: Properties of an artifact source
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the artifact source
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Artifact Sources
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/costs/{name}:
+    get:
+      summary: Costs Get
+      description: Get cost
+      operationId: Costs_Get
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the cost
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Costs
+    put:
+      summary: Costs Create Or Update
+      description: Create or replace an existing cost
+      operationId: Costs_CreateOrUpdate
+      parameters:
+      - in: body
+        name: labCost
+        description: A cost item
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the cost
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Costs
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/customimages:
+    get:
+      summary: Custom Images List
+      description: List custom images in a given lab
+      operationId: CustomImages_List
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Custom Images
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/customimages/{name}
+  : delete:
+      summary: Custom Images Delete
+      description: Delete custom image
+      operationId: CustomImages_Delete
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the custom image
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Custom Images
+    get:
+      summary: Custom Images Get
+      description: Get custom image
+      operationId: CustomImages_Get
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the custom image
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Custom Images
+    put:
+      summary: Custom Images Create Or Update
+      description: Create or replace an existing custom image
+      operationId: CustomImages_CreateOrUpdate
+      parameters:
+      - in: body
+        name: customImage
+        description: A custom image
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the custom image
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Custom Images
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/formulas:
+    get:
+      summary: Formulas List
+      description: List formulas in a given lab
+      operationId: Formulas_List
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Formulas
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/formulas/{name}:
+    delete:
+      summary: Formulas Delete
+      description: Delete formula
+      operationId: Formulas_Delete
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the formula
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Formulas
+    get:
+      summary: Formulas Get
+      description: Get formula
+      operationId: Formulas_Get
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the formula
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Formulas
+    put:
+      summary: Formulas Create Or Update
+      description: Create or replace an existing Formula
+      operationId: Formulas_CreateOrUpdate
+      parameters:
+      - in: body
+        name: formula
+        description: A formula for creating a VM, specifying an image base and other
+          parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the formula
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Formulas
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/galleryimages:
+    get:
+      summary: Gallery Images List
+      description: List gallery images in a given lab
+      operationId: GalleryImages_List
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Gallery Images
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels
+  : get:
+      summary: Notification Channels List
+      description: List notificationchannels in a given lab
+      operationId: NotificationChannels_List
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Notification Channels
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels/{name}
+  : delete:
+      summary: Notification Channels Delete
+      description: Delete notificationchannel
+      operationId: NotificationChannels_Delete
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the notificationChannel
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Notification Channels
+    get:
+      summary: Notification Channels Get
+      description: Get notificationchannel
+      operationId: NotificationChannels_Get
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the notificationChannel
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Notification Channels
+    patch:
+      summary: Notification Channels Update
+      description: Modify properties of notificationchannels
+      operationId: NotificationChannels_Update
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the notificationChannel
+      - in: query
+        name: No Name
+      - in: body
+        name: notificationChannel
+        description: A notification
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Notification Channels
+    put:
+      summary: Notification Channels Create Or Update
+      description: Create or replace an existing notificationChannel
+      operationId: NotificationChannels_CreateOrUpdate
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the notificationChannel
+      - in: query
+        name: No Name
+      - in: body
+        name: notificationChannel
+        description: A notification
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Notification Channels
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/notificationchannels/{name}/notify
+  : post:
+      summary: Notification Channels Notify
+      description: Send notification to provided channel
+      operationId: NotificationChannels_Notify
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the notificationChannel
+      - in: query
+        name: No Name
+      - in: body
+        name: notifyParameters
+        description: Properties for generating a Notification
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Notification Channels
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{name}/evaluatePolicies
+  : post:
+      summary: Policy Sets Evaluate Policies
+      description: Evaluates lab policy
+      operationId: PolicySets_EvaluatePolicies
+      parameters:
+      - in: body
+        name: evaluatePoliciesRequest
+        description: Request body for evaluating a policy set
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the policy set
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Policies
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{policySetName}/policies
+  : get:
+      summary: Policies List
+      description: List policies in a given policy set
+      operationId: Policies_List
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: query
+        name: No Name
+      - in: path
+        name: policySetName
+        description: The name of the policy set
+      responses:
+        200:
+          description: OK
+      tags:
+      - Policies
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/policysets/{policySetName}/policies/{name}
+  : delete:
+      summary: Policies Delete
+      description: Delete policy
+      operationId: Policies_Delete
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the policy
+      - in: query
+        name: No Name
+      - in: path
+        name: policySetName
+        description: The name of the policy set
+      responses:
+        200:
+          description: OK
+      tags:
+      - Policies
+    get:
+      summary: Policies Get
+      description: Get policy
+      operationId: Policies_Get
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the policy
+      - in: query
+        name: No Name
+      - in: path
+        name: policySetName
+        description: The name of the policy set
+      responses:
+        200:
+          description: OK
+      tags:
+      - Policies
+    patch:
+      summary: Policies Update
+      description: Modify properties of policies
+      operationId: Policies_Update
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the policy
+      - in: query
+        name: No Name
+      - in: body
+        name: policy
+        description: A Policy
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: policySetName
+        description: The name of the policy set
+      responses:
+        200:
+          description: OK
+      tags:
+      - Policies
+    put:
+      summary: Policies Create Or Update
+      description: Create or replace an existing policy
+      operationId: Policies_CreateOrUpdate
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the policy
+      - in: query
+        name: No Name
+      - in: body
+        name: policy
+        description: A Policy
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: policySetName
+        description: The name of the policy set
+      responses:
+        200:
+          description: OK
+      tags:
+      - Policies
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules:
+    get:
+      summary: Schedules List
+      description: List schedules in a given lab
+      operationId: Schedules_List
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Schedules
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules/{name}
+  : delete:
+      summary: Schedules Delete
+      description: Delete schedule
+      operationId: Schedules_Delete
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the schedule
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Schedules
+    get:
+      summary: Schedules Get
+      description: Get schedule
+      operationId: Schedules_Get
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the schedule
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Schedules
+    patch:
+      summary: Schedules Update
+      description: Modify properties of schedules
+      operationId: Schedules_Update
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the schedule
+      - in: query
+        name: No Name
+      - in: body
+        name: schedule
+        description: A schedule
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Schedules
+    put:
+      summary: Schedules Create Or Update
+      description: Create or replace an existing schedule
+      operationId: Schedules_CreateOrUpdate
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the schedule
+      - in: query
+        name: No Name
+      - in: body
+        name: schedule
+        description: A schedule
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Schedules
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules/{name}/execute
+  : post:
+      summary: Schedules Execute
+      description: Execute a schedule
+      operationId: Schedules_Execute
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the schedule
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Schedules
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/schedules/{name}/listApplicable
+  : post:
+      summary: Schedules List Applicable
+      description: Lists all applicable schedules
+      operationId: Schedules_ListApplicable
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the schedule
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Schedules
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/servicerunners:
+    get:
+      summary: Service Runners List
+      description: List service runners in a given lab
+      operationId: ServiceRunners_List
+      parameters:
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Service Runners
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/servicerunners/{name}
+  : delete:
+      summary: Service Runners Delete
+      description: Delete service runner
+      operationId: ServiceRunners_Delete
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the service runner
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Service Runners
+    get:
+      summary: Service Runners Get
+      description: Get service runner
+      operationId: ServiceRunners_Get
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the service runner
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Service Runners
+    put:
+      summary: Service Runners Create Or Update
+      description: Create or replace an existing Service runner
+      operationId: ServiceRunners_CreateOrUpdate
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the service runner
+      - in: query
+        name: No Name
+      - in: body
+        name: serviceRunner
+        description: A container for a managed identity to execute DevTest lab services
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Service Runners
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users:
+    get:
+      summary: Users List
+      description: List user profiles in a given lab
+      operationId: Users_List
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{name}:
+    delete:
+      summary: Users Delete
+      description: Delete user profile
+      operationId: Users_Delete
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the user profile
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+    get:
+      summary: Users Get
+      description: Get user profile
+      operationId: Users_Get
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the user profile
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+    patch:
+      summary: Users Update
+      description: Modify properties of user profiles
+      operationId: Users_Update
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the user profile
+      - in: query
+        name: No Name
+      - in: body
+        name: user
+        description: Profile of a lab user
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+    put:
+      summary: Users Create Or Update
+      description: Create or replace an existing user profile
+      operationId: Users_CreateOrUpdate
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the user profile
+      - in: query
+        name: No Name
+      - in: body
+        name: user
+        description: Profile of a lab user
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks
+  : get:
+      summary: Disks List
+      description: List disks in a given user profile
+      operationId: Disks_List
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: query
+        name: No Name
+      - in: path
+        name: userName
+        description: The name of the user profile
+      responses:
+        200:
+          description: OK
+      tags:
+      - Disks
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}
+  : delete:
+      summary: Disks Delete
+      description: Delete disk
+      operationId: Disks_Delete
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the disk
+      - in: query
+        name: No Name
+      - in: path
+        name: userName
+        description: The name of the user profile
+      responses:
+        200:
+          description: OK
+      tags:
+      - Disks
+    get:
+      summary: Disks Get
+      description: Get disk
+      operationId: Disks_Get
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the disk
+      - in: query
+        name: No Name
+      - in: path
+        name: userName
+        description: The name of the user profile
+      responses:
+        200:
+          description: OK
+      tags:
+      - Disks
+    put:
+      summary: Disks Create Or Update
+      description: Create or replace an existing disk
+      operationId: Disks_CreateOrUpdate
+      parameters:
+      - in: body
+        name: disk
+        description: A Disk
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the disk
+      - in: query
+        name: No Name
+      - in: path
+        name: userName
+        description: The name of the user profile
+      responses:
+        200:
+          description: OK
+      tags:
+      - Disks
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}/attach
+  : post:
+      summary: Disks Attach
+      description: Attach and create the lease of the disk to the virtual machine
+      operationId: Disks_Attach
+      parameters:
+      - in: body
+        name: attachDiskProperties
+        description: Properties of the disk to attach
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the disk
+      - in: query
+        name: No Name
+      - in: path
+        name: userName
+        description: The name of the user profile
+      responses:
+        200:
+          description: OK
+      tags:
+      - Disks
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/disks/{name}/detach
+  : post:
+      summary: Disks Detach
+      description: Detach and break the lease of the disk attached to the virtual
+        machine
+      operationId: Disks_Detach
+      parameters:
+      - in: body
+        name: detachDiskProperties
+        description: Properties of the disk to detach
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the disk
+      - in: query
+        name: No Name
+      - in: path
+        name: userName
+        description: The name of the user profile
+      responses:
+        200:
+          description: OK
+      tags:
+      - Disks
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/environments
+  : get:
+      summary: Environments List
+      description: List environments in a given user profile
+      operationId: Environments_List
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: query
+        name: No Name
+      - in: path
+        name: userName
+        description: The name of the user profile
+      responses:
+        200:
+          description: OK
+      tags:
+      - Environments
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/environments/{name}
+  : delete:
+      summary: Environments Delete
+      description: Delete environment
+      operationId: Environments_Delete
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the environment
+      - in: query
+        name: No Name
+      - in: path
+        name: userName
+        description: The name of the user profile
+      responses:
+        200:
+          description: OK
+      tags:
+      - Environments
+    get:
+      summary: Environments Get
+      description: Get environment
+      operationId: Environments_Get
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the environment
+      - in: query
+        name: No Name
+      - in: path
+        name: userName
+        description: The name of the user profile
+      responses:
+        200:
+          description: OK
+      tags:
+      - Environments
+    put:
+      summary: Environments Create Or Update
+      description: Create or replace an existing environment
+      operationId: Environments_CreateOrUpdate
+      parameters:
+      - in: body
+        name: dtlEnvironment
+        description: An environment, which is essentially an ARM template deployment
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the environment
+      - in: query
+        name: No Name
+      - in: path
+        name: userName
+        description: The name of the user profile
+      responses:
+        200:
+          description: OK
+      tags:
+      - Environments
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/secrets
+  : get:
+      summary: Secrets List
+      description: List secrets in a given user profile
+      operationId: Secrets_List
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: query
+        name: No Name
+      - in: path
+        name: userName
+        description: The name of the user profile
+      responses:
+        200:
+          description: OK
+      tags:
+      - Secrets
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/users/{userName}/secrets/{name}
+  : delete:
+      summary: Secrets Delete
+      description: Delete secret
+      operationId: Secrets_Delete
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the secret
+      - in: query
+        name: No Name
+      - in: path
+        name: userName
+        description: The name of the user profile
+      responses:
+        200:
+          description: OK
+      tags:
+      - Secrets
+    get:
+      summary: Secrets Get
+      description: Get secret
+      operationId: Secrets_Get
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the secret
+      - in: query
+        name: No Name
+      - in: path
+        name: userName
+        description: The name of the user profile
+      responses:
+        200:
+          description: OK
+      tags:
+      - Secrets
+    put:
+      summary: Secrets Create Or Update
+      description: Create or replace an existing secret
+      operationId: Secrets_CreateOrUpdate
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the secret
+      - in: query
+        name: No Name
+      - in: body
+        name: secret
+        description: A secret
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: userName
+        description: The name of the user profile
+      responses:
+        200:
+          description: OK
+      tags:
+      - Secrets
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines:
+    get:
+      summary: Virtual Machines List
+      description: List virtual machines in a given lab
+      operationId: VirtualMachines_List
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Machines
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}
+  : delete:
+      summary: Virtual Machines Delete
+      description: Delete virtual machine
+      operationId: VirtualMachines_Delete
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the virtual machine
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Machines
+    get:
+      summary: Virtual Machines Get
+      description: Get virtual machine
+      operationId: VirtualMachines_Get
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the virtual machine
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Machines
+    patch:
+      summary: Virtual Machines Update
+      description: Modify properties of virtual machines
+      operationId: VirtualMachines_Update
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: body
+        name: labVirtualMachine
+        description: A virtual machine
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: name
+        description: The name of the virtual machine
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Machines
+    put:
+      summary: Virtual Machines Create Or Update
+      description: Create or replace an existing Virtual machine
+      operationId: VirtualMachines_CreateOrUpdate
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: body
+        name: labVirtualMachine
+        description: A virtual machine
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: name
+        description: The name of the virtual machine
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Machines
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/addDataDisk
+  : post:
+      summary: Virtual Machines Add Data Disk
+      description: Attach a new or existing data disk to virtual machine
+      operationId: VirtualMachines_AddDataDisk
+      parameters:
+      - in: body
+        name: dataDiskProperties
+        description: Request body for adding a new or existing data disk to a virtual
+          machine
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the virtual machine
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Machines
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/applyArtifacts
+  : post:
+      summary: Virtual Machines Apply Artifacts
+      description: Apply artifacts to virtual machine
+      operationId: VirtualMachines_ApplyArtifacts
+      parameters:
+      - in: body
+        name: applyArtifactsRequest
+        description: Request body for applying artifacts to a virtual machine
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the virtual machine
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Machines
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/claim
+  : post:
+      summary: Virtual Machines Claim
+      description: Take ownership of an existing virtual machine This operation can
+        take a while to complete
+      operationId: VirtualMachines_Claim
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the virtual machine
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Machines
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/detachDataDisk
+  : post:
+      summary: Virtual Machines Detach Data Disk
+      description: Detach the specified disk from the virtual machine
+      operationId: VirtualMachines_DetachDataDisk
+      parameters:
+      - in: body
+        name: detachDataDiskProperties
+        description: Request body for detaching data disk from a virtual machine
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the virtual machine
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Machines
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/listApplicableSchedules
+  : post:
+      summary: Virtual Machines List Applicable Schedules
+      description: Lists all applicable schedules
+      operationId: VirtualMachines_ListApplicableSchedules
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the virtual machine
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Machines
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/start
+  : post:
+      summary: Virtual Machines Start
+      description: Start a virtual machine
+      operationId: VirtualMachines_Start
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the virtual machine
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Machines
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{name}/stop
+  : post:
+      summary: Virtual Machines Stop
+      description: Stop a virtual machine This operation can take a while to complete
+      operationId: VirtualMachines_Stop
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the virtual machine
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Machines
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules
+  : get:
+      summary: Virtual Machine Schedules List
+      description: List schedules in a given virtual machine
+      operationId: VirtualMachineSchedules_List
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: query
+        name: No Name
+      - in: path
+        name: virtualMachineName
+        description: The name of the virtual machine
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Machine Schedules
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules/{name}
+  : delete:
+      summary: Virtual Machine Schedules Delete
+      description: Delete schedule
+      operationId: VirtualMachineSchedules_Delete
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the schedule
+      - in: query
+        name: No Name
+      - in: path
+        name: virtualMachineName
+        description: The name of the virtual machine
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Machine Schedules
+    get:
+      summary: Virtual Machine Schedules Get
+      description: Get schedule
+      operationId: VirtualMachineSchedules_Get
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the schedule
+      - in: query
+        name: No Name
+      - in: path
+        name: virtualMachineName
+        description: The name of the virtual machine
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Machine Schedules
+    patch:
+      summary: Virtual Machine Schedules Update
+      description: Modify properties of schedules
+      operationId: VirtualMachineSchedules_Update
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the schedule
+      - in: query
+        name: No Name
+      - in: body
+        name: schedule
+        description: A schedule
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: virtualMachineName
+        description: The name of the virtual machine
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Machine Schedules
+    put:
+      summary: Virtual Machine Schedules Create Or Update
+      description: Create or replace an existing schedule
+      operationId: VirtualMachineSchedules_CreateOrUpdate
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the schedule
+      - in: query
+        name: No Name
+      - in: body
+        name: schedule
+        description: A schedule
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: virtualMachineName
+        description: The name of the virtual machine
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Machine Schedules
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualmachines/{virtualMachineName}/schedules/{name}/execute
+  : post:
+      summary: Virtual Machine Schedules Execute
+      description: Execute a schedule
+      operationId: VirtualMachineSchedules_Execute
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the schedule
+      - in: query
+        name: No Name
+      - in: path
+        name: virtualMachineName
+        description: The name of the virtual machine
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Machine Schedules Execute
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualnetworks:
+    get:
+      summary: Virtual Networks List
+      description: List virtual networks in a given lab
+      operationId: VirtualNetworks_List
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Networks
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/virtualnetworks/{name}
+  : delete:
+      summary: Virtual Networks Delete
+      description: Delete virtual network
+      operationId: VirtualNetworks_Delete
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the virtual network
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Networks
+    get:
+      summary: Virtual Networks Get
+      description: Get virtual network
+      operationId: VirtualNetworks_Get
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the virtual network
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Networks
+    patch:
+      summary: Virtual Networks Update
+      description: Modify properties of virtual networks
+      operationId: VirtualNetworks_Update
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the virtual network
+      - in: query
+        name: No Name
+      - in: body
+        name: virtualNetwork
+        description: A virtual network
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Networks
+    put:
+      summary: Virtual Networks Create Or Update
+      description: Create or replace an existing virtual network
+      operationId: VirtualNetworks_CreateOrUpdate
+      parameters:
+      - in: path
+        name: labName
+        description: The name of the lab
+      - in: path
+        name: name
+        description: The name of the virtual network
+      - in: query
+        name: No Name
+      - in: body
+        name: virtualNetwork
+        description: A virtual network
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Virtual Networks
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}:
+    delete:
+      summary: Labs Delete
+      description: Delete lab
+      operationId: Labs_Delete
+      parameters:
+      - in: path
+        name: name
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Labs
+    get:
+      summary: Labs Get
+      description: Get lab
+      operationId: Labs_Get
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: path
+        name: name
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Labs
+    patch:
+      summary: Labs Update
+      description: Modify properties of labs
+      operationId: Labs_Update
+      parameters:
+      - in: body
+        name: lab
+        description: A lab
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: name
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Labs
+    put:
+      summary: Labs Create Or Update
+      description: Create or replace an existing lab
+      operationId: Labs_CreateOrUpdate
+      parameters:
+      - in: body
+        name: lab
+        description: A lab
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: name
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Labs
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/claimAnyVm:
+    post:
+      summary: Labs Claim Any Vm
+      description: Claim a random claimable virtual machine in the lab
+      operationId: Labs_ClaimAnyVm
+      parameters:
+      - in: path
+        name: name
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Labs
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/createEnvironment:
+    post:
+      summary: Labs Create Environment
+      description: Create virtual machines in a lab
+      operationId: Labs_CreateEnvironment
+      parameters:
+      - in: body
+        name: labVirtualMachineCreationParameter
+        description: Properties for creating a virtual machine
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: name
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Labs Environment
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/exportResourceUsage
+  : post:
+      summary: Labs Export Resource Usage
+      description: Exports the lab resource usage into a storage account This operation
+        can take a while to complete
+      operationId: Labs_ExportResourceUsage
+      parameters:
+      - in: body
+        name: exportResourceUsageParameters
+        description: The parameters of the export operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: name
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Labs Export
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/generateUploadUri:
+    post:
+      summary: Labs Generate Upload Uri
+      description: Generate a URI for uploading custom disk images to a Lab
+      operationId: Labs_GenerateUploadUri
+      parameters:
+      - in: body
+        name: generateUploadUriParameter
+        description: Properties for generating an upload URI
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: name
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Labs
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{name}/listVhds:
+    post:
+      summary: Labs List Vhds
+      description: List disk images available for custom image creation
+      operationId: Labs_ListVhds
+      parameters:
+      - in: path
+        name: name
+        description: The name of the lab
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Labs Vhds
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules:
+    get:
+      summary: Global Schedules List By Resource Group
+      description: List schedules in a resource group
+      operationId: GlobalSchedules_ListByResourceGroup
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: query
+        name: $filter
+        description: The filter to apply to the operation
+      - in: query
+        name: $orderby
+        description: The ordering expression for the results, using OData notation
+      - in: query
+        name: $top
+        description: The maximum number of resources to return from the operation
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Global Schedules
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules/{name}:
+    delete:
+      summary: Global Schedules Delete
+      description: Delete schedule
+      operationId: GlobalSchedules_Delete
+      parameters:
+      - in: path
+        name: name
+        description: The name of the schedule
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Global Schedules
+    get:
+      summary: Global Schedules Get
+      description: Get schedule
+      operationId: GlobalSchedules_Get
+      parameters:
+      - in: query
+        name: $expand
+        description: Specify the $expand query
+      - in: path
+        name: name
+        description: The name of the schedule
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Global Schedules
+    patch:
+      summary: Global Schedules Update
+      description: Modify properties of schedules
+      operationId: GlobalSchedules_Update
+      parameters:
+      - in: path
+        name: name
+        description: The name of the schedule
+      - in: query
+        name: No Name
+      - in: body
+        name: schedule
+        description: A schedule
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Global Schedules
+    put:
+      summary: Global Schedules Create Or Update
+      description: Create or replace an existing schedule
+      operationId: GlobalSchedules_CreateOrUpdate
+      parameters:
+      - in: path
+        name: name
+        description: The name of the schedule
+      - in: query
+        name: No Name
+      - in: body
+        name: schedule
+        description: A schedule
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Global Schedules
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules/{name}/execute:
+    post:
+      summary: Global Schedules Execute
+      description: Execute a schedule
+      operationId: GlobalSchedules_Execute
+      parameters:
+      - in: path
+        name: name
+        description: The name of the schedule
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Global Schedules
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/schedules/{name}/retarget:
+    post:
+      summary: Global Schedules Retarget
+      description: Updates a schedule's target resource Id
+      operationId: GlobalSchedules_Retarget
+      parameters:
+      - in: path
+        name: name
+        description: The name of the schedule
+      - in: query
+        name: No Name
+      - in: body
+        name: retargetScheduleProperties
+        description: Properties for retargeting a virtual machine schedule
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Global Schedules
+definitions:
+  ApplicableSchedule:
+    properties: []
+  ApplicableScheduleFragment:
+    properties: []
+  ApplicableScheduleProperties:
+    properties: []
+  ApplicableSchedulePropertiesFragment:
+    properties: []
+  ApplyArtifactsRequest:
+    properties:
+      artifacts:
+        description: This is a default description.
+        type: post
+  ArmTemplate:
+    properties: []
+  ArmTemplateInfo:
+    properties:
+      template:
+        description: This is a default description.
+        type: post
+      parameters:
+        description: This is a default description.
+        type: post
+  ArmTemplateParameterProperties:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
+      value:
+        description: This is a default description.
+        type: post
+  ArmTemplateProperties:
+    properties:
+      displayName:
+        description: This is a default description.
+        type: post
+      description:
+        description: This is a default description.
+        type: post
+      publisher:
+        description: This is a default description.
+        type: post
+      icon:
+        description: This is a default description.
+        type: post
+      contents:
+        description: This is a default description.
+        type: post
+      createdDate:
+        description: This is a default description.
+        type: post
+      parametersValueFilesInfo:
+        description: This is a default description.
+        type: post
+  Artifact:
+    properties: []
+  ArtifactDeploymentStatusProperties:
+    properties:
+      deploymentStatus:
+        description: This is a default description.
+        type: post
+      artifactsApplied:
+        description: This is a default description.
+        type: post
+      totalArtifacts:
+        description: This is a default description.
+        type: post
+  ArtifactDeploymentStatusPropertiesFragment:
+    properties:
+      deploymentStatus:
+        description: This is a default description.
+        type: post
+      artifactsApplied:
+        description: This is a default description.
+        type: post
+      totalArtifacts:
+        description: This is a default description.
+        type: post
+  ArtifactInstallProperties:
+    properties:
+      artifactId:
+        description: This is a default description.
+        type: post
+      parameters:
+        description: This is a default description.
+        type: post
+      status:
+        description: This is a default description.
+        type: post
+      deploymentStatusMessage:
+        description: This is a default description.
+        type: post
+      vmExtensionStatusMessage:
+        description: This is a default description.
+        type: post
+      installTime:
+        description: This is a default description.
+        type: post
+  ArtifactInstallPropertiesFragment:
+    properties:
+      artifactId:
+        description: This is a default description.
+        type: post
+      parameters:
+        description: This is a default description.
+        type: post
+      status:
+        description: This is a default description.
+        type: post
+      deploymentStatusMessage:
+        description: This is a default description.
+        type: post
+      vmExtensionStatusMessage:
+        description: This is a default description.
+        type: post
+      installTime:
+        description: This is a default description.
+        type: post
+  ArtifactParameterProperties:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
+      value:
+        description: This is a default description.
+        type: post
+  ArtifactParameterPropertiesFragment:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
+      value:
+        description: This is a default description.
+        type: post
+  ArtifactProperties:
+    properties:
+      title:
+        description: This is a default description.
+        type: post
+      description:
+        description: This is a default description.
+        type: post
+      publisher:
+        description: This is a default description.
+        type: post
+      filePath:
+        description: This is a default description.
+        type: post
+      icon:
+        description: This is a default description.
+        type: post
+      targetOsType:
+        description: This is a default description.
+        type: post
+      parameters:
+        description: This is a default description.
+        type: post
+      createdDate:
+        description: This is a default description.
+        type: post
+  ArtifactSource:
+    properties: []
+  ArtifactSourceFragment:
+    properties: []
+  ArtifactSourceProperties:
+    properties:
+      displayName:
+        description: This is a default description.
+        type: post
+      uri:
+        description: This is a default description.
+        type: post
+      sourceType:
+        description: This is a default description.
+        type: post
+      folderPath:
+        description: This is a default description.
+        type: post
+      armTemplateFolderPath:
+        description: This is a default description.
+        type: post
+      branchRef:
+        description: This is a default description.
+        type: post
+      securityToken:
+        description: This is a default description.
+        type: post
+      status:
+        description: This is a default description.
+        type: post
+      createdDate:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+  ArtifactSourcePropertiesFragment:
+    properties:
+      displayName:
+        description: This is a default description.
+        type: post
+      uri:
+        description: This is a default description.
+        type: post
+      sourceType:
+        description: This is a default description.
+        type: post
+      folderPath:
+        description: This is a default description.
+        type: post
+      armTemplateFolderPath:
+        description: This is a default description.
+        type: post
+      branchRef:
+        description: This is a default description.
+        type: post
+      securityToken:
+        description: This is a default description.
+        type: post
+      status:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  AttachDiskProperties:
+    properties:
+      leasedByLabVmId:
+        description: This is a default description.
+        type: post
+  AttachNewDataDiskOptions:
+    properties:
+      diskSizeGiB:
+        description: This is a default description.
+        type: post
+      diskName:
+        description: This is a default description.
+        type: post
+      diskType:
+        description: This is a default description.
+        type: post
+  BulkCreationParameters:
+    properties:
+      instanceCount:
+        description: This is a default description.
+        type: post
+  CloudError:
+    properties: []
+  CloudErrorBody:
+    properties:
+      code:
+        description: This is a default description.
+        type: post
+      message:
+        description: This is a default description.
+        type: post
+      target:
+        description: This is a default description.
+        type: post
+      details:
+        description: This is a default description.
+        type: post
+  ComputeDataDisk:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
+      diskUri:
+        description: This is a default description.
+        type: post
+      managedDiskId:
+        description: This is a default description.
+        type: post
+      diskSizeGiB:
+        description: This is a default description.
+        type: post
+  ComputeDataDiskFragment:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
+      diskUri:
+        description: This is a default description.
+        type: post
+      managedDiskId:
+        description: This is a default description.
+        type: post
+      diskSizeGiB:
+        description: This is a default description.
+        type: post
+  ComputeVmInstanceViewStatus:
+    properties:
+      code:
+        description: This is a default description.
+        type: post
+      displayStatus:
+        description: This is a default description.
+        type: post
+      message:
+        description: This is a default description.
+        type: post
+  ComputeVmInstanceViewStatusFragment:
+    properties:
+      code:
+        description: This is a default description.
+        type: post
+      displayStatus:
+        description: This is a default description.
+        type: post
+      message:
+        description: This is a default description.
+        type: post
+  ComputeVmProperties:
+    properties:
+      statuses:
+        description: This is a default description.
+        type: post
+      osType:
+        description: This is a default description.
+        type: post
+      vmSize:
+        description: This is a default description.
+        type: post
+      networkInterfaceId:
+        description: This is a default description.
+        type: post
+      osDiskId:
+        description: This is a default description.
+        type: post
+      dataDiskIds:
+        description: This is a default description.
+        type: post
+      dataDisks:
+        description: This is a default description.
+        type: post
+  ComputeVmPropertiesFragment:
+    properties:
+      statuses:
+        description: This is a default description.
+        type: post
+      osType:
+        description: This is a default description.
+        type: post
+      vmSize:
+        description: This is a default description.
+        type: post
+      networkInterfaceId:
+        description: This is a default description.
+        type: post
+      osDiskId:
+        description: This is a default description.
+        type: post
+      dataDiskIds:
+        description: This is a default description.
+        type: post
+      dataDisks:
+        description: This is a default description.
+        type: post
+  CostThresholdProperties:
+    properties:
+      thresholdId:
+        description: This is a default description.
+        type: post
+      displayOnChart:
+        description: This is a default description.
+        type: post
+      sendNotificationWhenExceeded:
+        description: This is a default description.
+        type: post
+      NotificationSent:
+        description: This is a default description.
+        type: post
+  CustomImage:
+    properties: []
+  CustomImageProperties:
+    properties:
+      description:
+        description: This is a default description.
+        type: post
+      author:
+        description: This is a default description.
+        type: post
+      creationDate:
+        description: This is a default description.
+        type: post
+      managedImageId:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  CustomImagePropertiesCustom:
+    properties:
+      imageName:
+        description: This is a default description.
+        type: post
+      sysPrep:
+        description: This is a default description.
+        type: post
+      osType:
+        description: This is a default description.
+        type: post
+  CustomImagePropertiesFromVm:
+    properties:
+      sourceVmId:
+        description: This is a default description.
+        type: post
+  DataDiskProperties:
+    properties:
+      existingLabDiskId:
+        description: This is a default description.
+        type: post
+      hostCaching:
+        description: This is a default description.
+        type: post
+  DayDetails:
+    properties:
+      time:
+        description: This is a default description.
+        type: post
+  DayDetailsFragment:
+    properties:
+      time:
+        description: This is a default description.
+        type: post
+  DetachDataDiskProperties:
+    properties:
+      existingLabDiskId:
+        description: This is a default description.
+        type: post
+  DetachDiskProperties:
+    properties:
+      leasedByLabVmId:
+        description: This is a default description.
+        type: post
+  Disk:
+    properties: []
+  DiskProperties:
+    properties:
+      diskType:
+        description: This is a default description.
+        type: post
+      diskSizeGiB:
+        description: This is a default description.
+        type: post
+      leasedByLabVmId:
+        description: This is a default description.
+        type: post
+      diskBlobName:
+        description: This is a default description.
+        type: post
+      diskUri:
+        description: This is a default description.
+        type: post
+      createdDate:
+        description: This is a default description.
+        type: post
+      hostCaching:
+        description: This is a default description.
+        type: post
+      managedDiskId:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  DtlEnvironment:
+    properties: []
+  EnvironmentDeploymentProperties:
+    properties:
+      armTemplateId:
+        description: This is a default description.
+        type: post
+      parameters:
+        description: This is a default description.
+        type: post
+  EnvironmentProperties:
+    properties:
+      armTemplateDisplayName:
+        description: This is a default description.
+        type: post
+      resourceGroupId:
+        description: This is a default description.
+        type: post
+      createdByUser:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  EvaluatePoliciesProperties:
+    properties:
+      factName:
+        description: This is a default description.
+        type: post
+      factData:
+        description: This is a default description.
+        type: post
+      valueOffset:
+        description: This is a default description.
+        type: post
+  EvaluatePoliciesRequest:
+    properties:
+      policies:
+        description: This is a default description.
+        type: post
+  EvaluatePoliciesResponse:
+    properties:
+      results:
+        description: This is a default description.
+        type: post
+  Event:
+    properties:
+      eventName:
+        description: This is a default description.
+        type: post
+  EventFragment:
+    properties:
+      eventName:
+        description: This is a default description.
+        type: post
+  ExportResourceUsageParameters:
+    properties:
+      blobStorageAbsoluteSasUri:
+        description: This is a default description.
+        type: post
+      usageStartDate:
+        description: This is a default description.
+        type: post
+  ExternalSubnet:
+    properties:
+      id:
+        description: This is a default description.
+        type: post
+      name:
+        description: This is a default description.
+        type: post
+  ExternalSubnetFragment:
+    properties:
+      id:
+        description: This is a default description.
+        type: post
+      name:
+        description: This is a default description.
+        type: post
+  Formula:
+    properties: []
+  FormulaProperties:
+    properties:
+      description:
+        description: This is a default description.
+        type: post
+      author:
+        description: This is a default description.
+        type: post
+      osType:
+        description: This is a default description.
+        type: post
+      creationDate:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  FormulaPropertiesFromVm:
+    properties:
+      labVmId:
+        description: This is a default description.
+        type: post
+  GalleryImage:
+    properties: []
+  GalleryImageProperties:
+    properties:
+      author:
+        description: This is a default description.
+        type: post
+      createdDate:
+        description: This is a default description.
+        type: post
+      description:
+        description: This is a default description.
+        type: post
+      icon:
+        description: This is a default description.
+        type: post
+      enabled:
+        description: This is a default description.
+        type: post
+  GalleryImageReference:
+    properties:
+      offer:
+        description: This is a default description.
+        type: post
+      publisher:
+        description: This is a default description.
+        type: post
+      sku:
+        description: This is a default description.
+        type: post
+      osType:
+        description: This is a default description.
+        type: post
+      version:
+        description: This is a default description.
+        type: post
+  GalleryImageReferenceFragment:
+    properties:
+      offer:
+        description: This is a default description.
+        type: post
+      publisher:
+        description: This is a default description.
+        type: post
+      sku:
+        description: This is a default description.
+        type: post
+      osType:
+        description: This is a default description.
+        type: post
+      version:
+        description: This is a default description.
+        type: post
+  GenerateArmTemplateRequest:
+    properties:
+      virtualMachineName:
+        description: This is a default description.
+        type: post
+      parameters:
+        description: This is a default description.
+        type: post
+      location:
+        description: This is a default description.
+        type: post
+      fileUploadOptions:
+        description: This is a default description.
+        type: post
+  GenerateUploadUriParameter:
+    properties:
+      blobName:
+        description: This is a default description.
+        type: post
+  GenerateUploadUriResponse:
+    properties:
+      uploadUri:
+        description: This is a default description.
+        type: post
+  HourDetails:
+    properties:
+      minute:
+        description: This is a default description.
+        type: post
+  HourDetailsFragment:
+    properties:
+      minute:
+        description: This is a default description.
+        type: post
+  IdentityProperties:
+    properties:
+      type:
+        description: This is a default description.
+        type: post
+      principalId:
+        description: This is a default description.
+        type: post
+      tenantId:
+        description: This is a default description.
+        type: post
+      clientSecretUrl:
+        description: This is a default description.
+        type: post
+  InboundNatRule:
+    properties:
+      transportProtocol:
+        description: This is a default description.
+        type: post
+      frontendPort:
+        description: This is a default description.
+        type: post
+      backendPort:
+        description: This is a default description.
+        type: post
+  InboundNatRuleFragment:
+    properties:
+      transportProtocol:
+        description: This is a default description.
+        type: post
+      frontendPort:
+        description: This is a default description.
+        type: post
+      backendPort:
+        description: This is a default description.
+        type: post
+  Lab:
+    properties: []
+  LabCost:
+    properties: []
+  LabCostDetailsProperties:
+    properties:
+      date:
+        description: This is a default description.
+        type: post
+      cost:
+        description: This is a default description.
+        type: post
+      costType:
+        description: This is a default description.
+        type: post
+  LabCostProperties:
+    properties:
+      labCostDetails:
+        description: This is a default description.
+        type: post
+      resourceCosts:
+        description: This is a default description.
+        type: post
+      currencyCode:
+        description: This is a default description.
+        type: post
+      startDateTime:
+        description: This is a default description.
+        type: post
+      endDateTime:
+        description: This is a default description.
+        type: post
+      createdDate:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  LabCostSummaryProperties:
+    properties:
+      estimatedLabCost:
+        description: This is a default description.
+        type: post
+  LabFragment:
+    properties: []
+  LabProperties:
+    properties:
+      defaultStorageAccount:
+        description: This is a default description.
+        type: post
+      defaultPremiumStorageAccount:
+        description: This is a default description.
+        type: post
+      artifactsStorageAccount:
+        description: This is a default description.
+        type: post
+      premiumDataDiskStorageAccount:
+        description: This is a default description.
+        type: post
+      vaultName:
+        description: This is a default description.
+        type: post
+      labStorageType:
+        description: This is a default description.
+        type: post
+      createdDate:
+        description: This is a default description.
+        type: post
+      premiumDataDisks:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  LabPropertiesFragment:
+    properties:
+      labStorageType:
+        description: This is a default description.
+        type: post
+      premiumDataDisks:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  LabResourceCostProperties:
+    properties:
+      resourcename:
+        description: This is a default description.
+        type: post
+      resourceUId:
+        description: This is a default description.
+        type: post
+      resourceCost:
+        description: This is a default description.
+        type: post
+      resourceType:
+        description: This is a default description.
+        type: post
+      resourceOwner:
+        description: This is a default description.
+        type: post
+      resourcePricingTier:
+        description: This is a default description.
+        type: post
+      resourceStatus:
+        description: This is a default description.
+        type: post
+      resourceId:
+        description: This is a default description.
+        type: post
+      externalResourceId:
+        description: This is a default description.
+        type: post
+  LabVhd:
+    properties:
+      id:
+        description: This is a default description.
+        type: post
+  LabVirtualMachine:
+    properties: []
+  LabVirtualMachineCreationParameter:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
+      location:
+        description: This is a default description.
+        type: post
+      tags:
+        description: This is a default description.
+        type: post
+  LabVirtualMachineCreationParameterProperties:
+    properties:
+      notes:
+        description: This is a default description.
+        type: post
+      ownerObjectId:
+        description: This is a default description.
+        type: post
+      ownerUserPrincipalName:
+        description: This is a default description.
+        type: post
+      createdByUserId:
+        description: This is a default description.
+        type: post
+      createdByUser:
+        description: This is a default description.
+        type: post
+      createdDate:
+        description: This is a default description.
+        type: post
+      customImageId:
+        description: This is a default description.
+        type: post
+      osType:
+        description: This is a default description.
+        type: post
+      size:
+        description: This is a default description.
+        type: post
+      userName:
+        description: This is a default description.
+        type: post
+  LabVirtualMachineFragment:
+    properties: []
+  LabVirtualMachineProperties:
+    properties:
+      notes:
+        description: This is a default description.
+        type: post
+      ownerObjectId:
+        description: This is a default description.
+        type: post
+      ownerUserPrincipalName:
+        description: This is a default description.
+        type: post
+      createdByUserId:
+        description: This is a default description.
+        type: post
+      createdByUser:
+        description: This is a default description.
+        type: post
+      createdDate:
+        description: This is a default description.
+        type: post
+      computeId:
+        description: This is a default description.
+        type: post
+      customImageId:
+        description: This is a default description.
+        type: post
+      osType:
+        description: This is a default description.
+        type: post
+      size:
+        description: This is a default description.
+        type: post
+  LabVirtualMachinePropertiesFragment:
+    properties:
+      notes:
+        description: This is a default description.
+        type: post
+      ownerObjectId:
+        description: This is a default description.
+        type: post
+      ownerUserPrincipalName:
+        description: This is a default description.
+        type: post
+      createdByUserId:
+        description: This is a default description.
+        type: post
+      createdByUser:
+        description: This is a default description.
+        type: post
+      createdDate:
+        description: This is a default description.
+        type: post
+      customImageId:
+        description: This is a default description.
+        type: post
+      osType:
+        description: This is a default description.
+        type: post
+      size:
+        description: This is a default description.
+        type: post
+      userName:
+        description: This is a default description.
+        type: post
+  LinuxOsInfo:
+    properties:
+      linuxOsState:
+        description: This is a default description.
+        type: post
+  NetworkInterfaceProperties:
+    properties:
+      virtualNetworkId:
+        description: This is a default description.
+        type: post
+      subnetId:
+        description: This is a default description.
+        type: post
+      publicIpAddressId:
+        description: This is a default description.
+        type: post
+      publicIpAddress:
+        description: This is a default description.
+        type: post
+      privateIpAddress:
+        description: This is a default description.
+        type: post
+      dnsName:
+        description: This is a default description.
+        type: post
+      rdpAuthority:
+        description: This is a default description.
+        type: post
+      sshAuthority:
+        description: This is a default description.
+        type: post
+  NetworkInterfacePropertiesFragment:
+    properties:
+      virtualNetworkId:
+        description: This is a default description.
+        type: post
+      subnetId:
+        description: This is a default description.
+        type: post
+      publicIpAddressId:
+        description: This is a default description.
+        type: post
+      publicIpAddress:
+        description: This is a default description.
+        type: post
+      privateIpAddress:
+        description: This is a default description.
+        type: post
+      dnsName:
+        description: This is a default description.
+        type: post
+      rdpAuthority:
+        description: This is a default description.
+        type: post
+      sshAuthority:
+        description: This is a default description.
+        type: post
+  NotificationChannel:
+    properties: []
+  NotificationChannelFragment:
+    properties: []
+  NotificationChannelProperties:
+    properties:
+      webHookUrl:
+        description: This is a default description.
+        type: post
+      description:
+        description: This is a default description.
+        type: post
+      events:
+        description: This is a default description.
+        type: post
+      createdDate:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  NotificationChannelPropertiesFragment:
+    properties:
+      webHookUrl:
+        description: This is a default description.
+        type: post
+      description:
+        description: This is a default description.
+        type: post
+      events:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  NotificationSettings:
+    properties:
+      status:
+        description: This is a default description.
+        type: post
+      timeInMinutes:
+        description: This is a default description.
+        type: post
+      webhookUrl:
+        description: This is a default description.
+        type: post
+  NotificationSettingsFragment:
+    properties:
+      status:
+        description: This is a default description.
+        type: post
+      timeInMinutes:
+        description: This is a default description.
+        type: post
+      webhookUrl:
+        description: This is a default description.
+        type: post
+  NotifyParameters:
+    properties:
+      eventName:
+        description: This is a default description.
+        type: post
+      jsonPayload:
+        description: This is a default description.
+        type: post
+  ParameterInfo:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
+      value:
+        description: This is a default description.
+        type: post
+  ParametersValueFileInfo:
+    properties:
+      fileName:
+        description: This is a default description.
+        type: post
+      parametersValueInfo:
+        description: This is a default description.
+        type: post
+  PercentageCostThresholdProperties:
+    properties:
+      thresholdValue:
+        description: This is a default description.
+        type: post
+  Policy:
+    properties: []
+  PolicyFragment:
+    properties: []
+  PolicyProperties:
+    properties:
+      description:
+        description: This is a default description.
+        type: post
+      status:
+        description: This is a default description.
+        type: post
+      factName:
+        description: This is a default description.
+        type: post
+      factData:
+        description: This is a default description.
+        type: post
+      threshold:
+        description: This is a default description.
+        type: post
+      evaluatorType:
+        description: This is a default description.
+        type: post
+      createdDate:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  PolicyPropertiesFragment:
+    properties:
+      description:
+        description: This is a default description.
+        type: post
+      status:
+        description: This is a default description.
+        type: post
+      factName:
+        description: This is a default description.
+        type: post
+      factData:
+        description: This is a default description.
+        type: post
+      threshold:
+        description: This is a default description.
+        type: post
+      evaluatorType:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  PolicySetResult:
+    properties:
+      hasError:
+        description: This is a default description.
+        type: post
+      policyViolations:
+        description: This is a default description.
+        type: post
+  PolicyViolation:
+    properties:
+      code:
+        description: This is a default description.
+        type: post
+      message:
+        description: This is a default description.
+        type: post
+  Port:
+    properties:
+      transportProtocol:
+        description: This is a default description.
+        type: post
+      backendPort:
+        description: This is a default description.
+        type: post
+  PortFragment:
+    properties:
+      transportProtocol:
+        description: This is a default description.
+        type: post
+      backendPort:
+        description: This is a default description.
+        type: post
+  Resource:
+    properties:
+      id:
+        description: This is a default description.
+        type: post
+      name:
+        description: This is a default description.
+        type: post
+      type:
+        description: This is a default description.
+        type: post
+      location:
+        description: This is a default description.
+        type: post
+      tags:
+        description: This is a default description.
+        type: post
+  ResponseWithContinuation[ArmTemplate]:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ResponseWithContinuation[Artifact]:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ResponseWithContinuation[ArtifactSource]:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ResponseWithContinuation[CustomImage]:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ResponseWithContinuation[Disk]:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ResponseWithContinuation[DtlEnvironment]:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ResponseWithContinuation[Formula]:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ResponseWithContinuation[GalleryImage]:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ResponseWithContinuation[Lab]:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ResponseWithContinuation[LabVhd]:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ResponseWithContinuation[LabVirtualMachine]:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ResponseWithContinuation[NotificationChannel]:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ResponseWithContinuation[Policy]:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ResponseWithContinuation[Schedule]:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ResponseWithContinuation[Secret]:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ResponseWithContinuation[ServiceRunner]:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ResponseWithContinuation[User]:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ResponseWithContinuation[VirtualNetwork]:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  RetargetScheduleProperties:
+    properties:
+      currentResourceId:
+        description: This is a default description.
+        type: post
+      targetResourceId:
+        description: This is a default description.
+        type: post
+  Schedule:
+    properties: []
+  ScheduleFragment:
+    properties: []
+  ScheduleProperties:
+    properties:
+      status:
+        description: This is a default description.
+        type: post
+      taskType:
+        description: This is a default description.
+        type: post
+      timeZoneId:
+        description: This is a default description.
+        type: post
+      createdDate:
+        description: This is a default description.
+        type: post
+      targetResourceId:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  SchedulePropertiesFragment:
+    properties:
+      status:
+        description: This is a default description.
+        type: post
+      taskType:
+        description: This is a default description.
+        type: post
+      timeZoneId:
+        description: This is a default description.
+        type: post
+      targetResourceId:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  Secret:
+    properties: []
+  SecretProperties:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  ServiceRunner:
+    properties: []
+  SharedPublicIpAddressConfiguration:
+    properties:
+      inboundNatRules:
+        description: This is a default description.
+        type: post
+  SharedPublicIpAddressConfigurationFragment:
+    properties:
+      inboundNatRules:
+        description: This is a default description.
+        type: post
+  ShutdownNotificationContent:
+    properties:
+      skipUrl:
+        description: This is a default description.
+        type: post
+      delayUrl60:
+        description: This is a default description.
+        type: post
+      delayUrl120:
+        description: This is a default description.
+        type: post
+      vmName:
+        description: This is a default description.
+        type: post
+      guid:
+        description: This is a default description.
+        type: post
+      owner:
+        description: This is a default description.
+        type: post
+      eventType:
+        description: This is a default description.
+        type: post
+      text:
+        description: This is a default description.
+        type: post
+      subscriptionId:
+        description: This is a default description.
+        type: post
+      resourceGroupName:
+        description: This is a default description.
+        type: post
+  Subnet:
+    properties:
+      resourceId:
+        description: This is a default description.
+        type: post
+      labSubnetName:
+        description: This is a default description.
+        type: post
+      allowPublicIp:
+        description: This is a default description.
+        type: post
+  SubnetFragment:
+    properties:
+      resourceId:
+        description: This is a default description.
+        type: post
+      labSubnetName:
+        description: This is a default description.
+        type: post
+      allowPublicIp:
+        description: This is a default description.
+        type: post
+  SubnetOverride:
+    properties:
+      resourceId:
+        description: This is a default description.
+        type: post
+      labSubnetName:
+        description: This is a default description.
+        type: post
+      useInVmCreationPermission:
+        description: This is a default description.
+        type: post
+      usePublicIpAddressPermission:
+        description: This is a default description.
+        type: post
+      virtualNetworkPoolName:
+        description: This is a default description.
+        type: post
+  SubnetOverrideFragment:
+    properties:
+      resourceId:
+        description: This is a default description.
+        type: post
+      labSubnetName:
+        description: This is a default description.
+        type: post
+      useInVmCreationPermission:
+        description: This is a default description.
+        type: post
+      usePublicIpAddressPermission:
+        description: This is a default description.
+        type: post
+      virtualNetworkPoolName:
+        description: This is a default description.
+        type: post
+  SubnetSharedPublicIpAddressConfiguration:
+    properties:
+      allowedPorts:
+        description: This is a default description.
+        type: post
+  SubnetSharedPublicIpAddressConfigurationFragment:
+    properties:
+      allowedPorts:
+        description: This is a default description.
+        type: post
+  TargetCostProperties:
+    properties:
+      status:
+        description: This is a default description.
+        type: post
+      target:
+        description: This is a default description.
+        type: post
+      costThresholds:
+        description: This is a default description.
+        type: post
+      cycleStartDateTime:
+        description: This is a default description.
+        type: post
+      cycleEndDateTime:
+        description: This is a default description.
+        type: post
+      cycleType:
+        description: This is a default description.
+        type: post
+  User:
+    properties: []
+  UserFragment:
+    properties: []
+  UserIdentity:
+    properties:
+      principalName:
+        description: This is a default description.
+        type: post
+      principalId:
+        description: This is a default description.
+        type: post
+      tenantId:
+        description: This is a default description.
+        type: post
+      objectId:
+        description: This is a default description.
+        type: post
+      appId:
+        description: This is a default description.
+        type: post
+  UserIdentityFragment:
+    properties:
+      principalName:
+        description: This is a default description.
+        type: post
+      principalId:
+        description: This is a default description.
+        type: post
+      tenantId:
+        description: This is a default description.
+        type: post
+      objectId:
+        description: This is a default description.
+        type: post
+      appId:
+        description: This is a default description.
+        type: post
+  UserProperties:
+    properties:
+      createdDate:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  UserPropertiesFragment:
+    properties:
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  UserSecretStore:
+    properties:
+      keyVaultUri:
+        description: This is a default description.
+        type: post
+      keyVaultId:
+        description: This is a default description.
+        type: post
+  UserSecretStoreFragment:
+    properties:
+      keyVaultUri:
+        description: This is a default description.
+        type: post
+      keyVaultId:
+        description: This is a default description.
+        type: post
+  VirtualNetwork:
+    properties: []
+  VirtualNetworkFragment:
+    properties: []
+  VirtualNetworkProperties:
+    properties:
+      allowedSubnets:
+        description: This is a default description.
+        type: post
+      description:
+        description: This is a default description.
+        type: post
+      externalProviderResourceId:
+        description: This is a default description.
+        type: post
+      externalSubnets:
+        description: This is a default description.
+        type: post
+      subnetOverrides:
+        description: This is a default description.
+        type: post
+      createdDate:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  VirtualNetworkPropertiesFragment:
+    properties:
+      allowedSubnets:
+        description: This is a default description.
+        type: post
+      description:
+        description: This is a default description.
+        type: post
+      externalProviderResourceId:
+        description: This is a default description.
+        type: post
+      externalSubnets:
+        description: This is a default description.
+        type: post
+      subnetOverrides:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      uniqueIdentifier:
+        description: This is a default description.
+        type: post
+  WeekDetails:
+    properties:
+      weekdays:
+        description: This is a default description.
+        type: post
+      time:
+        description: This is a default description.
+        type: post
+  WeekDetailsFragment:
+    properties:
+      weekdays:
+        description: This is a default description.
+        type: post
+      time:
+        description: This is a default description.
+        type: post
+  WindowsOsInfo:
+    properties:
+      windowsOsState:
+        description: This is a default description.
+        type: post
