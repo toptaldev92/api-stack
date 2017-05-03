@@ -1,0 +1,329 @@
+agger: "2.0"
+info:
+  title: ConsumptionManagementClient
+  description: Consumption management client provides access to consumption resources
+    for Azure Web-Direct subscriptions. Other subscription types which were not purchased
+    directly through the Azure web portal are not supported through this preview API.
+  version: 1.0.0
+host: management.azure.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /providers/Microsoft.Billing/operations:
+    get:
+      summary: Operations List
+      description: Lists all of the available billing REST API operations
+      operationId: Operations_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Operation
+  /providers/Microsoft.Consumption/operations:
+    get:
+      summary: Operations List
+      description: Lists all of the available consumption REST API operations
+      operationId: Operations_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Operation
+  /subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods:
+    get:
+      summary: Billing Periods List
+      description: Lists the available billing periods for a subscription in reverse
+        chronological order
+      operationId: BillingPeriods_List
+      parameters:
+      - in: query
+        name: $filter
+        description: May be used to filter billing periods by billingPeriodEndDate
+      - in: query
+        name: $skiptoken
+        description: Skiptoken is only used if a previous operation returned a partial
+          result
+      - in: query
+        name: $top
+        description: May be used to limit the number of results to the most recent
+          N billing periods
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Billing Period
+  /subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}:
+    get:
+      summary: Billing Periods Get
+      description: Gets a named billing period
+      operationId: BillingPeriods_Get
+      parameters:
+      - in: path
+        name: billingPeriodName
+        description: The name of a BillingPeriod resource
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Billing Period
+  /subscriptions/{subscriptionId}/providers/Microsoft.Billing/invoices:
+    get:
+      summary: Invoices List
+      description: Lists the available invoices for a subscription in reverse chronological
+        order beginning with the most recent invoice
+      operationId: Invoices_List
+      parameters:
+      - in: query
+        name: $expand
+        description: May be used to expand the downloadUrl property within a list
+          of invoices
+      - in: query
+        name: $filter
+        description: May be used to filter invoices by invoicePeriodEndDate
+      - in: query
+        name: $skiptoken
+        description: Skiptoken is only used if a previous operation returned a partial
+          result
+      - in: query
+        name: $top
+        description: May be used to limit the number of results to the most recent
+          N invoices
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Invoice
+  /subscriptions/{subscriptionId}/providers/Microsoft.Billing/invoices/latest:
+    get:
+      summary: Invoices Get Latest
+      description: Gets the most recent invoice
+      operationId: Invoices_GetLatest
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Invoice
+  /subscriptions/{subscriptionId}/providers/Microsoft.Billing/invoices/{invoiceName}:
+    get:
+      summary: Invoices Get
+      description: Gets a named invoice resource
+      operationId: Invoices_Get
+      parameters:
+      - in: path
+        name: invoiceName
+        description: The name of an invoice resource
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Invoice
+  /{scope}/providers/Microsoft.Consumption/usageDetails:
+    get:
+      summary: Usage Details List
+      description: Lists the usage details for a scope in reverse chronological order
+        by billing period
+      operationId: UsageDetails_List
+      parameters:
+      - in: query
+        name: $expand
+        description: May be used to expand the additionalProperties or meterDetails
+          property within a list of usage details
+      - in: query
+        name: $filter
+        description: May be used to filter usageDetails by usageEnd (Utc time)
+      - in: query
+        name: $skiptoken
+        description: Skiptoken is only used if a previous operation returned a partial
+          result
+      - in: query
+        name: $top
+        description: May be used to limit the number of results to the most recent
+          N usageDetails
+      - in: query
+        name: No Name
+      - in: path
+        name: scope
+        description: The scope of the usage details
+      responses:
+        200:
+          description: OK
+      tags:
+      - Usage
+definitions:
+  BillingPeriod:
+    properties: []
+  BillingPeriodsListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  BillingPeriodProperties:
+    properties:
+      billingPeriodStartDate:
+        description: This is a default description.
+        type: get
+      billingPeriodEndDate:
+        description: This is a default description.
+        type: get
+      invoiceIds:
+        description: This is a default description.
+        type: get
+  DownloadUrl:
+    properties:
+      expiryTime:
+        description: This is a default description.
+        type: get
+      url:
+        description: This is a default description.
+        type: get
+  ErrorDetails:
+    properties:
+      code:
+        description: This is a default description.
+        type: get
+      message:
+        description: This is a default description.
+        type: get
+      target:
+        description: This is a default description.
+        type: get
+  ErrorResponse:
+    properties: []
+  Invoice:
+    properties: []
+  InvoicesListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  InvoiceProperties:
+    properties:
+      invoicePeriodStartDate:
+        description: This is a default description.
+        type: get
+      invoicePeriodEndDate:
+        description: This is a default description.
+        type: get
+      billingPeriodIds:
+        description: This is a default description.
+        type: get
+  Operation:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+  OperationListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  Resource:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      name:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+      tags:
+        description: This is a default description.
+        type: get
+  MeterDetails:
+    properties:
+      meterName:
+        description: This is a default description.
+        type: get
+      meterCategory:
+        description: This is a default description.
+        type: get
+      meterSubCategory:
+        description: This is a default description.
+        type: get
+      unit:
+        description: This is a default description.
+        type: get
+      meterLocation:
+        description: This is a default description.
+        type: get
+      totalIncludedQuantity:
+        description: This is a default description.
+        type: get
+      pretaxStandardRate:
+        description: This is a default description.
+        type: get
+  UsageDetail:
+    properties: []
+  UsageDetailsListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  UsageDetailProperties:
+    properties:
+      billingPeriodId:
+        description: This is a default description.
+        type: get
+      invoiceId:
+        description: This is a default description.
+        type: get
+      usageStart:
+        description: This is a default description.
+        type: get
+      usageEnd:
+        description: This is a default description.
+        type: get
+      instanceName:
+        description: This is a default description.
+        type: get
+      instanceId:
+        description: This is a default description.
+        type: get
+      instanceLocation:
+        description: This is a default description.
+        type: get
+      currency:
+        description: This is a default description.
+        type: get
+      usageQuantity:
+        description: This is a default description.
+        type: get
+      billableQuantity:
+        description: This is a default description.
+        type: get
