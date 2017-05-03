@@ -1,0 +1,63 @@
+agger: "2.0"
+info:
+  title: U.S. Digital Registry Tag API
+  description: Provides a access to the list of tags applied to federal government
+    agencies and their social media accounts.
+  version: 1.0.0
+host: usdigitalregistry.digitalgov.gov
+basePath: /api/v1/
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /tags.json:
+    get:
+      summary: Tags
+      description: This lists all tags
+      operationId: Api::V1::Tags#index
+      parameters:
+      - in: query
+        name: page
+        description: Page number
+      - in: query
+        name: page_size
+        description: Number of results per page
+      - in: query
+        name: q
+        description: String to compare to the short name of tags
+      - in: type
+        name: type
+        description: Comma separated list of tag types
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tags
+  /tags/types.json:
+    get:
+      summary: Tag Types
+      description: This returns a tag based on an ID
+      operationId: Api::V1::Tags#types
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tags
+  /tags/{id}.json:
+    get:
+      summary: Tag
+      description: This returns a tag based on an ID
+      operationId: Api::V1::Tags#show
+      parameters:
+      - in: path
+        name: id
+        description: ID of the tag
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tags
+definitions: []
