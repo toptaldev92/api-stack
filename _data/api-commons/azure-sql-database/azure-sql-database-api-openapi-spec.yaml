@@ -1,0 +1,1643 @@
+agger: "2.0"
+info:
+  title: Azure SQL Database
+  description: Provides create, read, update and delete functionality for Azure SQL
+    Database resources including servers, databases, elastic pools, recommendations,
+    operations, and usage metrics.
+  version: 1.0.0
+host: management.azure.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /providers/Microsoft.Sql/operations:
+    get:
+      summary: Operations List
+      description: Lists all of the available SQL Rest API operations
+      operationId: Operations_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Operations
+  /subscriptions/{subscriptionId}/providers/Microsoft.Sql/locations/{locationId}/capabilities:
+    get:
+      summary: Capabilities List By Location
+      description: Gets the capabilities available for the specified location
+      operationId: Capabilities_ListByLocation
+      parameters:
+      - in: path
+        name: locationId
+        description: The location id whose capabilities are retrieved
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Capabilities Location
+  /subscriptions/{subscriptionId}/providers/Microsoft.Sql/servers:
+    get:
+      summary: Servers List
+      description: Returns a list of servers
+      operationId: Servers_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Servers
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers:
+    get:
+      summary: Servers List By Resource Group
+      description: Returns a list of servers in a resource group
+      operationId: Servers_ListByResourceGroup
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Servers Resource Group
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}:
+    delete:
+      summary: Servers Delete
+      description: Deletes a SQL server
+      operationId: Servers_Delete
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Servers
+    get:
+      summary: Servers Get
+      description: Gets a server
+      operationId: Servers_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Servers
+    put:
+      summary: Servers Create Or Update
+      description: Creates or updates a new server
+      operationId: Servers_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The required parameters for creating or updating a server
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Servers
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases:
+    get:
+      summary: Databases List By Server
+      description: Returns a list of databases in a server
+      operationId: Databases_ListByServer
+      parameters:
+      - in: query
+        name: $filter
+        description: An OData filter expression that describes a subset of databases
+          to return
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Server
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}
+  : delete:
+      summary: Databases Delete
+      description: Deletes a database
+      operationId: Databases_Delete
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database to be deleted
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases
+    get:
+      summary: Databases Get
+      description: Gets a database
+      operationId: Databases_Get
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database to be retrieved
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases
+    put:
+      summary: Databases Create Or Update
+      description: Creates a new database or updates an existing database
+      operationId: Databases_CreateOrUpdate
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database to be operated on (updated or created)
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The required parameters for creating or updating a database
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/export
+  : post:
+      summary: Databases Export
+      description: Exports a database to a bacpac
+      operationId: Databases_Export
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database to be exported
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The required parameters for exporting a database
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Export
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/extensions/import
+  : put:
+      summary: Databases Create Import Operation
+      description: Creates an import operation that imports a bacpac into an existing
+        database
+      operationId: Databases_CreateImportOperation
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database to import into
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The required parameters for importing a Bacpac into a database
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Import Operation
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/pause
+  : post:
+      summary: Databases Pause
+      description: Pauses a data warehouse
+      operationId: Databases_Pause
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the data warehouse to pause
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Pause
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks
+  : get:
+      summary: Databases List Replication Links
+      description: Lists a database's replication links
+      operationId: Databases_ListReplicationLinks
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database to retrieve links for
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Replication Links
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}
+  : delete:
+      summary: Databases Delete Replication Link
+      description: Deletes a database replication link
+      operationId: Databases_DeleteReplicationLink
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database that has the replication link to be
+          dropped
+      - in: path
+        name: linkId
+        description: The ID of the replication link to be deleted
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Replication Link
+    get:
+      summary: Databases Get Replication Link
+      description: Gets a database replication link
+      operationId: Databases_GetReplicationLink
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database to get the link for
+      - in: path
+        name: linkId
+        description: The replication link ID to be retrieved
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Replication Link
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}/failover
+  : post:
+      summary: Databases Failover Replication Link
+      description: Sets which replica database is primary by failing over from the
+        current primary replica database
+      operationId: Databases_FailoverReplicationLink
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database that has the replication link to be
+          failed over
+      - in: path
+        name: linkId
+        description: The ID of the replication link to be failed over
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Failover Replication Link
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/replicationLinks/{linkId}/forceFailoverAllowDataLoss
+  : post:
+      summary: Databases Failover Replication Link Allow Data Loss
+      description: Sets which replica database is primary by failing over from the
+        current primary replica database
+      operationId: Databases_FailoverReplicationLinkAllowDataLoss
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database that has the replication link to be
+          failed over
+      - in: path
+        name: linkId
+        description: The ID of the replication link to be failed over
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Failover Replication Link Allow Data Loss
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/restorePoints
+  : get:
+      summary: Databases List Restore Points
+      description: Returns a list of database restore points
+      operationId: Databases_ListRestorePoints
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database from which to retrieve available restore
+          points
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Restore Points
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/resume
+  : post:
+      summary: Databases Resume
+      description: Resumes a data warehouse
+      operationId: Databases_Resume
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the data warehouse to resume
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Resume
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/securityAlertPolicies/default
+  : get:
+      summary: Databases Get Threat Detection Policy
+      description: Gets a database's threat detection policy
+      operationId: Databases_GetThreatDetectionPolicy
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database for which database Threat Detection
+          policy is defined
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Threat Detection Policy
+    put:
+      summary: Databases Create Or Update Threat Detection Policy
+      description: Creates or updates a database's threat detection policy
+      operationId: Databases_CreateOrUpdateThreatDetectionPolicy
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database for which database Threat Detection
+          policy is defined
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The database Threat Detection policy
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Threat Detection Policy
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/serviceTierAdvisors
+  : get:
+      summary: Databases List Service Tier Advisors
+      description: Returns service tier advisors for specified database
+      operationId: Databases_ListServiceTierAdvisors
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of database
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Service Tier Advisors
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/serviceTierAdvisors/{serviceTierAdvisorName}
+  : get:
+      summary: Databases Get Service Tier Advisor
+      description: Gets a service tier advisor
+      operationId: Databases_GetServiceTierAdvisor
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of database
+      - in: query
+        name: No Name
+      - in: path
+        name: serviceTierAdvisorName
+        description: The name of service tier advisor
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Service Tier Advisor
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/current
+  : get:
+      summary: Databases Get Transparent Data Encryption Configuration
+      description: Gets a database's transparent data encryption configuration
+      operationId: Databases_GetTransparentDataEncryptionConfiguration
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database for which the transparent data encryption
+          applies
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Transparent Data Encryption Configuration
+    put:
+      summary: Databases Create Or Update Transparent Data Encryption Configuration
+      description: Creates or updates a database's transparent data encryption configuration
+      operationId: Databases_CreateOrUpdateTransparentDataEncryptionConfiguration
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database for which setting the transparent data
+          encryption applies
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The required parameters for creating or updating transparent
+          data encryption
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Transparent Data Encryption Configuration
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/transparentDataEncryption/current/operationResults
+  : get:
+      summary: Databases List Transparent Data Encryption Activity
+      description: Returns a database's transparent data encryption operation result
+      operationId: Databases_ListTransparentDataEncryptionActivity
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database for which the transparent data encryption
+          applies
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Transparent Data Encryption Activity
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaseName}/usages
+  : get:
+      summary: Databases List Usages
+      description: Returns database usages
+      operationId: Databases_ListUsages
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Usages
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools:
+    get:
+      summary: Elastic Pools List By Server
+      description: Returns a list of elastic pools in a server
+      operationId: ElasticPools_ListByServer
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Elastic Pools Server
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}
+  : delete:
+      summary: Elastic Pools Delete
+      description: Deletes the elastic pool
+      operationId: ElasticPools_Delete
+      parameters:
+      - in: path
+        name: elasticPoolName
+        description: The name of the elastic pool to be deleted
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Elastic Pools
+    get:
+      summary: Elastic Pools Get
+      description: Gets an elastic pool
+      operationId: ElasticPools_Get
+      parameters:
+      - in: path
+        name: elasticPoolName
+        description: The name of the elastic pool to be retrieved
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Elastic Pools
+    put:
+      summary: Elastic Pools Create Or Update
+      description: Creates a new elastic pool or updates an existing elastic pool
+      operationId: ElasticPools_CreateOrUpdate
+      parameters:
+      - in: path
+        name: elasticPoolName
+        description: The name of the elastic pool to be operated on (updated or created)
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The required parameters for creating or updating an elastic pool
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Elastic Pools
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/databases
+  : get:
+      summary: Elastic Pools List Databases
+      description: Returns a list of databases in an elastic pool
+      operationId: ElasticPools_ListDatabases
+      parameters:
+      - in: path
+        name: elasticPoolName
+        description: The name of the elastic pool to be retrieved
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Elastic Pools Databases
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/databases/{databaseName}
+  : get:
+      summary: Elastic Pools Get Database
+      description: Gets a database inside of an elastic pool
+      operationId: ElasticPools_GetDatabase
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database to be retrieved
+      - in: path
+        name: elasticPoolName
+        description: The name of the elastic pool to be retrieved
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Elastic Pools Database
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/elasticPoolActivity
+  : get:
+      summary: Elastic Pools List Activity
+      description: Returns elastic pool activities
+      operationId: ElasticPools_ListActivity
+      parameters:
+      - in: path
+        name: elasticPoolName
+        description: The name of the elastic pool for which to get the current activity
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Elastic Pools Activity
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/elasticPools/{elasticPoolName}/elasticPoolDatabaseActivity
+  : get:
+      summary: Elastic Pools List Database Activity
+      description: Returns activity on databases inside of an elastic pool
+      operationId: ElasticPools_ListDatabaseActivity
+      parameters:
+      - in: path
+        name: elasticPoolName
+        description: The name of the elastic pool
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Elastic Pools Database Activity
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules:
+    get:
+      summary: Firewall Rules List By Server
+      description: Returns a list of firewall rules
+      operationId: FirewallRules_ListByServer
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Firewall Rules Server
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/firewallRules/{firewallRuleName}
+  : delete:
+      summary: Firewall Rules Delete
+      description: Deletes a firewall rule
+      operationId: FirewallRules_Delete
+      parameters:
+      - in: path
+        name: firewallRuleName
+        description: The name of the firewall rule
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Firewall Rules
+    get:
+      summary: Firewall Rules Get
+      description: Gets a firewall rule
+      operationId: FirewallRules_Get
+      parameters:
+      - in: path
+        name: firewallRuleName
+        description: The name of the firewall rule
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Firewall Rules
+    put:
+      summary: Firewall Rules Create Or Update
+      description: Creates or updates a firewall rule
+      operationId: FirewallRules_CreateOrUpdate
+      parameters:
+      - in: path
+        name: firewallRuleName
+        description: The name of the firewall rule
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The required parameters for creating or updating a firewall rule
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Firewall Rules
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/import:
+    post:
+      summary: Databases Import
+      description: Imports a bacpac into a new database
+      operationId: Databases_Import
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The required parameters for importing a Bacpac into a database
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Databases Import
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/recommendedElasticPools
+  : get:
+      summary: Recommended Elastic Pools List By Server
+      description: Returns recommended elastic pools
+      operationId: RecommendedElasticPools_ListByServer
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Recommended Elastic Pools Server
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/recommendedElasticPools/{recommendedElasticPoolName}
+  : get:
+      summary: Recommended Elastic Pools Get
+      description: Gets a recommented elastic pool
+      operationId: RecommendedElasticPools_Get
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: recommendedElasticPoolName
+        description: The name of the recommended elastic pool to be retrieved
+      responses:
+        200:
+          description: OK
+      tags:
+      - Recommended Elastic Pools
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/recommendedElasticPools/{recommendedElasticPoolName}/databases
+  : get:
+      summary: Recommended Elastic Pools List Databases
+      description: Returns a list of databases inside a recommented elastic pool
+      operationId: RecommendedElasticPools_ListDatabases
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: recommendedElasticPoolName
+        description: The name of the recommended elastic pool to be retrieved
+      responses:
+        200:
+          description: OK
+      tags:
+      - Recommended Elastic Pools Databases
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/recommendedElasticPools/{recommendedElasticPoolName}/databases/{databaseName}
+  : get:
+      summary: Recommended Elastic Pools Get Databases
+      description: Gets a database inside of a recommented elastic pool
+      operationId: RecommendedElasticPools_GetDatabases
+      parameters:
+      - in: path
+        name: databaseName
+        description: The name of the database to be retrieved
+      - in: query
+        name: No Name
+      - in: path
+        name: recommendedElasticPoolName
+        description: The name of the elastic pool to be retrieved
+      responses:
+        200:
+          description: OK
+      tags:
+      - Recommended Elastic Pools Databases
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/recommendedElasticPools/{recommendedElasticPoolName}/metrics
+  : get:
+      summary: Recommended Elastic Pools List Metrics
+      description: Returns a recommented elastic pool metrics
+      operationId: RecommendedElasticPools_ListMetrics
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: recommendedElasticPoolName
+        description: The name of the recommended elastic pool to be retrieved
+      responses:
+        200:
+          description: OK
+      tags:
+      - Recommended Elastic Pools Metrics
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/serviceObjectives
+  : get:
+      summary: Servers List Service Objectives
+      description: Returns database service objectives
+      operationId: Servers_ListServiceObjectives
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Servers Service Objectives
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/serviceObjectives/{serviceObjectiveName}
+  : get:
+      summary: Servers Get Service Objective
+      description: Gets a database service objective
+      operationId: Servers_GetServiceObjective
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: serviceObjectiveName
+        description: The name of the service objective to retrieve
+      responses:
+        200:
+          description: OK
+      tags:
+      - Servers Service Objective
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/usages:
+    get:
+      summary: Servers List Usages
+      description: Returns server usages
+      operationId: Servers_ListUsages
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Servers Usages
+definitions:
+  Resource:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      name:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+  TrackedResource:
+    properties:
+      tags:
+        description: This is a default description.
+        type: get
+      location:
+        description: This is a default description.
+        type: get
+  RestorePointProperties:
+    properties:
+      restorePointType:
+        description: This is a default description.
+        type: get
+      restorePointCreationDate:
+        description: This is a default description.
+        type: get
+      earliestRestoreDate:
+        description: This is a default description.
+        type: get
+  RestorePoint:
+    properties: []
+  RestorePointListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  MaxSizeCapability:
+    properties:
+      limit:
+        description: This is a default description.
+        type: get
+      unit:
+        description: This is a default description.
+        type: get
+  ServiceObjectiveCapability:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      status:
+        description: This is a default description.
+        type: get
+      id:
+        description: This is a default description.
+        type: get
+      supportedMaxSizes:
+        description: This is a default description.
+        type: get
+  PerformanceLevel:
+    properties:
+      unit:
+        description: This is a default description.
+        type: get
+      value:
+        description: This is a default description.
+        type: get
+  EditionCapability:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      status:
+        description: This is a default description.
+        type: get
+      supportedServiceLevelObjectives:
+        description: This is a default description.
+        type: get
+  ServerVersionCapability:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      status:
+        description: This is a default description.
+        type: get
+      supportedEditions:
+        description: This is a default description.
+        type: get
+      supportedElasticPoolEditions:
+        description: This is a default description.
+        type: get
+  LocationCapabilities:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      status:
+        description: This is a default description.
+        type: get
+      supportedServerVersions:
+        description: This is a default description.
+        type: get
+  ElasticPoolEditionCapability:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      status:
+        description: This is a default description.
+        type: get
+      supportedElasticPoolDtus:
+        description: This is a default description.
+        type: get
+  ElasticPoolDtuCapability:
+    properties:
+      limit:
+        description: This is a default description.
+        type: get
+      maxDatabaseCount:
+        description: This is a default description.
+        type: get
+      status:
+        description: This is a default description.
+        type: get
+      supportedMaxSizes:
+        description: This is a default description.
+        type: get
+      supportedPerDatabaseMaxSizes:
+        description: This is a default description.
+        type: get
+      supportedPerDatabaseMaxDtus:
+        description: This is a default description.
+        type: get
+  ElasticPoolPerDatabaseMaxDtuCapability:
+    properties:
+      limit:
+        description: This is a default description.
+        type: get
+      supportedPerDatabaseMinDtus:
+        description: This is a default description.
+        type: get
+  ElasticPoolPerDatabaseMinDtuCapability:
+    properties:
+      limit:
+        description: This is a default description.
+        type: get
+  DatabaseSecurityAlertPolicy:
+    properties:
+      location:
+        description: This is a default description.
+        type: put
+      kind:
+        description: This is a default description.
+        type: put
+  DatabaseSecurityAlertPolicyProperties:
+    properties:
+      state:
+        description: This is a default description.
+        type: put
+      disabledAlerts:
+        description: This is a default description.
+        type: put
+      emailAddresses:
+        description: This is a default description.
+        type: put
+      emailAccountAdmins:
+        description: This is a default description.
+        type: put
+      storageEndpoint:
+        description: This is a default description.
+        type: put
+      storageAccountAccessKey:
+        description: This is a default description.
+        type: put
+      retentionDays:
+        description: This is a default description.
+        type: put
+      useServerDefault:
+        description: This is a default description.
+        type: put
+  SubResource:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      id:
+        description: This is a default description.
+        type: get
+  FirewallRuleProperties:
+    properties:
+      startIpAddress:
+        description: This is a default description.
+        type: get
+      endIpAddress:
+        description: This is a default description.
+        type: get
+  FirewallRule:
+    properties:
+      kind:
+        description: This is a default description.
+        type: get
+      location:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+  FirewallRuleListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  ImportExtensionProperties:
+    properties:
+      operationMode:
+        description: This is a default description.
+        type: post
+  ImportExtensionRequest:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
+      type:
+        description: This is a default description.
+        type: post
+  ImportExportResponse:
+    properties: []
+  ImportExportResponseProperties:
+    properties:
+      requestType:
+        description: This is a default description.
+        type: post
+      requestId:
+        description: This is a default description.
+        type: post
+      serverName:
+        description: This is a default description.
+        type: post
+      databaseName:
+        description: This is a default description.
+        type: post
+      status:
+        description: This is a default description.
+        type: post
+      lastModifiedTime:
+        description: This is a default description.
+        type: post
+      queuedTime:
+        description: This is a default description.
+        type: post
+      blobUri:
+        description: This is a default description.
+        type: post
+      errorMessage:
+        description: This is a default description.
+        type: post
+  ImportRequest:
+    properties:
+      databaseName:
+        description: This is a default description.
+        type: post
+      edition:
+        description: This is a default description.
+        type: post
+      serviceObjectiveName:
+        description: This is a default description.
+        type: post
+      maxSizeBytes:
+        description: This is a default description.
+        type: post
+  ExportRequest:
+    properties:
+      storageKeyType:
+        description: This is a default description.
+        type: post
+      storageKey:
+        description: This is a default description.
+        type: post
+      storageUri:
+        description: This is a default description.
+        type: post
+      administratorLogin:
+        description: This is a default description.
+        type: post
+      administratorLoginPassword:
+        description: This is a default description.
+        type: post
+      authenticationType:
+        description: This is a default description.
+        type: post
+  OperationListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  Operation:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+  ReplicationLinkProperties:
+    properties:
+      isTerminationAllowed:
+        description: This is a default description.
+        type: get
+      replicationMode:
+        description: This is a default description.
+        type: get
+      partnerServer:
+        description: This is a default description.
+        type: get
+      partnerDatabase:
+        description: This is a default description.
+        type: get
+      partnerLocation:
+        description: This is a default description.
+        type: get
+      role:
+        description: This is a default description.
+        type: get
+      partnerRole:
+        description: This is a default description.
+        type: get
+      startTime:
+        description: This is a default description.
+        type: get
+      percentComplete:
+        description: This is a default description.
+        type: get
+      replicationState:
+        description: This is a default description.
+        type: get
+  ReplicationLink:
+    properties:
+      location:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+  ReplicationLinkListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  ServerProperties:
+    properties:
+      fullyQualifiedDomainName:
+        description: This is a default description.
+        type: get
+      version:
+        description: This is a default description.
+        type: get
+      administratorLogin:
+        description: This is a default description.
+        type: get
+      administratorLoginPassword:
+        description: This is a default description.
+        type: get
+      externalAdministratorSid:
+        description: This is a default description.
+        type: get
+      externalAdministratorLogin:
+        description: This is a default description.
+        type: get
+      state:
+        description: This is a default description.
+        type: get
+  Server:
+    properties:
+      kind:
+        description: This is a default description.
+        type: get
+  ServerListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  ServerMetric:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      resourceName:
+        description: This is a default description.
+        type: get
+      displayName:
+        description: This is a default description.
+        type: get
+      currentValue:
+        description: This is a default description.
+        type: get
+      limit:
+        description: This is a default description.
+        type: get
+      unit:
+        description: This is a default description.
+        type: get
+      nextResetTime:
+        description: This is a default description.
+        type: get
+  ServerMetricListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  RecommendedElasticPoolMetric:
+    properties:
+      dateTime:
+        description: This is a default description.
+        type: get
+      dtu:
+        description: This is a default description.
+        type: get
+      sizeGB:
+        description: This is a default description.
+        type: get
+  RecommendedElasticPoolProperties:
+    properties:
+      databaseEdition:
+        description: This is a default description.
+        type: get
+      dtu:
+        description: This is a default description.
+        type: get
+      databaseDtuMin:
+        description: This is a default description.
+        type: get
+      databaseDtuMax:
+        description: This is a default description.
+        type: get
+      storageMB:
+        description: This is a default description.
+        type: get
+      observationPeriodStart:
+        description: This is a default description.
+        type: get
+      observationPeriodEnd:
+        description: This is a default description.
+        type: get
+      maxObservedDtu:
+        description: This is a default description.
+        type: get
+      maxObservedStorageMB:
+        description: This is a default description.
+        type: get
+      databases:
+        description: This is a default description.
+        type: get
+  RecommendedElasticPool:
+    properties: []
+  RecommendedElasticPoolListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  RecommendedElasticPoolListMetricsResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  ElasticPoolProperties:
+    properties:
+      creationDate:
+        description: This is a default description.
+        type: get
+      state:
+        description: This is a default description.
+        type: get
+      edition:
+        description: This is a default description.
+        type: get
+      dtu:
+        description: This is a default description.
+        type: get
+      databaseDtuMax:
+        description: This is a default description.
+        type: get
+      databaseDtuMin:
+        description: This is a default description.
+        type: get
+      storageMB:
+        description: This is a default description.
+        type: get
+  ElasticPool:
+    properties:
+      kind:
+        description: This is a default description.
+        type: get
+  ElasticPoolListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  ElasticPoolActivityProperties:
+    properties:
+      endTime:
+        description: This is a default description.
+        type: get
+      errorCode:
+        description: This is a default description.
+        type: get
+      errorMessage:
+        description: This is a default description.
+        type: get
+      errorSeverity:
+        description: This is a default description.
+        type: get
+      operation:
+        description: This is a default description.
+        type: get
+      operationId:
+        description: This is a default description.
+        type: get
+      percentComplete:
+        description: This is a default description.
+        type: get
+      requestedDatabaseDtuMax:
+        description: This is a default description.
+        type: get
+      requestedDatabaseDtuMin:
+        description: This is a default description.
+        type: get
+      requestedDtu:
+        description: This is a default description.
+        type: get
+  ElasticPoolActivity:
+    properties:
+      location:
+        description: This is a default description.
+        type: get
+  ElasticPoolActivityListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  ElasticPoolDatabaseActivityProperties:
+    properties:
+      databaseName:
+        description: This is a default description.
+        type: get
+      endTime:
+        description: This is a default description.
+        type: get
+      errorCode:
+        description: This is a default description.
+        type: get
+      errorMessage:
+        description: This is a default description.
+        type: get
+      errorSeverity:
+        description: This is a default description.
+        type: get
+      operation:
+        description: This is a default description.
+        type: get
+      operationId:
+        description: This is a default description.
+        type: get
+      percentComplete:
+        description: This is a default description.
+        type: get
+      requestedElasticPoolName:
+        description: This is a default description.
+        type: get
+      currentElasticPoolName:
+        description: This is a default description.
+        type: get
+  ElasticPoolDatabaseActivity:
+    properties:
+      location:
+        description: This is a default description.
+        type: get
+  ElasticPoolDatabaseActivityListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  RecommendedIndexProperties:
+    properties:
+      action:
+        description: This is a default description.
+        type: get
+      state:
+        description: This is a default description.
+        type: get
+      created:
+        description: This is a default description.
+        type: get
+      lastModified:
+        description: This is a default description.
+        type: get
+      indexType:
+        description: This is a default description.
+        type: get
+      schema:
+        description: This is a default description.
+        type: get
+      table:
+        description: This is a default description.
+        type: get
+      columns:
+        description: This is a default description.
+        type: get
+      includedColumns:
+        description: This is a default description.
+        type: get
+      indexScript:
+        description: This is a default description.
+        type: get
+  RecommendedIndex:
+    properties: []
+  TransparentDataEncryptionProperties:
+    properties:
+      status:
+        description: This is a default description.
+        type: get
+  TransparentDataEncryption:
+    properties: []
+  DatabaseProperties:
+    properties:
+      collation:
+        description: This is a default description.
+        type: get
+      creationDate:
+        description: This is a default description.
+        type: get
+      containmentState:
+        description: This is a default description.
+        type: get
+      currentServiceObjectiveId:
+        description: This is a default description.
+        type: get
+      databaseId:
+        description: This is a default description.
+        type: get
+      earliestRestoreDate:
+        description: This is a default description.
+        type: get
+      createMode:
+        description: This is a default description.
+        type: get
+      sourceDatabaseId:
+        description: This is a default description.
+        type: get
+      sourceDatabaseDeletionDate:
+        description: This is a default description.
+        type: get
+      restorePointInTime:
+        description: This is a default description.
+        type: get
+  Database:
+    properties:
+      kind:
+        description: This is a default description.
+        type: get
+  DatabaseListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  ServiceTierAdvisorProperties:
+    properties:
+      observationPeriodStart:
+        description: This is a default description.
+        type: get
+      observationPeriodEnd:
+        description: This is a default description.
+        type: get
+      activeTimeRatio:
+        description: This is a default description.
+        type: get
+      minDtu:
+        description: This is a default description.
+        type: get
+      avgDtu:
+        description: This is a default description.
+        type: get
+      maxDtu:
+        description: This is a default description.
+        type: get
+      maxSizeInGB:
+        description: This is a default description.
+        type: get
+      serviceLevelObjectiveUsageMetrics:
+        description: This is a default description.
+        type: get
+      currentServiceLevelObjective:
+        description: This is a default description.
+        type: get
+      currentServiceLevelObjectiveId:
+        description: This is a default description.
+        type: get
+  ServiceTierAdvisor:
+    properties: []
+  SloUsageMetric:
+    properties:
+      serviceLevelObjective:
+        description: This is a default description.
+        type: get
+      serviceLevelObjectiveId:
+        description: This is a default description.
+        type: get
+      inRangeTimeRatio:
+        description: This is a default description.
+        type: get
+  OperationImpact:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      unit:
+        description: This is a default description.
+        type: get
+      changeValueAbsolute:
+        description: This is a default description.
+        type: get
+      changeValueRelative:
+        description: This is a default description.
+        type: get
+  DatabaseMetric:
+    properties:
+      resourceName:
+        description: This is a default description.
+        type: get
+      displayName:
+        description: This is a default description.
+        type: get
+      currentValue:
+        description: This is a default description.
+        type: get
+      limit:
+        description: This is a default description.
+        type: get
+      unit:
+        description: This is a default description.
+        type: get
+      nextResetTime:
+        description: This is a default description.
+        type: get
+  DatabaseMetricListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  ServiceTierAdvisorListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  ServiceObjectiveProperties:
+    properties:
+      serviceObjectiveName:
+        description: This is a default description.
+        type: get
+      isDefault:
+        description: This is a default description.
+        type: get
+      isSystem:
+        description: This is a default description.
+        type: get
+      description:
+        description: This is a default description.
+        type: get
+      enabled:
+        description: This is a default description.
+        type: get
+  ServiceObjective:
+    properties: []
+  ServiceObjectiveListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  TransparentDataEncryptionActivityProperties:
+    properties:
+      status:
+        description: This is a default description.
+        type: get
+      percentComplete:
+        description: This is a default description.
+        type: get
+  TransparentDataEncryptionActivity:
+    properties: []
+  TransparentDataEncryptionActivityListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
