@@ -19,7 +19,7 @@ title: The API Stack
 
 {% for api in index.include %}
 
-  {% assign path = api.url  | replace: 'https://raw.githubusercontent.com/api-stack/google/master/_data/api-commons/','' %}
+  {% assign path = api.url  | replace: 'https://raw.githubusercontent.com/api-stack/api-stack/master/_data/api-commons/','' %}
   {% assign path = path  | replace: '/apis.yaml','' %}
 
   {% for api in contents %}
@@ -268,7 +268,7 @@ title: The API Stack
                                 {% if property.type == 'x-openapi-spec' %}
 
                                   {% assign openapi_spec_url = property.url %}
-                                  {% assign pathname = openapi_spec_url | replace: 'https://raw.githubusercontent.com/api-stack/google/master/_data/api-commons/','' %}
+                                  {% assign pathname = openapi_spec_url | replace: 'https://raw.githubusercontent.com/api-stack/api-stack/master/_data/api-commons/','' %}
                                   {% assign pathplusfolder = path | append:'/' %}
                                   {% assign pathname = pathname | replace: '.yaml','' %}
                                   {% assign pathname = pathname | replace: pathplusfolder,'' %}
