@@ -1,0 +1,247 @@
+agger: "2.0"
+info:
+  title: AWS Server Migration Service API
+  version: 1.0.0
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /?Action=CreateReplicationJob&k=1:
+    get:
+      summary: ' Create Replication Job '
+      description: The create-replication-job API is used to create a ReplicationJob
+        to replicate a server on AWS
+      operationId: createReplicationJob
+      parameters:
+      - in: query
+        name: description
+        description: 'Type: String'
+        type: string
+      - in: query
+        name: frequency
+        description: 'Type: Integer'
+        type: string
+      - in: query
+        name: licenseType
+        description: 'Type: String'
+        type: string
+      - in: query
+        name: roleName
+        description: 'Type: String'
+        type: string
+      - in: query
+        name: seedReplicationTime
+        description: 'Type: Timestamp'
+        type: string
+      - in: query
+        name: serverId
+        description: 'Type: String'
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Replication Jobs
+  /?Action=DeleteReplicationJob&k=1:
+    get:
+      summary: ' Delete Replication Job '
+      description: The delete-replication-job API is used to delete a ReplicationJob,
+        resulting in no further ReplicationRuns
+      operationId: deleteReplicationJob
+      parameters:
+      - in: query
+        name: replicationJobId
+        description: 'Type: String'
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Replication Jobs
+  /?Action=DeleteServerCatalog&k=1:
+    get:
+      summary: ' Delete Server Catalog '
+      description: The delete-server-catalog API clears all servers from your server
+        catalog
+      operationId: deleteServerCatalog
+      responses:
+        200:
+          description: OK
+      tags:
+      - Server Catalog
+  /?Action=DisassociateConnector&k=1:
+    get:
+      summary: ' Disassociate Connector '
+      description: The disassociate-connector API will disassociate a connector from
+        the Server Migration Service, rendering it unavailable to support replication
+        jobs
+      operationId: disassociateConnector
+      parameters:
+      - in: query
+        name: connectorId
+        description: 'Type: String'
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Connectors
+  /?Action=GetConnectors&k=1:
+    get:
+      summary: ' Get Connectors '
+      description: The get-connectors API returns a list of connectors that are registered
+        with the Server Migration Service
+      operationId: getConnectors
+      parameters:
+      - in: query
+        name: maxResults
+        description: 'Type: Integer'
+        type: string
+      - in: query
+        name: nextToken
+        description: 'Type: String'
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Connectors
+  /?Action=GetReplicationJobs&k=1:
+    get:
+      summary: ' Get Replication Jobs '
+      description: The get-replication-jobs API will return all of your ReplicationJobs
+        and their details
+      operationId: getReplicationJobs
+      parameters:
+      - in: query
+        name: maxResults
+        description: 'Type: Integer'
+        type: string
+      - in: query
+        name: nextToken
+        description: 'Type: String'
+        type: string
+      - in: query
+        name: replicationJobId
+        description: 'Type: String'
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Replication Jobs
+  /?Action=GetReplicationRuns&k=1:
+    get:
+      summary: ' Get Replication Runs '
+      description: The get-replication-runs API will return all ReplicationRuns for
+        a given ReplicationJob
+      operationId: getReplicationRuns
+      parameters:
+      - in: query
+        name: maxResults
+        description: 'Type: Integer'
+        type: string
+      - in: query
+        name: nextToken
+        description: 'Type: String'
+        type: string
+      - in: query
+        name: replicationJobId
+        description: 'Type: String'
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'Replication Runs '
+  /?Action=GetServers&k=1:
+    get:
+      summary: ' Get Servers '
+      description: The get-servers API returns a list of all servers in your server
+        catalog
+      operationId: getServers
+      parameters:
+      - in: query
+        name: maxResults
+        description: 'Type: Integer'
+        type: string
+      - in: query
+        name: nextToken
+        description: 'Type: String'
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Servers
+  /?Action=ImportServerCatalog&k=1:
+    get:
+      summary: ' Import Server Catalog '
+      description: The import-server-catalog API is used to gather the complete list
+        of on-premises servers on your premises
+      operationId: importServerCatalog
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'Server Catalog '
+  /?Action=StartOnDemandReplicationRun&k=1:
+    get:
+      summary: ' Start On Demand Replication Run '
+      description: The start-on-demand-replication-run API is used to start a ReplicationRun
+        on demand (in addition to those that are scheduled based on your frequency)
+      operationId: startOnDemandReplicationRun
+      parameters:
+      - in: query
+        name: description
+        description: 'Type: String'
+        type: string
+      - in: query
+        name: replicationJobId
+        description: 'Type: String'
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'Replication Runs '
+  /?Action=UpdateReplicationJob&k=1:
+    get:
+      summary: ' Update Replication Job '
+      description: The update-replication-job API is used to change the settings of
+        your existing ReplicationJob created using CreateReplicationJob
+      operationId: updateReplicationJob
+      parameters:
+      - in: query
+        name: description
+        description: 'Type: String'
+        type: string
+      - in: query
+        name: frequency
+        description: 'Type: Integer'
+        type: string
+      - in: query
+        name: licenseType
+        description: 'Type: String'
+        type: string
+      - in: query
+        name: nextReplicationRunStartTime
+        description: 'Type: Timestamp'
+        type: string
+      - in: query
+        name: replicationJobId
+        description: 'Type: String'
+        type: string
+      - in: query
+        name: roleName
+        description: 'Type: String'
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Replication Jobs
+definitions: []
