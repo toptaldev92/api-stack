@@ -1,0 +1,910 @@
+agger: "2.0"
+info:
+  title: AWS Glacier API
+  version: 1.0.0
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /{AccountId}/policies/data-retrieval:
+    get:
+      summary: Get  Data  Retrieval  Policy
+      description: "DescriptionThis operation returns the current data retrieval policy
+        for the account and region specified in the\n\t\t\t\tGET request"
+      operationId: Get Data Retrieval Policy (GET policy)
+      parameters:
+      - in: query
+        name: BytesPerHour
+        description: The maximum number of bytes that can be retrieved in an hour
+        type: string
+      - in: query
+        name: Rules
+        description: The policy rule
+        type: string
+      - in: query
+        name: Strategy
+        description: The type of data retrieval policy
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Data  Retrieval  Policies
+    put:
+      summary: Set  Data  Retrieval  Policy
+      description: DescriptionThis operation sets and then enacts a data retrieval
+        policy in the region specified in the PUT request
+      operationId: Set Data Retrieval Policy (PUT policy)
+      parameters:
+      - in: query
+        name: BytesPerHour
+        description: The maximum number of bytes that can be retrieved in an hour
+        type: string
+      - in: query
+        name: Rules
+        description: The policy rule
+        type: string
+      - in: query
+        name: Strategy
+        description: The type of data retrieval policy to set
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Data  Retrieval  Policy
+  /{AccountId}/provisioned-capacity:
+    post:
+      summary: Purchase  Provisioned  Capacity
+      description: Purchase Provisioned Capacity (POST provisioned-capacity)This operation
+        purchases a provisioned capacity unit for an AWS account
+      operationId: Purchase Provisioned Capacity (POST provisioned-capacity)
+      parameters:
+      - type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Purchase Provisioned Capacity
+  /{AccountId}/vaults:
+    get:
+      summary: List  Vaults
+      description: DescriptionThis operation lists all vaults owned by the calling
+        user&#8217;s account
+      operationId: List Vaults (GET vaults)
+      parameters:
+      - in: query
+        name: CreationDate
+        description: The date the vault was created, in Coordinated Universal Time
+          (UTC)
+        type: string
+      - in: query
+        name: LastInventoryDate
+        description: The date of the last vault inventory, in Coordinated Universal
+          Time (UTC)
+        type: string
+      - in: query
+        name: Marker
+        description: The vaultARN that represents where to continue pagination of
+          the results
+        type: string
+      - in: query
+        name: NumberOfArchives
+        description: The number of archives in the vault as of the last inventory
+          date
+        type: string
+      - in: query
+        name: SizeInBytes
+        description: "The total size, in bytes, of all the archives in the vault including
+          any per-archive\t\t\t\t\t\t\t\toverhead, as of the last inventory date"
+        type: string
+      - in: query
+        name: VaultARN
+        description: The Amazon Resource Name (ARN) of the vault
+        type: string
+      - in: query
+        name: VaultList
+        description: An array of objects, with each object providing a description
+          of a vault
+        type: string
+      - in: query
+        name: VaultName
+        description: The vault name
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vaults
+  /{AccountId}/vaults/{VaultName}:
+    delete:
+      summary: Delete  Vault
+      description: DescriptionThis operation deletes a vault
+      operationId: Delete Vault (DELETE vault)
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vaults
+    get:
+      summary: Describe  Vault
+      description: "DescriptionThis operation returns information about a vault, including
+        the vault Amazon Resource Name\n\t\t\t(ARN), the date the vault was created,
+        the number of archives contained within the\n\t\t\tvault, and the total size
+        of all the archives in the vault"
+      operationId: Describe Vault (GET vault)
+      parameters:
+      - in: query
+        name: CreationDate
+        description: The UTC date when the vault was created
+        type: string
+      - in: query
+        name: LastInventoryDate
+        description: The UTC date when Amazon Glacier completed the last vault inventory
+        type: string
+      - in: query
+        name: NumberOfArchives
+        description: The number of archives in the vault as per the last vault inventory
+        type: string
+      - in: query
+        name: SizeInBytes
+        description: "The total size in bytes of the archives in the vault including
+          any per-archive overhead,\t\t\t\t\t\t\tas of the last inventory date"
+        type: string
+      - in: query
+        name: VaultARN
+        description: The Amazon Resource Name (ARN) of the vault
+        type: string
+      - in: query
+        name: VaultName
+        description: The vault name that was specified at creation time
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vaults
+    put:
+      summary: Create  Vault
+      description: DescriptionThis operation creates a new vault with the specified
+        name
+      operationId: Create Vault (PUT vault)
+      parameters:
+      - type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vaults
+  /{AccountId}/vaults/{vaultName}/access-policy:
+    delete:
+      summary: Delete  Vault  Access  Policy
+      description: DescriptionThis operation deletes the access policy associated
+        with the specified vault
+      operationId: "Delete Vault Access Policy (DELETE\n\t\taccess-policy)"
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vault Access Policies
+    get:
+      summary: Get  Vault  Access  Policy
+      description: "DescriptionThis operation retrieves the access-policy subresource
+        set on the\n\t\t\tvault&#8212;for more information on setting this subresource,
+        see Set Vault Access Policy (PUT access-policy)"
+      operationId: Get Vault Access Policy (GET access-policy)
+      parameters:
+      - in: query
+        name: Policy
+        description: The vault access policy as a JSON string, which uses \ as an
+          escape character
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vault Access Policies
+    put:
+      summary: Set  Vault  Access  Policy
+      description: "DescriptionThis operation configures an access policy for a vault
+        and will overwrite an existing\n\t\t\tpolicy"
+      operationId: Set Vault Access Policy (PUT access-policy)
+      parameters:
+      - in: query
+        name: Policy
+        description: The vault access policy as a JSON string, which uses \ as an
+          escape character
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vault Access Policies
+  /{AccountId}/vaults/{VaultName}/archives:
+    post:
+      summary: Upload  Archive
+      description: DescriptionThis operation adds an archive to a vault
+      operationId: Upload Archive (POST archive)
+      parameters:
+      - type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Archives
+  /{AccountId}/vaults/{VaultName}/archives/{ArchiveID}:
+    delete:
+      summary: Delete  Archive
+      description: DescriptionThis operation deletes an archive from a vault
+      operationId: Delete Archive (DELETE archive)
+      responses:
+        200:
+          description: OK
+      tags:
+      - Archives
+  /{AccountId}/vaults/{VaultName}/jobs:
+    get:
+      summary: List  Jobs
+      description: "DescriptionThis operation lists jobs for a vault including jobs
+        that are in-progress and jobs that have\n\t\t\trecently finished"
+      operationId: list Jobs (GET jobs)
+      parameters:
+      - in: query
+        name: Action
+        description: For archive retrieval jobs, this value is ArchiveRetrieval
+        type: string
+      - in: query
+        name: ArchiveId
+        description: The ID of the archive that was requested in an archive retrieval
+        type: string
+      - in: query
+        name: ArchiveSHA256TreeHash
+        description: The SHA256 tree hash of the entire archive for an archive retrieval
+        type: string
+      - in: query
+        name: ArchiveSizeInBytes
+        description: "The size of the archive for which the archive retrieval job
+          request\t\t\t\t\t\t\twas initiated"
+        type: string
+      - in: query
+        name: Completed
+        description: true if the job is completed; false otherwise
+        type: string
+      - in: query
+        name: CompletionDate
+        description: The Universal Coordinated Time (UTC) date when the job completed
+        type: string
+      - in: query
+        name: CreationDate
+        description: The Universal Coordinated Time (UTC) date the job started
+        type: string
+      - in: query
+        name: EndDate
+        description: "The end of the date range in UTC for vault inventory retrieval
+          that includes \t\t\t\t\t\t\tarchives created before this date"
+        type: string
+      - in: query
+        name: Format
+        description: "The output format for the vault inventory list, which is set
+          by the  \t\t\t\t\t\t\tInitiate Job (POST jobs) request  \t\t\t\t\t\t\twhen
+          initiating a job to retrieve a vault inventory"
+        type: string
+      - in: query
+        name: InventorySizeInBytes
+        description: The size of the inventory associated with an inventory retrieval
+          job request
+        type: string
+      - in: query
+        name: JobDescription
+        description: A description of the job
+        type: string
+      - in: query
+        name: JobId
+        description: The ID that represents the job in Amazon Glacier
+        type: string
+      - in: query
+        name: JobList
+        description: An array of job objects
+        type: string
+      - in: query
+        name: Limit
+        description: "Specifies the maximum number of inventory items returned per
+          vault inventory retrieval\t\t\t\t\t\t\trequest"
+        type: string
+      - in: query
+        name: Marker
+        description: An opaque string that represents where to continue pagination
+          of the results
+        type: string
+      - in: query
+        name: Marker (InventoryRetrievalParameters)
+        description: "An opaque string that represents where to continue pagination
+          of the vault inventory\t\t\t\t\t\t\tretrieval results"
+        type: string
+      - in: query
+        name: RetrievalByteRange
+        description: "The retrieved byte range for archive retrieval jobs in the form\t\t\t\t\t\t\t\tStartByteValue-EndByteValue\t\t\t\t\t\t\tIf
+          no range was specified in the archive retrieval, then the whole\t\t\t\t\t\t\tarchive
+          is retrieved and StartByteValue equals 0\t\t\t\t\t\t\tand EndByteValue equals
+          the size of the archive\t\t\t\t\t\t\tminus 1"
+        type: string
+      - in: query
+        name: SHA256TreeHash
+        description: The SHA256 tree hash value for the requested range of an archive
+        type: string
+      - in: query
+        name: SNSTopic
+        description: "The Amazon Resource Name (ARN) that represents an Amazon SNS
+          topic where notification of\t\t\t\t\t\t\tjob completion or failure is sent,
+          if notification was configured in the\t\t\t\t\t\t\tjob initiation (Initiate
+          Job (POST jobs))"
+        type: string
+      - in: query
+        name: StartDate
+        description: "The start of the date range in UTC for vault inventory retrieval
+          that includes archives\t\t\t\t\t\t\tcreated on or after this date"
+        type: string
+      - in: query
+        name: StatusCode
+        description: The job status code
+        type: string
+      - in: query
+        name: StatusMessage
+        description: The job status message
+        type: string
+      - in: query
+        name: Tier
+        description: The retrieval option to use for the archive retrieval
+        type: string
+      - in: query
+        name: VaultARN
+        description: "The Amazon Resource Name (ARN) of the vault of which the job
+          is a\t\t\t\t\t\t\tsubresource"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Jobs
+    post:
+      summary: Initiate  Job
+      description: Initiate Job (POST jobs)This operation initiates a job of the specified
+        type, which can be an archive retrieval or vault inventory retrieval
+      operationId: initiate Job (POST jobs)
+      parameters:
+      - type: string
+      - in: query
+        name: ArchiveId
+        description: The ID of the archive that you want to retrieve
+        type: string
+      - in: query
+        name: Description
+        description: The optional description for the job
+        type: string
+      - in: query
+        name: EndDate
+        description: "The end of the date range in UTC for vault inventory retrieval
+          that includes archives\t\t\t\t\t\t\tcreated before this date"
+        type: string
+      - in: query
+        name: Format
+        description: "When initiating a job to retrieve a vault inventory, you can
+          optionally add this parameter\t\t\t\t\t\t\tto your request to specify the
+          output format"
+        type: string
+      - in: query
+        name: Limit
+        description: "The maximum number of inventory items returned per vault inventory
+          retrieval\t\t\t\t\t\t\trequest"
+        type: string
+      - in: query
+        name: Marker
+        description: "An opaque string that represents where to continue pagination
+          of the vault inventory\t\t\t\t\t\t\tretrieval results"
+        type: string
+      - in: query
+        name: RetrievalByteRange
+        description: The byte range to retrieve for an archive retrieval
+        type: string
+      - in: query
+        name: SNSTopic
+        description: "The Amazon SNS topic ARN where Amazon Glacier sends a notification
+          when the job is completed, and the\t\t\t\t\t\t\toutput is ready for you
+          to download"
+        type: string
+      - in: query
+        name: StartDate
+        description: "The start of the date range in UTC for vault inventory retrieval
+          that includes archives\t\t\t\t\t\t\tcreated on or after this date"
+        type: string
+      - in: query
+        name: Tier
+        description: The retrieval option to use for the archive retrieval
+        type: string
+      - in: query
+        name: Type
+        description: The job type
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Jobs
+  /{AccountID}/vaults/{VaultName}/jobs/{JobID}:
+    get:
+      summary: Describe  Job
+      description: "DescriptionThis operation returns information about a job you
+        previously initiated, including the job\n\t\t\tinitiation date, the user who
+        initiated the job, the job status code/message and the\n\t\t\tAmazon Simple
+        Notification Service (Amazon SNS) topic to notify after Amazon Glacier\n\t\t\tcompletes
+        the job"
+      operationId: describe Job (GET JobID)
+      parameters:
+      - in: query
+        name: Action
+        description: The job type
+        type: string
+      - in: query
+        name: ArchiveId
+        description: For an ArchiveRetrieval job, this is the archive ID requested
+          for download
+        type: string
+      - in: query
+        name: ArchiveSHA256TreeHash
+        description: The SHA256 tree hash of the entire archive for an archive retrieval
+          job
+        type: string
+      - in: query
+        name: ArchiveSizeInBytes
+        description: "For an ArchiveRetrieval job, this is the size in bytes of the
+          archive being\t\t\t\t\t\t\trequested for download"
+        type: string
+      - in: query
+        name: Completed
+        description: The job status
+        type: string
+      - in: query
+        name: CompletionDate
+        description: The UTC time that the job request completed
+        type: string
+      - in: query
+        name: CreationDate
+        description: The UTC time that the job was created
+        type: string
+      - in: query
+        name: EndDate
+        description: "The end of the date range in UTC for vault inventory retrieval
+          that includes \t\t\t\t\t\t\tarchives created before this date"
+        type: string
+      - in: query
+        name: Format
+        description: "The output format for the vault inventory list, which is set
+          by the  \t\t\t\t\t\t\tInitiate Job (POST jobs) request  \t\t\t\t\t\t\twhen
+          initiating a job to retrieve a vault inventory"
+        type: string
+      - in: query
+        name: InventorySizeInBytes
+        description: "For an InventoryRetrieval job, this is the size in bytes of
+          the inventory\t\t\t\t\t\t\trequested for download"
+        type: string
+      - in: query
+        name: JobDescription
+        description: The job description you provided when you initiated the job
+        type: string
+      - in: query
+        name: JobId
+        description: The ID that represents the job in Amazon Glacier
+        type: string
+      - in: query
+        name: Limit
+        description: "Specifies the maximum number of inventory items returned per
+          vault inventory \t\t\t\t\t\t\tretrieval request"
+        type: string
+      - in: query
+        name: Marker
+        description: "An opaque string that represents where to continue pagination
+          of the vault inventory\t\t\t\t\t\t\tretrieval results"
+        type: string
+      - in: query
+        name: RetrievalByteRange
+        description: "The retrieved byte range for archive retrieval jobs in the form\t\t\t\t\t\t\t\tStartByteValue-EndByteValue\t\t\t\t\t\t\tIf
+          you don't specify a range in the archive retrieval, then the whole\t\t\t\t\t\t\tarchive
+          is retrieved; also StartByteValue equals 0,\t\t\t\t\t\t\tand EndByteValue
+          equals the size of the archive\t\t\t\t\t\t\tminus 1"
+        type: string
+      - in: query
+        name: SHA256TreeHash
+        description: The SHA256 tree hash value for the requested range of an archive
+        type: string
+      - in: query
+        name: SNSTopic
+        description: "An Amazon Simple Notification Service (Amazon SNS) topic that
+          receives\t\t\t\t\t\t\tnotification"
+        type: string
+      - in: query
+        name: StartDate
+        description: "The start of the date range in UTC for vault inventory retrieval
+          that includes archives\t\t\t\t\t\t\tcreated on or after this date"
+        type: string
+      - in: query
+        name: StatusCode
+        description: "The status code can be InProgress, Succeeded, or\t\t\t\t\t\t\t\tFailed,
+          and indicates the status of the job"
+        type: string
+      - in: query
+        name: StatusMessage
+        description: A friendly message that describes the job status
+        type: string
+      - in: query
+        name: Tier
+        description: The retrieval option to use for the archive retrieval
+        type: string
+      - in: query
+        name: VaultARN
+        description: "The Amazon Resource Name (ARN) of the vault from which the archive\t\t\t\t\t\t\tretrieval
+          was requested"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Jobs
+  /{AccountId}/vaults/{VaultName}/jobs/{JobID}/output:
+    get:
+      summary: Get  Job  Output
+      description: DescriptionThis operation downloads the output of the job you initiated
+        using Initiate Job (POST jobs)
+      operationId: get Job Output (GET output)
+      parameters:
+      - type: string
+      - in: query
+        name: ArchiveDescription
+        description: The description of an archive
+        type: string
+      - in: query
+        name: ArchiveId
+        description: The ID of an archive
+        type: string
+      - in: query
+        name: ArchiveList
+        description: An array of archive metadata
+        type: string
+      - in: query
+        name: CreationDate
+        description: The UTC date and time the archive was created
+        type: string
+      - in: query
+        name: InventoryDate
+        description: "The UTC date and time of the last inventory for the vault that
+          was completed after\t\t\t\t\t\t\tchanges to the vault"
+        type: string
+      - in: query
+        name: SHA256TreeHash
+        description: The tree hash of the archive
+        type: string
+      - in: query
+        name: Size
+        description: The size in bytes of the archive
+        type: string
+      - in: query
+        name: VaultARN
+        description: "The Amazon Resource Name (ARN) resource from which the archive\t\t\t\t\t\t\t\tretrieval
+          was requested"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Jobs
+  /{AccountId}/vaults/{vaultName}/lock-policy:
+    delete:
+      summary: Abort  Vault  Lock
+      description: "DescriptionThis operation aborts the vault locking process if
+        the vault lock is not in the\n\t\t\t\tLocked state"
+      operationId: Abort Vault Lock (DELETE lock-policy)
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vault Locks
+    get:
+      summary: Get  Vault  Lock
+      description: "DescriptionThis operation retrieves the following attributes from
+        the lock-policy\n\t\t\tsubresource set on the specified vault: \n\t\t\tThe
+        vault lock policy set on the vault"
+      operationId: Get Vault Lock (GET lock-policy)
+      parameters:
+      - in: query
+        name: CreationDate
+        description: "The UTC date and time at which the vault lock was put into the
+          InProgress\t\t\t\t\t\t\tstate"
+        type: string
+      - in: query
+        name: ExpirationDate
+        description: The UTC date and time at which the lock ID expires
+        type: string
+      - in: query
+        name: Policy
+        description: The vault lock policy as a JSON string, which uses \ as an escape
+          character
+        type: string
+      - in: query
+        name: State
+        description: The state of the vault lock
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vault Locks
+    post:
+      summary: Initiate  Vault  Lock
+      description: 'DescriptionThis operation initiates the vault locking process
+        by doing the following: Installing a vault lock policy on the specified vault'
+      operationId: Initiate Vault Lock (POST lock-policy)
+      parameters:
+      - type: string
+      - in: query
+        name: Policy
+        description: "The vault lock policy as a JSON string, which uses \\ as an
+          escape\t\t\t\t\t\t\tcharacter"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vault Locks
+  /{AccountId}/vaults/{vaultName}/lock-policy/{lockId}:
+    post:
+      summary: Complete  Vault  Lock
+      description: |-
+        DescriptionThis operation completes the vault locking process by transitioning the vault lock from
+                 the InProgress state to the Locked state, which causes the vault
+                 lock policy to become unchangeable
+      operationId: Complete Vault Lock (POST lockId)
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vault Locks
+  /{AccountId}/vaults/{VaultName}/multipart-uploads:
+    get:
+      summary: List  Multipart  Uploads
+      description: DescriptionThis multipart upload operation lists in-progress multipart
+        uploads for the specified vault
+      operationId: list Multipart Uploads (GET multipart-uploads)
+      parameters:
+      - in: query
+        name: ArchiveDescription
+        description: "The description of the archive that was specified in the Initiate
+          Multipart Upload\t\t\t\t\t\t\trequest"
+        type: string
+      - in: query
+        name: CreationDate
+        description: The UTC time that the multipart upload was initiated
+        type: string
+      - in: query
+        name: Marker
+        description: An opaque string that represents where to continue pagination
+          of the results
+        type: string
+      - in: query
+        name: MultipartUploadId
+        description: The ID of the multipart upload
+        type: string
+      - in: query
+        name: PartSizeInBytes
+        description: "The part size specified in the Initiate Multipart Upload (POST\t\tmultipart-uploads)
+          request"
+        type: string
+      - in: query
+        name: UploadsList
+        description: A list of metadata about multipart upload objects
+        type: string
+      - in: query
+        name: VaultARN
+        description: The Amazon Resource Name (ARN) of the vault that contains the
+          archive
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Multipart Uploads
+  /{AccountId}/vaults/{VaultName}/multipart-uploads/{uploadID}:
+    delete:
+      summary: Abort  Multipart  Upload
+      description: "DescriptionThis multipart upload operation aborts a multipart
+        upload identified by the upload\n\t\t\tID"
+      operationId: abort Multipart Upload (DELETE uploadID)
+      responses:
+        200:
+          description: OK
+      tags:
+      - Multipart Uploads
+    get:
+      summary: List  Parts
+      description: "DescriptionThis multipart upload operation lists the parts of
+        an archive that have been uploaded in a\n\t\t\tspecific multipart upload identified
+        by an upload ID"
+      operationId: list Parts (GET uploadID)
+      parameters:
+      - in: query
+        name: ArchiveDescription
+        description: "The description of the archive that was specified in the Initiate
+          Multipart Upload\t\t\t\t\t\t\trequest"
+        type: string
+      - in: query
+        name: CreationDate
+        description: The UTC time that the multipart upload was initiated
+        type: string
+      - in: query
+        name: Marker
+        description: An opaque string that represents where to continue pagination
+          of the results
+        type: string
+      - in: query
+        name: MultipartUploadId
+        description: The ID of the upload to which the parts are associated
+        type: string
+      - in: query
+        name: Parts
+        description: A list of the part sizes of the multipart upload
+        type: string
+      - in: query
+        name: PartSizeInBytes
+        description: The part size in bytes
+        type: string
+      - in: query
+        name: RangeInBytes
+        description: The byte range of a part, inclusive of the upper value of the
+          range
+        type: string
+      - in: query
+        name: SHA256TreeHash
+        description: The SHA256 tree hash value that Amazon Glacier calculated for
+          the part
+        type: string
+      - in: query
+        name: VaultARN
+        description: "The Amazon Resource Name (ARN) of the vault to which the multipart\t\t\t\t\t\t\tupload
+          was initiated"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Parts
+    post:
+      summary: Complete  Multipart  Upload
+      description: "DescriptionYou call this multipart upload operation to inform
+        Amazon Glacier that all the archive parts have\n\t\t\tbeen uploaded and Amazon
+        Glacier can now assemble the archive from the uploaded parts"
+      operationId: complete Multipart Upload (POST uploadID)
+      parameters:
+      - type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Multipart Uploads
+    put:
+      summary: Upload  Part
+      description: DescriptionThis multipart upload operation uploads a part of an
+        archive
+      operationId: upload Part (PUT uploadID)
+      parameters:
+      - type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Parts
+  /{AccountId}/vaults/{VaultName}/notification-configuration:
+    delete:
+      summary: Delete  Vault  Notifications
+      description: "DescriptionThis operation deletes the notification configuration
+        set for a vault \n\t\t\tSet Vault Notification Configuration (PUT\n\t\tnotification-configuration)"
+      operationId: "Delete Vault Notifications (DELETE\n\t\tnotification-configuration)"
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vault Notifications
+    get:
+      summary: Get  Vault  Notifications
+      description: "DescriptionThis operation retrieves the notification-configuration
+        subresource set on the\n\t\t\tvault (see Set Vault Notification Configuration
+        (PUT\n\t\tnotification-configuration)"
+      operationId: "Get Vault Notifications (GET\n\t\tnotification-configuration)"
+      parameters:
+      - in: query
+        name: Events
+        description: "A list of one or more events for which Amazon Glacier will send
+          a notification to the\t\t\t\t\t\t\t\tspecified Amazon SNS topic"
+        type: string
+      - in: query
+        name: SNSTopic
+        description: The Amazon Simple Notification Service (Amazon SNS) topic Amazon
+          Resource Name (ARN)
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vault Notifications
+    put:
+      summary: Set  Vault  Notification  Configuration
+      description: "DescriptionRetrieving an archive and a vault inventory are asynchronous
+        operations in Amazon Glacier for which\n\t\t\tyou must first initiate a job
+        and wait for the job to complete before you can download\n\t\t\tthe job output"
+      operationId: "Set Vault Notification Configuration (PUT\n\t\tnotification-configuration)"
+      parameters:
+      - in: query
+        name: Events
+        description: "An array of one or more events for which you want Amazon Glacier
+          to send\t\t\t\t\t\t\tnotification"
+        type: string
+      - in: query
+        name: SNSTopic
+        description: The Amazon SNS topic ARN
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Vault Notifications
+  Synta:
+    syntax:
+      summary: List  Provisioned  Capacity
+      description: |-
+        List Provisioned Capacity (GET
+                provisioned-capacity)This operation lists the provisioned capacity for the specified AWS account
+      operationId: |-
+        List Provisioned Capacity (GET
+                provisioned-capacity)
+      parameters:
+      - in: query
+        name: CapacityId
+        description: The ID that identifies the provisioned capacity unit
+        type: string
+      - in: query
+        name: DryRun
+        description: Checks whether you have the required permissions for the action,
+          without actually making the request,        and provides an error response
+        type: string
+      - in: query
+        name: ExpirationDate
+        description: The date that the provisioned capacity unit expires, in Coordinated                            Universal
+          Time (UTC)
+        type: string
+      - in: query
+        name: Filter.N
+        description: One or more filters
+        type: string
+      - in: query
+        name: NetworkInterfaceId.N
+        description: One or more network interface IDs
+        type: string
+      - in: query
+        name: StartDate
+        description: The date that the provisioned capacity unit was purchased, in
+          Coordinated                            Universal Time (UTC)
+        type: string
+      - in: query
+        name: TagKeys
+        description: A list of tag keys
+        type: string
+      - in: query
+        name: Tags
+        description: The tags attached to the vault
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+definitions: []
