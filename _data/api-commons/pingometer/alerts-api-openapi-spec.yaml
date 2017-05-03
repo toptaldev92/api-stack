@@ -1,0 +1,207 @@
+agger: "2.0"
+info:
+  title: Alerts API
+  description: The Alerts API.
+  version: 1.0.0
+host: api.serverdensity.io.
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /alerts/configs/alertId:
+    "":
+      summary: Deleting an alert
+      description: ""
+      operationId: deleting-an-alert
+      parameters:
+      - in: path
+        name: alertId
+        description: The ID of the alert to be deleted
+        type: string
+      - in: path
+        name: token
+        description: Your API token
+        type: string
+      - in: body
+        name: token
+        description: Your API token
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: token
+        description: Your API token
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Alerts
+  /alerts/configs/subjectId:
+    "":
+      summary: Listing alerts by subject
+      description: Get a list of all configured alerts for a specific subject (device
+        or service)
+      operationId: listing-alerts-by-subject
+      parameters:
+      - in: path
+        name: subjectId
+        description: The ID of the subject e
+        type: string
+      - in: path
+        name: subjectType
+        description: The type of the subject - device or service
+        type: string
+      - in: query
+        name: subjectType
+        description: The type of the subject - device or service
+        type: string
+      - in: path
+        name: token
+        description: Your API token
+        type: string
+      - in: query
+        name: token
+        description: Your API token
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Alerts
+  '/alerts/recipient ':
+    ' post ':
+      summary: Alerts Recipient
+      description: "\r\n\t\t\t\tCreates a new recipient with one sms and one email
+        target associated"
+      operationId: -alerts-recipient-
+      responses:
+        200:
+          description: OK
+      tags:
+      - Alerts
+  '/alerts/recipient/{recipient_id} ':
+    ' put ':
+      summary: Alerts Recipient {recipient_id}
+      description: "\r\n\t\t\t\tUpdates recipient along with sms and email targets
+        associated"
+      operationId: -alerts-recipient-recipient-id-
+      responses:
+        200:
+          description: OK
+      tags:
+      - Alerts
+  '/alerts/recipients ':
+    ' get ':
+      summary: Alerts Recipients
+      description: "\r\n\t\t\t\tGets a list of all alert recipient's targets that
+        are visible to you as a customer"
+      operationId: -alerts-recipients-
+      responses:
+        200:
+          description: OK
+      tags:
+      - Alerts
+  '/alerts/recipients/{recipient_id} ':
+    ' get ':
+      summary: Alerts Recipients {recipient_id}
+      description: "\r\n\t\t\t\tGets a information about alert recipient's targets"
+      operationId: -alerts-recipients-recipient-id-
+      responses:
+        200:
+          description: OK
+      tags:
+      - Alerts
+  '/alerts/targets ':
+    ' get ':
+      summary: Alerts Targets
+      description: "\r\n\t\t\t\tGets a list of all alert targets that are visible
+        to you as a customer"
+      operationId: -alerts-targets-
+      responses:
+        200:
+          description: OK
+      tags:
+      - Alerts
+  /alerts/triggered:
+    "":
+      summary: Triggered alerts
+      description: Get a list of all triggered alerts on your account, per subject
+        (device or service) or per alert config
+      operationId: triggered-alerts
+      parameters:
+      - in: query
+        name: closed
+        description: Whether to filter by closed or open alerts - unset = all alerts,
+          false = open alerts, true = closed alerts
+        type: string
+      - in: query
+        name: filter
+        description: You can provide a JSON encoded hash filter for the search that
+          will return items that match the filter
+        type: string
+      - in: query
+        name: subjectType
+        description: The type of the subject - device, service, deviceGroup or serviceGroup
+          if you also specify the subjectId as part of the URL (see examples below)
+        type: string
+      - in: query
+        name: token
+        description: Your API token
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Alerts
+  '/alerts/{alert_id} ':
+    ' delete ':
+      summary: Alerts {alert_id}
+      description: "\r\n\t\t\t\tDeletes alert by Id"
+      operationId: -alerts-alert-id-
+      responses:
+        200:
+          description: OK
+      tags:
+      - Alerts
+    ' get ':
+      summary: Alerts {alert_id}
+      description: "\r\n\t\t\t\tGets alert by Id"
+      operationId: -alerts-alert-id-
+      responses:
+        200:
+          description: OK
+      tags:
+      - Alerts
+    ' put ':
+      summary: Alerts {alert_id}
+      description: "\r\n\t\t\t\tUpdates alert"
+      operationId: -alerts-alert-id-
+      responses:
+        200:
+          description: OK
+      tags:
+      - Alerts
+  '/alerts/{alert_type} ':
+    ' post ':
+      summary: Alerts {alert_type}
+      description: "\r\n\t\t\t\tCreates a new alert"
+      operationId: -alerts-alert-type-
+      responses:
+        200:
+          description: OK
+      tags:
+      - Alerts
+  ? '/alerts?check_id={check_id}&amp;severity={severity}&amp;enabled={enabled}&amp;target_type={target_type}&amp;target_id={target_id} '
+  : ' get ':
+      summary: Alerts?check_id={check_id}&amp;severity={severity}&amp;enabled={enabled}&amp;target_type={target_type}&amp;target_id={target_id}
+      description: "\r\n\t\t\t\tGets alerts filtered by set of optional parameters"
+      operationId: -alertscheck-idcheck-idampseverityseverityampenabledenabledamptarget-typetarget-typeamptarget-idtarg
+      responses:
+        200:
+          description: OK
+      tags:
+      - Alerts
+definitions: []
