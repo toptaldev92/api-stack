@@ -1,0 +1,1115 @@
+agger: "2.0"
+info:
+  title: HDInsightManagementClient
+  description: The HDInsight Management Client.
+  version: 1.0.0
+host: management.azure.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /providers/Microsoft.HDInsight/operations:
+    get:
+      summary: Operations List
+      description: Lists all of the available HDInsight REST API operations
+      operationId: Operations_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Operations
+  /subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/clusters:
+    get:
+      summary: Clusters List
+      description: Lists HDInsight clusters under the subscription
+      operationId: Clusters_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Clusters
+  /subscriptions/{subscriptionId}/providers/Microsoft.HDInsight/locations/{location}/capabilities:
+    get:
+      summary: Location Get Capabilities
+      description: Gets the capabilities for the specified location
+      operationId: Location_GetCapabilities
+      parameters:
+      - in: path
+        name: location
+        description: The location to get capabilities for
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Location Capabilities
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters:
+    get:
+      summary: Clusters List By Resource Group
+      description: List the HDInsight clusters in a resource group
+      operationId: Clusters_ListByResourceGroup
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Clusters Resource Group
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}:
+    delete:
+      summary: Clusters Delete
+      description: Begins deleting the specified HDInsight cluster
+      operationId: Clusters_Delete
+      parameters:
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Clusters
+    get:
+      summary: Clusters Get
+      description: Gets the specified cluster
+      operationId: Clusters_Get
+      parameters:
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Clusters
+    patch:
+      summary: Clusters Update
+      description: Patch HDInsight cluster with the specified parameters
+      operationId: Clusters_Update
+      parameters:
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The cluster patch request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Clusters
+    put:
+      summary: Clusters Create
+      description: Begins creating a new HDInsight cluster with the specified parameters
+      operationId: Clusters_Create
+      parameters:
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The cluster create request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Clusters
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications
+  : get:
+      summary: Applications List
+      description: Lists all of the applications HDInsight cluster
+      operationId: Applications_List
+      parameters:
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Applications
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/applications/{applicationName}
+  : delete:
+      summary: Applications Delete
+      description: Lists all of the applications HDInsight cluster
+      operationId: Applications_Delete
+      parameters:
+      - in: path
+        name: applicationName
+        description: The constant value for the applicationName
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Applications
+    get:
+      summary: Applications Get
+      description: Lists properties of the application
+      operationId: Applications_Get
+      parameters:
+      - in: path
+        name: applicationName
+        description: The constant value for the applicationName
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Applications
+    put:
+      summary: Applications Create
+      description: The operation creates applications for the HDInsight cluster
+      operationId: Applications_Create
+      parameters:
+      - in: path
+        name: applicationName
+        description: The constant value for the applicationName
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The application create request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Applications
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/changerdpsetting
+  : post:
+      summary: Clusters Change Rdp Settings
+      description: Begins changing the RDP settings on the specified cluster
+      operationId: Clusters_ChangeRdpSettings
+      parameters:
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The OS profile for RDP
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Clusters Change Rdptings
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/configurations/{configurationName}
+  : get:
+      summary: Configurations Get
+      description: The configuration object for the specified cluster
+      operationId: Configurations_Get
+      parameters:
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: path
+        name: configurationName
+        description: The constant for configuration type of gateway
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Configurations
+    post:
+      summary: Configurations Update HTTPSettings
+      description: Begins configuring the HTTP settings on the specified cluster
+      operationId: Configurations_UpdateHTTPSettings
+      parameters:
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: path
+        name: configurationName
+        description: The constant for configuration type of gateway
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The name of the resource group
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Configurations Httpsettings
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/executeScriptActions
+  : post:
+      summary: Clusters Execute Script Actions
+      description: Begins executing script actions on the specified HDInsight cluster
+      operationId: Clusters_ExecuteScriptActions
+      parameters:
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The parameters for executing script actions
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Clusters Execute Script Actions
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/{extensionName}
+  : delete:
+      summary: Extension Delete
+      description: Delete extension for HDInsight cluster
+      operationId: Extension_Delete
+      parameters:
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: path
+        name: extensionName
+        description: The name of the cluster extension
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Extension
+    get:
+      summary: Extension Get
+      description: Get extension properties for HDInsight cluster extension
+      operationId: Extension_Get
+      parameters:
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: path
+        name: extensionName
+        description: The name of the cluster extension
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Extension
+    put:
+      summary: Extension Create
+      description: Create HDInsight cluster extension
+      operationId: Extension_Create
+      parameters:
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: path
+        name: extensionName
+        description: The name of the cluster extension
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The cluster extensions create request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Extension
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/roles/{roleName}/resize
+  : post:
+      summary: Clusters Resize
+      description: Begins a resize operation on the specified HDInsight cluster
+      operationId: Clusters_Resize
+      parameters:
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The parameters for the resize operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      - in: path
+        name: roleName
+        description: The constant value for the roleName
+      responses:
+        200:
+          description: OK
+      tags:
+      - Clusters Resize
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptActions
+  : get:
+      summary: Script Actions List
+      description: Lists all persisted script actions for the given cluster
+      operationId: ScriptActions_List
+      parameters:
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Script Actions
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptActions/{scriptName}
+  : delete:
+      summary: Script Actions Delete
+      description: Deletes a given persisted script action of the cluster
+      operationId: ScriptActions_Delete
+      parameters:
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      - in: path
+        name: scriptName
+        description: The name of the script
+      responses:
+        200:
+          description: OK
+      tags:
+      - Script Actions
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptExecutionHistory
+  : get:
+      summary: Script Execution History List
+      description: Lists all scripts execution history for the given cluster
+      operationId: ScriptExecutionHistory_List
+      parameters:
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Script Execution History
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptExecutionHistory/{scriptExecutionId}
+  : get:
+      summary: Script Execution History Get
+      description: Gets the script execution detail for the given script execution
+        id
+      operationId: ScriptExecutionHistory_Get
+      parameters:
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      - in: path
+        name: scriptExecutionId
+        description: The script execution Id
+      responses:
+        200:
+          description: OK
+      tags:
+      - Script Execution History
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/scriptExecutionHistory/{scriptExecutionId}/promote
+  : post:
+      summary: Script Execution History Promote
+      description: Promote ad-hoc script execution to a persisted script
+      operationId: ScriptExecutionHistory_Promote
+      parameters:
+      - in: path
+        name: clusterName
+        description: The name of the cluster
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      - in: path
+        name: scriptExecutionId
+        description: The script execution Id
+      responses:
+        200:
+          description: OK
+      tags:
+      - Script Execution History Promote
+definitions:
+  ApplicationGetHttpsEndpoint:
+    properties:
+      accessModes:
+        description: This is a default description.
+        type: delete
+      location:
+        description: This is a default description.
+        type: delete
+      destinationPort:
+        description: This is a default description.
+        type: delete
+      publicPort:
+        description: This is a default description.
+        type: delete
+  ApplicationGetEndpoint:
+    properties:
+      location:
+        description: This is a default description.
+        type: delete
+      destinationPort:
+        description: This is a default description.
+        type: delete
+      publicPort:
+        description: This is a default description.
+        type: delete
+  ApplicationGetProperties:
+    properties:
+      installScriptActions:
+        description: This is a default description.
+        type: delete
+      uninstallScriptActions:
+        description: This is a default description.
+        type: delete
+      httpsEndpoints:
+        description: This is a default description.
+        type: delete
+      sshEndpoints:
+        description: This is a default description.
+        type: delete
+      provisioningState:
+        description: This is a default description.
+        type: delete
+      applicationType:
+        description: This is a default description.
+        type: delete
+      applicationState:
+        description: This is a default description.
+        type: delete
+      errors:
+        description: This is a default description.
+        type: delete
+      createdDate:
+        description: This is a default description.
+        type: delete
+      marketplaceIdentifier:
+        description: This is a default description.
+        type: delete
+  Application:
+    properties:
+      name:
+        description: This is a default description.
+        type: delete
+      type:
+        description: This is a default description.
+        type: delete
+      etag:
+        description: This is a default description.
+        type: delete
+      tags:
+        description: This is a default description.
+        type: delete
+  ApplicationListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: delete
+      nextLink:
+        description: This is a default description.
+        type: delete
+  versionSpec:
+    properties:
+      friendlyName:
+        description: This is a default description.
+        type: get
+      displayName:
+        description: This is a default description.
+        type: get
+      isDefault:
+        description: This is a default description.
+        type: get
+      componentVersions:
+        description: This is a default description.
+        type: get
+  versionsCapability:
+    properties:
+      available:
+        description: This is a default description.
+        type: get
+  regionsCapability:
+    properties:
+      available:
+        description: This is a default description.
+        type: get
+  vmSizesCapability:
+    properties:
+      available:
+        description: This is a default description.
+        type: get
+  vmSizeCompatibilityFilter:
+    properties:
+      FilterMode:
+        description: This is a default description.
+        type: get
+      Regions:
+        description: This is a default description.
+        type: get
+      ClusterFlavors:
+        description: This is a default description.
+        type: get
+      NodeTypes:
+        description: This is a default description.
+        type: get
+      ClusterVersions:
+        description: This is a default description.
+        type: get
+      vmsizes:
+        description: This is a default description.
+        type: get
+  regionalQuotaCapability:
+    properties:
+      region_name:
+        description: This is a default description.
+        type: get
+      cores_used:
+        description: This is a default description.
+        type: get
+      cores_available:
+        description: This is a default description.
+        type: get
+  quotaCapability:
+    properties:
+      regionalQuotas:
+        description: This is a default description.
+        type: get
+  capabilitiesResult:
+    properties:
+      versions:
+        description: This is a default description.
+        type: get
+      regions:
+        description: This is a default description.
+        type: get
+      vmsizes:
+        description: This is a default description.
+        type: get
+      vmsize_filters:
+        description: This is a default description.
+        type: get
+      features:
+        description: This is a default description.
+        type: get
+  HttpSettingsParameters:
+    properties:
+      restAuthCredential.isEnabled:
+        description: This is a default description.
+        type: get
+      restAuthCredential.username:
+        description: This is a default description.
+        type: get
+      restAuthCredential.password:
+        description: This is a default description.
+        type: get
+  ClusterDefinition:
+    properties:
+      blueprint:
+        description: This is a default description.
+        type: get
+      kind:
+        description: This is a default description.
+        type: get
+      componentVersion:
+        description: This is a default description.
+        type: get
+      configurations:
+        description: This is a default description.
+        type: get
+  SecurityProfile:
+    properties:
+      directoryType:
+        description: This is a default description.
+        type: get
+      domain:
+        description: This is a default description.
+        type: get
+      organizationalUnitDN:
+        description: This is a default description.
+        type: get
+      ldapsUrls:
+        description: This is a default description.
+        type: get
+      domainUsername:
+        description: This is a default description.
+        type: get
+      domainUserPassword:
+        description: This is a default description.
+        type: get
+      clusterUsersGroupDNs:
+        description: This is a default description.
+        type: get
+  HardwareProfile:
+    properties:
+      vmSize:
+        description: This is a default description.
+        type: get
+  VirtualNetworkProfile:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      subnet:
+        description: This is a default description.
+        type: get
+  Role:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      minInstanceCount:
+        description: This is a default description.
+        type: get
+      targetInstanceCount:
+        description: This is a default description.
+        type: get
+      scriptActions:
+        description: This is a default description.
+        type: get
+  ComputeProfile:
+    properties:
+      roles:
+        description: This is a default description.
+        type: get
+  StorageAccount:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      isDefault:
+        description: This is a default description.
+        type: get
+      container:
+        description: This is a default description.
+        type: get
+      key:
+        description: This is a default description.
+        type: get
+  StorageProfile:
+    properties:
+      storageaccounts:
+        description: This is a default description.
+        type: get
+  ClusterCreateProperties:
+    properties:
+      clusterVersion:
+        description: This is a default description.
+        type: get
+      osType:
+        description: This is a default description.
+        type: get
+      tier:
+        description: This is a default description.
+        type: get
+  ClusterCreateParametersExtended:
+    properties:
+      location:
+        description: This is a default description.
+        type: get
+      tags:
+        description: This is a default description.
+        type: get
+  ClusterPatchParameters:
+    properties:
+      tags:
+        description: This is a default description.
+        type: get
+  QuotaInfo:
+    properties:
+      coresUsed:
+        description: This is a default description.
+        type: get
+  errors:
+    properties:
+      code:
+        description: This is a default description.
+        type: get
+      message:
+        description: This is a default description.
+        type: get
+  ConnectivityEndpoint:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      protocol:
+        description: This is a default description.
+        type: get
+      location:
+        description: This is a default description.
+        type: get
+      port:
+        description: This is a default description.
+        type: get
+  ClusterGetProperties:
+    properties:
+      clusterVersion:
+        description: This is a default description.
+        type: get
+      osType:
+        description: This is a default description.
+        type: get
+      tier:
+        description: This is a default description.
+        type: get
+      provisioningState:
+        description: This is a default description.
+        type: get
+      createdDate:
+        description: This is a default description.
+        type: get
+      clusterState:
+        description: This is a default description.
+        type: get
+      errors:
+        description: This is a default description.
+        type: get
+      connectivityEndpoints:
+        description: This is a default description.
+        type: get
+  Cluster:
+    properties:
+      etag:
+        description: This is a default description.
+        type: get
+  RuntimeScriptAction:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      uri:
+        description: This is a default description.
+        type: get
+      parameters:
+        description: This is a default description.
+        type: get
+      roles:
+        description: This is a default description.
+        type: get
+      applicationName:
+        description: This is a default description.
+        type: get
+  ExecuteScriptActionParameters:
+    properties:
+      scriptActions:
+        description: This is a default description.
+        type: get
+      persistOnSuccess:
+        description: This is a default description.
+        type: get
+  ClusterListPersistedScriptActionsResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  ScriptActionExecutionSummary:
+    properties:
+      status:
+        description: This is a default description.
+        type: get
+      instanceCount:
+        description: This is a default description.
+        type: get
+  RuntimeScriptActionDetail:
+    properties:
+      scriptExecutionId:
+        description: This is a default description.
+        type: get
+      startTime:
+        description: This is a default description.
+        type: get
+      endTime:
+        description: This is a default description.
+        type: get
+      status:
+        description: This is a default description.
+        type: get
+      operation:
+        description: This is a default description.
+        type: get
+      executionSummary:
+        description: This is a default description.
+        type: get
+      debugInformation:
+        description: This is a default description.
+        type: get
+      name:
+        description: This is a default description.
+        type: get
+      uri:
+        description: This is a default description.
+        type: get
+      parameters:
+        description: This is a default description.
+        type: get
+  ClusterListRuntimeScriptActionDetailResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  ClusterListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  ClusterResizeParameters:
+    properties:
+      targetInstanceCount:
+        description: This is a default description.
+        type: get
+  OperationResource:
+    properties:
+      status:
+        description: This is a default description.
+        type: get
+  Resource:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      name:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+      location:
+        description: This is a default description.
+        type: get
+      tags:
+        description: This is a default description.
+        type: get
+  SubResource:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+  Operation:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+  OperationListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  RdpSettings:
+    properties:
+      username:
+        description: This is a default description.
+        type: get
+      password:
+        description: This is a default description.
+        type: get
+      expiryDate:
+        description: This is a default description.
+        type: get
+  WindowsOperatingSystemProfile:
+    properties: []
+  SshPublicKey:
+    properties:
+      certificateData:
+        description: This is a default description.
+        type: get
+  SshProfile:
+    properties:
+      publicKeys:
+        description: This is a default description.
+        type: get
+  LinuxOperatingSystemProfile:
+    properties:
+      username:
+        description: This is a default description.
+        type: get
+      password:
+        description: This is a default description.
+        type: get
+  OsProfile:
+    properties: []
+  RDPSettingsParameters:
+    properties: []
+  HttpConnectivitySettings:
+    properties:
+      restAuthCredential.isEnabled:
+        description: This is a default description.
+        type: get
+      restAuthCredential.username:
+        description: This is a default description.
+        type: get
+      restAuthCredential.password:
+        description: This is a default description.
+        type: get
+  Extension:
+    properties:
+      workspaceId:
+        description: This is a default description.
+        type: delete
+      primaryKey:
+        description: This is a default description.
+        type: delete
+  ScriptActionExecutionHistoryList:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ScriptAction:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
+      uri:
+        description: This is a default description.
+        type: post
+      parameters:
+        description: This is a default description.
+        type: post
+  ScriptActionPersistedGetResponseSpec:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
+      uri:
+        description: This is a default description.
+        type: post
+      parameters:
+        description: This is a default description.
+        type: post
+      roles:
+        description: This is a default description.
+        type: post
+      applicationName:
+        description: This is a default description.
+        type: post
+  ScriptActionsList:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
