@@ -1,0 +1,209 @@
+agger: "2.0"
+info:
+  title: Incidents API
+  version: 1.0.0
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /incidents:
+    get:
+      summary: List incidents
+      description: List existing incidents
+      operationId: list-existing-incidents
+      parameters:
+      - in: query
+        name: include[]
+        description: Array of additional details to include
+      - in: query
+        name: No Name
+      - in: query
+        name: sort_by
+        description: Used to specify both the field you wish to sort the results on
+          (incident_number/created_on/resolved_on/urgency), as well as the direction
+          (asc/desc) of the results
+      - in: query
+        name: statuses[]
+        description: Return only incidents with the given statuses
+      responses:
+        200:
+          description: OK
+      tags:
+      - Incidents
+    put:
+      summary: Manage incidents
+      description: Acknowledge, resolve, escalate or reassign one or more incidents
+      operationId: acknowledge-resolve-escalate-or-reassign-one-or-more-incidents
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Incidents
+    x-description:
+      summary: L
+      description: L
+      operationId: L
+      responses:
+        200:
+          description: OK
+      tags:
+      - Incidents
+  /incidents/count:
+    x-description:
+      summary: G
+      description: G
+      operationId: G
+      responses:
+        200:
+          description: OK
+      tags:
+      - Incidents
+  /incidents/{id}:
+    get:
+      summary: Get an incident
+      description: Show detailed information about an incident
+      operationId: show-detailed-information-about-an-incident-accepts-either-an-incident-id-or-an-incident-number
+      parameters:
+      - in: path
+        name: id
+        description: Either the id or number of the incident to retrieve
+      responses:
+        200:
+          description: OK
+      tags:
+      - Incidents
+    put:
+      summary: Update an incident
+      description: Acknowledge, resolve, escalate or reassign an incident
+      operationId: acknowledge-resolve-escalate-or-reassign-an-incident
+      parameters:
+      - in: path
+        name: id
+        description: The id of the incident to update
+      - in: query
+        name: No Name
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Incidents
+    x-description:
+      summary: G
+      description: G
+      operationId: G
+      responses:
+        200:
+          description: OK
+      tags:
+      - Incidents
+  /incidents/{id}/grouped_log_entries:
+    x-description:
+      summary: L
+      description: L
+      operationId: L
+      responses:
+        200:
+          description: OK
+      tags:
+      - Incident Grouped Log Entries
+  /incidents/{id}/log_entries:
+    get:
+      summary: List log entries for the incident
+      description: List log entries for the specified incident
+      operationId: list-log-entries-for-the-specified-incident
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Incidents Log Entries
+    x-description:
+      summary: L
+      description: L
+      operationId: L
+      responses:
+        200:
+          description: OK
+      tags:
+      - Incidents Log Entries
+  /incidents/{id}/notes:
+    get:
+      summary: List existing notes for the specified incident
+      description: List existing notes for the specified incident
+      operationId: list-existing-notes-for-the-specified-incident
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Incident Notes
+    post:
+      summary: Create a new note for the specified incident
+      description: Create a new note for the specified incident
+      operationId: create-a-new-note-for-the-specified-incident
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Incident Notes
+    x-description:
+      summary: L
+      description: L
+      operationId: L
+      responses:
+        200:
+          description: OK
+      tags:
+      - Incident Notes
+  /incidents/{id}/snooze:
+    post:
+      summary: Snooze an incident
+      description: Snooze an incident
+      operationId: snooze-an-incident
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: payload
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Incident Snooze
+    x-description:
+      summary: '"'
+      description: '"'
+      operationId: '"'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Incident Snooze
+definitions: []
