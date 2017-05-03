@@ -1,0 +1,562 @@
+agger: "2.0"
+info:
+  title: AWS CloudSearch Configuration API
+  version: 1.0.0
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /?Action=AddTags&k=1:
+    get:
+      summary: Add Tags
+      description: |-
+        Attaches resource tags to an
+         Amazon CloudSearch domain
+      operationId: AddTags
+      parameters:
+      - in: query
+        name: Base
+        description: An                  error occurred while processing the request
+        type: string
+      - in: query
+        name: InternalException
+        description: The processing of the request failed because of an internal service
+          error
+        type: string
+      - in: query
+        name: LimitExceededException
+        description: The request contains more than the allowed number and type of
+          Amazon CloudSearch domain                  resources
+        type: string
+      - in: query
+        name: ValidationException
+        description: The request contains invalid input or is missing required input
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tags
+  /?Action=BuildSuggesters&k=1:
+    get:
+      summary: Build Suggesters
+      description: Indexes the search suggestions
+      operationId: BuildSuggesters
+      parameters:
+      - in: query
+        name: DomainName
+        description: A string that represents the name of a domain
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Suggesters
+  /?Action=CreateDomain&k=1:
+    get:
+      summary: Create Domain
+      description: Creates a new search domain
+      operationId: CreateDomain
+      parameters:
+      - in: query
+        name: DomainName
+        description: A name for the domain you are creating
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Domains
+  /?Action=DefineAnalysisScheme&k=1:
+    get:
+      summary: Define Analysis Scheme
+      description: Configures an analysis scheme that can be applied to a text or
+        text-array field to define language-specific text processing options
+      operationId: DefineAnalysisScheme
+      parameters:
+      - in: query
+        name: AnalysisScheme
+        description: Configuration information for an analysis scheme
+        type: string
+      - in: query
+        name: DomainName
+        description: A string that represents the name of a domain
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Analysis Scheme
+  /?Action=DefineExpression&k=1:
+    get:
+      summary: Define Expression
+      description: Configures an Expression  for the search domain
+      operationId: DefineExpression
+      parameters:
+      - in: query
+        name: DomainName
+        description: A string that represents the name of a domain
+        type: string
+      - in: query
+        name: Expression
+        description: A named expression that can be evaluated at search time
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Expressions
+  /?Action=DefineIndexField&k=1:
+    get:
+      summary: Define Index Field
+      description: Configures an ndexField  for the search domain
+      operationId: DefineIndexField
+      parameters:
+      - in: query
+        name: DomainName
+        description: A string that represents the name of a domain
+        type: string
+      - in: query
+        name: IndexField
+        description: The index field and field options you want to configure
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Index Fields
+  /?Action=DefineSuggester&k=1:
+    get:
+      summary: Define Suggester
+      description: Configures a suggester for a domain
+      operationId: DefineSuggester
+      parameters:
+      - in: query
+        name: DomainName
+        description: A string that represents the name of a domain
+        type: string
+      - in: query
+        name: Suggester
+        description: Configuration information for a search suggester
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Suggesters
+  /?Action=DeleteAnalysisScheme&k=1:
+    get:
+      summary: Delete Analysis Scheme
+      description: Deletes an analysis scheme
+      operationId: DeleteAnalysisScheme
+      parameters:
+      - in: query
+        name: AnalysisSchemeName
+        description: The name of the analysis scheme you want to delete
+        type: string
+      - in: query
+        name: DomainName
+        description: A string that represents the name of a domain
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Analysis Scheme
+  /?Action=DeleteDomain&k=1:
+    get:
+      summary: Delete Domain
+      description: Permanently deletes a search domain and all of its data
+      operationId: DeleteDomain
+      parameters:
+      - in: query
+        name: DomainName
+        description: The name of the domain you want to permanently delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Domains
+  /?Action=DeleteExpression&k=1:
+    get:
+      summary: Delete Expression
+      description: "Removes an \n  Expression\n  from the search domain"
+      operationId: DeleteExpression
+      parameters:
+      - in: query
+        name: DomainName
+        description: A string that represents the name of a domain
+        type: string
+      - in: query
+        name: ExpressionName
+        description: The name of the                         Expression                      to
+          delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Expressions
+  /?Action=DeleteIndexField&k=1:
+    get:
+      summary: Delete Index Field
+      description: "Removes an \n  IndexField\n  from the search domain"
+      operationId: DeleteIndexField
+      parameters:
+      - in: query
+        name: DomainName
+        description: A string that represents the name of a domain
+        type: string
+      - in: query
+        name: IndexFieldName
+        description: The name of the index field your want to remove from the domain's
+          indexing options
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Index Fields
+  /?Action=DeleteSuggester&k=1:
+    get:
+      summary: Delete Suggester
+      description: Deletes a suggester
+      operationId: DeleteSuggester
+      parameters:
+      - in: query
+        name: DomainName
+        description: A string that represents the name of a domain
+        type: string
+      - in: query
+        name: SuggesterName
+        description: Specifies the name of the suggester you want to delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Suggesters
+  /?Action=DescribeAnalysisSchemes&k=1:
+    get:
+      summary: Describe Analysis Schemes
+      description: Gets the analysis schemes configured for a domain
+      operationId: DescribeAnalysisSchemes
+      parameters:
+      - in: query
+        name: AnalysisSchemeNames.member.N
+        description: The analysis schemes you want to describe
+        type: string
+      - in: query
+        name: Deployed
+        description: Whether to display the deployed configuration (true) or include
+          any pending changes (false)
+        type: string
+      - in: query
+        name: DomainName
+        description: The name of the domain you want to describe
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Analysis Scheme
+  /?Action=DescribeAvailabilityOptions&k=1:
+    get:
+      summary: Describe Availability Options
+      description: Gets the availability options configured for a domain
+      operationId: DescribeAvailabilityOptions
+      parameters:
+      - in: query
+        name: Deployed
+        description: Whether to display the deployed configuration (true) or include
+          any pending changes (false)
+        type: string
+      - in: query
+        name: DomainName
+        description: The name of the domain you want to describe
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Availability Options
+  /?Action=DescribeDomains&k=1:
+    get:
+      summary: Describe Domains
+      description: Gets information about the search domains owned by this account
+      operationId: DescribeDomains
+      parameters:
+      - in: query
+        name: DomainNames.member.N
+        description: The names of the domains you want to include in the response
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Domains
+  /?Action=DescribeExpressions&k=1:
+    get:
+      summary: Describe Expressions
+      description: Gets the expressions configured for the search domain
+      operationId: DescribeExpressions
+      parameters:
+      - in: query
+        name: Deployed
+        description: Whether to display the deployed configuration (true) or include
+          any pending changes (false)
+        type: string
+      - in: query
+        name: DomainName
+        description: The name of the domain you want to describe
+        type: string
+      - in: query
+        name: ExpressionNames.member.N
+        description: Limits the                         DescribeExpressions                      response
+          to the specified expressions
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Expressions
+  /?Action=DescribeIndexFields&k=1:
+    get:
+      summary: Describe Index Fields
+      description: Gets information about the index fields configured for the search
+        domain
+      operationId: DescribeIndexFields
+      parameters:
+      - in: query
+        name: Deployed
+        description: Whether to display the deployed configuration (true) or include
+          any pending changes (false)
+        type: string
+      - in: query
+        name: DomainName
+        description: The name of the domain you want to describe
+        type: string
+      - in: query
+        name: FieldNames.member.N
+        description: A list of the index fields you want to describe
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Index Fields
+  /?Action=DescribeScalingParameters&k=1:
+    get:
+      summary: Describe Scaling Parameters
+      description: Gets the scaling parameters configured for a domain
+      operationId: DescribeScalingParameters
+      parameters:
+      - in: query
+        name: DomainName
+        description: A string that represents the name of a domain
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Scaling Parameters
+  /?Action=DescribeServiceAccessPolicies&k=1:
+    get:
+      summary: Describe Service Access Policies
+      description: Gets information about the access policies that control access
+        to the domain's document and search endpoints
+      operationId: DescribeServiceAccessPolicies
+      parameters:
+      - in: query
+        name: Deployed
+        description: Whether to display the deployed configuration (true) or include
+          any pending changes (false)
+        type: string
+      - in: query
+        name: DomainName
+        description: The name of the domain you want to describe
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Service Access Policies
+  /?Action=DescribeSuggesters&k=1:
+    get:
+      summary: Describe Suggesters
+      description: Gets the suggesters configured for a domain
+      operationId: DescribeSuggesters
+      parameters:
+      - in: query
+        name: Deployed
+        description: Whether to display the deployed configuration (true) or include
+          any pending changes (false)
+        type: string
+      - in: query
+        name: DomainName
+        description: The name of the domain you want to describe
+        type: string
+      - in: query
+        name: SuggesterNames.member.N
+        description: The suggesters you want to describe
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Suggesters
+  /?Action=IndexDocuments&k=1:
+    get:
+      summary: Index Documents
+      description: Tells the search domain to start indexing its documents using the
+        latest indexing options
+      operationId: IndexDocuments
+      parameters:
+      - in: query
+        name: DomainName
+        description: A string that represents the name of a domain
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Index Documents
+  /?Action=ListDomainNames&k=1:
+    get:
+      summary: List Domain Names
+      description: Lists all search domains owned by an account
+      operationId: ListDomainNames
+      parameters:
+      - in: query
+        name: DomainNames
+        description: The names of the search domains owned by an account
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Domains
+  /?Action=ListTags&k=1:
+    get:
+      summary: List Tags
+      description: |-
+        Displays all of the resource
+         tags for an Amazon CloudSearch domain
+      operationId: ListTags
+      parameters:
+      - in: query
+        name: Base
+        description: An error occurred while                  processing the request
+        type: string
+      - in: query
+        name: InternalException
+        description: The                  processing of the request failed because
+          of an internal service error
+        type: string
+      - in: query
+        name: LimitExceededException
+        description: The                  request contains more than the allowed number
+          and type of Amazon CloudSearch domain resources
+        type: string
+      - in: query
+        name: ValidationException
+        description: The                  request contains invalid input or is missing
+          required input
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tags
+  /?Action=RemoveTags&k=1:
+    get:
+      summary: Remove Tags
+      description: |-
+        Removes the specified resource tags
+         from an Amazon ES domain
+      operationId: RemoveTags
+      parameters:
+      - in: query
+        name: Base
+        description: An error occurred while                  processing the request
+        type: string
+      - in: query
+        name: InternalException
+        description: The                  processing of the request failed because
+          of an internal service error
+        type: string
+      - in: query
+        name: ValidationException
+        description: The                  request contains invalid input or is missing
+          required input
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tags
+  /?Action=UpdateAvailabilityOptions&k=1:
+    get:
+      summary: Update Availability Options
+      description: Configures the availability options for a domain
+      operationId: UpdateAvailabilityOptions
+      parameters:
+      - in: query
+        name: DomainName
+        description: A string that represents the name of a domain
+        type: string
+      - in: query
+        name: MultiAZ
+        description: You expand an existing search domain to a second Availability
+          Zone by setting the Multi-AZ option to true
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Availability Options
+  /?Action=UpdateScalingParameters&k=1:
+    get:
+      summary: Update Scaling Parameters
+      description: Configures scaling parameters for a domain
+      operationId: UpdateScalingParameters
+      parameters:
+      - in: query
+        name: DomainName
+        description: A string that represents the name of a domain
+        type: string
+      - in: query
+        name: ScalingParameters
+        description: The desired instance type and desired number of replicas of each
+          index partition
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Scaling Parameters
+  /?Action=UpdateServiceAccessPolicies&k=1:
+    get:
+      summary: Update Service Access Policies
+      description: Configures the access rules that control access to the domain's
+        document and search endpoints
+      operationId: UpdateServiceAccessPolicies
+      parameters:
+      - in: query
+        name: AccessPolicies
+        description: The access rules you want to configure
+        type: string
+      - in: query
+        name: DomainName
+        description: A string that represents the name of a domain
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Service Access Policies
+definitions: []
