@@ -1,0 +1,608 @@
+agger: "2.0"
+info:
+  title: RedisManagementClient
+  description: REST API for Azure Redis Cache Service.
+  version: 1.0.0
+host: management.azure.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /providers/Microsoft.Cache/operations:
+    get:
+      summary: Operations List
+      description: Lists all of the available REST API operations of the Microsoft
+      operationId: Operations_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Operations
+  /subscriptions/{subscriptionId}/providers/Microsoft.Cache/Redis/:
+    get:
+      summary: Redis List
+      description: Gets all Redis caches in the specified subscription
+      operationId: Redis_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Redis
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/:
+    get:
+      summary: Redis List By Resource Group
+      description: Lists all Redis caches in a resource group
+      operationId: Redis_ListByResourceGroup
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Redis Resource Group
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{cacheName}/firewallRules:
+    get:
+      summary: Firewall Rules List
+      description: Gets all firewall rules in the specified redis cache
+      operationId: FirewallRules_List
+      parameters:
+      - in: path
+        name: cacheName
+        description: The name of the Redis cache
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Firewall Rules
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{cacheName}/firewallRules/{ruleName}
+  : delete:
+      summary: Redis Firewall Rule Delete
+      description: Deletes a single firewall rule in a specified redis cache
+      operationId: RedisFirewallRule_Delete
+      parameters:
+      - in: path
+        name: cacheName
+        description: The name of the Redis cache
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      - in: path
+        name: ruleName
+        description: The name of the firewall rule
+      responses:
+        200:
+          description: OK
+      tags:
+      - Redis Firewall Rule
+    get:
+      summary: Redis Firewall Rule Get
+      description: Gets a single firewall rule in a specified redis cache
+      operationId: RedisFirewallRule_Get
+      parameters:
+      - in: path
+        name: cacheName
+        description: The name of the Redis cache
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      - in: path
+        name: ruleName
+        description: The name of the firewall rule
+      responses:
+        200:
+          description: OK
+      tags:
+      - Redis Firewall Rule
+    put:
+      summary: Redis Firewall Rule Create Or Update
+      description: Create or update a redis cache firewall rule
+      operationId: RedisFirewallRule_CreateOrUpdate
+      parameters:
+      - in: path
+        name: cacheName
+        description: The name of the Redis cache
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to the create or update redis firewall rule
+          operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      - in: path
+        name: ruleName
+        description: The name of the firewall rule
+      responses:
+        200:
+          description: OK
+      tags:
+      - Redis Firewall Rule
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}:
+    delete:
+      summary: Redis Delete
+      description: Deletes a Redis cache
+      operationId: Redis_Delete
+      parameters:
+      - in: path
+        name: name
+        description: The name of the Redis cache
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Redis
+    get:
+      summary: Redis Get
+      description: Gets a Redis cache (resource description)
+      operationId: Redis_Get
+      parameters:
+      - in: path
+        name: name
+        description: The name of the Redis cache
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Redis
+    patch:
+      summary: Redis Update
+      description: Update an existing Redis cache
+      operationId: Redis_Update
+      parameters:
+      - in: path
+        name: name
+        description: The name of the Redis cache
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to the Update Redis operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Redis
+    put:
+      summary: Redis Create
+      description: Create or replace (overwrite/recreate, with potential downtime)
+        an existing Redis cache
+      operationId: Redis_Create
+      parameters:
+      - in: path
+        name: name
+        description: The name of the Redis cache
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to the Create Redis operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Redis
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}/export:
+    post:
+      summary: Redis Export Data
+      description: Export data from the redis cache to blobs in a container
+      operationId: Redis_ExportData
+      parameters:
+      - in: path
+        name: name
+        description: The name of the Redis cache
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters for Redis export operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Redis Export Data
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}/forceReboot:
+    post:
+      summary: Redis Force Reboot
+      description: Reboot specified Redis node(s)
+      operationId: Redis_ForceReboot
+      parameters:
+      - in: path
+        name: name
+        description: The name of the Redis cache
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Specifies which Redis node(s) to reboot
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Redis Force Reboot
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}/import:
+    post:
+      summary: Redis Import Data
+      description: Import data into Redis cache
+      operationId: Redis_ImportData
+      parameters:
+      - in: path
+        name: name
+        description: The name of the Redis cache
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters for Redis import operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Redis Import Data
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}/listKeys:
+    post:
+      summary: Redis List Keys
+      description: Retrieve a Redis cache's access keys
+      operationId: Redis_ListKeys
+      parameters:
+      - in: path
+        name: name
+        description: The name of the Redis cache
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Redis Keys
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}/patchSchedules/default:
+    delete:
+      summary: Patch Schedules Delete
+      description: Deletes the patching schedule of a redis cache (requires Premium
+        SKU)
+      operationId: PatchSchedules_Delete
+      parameters:
+      - in: path
+        name: name
+        description: The name of the redis cache
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Schedules
+    get:
+      summary: Patch Schedules Get
+      description: Gets the patching schedule of a redis cache (requires Premium SKU)
+      operationId: PatchSchedules_Get
+      parameters:
+      - in: path
+        name: name
+        description: The name of the redis cache
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Schedules
+    put:
+      summary: Patch Schedules Create Or Update
+      description: Create or replace the patching schedule for Redis cache (requires
+        Premium SKU)
+      operationId: PatchSchedules_CreateOrUpdate
+      parameters:
+      - in: path
+        name: name
+        description: The name of the Redis cache
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters to set the patching schedule for Redis cache
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Schedules
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/{name}/regenerateKey:
+    post:
+      summary: Redis Regenerate Key
+      description: Regenerate Redis cache's access keys
+      operationId: Redis_RegenerateKey
+      parameters:
+      - in: path
+        name: name
+        description: The name of the Redis cache
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Specifies which key to regenerate
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group
+      responses:
+        200:
+          description: OK
+      tags:
+      - Redis Regenerate Key
+definitions:
+  Sku:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      family:
+        description: This is a default description.
+        type: get
+      capacity:
+        description: This is a default description.
+        type: get
+  RedisProperties:
+    properties:
+      redisConfiguration:
+        description: This is a default description.
+        type: get
+      enableNonSslPort:
+        description: This is a default description.
+        type: get
+      tenantSettings:
+        description: This is a default description.
+        type: get
+      shardCount:
+        description: This is a default description.
+        type: get
+      subnetId:
+        description: This is a default description.
+        type: get
+      staticIP:
+        description: This is a default description.
+        type: get
+  RedisCreateProperties:
+    properties: []
+  RedisUpdateProperties:
+    properties:
+      tags:
+        description: This is a default description.
+        type: get
+  Resource:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      name:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+      location:
+        description: This is a default description.
+        type: get
+      tags:
+        description: This is a default description.
+        type: get
+  RedisCreateParameters:
+    properties: []
+  RedisUpdateParameters:
+    properties: []
+  RedisAccessKeys:
+    properties:
+      primaryKey:
+        description: This is a default description.
+        type: get
+      secondaryKey:
+        description: This is a default description.
+        type: get
+  RedisFirewallRule:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      name:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+  RedisFirewallRuleProperties:
+    properties:
+      startIP:
+        description: This is a default description.
+        type: get
+      endIP:
+        description: This is a default description.
+        type: get
+  RedisFirewallRuleListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  RedisResourceProperties:
+    properties:
+      redisVersion:
+        description: This is a default description.
+        type: get
+      provisioningState:
+        description: This is a default description.
+        type: get
+      hostName:
+        description: This is a default description.
+        type: get
+      port:
+        description: This is a default description.
+        type: get
+      sslPort:
+        description: This is a default description.
+        type: get
+  RedisResource:
+    properties: []
+  RedisListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  RedisRegenerateKeyParameters:
+    properties:
+      keyType:
+        description: This is a default description.
+        type: get
+  RedisRebootParameters:
+    properties:
+      rebootType:
+        description: This is a default description.
+        type: get
+      shardId:
+        description: This is a default description.
+        type: get
+  ExportRDBParameters:
+    properties:
+      format:
+        description: This is a default description.
+        type: get
+      prefix:
+        description: This is a default description.
+        type: get
+      container:
+        description: This is a default description.
+        type: get
+  ImportRDBParameters:
+    properties:
+      format:
+        description: This is a default description.
+        type: get
+      files:
+        description: This is a default description.
+        type: get
+  ScheduleEntry:
+    properties:
+      dayOfWeek:
+        description: This is a default description.
+        type: get
+      startHourUtc:
+        description: This is a default description.
+        type: get
+      maintenanceWindow:
+        description: This is a default description.
+        type: get
+  ScheduleEntries:
+    properties:
+      scheduleEntries:
+        description: This is a default description.
+        type: get
+  RedisPatchSchedule:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      name:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+      location:
+        description: This is a default description.
+        type: get
+  RedisForceRebootResponse:
+    properties:
+      Message:
+        description: This is a default description.
+        type: get
+  Operation:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+  OperationListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
