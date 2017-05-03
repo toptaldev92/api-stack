@@ -1,0 +1,3513 @@
+agger: "2.0"
+info:
+  title: ApiManagementClient
+  description: Use these REST APIs for performing operations on User entity in Azure
+    API Management deployment. The User entity in API Management represents the developers
+    that call the APIs of the products to which they are subscribed.
+  version: 1.0.0
+host: management.azure.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /providers/Microsoft.ApiManagement/operations:
+    get:
+      summary: API Management Operations List
+      description: Lists all of the available REST API operations of the Microsoft
+      operationId: ApiManagementOperations_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Operations
+  /subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/checkNameAvailability:
+    post:
+      summary: API Management Services Check Name Availability
+      description: Checks availability and correctness of a name for an API Management
+        service
+      operationId: ApiManagementServices_CheckNameAvailability
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to the CheckNameAvailability operation
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Service
+  /subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/service/:
+    get:
+      summary: API Management Services List
+      description: Lists all API Management services within an Azure subscription
+      operationId: ApiManagementServices_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Service
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/:
+    get:
+      summary: API Management Services ListByResourceGroup
+      description: List all API Management services within a resource group
+      operationId: ApiManagementServices_ListByResourceGroup
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Service
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}:
+    delete:
+      summary: ApiManagementServices Delete
+      description: Deletes an existing API Management service
+      operationId: ApiManagementServices_Delete
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Service
+    get:
+      summary: ApiManagementServices Get
+      description: Gets an API Management service resource description
+      operationId: ApiManagementServices_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Service
+    patch:
+      summary: ApiManagementServices Update
+      description: Updates an existing API Management service
+      operationId: ApiManagementServices_Update
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to the CreateOrUpdate API Management service
+          operation
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Service
+    put:
+      summary: ApiManagementServices CreateOrUpdate
+      description: Creates or updates an API Management service
+      operationId: ApiManagementServices_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to the CreateOrUpdate API Management service
+          operation
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Services
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis:
+    get:
+      summary: Apis ListByService
+      description: Lists all APIs of the API Management service instance
+      operationId: Apis_ListByService
+      parameters:
+      - in: query
+        name: $filter
+        description: |-
+          | Field       | Supported operators    | Supported functions               |
+          |-------------|------------------------|-----------------------------------|
+          | id          | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
+          | name        | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
+          | description | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
+          | serviceUrl  | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
+          | path        | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - APIs
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}
+  : delete:
+      summary: Apis Delete
+      description: Deletes the specified API of the API Management service instance
+      operationId: Apis_Delete
+      parameters:
+      - in: header
+        name: If-Match
+        description: ETag of the API Entity
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - APIs
+    get:
+      summary: Apis Get
+      description: Gets the details of the API specified by its identifier
+      operationId: Apis_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - APIs
+    patch:
+      summary: Apis Update
+      description: Updates the specified API of the API Management service instance
+      operationId: Apis_Update
+      parameters:
+      - in: header
+        name: If-Match
+        description: ETag of the API entity
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: API Update Contract parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - APIs
+    put:
+      summary: Apis CreateOrUpdate
+      description: Creates new or updates existing specified API of the API Management
+        service instance
+      operationId: Apis_CreateOrUpdate
+      parameters:
+      - in: header
+        name: If-Match
+        description: ETag of the Api Entity
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Create or update parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - APIs
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations
+  : get:
+      summary: ApiOperations ListByApis
+      description: Lists a collection of the operations for the specified API
+      operationId: ApiOperations_ListByApis
+      parameters:
+      - in: query
+        name: $filter
+        description: |-
+          | Field       | Supported operators    | Supported functions               |
+          |-------------|------------------------|-----------------------------------|
+          | name        | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
+          | method      | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
+          | description | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
+          | urlTemplate | ge, le, eq, ne, gt, lt | substringof, startswith, endswith |
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Operations
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations/{operationId}
+  : delete:
+      summary: ApiOperations Delete
+      description: Deletes the specified operation
+      operationId: ApiOperations_Delete
+      parameters:
+      - in: header
+        name: If-Match
+        description: ETag of the API Operation Entity
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Operations
+    get:
+      summary: ApiOperations Get
+      description: Gets the details of the API Operation specified by its identifier
+      operationId: ApiOperations_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Operations
+    patch:
+      summary: ApiOperations Update
+      description: Updates the details of the operation specified by its identifier
+      operationId: ApiOperations_Update
+      parameters:
+      - in: header
+        name: If-Match
+        description: ETag of the API Operation Entity
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: API Operation Update parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Operations
+    put:
+      summary: ApiOperations CreateOrUpdate
+      description: Creates a new API operation or updates an existing one
+      operationId: ApiOperations_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Create parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Operations
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/operations/{operationId}/policy
+  : delete:
+      summary: ApiOperationsPolicy Delete
+      description: Deletes the policy configuration at the Api Operation
+      operationId: ApiOperationsPolicy_Delete
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the Api operation policy to
+          update
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Operations
+    get:
+      summary: ApiOperationsPolicy Get
+      description: Get the policy configuration at the API Operation level
+      operationId: ApiOperationsPolicy_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Operations
+    put:
+      summary: ApiOperationsPolicy CreateOrUpdate
+      description: Creates or updates policy configuration for the API Operation level
+      operationId: ApiOperationsPolicy_CreateOrUpdate
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the Api Operation policy to
+          update
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The policy contents to apply
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Operations
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/policy
+  : delete:
+      summary: ApiPolicy Delete
+      description: Deletes the policy configuration at the Api
+      operationId: ApiPolicy_Delete
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the Api policy to update
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Policy
+    get:
+      summary: ApiPolicy Get
+      description: Get the policy configuration at the API level
+      operationId: ApiPolicy_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Policy
+    put:
+      summary: ApiPolicy CreateOrUpdate
+      description: Creates or updates policy configuration for the API
+      operationId: ApiPolicy_CreateOrUpdate
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the Api Policy to update
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The policy contents to apply
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Policy
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/apis/{apiId}/products
+  : get:
+      summary: ApiProducts ListByApis
+      description: Lists all API associated products
+      operationId: ApiProducts_ListByApis
+      parameters:
+      - in: query
+        name: $filter
+        description: |-
+          | Field | Supported operators    | Supported functions                         |
+          |-------|------------------------|---------------------------------------------|
+          | name  | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Products
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/applynetworkconfigurationupdates
+  : post:
+      summary: ApiManagementServices ApplyNetworkConfigurationUpdates
+      description: Updates the Microsoft
+      operationId: ApiManagementServices_ApplyNetworkConfigurationUpdates
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Products
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationServers
+  : get:
+      summary: AuthorizationServers ListByService
+      description: Lists a collection of authorization servers defined within a service
+        instance
+      operationId: AuthorizationServers_ListByService
+      parameters:
+      - in: query
+        name: $filter
+        description: |-
+          | Field | Supported operators    | Supported functions                         |
+          |-------|------------------------|---------------------------------------------|
+          | id    | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | name  | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Authorization Servers
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/authorizationServers/{authsid}
+  : delete:
+      summary: AuthorizationServers Delete
+      description: Deletes specific authorization server instance
+      operationId: AuthorizationServers_Delete
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the authentication server
+          to delete
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Authorization Servers
+    get:
+      summary: AuthorizationServers Get
+      description: Gets the details of the authorization server specified by its identifier
+      operationId: AuthorizationServers_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Authorization Servers
+    patch:
+      summary: AuthorizationServers Update
+      description: Updates the details of the authorization server specified by its
+        identifier
+      operationId: AuthorizationServers_Update
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the authorization server to
+          update
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: OAuth2 Server settings Update parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Authorization Servers
+    put:
+      summary: AuthorizationServers CreateOrUpdate
+      description: Creates new authorization server or updates an existing authorization
+        server
+      operationId: AuthorizationServers_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Create or update parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Authorization Servers
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends
+  : get:
+      summary: Backends ListByService
+      description: Lists a collection of backends in the specified service instance
+      operationId: Backends_ListByService
+      parameters:
+      - in: query
+        name: $filter
+        description: |-
+          | Field | Supported operators    | Supported functions                         |
+          |-------|------------------------|---------------------------------------------|
+          | id    | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | host  | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Backends
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backends/{backendid}
+  : delete:
+      summary: Backends Delete
+      description: Deletes the specified backend
+      operationId: Backends_Delete
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the backend to delete
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Backends
+    get:
+      summary: Backends Get
+      description: Gets the details of the backend specified by its identifier
+      operationId: Backends_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Backends
+    patch:
+      summary: Backends Update
+      description: Updates an existing backend
+      operationId: Backends_Update
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the backend to update
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Update parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Backends
+    put:
+      summary: Backends CreateOrUpdate
+      description: Creates or Updates a backend
+      operationId: Backends_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Create parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Backends
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup
+  : post:
+      summary: ApiManagementServices Backup
+      description: Creates a backup of the API Management service to the given Azure
+        Storage Account
+      operationId: ApiManagementServices_Backup
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to the ApiManagementServices_Backup operation
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Management Service
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/certificates
+  : get:
+      summary: Certificates ListByService
+      description: Lists a collection of all certificates in the specified service
+        instance
+      operationId: Certificates_ListByService
+      parameters:
+      - in: query
+        name: $filter
+        description: |-
+          | Field          | Supported operators    | Supported functions                         |
+          |----------------|------------------------|---------------------------------------------|
+          | id             | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | subject        | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | thumbprint     | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | expirationDate | ge, le, eq, ne, gt, lt | N/A                                         |
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Certificates
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/certificates/{certificateId}
+  : delete:
+      summary: Certificates Delete
+      description: Deletes specific certificate
+      operationId: Certificates_Delete
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the certificate to delete
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Certificates
+    get:
+      summary: Certificates Get
+      description: Gets the details of the certificate specified by its identifier
+      operationId: Certificates_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Certificates
+    put:
+      summary: Certificates CreateOrUpdate
+      description: Creates or updates the certificate being used for authentication
+        with the backend
+      operationId: Certificates_CreateOrUpdate
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the certificate to update
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Create parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Certificates
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/getssotoken
+  : post:
+      summary: ApiManagementServices GetSsoToken
+      description: Gets the Single-Sign-On token for the API Management Service which
+        is valid for 5 Minutes
+      operationId: ApiManagementServices_GetSsoToken
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Management Service
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups
+  : get:
+      summary: Groups ListByService
+      description: Lists a collection of groups defined within a service instance
+      operationId: Groups_ListByService
+      parameters:
+      - in: query
+        name: $filter
+        description: |-
+          | Field       | Supported operators    | Supported functions                         |
+          |-------------|------------------------|---------------------------------------------|
+          | id          | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | name        | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | description | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | type        | eq, ne                 | N/A                                         |
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Groups
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups/{groupId}
+  : delete:
+      summary: Groups Delete
+      description: Deletes specific group of the API Management service instance
+      operationId: Groups_Delete
+      parameters:
+      - in: header
+        name: If-Match
+        description: ETag of the Group Entity
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Groups
+    get:
+      summary: Groups Get
+      description: Gets the details of the group specified by its identifier
+      operationId: Groups_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Groups
+    patch:
+      summary: Groups Update
+      description: Updates the details of the group specified by its identifier
+      operationId: Groups_Update
+      parameters:
+      - in: header
+        name: If-Match
+        description: ETag of the Group Entity
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Update parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Groups
+    put:
+      summary: Groups CreateOrUpdate
+      description: Creates or Updates a group
+      operationId: Groups_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Create parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Groups
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups/{groupId}/users
+  : get:
+      summary: GroupUsers ListByGroups
+      description: Lists a collection of the members of the group, specified by its
+        identifier
+      operationId: GroupUsers_ListByGroups
+      parameters:
+      - in: query
+        name: $filter
+        description: |-
+          | Field            | Supported operators    | Supported functions               |
+          |------------------|------------------------|-----------------------------------|
+          | id               | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | firstName        | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | lastName         | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | email            | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | state            | eq                     | N/A                               |
+          | registrationDate | ge, le, eq, ne, gt, lt | N/A                               |
+          | note             | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Group Users
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/groups/{groupId}/users/{uid}
+  : delete:
+      summary: GroupUsers Delete
+      description: Remove existing user from existing group
+      operationId: GroupUsers_Delete
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Group Users
+    put:
+      summary: GroupUsers Create
+      description: Adds a user to the specified group
+      operationId: GroupUsers_Create
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Group Users
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/identityProviders
+  : get:
+      summary: IdentityProviders ListByService
+      description: Lists a collection of Identity Provider configured in the specified
+        service instance
+      operationId: IdentityProviders_ListByService
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identity Providers
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/identityProviders/{identityProviderName}
+  : delete:
+      summary: IdentityProviders Delete
+      description: Deletes the specified identity provider configuration
+      operationId: IdentityProviders_Delete
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the backend to delete
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identity Providers
+    get:
+      summary: IdentityProviders Get
+      description: Gets the configuration details of the identity Provider configured
+        in specified service instance
+      operationId: IdentityProviders_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identity Providers
+    patch:
+      summary: IdentityProviders Update
+      description: Updates an existing IdentityProvider configuration
+      operationId: IdentityProviders_Update
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the identity provider configuration
+          to update
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Update parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identity Providers
+    put:
+      summary: IdentityProviders CreateOrUpdate
+      description: Creates or Updates the IdentityProvider configuration
+      operationId: IdentityProviders_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Create parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identity Providers
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/loggers
+  : get:
+      summary: Loggers ListByService
+      description: Lists a collection of loggers in the specified service instance
+      operationId: Loggers_ListByService
+      parameters:
+      - in: query
+        name: $filter
+        description: |-
+          | Field | Supported operators    | Supported functions                         |
+          |-------|------------------------|---------------------------------------------|
+          | id    | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | type  | eq                     |                                             |
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Loggers
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/loggers/{loggerid}
+  : delete:
+      summary: Loggers Delete
+      description: Deletes the specified logger
+      operationId: Loggers_Delete
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the logger to delete
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Loggers
+    get:
+      summary: Loggers Get
+      description: Gets the details of the logger specified by its identifier
+      operationId: Loggers_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Loggers
+    patch:
+      summary: Loggers Update
+      description: Updates an existing logger
+      operationId: Loggers_Update
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the logger to update
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Update parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Loggers
+    put:
+      summary: Loggers CreateOrUpdate
+      description: Creates or Updates a logger
+      operationId: Loggers_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Create parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Loggers
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/managedeployments
+  : post:
+      summary: ApiManagementServices ManageDeployments
+      description: Manages deployments of an API Management service
+      operationId: ApiManagementServices_ManageDeployments
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to the ManageDeployments operation
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Management Service
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/networkstatus
+  : get:
+      summary: NetworkStatus GetByService
+      description: Gets the Connectivity Status to the external resources on which
+        the Api Management service depends from inside the Cloud Service
+      operationId: NetworkStatus_GetByService
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Network Status
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/openidConnectProviders
+  : get:
+      summary: OpenIdConnectProviders ListByService
+      description: Lists all OpenID Connect Providers
+      operationId: OpenIdConnectProviders_ListByService
+      parameters:
+      - in: query
+        name: $filter
+        description: |-
+          | Field | Supported operators    | Supported functions                         |
+          |-------|------------------------|---------------------------------------------|
+          | id    | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | name  | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - OpenId Connect Providers
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/openidConnectProviders/{opid}
+  : delete:
+      summary: OpenIdConnectProviders Delete
+      description: Deletes specific OpenID Connect Provider of the API Management
+        service instance
+      operationId: OpenIdConnectProviders_Delete
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the OpenID Connect Provider
+          to delete
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - OpenId Connect Providers
+    get:
+      summary: OpenIdConnectProviders Get
+      description: Gets specific OpenID Connect Provider
+      operationId: OpenIdConnectProviders_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - OpenId Connect Providers
+    patch:
+      summary: OpenIdConnectProviders Update
+      description: Updates the specific OpenID Connect Provider
+      operationId: OpenIdConnectProviders_Update
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the OpenID Connect Provider
+          to update
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Update parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - OpenId Connect Providers
+    put:
+      summary: OpenIdConnectProviders CreateOrUpdate
+      description: Creates or updates the OpenID Connect Provider
+      operationId: OpenIdConnectProviders_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Create parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - OpenId Connect Providers
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/policySnippets
+  : get:
+      summary: PolicySnippets ListByService
+      description: Lists all policy snippets
+      operationId: PolicySnippets_ListByService
+      parameters:
+      - in: query
+        name: No Name
+      - in: query
+        name: scope
+        description: Policy scope
+      responses:
+        200:
+          description: OK
+      tags:
+      - Policy Snippets
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products
+  : get:
+      summary: Products ListByService
+      description: Lists a collection of products in the specified service instance
+      operationId: Products_ListByService
+      parameters:
+      - in: query
+        name: $filter
+        description: |-
+          | Field       | Supported operators    | Supported functions                         |
+          |-------------|------------------------|---------------------------------------------|
+          | id          | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | name        | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | description | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | terms       | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | state       | eq                     |                                             |
+      - in: query
+        name: expandGroups
+        description: When set to true, the response contains an array of groups that
+          have visibility to the product
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Products
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}
+  : delete:
+      summary: Products Delete
+      description: Delete product
+      operationId: Products_Delete
+      parameters:
+      - in: query
+        name: deleteSubscriptions
+        description: Delete existing subscriptions to the product or not
+      - in: header
+        name: If-Match
+        description: ETag of the Product Entity
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Products
+    get:
+      summary: Products Get
+      description: Gets the details of the product specified by its identifier
+      operationId: Products_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Products
+    patch:
+      summary: Products Update
+      description: Update product
+      operationId: Products_Update
+      parameters:
+      - in: header
+        name: If-Match
+        description: ETag of the Product Entity
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Update parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Products
+    put:
+      summary: Products CreateOrUpdate
+      description: Creates or Updates a product
+      operationId: Products_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Create or update parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Products
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/apis
+  : get:
+      summary: ProductApis ListByProducts
+      description: Lists a collection of the APIs associated with a product
+      operationId: ProductApis_ListByProducts
+      parameters:
+      - in: query
+        name: $filter
+        description: |
+          | Field       | Supported operators    | Supported functions                         |
+          |-------------|------------------------|---------------------------------------------|
+          | id          | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | name        | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | description | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | serviceUrl  | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | path        | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Product APIs
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/apis/{apiId}
+  : delete:
+      summary: ProductApis Delete
+      description: Deletes the specified API from the specified product
+      operationId: ProductApis_Delete
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Product APIs
+    put:
+      summary: ProductApis Create
+      description: Adds an API to the specified product
+      operationId: ProductApis_Create
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Product APIs
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/groups
+  : get:
+      summary: ProductGroups ListByProducts
+      description: Lists the collection of developer groups associated with the specified
+        product
+      operationId: ProductGroups_ListByProducts
+      parameters:
+      - in: query
+        name: $filter
+        description: |-
+          | Field       | Supported operators    | Supported functions                         |
+          |-------------|------------------------|---------------------------------------------|
+          | id          | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | name        | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | description | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | type        | eq, ne                 | N/A                                         |
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Product Groups
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/groups/{groupId}
+  : delete:
+      summary: ProductGroups Delete
+      description: Deletes the association between the specified group and product
+      operationId: ProductGroups_Delete
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Product Groups
+    put:
+      summary: ProductGroups Create
+      description: Adds the association between the specified developer group with
+        the specified product
+      operationId: ProductGroups_Create
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Product Groups
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/policy
+  : delete:
+      summary: ProductPolicy Delete
+      description: Deletes the policy configuration at the Product
+      operationId: ProductPolicy_Delete
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the product policy to update
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Product Policy
+    get:
+      summary: ProductPolicy Get
+      description: Get the policy configuration at the Product level
+      operationId: ProductPolicy_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Product Policy
+    put:
+      summary: ProductPolicy CreateOrUpdate
+      description: Creates or updates policy configuration for the Product
+      operationId: ProductPolicy_CreateOrUpdate
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the product policy to update
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The policy contents to apply
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Product Policy
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/products/{productId}/subscriptions
+  : get:
+      summary: ProductSubscriptions ListByProducts
+      description: Lists the collection of subscriptions to the specified product
+      operationId: ProductSubscriptions_ListByProducts
+      parameters:
+      - in: query
+        name: $filter
+        description: |-
+          | Field        | Supported operators    | Supported functions                         |
+          |--------------|------------------------|---------------------------------------------|
+          | id           | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | name         | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | stateComment | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | userId       | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | productId    | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | state        | eq                     |                                             |
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Product Subscriptions
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/properties
+  : get:
+      summary: Properties ListByService
+      description: Lists a collection of properties defined within a service instance
+      operationId: Properties_ListByService
+      parameters:
+      - in: query
+        name: $filter
+        description: |-
+          | Field | Supported operators    | Supported functions                                   |
+          |-------|------------------------|-------------------------------------------------------|
+          | tags  | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith, any, all |
+          | name  | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith           |
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Properties
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/properties/{propId}
+  : delete:
+      summary: Property Delete
+      description: Deletes specific property from the the API Management service instance
+      operationId: Property_Delete
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the property to delete
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Properties
+    get:
+      summary: Property Get
+      description: Gets the details of the property specified by its identifier
+      operationId: Property_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Properties
+    patch:
+      summary: Property Update
+      description: Updates the specific property
+      operationId: Property_Update
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the property to update
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Update parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Properties
+    put:
+      summary: Property CreateOrUpdate
+      description: Creates or updates a property
+      operationId: Property_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Create parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Properties
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/quotas/{quotaCounterKey}
+  : get:
+      summary: QuotaByCounterKeys ListByService
+      description: Lists a collection of current quota counter periods associated
+        with the counter-key configured in the policy on the specified service instance
+      operationId: QuotaByCounterKeys_ListByService
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Quotas
+    patch:
+      summary: QuotaByCounterKeys Update
+      description: Updates all the quota counter values specified with the existing
+        quota counter key to a value in the specified service instance
+      operationId: QuotaByCounterKeys_Update
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The value of the quota counter to be applied to all quota counter
+          periods
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Quotas
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/quotas/{quotaCounterKey}/{quotaPeriodKey}
+  : get:
+      summary: QuotaByPeriodKeys Get
+      description: Gets the value of the quota counter associated with the counter-key
+        in the policy for the specific period in service instance
+      operationId: QuotaByPeriodKeys_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Quotas
+    patch:
+      summary: QuotaByPeriodKeys Update
+      description: Updates an existing quota counter value in the specified service
+        instance
+      operationId: QuotaByPeriodKeys_Update
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The value of the Quota counter to be applied on the specified
+          period
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Quotas
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/regions
+  : get:
+      summary: Regions ListByService
+      description: Lists all azure regions in which the service exists
+      operationId: Regions_ListByService
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Regions
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/reports/{aggregation}
+  : get:
+      summary: Reports ListByService
+      description: Lists report records
+      operationId: Reports_ListByService
+      parameters:
+      - in: query
+        name: $filter
+        description: The filter to apply on the operation
+      - in: path
+        name: aggregation
+        description: Report aggregation
+      - in: query
+        name: interval
+        description: By time interval
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Reports
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore
+  : post:
+      summary: ApiManagementServices Restore
+      description: Restores a backup of an API Management service created using the
+        ApiManagementServices_Backup operation on the current service
+      operationId: ApiManagementServices_Restore
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to the Restore API Management service from
+          backup operation
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Management Services
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/subscriptions
+  : get:
+      summary: Subscriptions List
+      description: Lists all subscriptions of the API Management service instance
+      operationId: Subscriptions_List
+      parameters:
+      - in: query
+        name: $filter
+        description: |-
+          | Field        | Supported operators    | Supported functions                         |
+          |--------------|------------------------|---------------------------------------------|
+          | id           | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | name         | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | stateComment | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | userId       | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | productId    | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | state        | eq                     |                                             |
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Subscriptions
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/subscriptions/{sid}
+  : delete:
+      summary: Subscriptions Delete
+      description: Deletes the specified subscription
+      operationId: Subscriptions_Delete
+      parameters:
+      - in: header
+        name: If-Match
+        description: ETag of the Subscription Entity
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Subscriptions
+    get:
+      summary: Subscriptions Get
+      description: Gets the specified Subscription entity
+      operationId: Subscriptions_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Subscriptions
+    patch:
+      summary: Subscriptions Update
+      description: Updates the details of a subscription specificied by its identifier
+      operationId: Subscriptions_Update
+      parameters:
+      - in: header
+        name: If-Match
+        description: ETag of the Subscription Entity
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Update parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Subscriptions
+    put:
+      summary: Subscriptions CreateOrUpdate
+      description: Creates or updates the subscription of specified user to the specified
+        product
+      operationId: Subscriptions_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Create parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Subscriptions
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/subscriptions/{sid}/regeneratePrimaryKey
+  : post:
+      summary: Subscriptions RegeneratePrimaryKey
+      description: Regenerates primary key of existing subscription of the API Management
+        service instance
+      operationId: Subscriptions_RegeneratePrimaryKey
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Subscriptions
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/subscriptions/{sid}/regenerateSecondaryKey
+  : post:
+      summary: Subscriptions RegenerateSecondaryKey
+      description: Regenerates secondary key of existing subscription of the API Management
+        service instance
+      operationId: Subscriptions_RegenerateSecondaryKey
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Subscriptions
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/access
+  : get:
+      summary: TenantAccess Get
+      description: Get tenant access information details
+      operationId: TenantAccess_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tenants
+    patch:
+      summary: TenantAccess Update
+      description: Update tenant access information details
+      operationId: TenantAccess_Update
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the tenant access settings
+          to update
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tenants
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/access/git
+  : get:
+      summary: TenantAccessGit Get
+      description: Gets the Git access configuration for the tenant
+      operationId: TenantAccessGit_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tenants
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/access/git/regeneratePrimaryKey
+  : post:
+      summary: TenantAccessGit RegeneratePrimaryKey
+      description: Regenerate primary access key for GIT
+      operationId: TenantAccessGit_RegeneratePrimaryKey
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tenants
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/access/git/regenerateSecondaryKey
+  : post:
+      summary: TenantAccessGit RegenerateSecondaryKey
+      description: Regenerate secondary access key for GIT
+      operationId: TenantAccessGit_RegenerateSecondaryKey
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tenants
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/access/regeneratePrimaryKey
+  : post:
+      summary: TenantAccess RegeneratePrimaryKey
+      description: Regenerate primary access key
+      operationId: TenantAccess_RegeneratePrimaryKey
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tenants
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/access/regenerateSecondaryKey
+  : post:
+      summary: TenantAccess RegenerateSecondaryKey
+      description: Regenerate secondary access key
+      operationId: TenantAccess_RegenerateSecondaryKey
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tenants
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/configuration/deploy
+  : post:
+      summary: TenantConfiguration Deploy
+      description: This operation applies changes from the specified Git branch to
+        the configuration database
+      operationId: TenantConfiguration_Deploy
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Deploy Configuration parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tenants
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/configuration/save
+  : post:
+      summary: TenantConfiguration Save
+      description: This operation creates a commit with the current configuration
+        snapshot to the specified branch in the repository
+      operationId: TenantConfiguration_Save
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Save Configuration parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tenants
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/configuration/syncState
+  : get:
+      summary: TenantConfigurationSyncState Get
+      description: Gets the status of the most recent synchronization between the
+        configuration database and the Git repository
+      operationId: TenantConfigurationSyncState_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tenants
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/configuration/validate
+  : post:
+      summary: TenantConfiguration Validate
+      description: This operation validates the changes in the specified Git branch
+      operationId: TenantConfiguration_Validate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Validate Configuration parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tenants
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/tenant/policy
+  : delete:
+      summary: TenantPolicy Delete
+      description: Deletes the global tenant policy configuration
+      operationId: TenantPolicy_Delete
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the tenant policy to update
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tenant Policy
+    get:
+      summary: TenantPolicy Get
+      description: Get the global policy configuration of the tenant
+      operationId: TenantPolicy_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tenant Policy
+    put:
+      summary: TenantPolicy CreateOrUpdate
+      description: Creates or updates global policy configuration for the tenant
+      operationId: TenantPolicy_CreateOrUpdate
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the tenant policy to update
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The policy content details
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tenant Policy
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/updatehostname
+  : post:
+      summary: ApiManagementServices UpdateHostname
+      description: Creates, updates, or deletes the custom hostnames for an API Management
+        service
+      operationId: ApiManagementServices_UpdateHostname
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to the UpdateHostname operation
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Management Services
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/uploadcertificate
+  : post:
+      summary: ApiManagementServices UploadCertificate
+      description: Upload Custom Domain SSL certificate for an API Management service
+      operationId: ApiManagementServices_UploadCertificate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to the Upload SSL certificate for an API
+          Management service operation
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Management Services
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users:
+    get:
+      summary: Users ListByService
+      description: Lists a collection of registered users in the specified service
+        instance
+      operationId: Users_ListByService
+      parameters:
+      - in: query
+        name: $filter
+        description: |-
+          | Field            | Supported operators    | Supported functions               |
+          |------------------|------------------------|-----------------------------------|
+          | id               | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | firstName        | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | lastName         | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | email            | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | state            | eq                     | N/A                               |
+          | registrationDate | ge, le, eq, ne, gt, lt | N/A                               |
+          | note             | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{uid}
+  : delete:
+      summary: Users Delete
+      description: Deletes specific user
+      operationId: Users_Delete
+      parameters:
+      - in: query
+        name: deleteSubscriptions
+        description: Whether to delete user's subscription or not
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the user to delete
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+    get:
+      summary: Users Get
+      description: Gets the details of the user specified by its identifier
+      operationId: Users_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+    patch:
+      summary: Users Update
+      description: Updates the details of the user specified by its identifier
+      operationId: Users_Update
+      parameters:
+      - in: header
+        name: If-Match
+        description: The entity state (Etag) version of the user to update
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Update parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+    put:
+      summary: Users CreateOrUpdate
+      description: Creates or Updates a user
+      operationId: Users_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Create or update parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{uid}/generateSsoUrl
+  : post:
+      summary: Users GenerateSsoUrl
+      description: Retrieves a redirection URL containing an authentication token
+        for signing a given user into the developer portal
+      operationId: Users_GenerateSsoUrl
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{uid}/groups
+  : get:
+      summary: UserGroups ListByUsers
+      description: Lists all user groups
+      operationId: UserGroups_ListByUsers
+      parameters:
+      - in: query
+        name: $filter
+        description: |-
+          | Field       | Supported operators    | Supported functions                         |
+          |-------------|------------------------|---------------------------------------------|
+          | id          | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | name        | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | description | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{uid}/identities
+  : get:
+      summary: UserIdentities ListByUsers
+      description: Lists all user identities
+      operationId: UserIdentities_ListByUsers
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/users/{uid}/subscriptions
+  : get:
+      summary: UserSubscriptions ListByUsers
+      description: Lists the collection of subscriptions of the specified user
+      operationId: UserSubscriptions_ListByUsers
+      parameters:
+      - in: query
+        name: $filter
+        description: |-
+          | Field        | Supported operators    | Supported functions                         |
+          |--------------|------------------------|---------------------------------------------|
+          | id           | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | name         | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | stateComment | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | userId       | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | productId    | ge, le, eq, ne, gt, lt | substringof, contains, startswith, endswith |
+          | state        | eq                     |                                             |
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+definitions:
+  ErrorFieldContract:
+    properties:
+      code:
+        description: This is a default description.
+        type: get
+      message:
+        description: This is a default description.
+        type: get
+      target:
+        description: This is a default description.
+        type: get
+  ErrorBodyContract:
+    properties:
+      code:
+        description: This is a default description.
+        type: get
+      message:
+        description: This is a default description.
+        type: get
+      details:
+        description: This is a default description.
+        type: get
+  PolicySnippetsCollection:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  PolicySnippetContract:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      content:
+        description: This is a default description.
+        type: get
+      toolTip:
+        description: This is a default description.
+        type: get
+      scope:
+        description: This is a default description.
+        type: get
+  RegionContract:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      isMasterRegion:
+        description: This is a default description.
+        type: get
+  RegionListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  ApiCollection:
+    properties:
+      value:
+        description: This is a default description.
+        type: delete
+      count:
+        description: This is a default description.
+        type: delete
+      nextLink:
+        description: This is a default description.
+        type: delete
+  ApiContract:
+    properties:
+      id:
+        description: This is a default description.
+        type: delete
+      name:
+        description: This is a default description.
+        type: delete
+      serviceUrl:
+        description: This is a default description.
+        type: delete
+      path:
+        description: This is a default description.
+        type: delete
+      protocols:
+        description: This is a default description.
+        type: delete
+  ApiEntityBaseContract:
+    properties:
+      description:
+        description: This is a default description.
+        type: delete
+      type:
+        description: This is a default description.
+        type: delete
+  ApiExportResult:
+    properties:
+      content:
+        description: This is a default description.
+        type: delete
+      statusCode:
+        description: This is a default description.
+        type: delete
+      requestId:
+        description: This is a default description.
+        type: delete
+  ApiUpdateContract:
+    properties:
+      id:
+        description: This is a default description.
+        type: delete
+      name:
+        description: This is a default description.
+        type: delete
+      serviceUrl:
+        description: This is a default description.
+        type: delete
+      path:
+        description: This is a default description.
+        type: delete
+      protocols:
+        description: This is a default description.
+        type: delete
+  AuthenticationSettingsContract:
+    properties: []
+  OAuth2AuthenticationSettingsContract:
+    properties:
+      authorizationServerId:
+        description: This is a default description.
+        type: delete
+      scope:
+        description: This is a default description.
+        type: delete
+  OperationCollection:
+    properties:
+      value:
+        description: This is a default description.
+        type: delete
+      count:
+        description: This is a default description.
+        type: delete
+      nextLink:
+        description: This is a default description.
+        type: delete
+  OperationContract:
+    properties:
+      id:
+        description: This is a default description.
+        type: delete
+      name:
+        description: This is a default description.
+        type: delete
+      method:
+        description: This is a default description.
+        type: delete
+      urlTemplate:
+        description: This is a default description.
+        type: delete
+  OperationEntityBaseContract:
+    properties:
+      templateParameters:
+        description: This is a default description.
+        type: delete
+      description:
+        description: This is a default description.
+        type: delete
+      responses:
+        description: This is a default description.
+        type: delete
+  OperationUpdateContract:
+    properties:
+      id:
+        description: This is a default description.
+        type: delete
+      name:
+        description: This is a default description.
+        type: delete
+      method:
+        description: This is a default description.
+        type: delete
+      urlTemplate:
+        description: This is a default description.
+        type: delete
+  ParameterContract:
+    properties:
+      name:
+        description: This is a default description.
+        type: delete
+      description:
+        description: This is a default description.
+        type: delete
+      type:
+        description: This is a default description.
+        type: delete
+      defaultValue:
+        description: This is a default description.
+        type: delete
+      required:
+        description: This is a default description.
+        type: delete
+      values:
+        description: This is a default description.
+        type: delete
+  RepresentationContract:
+    properties:
+      contentType:
+        description: This is a default description.
+        type: delete
+      sample:
+        description: This is a default description.
+        type: delete
+  RequestContract:
+    properties:
+      description:
+        description: This is a default description.
+        type: delete
+      queryParameters:
+        description: This is a default description.
+        type: delete
+      headers:
+        description: This is a default description.
+        type: delete
+      representations:
+        description: This is a default description.
+        type: delete
+  ResultContract:
+    properties:
+      statusCode:
+        description: This is a default description.
+        type: delete
+      description:
+        description: This is a default description.
+        type: delete
+      representations:
+        description: This is a default description.
+        type: delete
+  SubscriptionKeyParameterNamesContract:
+    properties:
+      header:
+        description: This is a default description.
+        type: delete
+      query:
+        description: This is a default description.
+        type: delete
+  AuthorizationServerCollection:
+    properties:
+      value:
+        description: This is a default description.
+        type: delete
+      count:
+        description: This is a default description.
+        type: delete
+      nextLink:
+        description: This is a default description.
+        type: delete
+  OAuth2AuthorizationServerContract:
+    properties:
+      id:
+        description: This is a default description.
+        type: delete
+      name:
+        description: This is a default description.
+        type: delete
+      description:
+        description: This is a default description.
+        type: delete
+      clientRegistrationEndpoint:
+        description: This is a default description.
+        type: delete
+      authorizationEndpoint:
+        description: This is a default description.
+        type: delete
+      authorizationMethods:
+        description: This is a default description.
+        type: delete
+      clientAuthenticationMethod:
+        description: This is a default description.
+        type: delete
+      tokenBodyParameters:
+        description: This is a default description.
+        type: delete
+      tokenEndpoint:
+        description: This is a default description.
+        type: delete
+      supportState:
+        description: This is a default description.
+        type: delete
+  OAuth2AuthorizationServerUpdateContract:
+    properties:
+      name:
+        description: This is a default description.
+        type: delete
+      description:
+        description: This is a default description.
+        type: delete
+      clientRegistrationEndpoint:
+        description: This is a default description.
+        type: delete
+      authorizationEndpoint:
+        description: This is a default description.
+        type: delete
+      authorizationMethods:
+        description: This is a default description.
+        type: delete
+      clientAuthenticationMethod:
+        description: This is a default description.
+        type: delete
+      tokenBodyParameters:
+        description: This is a default description.
+        type: delete
+      tokenEndpoint:
+        description: This is a default description.
+        type: delete
+      supportState:
+        description: This is a default description.
+        type: delete
+      defaultScope:
+        description: This is a default description.
+        type: delete
+  TokenBodyParameterContract:
+    properties:
+      name:
+        description: This is a default description.
+        type: delete
+      value:
+        description: This is a default description.
+        type: delete
+  BackendAuthorizationHeaderCredentials:
+    properties:
+      scheme:
+        description: This is a default description.
+        type: delete
+      parameter:
+        description: This is a default description.
+        type: delete
+  BackendBaseParameters:
+    properties:
+      title:
+        description: This is a default description.
+        type: delete
+      description:
+        description: This is a default description.
+        type: delete
+      resourceId:
+        description: This is a default description.
+        type: delete
+  BackendCollection:
+    properties:
+      value:
+        description: This is a default description.
+        type: delete
+      count:
+        description: This is a default description.
+        type: delete
+      nextLink:
+        description: This is a default description.
+        type: delete
+  BackendContract:
+    properties:
+      id:
+        description: This is a default description.
+        type: delete
+      url:
+        description: This is a default description.
+        type: delete
+      protocol:
+        description: This is a default description.
+        type: delete
+  BackendCredentialsContract:
+    properties:
+      certificate:
+        description: This is a default description.
+        type: delete
+      query:
+        description: This is a default description.
+        type: delete
+      header:
+        description: This is a default description.
+        type: delete
+  BackendProperties:
+    properties:
+      skipCertificateChainValidation:
+        description: This is a default description.
+        type: delete
+      skipCertificateNameValidation:
+        description: This is a default description.
+        type: delete
+  BackendProxyContract:
+    properties:
+      url:
+        description: This is a default description.
+        type: delete
+      username:
+        description: This is a default description.
+        type: delete
+      password:
+        description: This is a default description.
+        type: delete
+  BackendResponse:
+    properties:
+      id:
+        description: This is a default description.
+        type: delete
+  BackendUpdateParameters:
+    properties:
+      url:
+        description: This is a default description.
+        type: delete
+      protocol:
+        description: This is a default description.
+        type: delete
+  CertificateCollection:
+    properties:
+      value:
+        description: This is a default description.
+        type: delete
+      count:
+        description: This is a default description.
+        type: delete
+      nextLink:
+        description: This is a default description.
+        type: delete
+  CertificateContract:
+    properties:
+      id:
+        description: This is a default description.
+        type: delete
+      subject:
+        description: This is a default description.
+        type: delete
+      thumbprint:
+        description: This is a default description.
+        type: delete
+      expirationDate:
+        description: This is a default description.
+        type: delete
+  CertificateCreateOrUpdateParameters:
+    properties:
+      data:
+        description: This is a default description.
+        type: delete
+      password:
+        description: This is a default description.
+        type: delete
+  CertificateInformation:
+    properties:
+      expiry:
+        description: This is a default description.
+        type: post
+      thumbprint:
+        description: This is a default description.
+        type: post
+      subject:
+        description: This is a default description.
+        type: post
+  HostnameConfiguration:
+    properties:
+      type:
+        description: This is a default description.
+        type: post
+      hostname:
+        description: This is a default description.
+        type: post
+  VirtualNetworkConfiguration:
+    properties:
+      vnetid:
+        description: This is a default description.
+        type: post
+      subnetname:
+        description: This is a default description.
+        type: post
+      subnetResourceId:
+        description: This is a default description.
+        type: post
+      location:
+        description: This is a default description.
+        type: post
+  AdditionalRegion:
+    properties:
+      location:
+        description: This is a default description.
+        type: post
+      skuType:
+        description: This is a default description.
+        type: post
+      skuUnitCount:
+        description: This is a default description.
+        type: post
+      staticIPs:
+        description: This is a default description.
+        type: post
+  ApiManagementServiceManageDeploymentsParameters:
+    properties:
+      location:
+        description: This is a default description.
+        type: post
+      skuType:
+        description: This is a default description.
+        type: post
+      skuUnitCount:
+        description: This is a default description.
+        type: post
+      additionalLocations:
+        description: This is a default description.
+        type: post
+      vpnType:
+        description: This is a default description.
+        type: post
+  ApiManagementServiceBackupRestoreParameters:
+    properties:
+      storageAccount:
+        description: This is a default description.
+        type: post
+      accessKey:
+        description: This is a default description.
+        type: post
+      containerName:
+        description: This is a default description.
+        type: post
+      backupName:
+        description: This is a default description.
+        type: post
+  ApiManagementServiceProperties:
+    properties:
+      publisherEmail:
+        description: This is a default description.
+        type: post
+      publisherName:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      targetProvisioningState:
+        description: This is a default description.
+        type: post
+      createdAtUtc:
+        description: This is a default description.
+        type: post
+      runtimeUrl:
+        description: This is a default description.
+        type: post
+      portalUrl:
+        description: This is a default description.
+        type: post
+      managementApiUrl:
+        description: This is a default description.
+        type: post
+      scmUrl:
+        description: This is a default description.
+        type: post
+      addresserEmail:
+        description: This is a default description.
+        type: post
+  ApiManagementServiceSkuProperties:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
+      capacity:
+        description: This is a default description.
+        type: post
+  ApiManagementServiceResource:
+    properties:
+      etag:
+        description: This is a default description.
+        type: post
+  Resource:
+    properties:
+      id:
+        description: This is a default description.
+        type: post
+      name:
+        description: This is a default description.
+        type: post
+      type:
+        description: This is a default description.
+        type: post
+      location:
+        description: This is a default description.
+        type: post
+      tags:
+        description: This is a default description.
+        type: post
+  ApiManagementServiceUpdateParameters:
+    properties:
+      tags:
+        description: This is a default description.
+        type: post
+  ApiManagementServiceListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ApiManagementServiceGetSsoTokenResult:
+    properties:
+      redirect_uri:
+        description: This is a default description.
+        type: post
+  ApiManagementServiceCheckNameAvailabilityParameters:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
+  ApiManagementServiceNameAvailabilityResult:
+    properties:
+      nameAvailable:
+        description: This is a default description.
+        type: post
+      message:
+        description: This is a default description.
+        type: post
+      reason:
+        description: This is a default description.
+        type: post
+  ApiManagementServiceUploadCertificateParameters:
+    properties:
+      type:
+        description: This is a default description.
+        type: post
+      certificate:
+        description: This is a default description.
+        type: post
+      certificate_password:
+        description: This is a default description.
+        type: post
+  ApiManagementServiceUpdateHostnameParameters:
+    properties:
+      update:
+        description: This is a default description.
+        type: post
+      delete:
+        description: This is a default description.
+        type: post
+  ErrorResponse:
+    properties:
+      code:
+        description: This is a default description.
+        type: post
+      message:
+        description: This is a default description.
+        type: post
+  Operation:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
+  OperationListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  GroupCollection:
+    properties:
+      value:
+        description: This is a default description.
+        type: delete
+      count:
+        description: This is a default description.
+        type: delete
+      nextLink:
+        description: This is a default description.
+        type: delete
+  GroupContract:
+    properties:
+      id:
+        description: This is a default description.
+        type: delete
+      name:
+        description: This is a default description.
+        type: delete
+      description:
+        description: This is a default description.
+        type: delete
+      builtIn:
+        description: This is a default description.
+        type: delete
+      type:
+        description: This is a default description.
+        type: delete
+      externalId:
+        description: This is a default description.
+        type: delete
+  GroupCreateParameters:
+    properties:
+      name:
+        description: This is a default description.
+        type: delete
+      description:
+        description: This is a default description.
+        type: delete
+      type:
+        description: This is a default description.
+        type: delete
+      externalId:
+        description: This is a default description.
+        type: delete
+  GroupUpdateParameters:
+    properties:
+      name:
+        description: This is a default description.
+        type: delete
+      description:
+        description: This is a default description.
+        type: delete
+      type:
+        description: This is a default description.
+        type: delete
+      externalId:
+        description: This is a default description.
+        type: delete
+  IdentityProviderContract:
+    properties:
+      clientId:
+        description: This is a default description.
+        type: delete
+      clientSecret:
+        description: This is a default description.
+        type: delete
+      type:
+        description: This is a default description.
+        type: delete
+      allowedTenants:
+        description: This is a default description.
+        type: delete
+  IdentityProviderList:
+    properties:
+      value:
+        description: This is a default description.
+        type: delete
+  IdentityProviderUpdateParameters:
+    properties:
+      clientId:
+        description: This is a default description.
+        type: delete
+      clientSecret:
+        description: This is a default description.
+        type: delete
+      allowedTenants:
+        description: This is a default description.
+        type: delete
+  LoggerCollection:
+    properties:
+      value:
+        description: This is a default description.
+        type: delete
+      count:
+        description: This is a default description.
+        type: delete
+      nextLink:
+        description: This is a default description.
+        type: delete
+  LoggerCreateParameters:
+    properties:
+      type:
+        description: This is a default description.
+        type: delete
+      description:
+        description: This is a default description.
+        type: delete
+      credentials:
+        description: This is a default description.
+        type: delete
+      isBuffered:
+        description: This is a default description.
+        type: delete
+  LoggerResponse:
+    properties:
+      id:
+        description: This is a default description.
+        type: delete
+      type:
+        description: This is a default description.
+        type: delete
+      description:
+        description: This is a default description.
+        type: delete
+      credentials:
+        description: This is a default description.
+        type: delete
+      isBuffered:
+        description: This is a default description.
+        type: delete
+  LoggerUpdateParameters:
+    properties:
+      type:
+        description: This is a default description.
+        type: delete
+      description:
+        description: This is a default description.
+        type: delete
+      credentials:
+        description: This is a default description.
+        type: delete
+      isBuffered:
+        description: This is a default description.
+        type: delete
+  ConnectivityStatusContract:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      status:
+        description: This is a default description.
+        type: get
+      error:
+        description: This is a default description.
+        type: get
+      lastUpdated:
+        description: This is a default description.
+        type: get
+      lastStatusChange:
+        description: This is a default description.
+        type: get
+  NetworkStatusContract:
+    properties:
+      dnsServers:
+        description: This is a default description.
+        type: get
+      connectivityStatus:
+        description: This is a default description.
+        type: get
+  OpenIdConnectProviderCollection:
+    properties:
+      value:
+        description: This is a default description.
+        type: delete
+      count:
+        description: This is a default description.
+        type: delete
+      nextLink:
+        description: This is a default description.
+        type: delete
+  OpenidConnectProviderContract:
+    properties:
+      id:
+        description: This is a default description.
+        type: delete
+      name:
+        description: This is a default description.
+        type: delete
+      description:
+        description: This is a default description.
+        type: delete
+      metadataEndpoint:
+        description: This is a default description.
+        type: delete
+      clientId:
+        description: This is a default description.
+        type: delete
+      clientSecret:
+        description: This is a default description.
+        type: delete
+  OpenidConnectProviderCreateContract:
+    properties:
+      name:
+        description: This is a default description.
+        type: delete
+      description:
+        description: This is a default description.
+        type: delete
+      metadataEndpoint:
+        description: This is a default description.
+        type: delete
+      clientId:
+        description: This is a default description.
+        type: delete
+      clientSecret:
+        description: This is a default description.
+        type: delete
+  OpenidConnectProviderUpdateContract:
+    properties:
+      name:
+        description: This is a default description.
+        type: delete
+      description:
+        description: This is a default description.
+        type: delete
+      metadataEndpoint:
+        description: This is a default description.
+        type: delete
+      clientId:
+        description: This is a default description.
+        type: delete
+      clientSecret:
+        description: This is a default description.
+        type: delete
+  ProductCollection:
+    properties:
+      value:
+        description: This is a default description.
+        type: delete
+      count:
+        description: This is a default description.
+        type: delete
+      nextLink:
+        description: This is a default description.
+        type: delete
+  ProductContract:
+    properties:
+      id:
+        description: This is a default description.
+        type: delete
+      name:
+        description: This is a default description.
+        type: delete
+      description:
+        description: This is a default description.
+        type: delete
+      terms:
+        description: This is a default description.
+        type: delete
+      subscriptionRequired:
+        description: This is a default description.
+        type: delete
+      approvalRequired:
+        description: This is a default description.
+        type: delete
+      subscriptionsLimit:
+        description: This is a default description.
+        type: delete
+      state:
+        description: This is a default description.
+        type: delete
+  ProductUpdateParameters:
+    properties:
+      name:
+        description: This is a default description.
+        type: delete
+      description:
+        description: This is a default description.
+        type: delete
+      terms:
+        description: This is a default description.
+        type: delete
+      subscriptionRequired:
+        description: This is a default description.
+        type: delete
+      approvalRequired:
+        description: This is a default description.
+        type: delete
+      subscriptionsLimit:
+        description: This is a default description.
+        type: delete
+      state:
+        description: This is a default description.
+        type: delete
+  PropertyCollection:
+    properties:
+      value:
+        description: This is a default description.
+        type: delete
+      count:
+        description: This is a default description.
+        type: delete
+      nextLink:
+        description: This is a default description.
+        type: delete
+  PropertyContract:
+    properties:
+      id:
+        description: This is a default description.
+        type: delete
+      name:
+        description: This is a default description.
+        type: delete
+      value:
+        description: This is a default description.
+        type: delete
+      tags:
+        description: This is a default description.
+        type: delete
+      secret:
+        description: This is a default description.
+        type: delete
+  PropertyCreateParameters:
+    properties:
+      name:
+        description: This is a default description.
+        type: delete
+      value:
+        description: This is a default description.
+        type: delete
+      tags:
+        description: This is a default description.
+        type: delete
+      secret:
+        description: This is a default description.
+        type: delete
+  PropertyUpdateParameters:
+    properties:
+      name:
+        description: This is a default description.
+        type: delete
+      value:
+        description: This is a default description.
+        type: delete
+      tags:
+        description: This is a default description.
+        type: delete
+      secret:
+        description: This is a default description.
+        type: delete
+  QuotaCounterCollection:
+    properties:
+      value:
+        description: This is a default description.
+        type: patch
+      count:
+        description: This is a default description.
+        type: patch
+      nextLink:
+        description: This is a default description.
+        type: patch
+  QuotaCounterContract:
+    properties:
+      counterKey:
+        description: This is a default description.
+        type: patch
+      periodKey:
+        description: This is a default description.
+        type: patch
+      periodStartTime:
+        description: This is a default description.
+        type: patch
+      periodEndTime:
+        description: This is a default description.
+        type: patch
+  QuotaCounterValueContract:
+    properties:
+      callsCount:
+        description: This is a default description.
+        type: patch
+      kbTransferred:
+        description: This is a default description.
+        type: patch
+  ReportCollection:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      count:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  ReportRecordContract:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      timestamp:
+        description: This is a default description.
+        type: get
+      interval:
+        description: This is a default description.
+        type: get
+      country:
+        description: This is a default description.
+        type: get
+      region:
+        description: This is a default description.
+        type: get
+      zip:
+        description: This is a default description.
+        type: get
+      userId:
+        description: This is a default description.
+        type: get
+      productId:
+        description: This is a default description.
+        type: get
+      apiId:
+        description: This is a default description.
+        type: get
+      operationId:
+        description: This is a default description.
+        type: get
+  SubscriptionCollection:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      count:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  SubscriptionContract:
+    properties:
+      id:
+        description: This is a default description.
+        type: post
+      userId:
+        description: This is a default description.
+        type: post
+      productId:
+        description: This is a default description.
+        type: post
+      name:
+        description: This is a default description.
+        type: post
+      state:
+        description: This is a default description.
+        type: post
+      createdDate:
+        description: This is a default description.
+        type: post
+      startDate:
+        description: This is a default description.
+        type: post
+      expirationDate:
+        description: This is a default description.
+        type: post
+      endDate:
+        description: This is a default description.
+        type: post
+      notificationDate:
+        description: This is a default description.
+        type: post
+  SubscriptionCreateParameters:
+    properties:
+      userId:
+        description: This is a default description.
+        type: post
+      productId:
+        description: This is a default description.
+        type: post
+      name:
+        description: This is a default description.
+        type: post
+      primaryKey:
+        description: This is a default description.
+        type: post
+      secondaryKey:
+        description: This is a default description.
+        type: post
+      state:
+        description: This is a default description.
+        type: post
+  SubscriptionUpdateParameters:
+    properties:
+      userId:
+        description: This is a default description.
+        type: post
+      productId:
+        description: This is a default description.
+        type: post
+      expirationDate:
+        description: This is a default description.
+        type: post
+      name:
+        description: This is a default description.
+        type: post
+      primaryKey:
+        description: This is a default description.
+        type: post
+      secondaryKey:
+        description: This is a default description.
+        type: post
+      state:
+        description: This is a default description.
+        type: post
+      stateComment:
+        description: This is a default description.
+        type: post
+  AccessInformationContract:
+    properties:
+      id:
+        description: This is a default description.
+        type: delete
+      primaryKey:
+        description: This is a default description.
+        type: delete
+      secondaryKey:
+        description: This is a default description.
+        type: delete
+      enabled:
+        description: This is a default description.
+        type: delete
+  AccessInformationUpdateParameters:
+    properties:
+      enabled:
+        description: This is a default description.
+        type: delete
+  DeployConfigurationParameters:
+    properties:
+      branch:
+        description: This is a default description.
+        type: delete
+      force:
+        description: This is a default description.
+        type: delete
+  OperationResultContract:
+    properties:
+      id:
+        description: This is a default description.
+        type: delete
+      status:
+        description: This is a default description.
+        type: delete
+      started:
+        description: This is a default description.
+        type: delete
+      updated:
+        description: This is a default description.
+        type: delete
+      resultInfo:
+        description: This is a default description.
+        type: delete
+  SaveConfigurationParameter:
+    properties:
+      branch:
+        description: This is a default description.
+        type: delete
+      force:
+        description: This is a default description.
+        type: delete
+  TenantConfigurationSyncStateContract:
+    properties:
+      branch:
+        description: This is a default description.
+        type: delete
+      commitId:
+        description: This is a default description.
+        type: delete
+      isExport:
+        description: This is a default description.
+        type: delete
+      isSynced:
+        description: This is a default description.
+        type: delete
+      isGitEnabled:
+        description: This is a default description.
+        type: delete
+      syncDate:
+        description: This is a default description.
+        type: delete
+      configurationChangeDate:
+        description: This is a default description.
+        type: delete
+  GenerateSsoUrlResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  UserCollection:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      count:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  UserContract:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      firstName:
+        description: This is a default description.
+        type: get
+      lastName:
+        description: This is a default description.
+        type: get
+      email:
+        description: This is a default description.
+        type: get
+      state:
+        description: This is a default description.
+        type: get
+      registrationDate:
+        description: This is a default description.
+        type: get
+      note:
+        description: This is a default description.
+        type: get
+      identities:
+        description: This is a default description.
+        type: get
+  UserCreateParameters:
+    properties:
+      email:
+        description: This is a default description.
+        type: get
+      password:
+        description: This is a default description.
+        type: get
+      firstName:
+        description: This is a default description.
+        type: get
+      lastName:
+        description: This is a default description.
+        type: get
+      state:
+        description: This is a default description.
+        type: get
+      note:
+        description: This is a default description.
+        type: get
+  UserIdentityCollection:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  UserIdentityContract:
+    properties:
+      provider:
+        description: This is a default description.
+        type: get
+      id:
+        description: This is a default description.
+        type: get
+  UserUpdateParameters:
+    properties:
+      email:
+        description: This is a default description.
+        type: get
+      password:
+        description: This is a default description.
+        type: get
+      firstName:
+        description: This is a default description.
+        type: get
+      lastName:
+        description: This is a default description.
+        type: get
+      state:
+        description: This is a default description.
+        type: get
+      note:
+        description: This is a default description.
+        type: get
