@@ -1,0 +1,1247 @@
+agger: "2.0"
+info:
+  title: AWS Service Catalog API
+  version: 1.0.0
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /?Action=AcceptPortfolioShare&k=1:
+    get:
+      summary: ' Accept Portfolio Share '
+      description: Accepts an offer to share a portfolio
+      operationId: acceptPortfolioShare
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: PortfolioId
+        description: The portfolio identifier
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Portfolios
+  /?Action=AssociatePrincipalWithPortfolio&k=1:
+    get:
+      summary: ' Associate Principal With Portfolio '
+      description: Associates the specified principal ARN with the specified portfolio
+      operationId: associatePrincipalWithPortfolio
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: PortfolioId
+        description: The portfolio identifier
+        type: string
+      - in: query
+        name: PrincipalARN
+        description: The ARN representing the principal (IAM user, role, or group)
+        type: string
+      - in: query
+        name: PrincipalType
+        description: The principal type
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Portfolios
+  /?Action=AssociateProductWithPortfolio&k=1:
+    get:
+      summary: ' Associate Product With Portfolio '
+      description: Associates a product with a portfolio
+      operationId: associateProductWithPortfolio
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: PortfolioId
+        description: The portfolio identifier
+        type: string
+      - in: query
+        name: ProductId
+        description: The product identifier
+        type: string
+      - in: query
+        name: SourcePortfolioId
+        description: The identifier of the source portfolio to use with this association
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Portfolios
+  /?Action=CreateConstraint&k=1:
+    get:
+      summary: ' Create Constraint '
+      description: Creates a new constraint
+      operationId: createConstraint
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: Description
+        description: The text description of the constraint
+        type: string
+      - in: query
+        name: IdempotencyToken
+        description: A token to disambiguate duplicate requests
+        type: string
+      - in: query
+        name: Parameters
+        description: The constraint parameters
+        type: string
+      - in: query
+        name: PortfolioId
+        description: The portfolio identifier
+        type: string
+      - in: query
+        name: ProductId
+        description: The product identifier
+        type: string
+      - in: query
+        name: Type
+        description: The type of the constraint
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Constraints
+  /?Action=CreatePortfolio&k=1:
+    get:
+      summary: ' Create Portfolio '
+      description: Creates a new portfolio
+      operationId: createPortfolio
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: Description
+        description: The text description of the portfolio
+        type: string
+      - in: query
+        name: DisplayName
+        description: The name to use for display purposes
+        type: string
+      - in: query
+        name: IdempotencyToken
+        description: A token to disambiguate duplicate requests
+        type: string
+      - in: query
+        name: ProviderName
+        description: The name of the portfolio provider
+        type: string
+      - in: query
+        name: Tags
+        description: Tags to associate with the new portfolio
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Portfolios
+  /?Action=CreatePortfolioShare&k=1:
+    get:
+      summary: ' Create Portfolio Share '
+      description: Creates a new portfolio share
+      operationId: createPortfolioShare
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: AccountId
+        description: The account ID with which to share the portfolio
+        type: string
+      - in: query
+        name: PortfolioId
+        description: The portfolio identifier
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Portfolios
+  /?Action=CreateProduct&k=1:
+    get:
+      summary: ' Create Product '
+      description: Creates a new product
+      operationId: createProduct
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: Description
+        description: The text description of the product
+        type: string
+      - in: query
+        name: Distributor
+        description: The distributor of the product
+        type: string
+      - in: query
+        name: IdempotencyToken
+        description: A token to disambiguate duplicate requests
+        type: string
+      - in: query
+        name: Name
+        description: The name of the product
+        type: string
+      - in: query
+        name: Owner
+        description: The owner of the product
+        type: string
+      - in: query
+        name: ProductType
+        description: The type of the product to create
+        type: string
+      - in: query
+        name: ProvisioningArtifactParameters
+        description: Parameters for the provisioning artifact
+        type: string
+      - in: query
+        name: SupportDescription
+        description: Support information about the product
+        type: string
+      - in: query
+        name: SupportEmail
+        description: Contact email for product support
+        type: string
+      - in: query
+        name: SupportUrl
+        description: Contact URL for product support
+        type: string
+      - in: query
+        name: Tags
+        description: Tags to associate with the new product
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Products
+  /?Action=CreateProvisioningArtifact&k=1:
+    get:
+      summary: ' Create Provisioning Artifact '
+      description: Create a new provisioning artifact for the specified product
+      operationId: createProvisioningArtifact
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: IdempotencyToken
+        description: A token to disambiguate duplicate requests
+        type: string
+      - in: query
+        name: Parameters
+        description: The parameters to use when creating the new provisioning artifact
+        type: string
+      - in: query
+        name: ProductId
+        description: The product identifier
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Provisioning Artifacts
+  /?Action=DeleteConstraint&k=1:
+    get:
+      summary: ' Delete Constraint '
+      description: Deletes the specified constraint
+      operationId: deleteConstraint
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: Id
+        description: The identifier of the constraint to delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Constraints
+  /?Action=DeletePortfolio&k=1:
+    get:
+      summary: ' Delete Portfolio '
+      description: Deletes the specified portfolio
+      operationId: deletePortfolio
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: Id
+        description: The identifier of the portfolio for the delete request
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Portfolios
+  /?Action=DeletePortfolioShare&k=1:
+    get:
+      summary: ' Delete Portfolio Share '
+      description: Deletes the specified portfolio share
+      operationId: deletePortfolioShare
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: AccountId
+        description: The account ID associated with the share to delete
+        type: string
+      - in: query
+        name: PortfolioId
+        description: The portfolio identifier
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Portfolios
+  /?Action=DeleteProduct&k=1:
+    get:
+      summary: ' Delete Product '
+      description: Deletes the specified product
+      operationId: deleteProduct
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: Id
+        description: The identifier of the product for the delete request
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Products
+  /?Action=DeleteProvisioningArtifact&k=1:
+    get:
+      summary: ' Delete Provisioning Artifact '
+      description: Deletes the specified provisioning artifact
+      operationId: deleteProvisioningArtifact
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: ProductId
+        description: The product identifier
+        type: string
+      - in: query
+        name: ProvisioningArtifactId
+        description: The identifier of the provisioning artifact for the delete request
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Provisioning Artifacts
+  /?Action=DescribeConstraint&k=1:
+    get:
+      summary: ' Describe Constraint '
+      description: Retrieves detailed information for a specified constraint
+      operationId: describeConstraint
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: Id
+        description: The identifier of the constraint
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Constraints
+  /?Action=DescribePortfolio&k=1:
+    get:
+      summary: ' Describe Portfolio '
+      description: |-
+        Retrieves detailed information and any tags associated with the specified
+                 portfolio
+      operationId: describePortfolio
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: Id
+        description: The identifier of the portfolio for which to retrieve information
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Portfolios
+  /?Action=DescribeProduct&k=1:
+    get:
+      summary: ' Describe Product '
+      description: Retrieves information about a specified product
+      operationId: describeProduct
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: Id
+        description: The ProductId of the product to describe
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Products
+  /?Action=DescribeProductAsAdmin&k=1:
+    get:
+      summary: ' Describe Product As Admin '
+      description: |-
+        Retrieves information about a specified product, run with administrator
+                 access
+      operationId: describeProductAsAdmin
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: Id
+        description: The identifier of the product for which to retrieve information
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Products
+  /?Action=DescribeProductView&k=1:
+    get:
+      summary: ' Describe Product View '
+      description: Retrieves information about a specified product
+      operationId: describeProductView
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: Id
+        description: The ProductViewId of the product to describe
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Products
+  /?Action=DescribeProvisioningArtifact&k=1:
+    get:
+      summary: ' Describe Provisioning Artifact '
+      description: Retrieves detailed information about the specified provisioning
+        artifact
+      operationId: describeProvisioningArtifact
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: ProductId
+        description: The product identifier
+        type: string
+      - in: query
+        name: ProvisioningArtifactId
+        description: The identifier of the provisioning artifact
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Provisioning Artifacts
+  /?Action=DescribeProvisioningParameters&k=1:
+    get:
+      summary: ' Describe Provisioning Parameters '
+      description: |-
+        Provides information about parameters required to provision a specified product in a
+                 specified manner
+      operationId: describeProvisioningParameters
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: PathId
+        description: The identifier of the path for this product's provisioning
+        type: string
+      - in: query
+        name: ProductId
+        description: The product identifier
+        type: string
+      - in: query
+        name: ProvisioningArtifactId
+        description: The provisioning artifact identifier for this product
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - 'Provisioning Parameters '
+  /?Action=DescribeRecord&k=1:
+    get:
+      summary: ' Describe Record '
+      description: Retrieves a paginated list of the full details of a specific request
+      operationId: describeRecord
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: Id
+        description: The record identifier of the ProvisionedProduct object for which
+          to retrieve output         information
+        type: string
+      - in: query
+        name: PageSize
+        description: The maximum number of items to return in the results
+        type: string
+      - in: query
+        name: PageToken
+        description: The page token of the first page retrieved
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Records
+  /?Action=DisassociatePrincipalFromPortfolio&k=1:
+    get:
+      summary: ' Disassociate Principal From Portfolio '
+      description: |-
+        Disassociates a previously associated principal ARN from a specified
+                 portfolio
+      operationId: disassociatePrincipalFromPortfolio
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: PortfolioId
+        description: The portfolio identifier
+        type: string
+      - in: query
+        name: PrincipalARN
+        description: The ARN representing the principal (IAM user, role, or group)
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Portfolios
+  /?Action=DisassociateProductFromPortfolio&k=1:
+    get:
+      summary: ' Disassociate Product From Portfolio '
+      description: Disassociates the specified product from the specified portfolio
+      operationId: disassociateProductFromPortfolio
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: PortfolioId
+        description: The portfolio identifier
+        type: string
+      - in: query
+        name: ProductId
+        description: The product identifier
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Portfolios
+  /?Action=ListAcceptedPortfolioShares&k=1:
+    get:
+      summary: ' List Accepted Portfolio Shares '
+      description: |-
+        Lists details of all portfolios for which sharing was accepted by this
+                 account
+      operationId: listAcceptedPortfolioShares
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: PageSize
+        description: The maximum number of items to return in the results
+        type: string
+      - in: query
+        name: PageToken
+        description: The page token of the first page retrieved
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Portfolios
+  /?Action=ListConstraintsForPortfolio&k=1:
+    get:
+      summary: ' List Constraints For Portfolio '
+      description: |-
+        Retrieves detailed constraint information for the specified portfolio and
+                 product
+      operationId: listConstraintsForPortfolio
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: PageSize
+        description: The maximum number of items to return in the results
+        type: string
+      - in: query
+        name: PageToken
+        description: The page token of the first page retrieved
+        type: string
+      - in: query
+        name: PortfolioId
+        description: The portfolio identifier
+        type: string
+      - in: query
+        name: ProductId
+        description: The product identifier
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Portfolios
+  /?Action=ListLaunchPaths&k=1:
+    get:
+      summary: ' List Launch Paths '
+      description: Returns a paginated list of all paths to a specified product
+      operationId: listLaunchPaths
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: PageSize
+        description: The maximum number of items to return in the results
+        type: string
+      - in: query
+        name: PageToken
+        description: The page token of the first page retrieved
+        type: string
+      - in: query
+        name: ProductId
+        description: The product identifier
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Launch Paths
+  /?Action=ListPortfolioAccess&k=1:
+    get:
+      summary: ' List Portfolio Access '
+      description: |-
+        Lists the account IDs that have been authorized sharing of the specified
+                 portfolio
+      operationId: listPortfolioAccess
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: PortfolioId
+        description: The portfolio identifier
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Portfolios
+  /?Action=ListPortfolios&k=1:
+    get:
+      summary: ' List Portfolios '
+      description: Lists all portfolios in the catalog
+      operationId: listPortfolios
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: PageSize
+        description: The maximum number of items to return in the results
+        type: string
+      - in: query
+        name: PageToken
+        description: The page token of the first page retrieved
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Portfolios
+  /?Action=ListPortfoliosForProduct&k=1:
+    get:
+      summary: ' List Portfolios For Product '
+      description: Lists all portfolios that the specified product is associated with
+      operationId: listPortfoliosForProduct
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: PageSize
+        description: The maximum number of items to return in the results
+        type: string
+      - in: query
+        name: PageToken
+        description: The page token of the first page retrieved
+        type: string
+      - in: query
+        name: ProductId
+        description: The product identifier
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Portfolios
+  /?Action=ListPrincipalsForPortfolio&k=1:
+    get:
+      summary: ' List Principals For Portfolio '
+      description: Lists all principal ARNs associated with the specified portfolio
+      operationId: listPrincipalsForPortfolio
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: PageSize
+        description: The maximum number of items to return in the results
+        type: string
+      - in: query
+        name: PageToken
+        description: The page token of the first page retrieved
+        type: string
+      - in: query
+        name: PortfolioId
+        description: The portfolio identifier
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Portfolios
+  /?Action=ListProvisioningArtifacts&k=1:
+    get:
+      summary: ' List Provisioning Artifacts '
+      description: Lists all provisioning artifacts associated with the specified
+        product
+      operationId: listProvisioningArtifacts
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: ProductId
+        description: The product identifier
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Provisioning Artifacts
+  /?Action=ListRecordHistory&k=1:
+    get:
+      summary: ' List Record History '
+      description: |-
+        Returns a paginated list of all performed requests, in the form of RecordDetails
+                 objects that are filtered as specified
+      operationId: listRecordHistory
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: AccessLevelFilter
+        description: The access level for obtaining results
+        type: string
+      - in: query
+        name: PageSize
+        description: The maximum number of items to return in the results
+        type: string
+      - in: query
+        name: PageToken
+        description: The page token of the first page retrieved
+        type: string
+      - in: query
+        name: SearchFilter
+        description: The filter to limit search results
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Record History
+  /?Action=ProvisionProduct&k=1:
+    get:
+      summary: ' Provision Product '
+      description: Requests a Provision of a specified product
+      operationId: provisionProduct
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: NotificationArns
+        description: Passed to CloudFormation
+        type: string
+      - in: query
+        name: PathId
+        description: The identifier of the path for this product's provisioning
+        type: string
+      - in: query
+        name: ProductId
+        description: The product identifier
+        type: string
+      - in: query
+        name: ProvisionedProductName
+        description: A user-friendly name to identify the ProvisionedProduct object
+        type: string
+      - in: query
+        name: ProvisioningArtifactId
+        description: The provisioning artifact identifier for this product
+        type: string
+      - in: query
+        name: ProvisioningParameters
+        description: Parameters specified by the administrator that are required for
+          provisioning the         product
+        type: string
+      - in: query
+        name: ProvisionToken
+        description: An idempotency token that uniquely identifies the provisioning
+          request
+        type: string
+      - in: query
+        name: Tags
+        description: A list of tags to use as provisioning options
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Products
+  /?Action=RejectPortfolioShare&k=1:
+    get:
+      summary: ' Reject Portfolio Share '
+      description: Rejects an offer to share a portfolio
+      operationId: rejectPortfolioShare
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: PortfolioId
+        description: The portfolio identifier
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Portfolios
+  /?Action=ScanProvisionedProducts&k=1:
+    get:
+      summary: ' Scan Provisioned Products '
+      description: |-
+        Returns a paginated list of all the ProvisionedProduct objects that are currently
+                 available (not terminated)
+      operationId: scanProvisionedProducts
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: AccessLevelFilter
+        description: The access level for obtaining results
+        type: string
+      - in: query
+        name: PageSize
+        description: The maximum number of items to return in the results
+        type: string
+      - in: query
+        name: PageToken
+        description: The page token of the first page retrieved
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Provisioned Products
+  /?Action=SearchProducts&k=1:
+    get:
+      summary: ' Search Products '
+      description: |-
+        Returns a paginated list all of the Products objects to which the caller
+                 has access
+      operationId: searchProducts
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: Filters
+        description: The list of filters with which to limit search results
+        type: string
+      - in: query
+        name: PageSize
+        description: The maximum number of items to return in the results
+        type: string
+      - in: query
+        name: PageToken
+        description: The page token of the first page retrieved
+        type: string
+      - in: query
+        name: SortBy
+        description: The sort field specifier
+        type: string
+      - in: query
+        name: SortOrder
+        description: The sort order specifier
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Products
+  /?Action=SearchProductsAsAdmin&k=1:
+    get:
+      summary: ' Search Products As Admin '
+      description: |-
+        Retrieves summary and status information about all products created within the
+                 caller's account
+      operationId: searchProductsAsAdmin
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: Filters
+        description: The list of filters with which to limit search results
+        type: string
+      - in: query
+        name: PageSize
+        description: The maximum number of items to return in the results
+        type: string
+      - in: query
+        name: PageToken
+        description: The page token of the first page retrieved
+        type: string
+      - in: query
+        name: PortfolioId
+        description: The portfolio identifier
+        type: string
+      - in: query
+        name: ProductSource
+        description: Access level of the source of the product
+        type: string
+      - in: query
+        name: SortBy
+        description: The sort field specifier
+        type: string
+      - in: query
+        name: SortOrder
+        description: The sort order specifier
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Products
+  /?Action=TerminateProvisionedProduct&k=1:
+    get:
+      summary: ' Terminate Provisioned Product '
+      description: Requests termination of an existing ProvisionedProduct object
+      operationId: terminateProvisionedProduct
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: IgnoreErrors
+        description: If set to true, AWS Service Catalog stops managing the specified
+          ProvisionedProduct object even         if it cannot delete the underlying
+          resources
+        type: string
+      - in: query
+        name: ProvisionedProductId
+        description: The identifier of the ProvisionedProduct object to terminate
+        type: string
+      - in: query
+        name: ProvisionedProductName
+        description: The name of the ProvisionedProduct object to terminate
+        type: string
+      - in: query
+        name: TerminateToken
+        description: An idempotency token that uniquely identifies the termination
+          request
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Provisioned Products
+  /?Action=UpdateConstraint&k=1:
+    get:
+      summary: ' Update Constraint '
+      description: Updates an existing constraint
+      operationId: updateConstraint
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: Description
+        description: The updated text description of the constraint
+        type: string
+      - in: query
+        name: Id
+        description: The identifier of the constraint to update
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Constraints
+  /?Action=UpdatePortfolio&k=1:
+    get:
+      summary: ' Update Portfolio '
+      description: Updates the specified portfolio's details
+      operationId: updatePortfolio
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: AddTags
+        description: Tags to add to the existing list of tags associated with the
+          portfolio
+        type: string
+      - in: query
+        name: Description
+        description: The updated text description of the portfolio
+        type: string
+      - in: query
+        name: DisplayName
+        description: The name to use for display purposes
+        type: string
+      - in: query
+        name: Id
+        description: The identifier of the portfolio for the update request
+        type: string
+      - in: query
+        name: ProviderName
+        description: The updated name of the portfolio provider
+        type: string
+      - in: query
+        name: RemoveTags
+        description: Tags to remove from the existing list of tags associated with
+          the         portfolio
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Portfolios
+  /?Action=UpdateProduct&k=1:
+    get:
+      summary: ' Update Product '
+      description: Updates an existing product
+      operationId: updateProduct
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: AddTags
+        description: Tags to add to the existing list of tags associated with the
+          product
+        type: string
+      - in: query
+        name: Description
+        description: The updated text description of the product
+        type: string
+      - in: query
+        name: Distributor
+        description: The updated distributor of the product
+        type: string
+      - in: query
+        name: Id
+        description: The identifier of the product for the update request
+        type: string
+      - in: query
+        name: Name
+        description: The updated product name
+        type: string
+      - in: query
+        name: Owner
+        description: The updated owner of the product
+        type: string
+      - in: query
+        name: RemoveTags
+        description: Tags to remove from the existing list of tags associated with
+          the product
+        type: string
+      - in: query
+        name: SupportDescription
+        description: The updated support description for the product
+        type: string
+      - in: query
+        name: SupportEmail
+        description: The updated support email for the product
+        type: string
+      - in: query
+        name: SupportUrl
+        description: The updated support URL for the product
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Products
+  /?Action=UpdateProvisionedProduct&k=1:
+    get:
+      summary: ' Update Provisioned Product '
+      description: Requests updates to the configuration of an existing ProvisionedProduct
+        object
+      operationId: updateProvisionedProduct
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: PathId
+        description: The identifier of the path to use in the updated ProvisionedProduct
+          object
+        type: string
+      - in: query
+        name: ProductId
+        description: The identifier of the ProvisionedProduct object
+        type: string
+      - in: query
+        name: ProvisionedProductId
+        description: The identifier of the ProvisionedProduct object to update
+        type: string
+      - in: query
+        name: ProvisionedProductName
+        description: 'The updated name of the ProvisionedProduct object '
+        type: string
+      - in: query
+        name: ProvisioningArtifactId
+        description: The provisioning artifact identifier for this product
+        type: string
+      - in: query
+        name: ProvisioningParameters
+        description: A list of ProvisioningParameter objects used to update the         ProvisionedProduct
+          object
+        type: string
+      - in: query
+        name: UpdateToken
+        description: The idempotency token that uniquely identifies the provisioning
+          update         request
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Provisioned Products
+  /?Action=UpdateProvisioningArtifact&k=1:
+    get:
+      summary: ' Update Provisioning Artifact '
+      description: Updates an existing provisioning artifact's information
+      operationId: updateProvisioningArtifact
+      parameters:
+      - in: query
+        name: AcceptLanguage
+        description: The language code to use for this operation
+        type: string
+      - in: query
+        name: Description
+        description: The updated text description of the provisioning artifact
+        type: string
+      - in: query
+        name: Name
+        description: The updated name of the provisioning artifact
+        type: string
+      - in: query
+        name: ProductId
+        description: The product identifier
+        type: string
+      - in: query
+        name: ProvisioningArtifactId
+        description: The identifier of the provisioning artifact for the update request
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Provisioning Artifacts
+definitions: []
