@@ -1,0 +1,742 @@
+agger: "2.0"
+info:
+  title: iotHubClient
+  description: Use this API to manage the IoT hubs in your subscription.
+  version: 1.0.0
+host: management.azure.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /subscriptions/{subscriptionId}/providers/Microsoft.Devices/checkNameAvailability:
+    post:
+      summary: Iot Hub Resource Check Name Availability
+      description: Check if an IoT hub name is available
+      operationId: IotHubResource_CheckNameAvailability
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: operationInputs
+        description: Set the name parameter in the OperationInputs structure to the
+          name of the IoT hub to check
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource Name Availability
+  /subscriptions/{subscriptionId}/providers/Microsoft.Devices/IotHubs:
+    get:
+      summary: Iot Hub Resource List By Subscription
+      description: Get all the IoT hubs in a subscription
+      operationId: IotHubResource_ListBySubscription
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource Subscription
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs:
+    get:
+      summary: Iot Hub Resource List By Resource Group
+      description: Get all the IoT hubs in a resource group
+      operationId: IotHubResource_ListByResourceGroup
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the IoT hubs
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource Resource Group
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}:
+    delete:
+      summary: Iot Hub Resource Delete
+      description: Delete an IoT hub
+      operationId: IotHubResource_Delete
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the IoT hub
+      - in: path
+        name: resourceName
+        description: The name of the IoT hub to delete
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource
+    get:
+      summary: Iot Hub Resource Get
+      description: Get the non-security related metadata of an IoT hub
+      operationId: IotHubResource_Get
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the IoT hub
+      - in: path
+        name: resourceName
+        description: The name of the IoT hub
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource
+    put:
+      summary: Iot Hub Resource Create Or Update
+      description: Create or update the metadata of an Iot hub
+      operationId: IotHubResource_CreateOrUpdate
+      parameters:
+      - in: body
+        name: iotHubDescription
+        description: The IoT hub metadata and security metadata
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the IoT hub
+      - in: path
+        name: resourceName
+        description: The name of the IoT hub to create or update
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/eventHubEndpoints/{eventHubEndpointName}/ConsumerGroups
+  : get:
+      summary: Iot Hub Resource List Event Hub Consumer Groups
+      description: Get a list of the consumer groups in the Event Hub-compatible device-to-cloud
+        endpoint in an IoT hub
+      operationId: IotHubResource_ListEventHubConsumerGroups
+      parameters:
+      - in: path
+        name: eventHubEndpointName
+        description: The name of the Event Hub-compatible endpoint
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the IoT hub
+      - in: path
+        name: resourceName
+        description: The name of the IoT hub
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource Event Hub Consumer Groups
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/eventHubEndpoints/{eventHubEndpointName}/ConsumerGroups/{name}
+  : delete:
+      summary: Iot Hub Resource Delete Event Hub Consumer Group
+      description: Delete a consumer group from an Event Hub-compatible endpoint in
+        an IoT hub
+      operationId: IotHubResource_DeleteEventHubConsumerGroup
+      parameters:
+      - in: path
+        name: eventHubEndpointName
+        description: The name of the Event Hub-compatible endpoint in the IoT hub
+      - in: path
+        name: name
+        description: The name of the consumer group to delete
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the IoT hub
+      - in: path
+        name: resourceName
+        description: The name of the IoT hub
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource Event Hub Consumer Group
+    get:
+      summary: Iot Hub Resource Get Event Hub Consumer Group
+      description: Get a consumer group from the Event Hub-compatible device-to-cloud
+        endpoint for an IoT hub
+      operationId: IotHubResource_GetEventHubConsumerGroup
+      parameters:
+      - in: path
+        name: eventHubEndpointName
+        description: The name of the Event Hub-compatible endpoint in the IoT hub
+      - in: path
+        name: name
+        description: The name of the consumer group to retrieve
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the IoT hub
+      - in: path
+        name: resourceName
+        description: The name of the IoT hub
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource Event Hub Consumer Group
+    put:
+      summary: Iot Hub Resource Create Event Hub Consumer Group
+      description: Add a consumer group to an Event Hub-compatible endpoint in an
+        IoT hub
+      operationId: IotHubResource_CreateEventHubConsumerGroup
+      parameters:
+      - in: path
+        name: eventHubEndpointName
+        description: The name of the Event Hub-compatible endpoint in the IoT hub
+      - in: path
+        name: name
+        description: The name of the consumer group to add
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the IoT hub
+      - in: path
+        name: resourceName
+        description: The name of the IoT hub
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource Event Hub Consumer Group
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/exportDevices
+  : post:
+      summary: Iot Hub Resource Export Devices
+      description: Exports all the device identities in the IoT hub identity registry
+        to an Azure Storage blob container
+      operationId: IotHubResource_ExportDevices
+      parameters:
+      - in: body
+        name: exportDevicesParameters
+        description: The parameters that specify the export devices operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the IoT hub
+      - in: path
+        name: resourceName
+        description: The name of the IoT hub
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource Export Devices
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/importDevices
+  : post:
+      summary: Iot Hub Resource Import Devices
+      description: Import, update, or delete device identities in the IoT hub identity
+        registry from a blob
+      operationId: IotHubResource_ImportDevices
+      parameters:
+      - in: body
+        name: importDevicesParameters
+        description: The parameters that specify the import devices operation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the IoT hub
+      - in: path
+        name: resourceName
+        description: The name of the IoT hub
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource Import Devices
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/IotHubKeys/{keyName}/listkeys
+  : post:
+      summary: Iot Hub Resource Get Keys For Key Name
+      description: Get a shared access policy by name from an IoT hub
+      operationId: IotHubResource_GetKeysForKeyName
+      parameters:
+      - in: path
+        name: keyName
+        description: The name of the shared access policy
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the IoT hub
+      - in: path
+        name: resourceName
+        description: The name of the IoT hub
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource Keys For Key Name
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/IotHubStats
+  : get:
+      summary: Iot Hub Resource Get Stats
+      description: Get the statistics from an IoT hub
+      operationId: IotHubResource_GetStats
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the IoT hub
+      - in: path
+        name: resourceName
+        description: The name of the IoT hub
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource Stats
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/jobs:
+    get:
+      summary: Iot Hub Resource List Jobs
+      description: Get a list of all the jobs in an IoT hub
+      operationId: IotHubResource_ListJobs
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the IoT hub
+      - in: path
+        name: resourceName
+        description: The name of the IoT hub
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource Jobs
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/jobs/{jobId}
+  : get:
+      summary: Iot Hub Resource Get Job
+      description: Get the details of a job from an IoT hub
+      operationId: IotHubResource_GetJob
+      parameters:
+      - in: path
+        name: jobId
+        description: The job identifier
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the IoT hub
+      - in: path
+        name: resourceName
+        description: The name of the IoT hub
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource Job
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/listkeys:
+    post:
+      summary: Iot Hub Resource List Keys
+      description: Get the security metadata for an IoT hub
+      operationId: IotHubResource_ListKeys
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the IoT hub
+      - in: path
+        name: resourceName
+        description: The name of the IoT hub
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource Keys
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/quotaMetrics
+  : get:
+      summary: Iot Hub Resource Get Quota Metrics
+      description: Get the quota metrics for an IoT hub
+      operationId: IotHubResource_GetQuotaMetrics
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the IoT hub
+      - in: path
+        name: resourceName
+        description: The name of the IoT hub
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource Quota Metrics
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Devices/IotHubs/{resourceName}/skus:
+    get:
+      summary: Iot Hub Resource Get Valid Skus
+      description: Get the list of valid SKUs for an IoT hub
+      operationId: IotHubResource_GetValidSkus
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the IoT hub
+      - in: path
+        name: resourceName
+        description: The name of the IoT hub
+      responses:
+        200:
+          description: OK
+      tags:
+      - Iot Hub Resource Valid Skus
+definitions:
+  SharedAccessSignatureAuthorizationRule:
+    properties:
+      keyName:
+        description: This is a default description.
+        type: post
+      primaryKey:
+        description: This is a default description.
+        type: post
+      secondaryKey:
+        description: This is a default description.
+        type: post
+      rights:
+        description: This is a default description.
+        type: post
+  IotHubProperties:
+    properties:
+      authorizationPolicies:
+        description: This is a default description.
+        type: post
+      ipFilterRules:
+        description: This is a default description.
+        type: post
+      provisioningState:
+        description: This is a default description.
+        type: post
+      hostName:
+        description: This is a default description.
+        type: post
+      eventHubEndpoints:
+        description: This is a default description.
+        type: post
+      storageEndpoints:
+        description: This is a default description.
+        type: post
+      messagingEndpoints:
+        description: This is a default description.
+        type: post
+      enableFileUploadNotifications:
+        description: This is a default description.
+        type: post
+      comments:
+        description: This is a default description.
+        type: post
+      features:
+        description: This is a default description.
+        type: post
+  IotHubSkuInfo:
+    properties:
+      name:
+        description: This is a default description.
+        type: post
+      tier:
+        description: This is a default description.
+        type: post
+      capacity:
+        description: This is a default description.
+        type: post
+  EventHubProperties:
+    properties:
+      retentionTimeInDays:
+        description: This is a default description.
+        type: post
+      partitionCount:
+        description: This is a default description.
+        type: post
+      partitionIds:
+        description: This is a default description.
+        type: post
+      path:
+        description: This is a default description.
+        type: post
+      endpoint:
+        description: This is a default description.
+        type: post
+  StorageEndpointProperties:
+    properties:
+      sasTtlAsIso8601:
+        description: This is a default description.
+        type: post
+      connectionString:
+        description: This is a default description.
+        type: post
+      containerName:
+        description: This is a default description.
+        type: post
+  MessagingEndpointProperties:
+    properties:
+      lockDurationAsIso8601:
+        description: This is a default description.
+        type: post
+      ttlAsIso8601:
+        description: This is a default description.
+        type: post
+      maxDeliveryCount:
+        description: This is a default description.
+        type: post
+  CloudToDeviceProperties:
+    properties:
+      maxDeliveryCount:
+        description: This is a default description.
+        type: post
+      defaultTtlAsIso8601:
+        description: This is a default description.
+        type: post
+  OperationsMonitoringProperties:
+    properties:
+      events:
+        description: This is a default description.
+        type: post
+  IpFilterRule:
+    properties:
+      filterName:
+        description: This is a default description.
+        type: post
+      action:
+        description: This is a default description.
+        type: post
+      ipMask:
+        description: This is a default description.
+        type: post
+  FeedbackProperties:
+    properties:
+      lockDurationAsIso8601:
+        description: This is a default description.
+        type: post
+      ttlAsIso8601:
+        description: This is a default description.
+        type: post
+      maxDeliveryCount:
+        description: This is a default description.
+        type: post
+  IotHubDescription:
+    properties:
+      subscriptionid:
+        description: This is a default description.
+        type: post
+      resourcegroup:
+        description: This is a default description.
+        type: post
+      etag:
+        description: This is a default description.
+        type: post
+  Resource:
+    properties:
+      id:
+        description: This is a default description.
+        type: post
+      name:
+        description: This is a default description.
+        type: post
+      type:
+        description: This is a default description.
+        type: post
+      location:
+        description: This is a default description.
+        type: post
+      tags:
+        description: This is a default description.
+        type: post
+  SharedAccessSignatureAuthorizationRuleListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  ErrorDetails:
+    properties:
+      Code:
+        description: This is a default description.
+        type: post
+      HttpStatusCode:
+        description: This is a default description.
+        type: post
+      Message:
+        description: This is a default description.
+        type: post
+      Details:
+        description: This is a default description.
+        type: post
+  IotHubQuotaMetricInfoListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  RegistryStatistics:
+    properties:
+      totalDeviceCount:
+        description: This is a default description.
+        type: post
+      enabledDeviceCount:
+        description: This is a default description.
+        type: post
+      disabledDeviceCount:
+        description: This is a default description.
+        type: post
+  JobResponseListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  IotHubSkuDescription:
+    properties:
+      resourceType:
+        description: This is a default description.
+        type: post
+  IotHubCapacity:
+    properties:
+      minimum:
+        description: This is a default description.
+        type: post
+      maximum:
+        description: This is a default description.
+        type: post
+      default:
+        description: This is a default description.
+        type: post
+      scaleType:
+        description: This is a default description.
+        type: post
+  EventHubConsumerGroupsListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  EventHubConsumerGroupInfo:
+    properties:
+      tags:
+        description: This is a default description.
+        type: post
+      id:
+        description: This is a default description.
+        type: post
+      name:
+        description: This is a default description.
+        type: post
+  IotHubSkuDescriptionListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  JobResponse:
+    properties:
+      jobId:
+        description: This is a default description.
+        type: post
+      startTimeUtc:
+        description: This is a default description.
+        type: post
+      endTimeUtc:
+        description: This is a default description.
+        type: post
+      type:
+        description: This is a default description.
+        type: post
+      status:
+        description: This is a default description.
+        type: post
+      failureReason:
+        description: This is a default description.
+        type: post
+      statusMessage:
+        description: This is a default description.
+        type: post
+      parentJobId:
+        description: This is a default description.
+        type: post
+  IotHubDescriptionListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: post
+      nextLink:
+        description: This is a default description.
+        type: post
+  IotHubQuotaMetricInfo:
+    properties:
+      Name:
+        description: This is a default description.
+        type: post
+      CurrentValue:
+        description: This is a default description.
+        type: post
+      MaxValue:
+        description: This is a default description.
+        type: post
+  OperationInputs:
+    properties:
+      Name:
+        description: This is a default description.
+        type: post
+  IotHubNameAvailabilityInfo:
+    properties:
+      nameAvailable:
+        description: This is a default description.
+        type: post
+      reason:
+        description: This is a default description.
+        type: post
+      message:
+        description: This is a default description.
+        type: post
+  ExportDevicesRequest:
+    properties:
+      ExportBlobContainerUri:
+        description: This is a default description.
+        type: post
+      ExcludeKeys:
+        description: This is a default description.
+        type: post
+  ImportDevicesRequest:
+    properties:
+      InputBlobContainerUri:
+        description: This is a default description.
+        type: post
+      OutputBlobContainerUri:
+        description: This is a default description.
+        type: post
