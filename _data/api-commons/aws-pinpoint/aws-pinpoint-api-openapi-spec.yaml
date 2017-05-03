@@ -1,0 +1,356 @@
+agger: "2.0"
+info:
+  title: AWS Pinpoint API
+  version: 1.0.0
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /apps/application-id/campaigns/:
+    get:
+      summary: Get Campaigns
+      description: Campaigns are messaging initiatives that engage specific segments
+        of end users
+      operationId: campaigns
+      parameters:
+      - in: header
+        name: accept
+        description: "Specify the media type you will accept as a response:  application/json
+          \u2013 A JSON response body"
+        type: string
+        format: string
+      - in: query
+        name: page-size
+        description: The number of entries you want on each page in the response
+        type: string
+        format: string
+      - in: query
+        name: token
+        description: An identifier used to retrieve the next page of results
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Campaign
+    put:
+      summary: Add Campaign
+      description: Use the POST method to create or update a campaign
+      operationId: addCampaign
+      parameters:
+      - schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Campaign
+  /apps/application-id/campaigns/campaign-id:
+    delete:
+      summary: Delete Campaign Instance
+      description: Use the DELETE method to delete a campaign
+      operationId: deleteCampaign
+      parameters:
+      - in: header
+        name: accept
+        description: "Specify the media type you will accept as a response:  application/json
+          \u2013 A JSON response body"
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Campaign
+    get:
+      summary: Campaign Instance
+      description: Use the GET method to request information about a campaign
+      operationId: getCampaign
+      parameters:
+      - in: header
+        name: accept
+        description: "Specify the media type you will accept as a response:  application/json
+          \u2013 A JSON response body"
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Campaign
+    put:
+      summary: Update Campaign Instance
+      description: Use the PUT method to update a campaign
+      operationId: updateCampaign
+      parameters:
+      - in: header
+        name: accept
+        description: "Specify the media type you will accept as a response:  application/json
+          \u2013 A JSON response body"
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Campaign
+  /apps/application-id/campaigns/campaign-id/activities:
+    get:
+      summary: Campaign Activities
+      description: Returns information about the activity performed by a campaign,
+        such as the time during which the campaign ran and the number of endpoints
+        to which it delivered messages
+      operationId: campaignActivities
+      parameters:
+      - in: header
+        name: accept
+        description: "Specify the media type you will accept as a response:  application/json
+          \u2013 A JSON response body"
+        type: string
+        format: string
+      - in: query
+        name: page-size
+        description: The number of entries you want on each page in the response
+        type: string
+        format: string
+      - in: query
+        name: token
+        description: token
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Campaign Activities
+  /apps/application-id/campaigns/campaign-id/versions:
+    get:
+      summary: Campaign Versions List
+      description: Use the GET method to request information about your campaign versions
+      operationId: getVersonsList
+      parameters:
+      - in: header
+        name: accept
+        description: "Specify the media type you will accept as a response:  application/json
+          \u2013 A JSON response body"
+        type: string
+        format: string
+      - in: query
+        name: page-size
+        description: The number of entries you want on each page in the response
+        type: string
+        format: string
+      - in: query
+        name: token
+        description: token
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Campaign Versions
+  /apps/application-id/campaigns/campaign-id/versions/version:
+    get:
+      summary: Campaign Version Instance
+      description: Use the GET method to request information about a campaign version
+      operationId: campaignVersionInstance
+      parameters:
+      - in: header
+        name: accept
+        description: "Specify the media type you will accept as a response:  application/json
+          \u2013 A JSON response body"
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Campaign Version
+  /apps/application-id/endpoints:
+    put:
+      summary: Endpoints List
+      description: Use the PUT method to update your endpoints
+      operationId: updateEndpointsList
+      parameters:
+      - in: query
+        name: accept
+        description: "Specify the media type you will accept as a response:  application/json
+          \u2013 A JSON response body"
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Endpoint
+  /apps/application-id/endpoints/endpoint-id:
+    get:
+      summary: Endpoint Instance
+      description: Use the GET method to request information about an endpoint
+      operationId: getEndpointInstance
+      responses:
+        200:
+          description: OK
+      tags:
+      - Endpoint
+    put:
+      summary: Update Endpoint Instance
+      description: Use the PUT method to update an endpoint
+      operationId: updateEndpointInstance
+      responses:
+        200:
+          description: OK
+      tags:
+      - Endpoint
+  /apps/application-id/jobs/import:
+    get:
+      summary: Import Job List
+      description: Use the GET method to request information about your import jobs
+      operationId: importJobList
+      responses:
+        200:
+          description: OK
+      tags:
+      - Import Job
+    post:
+      summary: Update Import Job List
+      description: Use the POST method to create or update an import job
+      operationId: updateImportJobList
+      parameters:
+      - in: header
+        name: accept
+        description: "Specify the media type you will accept as a response:  application/json
+          \u2013 A JSON response body"
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Import Job
+  /apps/application-id/jobs/import/{job-id}:
+    get:
+      summary: Import Job Instance
+      description: Use the GET method to request information about an import job
+      operationId: importJobInstance
+      parameters:
+      - in: path
+        name: job-id
+        description: The job id
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Import Job
+  /apps/application-id/segment/versions:
+    get:
+      summary: Segment Versions List
+      description: Use the GET method to request information about your segment versions
+      operationId: getSegmentVersionsList
+      responses:
+        200:
+          description: OK
+      tags:
+      - Segments
+  /apps/application-id/segments:
+    get:
+      summary: Segments List
+      description: Use the GET method to request information about your segments
+      operationId: segmentsList
+      responses:
+        200:
+          description: OK
+      tags:
+      - Segments
+    post:
+      summary: Segments List
+      description: Use the POST method to create or update a segment
+      operationId: addSegmentsList
+      responses:
+        200:
+          description: OK
+      tags:
+      - Segments
+  /apps/application-id/segments/segment-id:
+    delete:
+      summary: Segment Instance
+      description: Use the DELETE method to delete a segment
+      operationId: deleteSegmentInstance
+      responses:
+        200:
+          description: OK
+      tags:
+      - Segments
+    get:
+      summary: Segment Instance
+      description: Use the GET method to request information about a segment
+      operationId: getSegmentInstance
+      responses:
+        200:
+          description: OK
+      tags:
+      - Segments
+    put:
+      summary: Segment Instance
+      description: Use the PUT method to update a segment
+      operationId: updateSegmentInstance
+      responses:
+        200:
+          description: OK
+      tags:
+      - Segments
+  /apps/application-id/segments/segment-id/jobs/import:
+    get:
+      summary: Import Job List by Segment
+      description: Use the GET method to request information about the import jobs
+        for a segment
+      operationId: importJobListbySegment
+      parameters:
+      - in: header
+        name: accept
+        description: "Specify the media type you will accept as a response:  application/json
+          \u2013 A JSON response body"
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Import Job
+  /apps/application-id/segments/segment-id/versions/version:
+    get:
+      summary: Segment Version Instance
+      description: Use the GET method to request information about a segment version
+      operationId: getSegmentVersionInstance
+      responses:
+        200:
+          description: OK
+      tags:
+      - Segments
+  /apps/application-id/settings:
+    get:
+      summary: Get URI
+      description: Use the GET method to request the settings for an app
+      operationId: getURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - URI
+    put:
+      summary: Update URI
+      description: Use the PUT method to update the settings for an app
+      operationId: updateURI
+      responses:
+        200:
+          description: OK
+      tags:
+      - URI
+definitions: []
