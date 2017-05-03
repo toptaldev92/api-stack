@@ -1,0 +1,86 @@
+agger: "2.0"
+info:
+  title: Key Transaction API
+  description: The Key Transaction API.
+  version: 1.0.0
+host: api.newrelic.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /v2/key_transactions.{format}:
+    get:
+      summary: List
+      description: <p>This API endpoint returns a <a href="https://docs
+      operationId: list
+      parameters:
+      - in: query
+        name: filter[ids]
+        description: Filter by policy IDs
+        type: list
+      - in: query
+        name: filter[name]
+        description: Filter by name
+        type: string
+      - in: query
+        name: page
+        description: Pagination index
+        type: integer
+      responses:
+        200:
+          description: OK
+      tags:
+      - Key Transaction
+  /v2/key_transactions/{id}.{format}:
+    get:
+      summary: Show
+      description: <p>This endpoint returns a single key transaction, identified by
+        ID
+      operationId: show
+      parameters:
+      - in: path
+        name: id
+        description: Key transaction ID
+        type: integer
+      responses:
+        200:
+          description: OK
+      tags:
+      - Key Transaction
+definitions:
+  "":
+    properties:
+      key_transaction:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      name:
+        description: This is a default description.
+        type: string
+      transaction_name:
+        description: This is a default description.
+        type: string
+      health_status:
+        description: This is a default description.
+        type: string
+      reporting:
+        description: This is a default description.
+        type: string
+      last_reported_at:
+        description: This is a default description.
+        type: string
+      application_summary:
+        description: This is a default description.
+        type: string
+      end_user_summary:
+        description: This is a default description.
+        type: string
+      links:
+        description: This is a default description.
+        type: string
