@@ -1,0 +1,167 @@
+agger: "2.0"
+info:
+  title: Microsoft.ResourceHealth
+  description: The Resource Health Client.
+  version: 1.0.0
+host: management.azure.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /providers/Microsoft.ResourceHealth/operations:
+    get:
+      summary: Operations List
+      description: Lists available operations for the resourcehealth resource provider
+      operationId: Operations_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Operations
+  /subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/availabilityStatuses:
+    get:
+      summary: Availability Statuses List By Subscription Id
+      description: Lists the current availability status for all the resources in
+        the subscription
+      operationId: AvailabilityStatuses_ListBySubscriptionId
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Availability Statuses Subscription Id
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceHealth/availabilityStatuses:
+    get:
+      summary: Availability Statuses List By Resource Group
+      description: Lists the current availability status for all the resources in
+        the resource group
+      operationId: AvailabilityStatuses_ListByResourceGroup
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Availability Statuses Resource Group
+  /{resourceUri}/providers/Microsoft.ResourceHealth/availabilityStatuses:
+    get:
+      summary: Availability Statuses List
+      description: Lists the historical availability statuses for a single resource
+      operationId: AvailabilityStatuses_List
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceUri
+        description: The fully qualified ID of the resource, including the resource
+          name and resource type
+      responses:
+        200:
+          description: OK
+      tags:
+      - Availability Statuses
+  /{resourceUri}/providers/Microsoft.ResourceHealth/availabilityStatuses/current:
+    get:
+      summary: Availability Statuses Get By Resource
+      description: Gets current availability status for a single resource
+      operationId: AvailabilityStatuses_GetByResource
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceUri
+        description: The fully qualified ID of the resource, including the resource
+          name and resource type
+      responses:
+        200:
+          description: OK
+      tags:
+      - Availability Statuses Resource
+definitions:
+  availabilityStatusListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  availabilityStatus:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      name:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+      location:
+        description: This is a default description.
+        type: get
+      properties:
+        description: This is a default description.
+        type: get
+  recommendedAction:
+    properties:
+      action:
+        description: This is a default description.
+        type: get
+      actionUrl:
+        description: This is a default description.
+        type: get
+      actionUrlText:
+        description: This is a default description.
+        type: get
+  serviceImpactingEvent:
+    properties:
+      eventStartTime:
+        description: This is a default description.
+        type: get
+      eventStatusLastModifiedTime:
+        description: This is a default description.
+        type: get
+      correlationId:
+        description: This is a default description.
+        type: get
+      status:
+        description: This is a default description.
+        type: get
+      incidentProperties:
+        description: This is a default description.
+        type: get
+  operationListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+  operation:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      display:
+        description: This is a default description.
+        type: get
+  ErrorResponse:
+    properties:
+      code:
+        description: This is a default description.
+        type: get
+      message:
+        description: This is a default description.
+        type: get
+      details:
+        description: This is a default description.
+        type: get
