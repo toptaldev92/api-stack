@@ -1,0 +1,98 @@
+agger: "2.0"
+info:
+  title: Groups Settings
+  description: Lets you manage permission levels and related settings of a group.
+  contact:
+    name: Google
+    url: https://google.com
+  version: v1
+host: www.googleapis.com
+basePath: /groups/v1/groups
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /{groupUniqueId}:
+    get:
+      summary: Get Group
+      description: Gets one resource by id
+      operationId: groupsSettings.groups.get
+      parameters:
+      - in: path
+        name: groupUniqueId
+        description: The resource ID
+      responses:
+        200:
+          description: OK
+      tags:
+      - Group
+    patch:
+      summary: Update Group
+      description: Updates an existing resource
+      operationId: groupsSettings.groups.patch
+      parameters:
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: groupUniqueId
+        description: The resource ID
+      responses:
+        200:
+          description: OK
+      tags:
+      - Group
+    put:
+      summary: Update Group
+      description: Updates an existing resource
+      operationId: groupsSettings.groups.update
+      parameters:
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: groupUniqueId
+        description: The resource ID
+      responses:
+        200:
+          description: OK
+      tags:
+      - Group
+definitions:
+  Groups:
+    properties:
+      allowExternalMembers:
+        description: This is a default description.
+        type: put
+      allowGoogleCommunication:
+        description: This is a default description.
+        type: put
+      allowWebPosting:
+        description: This is a default description.
+        type: put
+      archiveOnly:
+        description: This is a default description.
+        type: put
+      customFooterText:
+        description: This is a default description.
+        type: put
+      customReplyTo:
+        description: This is a default description.
+        type: put
+      defaultMessageDenyNotificationText:
+        description: This is a default description.
+        type: put
+      description:
+        description: This is a default description.
+        type: put
+      email:
+        description: This is a default description.
+        type: put
+      includeCustomFooter:
+        description: This is a default description.
+        type: put
