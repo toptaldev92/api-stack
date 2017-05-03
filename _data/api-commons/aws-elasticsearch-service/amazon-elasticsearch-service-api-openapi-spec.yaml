@@ -1,0 +1,132 @@
+agger: "2.0"
+info:
+  title: AWS Elasticsearch Service API
+  version: 1.0.0
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /2015-01-01/domain:
+    get:
+      summary: ' List Domain Names '
+      description: Displays the names of all Amazon ES domains owned by the current
+        user
+      operationId: listDomainNames
+      responses:
+        200:
+          description: OK
+      tags:
+      - Domains
+  /2015-01-01/es/domain:
+    post:
+      summary: ' Create Elasticsearch Domain '
+      description: Creates a new Amazon ES domain
+      operationId: createElasticsearchDomain
+      responses:
+        200:
+          description: OK
+      tags:
+      - Domains
+  /2015-01-01/es/domain-info:
+    post:
+      summary: ' Describe Elasticsearch Domains '
+      description: Describes the domain configuration for up to five specified Amazon
+        ES domains
+      operationId: describeElasticsearchDomains
+      parameters:
+      - in: body
+        name: DomainNames
+        description: Array of Amazon ES domains in the following                                            format:{DomainNames:[&lt;Domain_Name&gt;,&lt;Domain_Name&gt;
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Domains
+  /2015-01-01/es/domain/{domain_name}:
+    delete:
+      summary: ' Delete Elasticsearch Domain '
+      description: Deletes an Amazon ES domain and all of its data
+      operationId: deleteElasticsearchDomain
+      responses:
+        200:
+          description: OK
+      tags:
+      - Domains
+    get:
+      summary: ' Describe Elasticsearch Domain '
+      description: |-
+        Describes the domain configuration for the specified Amazon ES domain, including the
+                        domain ID, domain service endpoint, and domain ARN
+      operationId: describeElasticsearchDomain
+      parameters:
+      - in: query
+        name: DomainName
+        description: Name of the Amazon ES domain that you want to                                        describe
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Domains
+  /2015-01-01/es/domain/{domain_name}/config:
+    get:
+      summary: ' Describe Elasticsearch Domain Config '
+      description: Displays the configuration of an Amazon ES domain
+      operationId: describeElasticsearchDomainConfig
+      parameters:
+      - in: query
+        name: DomainName
+        description: Name of the Amazon ES domain
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Domains
+    post:
+      summary: ' Update Elasticsearch Domain Config '
+      description: |-
+        Modifies the configuration of an Amazon ES domain, such as the instance type and the
+                        number of instances
+      operationId: updateElasticsearchDomainConfig
+      responses:
+        200:
+          description: OK
+      tags:
+      - Domains
+  /2015-01-01/tags:
+    post:
+      summary: ' Add Tags '
+      description: Attaches resource tags to an Amazon ES domain
+      operationId: addTags
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tags
+  /2015-01-01/tags?arn={domain_arn}:
+    get:
+      summary: ' List Tags '
+      description: Displays all of the tags for an Amazon ES domain
+      operationId: listTags
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tags
+  es.{aws_region}.amazonaws.com/2015-01-01/tags-removal:
+    post:
+      summary: ' Remove Tags '
+      description: Removes the specified resource tags from an Amazon ES domain
+      operationId: removeTags
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tags
+definitions: []
