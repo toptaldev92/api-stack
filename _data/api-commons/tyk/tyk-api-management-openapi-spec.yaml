@@ -1,0 +1,573 @@
+agger: "2.0"
+info:
+  title: Tyk Gateway REST API
+  description: The API for managing the Tyk API management gateway, allowing API control
+    over the operation of a variety of APIs.
+  termsOfService: https://tyk.io/terms-and-conditions/
+  version: "1.9"
+host: '{baseURL}'
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /tyk/apis/:
+    get:
+      summary: Get APIs
+      description: |
+        Gets a list of *API Definition* objects that are currently live on the gateway
+      operationId: gets-a-list-of-api-definition-objects-that-are-currently-live-on-the-gateway
+      parameters:
+      - in: header
+        name: x-tyk-authorization
+        description: tyk gateway shared secret
+      responses:
+        200:
+          description: OK
+      tags:
+      - API
+    post:
+      summary: Create API
+      description: |
+        Create an *API Definition* object
+      operationId: create-an-api-definition-object
+      parameters:
+      - in: body
+        name: api_definition
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - API
+  /tyk/apis/{apiID}:
+    delete:
+      summary: Delete API
+      description: |
+        Deletes an *API Definition* object, if it exists
+      operationId: deletes-an-api-definition-object-if-it-exists
+      parameters:
+      - in: path
+        name: apiID
+        description: API ID
+      - in: header
+        name: x-tyk-authorization
+        description: tyk gateway shared secret
+      responses:
+        200:
+          description: OK
+      tags:
+      - API
+    get:
+      summary: Get API
+      description: |
+        Gets an *API Definition* object, if it exists
+      operationId: gets-an-api-definition-object-if-it-exists
+      parameters:
+      - in: path
+        name: apiID
+        description: API ID
+      - in: header
+        name: x-tyk-authorization
+        description: tyk gateway shared secret
+      responses:
+        200:
+          description: OK
+      tags:
+      - API
+    put:
+      summary: Update API
+      description: |
+        Updates an *API Definition* object, if it exists
+      operationId: updates-an-api-definition-object-if-it-exists
+      parameters:
+      - in: path
+        name: apiID
+        description: API ID
+      - in: body
+        name: api_definition
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: x-tyk-authorization
+        description: tyk gateway shared secret
+      responses:
+        200:
+          description: OK
+      tags:
+      - API
+  /tyk/health/:
+    get:
+      summary: Check Health
+      description: |
+        Gets the health check values for an API if it is being recorded
+      operationId: gets-the-health-check-values-for-an-api-if-it-is-being-recorded
+      parameters:
+      - in: query
+        name: api_id
+        description: API ID to query
+      - in: header
+        name: x-tyk-authorization
+        description: tyk gateway shared secret
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Health
+  /tyk/keys/:
+    get:
+      summary: Get Keys
+      description: |
+        Gets a list of *key* IDs (will only work with non-hashed installations)
+      operationId: gets-a-list-of-key-ids-will-only-work-with-nonhashed-installations
+      parameters:
+      - in: query
+        name: api_id
+        description: Back-end to target
+      - in: header
+        name: x-tyk-authorization
+        description: tyk gateway shared secret
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Key
+  /tyk/keys/create:
+    post:
+      summary: Create Key
+      description: |
+        Create a new *API token* with the *session object* defined in the body
+      operationId: create-a-new-api-token-with-the-session-object-defined-in-the-body
+      parameters:
+      - in: body
+        name: session_object
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: suppress_reset
+        description: Adding the `suppress_reset` parameter and setting it to `1`,
+          will cause Tyk to not reset the quota limit that is in the current live
+          quota manager
+      - in: header
+        name: x-tyk-authorization
+        description: tyk gateway shared secret
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Key
+  /tyk/keys/{keyId}:
+    delete:
+      summary: Remove Key
+      description: |
+        Remove this *API token* from the gateway, this will completely destroy the token and metadata associated with the token and instantly stop access from being granted
+      operationId: remove-this-api-token-from-the-gateway-this-will-completely-destroy-the-token-and-metadata-associate
+      parameters:
+      - in: query
+        name: api_id
+        description: Back-end to target
+      - in: path
+        name: keyId
+        description: Access Token
+      - in: header
+        name: x-tyk-authorization
+        description: tyk gateway shared secret
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Key
+    post:
+      summary: Add Custom Key
+      description: |
+        Add a pre-specified *API token* with the *session object* defined in the body, this operatin creates a custom token that dsoes not use the gateway naming convention for tokens
+      operationId: add-a-prespecified-api-token-with-the-session-object-defined-in-the-body-this-operatin-creates-a-cus
+      parameters:
+      - in: path
+        name: keyId
+        description: Access Token
+      - in: body
+        name: session_object
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: x-tyk-authorization
+        description: tyk gateway shared secret
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Key
+    put:
+      summary: Update Key
+      description: |
+        Update an *API token* with the *session object* defined in the body, this operatin overwrites the existing object
+      operationId: update-an-api-token-with-the-session-object-defined-in-the-body-this-operatin-overwrites-the-existin
+      parameters:
+      - in: query
+        name: api_id
+        description: Back-end to target
+      - in: path
+        name: keyId
+        description: Access Token
+      - in: body
+        name: session_object
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: suppress_reset
+        description: Adding the `suppress_reset` parameter and setting it to `1`,
+          will cause Tyk to not reset the quota limit that is in the current live
+          quota manager
+      - in: header
+        name: x-tyk-authorization
+        description: tyk gateway shared secret
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Key
+  /tyk/oauth/authorize-client/:
+    post:
+      summary: OAuth Authorize Client
+      description: |
+        The final request from an authorising party for a redirect URI during the Tyk OAuth flow
+      operationId: the-final-request-from-an-authorising-party-for-a-redirect-uri-during-the-tyk-oauth-flow
+      parameters:
+      - in: formData
+        name: client_id
+        description: Should be provided by requesting client as part of authorisation
+          request
+      - in: formData
+        name: key_rules
+        description: A string representation of a *Session Object (form-encoded)*
+      - in: formData
+        name: redirect_uri
+        description: Should be provided by requesting client as part of authorisation
+          request
+      - in: formData
+        name: response_type
+        description: Should be provided by requesting client as part of authorisation
+          request, this should be either `code` or `token` depending on the methods
+          you have specified for the API
+      - in: header
+        name: x-tyk-authorization
+        description: tyk gateway shared secret
+      responses:
+        200:
+          description: OK
+      tags:
+      - OAuth
+  /tyk/oauth/clients/create:
+    post:
+      summary: OAuth Create Client
+      description: |
+        Create a new OAuth client
+      operationId: create-a-new-oauth-client
+      parameters:
+      - in: body
+        name: oauth_client
+        schema:
+          $ref: '#/definitions/holder'
+      - in: header
+        name: x-tyk-authorization
+        description: tyk gateway shared secret
+      responses:
+        200:
+          description: OK
+      tags:
+      - OAuth
+  /tyk/oauth/clients/{apiId}:
+    get:
+      summary: OAuth Get Clients
+      description: |
+        Get a list of OAuth clients bound to this back end
+      operationId: get-a-list-of-oauth-clients-bound-to-this-back-end
+      parameters:
+      - in: path
+        name: apiId
+        description: API ID that owns this client (back end)
+      - in: header
+        name: x-tyk-authorization
+        description: tyk gateway shared secret
+      responses:
+        200:
+          description: OK
+      tags:
+      - OAuth
+  /tyk/oauth/clients/{apiId}/{clientId}:
+    delete:
+      summary: Delete Client
+      description: |
+        Delete the OAuth client
+      operationId: delete-the-oauth-client
+      parameters:
+      - in: path
+        name: apiId
+        description: API ID that owns this client (back end)
+      - in: path
+        name: clientId
+        description: OAuth Client ID to delete
+      - in: header
+        name: x-tyk-authorization
+        description: tyk gateway shared secret
+      responses:
+        200:
+          description: OK
+      tags:
+      - OAuth
+  /tyk/oauth/refresh/{keyId}:
+    delete:
+      summary: Invalidate Key
+      description: |
+        Invalidate a refresh token
+      operationId: invalidate-a-refresh-token
+      parameters:
+      - in: query
+        name: apiID
+        description: API ID
+      - in: path
+        name: keyId
+        description: Access Token
+      - in: header
+        name: x-tyk-authorization
+        description: tyk gateway shared secret
+      responses:
+        200:
+          description: OK
+      tags:
+      - OAuth
+  /tyk/reload/:
+    get:
+      summary: Reload Gateway
+      description: |
+        Will reload the targetted gateway
+      operationId: will-reload-the-targetted-gateway
+      parameters:
+      - in: header
+        name: x-tyk-authorization
+        description: tyk gateway shared secret
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Reload
+  /tyk/reload/group:
+    get:
+      summary: Reload Group
+      description: |
+        Will reload the cluster via the targeted gateway
+      operationId: will-reload-the-cluster-via-the-targeted-gateway
+      parameters:
+      - in: header
+        name: x-tyk-authorization
+        description: tyk gateway shared secret
+      responses:
+        200:
+          description: OK
+      tags:
+      - API Reload
+definitions:
+  OAuthClient:
+    properties:
+      client_id:
+        description: This is a default description.
+        type: delete
+      secret:
+        description: This is a default description.
+        type: delete
+      redirect_uri:
+        description: This is a default description.
+        type: delete
+  AccessRights:
+    properties:
+      api_name:
+        description: This is a default description.
+        type: delete
+      api_id:
+        description: This is a default description.
+        type: delete
+      versions:
+        description: This is a default description.
+        type: delete
+  SessionObject:
+    properties:
+      allowance:
+        description: This is a default description.
+        type: delete
+      rate:
+        description: This is a default description.
+        type: delete
+      per:
+        description: This is a default description.
+        type: delete
+      expires:
+        description: This is a default description.
+        type: delete
+      quota_max:
+        description: This is a default description.
+        type: delete
+      quota_renews:
+        description: This is a default description.
+        type: delete
+      quota_remaining:
+        description: This is a default description.
+        type: delete
+      quota_renewal_rate:
+        description: This is a default description.
+        type: delete
+      access_rights:
+        description: This is a default description.
+        type: delete
+      org_id:
+        description: This is a default description.
+        type: delete
+  EndpointMethodMeta:
+    properties:
+      action:
+        description: This is a default description.
+        type: delete
+      code:
+        description: This is a default description.
+        type: delete
+      data:
+        description: This is a default description.
+        type: delete
+      headers:
+        description: This is a default description.
+        type: delete
+  EndPointMeta:
+    properties:
+      path:
+        description: This is a default description.
+        type: delete
+      method_actions:
+        description: This is a default description.
+        type: delete
+  TemplateMeta:
+    properties:
+      template_data:
+        description: This is a default description.
+        type: delete
+      path:
+        description: This is a default description.
+        type: delete
+      method:
+        description: This is a default description.
+        type: delete
+  HeaderInjectionMeta:
+    properties:
+      delete_headers:
+        description: This is a default description.
+        type: delete
+      add_headers:
+        description: This is a default description.
+        type: delete
+      path:
+        description: This is a default description.
+        type: delete
+      method:
+        description: This is a default description.
+        type: delete
+  VersionDefinition:
+    properties:
+      name:
+        description: This is a default description.
+        type: delete
+      expires:
+        description: This is a default description.
+        type: delete
+      global_headers:
+        description: This is a default description.
+        type: delete
+      global_headers_remove:
+        description: This is a default description.
+        type: delete
+      global_size_limit:
+        description: This is a default description.
+        type: delete
+      override_target:
+        description: This is a default description.
+        type: delete
+      use_extended_paths:
+        description: This is a default description.
+        type: delete
+      extended_paths:
+        description: This is a default description.
+        type: delete
+  MiddlewareDefinition:
+    properties:
+      name:
+        description: This is a default description.
+        type: delete
+      path:
+        description: This is a default description.
+        type: delete
+      require_session:
+        description: This is a default description.
+        type: delete
+  ServiceDiscoverConfiguration:
+    properties:
+      use_discovery_service:
+        description: This is a default description.
+        type: delete
+      query_endpoint:
+        description: This is a default description.
+        type: delete
+      use_nested_query:
+        description: This is a default description.
+        type: delete
+      parent_data_path:
+        description: This is a default description.
+        type: delete
+      data_path:
+        description: This is a default description.
+        type: delete
+      port_data_path:
+        description: This is a default description.
+        type: delete
+      use_target_list:
+        description: This is a default description.
+        type: delete
+      cache_timeout:
+        description: This is a default description.
+        type: delete
+      endpoint_returns_list:
+        description: This is a default description.
+        type: delete
+  APIDefinition:
+    properties:
+      id:
+        description: This is a default description.
+        type: delete
+      name:
+        description: This is a default description.
+        type: delete
+      slug:
+        description: This is a default description.
+        type: delete
+      api_id:
+        description: This is a default description.
+        type: delete
+      org_id:
+        description: This is a default description.
+        type: delete
+      use_keyless:
+        description: This is a default description.
+        type: delete
+      use_oauth2:
+        description: This is a default description.
+        type: delete
+      oauth_meta:
+        description: This is a default description.
+        type: delete
+      auth:
+        description: This is a default description.
+        type: delete
+      use_basic_auth:
+        description: This is a default description.
+        type: delete
