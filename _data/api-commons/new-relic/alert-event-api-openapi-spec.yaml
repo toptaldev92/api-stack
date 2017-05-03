@@ -1,0 +1,83 @@
+agger: "2.0"
+info:
+  title: Alert Event API
+  description: The Alert Event API.
+  version: 1.0.0
+host: api.newrelic.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /v2/alerts_events.{format}:
+    get:
+      summary: List
+      description: <p>This API endpoint allows you to list the alert events for your
+        account
+      operationId: list
+      parameters:
+      - in: query
+        name: filter[entity_group_id]
+        description: Filter by entity group ID
+        type: integer
+      - in: query
+        name: filter[entity_id]
+        description: Filter by entity ID
+        type: integer
+      - in: query
+        name: filter[entity_type]
+        description: Filter by entity type
+        type: string
+      - in: query
+        name: filter[event_type]
+        description: Filter by event type
+        type: string
+      - in: query
+        name: filter[product]
+        description: Filter by New Relic product
+        type: string
+      - in: query
+        name: page
+        description: Pagination index
+        type: integer
+      responses:
+        200:
+          description: OK
+      tags:
+      - Alert Event
+definitions:
+  "":
+    properties:
+      recent_event:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      event_type:
+        description: This is a default description.
+        type: string
+      product:
+        description: This is a default description.
+        type: string
+      entity_type:
+        description: This is a default description.
+        type: string
+      entity_group_id:
+        description: This is a default description.
+        type: string
+      entity_id:
+        description: This is a default description.
+        type: string
+      priority:
+        description: This is a default description.
+        type: string
+      description:
+        description: This is a default description.
+        type: string
+      timestamp:
+        description: This is a default description.
+        type: string
