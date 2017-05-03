@@ -1,0 +1,322 @@
+agger: "2.0"
+info:
+  title: DocumentDB
+  description: Azure DocumentDB Database Service Resource Provider REST API
+  version: 1.0.0
+host: management.azure.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /providers/Microsoft.DocumentDB/databaseAccountNames/{accountName}:
+    head:
+      summary: Database Accounts Check Name Exists
+      description: Checks that the Azure DocumentDB account name already exists
+      operationId: DatabaseAccounts_CheckNameExists
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Database Accounts Name Exists
+  /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/databaseAccounts:
+    get:
+      summary: Database Accounts List
+      description: Lists all the Azure DocumentDB database accounts available under
+        the subscription
+      operationId: DatabaseAccounts_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Database Accounts
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts:
+    get:
+      summary: Database Accounts List By Resource Group
+      description: Lists all the Azure DocumentDB database accounts available under
+        the given resource group
+      operationId: DatabaseAccounts_ListByResourceGroup
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Database Accounts Resource Group
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}:
+    delete:
+      summary: Database Accounts Delete
+      description: Deletes an existing Azure DocumentDB database account
+      operationId: DatabaseAccounts_Delete
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Database Accounts
+    get:
+      summary: Database Accounts Get
+      description: Retrieves the properties of an existing Azure DocumentDB database
+        account
+      operationId: DatabaseAccounts_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Database Accounts
+    patch:
+      summary: Database Accounts Patch
+      description: Patches the properties of an existing Azure DocumentDB database
+        account
+      operationId: DatabaseAccounts_Patch
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: updateParameters
+        description: The tags parameter to patch for the current database account
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Database Accounts
+    put:
+      summary: Database Accounts Create Or Update
+      description: Creates or updates an Azure DocumentDB database account
+      operationId: DatabaseAccounts_CreateOrUpdate
+      parameters:
+      - in: body
+        name: createUpdateParameters
+        description: The parameters to provide for the current database account
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Database Accounts
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/failoverPriorityChange
+  : post:
+      summary: Database Accounts Failover Priority Change
+      description: Changes the failover priority for the Azure DocumentDB database
+        account
+      operationId: DatabaseAccounts_FailoverPriorityChange
+      parameters:
+      - in: body
+        name: failoverParameters
+        description: The new failover policies for the database account
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Database Accounts Failover Priority Change
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/listConnectionStrings
+  : post:
+      summary: Database Accounts List Connection Strings
+      description: Lists the connection strings for the specified Azure DocumentDB
+        database account
+      operationId: DatabaseAccounts_ListConnectionStrings
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Database Accounts Connection Strings
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/listKeys
+  : post:
+      summary: Database Accounts List Keys
+      description: Lists the access keys for the specified Azure DocumentDB database
+        account
+      operationId: DatabaseAccounts_ListKeys
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Database Accounts Keys
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/readonlykeys
+  : get:
+      summary: Database Accounts List Read Only Keys
+      description: Lists the read-only access keys for the specified Azure DocumentDB
+        database account
+      operationId: DatabaseAccounts_ListReadOnlyKeys
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Database Accounts Read Only Keys
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/regenerateKey
+  : post:
+      summary: Database Accounts Regenerate Key
+      description: Regenerates an access key for the specified Azure DocumentDB database
+        account
+      operationId: DatabaseAccounts_RegenerateKey
+      parameters:
+      - in: body
+        name: keyToRegenerate
+        description: The name of the key to regenerate
+        schema:
+          $ref: '#/definitions/holder'
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Database Accounts Regenerate Key
+definitions:
+  DatabaseAccountsListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: head
+  FailoverPolicies:
+    properties:
+      failoverPolicies:
+        description: This is a default description.
+        type: head
+  FailoverPolicy:
+    properties:
+      id:
+        description: This is a default description.
+        type: head
+      locationName:
+        description: This is a default description.
+        type: head
+      failoverPriority:
+        description: This is a default description.
+        type: head
+  Location:
+    properties:
+      id:
+        description: This is a default description.
+        type: head
+      locationName:
+        description: This is a default description.
+        type: head
+      documentEndpoint:
+        description: This is a default description.
+        type: head
+      failoverPriority:
+        description: This is a default description.
+        type: head
+  Resource:
+    properties:
+      id:
+        description: This is a default description.
+        type: head
+      name:
+        description: This is a default description.
+        type: head
+      type:
+        description: This is a default description.
+        type: head
+      location:
+        description: This is a default description.
+        type: head
+  DatabaseAccount:
+    properties:
+      kind:
+        description: This is a default description.
+        type: head
+  ConsistencyPolicy:
+    properties:
+      defaultConsistencyLevel:
+        description: This is a default description.
+        type: head
+      maxStalenessPrefix:
+        description: This is a default description.
+        type: head
+      maxIntervalInSeconds:
+        description: This is a default description.
+        type: head
+  DatabaseAccountProperties:
+    properties:
+      documentEndpoint:
+        description: This is a default description.
+        type: head
+      writeLocations:
+        description: This is a default description.
+        type: head
+      readLocations:
+        description: This is a default description.
+        type: head
+      failoverPolicies:
+        description: This is a default description.
+        type: head
+  DatabaseAccountCreateUpdateProperties:
+    properties:
+      locations:
+        description: This is a default description.
+        type: head
+  DatabaseAccountCreateUpdateParameters:
+    properties:
+      kind:
+        description: This is a default description.
+        type: head
+  DatabaseAccountPatchParameters:
+    properties: []
+  DatabaseAccountListReadOnlyKeysResult:
+    properties:
+      primaryReadonlyMasterKey:
+        description: This is a default description.
+        type: head
+      secondaryReadonlyMasterKey:
+        description: This is a default description.
+        type: head
+  DatabaseAccountListKeysResult:
+    properties:
+      primaryMasterKey:
+        description: This is a default description.
+        type: head
+      secondaryMasterKey:
+        description: This is a default description.
+        type: head
+  DatabaseAccountConnectionString:
+    properties:
+      connectionString:
+        description: This is a default description.
+        type: head
+      description:
+        description: This is a default description.
+        type: head
+  DatabaseAccountListConnectionStringsResult:
+    properties:
+      connectionStrings:
+        description: This is a default description.
+        type: head
+  DatabaseAccountRegenerateKeyParameters:
+    properties:
+      keyKind:
+        description: This is a default description.
+        type: head
