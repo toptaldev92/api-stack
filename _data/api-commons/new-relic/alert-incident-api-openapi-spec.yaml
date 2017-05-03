@@ -1,0 +1,57 @@
+agger: "2.0"
+info:
+  title: Alert Incident API
+  description: The Alert Incident API.
+  version: 1.0.0
+host: api.newrelic.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /v2/alerts_incidents.{format}:
+    get:
+      summary: List
+      description: <p>This API endpoint returns a list of the Incidents associated
+        with your New Relic account
+      operationId: list
+      parameters:
+      - in: query
+        name: page
+        description: Pagination index
+        type: integer
+      responses:
+        200:
+          description: OK
+      tags:
+      - Alert Incident
+definitions:
+  "":
+    properties:
+      incident:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      opened_at:
+        description: This is a default description.
+        type: string
+      closed_at:
+        description: This is a default description.
+        type: string
+      incident_preference:
+        description: This is a default description.
+        type: string
+      links:
+        description: This is a default description.
+        type: string
+      violations:
+        description: This is a default description.
+        type: string
+      policy_id:
+        description: This is a default description.
+        type: string
