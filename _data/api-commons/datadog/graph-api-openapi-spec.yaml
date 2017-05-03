@@ -1,0 +1,74 @@
+agger: "2.0"
+info:
+  title: Graph API
+  version: 1.0.0
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  api/v1/graph/embed:
+    get:
+      summary: Get All Embeds
+      description: |2-
+
+                  Gets a list of previously created embeddable graphs
+      operationId: get-all-embeds
+      responses:
+        200:
+          description: OK
+      tags:
+      - Graph
+    post:
+      summary: Create Embed
+      description: |2-
+
+                  Creates a new embeddable graph
+      operationId: create-embed
+      responses:
+        200:
+          description: OK
+      tags:
+      - Graph
+  api/v1/graph/embed/:embed_id:
+    get:
+      summary: Get Specific Embed
+      description: |2-
+
+                  Get the HTML fragment for a previously generated embed with embed_id
+      operationId: get-specific-embed
+      responses:
+        200:
+          description: OK
+      tags:
+      - Graph
+  api/v1/graph/embed/:embed_id/enable:
+    get:
+      summary: Enable Embed
+      description: |2-
+
+                  Enable a specified embed
+      operationId: enable-embed
+      responses:
+        200:
+          description: OK
+      tags:
+      - Graph
+  api/v1/graph/snapshot:
+    get:
+      summary: Graph Snapshot
+      description: ""
+      operationId: graph-snapshot
+      parameters:
+      - in: query
+        name: graph_def
+        description: ' can be used instead of metric_query'
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Graph
+definitions: []
