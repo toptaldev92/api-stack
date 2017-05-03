@@ -1,0 +1,644 @@
+agger: "2.0"
+info:
+  title: EventHubManagementClient
+  description: Azure Event Hubs client
+  version: 1.0.0
+host: management.azure.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /providers/Microsoft.EventHub/operations:
+    get:
+      summary: Operations List
+      description: Lists all of the available Event Hub REST API operations
+      operationId: Operations_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Operations
+  /subscriptions/{subscriptionId}/providers/Microsoft.EventHub/CheckNameAvailability:
+    post:
+      summary: Namespaces Check Name Availability
+      description: Check the give Namespace name availability
+      operationId: Namespaces_CheckNameAvailability
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters to check availability of the given Namespace name
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces Name Availability
+  /subscriptions/{subscriptionId}/providers/Microsoft.EventHub/namespaces:
+    get:
+      summary: Namespaces List By Subscription
+      description: Lists all the available Namespaces within a subscription, irrespective
+        of the resource groups
+      operationId: Namespaces_ListBySubscription
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces Subscription
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces:
+    get:
+      summary: Namespaces List By Resource Group
+      description: Lists the available Namespaces within a resource group
+      operationId: Namespaces_ListByResourceGroup
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces Resource Group
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}:
+    delete:
+      summary: Namespaces Delete
+      description: Deletes an existing namespace
+      operationId: Namespaces_Delete
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces
+    get:
+      summary: Namespaces Get
+      description: Gets the description of the specified namespace
+      operationId: Namespaces_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces
+    patch:
+      summary: Namespaces Update
+      description: Creates or updates a namespace
+      operationId: Namespaces_Update
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters for updating a namespace resource
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces
+    put:
+      summary: Namespaces Create Or Update
+      description: Creates or updates a namespace
+      operationId: Namespaces_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters for creating a namespace resource
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/AuthorizationRules
+  : get:
+      summary: Namespaces List Authorization Rules
+      description: Gets a list of authorization rules for a Namespace
+      operationId: Namespaces_ListAuthorizationRules
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces Authorization Rules
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}
+  : delete:
+      summary: Namespaces Delete Authorization Rule
+      description: Deletes an AuthorizationRule for a Namespace
+      operationId: Namespaces_DeleteAuthorizationRule
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces Authorization Rule
+    get:
+      summary: Namespaces Get Authorization Rule
+      description: Gets an AuthorizationRule for a Namespace by rule name
+      operationId: Namespaces_GetAuthorizationRule
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces Authorization Rule
+    put:
+      summary: Namespaces Create Or Update Authorization Rule
+      description: Creates or updates an AuthorizationRule for a Namespace
+      operationId: Namespaces_CreateOrUpdateAuthorizationRule
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The shared access AuthorizationRule
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces Authorization Rule
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}/listKeys
+  : post:
+      summary: Namespaces List Keys
+      description: Gets the primary and secondary connection strings for the Namespace
+      operationId: Namespaces_ListKeys
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces Keys
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}/regenerateKeys
+  : post:
+      summary: Namespaces Regenerate Keys
+      description: Regenerates the primary or secondary connection strings for the
+        specified Namespace
+      operationId: Namespaces_RegenerateKeys
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters required to regenerate the connection string
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Namespaces Regenerate Keys
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs
+  : get:
+      summary: Event Hubs List All
+      description: Gets all the Event Hubs in a Namespace
+      operationId: EventHubs_ListAll
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Event Hubs All
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}
+  : delete:
+      summary: Event Hubs Delete
+      description: Deletes an Event Hub from the specified Namespace and resource
+        group
+      operationId: EventHubs_Delete
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Event Hubs
+    get:
+      summary: Event Hubs Get
+      description: Gets an Event Hubs description for the specified Event Hub
+      operationId: EventHubs_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Event Hubs
+    put:
+      summary: Event Hubs Create Or Update
+      description: Creates or updates a new Event Hub as a nested resource within
+        a Namespace
+      operationId: EventHubs_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to create an Event Hub resource
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Event Hubs
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules
+  : get:
+      summary: Event Hubs List Authorization Rules
+      description: Gets the authorization rules for an Event Hub
+      operationId: EventHubs_ListAuthorizationRules
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Event Hubs Authorization Rules
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}
+  : delete:
+      summary: Event Hubs Delete Authorization Rule
+      description: Deletes an Event Hub AuthorizationRule
+      operationId: EventHubs_DeleteAuthorizationRule
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Event Hubs Authorization Rule
+    get:
+      summary: Event Hubs Get Authorization Rule
+      description: Gets an AuthorizationRule for an Event Hub by rule name
+      operationId: EventHubs_GetAuthorizationRule
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Event Hubs Authorization Rule
+    put:
+      summary: Event Hubs Create Or Update Authorization Rule
+      description: Creates or updates an AuthorizationRule for the specified Event
+        Hub
+      operationId: EventHubs_CreateOrUpdateAuthorizationRule
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The shared access AuthorizationRule
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Event Hubs Authorization Rule
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}/ListKeys
+  : post:
+      summary: Event Hubs List Keys
+      description: Gets the ACS and SAS connection strings for the Event Hub
+      operationId: EventHubs_ListKeys
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Event Hubs Keys
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/authorizationRules/{authorizationRuleName}/regenerateKeys
+  : post:
+      summary: Event Hubs Regenerate Keys
+      description: Regenerates the ACS and SAS connection strings for the Event Hub
+      operationId: EventHubs_RegenerateKeys
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to regenerate the AuthorizationRule Keys
+          (PrimaryKey/SecondaryKey)
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Event Hubs Regenerate Keys
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/consumergroups
+  : get:
+      summary: Consumer Groups List All
+      description: Gets all the consumer groups in a Namespace
+      operationId: ConsumerGroups_ListAll
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Consumer Groups All
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/eventhubs/{eventHubName}/consumergroups/{consumerGroupName}
+  : delete:
+      summary: Consumer Groups Delete
+      description: Deletes a consumer group from the specified Event Hub and resource
+        group
+      operationId: ConsumerGroups_Delete
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Consumer Groups
+    get:
+      summary: Consumer Groups Get
+      description: Gets a description for the specified consumer group
+      operationId: ConsumerGroups_Get
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Consumer Groups
+    put:
+      summary: Consumer Groups Create Or Update
+      description: Creates or updates an Event Hubs consumer group as a nested resource
+        within a Namespace
+      operationId: ConsumerGroups_CreateOrUpdate
+      parameters:
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Parameters supplied to create or update a consumer group resource
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Consumer Groups
+definitions:
+  OperationListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  Operation:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+  TrackedResource:
+    properties:
+      location:
+        description: This is a default description.
+        type: get
+      tags:
+        description: This is a default description.
+        type: get
+  Resource:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      name:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+  NamespaceCreateOrUpdateParameters:
+    properties:
+      location:
+        description: This is a default description.
+        type: get
+      tags:
+        description: This is a default description.
+        type: get
+  NamespaceListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  NamespaceResource:
+    properties: []
+  NamespaceProperties:
+    properties:
+      status:
+        description: This is a default description.
+        type: get
+      provisioningState:
+        description: This is a default description.
+        type: get
+      createdAt:
+        description: This is a default description.
+        type: get
+      updatedAt:
+        description: This is a default description.
+        type: get
+      serviceBusEndpoint:
+        description: This is a default description.
+        type: get
+      metricId:
+        description: This is a default description.
+        type: get
+      enabled:
+        description: This is a default description.
+        type: get
+  Sku:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+      tier:
+        description: This is a default description.
+        type: get
+      capacity:
+        description: This is a default description.
+        type: get
+  SharedAccessAuthorizationRuleCreateOrUpdateParameters:
+    properties:
+      location:
+        description: This is a default description.
+        type: get
+      name:
+        description: This is a default description.
+        type: get
+  SharedAccessAuthorizationRuleListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  SharedAccessAuthorizationRuleResource:
+    properties: []
+  SharedAccessAuthorizationRuleProperties:
+    properties:
+      rights:
+        description: This is a default description.
+        type: get
+  ResourceListKeys:
+    properties:
+      primaryConnectionString:
+        description: This is a default description.
+        type: get
+      secondaryConnectionString:
+        description: This is a default description.
+        type: get
+      primaryKey:
+        description: This is a default description.
+        type: get
+      secondaryKey:
+        description: This is a default description.
+        type: get
+      keyName:
+        description: This is a default description.
+        type: get
+  RegenerateKeysParameters:
+    properties:
+      policykey:
+        description: This is a default description.
+        type: get
+  EventHubCreateOrUpdateParameters:
+    properties:
+      location:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+      name:
+        description: This is a default description.
+        type: get
+  EventHubProperties:
+    properties:
+      createdAt:
+        description: This is a default description.
+        type: get
+      messageRetentionInDays:
+        description: This is a default description.
+        type: get
+      partitionCount:
+        description: This is a default description.
+        type: get
+      partitionIds:
+        description: This is a default description.
+        type: get
+      status:
+        description: This is a default description.
+        type: get
+      updatedAt:
+        description: This is a default description.
+        type: get
+  EventHubResource:
+    properties: []
+  EventHubListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  ConsumerGroupCreateOrUpdateParameters:
+    properties:
+      location:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+      name:
+        description: This is a default description.
+        type: get
+  ConsumerGroupProperties:
+    properties:
+      createdAt:
+        description: This is a default description.
+        type: get
+      eventHubPath:
+        description: This is a default description.
+        type: get
+      updatedAt:
+        description: This is a default description.
+        type: get
+      userMetadata:
+        description: This is a default description.
+        type: get
+  ConsumerGroupResource:
+    properties: []
+  ConsumerGroupListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  CheckNameAvailabilityParameter:
+    properties:
+      name:
+        description: This is a default description.
+        type: get
+  CheckNameAvailabilityResult:
+    properties:
+      nameAvailable:
+        description: This is a default description.
+        type: get
+      message:
+        description: This is a default description.
+        type: get
+  NamespaceUpdateParameter:
+    properties:
+      tags:
+        description: This is a default description.
+        type: get
