@@ -1,0 +1,1471 @@
+agger: "2.0"
+info:
+  title: Route 53 API
+  description: Amazon Route 53 is a highly available and scalable Domain Name System
+    (DNS) web service
+  version: 1.0.0
+host: route53domains.us-east-1.amazonaws.com
+basePath: /2013-04-01/hostedzone
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /2013-04-01/change/Id:
+    get:
+      summary: GetChange
+      description: Returns the current status of a change batch request
+      operationId: getchange
+      parameters:
+      - in: path
+        name: continentcode
+        description: 'Amazon Route 53 supports the following continent codes:                              AF:
+          Africa                              AN: Antarctica                              AS:
+          Asia                              EU: Europe                              OC:
+          Oceania                              NA: North America                              SA:
+          South AmericaLength Constraints: Fixed length of 2'
+        type: string
+      - in: path
+        name: delegationsetid
+        description: "If you're using reusable delegation sets and you want to list
+          all of the hosted zones that are associated \t\t\twith a reusable delegation
+          set, specify the ID of that reusable delegation set"
+        type: string
+      - in: path
+        name: dnsname
+        description: "(Optional) For your first request to ListHostedZonesByName,
+          include the\t\t\t\tdnsname parameter only if you want to specify the name
+          of the first hosted zone\t\t\tin the response"
+        type: string
+      - in: path
+        name: edns0clientsubnetip
+        description: "If the resolver that you specified for resolverip supports EDNS0,
+          specify the IP address of a client \t\t\tin the applicable location"
+        type: string
+      - in: path
+        name: endDate
+        description: The end of the time period you want to see changes for
+        type: string
+      - in: path
+        name: HealthCheckId
+        description: The identifier that Amazon Route 53 assigned to the health check
+          when you created it
+        type: string
+      - in: path
+        name: hostedzoneid
+        description: "For the first request to ListTrafficPolicyInstances, omit this\t\t\tvalue"
+        type: string
+      - in: path
+        name: Id
+        description: The ID of the change batch request
+        type: string
+      - in: path
+        name: marker
+        description: "If the response to a ListHealthChecks is more than one page,
+          marker is the\t\t\thealth check ID for the first health check on the next
+          page of results"
+        type: string
+      - in: path
+        name: maxitems
+        description: "(Optional) The maximum number of geolocations to be included
+          in the response body for\t\t\tthis request"
+        type: string
+      - in: path
+        name: ResourceId
+        description: The ID of the resource for which you want to retrieve tags
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Change
+  /2013-04-01/changedetails/Id:
+    get:
+      summary: GetChangeDetails
+      description: Returns the status and changes of a change batch request
+      operationId: getchangedetails
+      parameters:
+      - in: path
+        name: Id
+        description: The ID of the change batch
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Change
+  /2013-04-01/checkeripranges:
+    get:
+      summary: GetCheckerIpRanges
+      description: Retrieves a list of the IP ranges used by Amazon Route 53 health
+        checkers to check the health ofyour resources
+      operationId: getcheckeripranges
+      responses:
+        200:
+          description: OK
+      tags:
+      - IP Ranges
+  /2013-04-01/delegationset:
+    post:
+      summary: CreateReusableDelegationSet
+      description: Creates a delegation set (a group of four name servers) that can
+        be reused by multiplehosted zones
+      operationId: createreusabledelegationset
+      parameters:
+      - in: body
+        name: CallerReference
+        description: "A unique string that identifies the request, and that allows
+          you to retry failed\t\t\t\tCreateReusableDelegationSet requests without
+          the risk of executing the\t\t\toperation twice"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: CreateReusableDelegationSetRequest
+        description: Root level tag for the CreateReusableDelegationSetRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: HostedZoneId
+        description: "If you want to mark the delegation set for an existing hosted
+          zone as reusable, the ID\t\t\tfor that hosted zone"
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Delegation
+  /2013-04-01/delegationset/Id:
+    delete:
+      summary: DeleteReusableDelegationSet
+      description: Deletes a reusable delegation set
+      operationId: deletereusabledelegationset
+      parameters:
+      - in: path
+        name: Id
+        description: The ID of the reusable delegation set you want to delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Delegation
+    get:
+      summary: GetReusableDelegationSet
+      description: Retrieves the reusable delegation set
+      operationId: getreusabledelegationset
+      parameters:
+      - in: path
+        name: Id
+        description: "The ID of the reusable delegation set for which you want to
+          get a list of the name\t\t\tserver"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Delegation
+  /2013-04-01/delegationset?marker=Marker&amp;maxitems=MaxItems:
+    get:
+      summary: ListReusableDelegationSets
+      description: To retrieve a list of your reusable delegation sets, send a GET
+        request tothe /2013-04-01/delegationset resource
+      operationId: listreusabledelegationsets
+      parameters:
+      - in: path
+        name: marker
+        description: "If you're making the second or subsequent call to\t\t\t\tListReusableDelegationSets,
+          the Marker element matches the value\t\t\tthat you specified in the marker
+          parameter in the previous request"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Delegation
+  /2013-04-01/geolocation?continentcode=ContinentCode&amp;countrycode=CountryCode&amp;subdivisioncode=SubdivisionCode:
+    get:
+      summary: GetGeoLocation
+      description: Retrieves a single geo location
+      operationId: getgeolocation
+      parameters:
+      - in: path
+        name: continentcode
+        description: 'Amazon Route 53 supports the following continent codes:                              AF:
+          Africa                              AN: Antarctica                              AS:
+          Asia                              EU: Europe                              OC:
+          Oceania                              NA: North America                              SA:
+          South AmericaLength Constraints: Fixed length of 2'
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Geo
+  ? /2013-04-01/geolocations&amp;maxitems=MaxItems?startcontinentcode=StartContinentCode&amp;startcountrycode=StartCountryCode&amp;startsubdivisioncode=StartSubdivisionCode
+  : get:
+      summary: ListGeoLocations
+      description: Retrieves a list of supported geo locations
+      operationId: listgeolocations
+      parameters:
+      - in: path
+        name: maxitems
+        description: "(Optional) The maximum number of geolocations to be included
+          in the response body for\t\t\tthis request"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Geo
+  /2013-04-01/healthcheck:
+    post:
+      summary: CreateHealthCheck
+      description: Creates a new health check
+      operationId: createhealthcheck
+      parameters:
+      - in: body
+        name: CallerReference
+        description: "A unique string that identifies the request and that allows
+          failed\t\t\t\tCreateHealthCheck requests to be retried without the risk
+          of executing the\t\t\toperation twice"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: CreateHealthCheckRequest
+        description: Root level tag for the CreateHealthCheckRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: HealthCheckConfig
+        description: A complex type that contains the response to a CreateHealthCheck
+          request
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Health Check
+  /2013-04-01/healthcheck/HealthCheckId:
+    delete:
+      summary: DeleteHealthCheck
+      description: Deletes a health check
+      operationId: deletehealthcheck
+      parameters:
+      - in: path
+        name: HealthCheckId
+        description: The ID of the health check that you want to delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Health Check
+    get:
+      summary: GetHealthCheck
+      description: Gets information about a specified health check
+      operationId: gethealthcheck
+      parameters:
+      - in: path
+        name: HealthCheckId
+        description: The identifier that Amazon Route 53 assigned to the health check
+          when you created it
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Health Check
+    post:
+      summary: UpdateHealthCheck
+      description: Updates an existing health check
+      operationId: updatehealthcheck
+      parameters:
+      - in: body
+        name: AlarmIdentifier
+        description: "A complex type that identifies the CloudWatch alarm that you
+          want Amazon Route 53 health checkers to\t\t\tuse to determine whether this
+          health check is healthy"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: ChildHealthChecks
+        description: "A complex type that contains one ChildHealthCheck element for
+          each health\t\t\tcheck that you want to associate with a CALCULATED health
+          check"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: EnableSNI
+        description: "Specify whether you want Amazon Route 53 to send the value of\t\t\t\tFullyQualifiedDomainName
+          to the endpoint in the client_hello\t\t\tmessage during TLS negotiation"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: FailureThreshold
+        description: "The number of consecutive health checks that an endpoint must
+          pass or fail for Amazon Route 53 to\t\t\tchange the current status of the
+          endpoint from unhealthy to healthy or vice versa"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: FullyQualifiedDomainName
+        description: "Amazon Route 53 behavior depends on whether you specify a value
+          for\t\t\t\tIPAddress"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: HealthCheckId
+        description: The ID for the health check for which you want detailed information
+        type: string
+      - in: body
+        name: HealthCheckVersion
+        description: "A sequential counter that Amazon Route 53 sets to 1 when you
+          create a health check\t\t\tand increments by 1 each time you update settings
+          for the health check"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: HealthThreshold
+        description: "The number of child health checks that are associated with a
+          CALCULATED\t\t\thealth that Amazon Route 53 must consider healthy for the
+          CALCULATED health check to be\t\t\tconsidered healthy"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: InsufficientDataHealthStatus
+        description: "When CloudWatch has insufficient data about the metric to determine
+          the alarm state, the status \t\t\tthat you want Amazon Route 53 to assign
+          to the health check:                              Healthy: Amazon Route
+          53 considers the health check to be healthy"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: Inverted
+        description: "Specify whether you want Amazon Route 53 to invert the status
+          of a health check, for example, to\t\t\tconsider a health check unhealthy
+          when it otherwise would be considered healthy"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: IPAddress
+        description: The IPv4 IP address of the endpoint on which you want Amazon
+          Route 53 to perform health checks
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: Port
+        description: The port on the endpoint on which you want Amazon Route 53 to
+          perform health checks
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: Regions
+        description: "A complex type that contains one Region element for each region
+          from which you want\t\t\tAmazon Route 53 health checkers to check the specified
+          endpoint"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: ResourcePath
+        description: The path that you want Amazon Route 53 to request when performing
+          health checks
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: SearchString
+        description: "If the value of Type is HTTP_STR_MATCH or\t\t\t\tHTTP_STR_MATCH,
+          the string that you want Amazon Route 53 to search for in the response\t\t\tbody
+          from the specified resource"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: UpdateHealthCheckRequest
+        description: Root level tag for the UpdateHealthCheckRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Health Check
+  /2013-04-01/healthcheck/HealthCheckId/lastfailurereason:
+    get:
+      summary: GetHealthCheckLastFailureReason
+      description: If you want to learn why a health check is currently failing or
+        why it failed mostrecently (if at all), you can get the failure reason for
+        the most recent failure
+      operationId: gethealthchecklastfailurereason
+      parameters:
+      - in: path
+        name: HealthCheckId
+        description: The ID for the health check for which you want the last failure
+          reason
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Health Check
+  /2013-04-01/healthcheck/HealthCheckId/status:
+    get:
+      summary: GetHealthCheckStatus
+      description: Gets status of a specified health check
+      operationId: gethealthcheckstatus
+      parameters:
+      - in: path
+        name: HealthCheckId
+        description: "If you want Amazon Route 53 to return this resource record set
+          in response to a DNS query only\t\t\twhen a health check is passing, include
+          the HealthCheckId element and specify the\t\t\tID of the applicable health
+          check"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Health Check
+  /2013-04-01/healthcheck?marker=Marker&amp;maxitems=MaxItems:
+    get:
+      summary: ListHealthChecks
+      description: Retrieve a list of your health checks
+      operationId: listhealthchecks
+      parameters:
+      - in: path
+        name: marker
+        description: "If the response to a ListHealthChecks is more than one page,
+          marker is the\t\t\thealth check ID for the first health check on the next
+          page of results"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Health Check
+  /2013-04-01/healthcheckcount:
+    get:
+      summary: GetHealthCheckCount
+      description: To retrieve a count of all your health checks, send a GET request
+        to the/2013-04-01/healthcheckcount resource
+      operationId: gethealthcheckcount
+      responses:
+        200:
+          description: OK
+      tags:
+      - Health Check
+  /2013-04-01/hostedzone:
+    post:
+      summary: CreateHostedZone
+      description: Creates a new public hosted zone, used to specify how the Domain
+        Name System (DNS)routes traffic on the Internet for a domain, such as example
+      operationId: createhostedzone
+      parameters:
+      - in: body
+        name: CallerReference
+        description: "A unique string that identifies the request and that allows
+          failed\t\t\t\tCreateHostedZone requests to be retried without the risk of
+          executing the\t\t\toperation twice"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: CreateHostedZoneRequest
+        description: Root level tag for the CreateHostedZoneRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: Default
+        description: None
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: DelegationSetId
+        description: "If you want to associate a reusable delegation set with this
+          hosted zone, the ID that\t\t\tAmazon Route 53 assigned to the reusable delegation
+          set when you created it"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: HostedZoneConfig
+        description: (Optional) A complex type that contains an optional comment about
+          your hosted zone
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: Name
+        description: The name of the domain
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: Parent
+        description: CreatedHostedZoneRequest
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: VPC
+        description: The VPC that you want your hosted zone to be associated with
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Zones
+  /2013-04-01/hostedzone&amp;delegationsetid=DelegationSetId?marker=Marker&amp;maxitems=MaxItems:
+    get:
+      summary: ListHostedZones
+      description: To retrieve a list of your public and private hosted zones, send
+        a GETrequest to the /2013-04-01/hostedzone resource
+      operationId: listhostedzones
+      parameters:
+      - in: path
+        name: delegationsetid
+        description: "If you're using reusable delegation sets and you want to list
+          all of the hosted zones that are associated \t\t\twith a reusable delegation
+          set, specify the ID of that reusable delegation set"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Zones
+  /2013-04-01/hostedzone/Id:
+    delete:
+      summary: DeleteHostedZone
+      description: Deletes a hosted zone
+      operationId: deletehostedzone
+      parameters:
+      - in: path
+        name: Id
+        description: The ID of the hosted zone you want to delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Zones
+    get:
+      summary: GetHostedZone
+      description: Retrieves the delegation set for a hosted zone, including the four
+        name serversassigned to the hosted zone
+      operationId: gethostedzone
+      parameters:
+      - in: path
+        name: Id
+        description: "The ID of the hosted zone for which you want to get a list of
+          the name servers in the\t\t\tdelegation set"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Zones
+    post:
+      summary: UpdateHostedZoneComment
+      description: Updates the hosted zone comment
+      operationId: updatehostedzonecomment
+      parameters:
+      - in: body
+        name: Comment
+        description: The new comment for the hosted zone
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: Id
+        description: The ID for the hosted zone for which you want to update the comment
+        type: string
+      - in: body
+        name: UpdateHostedZoneCommentRequest
+        description: Root level tag for the UpdateHostedZoneCommentRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Zones
+  /2013-04-01/hostedzone/Id/associatevpc:
+    post:
+      summary: AssociateVPCWithHostedZone
+      description: Associates an Amazon VPC with a private hosted zone
+      operationId: associatevpcwithhostedzone
+      parameters:
+      - in: body
+        name: AddTags
+        description: "A complex type that contains a list of the tags that you want
+          to add to the specified\t\t\thealth check or hosted zone and/or the tags
+          for which you want to edit the Value\t\t\telement"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: AlarmIdentifier
+        description: "A complex type that identifies the CloudWatch alarm that you
+          want Amazon Route 53 health checkers to\t\t\tuse to determine whether this
+          health check is healthy"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: AssociateVPCWithHostedZoneRequest
+        description: Root level tag for the AssociateVPCWithHostedZoneRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: CallerReference
+        description: "A unique string that identifies the request and that allows
+          failed\t\t\t\tCreateHealthCheck requests to be retried without the risk
+          of executing the\t\t\toperation twice"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: ChangeBatch
+        description: "A complex type that contains an optional comment and the Changes\t\t\telement"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: ChangeResourceRecordSetsRequest
+        description: Root level tag for the ChangeResourceRecordSetsRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: ChangeTagsForResourceRequest
+        description: Root level tag for the ChangeTagsForResourceRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: ChildHealthChecks
+        description: "A complex type that contains one ChildHealthCheck element for
+          each health\t\t\tcheck that you want to associate with a CALCULATED health
+          check"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: Comment
+        description: 'Optional: A comment about the association request'
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: CreateHealthCheckRequest
+        description: Root level tag for the CreateHealthCheckRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: CreateHostedZoneRequest
+        description: Root level tag for the CreateHostedZoneRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: CreateReusableDelegationSetRequest
+        description: Root level tag for the CreateReusableDelegationSetRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: CreateTrafficPolicyInstanceRequest
+        description: Root level tag for the CreateTrafficPolicyInstanceRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: CreateTrafficPolicyRequest
+        description: Root level tag for the CreateTrafficPolicyRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: CreateTrafficPolicyVersionRequest
+        description: Root level tag for the CreateTrafficPolicyVersionRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: Default
+        description: None
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: DelegationSetId
+        description: "If you want to associate a reusable delegation set with this
+          hosted zone, the ID that\t\t\tAmazon Route 53 assigned to the reusable delegation
+          set when you created it"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: DisassociateVPCFromHostedZoneRequest
+        description: Root level tag for the DisassociateVPCFromHostedZoneRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: Document
+        description: The definition of this traffic policy in JSON format
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: EnableSNI
+        description: "Specify whether you want Amazon Route 53 to send the value of\t\t\t\tFullyQualifiedDomainName
+          to the endpoint in the client_hello\t\t\tmessage during TLS negotiation"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: FailureThreshold
+        description: "The number of consecutive health checks that an endpoint must
+          pass or fail for Amazon Route 53 to\t\t\tchange the current status of the
+          endpoint from unhealthy to healthy or vice versa"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: FullyQualifiedDomainName
+        description: "Amazon Route 53 behavior depends on whether you specify a value
+          for\t\t\t\tIPAddress"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: HealthCheckConfig
+        description: A complex type that contains the response to a CreateHealthCheck
+          request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: HealthCheckId
+        description: The ID for the health check for which you want detailed information
+        type: string
+      - in: body
+        name: HealthCheckVersion
+        description: "A sequential counter that Amazon Route 53 sets to 1 when you
+          create a health check\t\t\tand increments by 1 each time you update settings
+          for the health check"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: HealthThreshold
+        description: "The number of child health checks that are associated with a
+          CALCULATED\t\t\thealth that Amazon Route 53 must consider healthy for the
+          CALCULATED health check to be\t\t\tconsidered healthy"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: HostedZoneConfig
+        description: (Optional) A complex type that contains an optional comment about
+          your hosted zone
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: HostedZoneId
+        description: "If you want to mark the delegation set for an existing hosted
+          zone as reusable, the ID\t\t\tfor that hosted zone"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: Id
+        description: The ID of the hosted zone you want to associate your VPC with
+        type: string
+      - in: body
+        name: InsufficientDataHealthStatus
+        description: "When CloudWatch has insufficient data about the metric to determine
+          the alarm state, the status \t\t\tthat you want Amazon Route 53 to assign
+          to the health check:                              Healthy: Amazon Route
+          53 considers the health check to be healthy"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: Inverted
+        description: "Specify whether you want Amazon Route 53 to invert the status
+          of a health check, for example, to\t\t\tconsider a health check unhealthy
+          when it otherwise would be considered healthy"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: IPAddress
+        description: The IPv4 IP address of the endpoint on which you want Amazon
+          Route 53 to perform health checks
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: ListTagsForResourcesRequest
+        description: Root level tag for the ListTagsForResourcesRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: Name
+        description: The name of the domain
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: Parent
+        description: CreatedHostedZoneRequest
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: Port
+        description: The port on the endpoint on which you want Amazon Route 53 to
+          perform health checks
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: Regions
+        description: "A complex type that contains one Region element for each region
+          from which you want\t\t\tAmazon Route 53 health checkers to check the specified
+          endpoint"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: RemoveTagKeys
+        description: "A complex type that contains a list of the tags that you want
+          to delete from the\t\t\tspecified health check or hosted zone"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: ResourceId
+        description: The ID of the resource for which you want to add, change, or
+          delete tags
+        type: string
+      - in: body
+        name: ResourceIds
+        description: "A complex type that contains the ResourceId element for each
+          resource for which you\t\t\twant to get a list of tags"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: ResourcePath
+        description: The path that you want Amazon Route 53 to request when performing
+          health checks
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: ResourceType
+        description: The type of the resources
+        type: string
+      - in: body
+        name: SearchString
+        description: "If the value of Type is HTTP_STR_MATCH or\t\t\t\tHTTP_STR_MATCH,
+          the string that you want Amazon Route 53 to search for in the response\t\t\tbody
+          from the specified resource"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: TrafficPolicyId
+        description: "The ID of the traffic policy that you want to use to create
+          resource record sets in the\t\t\tspecified hosted zone"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: TrafficPolicyVersion
+        description: "The version of the traffic policy that you want to use to create
+          resource record sets\t\t\tin the specified hosted zone"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: TTL
+        description: "(Optional) The TTL that you want Amazon Route 53 to assign to
+          all of the resource record sets\t\t\tthat it creates in the specified hosted
+          zone"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: UpdateHealthCheckRequest
+        description: Root level tag for the UpdateHealthCheckRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: UpdateHostedZoneCommentRequest
+        description: Root level tag for the UpdateHostedZoneCommentRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: UpdateTrafficPolicyCommentRequest
+        description: Root level tag for the UpdateTrafficPolicyCommentRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: UpdateTrafficPolicyInstanceRequest
+        description: Root level tag for the UpdateTrafficPolicyInstanceRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: VPC
+        description: "A complex type containing information about the Amazon VPC that
+          you're associating with\t\t\tthe specified hosted zone"
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Zones
+  /2013-04-01/hostedzone/Id/changes&amp;endDate=EndDate&amp;marker=Marker&amp;maxItems=MaxItems?startDate=StartDate:
+    get:
+      summary: ListChangeBatchesByHostedZone
+      description: Gets the list of ChangeBatches in a given time period for a given
+        hostedzone
+      operationId: listchangebatchesbyhostedzone
+      parameters:
+      - in: path
+        name: endDate
+        description: The end of the time period you want to see changes for
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Zones
+  /2013-04-01/hostedzone/Id/disassociatevpc:
+    post:
+      summary: DisassociateVPCFromHostedZone
+      description: Disassociates a VPC from a Amazon Route 53 private hosted zone
+      operationId: disassociatevpcfromhostedzone
+      parameters:
+      - in: body
+        name: Comment
+        description: 'Optional: A comment about the disassociation request'
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: DisassociateVPCFromHostedZoneRequest
+        description: Root level tag for the DisassociateVPCFromHostedZoneRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: Id
+        description: The ID of the VPC that you want to disassociate from an Amazon
+          Route 53 hosted zone
+        type: string
+      - in: body
+        name: VPC
+        description: "A complex type containing information about the Amazon VPC that
+          you're disassociating\t\t\tfrom the specified hosted zone"
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Zones
+  ? /2013-04-01/hostedzone/Id/rrsChanges&amp;endDate=EndDate&amp;identifier=SetIdentifier&amp;marker=Marker&amp;maxItems=MaxItems?rrSet_name=Name&amp;startDate=StartDate&amp;type=Type
+  : get:
+      summary: ListChangeBatchesByRRSet
+      description: Gets the list of ChangeBatches in a given time period for a given
+        hosted zone andRRSet
+      operationId: listchangebatchesbyrrset
+      parameters:
+      - in: path
+        name: endDate
+        description: The end of the time period you want to see changes for
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Zones
+  ? /2013-04-01/hostedzone/Id/rrset&amp;identifier=StartRecordIdentifier&amp;maxitems=MaxItems?name=StartRecordName&amp;type=StartRecordType
+  : get:
+      summary: ListResourceRecordSets
+      description: Lists the resource record sets in a specified hosted zone
+      operationId: listresourcerecordsets
+      parameters:
+      - in: path
+        name: Id
+        description: "The ID of the hosted zone that contains the resource record
+          sets that you want to\t\t\tget"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Zones
+  /2013-04-01/hostedzone/Id/rrset/:
+    post:
+      summary: ChangeResourceRecordSets
+      description: Create, change, update, or delete authoritative DNS information
+        on all Amazon Route 53 servers
+      operationId: changeresourcerecordsets
+      parameters:
+      - in: body
+        name: ChangeBatch
+        description: "A complex type that contains an optional comment and the Changes\t\t\telement"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: ChangeResourceRecordSetsRequest
+        description: Root level tag for the ChangeResourceRecordSetsRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: Id
+        description: "The ID of the hosted zone that contains the resource record
+          sets that you want to\t\t\tchange"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Zones
+  /2013-04-01/hostedzonecount:
+    get:
+      summary: GetHostedZoneCount
+      description: Retrieves a count of all your hosted zones
+      operationId: gethostedzonecount
+      responses:
+        200:
+          description: OK
+      tags:
+      - Zones
+  /2013-04-01/hostedzonesbyname?dnsname=DNSName&amp;hostedzoneid=HostedZoneId&amp;maxitems=MaxItems:
+    get:
+      summary: ListHostedZonesByName
+      description: Retrieves a list of your hosted zones in lexicographic order
+      operationId: listhostedzonesbyname
+      parameters:
+      - in: path
+        name: dnsname
+        description: "(Optional) For your first request to ListHostedZonesByName,
+          include the\t\t\t\tdnsname parameter only if you want to specify the name
+          of the first hosted zone\t\t\tin the response"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Zones
+  /2013-04-01/tags/ResourceType:
+    post:
+      summary: ListTagsForResources
+      description: Lists tags for up to 10 health checks or hosted zones
+      operationId: listtagsforresources
+      parameters:
+      - in: body
+        name: ListTagsForResourcesRequest
+        description: Root level tag for the ListTagsForResourcesRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: ResourceIds
+        description: "A complex type that contains the ResourceId element for each
+          resource for which you\t\t\twant to get a list of tags"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: ResourceType
+        description: The type of the resources
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Resources
+  /2013-04-01/tags/ResourceType/ResourceId:
+    get:
+      summary: ListTagsForResource
+      description: Lists tags for one health check or hosted zone
+      operationId: listtagsforresource
+      parameters:
+      - in: path
+        name: ResourceId
+        description: The ID of the resource for which you want to retrieve tags
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Resources
+    post:
+      summary: ChangeTagsForResource
+      description: Adds, edits, or deletes tags for a health check or a hosted zone
+      operationId: changetagsforresource
+      parameters:
+      - in: body
+        name: AddTags
+        description: "A complex type that contains a list of the tags that you want
+          to add to the specified\t\t\thealth check or hosted zone and/or the tags
+          for which you want to edit the Value\t\t\telement"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: ChangeTagsForResourceRequest
+        description: Root level tag for the ChangeTagsForResourceRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: RemoveTagKeys
+        description: "A complex type that contains a list of the tags that you want
+          to delete from the\t\t\tspecified health check or hosted zone"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: ResourceId
+        description: The ID of the resource for which you want to add, change, or
+          delete tags
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Resources
+  ? /2013-04-01/testdnsanswer&amp;edns0clientsubnetip=EDNS0ClientSubnetIP&amp;edns0clientsubnetmask=EDNS0ClientSubnetMask?hostedzoneid=HostedZoneId&amp;recordname=RecordName&amp;recordtype=RecordType&amp;resolverip=ResolverIP
+  : get:
+      summary: TestDNSAnswer
+      description: Gets the value that Amazon Route 53 returns in response to a DNS
+        request for a specified record name and type
+      operationId: testdnsanswer
+      parameters:
+      - in: path
+        name: edns0clientsubnetip
+        description: "If the resolver that you specified for resolverip supports EDNS0,
+          specify the IP address of a client \t\t\tin the applicable location"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tests
+  /2013-04-01/trafficpolicies&amp;maxitems=MaxItems?trafficpolicyid=TrafficPolicyIdMarker:
+    get:
+      summary: ListTrafficPolicies
+      description: Gets information about the latest version for every traffic policy
+        that is associatedwith the current AWS account
+      operationId: listtrafficpolicies
+      parameters:
+      - in: path
+        name: maxitems
+        description: "(Optional) The maximum number of traffic policies to be included
+          in the response body\t\t\tfor this request"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Traffic Policies
+  /2013-04-01/trafficpolicies/Id/versions&amp;maxitems=MaxItems?trafficpolicyversion=TrafficPolicyVersionMarker:
+    get:
+      summary: ListTrafficPolicyVersions
+      description: Gets information about all of the versions for a specified traffic
+        policy
+      operationId: listtrafficpolicyversions
+      parameters:
+      - in: path
+        name: Id
+        description: "Specify the value of Id of the traffic policy for which you
+          want to list\t\t\tall versions"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Traffic Policies
+  /2013-04-01/trafficpolicy:
+    post:
+      summary: CreateTrafficPolicy
+      description: Creates a traffic policy, which you use to create multiple DNS
+        resource record sets forone domain name (such as example
+      operationId: createtrafficpolicy
+      parameters:
+      - in: body
+        name: Comment
+        description: (Optional) Any comments that you want to include about the traffic
+          policy
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: CreateTrafficPolicyRequest
+        description: Root level tag for the CreateTrafficPolicyRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: Document
+        description: The definition of this traffic policy in JSON format
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: Name
+        description: The name of the traffic policy
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Traffic Policies
+  /2013-04-01/trafficpolicy/Id:
+    post:
+      summary: CreateTrafficPolicyVersion
+      description: Creates a new version of an existing traffic policy
+      operationId: createtrafficpolicyversion
+      parameters:
+      - in: body
+        name: Comment
+        description: "The comment that you specified in the CreateTrafficPolicyVersion
+          request,\t\t\tif any"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: CreateTrafficPolicyVersionRequest
+        description: Root level tag for the CreateTrafficPolicyVersionRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: Document
+        description: The definition of this version of the traffic policy, in JSON
+          format
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: Id
+        description: The ID of the traffic policy for which you want to create a new
+          version
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Traffic Policies
+  /2013-04-01/trafficpolicy/Id/Version:
+    delete:
+      summary: DeleteTrafficPolicy
+      description: Deletes a traffic policy
+      operationId: deletetrafficpolicy
+      parameters:
+      - in: path
+        name: Id
+        description: The ID of the traffic policy that you want to delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Traffic Policies
+    get:
+      summary: GetTrafficPolicy
+      description: Gets information about a specific traffic policy version
+      operationId: gettrafficpolicy
+      parameters:
+      - in: path
+        name: Id
+        description: The ID of the traffic policy that you want to get information
+          about
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Traffic Policies
+    post:
+      summary: UpdateTrafficPolicyComment
+      description: Updates the comment for a specified traffic policy version
+      operationId: updatetrafficpolicycomment
+      parameters:
+      - in: body
+        name: Comment
+        description: The new comment for the specified traffic policy and version
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: Id
+        description: "The value of Id for the traffic policy for which you want to
+          update the\t\t\tcomment"
+        type: string
+      - in: body
+        name: UpdateTrafficPolicyCommentRequest
+        description: Root level tag for the UpdateTrafficPolicyCommentRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Traffic Policies
+  /2013-04-01/trafficpolicyinstance:
+    post:
+      summary: CreateTrafficPolicyInstance
+      description: Creates resource record sets in a specified hosted zone based on
+        the settings in aspecified traffic policy version
+      operationId: createtrafficpolicyinstance
+      parameters:
+      - in: body
+        name: CreateTrafficPolicyInstanceRequest
+        description: Root level tag for the CreateTrafficPolicyInstanceRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: HostedZoneId
+        description: "The ID of the hosted zone in which you want Amazon Route 53
+          to create resource record sets by\t\t\tusing the configuration in a traffic
+          policy"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: Name
+        description: The domain name (such as example
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: TrafficPolicyId
+        description: "The ID of the traffic policy that you want to use to create
+          resource record sets in the\t\t\tspecified hosted zone"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: TrafficPolicyVersion
+        description: "The version of the traffic policy that you want to use to create
+          resource record sets\t\t\tin the specified hosted zone"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: TTL
+        description: "(Optional) The TTL that you want Amazon Route 53 to assign to
+          all of the resource record sets\t\t\tthat it creates in the specified hosted
+          zone"
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Traffic Policies
+  /2013-04-01/trafficpolicyinstance/Id:
+    delete:
+      summary: DeleteTrafficPolicyInstance
+      description: Deletes a traffic policy instance and all of the resource record
+        sets that Amazon Route 53created when you created the instance
+      operationId: deletetrafficpolicyinstance
+      parameters:
+      - in: path
+        name: Id
+        description: The ID of the traffic policy instance that you want to delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Traffic Policies
+    get:
+      summary: GetTrafficPolicyInstance
+      description: Gets information about a specified traffic policy instance
+      operationId: gettrafficpolicyinstance
+      parameters:
+      - in: path
+        name: Id
+        description: The ID of the traffic policy instance that you want to get information
+          about
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Traffic Policies
+    post:
+      summary: UpdateTrafficPolicyInstance
+      description: Updates the resource record sets in a specified hosted zone that
+        were created based onthe settings in a specified traffic policy version
+      operationId: updatetrafficpolicyinstance
+      parameters:
+      - in: path
+        name: Id
+        description: The ID of the traffic policy instance that you want to update
+        type: string
+      - in: body
+        name: TrafficPolicyId
+        description: "The ID of the traffic policy that you want Amazon Route 53 to
+          use to update resource record sets\t\t\tfor the specified traffic policy
+          instance"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: TrafficPolicyVersion
+        description: "The version of the traffic policy that you want Amazon Route
+          53 to use to update resource record\t\t\tsets for the specified traffic
+          policy instance"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: TTL
+        description: "The TTL that you want Amazon Route 53 to assign to all of the
+          updated resource record\t\t\tsets"
+        schema:
+          $ref: '#/definitions/holder'
+      - in: body
+        name: UpdateTrafficPolicyInstanceRequest
+        description: Root level tag for the UpdateTrafficPolicyInstanceRequest parameters
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Traffic Policies
+  /2013-04-01/trafficpolicyinstancecount:
+    get:
+      summary: GetTrafficPolicyInstanceCount
+      description: Gets the number of traffic policy instances that are associated
+        with the current AWSaccount
+      operationId: gettrafficpolicyinstancecount
+      responses:
+        200:
+          description: OK
+      tags:
+      - Traffic Policies
+  ? /2013-04-01/trafficpolicyinstances/hostedzone?id=HostedZoneId&amp;maxitems=MaxItems&amp;trafficpolicyinstancename=TrafficPolicyInstanceNameMarker&amp;trafficpolicyinstancetype=TrafficPolicyInstanceTypeMarker
+  : get:
+      summary: ListTrafficPolicyInstancesByHostedZone
+      description: Gets information about the traffic policy instances that you created
+        in a specifiedhosted zone
+      operationId: listtrafficpolicyinstancesbyhostedzone
+      parameters:
+      - in: path
+        name: id
+        description: "The ID of the hosted zone for which you want to list traffic
+          policy\t\t\tinstances"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Traffic Policies
+  ? /2013-04-01/trafficpolicyinstances/trafficpolicy&amp;hostedzoneid=HostedZoneIdMarker?id=TrafficPolicyId&amp;maxitems=MaxItems&amp;trafficpolicyinstancename=TrafficPolicyInstanceNameMarker&amp;trafficpolicyinstancetype=TrafficPolicyInstanceTypeMarker&
+  : get:
+      summary: ListTrafficPolicyInstancesByPolicy
+      description: Gets information about the traffic policy instances that you created
+        by using a specifytraffic policy version
+      operationId: listtrafficpolicyinstancesbypolicy
+      parameters:
+      - in: path
+        name: hostedzoneid
+        description: "For the first request to ListTrafficPolicyInstancesByPolicy,
+          omit this\t\t\tvalue"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Traffic Policies
+  ? /2013-04-01/trafficpolicyinstances?hostedzoneid=HostedZoneIdMarker&amp;maxitems=MaxItems&amp;trafficpolicyinstancename=TrafficPolicyInstanceNameMarker&amp;trafficpolicyinstancetype=TrafficPolicyInstanceTypeMarker
+  : get:
+      summary: ListTrafficPolicyInstances
+      description: Gets information about the traffic policy instances that you created
+        by using thecurrent AWS account
+      operationId: listtrafficpolicyinstances
+      parameters:
+      - in: path
+        name: hostedzoneid
+        description: "For the first request to ListTrafficPolicyInstances, omit this\t\t\tvalue"
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Traffic Policies
+  2013-04-01/healthcheck/HealthCheckId:
+    delete:
+      summary: DeleteHealthCheck
+      description: Deletes a health check
+      operationId: deletehealthcheck
+      parameters:
+      - in: path
+        name: HealthCheckId
+        description: The ID of the health check that you want to delete
+        type: string
+      - in: path
+        name: Id
+        description: The ID of the hosted zone you want to delete
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Health Checks
+definitions: []
