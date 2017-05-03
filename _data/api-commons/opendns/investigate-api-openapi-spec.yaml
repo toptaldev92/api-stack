@@ -1,0 +1,195 @@
+agger: "2.0"
+info:
+  title: Investigate API
+  description: Welcome to the OpenDNS Investigate API! Access to this API requires
+    an access token, configurable from your account settings. This service allows
+    the querying of the OpenDNS DNS database and goes beyond traditional DNS results
+    to show security events and correlations in our datasets.
+  version: 1.0.0
+host: investigate.api.opendns.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /bgp_routes/ip/{ip}/:
+    get:
+      summary: IP Address History
+      description: To help better understand how IP addresses are related to each
+        other and to the regional registries, the API can provide data about ASN and
+        IP relationships
+      operationId: ipAddressHistory
+      parameters:
+      - in: path
+        name: ip
+        description: The IP Address
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - IP Address
+  /dnsdb/{name}/a/:
+    get:
+      summary: DNS RR History
+      description: The DNS database can be used to query the history that OpenDNS
+        has seen for a given domain
+      operationId: rrHistory
+      parameters:
+      - in: path
+        name: name
+        description: Domain Name
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - History
+  /domains/categories/:
+    get:
+      summary: Domain Status and Categorization
+      description: This API method returns the domain status, which the quickest and
+        easiest way to know whether a domain has been flagged as malicious by the
+        OpenDNS Security Labs team (score of -1 for status), if it is believed to
+        be safe (score of 1), or if it has yet to be given a status (score of 0)
+      operationId: domainStatus
+      responses:
+        200:
+          description: OK
+      tags:
+      - Domains
+  /domains/score/{domain}:
+    get:
+      summary: Domain Scores
+      description: This API method is the quickest and easiest way to know whether
+        a domain has been flagged as malicious by the OpenDNS security team (score
+        of -1), if it is believed to be safe (score of 1), or if it hasn't been categorized
+        yet (score of 0)
+      operationId: domainScore
+      parameters:
+      - in: path
+        name: domain
+        description: Domain Name
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Domain Score
+  /domains/{name}/latest_tags:
+    get:
+      summary: Tagging
+      description: This endpoint returns the date range when the domain being queried
+        was a part of the OpenDNS block list
+      operationId: domainTagging
+      parameters:
+      - in: path
+        name: Domain Name
+        description: Domain Name
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Tags
+  /ips/{ip}/latest_domains:
+    get:
+      summary: Latest Malicious Domains
+      description: "The latest_domains endpoint shows whether the IP address you\u2019ve
+        entered as input has any known malicious domains associated with it"
+      operationId: latestMaliciousDomains
+      parameters:
+      - in: path
+        name: ip
+        description: The IP Address
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Malicious Domains
+  /links/{name}/:
+    get:
+      summary: Related Domains
+      description: This API method returns a list of domain names that have been frequently
+        seen requested b around the same time (up to 60 seconds before or after) as
+        the given domain name, but that are not frequently associated with other domain
+        names
+      operationId: relatedDomains
+      parameters:
+      - in: path
+        name: name
+        description: Domain Name
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Related Domains
+  /recommendations/{name}/:
+    get:
+      summary: Co-Occurrences for a Domain
+      description: This API method returns a list of co-occurences for the specified
+        domain
+      operationId: coOccurrencesDomain
+      parameters:
+      - in: path
+        name: name
+        description: Domain Name
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Domains
+  /search/:
+    get:
+      summary: Pattern Search
+      description: To perform a pattern search in the API, use the /search/ endpoint,
+        append a RegEx pattern search to the API query and a start time
+      operationId: patternSearch
+      responses:
+        200:
+          description: OK
+      tags:
+      - Pattern Search
+  /security/{name}/:
+    get:
+      summary: Security Information
+      description: The security information API method contains multiple scores or
+        security features, each of which can be used to determine relevant datapoints
+        to build insight on the reputation or security risk posed by the site
+      operationId: securityInformation
+      parameters:
+      - in: path
+        name: Domain Name
+        description: Domain Name
+        type: string
+        format: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Security
+  /whois/emails/:
+    get:
+      summary: Whois
+      description: This API method returns the WHOIS information for the specified
+        email address(es), nameserver(s) and domains
+      operationId: whois
+      responses:
+        200:
+          description: OK
+      tags:
+      - Whois
+definitions: []
