@@ -1,0 +1,617 @@
+agger: "2.0"
+info:
+  title: BatchManagement
+  version: 1.0.0
+host: management.azure.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /subscriptions/{subscriptionId}/providers/Microsoft.Batch/batchAccounts:
+    get:
+      summary: Batch Account List
+      description: Gets information about the Batch accounts associated with the subscription
+      operationId: BatchAccount_List
+      parameters:
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Batch Account
+  /subscriptions/{subscriptionId}/providers/Microsoft.Batch/locations/{locationName}/quotas:
+    get:
+      summary: Location Get Quotas
+      description: Gets the Batch service quotas for the specified subscription at
+        the given location
+      operationId: Location_GetQuotas
+      parameters:
+      - in: path
+        name: locationName
+        description: The desired region for the quotas
+      - in: query
+        name: No Name
+      responses:
+        200:
+          description: OK
+      tags:
+      - Location Quotas
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts:
+    get:
+      summary: Batch Account List By Resource Group
+      description: Gets information about the Batch accounts associated within the
+        specified resource group
+      operationId: BatchAccount_ListByResourceGroup
+      parameters:
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group whose Batch accounts to list
+      responses:
+        200:
+          description: OK
+      tags:
+      - Batch Account
+  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}:
+    delete:
+      summary: Batch Account Delete
+      description: Deletes the specified Batch account
+      operationId: BatchAccount_Delete
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of the account to be deleted
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the Batch account
+          to be deleted
+      responses:
+        200:
+          description: OK
+      tags:
+      - Batch Account
+    get:
+      summary: Batch Account Get
+      description: Gets information about the specified Batch account
+      operationId: BatchAccount_Get
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of the account
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the Batch account
+      responses:
+        200:
+          description: OK
+      tags:
+      - Batch Account
+    patch:
+      summary: Batch Account Update
+      description: Updates the properties of an existing Batch account
+      operationId: BatchAccount_Update
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of the account
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Additional parameters for account update
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the Batch account
+      responses:
+        200:
+          description: OK
+      tags:
+      - Batch Account
+    put:
+      summary: Batch Account Create
+      description: Creates a new Batch account with the specified parameters
+      operationId: BatchAccount_Create
+      parameters:
+      - in: path
+        name: accountName
+        description: A name for the Batch account which must be unique within the
+          region
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: Additional parameters for account creation
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the new Batch account
+      responses:
+        200:
+          description: OK
+      tags:
+      - Batch Account
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications
+  : get:
+      summary: Application List
+      description: Lists all of the applications in the specified account
+      operationId: Application_List
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of the Batch account
+      - in: query
+        name: maxresults
+        description: The maximum number of items to return in the response
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the Batch account
+      responses:
+        200:
+          description: OK
+      tags:
+      - Application
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationId}
+  : delete:
+      summary: Application Delete
+      description: Deletes an application
+      operationId: Application_Delete
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of the Batch account
+      - in: path
+        name: applicationId
+        description: The ID of the application
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the Batch account
+      responses:
+        200:
+          description: OK
+      tags:
+      - Application
+    get:
+      summary: Application Get
+      description: Gets information about the specified application
+      operationId: Application_Get
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of the Batch account
+      - in: path
+        name: applicationId
+        description: The ID of the application
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the Batch account
+      responses:
+        200:
+          description: OK
+      tags:
+      - Application
+    patch:
+      summary: Application Update
+      description: Updates settings for the specified application
+      operationId: Application_Update
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of the Batch account
+      - in: path
+        name: applicationId
+        description: The ID of the application
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The parameters for the request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the Batch account
+      responses:
+        200:
+          description: OK
+      tags:
+      - Application
+    put:
+      summary: Application Create
+      description: Adds an application to the specified Batch account
+      operationId: Application_Create
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of the Batch account
+      - in: path
+        name: applicationId
+        description: The ID of the application
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The parameters for the request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the Batch account
+      responses:
+        200:
+          description: OK
+      tags:
+      - Application
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationId}/versions/{version}
+  : delete:
+      summary: Application Package Delete
+      description: Deletes an application package record and its associated binary
+        file
+      operationId: ApplicationPackage_Delete
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of the Batch account
+      - in: path
+        name: applicationId
+        description: The ID of the application
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the Batch account
+      - in: path
+        name: version
+        description: The version of the application to delete
+      responses:
+        200:
+          description: OK
+      tags:
+      - Application Package
+    get:
+      summary: Application Package Get
+      description: Gets information about the specified application package
+      operationId: ApplicationPackage_Get
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of the Batch account
+      - in: path
+        name: applicationId
+        description: The ID of the application
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the Batch account
+      - in: path
+        name: version
+        description: The version of the application
+      responses:
+        200:
+          description: OK
+      tags:
+      - Application Package
+    put:
+      summary: Application Package Create
+      description: Creates an application package record
+      operationId: ApplicationPackage_Create
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of the Batch account
+      - in: path
+        name: applicationId
+        description: The ID of the application
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the Batch account
+      - in: path
+        name: version
+        description: The version of the application
+      responses:
+        200:
+          description: OK
+      tags:
+      - Application Package
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/applications/{applicationId}/versions/{version}/activate
+  : post:
+      summary: Application Package Activate
+      description: Activates the specified application package
+      operationId: ApplicationPackage_Activate
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of the Batch account
+      - in: path
+        name: applicationId
+        description: The ID of the application
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The parameters for the request
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the Batch account
+      - in: path
+        name: version
+        description: The version of the application to activate
+      responses:
+        200:
+          description: OK
+      tags:
+      - Application Package
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/listKeys
+  : post:
+      summary: Gets the account keys for the specified Batch account.
+      description: This operation applies only to Batch accounts created with a poolAllocationMode
+        of 'BatchService'
+      operationId: BatchAccount_GetKeys
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of the account
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the Batch account
+      responses:
+        200:
+          description: OK
+      tags:
+      - Account Key
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/regenerateKeys
+  : post:
+      summary: Batch Account Regenerate Key
+      description: Regenerates the specified account key for the Batch account
+      operationId: BatchAccount_RegenerateKey
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of the account
+      - in: query
+        name: No Name
+      - in: body
+        name: parameters
+        description: The type of key to regenerate
+        schema:
+          $ref: '#/definitions/holder'
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the Batch account
+      responses:
+        200:
+          description: OK
+      tags:
+      - Batch Account
+  ? /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Batch/batchAccounts/{accountName}/syncAutoStorageKeys
+  : post:
+      summary: Batch Account Synchronize Auto Storage Keys
+      description: Synchronizes access keys for the auto storage account configured
+        for the specified Batch account
+      operationId: BatchAccount_SynchronizeAutoStorageKeys
+      parameters:
+      - in: path
+        name: accountName
+        description: The name of the Batch account
+      - in: query
+        name: No Name
+      - in: path
+        name: resourceGroupName
+        description: The name of the resource group that contains the Batch account
+      responses:
+        200:
+          description: OK
+      tags:
+      - Batch Account
+definitions:
+  AutoStorageBaseProperties:
+    properties:
+      storageAccountId:
+        description: This is a default description.
+        type: get
+  BatchAccountBaseProperties:
+    properties: []
+  BatchAccountUpdateBaseProperties:
+    properties: []
+  BatchAccountCreateParameters:
+    properties:
+      location:
+        description: This is a default description.
+        type: get
+      tags:
+        description: This is a default description.
+        type: get
+  KeyVaultReference:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      url:
+        description: This is a default description.
+        type: get
+  AutoStorageProperties:
+    properties:
+      storageAccountId:
+        description: This is a default description.
+        type: get
+      lastKeySync:
+        description: This is a default description.
+        type: get
+  BatchAccountProperties:
+    properties:
+      accountEndpoint:
+        description: This is a default description.
+        type: get
+      provisioningState:
+        description: This is a default description.
+        type: get
+      coreQuota:
+        description: This is a default description.
+        type: get
+      poolQuota:
+        description: This is a default description.
+        type: get
+      activeJobAndJobScheduleQuota:
+        description: This is a default description.
+        type: get
+  BatchAccount:
+    properties: []
+  BatchAccountUpdateParameters:
+    properties:
+      tags:
+        description: This is a default description.
+        type: get
+  BatchAccountListResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  BatchAccountRegenerateKeyParameters:
+    properties:
+      keyName:
+        description: This is a default description.
+        type: get
+  BatchAccountKeys:
+    properties:
+      primary:
+        description: This is a default description.
+        type: get
+      secondary:
+        description: This is a default description.
+        type: get
+  ActivateApplicationPackageParameters:
+    properties:
+      format:
+        description: This is a default description.
+        type: get
+  AddApplicationParameters:
+    properties:
+      allowUpdates:
+        description: This is a default description.
+        type: get
+      displayName:
+        description: This is a default description.
+        type: get
+  Application:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      displayName:
+        description: This is a default description.
+        type: get
+      packages:
+        description: This is a default description.
+        type: get
+      allowUpdates:
+        description: This is a default description.
+        type: get
+      defaultVersion:
+        description: This is a default description.
+        type: get
+  ApplicationPackage:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      version:
+        description: This is a default description.
+        type: get
+      state:
+        description: This is a default description.
+        type: get
+      format:
+        description: This is a default description.
+        type: get
+      storageUrl:
+        description: This is a default description.
+        type: get
+      storageUrlExpiry:
+        description: This is a default description.
+        type: get
+      lastActivationTime:
+        description: This is a default description.
+        type: get
+  ListApplicationsResult:
+    properties:
+      value:
+        description: This is a default description.
+        type: get
+      nextLink:
+        description: This is a default description.
+        type: get
+  UpdateApplicationParameters:
+    properties:
+      allowUpdates:
+        description: This is a default description.
+        type: get
+      defaultVersion:
+        description: This is a default description.
+        type: get
+      displayName:
+        description: This is a default description.
+        type: get
+  BatchLocationQuota:
+    properties:
+      accountQuota:
+        description: This is a default description.
+        type: get
+  Resource:
+    properties:
+      id:
+        description: This is a default description.
+        type: get
+      name:
+        description: This is a default description.
+        type: get
+      type:
+        description: This is a default description.
+        type: get
+      location:
+        description: This is a default description.
+        type: get
+      tags:
+        description: This is a default description.
+        type: get
+  CloudError:
+    properties:
+      code:
+        description: This is a default description.
+        type: get
+      message:
+        description: This is a default description.
+        type: get
+      target:
+        description: This is a default description.
+        type: get
+      details:
+        description: This is a default description.
+        type: get
