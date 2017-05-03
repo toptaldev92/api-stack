@@ -1,0 +1,398 @@
+agger: "2.0"
+info:
+  title: AWS Cognito Sync API
+  version: 1.0.0
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /?Action=BulkPublish&k=1:
+    get:
+      summary: ' Bulk Publish '
+      description: Initiates a bulk publish of all existing datasets for an Identity
+        Pool to the configured stream
+      operationId: bulkPublish
+      parameters:
+      - in: query
+        name: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
+          created by Amazon Cognito
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Publish
+  /?Action=DeleteDataset&k=1:
+    get:
+      summary: ' Delete Dataset '
+      description: Deletes the specific dataset
+      operationId: deleteDataset
+      parameters:
+      - in: query
+        name: DatasetName
+        description: A string of up to 128 characters
+        type: string
+      - in: query
+        name: IdentityId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)       created
+          by Amazon Cognito
+        type: string
+      - in: query
+        name: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)       created
+          by Amazon Cognito
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Dataset
+  /?Action=DescribeDataset&k=1:
+    get:
+      summary: ' Describe Dataset '
+      description: Gets meta data about a dataset by identity and dataset name
+      operationId: describeDataset
+      parameters:
+      - in: query
+        name: DatasetName
+        description: A string of up to 128 characters
+        type: string
+      - in: query
+        name: IdentityId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)       created
+          by Amazon Cognito
+        type: string
+      - in: query
+        name: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)       created
+          by Amazon Cognito
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Dataset
+  /?Action=DescribeIdentityPoolUsage&k=1:
+    get:
+      summary: ' Describe Identity Pool Usage '
+      description: Gets usage details (for example, data storage) about a particular
+        identity pool
+      operationId: describeIdentityPoolUsage
+      parameters:
+      - in: query
+        name: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)       created
+          by Amazon Cognito
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identity Pool Usage
+  /?Action=DescribeIdentityUsage&k=1:
+    get:
+      summary: ' Describe Identity Usage '
+      description: Gets usage information for an identity, including number of datasets
+        and data usage
+      operationId: describeIdentityUsage
+      parameters:
+      - in: query
+        name: IdentityId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)       created
+          by Amazon Cognito
+        type: string
+      - in: query
+        name: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)       created
+          by Amazon Cognito
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identity Pool Usage
+  /?Action=GetBulkPublishDetails&k=1:
+    get:
+      summary: ' Get Bulk Publish Details '
+      description: Get the status of the last BulkPublish operation for an identity
+        pool
+      operationId: getBulkPublishDetails
+      parameters:
+      - in: query
+        name: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
+          created by Amazon Cognito
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Publish
+  /?Action=GetCognitoEvents&k=1:
+    get:
+      summary: ' Get Cognito Events '
+      description: Gets the events and the corresponding Lambda functions associated
+        with an identity pool
+      operationId: getCognitoEvents
+      parameters:
+      - in: query
+        name: IdentityPoolId
+        description: The Cognito Identity Pool ID for the request
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Events
+  /?Action=GetIdentityPoolConfiguration&k=1:
+    get:
+      summary: ' Get Identity Pool Configuration '
+      description: Gets the configuration settings of an identity pool
+      operationId: getIdentityPoolConfiguration
+      parameters:
+      - in: query
+        name: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
+          created by Amazon Cognito
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identity Pools
+  /?Action=ListDatasets&k=1:
+    get:
+      summary: ' List Datasets '
+      description: Lists datasets for an identity
+      operationId: listDatasets
+      parameters:
+      - in: query
+        name: IdentityId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
+          created by Amazon Cognito
+        type: string
+      - in: query
+        name: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
+          created by Amazon Cognito
+        type: string
+      - in: query
+        name: MaxResults
+        description: The maximum number of results to be returned
+        type: string
+      - in: query
+        name: NextToken
+        description: A pagination token for obtaining the next page of results
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Dataset
+  /?Action=ListIdentityPoolUsage&k=1:
+    get:
+      summary: ' List Identity Pool Usage '
+      description: Gets a list of identity pools registered with Cognito
+      operationId: listIdentityPoolUsage
+      parameters:
+      - in: query
+        name: MaxResults
+        description: The maximum number of results to be returned
+        type: string
+      - in: query
+        name: NextToken
+        description: A pagination token for obtaining the next page of results
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identity Pools
+  /?Action=ListRecords&k=1:
+    get:
+      summary: ' List Records '
+      description: Gets paginated records, optionally changed after a particular sync
+        count for a dataset and identity
+      operationId: listRecords
+      parameters:
+      - in: query
+        name: DatasetName
+        description: A string of up to 128 characters
+        type: string
+      - in: query
+        name: IdentityId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
+          created by Amazon Cognito
+        type: string
+      - in: query
+        name: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
+          created by Amazon Cognito
+        type: string
+      - in: query
+        name: LastSyncCount
+        description: The last server sync count for this record
+        type: string
+      - in: query
+        name: MaxResults
+        description: The maximum number of results to be returned
+        type: string
+      - in: query
+        name: NextToken
+        description: A pagination token for obtaining the next page of results
+        type: string
+      - in: query
+        name: SyncSessionToken
+        description: A token containing a session ID, identity ID, and expiration
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Records
+  /?Action=RegisterDevice&k=1:
+    get:
+      summary: ' Register Device '
+      description: Registers a device to receive push sync notifications
+      operationId: registerDevice
+      parameters:
+      - in: query
+        name: IdentityId
+        description: The unique ID for this identity
+        type: string
+      - in: query
+        name: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
+          created by Amazon Cognito
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Devices
+  /?Action=SetCognitoEvents&k=1:
+    get:
+      summary: ' Set Cognito Events '
+      description: Sets the AWS Lambda function for a given event type for an identity
+        pool
+      operationId: setCognitoEvents
+      parameters:
+      - in: query
+        name: IdentityPoolId
+        description: The Cognito Identity Pool to use when configuring Cognito Events
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Events
+  /?Action=SetIdentityPoolConfiguration&k=1:
+    get:
+      summary: ' Set Identity Pool Configuration '
+      description: Sets the necessary configuration for push sync
+      operationId: setIdentityPoolConfiguration
+      parameters:
+      - in: query
+        name: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
+          created by Amazon Cognito
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Identity Pools
+  /?Action=SubscribeToDataset&k=1:
+    get:
+      summary: ' Subscribe To Dataset '
+      description: Subscribes to receive notifications when a dataset is modified
+        by another device
+      operationId: subscribeToDataset
+      parameters:
+      - in: query
+        name: DatasetName
+        description: The name of the dataset to subcribe to
+        type: string
+      - in: query
+        name: DeviceId
+        description: The unique ID generated for this device by Cognito
+        type: string
+      - in: query
+        name: IdentityId
+        description: Unique ID for this identity
+        type: string
+      - in: query
+        name: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
+          created by Amazon Cognito
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Dataset
+  /?Action=UnsubscribeFromDataset&k=1:
+    get:
+      summary: ' Unsubscribe From Dataset '
+      description: Unsubscribes from receiving notifications when a dataset is modified
+        by another device
+      operationId: unsubscribeFromDataset
+      parameters:
+      - in: query
+        name: DatasetName
+        description: The name of the dataset from which to unsubcribe
+        type: string
+      - in: query
+        name: DeviceId
+        description: The unique ID generated for this device by Cognito
+        type: string
+      - in: query
+        name: IdentityId
+        description: Unique ID for this identity
+        type: string
+      - in: query
+        name: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
+          created by Amazon Cognito
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Dataset
+  /?Action=UpdateRecords&k=1:
+    get:
+      summary: ' Update Records '
+      description: Posts updates to records and adds and deletes records for a dataset
+        and user
+      operationId: updateRecords
+      parameters:
+      - in: query
+        name: ClientContext
+        description: Intended to supply a device ID that will populate the lastModifiedBy
+          field referenced in other methods
+        type: string
+      - in: query
+        name: DatasetName
+        description: A string of up to 128 characters
+        type: string
+      - in: query
+        name: IdentityId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
+          created by Amazon Cognito
+        type: string
+      - in: query
+        name: IdentityPoolId
+        description: A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE)
+          created by Amazon Cognito
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Records
+definitions: []
