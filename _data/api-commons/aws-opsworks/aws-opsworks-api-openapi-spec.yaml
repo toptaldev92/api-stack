@@ -1,0 +1,1961 @@
+agger: "2.0"
+info:
+  title: AWS OpsWorks API
+  version: 1.0.0
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /?Action=AssignInstance&k=1:
+    get:
+      summary: ' Assign Instance '
+      description: Assign a registered instance to a layer
+      operationId: assignInstance
+      parameters:
+      - in: query
+        name: InstanceId
+        description: The instance ID
+        type: string
+      - in: query
+        name: LayerIds
+        description: The layer ID, which must correspond to a custom layer
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Instances
+  /?Action=AssignVolume&k=1:
+    get:
+      summary: ' Assign Volume '
+      description: Assigns one of the stack's registered Amazon EBS volumes to a specified
+        instance
+      operationId: assignVolume
+      parameters:
+      - in: query
+        name: InstanceId
+        description: The instance ID
+        type: string
+      - in: query
+        name: VolumeId
+        description: The volume ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Volumes
+  /?Action=AssociateElasticIp&k=1:
+    get:
+      summary: ' Associate Elastic IP'
+      description: Associates one of the stack's registered Elastic IP addresses with
+        a specified instance
+      operationId: associateElasticIp
+      parameters:
+      - in: query
+        name: ElasticIp
+        description: The Elastic IP address
+        type: string
+      - in: query
+        name: InstanceId
+        description: The instance ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - IP Addresses
+  /?Action=AttachElasticLoadBalancer&k=1:
+    get:
+      summary: ' Attach Elastic Load Balancer '
+      description: Attaches an Elastic Load Balancing load balancer to a specified
+        layer
+      operationId: attachElasticLoadBalancer
+      parameters:
+      - in: query
+        name: ElasticLoadBalancerName
+        description: The Elastic Load Balancing instance's name
+        type: string
+      - in: query
+        name: LayerId
+        description: The ID of the layer that the Elastic Load Balancing instance
+          is to be attached to
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Load Balancers
+  /?Action=CloneStack&k=1:
+    get:
+      summary: ' Clone Stack '
+      description: Creates a clone of a specified stack
+      operationId: cloneStack
+      parameters:
+      - in: query
+        name: AgentVersion
+        description: The default AWS OpsWorks Stacks agent version
+        type: string
+      - in: query
+        name: Attributes
+        description: A list of stack attributes and values as key/value pairs to be
+          added to the cloned stack
+        type: string
+      - in: query
+        name: ChefConfiguration
+        description: A ChefConfiguration object that specifies whether to enable Berkshelf
+          and the      Berkshelf version on Chef 11
+        type: string
+      - in: query
+        name: CloneAppIds
+        description: A list of source stack app IDs to be included in the cloned stack
+        type: string
+      - in: query
+        name: ClonePermissions
+        description: Whether to clone the source stack's permissions
+        type: string
+      - in: query
+        name: ConfigurationManager
+        description: The configuration manager
+        type: string
+      - in: query
+        name: CustomCookbooksSource
+        description: Contains the information required to retrieve an app or cookbook
+          from a repository
+        type: string
+      - in: query
+        name: CustomJson
+        description: A string that contains user-defined, custom JSON
+        type: string
+      - in: query
+        name: DefaultAvailabilityZone
+        description: The cloned stack's default Availability Zone, which must be in
+          the specified region
+        type: string
+      - in: query
+        name: DefaultInstanceProfileArn
+        description: The Amazon Resource Name (ARN) of an IAM profile that is the
+          default profile for all of the stack's EC2 instances
+        type: string
+      - in: query
+        name: DefaultOs
+        description: The stack's operating system, which must be set to one of the
+          following
+        type: string
+      - in: query
+        name: DefaultRootDeviceType
+        description: The default root device type
+        type: string
+      - in: query
+        name: DefaultSshKeyName
+        description: A default Amazon EC2 key pair name
+        type: string
+      - in: query
+        name: DefaultSubnetId
+        description: The stack's default VPC subnet ID
+        type: string
+      - in: query
+        name: HostnameTheme
+        description: The stack's host name theme, with spaces are replaced by underscores
+        type: string
+      - in: query
+        name: Name
+        description: The cloned stack name
+        type: string
+      - in: query
+        name: Region
+        description: The cloned stack AWS region, such as ap-northeast-2
+        type: string
+      - in: query
+        name: ServiceRoleArn
+        description: The stack AWS Identity and Access Management (IAM) role, which
+          allows AWS OpsWorks Stacks to work with AWS      resources on your behalf
+        type: string
+      - in: query
+        name: SourceStackId
+        description: The source stack ID
+        type: string
+      - in: query
+        name: UseCustomCookbooks
+        description: Whether to use custom cookbooks
+        type: string
+      - in: query
+        name: UseOpsworksSecurityGroups
+        description: Whether to associate the AWS OpsWorks Stacks built-in security
+          groups with the stack's layers
+        type: string
+      - in: query
+        name: VpcId
+        description: The ID of the VPC that the cloned stack is to be launched into
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Stacks
+  /?Action=CreateApp&k=1:
+    get:
+      summary: ' Create App '
+      description: Creates an app for a specified stack
+      operationId: createApp
+      parameters:
+      - in: query
+        name: AppSource
+        description: A Source object that specifies the app repository
+        type: string
+      - in: query
+        name: Attributes
+        description: One or more user-defined key/value pairs to be added to the stack
+          attributes
+        type: string
+      - in: query
+        name: DataSources
+        description: The app's data source
+        type: string
+      - in: query
+        name: Description
+        description: A description of the app
+        type: string
+      - in: query
+        name: Domains
+        description: The app virtual host settings, with multiple domains separated
+          by commas
+        type: string
+      - in: query
+        name: EnableSsl
+        description: Whether to enable SSL for the app
+        type: string
+      - in: query
+        name: Environment
+        description: An array of EnvironmentVariable objects that specify environment
+          variables to be      associated with the app
+        type: string
+      - in: query
+        name: Name
+        description: The app name
+        type: string
+      - in: query
+        name: Shortname
+        description: The app's short name
+        type: string
+      - in: query
+        name: SslConfiguration
+        description: An SslConfiguration object with the SSL configuration
+        type: string
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      - in: query
+        name: Type
+        description: The app type
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Applications
+  /?Action=CreateDeployment&k=1:
+    get:
+      summary: ' Create Deployment '
+      description: Runs deployment or stack commands
+      operationId: createDeployment
+      parameters:
+      - in: query
+        name: AppId
+        description: The app ID
+        type: string
+      - in: query
+        name: Command
+        description: A DeploymentCommand object that specifies the deployment command
+          and any      associated arguments
+        type: string
+      - in: query
+        name: Comment
+        description: A user-defined comment
+        type: string
+      - in: query
+        name: CustomJson
+        description: A string that contains user-defined, custom JSON
+        type: string
+      - in: query
+        name: InstanceIds
+        description: The instance IDs for the deployment targets
+        type: string
+      - in: query
+        name: LayerIds
+        description: The layer IDs for the deployment targets
+        type: string
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /?Action=CreateInstance&k=1:
+    get:
+      summary: ' Create Instance '
+      description: Creates an instance in a specified stack
+      operationId: createInstance
+      parameters:
+      - in: query
+        name: AgentVersion
+        description: The default AWS OpsWorks Stacks agent version
+        type: string
+      - in: query
+        name: AmiId
+        description: A custom AMI ID to be used to create the instance
+        type: string
+      - in: query
+        name: Architecture
+        description: The instance architecture
+        type: string
+      - in: query
+        name: AutoScalingType
+        description: For load-based or time-based instances, the type
+        type: string
+      - in: query
+        name: AvailabilityZone
+        description: The instance Availability Zone
+        type: string
+      - in: query
+        name: BlockDeviceMappings
+        description: An array of BlockDeviceMapping objects that specify the instance's
+          block      devices
+        type: string
+      - in: query
+        name: EbsOptimized
+        description: Whether to create an Amazon EBS-optimized instance
+        type: string
+      - in: query
+        name: Hostname
+        description: The instance host name
+        type: string
+      - in: query
+        name: InstallUpdatesOnBoot
+        description: Whether to install operating system and package updates when
+          the instance boots
+        type: string
+      - in: query
+        name: InstanceType
+        description: The instance type, such as t2
+        type: string
+      - in: query
+        name: LayerIds
+        description: An array that contains the instance's layer IDs
+        type: string
+      - in: query
+        name: Os
+        description: The instance's operating system, which must be set to one of
+          the following
+        type: string
+      - in: query
+        name: RootDeviceType
+        description: The instance root device type
+        type: string
+      - in: query
+        name: SshKeyName
+        description: The instance's Amazon EC2 key-pair name
+        type: string
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      - in: query
+        name: SubnetId
+        description: The ID of the instance's subnet
+        type: string
+      - in: query
+        name: Tenancy
+        description: The instance's tenancy option
+        type: string
+      - in: query
+        name: VirtualizationType
+        description: The instance's virtualization type, paravirtual or hvm
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Instances
+  /?Action=CreateLayer&k=1:
+    get:
+      summary: ' Create Layer '
+      description: Creates a layer
+      operationId: createLayer
+      parameters:
+      - in: query
+        name: Attributes
+        description: One or more user-defined key-value pairs to be added to the stack
+          attributes
+        type: string
+      - in: query
+        name: AutoAssignElasticIps
+        description: Whether to automatically assign an Elastic IP        address
+          to the layer's instances
+        type: string
+      - in: query
+        name: AutoAssignPublicIps
+        description: For stacks that are running in a VPC, whether to automatically
+          assign a public IP address to      the layer's instances
+        type: string
+      - in: query
+        name: CustomInstanceProfileArn
+        description: The ARN of an IAM profile to be used for the layer's EC2 instances
+        type: string
+      - in: query
+        name: CustomJson
+        description: A JSON-formatted string containing custom stack configuration
+          and deployment attributes     to be installed on the layer's instances
+        type: string
+      - in: query
+        name: CustomRecipes
+        description: A LayerCustomRecipes object that specifies the layer custom recipes
+        type: string
+      - in: query
+        name: CustomSecurityGroupIds
+        description: An array containing the layer custom security group IDs
+        type: string
+      - in: query
+        name: EnableAutoHealing
+        description: Whether to disable auto healing for the layer
+        type: string
+      - in: query
+        name: InstallUpdatesOnBoot
+        description: Whether to install operating system and package updates when
+          the instance boots
+        type: string
+      - in: query
+        name: LifecycleEventConfiguration
+        description: A LifeCycleEventConfiguration object that you can use to configure
+          the Shutdown event to      specify an execution timeout and enable or disable
+          Elastic Load Balancer connection      draining
+        type: string
+      - in: query
+        name: Name
+        description: The layer name, which is used by the console
+        type: string
+      - in: query
+        name: Packages
+        description: An array of Package objects that describes the layer packages
+        type: string
+      - in: query
+        name: Shortname
+        description: For custom layers only, use this parameter to specify the layer's
+          short name, which is used internally by AWS OpsWorks Stacks and by Chef
+          recipes
+        type: string
+      - in: query
+        name: StackId
+        description: The layer stack ID
+        type: string
+      - in: query
+        name: Type
+        description: The layer type
+        type: string
+      - in: query
+        name: UseEbsOptimizedInstances
+        description: Whether to use Amazon EBS-optimized instances
+        type: string
+      - in: query
+        name: VolumeConfigurations
+        description: A VolumeConfigurations object that describes the layer's Amazon
+          EBS volumes
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /?Action=CreateStack&k=1:
+    get:
+      summary: ' Create Stack '
+      description: Creates a new stack
+      operationId: createStack
+      parameters:
+      - in: query
+        name: AgentVersion
+        description: The default AWS OpsWorks Stacks agent version
+        type: string
+      - in: query
+        name: Attributes
+        description: One or more user-defined key-value pairs to be added to the stack
+          attributes
+        type: string
+      - in: query
+        name: ChefConfiguration
+        description: A ChefConfiguration object that specifies whether to enable Berkshelf
+          and the      Berkshelf version on Chef 11
+        type: string
+      - in: query
+        name: ConfigurationManager
+        description: The configuration manager
+        type: string
+      - in: query
+        name: CustomCookbooksSource
+        description: Contains the information required to retrieve an app or cookbook
+          from a repository
+        type: string
+      - in: query
+        name: CustomJson
+        description: A string that contains user-defined, custom JSON
+        type: string
+      - in: query
+        name: DefaultAvailabilityZone
+        description: The stack's default Availability Zone, which must be in the specified
+          region
+        type: string
+      - in: query
+        name: DefaultInstanceProfileArn
+        description: The Amazon Resource Name (ARN) of an IAM profile that is the
+          default profile for all of the stack's EC2 instances
+        type: string
+      - in: query
+        name: DefaultOs
+        description: The stack's default operating system, which is installed on every
+          instance unless you specify a different operating system when you create
+          the instance
+        type: string
+      - in: query
+        name: DefaultRootDeviceType
+        description: The default root device type
+        type: string
+      - in: query
+        name: DefaultSshKeyName
+        description: A default Amazon EC2 key pair name
+        type: string
+      - in: query
+        name: DefaultSubnetId
+        description: The stack's default VPC subnet ID
+        type: string
+      - in: query
+        name: HostnameTheme
+        description: The stack's host name theme, with spaces replaced by underscores
+        type: string
+      - in: query
+        name: Name
+        description: The stack name
+        type: string
+      - in: query
+        name: Region
+        description: The stack's AWS region, such as ap-south-1
+        type: string
+      - in: query
+        name: ServiceRoleArn
+        description: The stack's AWS Identity and Access Management (IAM) role, which
+          allows AWS OpsWorks Stacks to work with AWS      resources on your behalf
+        type: string
+      - in: query
+        name: UseCustomCookbooks
+        description: Whether the stack uses custom cookbooks
+        type: string
+      - in: query
+        name: UseOpsworksSecurityGroups
+        description: Whether to associate the AWS OpsWorks Stacks built-in security
+          groups with the stack's layers
+        type: string
+      - in: query
+        name: VpcId
+        description: The ID of the VPC that the stack is to be launched into
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /?Action=CreateUserProfile&k=1:
+    get:
+      summary: ' Create User Profile '
+      description: Creates a new user profile
+      operationId: createUserProfile
+      parameters:
+      - in: query
+        name: AllowSelfManagement
+        description: Whether users can specify their own SSH public key through the
+          My Settings page
+        type: string
+      - in: query
+        name: IamUserArn
+        description: The user's IAM ARN; this can also be a federated user's ARN
+        type: string
+      - in: query
+        name: SshPublicKey
+        description: The user's public SSH key
+        type: string
+      - in: query
+        name: SshUsername
+        description: The user's SSH user name
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /?Action=DeleteApp&k=1:
+    get:
+      summary: ' Delete App '
+      description: Deletes a specified app
+      operationId: deleteApp
+      parameters:
+      - in: query
+        name: AppId
+        description: The app ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Applications
+  /?Action=DeleteInstance&k=1:
+    get:
+      summary: ' Delete Instance '
+      description: Deletes a specified instance, which terminates the associated Amazon
+        EC2 instance
+      operationId: deleteInstance
+      parameters:
+      - in: query
+        name: DeleteElasticIp
+        description: Whether to delete the instance Elastic IP address
+        type: string
+      - in: query
+        name: DeleteVolumes
+        description: Whether to delete the instance's Amazon EBS volumes
+        type: string
+      - in: query
+        name: InstanceId
+        description: The instance ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Instances
+  /?Action=DeleteLayer&k=1:
+    get:
+      summary: ' Delete Layer '
+      description: Deletes a specified layer
+      operationId: deleteLayer
+      parameters:
+      - in: query
+        name: LayerId
+        description: The layer ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /?Action=DeleteStack&k=1:
+    get:
+      summary: ' Delete Stack '
+      description: Deletes a specified stack
+      operationId: deleteStack
+      parameters:
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /?Action=DeleteUserProfile&k=1:
+    get:
+      summary: ' Delete User Profile '
+      description: Deletes a user profile
+      operationId: deleteUserProfile
+      parameters:
+      - in: query
+        name: IamUserArn
+        description: The user's IAM ARN
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /?Action=DeregisterEcsCluster&k=1:
+    get:
+      summary: ' Deregister Ecs Cluster '
+      description: Deregisters a specified Amazon ECS cluster from a stack
+      operationId: deregisterEcsCluster
+      parameters:
+      - in: query
+        name: EcsClusterArn
+        description: The cluster's ARN
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ""
+  /?Action=DeregisterElasticIp&k=1:
+    get:
+      summary: ' Deregister Elastic IP'
+      description: Deregisters a specified Elastic IP address
+      operationId: deregisterElasticIp
+      parameters:
+      - in: query
+        name: ElasticIp
+        description: The Elastic IP address
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - IP Addresses
+  /?Action=DeregisterInstance&k=1:
+    get:
+      summary: ' Deregister Instance '
+      description: Deregister a registered Amazon EC2 or on-premises instance
+      operationId: deregisterInstance
+      parameters:
+      - in: query
+        name: InstanceId
+        description: The instance ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Instances
+  /?Action=DeregisterRdsDbInstance&k=1:
+    get:
+      summary: ' Deregister Rds Db Instance '
+      description: Deregisters an Amazon RDS instance
+      operationId: deregisterRdsDbInstance
+      parameters:
+      - in: query
+        name: RdsDbInstanceArn
+        description: The Amazon RDS instance's ARN
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Instances
+  /?Action=DeregisterVolume&k=1:
+    get:
+      summary: ' Deregister Volume '
+      description: Deregisters an Amazon EBS volume
+      operationId: deregisterVolume
+      parameters:
+      - in: query
+        name: VolumeId
+        description: The AWS OpsWorks Stacks volume ID, which is the GUID that AWS
+          OpsWorks Stacks assigned to the instance when you registered the volume
+          with the stack, not the Amazon EC2 volume ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Volumes
+  /?Action=DescribeAgentVersions&k=1:
+    get:
+      summary: ' Describe Agent Versions '
+      description: Describes the available AWS OpsWorks Stacks agent versions
+      operationId: describeAgentVersions
+      parameters:
+      - in: query
+        name: ConfigurationManager
+        description: The configuration manager
+        type: string
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Agent Versions
+  /?Action=DescribeApps&k=1:
+    get:
+      summary: ' Describe Apps '
+      description: Requests a description of a specified set of apps
+      operationId: describeApps
+      parameters:
+      - in: query
+        name: AppIds
+        description: An array of app IDs for the apps to be described
+        type: string
+      - in: query
+        name: StackId
+        description: The app stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Applications
+  /?Action=DescribeCommands&k=1:
+    get:
+      summary: ' Describe Commands '
+      description: Describes the results of specified commands
+      operationId: describeCommands
+      parameters:
+      - in: query
+        name: CommandIds
+        description: An array of command IDs
+        type: string
+      - in: query
+        name: DeploymentId
+        description: The deployment ID
+        type: string
+      - in: query
+        name: InstanceId
+        description: The instance ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Commands
+  /?Action=DescribeDeployments&k=1:
+    get:
+      summary: ' Describe Deployments '
+      description: Requests a description of a specified set of deployments
+      operationId: describeDeployments
+      parameters:
+      - in: query
+        name: AppId
+        description: The app ID
+        type: string
+      - in: query
+        name: DeploymentIds
+        description: An array of deployment IDs to be described
+        type: string
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Deployments
+  /?Action=DescribeEcsClusters&k=1:
+    get:
+      summary: ' Describe Ecs Clusters '
+      description: Describes Amazon ECS clusters that are registered with a stack
+      operationId: describeEcsClusters
+      parameters:
+      - in: query
+        name: EcsClusterArns
+        description: A list of ARNs, one for each cluster to be described
+        type: string
+      - in: query
+        name: MaxResults
+        description: To receive a paginated response, use this parameter to specify
+          the maximum number      of results to be returned with a single call
+        type: string
+      - in: query
+        name: NextToken
+        description: If the previous paginated request did not return all of the remaining
+          results,      the response object'sNextToken parameter value is set to a
+          token
+        type: string
+      - in: query
+        name: StackId
+        description: A stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ECS Clusters
+  /?Action=DescribeElasticIps&k=1:
+    get:
+      summary: Describes Elastic IPs
+      description: Describes Elastic IPs
+      operationId: describeElasticIps
+      parameters:
+      - in: query
+        name: InstanceId
+        description: The instance ID
+        type: string
+      - in: query
+        name: Ips
+        description: An array of Elastic IP addresses to be described
+        type: string
+      - in: query
+        name: StackId
+        description: A stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - IP Addresses
+  /?Action=DescribeElasticLoadBalancers&k=1:
+    get:
+      summary: ' Describe Elastic Load Balancers '
+      description: Describes a stack's Elastic Load Balancing instances
+      operationId: describeElasticLoadBalancers
+      parameters:
+      - in: query
+        name: LayerIds
+        description: A list of layer IDs
+        type: string
+      - in: query
+        name: StackId
+        description: A stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Load Balancers
+  /?Action=DescribeInstances&k=1:
+    get:
+      summary: ' Describe Instances '
+      description: Requests a description of a set of instances
+      operationId: describeInstances
+      parameters:
+      - in: query
+        name: InstanceIds
+        description: An array of instance IDs to be described
+        type: string
+      - in: query
+        name: LayerId
+        description: A layer ID
+        type: string
+      - in: query
+        name: StackId
+        description: A stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Instances
+  /?Action=DescribeLayers&k=1:
+    get:
+      summary: ' Describe Layers '
+      description: Requests a description of one or more layers in a specified stack
+      operationId: describeLayers
+      parameters:
+      - in: query
+        name: LayerIds
+        description: An array of layer IDs that specify the layers to be described
+        type: string
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Layers
+  /?Action=DescribeLoadBasedAutoScaling&k=1:
+    get:
+      summary: ' Describe Load Based Auto Scaling '
+      description: Describes load-based auto scaling configurations for specified
+        layers
+      operationId: describeLoadBasedAutoScaling
+      parameters:
+      - in: query
+        name: LayerIds
+        description: An array of layer IDs
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Auto Scaling
+  /?Action=DescribeMyUserProfile&k=1:
+    get:
+      summary: ' Describe My User Profile '
+      description: Describes a user's SSH information
+      operationId: describeMyUserProfile
+      parameters:
+      - in: query
+        name: UserProfile
+        description: A UserProfile object that describes the user's SSH information
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=DescribePermissions&k=1:
+    get:
+      summary: ' Describe Permissions '
+      description: Describes the permissions for a specified stack
+      operationId: describePermissions
+      parameters:
+      - in: query
+        name: IamUserArn
+        description: The user's IAM ARN
+        type: string
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Permissions
+  /?Action=DescribeRaidArrays&k=1:
+    get:
+      summary: ' Describe Raid Arrays '
+      description: Describe an instance's RAID arrays
+      operationId: describeRaidArrays
+      parameters:
+      - in: query
+        name: InstanceId
+        description: The instance ID
+        type: string
+      - in: query
+        name: RaidArrayIds
+        description: An array of RAID array IDs
+        type: string
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Raid Arrays
+  /?Action=DescribeRdsDbInstances&k=1:
+    get:
+      summary: ' Describe Rds Db Instances '
+      description: Describes Amazon RDS instances
+      operationId: describeRdsDbInstances
+      parameters:
+      - in: query
+        name: RdsDbInstanceArns
+        description: An array containing the ARNs of the instances to be described
+        type: string
+      - in: query
+        name: StackId
+        description: The stack ID that the instances are registered with
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Instances
+  /?Action=DescribeServiceErrors&k=1:
+    get:
+      summary: ' Describe Service Errors '
+      description: Describes AWS OpsWorks Stacks service errors
+      operationId: describeServiceErrors
+      parameters:
+      - in: query
+        name: InstanceId
+        description: The instance ID
+        type: string
+      - in: query
+        name: ServiceErrorIds
+        description: An array of service error IDs
+        type: string
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Service Errors
+  /?Action=DescribeStackProvisioningParameters&k=1:
+    get:
+      summary: ' Describe Stack Provisioning Parameters '
+      description: Requests a description of a stack's provisioning parameters
+      operationId: describeStackProvisioningParameters
+      parameters:
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Stacks
+  /?Action=DescribeStacks&k=1:
+    get:
+      summary: ' Describe Stacks '
+      description: Requests a description of one or more stacks
+      operationId: describeStacks
+      parameters:
+      - in: query
+        name: StackIds
+        description: An array of stack IDs that specify the stacks to be described
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Stacks
+  /?Action=DescribeStackSummary&k=1:
+    get:
+      summary: ' Describe Stack Summary '
+      description: |-
+        Describes the number of layers and apps in a specified stack, and the number of instances in
+              each state, such as running_setup or online
+      operationId: describeStackSummary
+      parameters:
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Stacks
+  /?Action=DescribeTimeBasedAutoScaling&k=1:
+    get:
+      summary: ' Describe Time Based Auto Scaling '
+      description: Describes time-based auto scaling configurations for specified
+        instances
+      operationId: describeTimeBasedAutoScaling
+      parameters:
+      - in: query
+        name: InstanceIds
+        description: An array of instance IDs
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Auto Scaling
+  /?Action=DescribeUserProfiles&k=1:
+    get:
+      summary: ' Describe User Profiles '
+      description: Describe specified users
+      operationId: describeUserProfiles
+      parameters:
+      - in: query
+        name: IamUserArns
+        description: An array of IAM or federated user ARNs that identify the users
+          to be described
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=DescribeVolumes&k=1:
+    get:
+      summary: ' Describe Volumes '
+      description: Describes an instance's Amazon EBS volumes
+      operationId: describeVolumes
+      parameters:
+      - in: query
+        name: InstanceId
+        description: The instance ID
+        type: string
+      - in: query
+        name: RaidArrayId
+        description: The RAID array ID
+        type: string
+      - in: query
+        name: StackId
+        description: A stack ID
+        type: string
+      - in: query
+        name: VolumeIds
+        description: Am array of volume IDs
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Volumes
+  /?Action=DetachElasticLoadBalancer&k=1:
+    get:
+      summary: ' Detach Elastic Load Balancer '
+      description: Detaches a specified Elastic Load Balancing instance from its layer
+      operationId: detachElasticLoadBalancer
+      parameters:
+      - in: query
+        name: ElasticLoadBalancerName
+        description: The Elastic Load Balancing instance's name
+        type: string
+      - in: query
+        name: LayerId
+        description: The ID of the layer that the Elastic Load Balancing instance
+          is attached to
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Load Balancers
+  /?Action=DisassociateElasticIp&k=1:
+    get:
+      summary: ' Disassociate Elastic Ip '
+      description: Disassociates an Elastic IP address from its instance
+      operationId: disassociateElasticIp
+      parameters:
+      - in: query
+        name: ElasticIp
+        description: The Elastic IP address
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - IP Addresses
+  /?Action=GetHostnameSuggestion&k=1:
+    get:
+      summary: ' Get Hostname Suggestion '
+      description: Gets a generated host name for the specified layer, based on the
+        current host name theme
+      operationId: getHostnameSuggestion
+      parameters:
+      - in: query
+        name: LayerId
+        description: The layer ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Host Names
+  /?Action=GrantAccess&k=1:
+    get:
+      summary: ' Grant Access '
+      description: NoteThis action can be used only with Windows stacks
+      operationId: grantAccess
+      parameters:
+      - in: query
+        name: InstanceId
+        description: The instance's AWS OpsWorks Stacks ID
+        type: string
+      - in: query
+        name: ValidForInMinutes
+        description: The length of time (in minutes) that the grant is valid
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Access
+  /?Action=RebootInstance&k=1:
+    get:
+      summary: ' Reboot Instance '
+      description: Reboots a specified instance
+      operationId: rebootInstance
+      parameters:
+      - in: query
+        name: InstanceId
+        description: The instance ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Instances
+  /?Action=RegisterEcsCluster&k=1:
+    get:
+      summary: ' Register Ecs Cluster '
+      description: Registers a specified Amazon ECS cluster with a stack
+      operationId: registerEcsCluster
+      parameters:
+      - in: query
+        name: EcsClusterArn
+        description: The cluster's ARN
+        type: string
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - ECS Clusters
+  /?Action=RegisterElasticIp&k=1:
+    get:
+      summary: ' Register Elastic Ip '
+      description: Registers an Elastic IP address with a specified stack
+      operationId: registerElasticIp
+      parameters:
+      - in: query
+        name: ElasticIp
+        description: The Elastic IP address
+        type: string
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - IP Addresses
+  /?Action=RegisterInstance&k=1:
+    get:
+      summary: ' Register Instance '
+      description: Registers instances that were created outside of AWS OpsWorks Stacks
+        with a specified stack
+      operationId: registerInstance
+      parameters:
+      - in: query
+        name: Hostname
+        description: The instance's hostname
+        type: string
+      - in: query
+        name: InstanceIdentity
+        description: An InstanceIdentity object that contains the instance's identity
+        type: string
+      - in: query
+        name: PrivateIp
+        description: The instance's private IP address
+        type: string
+      - in: query
+        name: PublicIp
+        description: The instance's public IP address
+        type: string
+      - in: query
+        name: RsaPublicKey
+        description: The instances public RSA key
+        type: string
+      - in: query
+        name: RsaPublicKeyFingerprint
+        description: The instances public RSA key fingerprint
+        type: string
+      - in: query
+        name: StackId
+        description: The ID of the stack that the instance is to be registered with
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Instances
+  /?Action=RegisterRdsDbInstance&k=1:
+    get:
+      summary: ' Register Rds Db Instance '
+      description: Registers an Amazon RDS instance with a stack
+      operationId: registerRdsDbInstance
+      parameters:
+      - in: query
+        name: DbPassword
+        description: The database password
+        type: string
+      - in: query
+        name: DbUser
+        description: The database's master user name
+        type: string
+      - in: query
+        name: RdsDbInstanceArn
+        description: The Amazon RDS instance's ARN
+        type: string
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Instances
+  /?Action=RegisterVolume&k=1:
+    get:
+      summary: ' Register Volume '
+      description: Registers an Amazon EBS volume with a specified stack
+      operationId: registerVolume
+      parameters:
+      - in: query
+        name: Ec2VolumeId
+        description: The Amazon EBS volume ID
+        type: string
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Volumes
+  /?Action=SetLoadBasedAutoScaling&k=1:
+    get:
+      summary: ' Set Load Based Auto Scaling '
+      description: Specify the load-based auto scaling configuration for a specified
+        layer
+      operationId: setLoadBasedAutoScaling
+      parameters:
+      - in: query
+        name: DownScaling
+        description: An AutoScalingThresholds object with the downscaling threshold
+          configuration
+        type: string
+      - in: query
+        name: Enable
+        description: Enables load-based auto scaling for the layer
+        type: string
+      - in: query
+        name: LayerId
+        description: The layer ID
+        type: string
+      - in: query
+        name: UpScaling
+        description: An AutoScalingThresholds object with the upscaling threshold
+          configuration
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Auto Scaling
+  /?Action=SetPermission&k=1:
+    get:
+      summary: ' Set Permission '
+      description: Specifies a user's permissions
+      operationId: setPermission
+      parameters:
+      - in: query
+        name: AllowSsh
+        description: The user is allowed to use SSH to communicate with the instance
+        type: string
+      - in: query
+        name: AllowSudo
+        description: The user is allowed to use sudo to elevate privileges
+        type: string
+      - in: query
+        name: IamUserArn
+        description: The user's IAM ARN
+        type: string
+      - in: query
+        name: Level
+        description: The user's permission level, which must be set to one of the
+          following strings
+        type: string
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Permissions
+  /?Action=SetTimeBasedAutoScaling&k=1:
+    get:
+      summary: ' Set Time Based Auto Scaling '
+      description: Specify the time-based auto scaling configuration for a specified
+        instance
+      operationId: setTimeBasedAutoScaling
+      parameters:
+      - in: query
+        name: AutoScalingSchedule
+        description: An AutoScalingSchedule with the instance schedule
+        type: string
+      - in: query
+        name: InstanceId
+        description: The instance ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Auto Scaling
+  /?Action=StartInstance&k=1:
+    get:
+      summary: ' Start Instance '
+      description: Starts a specified instance
+      operationId: startInstance
+      parameters:
+      - in: query
+        name: InstanceId
+        description: The instance ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Instances
+  /?Action=StartStack&k=1:
+    get:
+      summary: ' Start Stack '
+      description: Starts a stack's instances
+      operationId: startStack
+      parameters:
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Stacks
+  /?Action=StopInstance&k=1:
+    get:
+      summary: ' Stop Instance '
+      description: Stops a specified instance
+      operationId: stopInstance
+      parameters:
+      - in: query
+        name: InstanceId
+        description: The instance ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Instances
+  /?Action=StopStack&k=1:
+    get:
+      summary: ' Stop Stack '
+      description: Stops a specified stack
+      operationId: stopStack
+      parameters:
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Stacks
+  /?Action=UnassignInstance&k=1:
+    get:
+      summary: ' Unassign Instance '
+      description: Unassigns a registered instance from all of it's layers
+      operationId: unassignInstance
+      parameters:
+      - in: query
+        name: InstanceId
+        description: The instance ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Instances
+  /?Action=UnassignVolume&k=1:
+    get:
+      summary: ' Unassign Volume '
+      description: Unassigns an assigned Amazon EBS volume
+      operationId: unassignVolume
+      parameters:
+      - in: query
+        name: VolumeId
+        description: The volume ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Volumes
+  /?Action=UpdateApp&k=1:
+    get:
+      summary: ' Update App '
+      description: Updates a specified app
+      operationId: updateApp
+      parameters:
+      - in: query
+        name: AppId
+        description: The app ID
+        type: string
+      - in: query
+        name: AppSource
+        description: A Source object that specifies the app repository
+        type: string
+      - in: query
+        name: Attributes
+        description: One or more user-defined key/value pairs to be added to the stack
+          attributes
+        type: string
+      - in: query
+        name: DataSources
+        description: The app's data sources
+        type: string
+      - in: query
+        name: Description
+        description: A description of the app
+        type: string
+      - in: query
+        name: Domains
+        description: The app's virtual host settings, with multiple domains separated
+          by commas
+        type: string
+      - in: query
+        name: EnableSsl
+        description: Whether SSL is enabled for the app
+        type: string
+      - in: query
+        name: Environment
+        description: An array of EnvironmentVariable objects that specify environment
+          variables to be      associated with the app
+        type: string
+      - in: query
+        name: Name
+        description: The app name
+        type: string
+      - in: query
+        name: SslConfiguration
+        description: An SslConfiguration object with the SSL configuration
+        type: string
+      - in: query
+        name: Type
+        description: The app type
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Applications
+  /?Action=UpdateElasticIp&k=1:
+    get:
+      summary: ' Update Elastic Ip '
+      description: Updates a registered Elastic IP address's name
+      operationId: updateElasticIp
+      parameters:
+      - in: query
+        name: ElasticIp
+        description: The address
+        type: string
+      - in: query
+        name: Name
+        description: The new name
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - IP Addresses
+  /?Action=UpdateInstance&k=1:
+    get:
+      summary: ' Update Instance '
+      description: Updates a specified instance
+      operationId: updateInstance
+      parameters:
+      - in: query
+        name: AgentVersion
+        description: The default AWS OpsWorks Stacks agent version
+        type: string
+      - in: query
+        name: AmiId
+        description: The ID of the AMI that was used to create the instance
+        type: string
+      - in: query
+        name: Architecture
+        description: The instance architecture
+        type: string
+      - in: query
+        name: AutoScalingType
+        description: For load-based or time-based instances, the type
+        type: string
+      - in: query
+        name: EbsOptimized
+        description: This property cannot be updated
+        type: string
+      - in: query
+        name: Hostname
+        description: The instance host name
+        type: string
+      - in: query
+        name: InstallUpdatesOnBoot
+        description: Whether to install operating system and package updates when
+          the instance boots
+        type: string
+      - in: query
+        name: InstanceId
+        description: The instance ID
+        type: string
+      - in: query
+        name: InstanceType
+        description: The instance type, such as t2
+        type: string
+      - in: query
+        name: LayerIds
+        description: The instance's layer IDs
+        type: string
+      - in: query
+        name: Os
+        description: The instance's operating system, which must be set to one of
+          the following
+        type: string
+      - in: query
+        name: SshKeyName
+        description: The instance's Amazon EC2 key name
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Instances
+  /?Action=UpdateLayer&k=1:
+    get:
+      summary: ' Update Layer '
+      description: Updates a specified layer
+      operationId: updateLayer
+      parameters:
+      - in: query
+        name: Attributes
+        description: One or more user-defined key/value pairs to be added to the stack
+          attributes
+        type: string
+      - in: query
+        name: AutoAssignElasticIps
+        description: Whether to automatically assign an Elastic IP        address
+          to the layer's instances
+        type: string
+      - in: query
+        name: AutoAssignPublicIps
+        description: For stacks that are running in a VPC, whether to automatically
+          assign a public IP address to      the layer's instances
+        type: string
+      - in: query
+        name: CustomInstanceProfileArn
+        description: The ARN of an IAM profile to be used for all of the layer's EC2
+          instances
+        type: string
+      - in: query
+        name: CustomJson
+        description: A JSON-formatted string containing custom stack configuration
+          and deployment attributes      to be installed on the layer's instances
+        type: string
+      - in: query
+        name: CustomRecipes
+        description: A LayerCustomRecipes object that specifies the layer's custom
+          recipes
+        type: string
+      - in: query
+        name: CustomSecurityGroupIds
+        description: An array containing the layer's custom security group IDs
+        type: string
+      - in: query
+        name: EnableAutoHealing
+        description: Whether to disable auto healing for the layer
+        type: string
+      - in: query
+        name: InstallUpdatesOnBoot
+        description: Whether to install operating system and package updates when
+          the instance boots
+        type: string
+      - in: query
+        name: LayerId
+        description: The layer ID
+        type: string
+      - in: query
+        name: LifecycleEventConfiguration
+        type: string
+      - in: query
+        name: Name
+        description: The layer name, which is used by the console
+        type: string
+      - in: query
+        name: Packages
+        description: An array of Package objects that describe the layer's packages
+        type: string
+      - in: query
+        name: Shortname
+        description: For custom layers only, use this parameter to specify the layer's
+          short name, which is used internally by AWS OpsWorks Stacks and by Chef
+        type: string
+      - in: query
+        name: UseEbsOptimizedInstances
+        description: Whether to use Amazon EBS-optimized instances
+        type: string
+      - in: query
+        name: VolumeConfigurations
+        description: A VolumeConfigurations object that describes the layer's Amazon
+          EBS volumes
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Layers
+  /?Action=UpdateMyUserProfile&k=1:
+    get:
+      summary: ' Update My User Profile '
+      description: Updates a user's SSH public key
+      operationId: updateMyUserProfile
+      parameters:
+      - in: query
+        name: SshPublicKey
+        description: The user's SSH public key
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=UpdateRdsDbInstance&k=1:
+    get:
+      summary: ' Update Rds Db Instance '
+      description: Updates an Amazon RDS instance
+      operationId: updateRdsDbInstance
+      parameters:
+      - in: query
+        name: DbPassword
+        description: The database password
+        type: string
+      - in: query
+        name: DbUser
+        description: The master user name
+        type: string
+      - in: query
+        name: RdsDbInstanceArn
+        description: The Amazon RDS instance's ARN
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Instances
+  /?Action=UpdateStack&k=1:
+    get:
+      summary: ' Update Stack '
+      description: Updates a specified stack
+      operationId: updateStack
+      parameters:
+      - in: query
+        name: AgentVersion
+        description: The default AWS OpsWorks Stacks agent version
+        type: string
+      - in: query
+        name: Attributes
+        description: One or more user-defined key-value pairs to be added to the stack
+          attributes
+        type: string
+      - in: query
+        name: ChefConfiguration
+        description: A ChefConfiguration object that specifies whether to enable Berkshelf
+          and the      Berkshelf version on Chef 11
+        type: string
+      - in: query
+        name: ConfigurationManager
+        description: The configuration manager
+        type: string
+      - in: query
+        name: CustomCookbooksSource
+        description: Contains the information required to retrieve an app or cookbook
+          from a repository
+        type: string
+      - in: query
+        name: CustomJson
+        description: A string that contains user-defined, custom JSON
+        type: string
+      - in: query
+        name: DefaultAvailabilityZone
+        description: The stack's default Availability Zone, which must be in the      stack's
+          region
+        type: string
+      - in: query
+        name: DefaultInstanceProfileArn
+        description: The ARN of an IAM profile that is the default profile for all
+          of the stack's EC2 instances
+        type: string
+      - in: query
+        name: DefaultOs
+        description: 'The stack''s operating system, which must be set to one of the
+          following:'
+        type: string
+      - in: query
+        name: DefaultRootDeviceType
+        description: The default root device type
+        type: string
+      - in: query
+        name: DefaultSshKeyName
+        description: A default Amazon EC2 key-pair name
+        type: string
+      - in: query
+        name: DefaultSubnetId
+        description: The stack's default VPC subnet ID
+        type: string
+      - in: query
+        name: HostnameTheme
+        description: The stack's new host name theme, with spaces replaced by underscores
+        type: string
+      - in: query
+        name: Name
+        description: The stack's new name
+        type: string
+      - in: query
+        name: ServiceRoleArn
+        description: Do not use this parameter
+        type: string
+      - in: query
+        name: StackId
+        description: The stack ID
+        type: string
+      - in: query
+        name: UseCustomCookbooks
+        description: Whether the stack uses custom cookbooks
+        type: string
+      - in: query
+        name: UseOpsworksSecurityGroups
+        description: Whether to associate the AWS OpsWorks Stacks built-in security
+          groups with the stack's layers
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Stacks
+  /?Action=UpdateUserProfile&k=1:
+    get:
+      summary: ' Update User Profile '
+      description: Updates a specified user profile
+      operationId: updateUserProfile
+      parameters:
+      - in: query
+        name: AllowSelfManagement
+        description: Whether users can specify their own SSH public key through the
+          My Settings page
+        type: string
+      - in: query
+        name: IamUserArn
+        description: The user IAM ARN
+        type: string
+      - in: query
+        name: SshPublicKey
+        description: The user's new SSH public key
+        type: string
+      - in: query
+        name: SshUsername
+        description: The user's SSH user name
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Users
+  /?Action=UpdateVolume&k=1:
+    get:
+      summary: ' Update Volume '
+      description: Updates an Amazon EBS volume's name or mount point
+      operationId: updateVolume
+      parameters:
+      - in: query
+        name: MountPoint
+        description: The new mount point
+        type: string
+      - in: query
+        name: Name
+        description: The new name
+        type: string
+      - in: query
+        name: VolumeId
+        description: The volume ID
+        type: string
+      responses:
+        200:
+          description: OK
+      tags:
+      - Volumes
+definitions: []
