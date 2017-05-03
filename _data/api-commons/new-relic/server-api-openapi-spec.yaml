@@ -1,0 +1,202 @@
+agger: "2.0"
+info:
+  title: Server API
+  description: The Server API.
+  version: 1.0.0
+host: api.newrelic.com
+basePath: /
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /v2/servers.{format}:
+    get:
+      summary: List
+      description: <p>This API endpoint returns a <a href="https://docs
+      operationId: list
+      parameters:
+      - in: query
+        name: filter[host]
+        description: Filter by host
+        type: string
+      - in: query
+        name: filter[ids]
+        description: Filter by server IDs
+        type: list
+      - in: query
+        name: filter[labels]
+        description: Filter by server labels (beta)
+        type: string
+      - in: query
+        name: filter[name]
+        description: Filter by name
+        type: string
+      - in: query
+        name: filter[reported]
+        description: Filter by reported in last 10 hours
+        type: boolean
+      - in: query
+        name: page
+        description: Pagination index
+        type: integer
+      responses:
+        200:
+          description: OK
+      tags:
+      - Server
+  /v2/servers/{id}.{format}:
+    delete:
+      summary: Delete
+      description: <p>This API endpoint deletes a server and all of its reported data
+      operationId: delete
+      parameters:
+      - in: path
+        name: id
+        description: Server ID
+        type: integer
+      responses:
+        200:
+          description: OK
+      tags:
+      - Server
+    get:
+      summary: Show
+      description: <p>This API endpoint returns a single Server, identified by ID
+      operationId: show
+      parameters:
+      - in: path
+        name: id
+        description: Server ID
+        type: integer
+      responses:
+        200:
+          description: OK
+      tags:
+      - Server
+    put:
+      summary: Update
+      description: <p>This API endpoint allows you to rename your server
+      operationId: update
+      parameters:
+      - in: path
+        name: id
+        description: Server ID
+        type: integer
+      - in: body
+        name: server
+        description: New name of the server
+        schema:
+          $ref: '#/definitions/holder'
+      responses:
+        200:
+          description: OK
+      tags:
+      - Server
+  /v2/servers/{server_id}/metrics.{format}:
+    get:
+      summary: Metric Names
+      description: <p>Return a list of known metrics and their value names for the
+        given resource
+      operationId: names
+      parameters:
+      - in: query
+        name: cursor
+        description: Cursor for next page (replacing page param)
+        type: string
+      - in: query
+        name: name
+        description: Filter metrics by name
+        type: string
+      - in: query
+        name: page
+        description: Pagination index (will be deprecated)
+        type: integer
+      - in: path
+        name: server_id
+        description: Server ID
+        type: integer
+      responses:
+        200:
+          description: OK
+      tags:
+      - Server
+  /v2/servers/{server_id}/metrics/data.{format}:
+    get:
+      summary: Metric Data
+      description: <p>This API endpoint returns a list of values for each of the requested
+        metrics
+      operationId: data
+      parameters:
+      - in: query
+        name: from
+        description: Retrieve metrics after this time
+        type: time
+      - in: query
+        name: names
+        description: Retrieve specific metrics by name
+        type: array
+      - in: query
+        name: period
+        description: Period of timeslices in seconds
+        type: integer
+      - in: query
+        name: raw
+        description: Return unformatted raw values
+        type: boolean
+      - in: path
+        name: server_id
+        description: Server ID
+        type: integer
+      - in: query
+        name: summarize
+        description: Summarize the data
+        type: boolean
+      - in: query
+        name: to
+        description: Retrieve metrics before this time
+        type: time
+      - in: query
+        name: values
+        description: Retrieve specific metric values
+        type: array
+      responses:
+        200:
+          description: OK
+      tags:
+      - Server
+definitions:
+  "":
+    properties:
+      server:
+        description: This is a default description.
+        type: string
+      id:
+        description: This is a default description.
+        type: string
+      account_id:
+        description: This is a default description.
+        type: string
+      name:
+        description: This is a default description.
+        type: string
+      host:
+        description: This is a default description.
+        type: string
+      health_status:
+        description: This is a default description.
+        type: string
+      reporting:
+        description: This is a default description.
+        type: string
+      last_reported_at:
+        description: This is a default description.
+        type: string
+      summary:
+        description: This is a default description.
+        type: string
+      links:
+        description: This is a default description.
+        type: string
