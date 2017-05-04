@@ -41,7 +41,10 @@ title: Channel Types
 {% assign channel_types_array = channel_types_string | split: "," %}
 {% assign channel_types = channel_types_array | uniq | sort %}
 {% for type in channel_types %}
-  <li>{{ type }}</li>
+  {% if type != '' %}
+    {% assign type_name = type | replace: 'x-',''  | replace: '-',' ' | replace: '-',' ' | capitalize %}
+    <li><strong>{{ type_name }}</strong> ({{ type }})</li>
+  {% endif %}
 {% endfor %}
 </ul>
 
