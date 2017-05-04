@@ -264,7 +264,7 @@ title: The API Stack
                         {% if property.type == 'x-openapi-spec' %}
 
                           {% assign openapi_spec_url = property.url %}
-                          {% assign pathname = openapi_spec_url | replace: 'https://raw.githubusercontent.com/api-stack/amazon-web-services/master/_data/api-commons/','' %}
+                          {% assign pathname = openapi_spec_url | replace: site.raw_url,'' %}
                           {% assign pathplusfolder = path | append:'/' %}
                           {% assign pathname = pathname | replace: '.json','' %}
                           {% assign pathname = pathname | replace: pathplusfolder,'' %}
