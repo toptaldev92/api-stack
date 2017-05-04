@@ -24,11 +24,14 @@ title: Channel Types
         {% assign item_name = item[0] %}
         {% if item_name == 'apis' %}
           {% assign apijson = item[1] %}
+          HERE: {{ apijson.name }}<br />
           {% for common in apijson.x-common %}
+            1) {{ property.type }}<br />
             {% assign channel_types_string = channel_types_string | append: ',' | append: common.type %}
           {% endfor %}
           {% for api in apijson.apis %}
               {% for property in api.properties %}
+                2) {{ property.type }}<br />
                 {% assign channel_types_string = channel_types_string | append: ',' | append: property.type %}
               {% endfor %}
           {% endfor %}
