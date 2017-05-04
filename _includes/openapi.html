@@ -1,1 +1,1 @@
-{% assign yaml_data = site.data.apis | replace: 'https://raw.githubusercontent.com/api-stack/api-stack/gh-pages/_data/api-commons', site.url %}{% assign show_json = yaml_data | json | replace: '=>', ':' %}{{ show_json }}
+{% assign yaml_data = site.data.apis | replace: site.raw_url, site.url %}{% assign show_json = yaml_data | json | replace: '=>', ':' %}{{ show_json }}
