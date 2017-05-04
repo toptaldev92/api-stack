@@ -25,12 +25,10 @@ title: Channel Types
         {% if item_name == 'apis' %}
           {% assign apijson = item[1] %}
           {% for common in apijson.x-common %}
-            1) {{ common.type }}<br />
             {% assign channel_types_string = channel_types_string | append: ',' | append: common.type %}
           {% endfor %}
           {% for api in apijson.apis %}
               {% for property in api.properties %}
-                2) {{ property.type }}<br />
                 {% assign channel_types_string = channel_types_string | append: ',' | append: property.type %}
               {% endfor %}
           {% endfor %}
@@ -39,13 +37,10 @@ title: Channel Types
     {% endif %}
   {% endfor %}
 {% endfor %}
-<hr />
-{{ channel_types_string }}
-<hr />
 <ul>
 {% assign channel_types_array = channel_types_string | split: "," %}
 {% assign channel_types = channel_types_array | uniq | sort %}
-{% for channel_types in type %}
+{% for type in channel_types %}
   <li>{{ type }}</li>
 {% endfor %}
 </ul>
