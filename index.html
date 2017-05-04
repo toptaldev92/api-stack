@@ -246,12 +246,76 @@ title: The API Stack
                     </tr>
                   </table>
 
-                  <hr style="width: 75%;" />
+                  {% assign numberofapis = apijson.apis | size %}
 
-                </td>
-              </tr>
-            </table>
-            <!-- APIs.yaml -->
+                  {% assign api_action_url = '' %}
+                  {% for api in apijson.apis %}
+
+                      {% assign api_action_spec = '' %}
+                      {% assign api_action_url = '' %}
+                      {% assign openapi_spec_json = '' %}
+
+                      {% for property in api.properties %}
+
+                        {% assign thisname = apijson.name | downcase %}
+                        {% assign thisname = thisname | append:'/' %}
+                        {% assign thisname = thisname | replace: ' ','-' %}
+
+                        {% if property.type == 'x-openapi-spec' %}
+
+                          {% assign openapi_spec_url = property.url %}
+                          {% assign pathname = openapi_spec_url | replace: 'https://raw.githubusercontent.com/api-stack/amazon-web-services/master/_data/api-commons/','' %}
+                          {% assign pathplusfolder = path | append:'/' %}
+                          {% assign pathname = pathname | replace: '.json','' %}
+                          {% assign pathname = pathname | replace: pathplusfolder,'' %}
+
+                          {% for entry in contents[path] %}
+
+                            {% assign thisname = entry[0] %}
+                            {% assign thisentry = entry[1] %}
+
+                            {% if thisname == pathname %}
+                              {% assign openapi_spec_json = entry[1] %}
+                            {% endif %}
+
+                          {% endfor %}
+
+                        {% endif %}
+
+                      {% endfor %}
+
+
+                      {% for path in openapi_spec_json.paths %}
+
+                        {% assign method_json = path[1] %}
+
+                        {% for method in method_json %}
+
+                          {% assign tagarray = method[1].tags %}
+                          {% assign tag = tagarray[0] %}
+                          {% assign verb = method[0] | upcase %}
+
+                          {% if verb == 'GET' %}
+                            {% assign back_color = site.get_color %}
+                          {% endif %}
+                          {% if verb == 'POST' %}
+                            {% assign back_color = site.post_color %}
+                          {% endif %}
+                          {% if verb == 'PUT' %}
+                            {% assign back_color = site.put_color %}
+                          {% endif %}
+                          {% if verb == 'DELETE' %}
+                            {% assign back_color = site.delete_color %}
+                          {% endif %}
+
+                          {% assign summary = method[1].summary %}
+                          {% assign description = method[1].description %}
+
+                          {% assign path_count = path_count | plus: 1 %}
+                        {% endfor %}
+                      {% endfor %}
+
+                  {% endfor %}
 
 
         {% endif %}
@@ -264,7 +328,7 @@ title: The API Stack
   {% endfor %}
 
 {% endfor %}
-
+<p align="center">There is a total of {{ service_count }} services, with {{ path_count }} unique paths.</p>
 <br />
 <p>If you are an API provider and would like to see your API here, feel free to submit a link to it in the Github issues, or even fork and submit a pull requests. I'm looking for as much help as I can, to make this as complete as possible source for API definitions as I possibly can.</p>
 <p>Remember, the more open, complete, freely available API definitions there are, the more people will have healthy patterns to follow when crafting their own APIs. If you design APIs, make sure and share your patterns.</p>
